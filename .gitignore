@@ -1,0 +1,56 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+ENV/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+dist/
+build/
+.vite/
+.next/
+coverage/
+
+# Environment
+.env
+.env.*
+!.env.example
+!.env.local.example
+
+# Supabase / local services
+.supabase/
+.tmp/
+
+# Uploads / generated artifacts
+uploads/
+*.sqlite3
+*.db
+
+# Archives
+*.zip
+*.tar
+*.gz

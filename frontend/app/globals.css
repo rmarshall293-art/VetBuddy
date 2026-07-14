@@ -1,0 +1,43 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-navy font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hero-visual-plane {
+    background: linear-gradient(
+      135deg,
+      rgba(26, 39, 68, 0.06) 0%,
+      rgba(143, 166, 143, 0.12) 50%,
+      rgba(201, 162, 39, 0.08) 100%
+    );
+    background-size: 200% 200%;
+    animation: shimmer 8s ease-in-out infinite;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.25s; }
+  .stagger-3 { animation-delay: 0.4s; }
+  .stagger-4 { animation-delay: 0.55s; }
+
+  .opacity-0-start {
+    opacity: 0;
+  }
+}

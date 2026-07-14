@@ -1,0 +1,285 @@
+{
+  "metadata": {
+    "description": "Mock VA and veteran-related facilities for VetBuddy development and demo",
+    "data_status": "placeholder",
+    "last_reviewed": "2026-01-15",
+    "primary_focus": "Alabama"
+  },
+  "facilities": [
+    {
+      "id": "va-medical-center-birmingham",
+      "name": "Birmingham VA Medical Center",
+      "type": "va_medical_center",
+      "address": "700 19th Street South, Birmingham, AL 35233",
+      "city": "Birmingham",
+      "state": "AL",
+      "zip": "35233",
+      "phone": "(205) 933-8101",
+      "website": "https://www.va.gov/birmingham-health-care/",
+      "services": [
+        "Primary care",
+        "Mental health",
+        "Specialty care",
+        "Emergency",
+        "Pharmacy",
+        "PTSD clinic"
+      ],
+      "latitude": 33.5067,
+      "longitude": -86.8025
+    },
+    {
+      "id": "va-medical-center-montgomery",
+      "name": "Central Alabama Veterans Health Care System - Montgomery",
+      "type": "va_medical_center",
+      "address": "215 Perry Hill Road, Montgomery, AL 36109",
+      "city": "Montgomery",
+      "state": "AL",
+      "zip": "36109",
+      "phone": "(334) 725-3100",
+      "website": "https://www.va.gov/central-alabama-health-care/",
+      "services": [
+        "Primary care",
+        "Mental health",
+        "Geriatrics",
+        "Rehabilitation",
+        "Pharmacy"
+      ],
+      "latitude": 32.3889,
+      "longitude": -86.2428
+    },
+    {
+      "id": "va-medical-center-tuscaloosa",
+      "name": "Tuscaloosa VA Medical Center",
+      "type": "va_medical_center",
+      "address": "3701 Loop Road, Tuscaloosa, AL 35404",
+      "city": "Tuscaloosa",
+      "state": "AL",
+      "zip": "35404",
+      "phone": "(205) 554-2000",
+      "website": "https://www.va.gov/central-alabama-health-care/locations/tuscaloosa-va-medical-center/",
+      "services": [
+        "Primary care",
+        "Mental health",
+        "Domiciliary",
+        "Substance abuse treatment"
+      ],
+      "latitude": 33.1989,
+      "longitude": -87.4892
+    },
+    {
+      "id": "va-clinic-mobile",
+      "name": "Mobile VA Clinic",
+      "type": "va_outpatient_clinic",
+      "address": "790 Veterans Way, Mobile, AL 36609",
+      "city": "Mobile",
+      "state": "AL",
+      "zip": "36609",
+      "phone": "(251) 219-3900",
+      "website": "https://www.va.gov/gulf-coast-health-care/locations/mobile-va-clinic/",
+      "services": [
+        "Primary care",
+        "Mental health",
+        "Telehealth"
+      ],
+      "latitude": 30.6744,
+      "longitude": -88.1342
+    },
+    {
+      "id": "va-clinic-huntsville",
+      "name": "Huntsville VA Clinic",
+      "type": "va_outpatient_clinic",
+      "address": "500 Markaview Drive NW, Huntsville, AL 35811",
+      "city": "Huntsville",
+      "state": "AL",
+      "zip": "35811",
+      "phone": "(256) 533-8887",
+      "website": "https://www.va.gov/tennessee-valley-health-care/locations/huntsville-va-clinic/",
+      "services": [
+        "Primary care",
+        "Mental health",
+        "Lab",
+        "Pharmacy"
+      ],
+      "latitude": 34.7622,
+      "longitude": -86.6019
+    },
+    {
+      "id": "va-clinic-dothan",
+      "name": "Dothan VA Clinic",
+      "type": "va_outpatient_clinic",
+      "address": "2765 Flynt Street, Dothan, AL 36303",
+      "city": "Dothan",
+      "state": "AL",
+      "zip": "36303",
+      "phone": "(334) 673-1164",
+      "website": "https://www.va.gov/central-alabama-health-care/locations/dothan-va-clinic/",
+      "services": [
+        "Primary care",
+        "Mental health"
+      ],
+      "latitude": 31.2456,
+      "longitude": -85.4189
+    },
+    {
+      "id": "al-veterans-home-alexander-city",
+      "name": "Bill Nichols State Veterans Home",
+      "type": "state_veterans_home",
+      "address": "556 Veterans Drive, Alexander City, AL 35010",
+      "city": "Alexander City",
+      "state": "AL",
+      "zip": "35010",
+      "phone": "(256) 212-3600",
+      "website": "https://va.alabama.gov/state-veterans-homes/",
+      "services": [
+        "Skilled nursing",
+        "Memory care",
+        "Domiciliary"
+      ],
+      "latitude": 32.944,
+      "longitude": -85.9536
+    },
+    {
+      "id": "al-veterans-home-huntsville",
+      "name": "Floyd E. 'Tut' Fann State Veterans Home",
+      "type": "state_veterans_home",
+      "address": "4225 University Drive NW, Huntsville, AL 35816",
+      "city": "Huntsville",
+      "state": "AL",
+      "zip": "35816",
+      "phone": "(256) 534-7700",
+      "website": "https://va.alabama.gov/state-veterans-homes/",
+      "services": [
+        "Skilled nursing",
+        "Rehabilitation",
+        "Domiciliary"
+      ],
+      "latitude": 34.7625,
+      "longitude": -86.6403
+    },
+    {
+      "id": "al-veterans-home-pell-city",
+      "name": "Colonel Robert L. Howard State Veterans Home",
+      "type": "state_veterans_home",
+      "address": "7054 Veterans Parkway, Pell City, AL 35125",
+      "city": "Pell City",
+      "state": "AL",
+      "zip": "35125",
+      "phone": "(205) 338-7970",
+      "website": "https://va.alabama.gov/state-veterans-homes/",
+      "services": [
+        "Skilled nursing",
+        "Memory care"
+      ],
+      "latitude": 33.5862,
+      "longitude": -86.2861
+    },
+    {
+      "id": "al-veterans-cemetery-spanish-fort",
+      "name": "Alabama State Veterans Memorial Cemetery",
+      "type": "state_veterans_cemetery",
+      "address": "34904 State Highway 225, Spanish Fort, AL 36577",
+      "city": "Spanish Fort",
+      "state": "AL",
+      "zip": "36577",
+      "phone": "(251) 626-1367",
+      "website": "https://va.alabama.gov/cemetery/",
+      "services": [
+        "Burial",
+        "Memorial services"
+      ],
+      "latitude": 30.6657,
+      "longitude": -87.9092
+    },
+    {
+      "id": "adva-central-office",
+      "name": "Alabama Department of Veterans Affairs - Central Office",
+      "type": "state_veterans_agency",
+      "address": "770 Washington Avenue, Montgomery, AL 36104",
+      "city": "Montgomery",
+      "state": "AL",
+      "zip": "36104",
+      "phone": "(334) 242-5100",
+      "website": "https://va.alabama.gov",
+      "services": [
+        "Claims assistance",
+        "Benefits counseling",
+        "State program administration"
+      ],
+      "latitude": 32.377,
+      "longitude": -86.3006
+    },
+    {
+      "id": "va-regional-office-montgomery",
+      "name": "Montgomery VA Regional Office",
+      "type": "va_regional_office",
+      "address": "345 Perry Hill Road, Montgomery, AL 36109",
+      "city": "Montgomery",
+      "state": "AL",
+      "zip": "36109",
+      "phone": "(800) 827-1000",
+      "website": "https://www.va.gov/montgomery-va-regional-benefit-office/",
+      "services": [
+        "Disability claims processing",
+        "Education benefits",
+        "Vocational rehabilitation"
+      ],
+      "latitude": 32.3895,
+      "longitude": -86.241
+    },
+    {
+      "id": "va-national-cemetery-mobile",
+      "name": "Mobile National Cemetery",
+      "type": "national_cemetery",
+      "address": "1202 Virginia Street, Mobile, AL 36604",
+      "city": "Mobile",
+      "state": "AL",
+      "zip": "36604",
+      "phone": "(251) 690-9104",
+      "website": "https://www.cem.va.gov/cems/nchp/mobile.asp",
+      "services": [
+        "Burial",
+        "Memorial services"
+      ],
+      "latitude": 30.6822,
+      "longitude": -88.0567
+    },
+    {
+      "id": "va-clinic-atlanta",
+      "name": "Atlanta VA Medical Center",
+      "type": "va_medical_center",
+      "address": "1670 Clairmont Road, Decatur, GA 30033",
+      "city": "Decatur",
+      "state": "GA",
+      "zip": "30033",
+      "phone": "(404) 321-6111",
+      "website": "https://www.va.gov/atlanta-health-care/",
+      "services": [
+        "Primary care",
+        "Mental health",
+        "Specialty care",
+        "Research"
+      ],
+      "latitude": 33.7913,
+      "longitude": -84.3089
+    },
+    {
+      "id": "va-medical-center-nashville",
+      "name": "Tennessee Valley Healthcare System - Nashville",
+      "type": "va_medical_center",
+      "address": "1310 24th Avenue South, Nashville, TN 37212",
+      "city": "Nashville",
+      "state": "TN",
+      "zip": "37212",
+      "phone": "(615) 327-4751",
+      "website": "https://www.va.gov/tennessee-valley-health-care/",
+      "services": [
+        "Primary care",
+        "Mental health",
+        "Surgery",
+        "Research"
+      ],
+      "latitude": 36.1397,
+      "longitude": -86.8028
+    }
+  ]
+}

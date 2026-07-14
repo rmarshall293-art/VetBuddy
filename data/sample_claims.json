@@ -1,0 +1,267 @@
+[
+  {
+    "id": "claim-demo-001",
+    "veteran_display_name": "Demo Veteran One",
+    "is_demo": true,
+    "jurisdiction": "AL",
+    "claim_type": "initial_disability",
+    "conditions": [
+      {
+        "name": "Tinnitus",
+        "diagnostic_code": "6260",
+        "claimed_rating": 10
+      },
+      {
+        "name": "Bilateral hearing loss",
+        "diagnostic_code": "6100",
+        "claimed_rating": 10
+      }
+    ],
+    "claim_status": "gathering_evidence",
+    "status_history": [
+      {
+        "status": "intent_to_file",
+        "date": "2025-11-01",
+        "note": "Intent to file recorded"
+      },
+      {
+        "status": "claim_received",
+        "date": "2025-11-15",
+        "note": "Fully developed claim submitted"
+      },
+      {
+        "status": "gathering_evidence",
+        "date": "2025-12-20",
+        "note": "VA requested additional audiology records"
+      }
+    ],
+    "filed_date": "2025-11-15",
+    "evidence_checklist": [
+      {
+        "item": "DD-214",
+        "status": "submitted",
+        "required": true
+      },
+      {
+        "item": "Service treatment records",
+        "status": "submitted",
+        "required": true
+      },
+      {
+        "item": "Private audiology exam (current)",
+        "status": "pending",
+        "required": true
+      },
+      {
+        "item": "Buddy statement - exposure to loud noise",
+        "status": "pending",
+        "required": false
+      },
+      {
+        "item": "VA Form 21-526EZ",
+        "status": "submitted",
+        "required": true
+      }
+    ],
+    "assigned_representative": "County VSO - Jefferson County (Demo)",
+    "estimated_completion": "2026-04-15",
+    "notes": "Demo claim for VetBuddy UI testing. No real PII.",
+    "data_status": "placeholder"
+  },
+  {
+    "id": "claim-demo-002",
+    "veteran_display_name": "Demo Veteran Two",
+    "is_demo": true,
+    "jurisdiction": "AL",
+    "claim_type": "increase",
+    "conditions": [
+      {
+        "name": "PTSD",
+        "diagnostic_code": "9411",
+        "current_rating": 50,
+        "claimed_rating": 70
+      },
+      {
+        "name": "Migraine headaches",
+        "diagnostic_code": "8100",
+        "current_rating": 0,
+        "claimed_rating": 30
+      }
+    ],
+    "claim_status": "review_of_evidence",
+    "status_history": [
+      {
+        "status": "claim_received",
+        "date": "2025-09-10",
+        "note": "Increase claim filed"
+      },
+      {
+        "status": "gathering_evidence",
+        "date": "2025-10-05",
+        "note": "C&P exams scheduled"
+      },
+      {
+        "status": "review_of_evidence",
+        "date": "2026-01-08",
+        "note": "C&P exams completed, awaiting decision"
+      }
+    ],
+    "filed_date": "2025-09-10",
+    "evidence_checklist": [
+      {
+        "item": "DD-214",
+        "status": "submitted",
+        "required": true
+      },
+      {
+        "item": "Current PTSD treatment records (12 months)",
+        "status": "submitted",
+        "required": true
+      },
+      {
+        "item": "C&P exam - mental health",
+        "status": "completed",
+        "required": true
+      },
+      {
+        "item": "C&P exam - headaches",
+        "status": "completed",
+        "required": true
+      },
+      {
+        "item": "Personal statement describing symptom progression",
+        "status": "submitted",
+        "required": false
+      }
+    ],
+    "assigned_representative": "ADVA State VSO (Demo)",
+    "estimated_completion": "2026-02-28",
+    "notes": "Demo increase claim illustrating C&P exam workflow.",
+    "data_status": "placeholder"
+  },
+  {
+    "id": "claim-demo-003",
+    "veteran_display_name": "Demo Veteran Three",
+    "is_demo": true,
+    "jurisdiction": "TX",
+    "claim_type": "secondary_condition",
+    "conditions": [
+      {
+        "name": "Sleep apnea",
+        "diagnostic_code": "6847",
+        "claimed_rating": 50,
+        "secondary_to": "PTSD (70%)"
+      }
+    ],
+    "claim_status": "claim_received",
+    "status_history": [
+      {
+        "status": "intent_to_file",
+        "date": "2026-01-02",
+        "note": "Intent to file via eBenefits"
+      },
+      {
+        "status": "claim_received",
+        "date": "2026-01-12",
+        "note": "Secondary claim submitted with nexus opinion"
+      }
+    ],
+    "filed_date": "2026-01-12",
+    "evidence_checklist": [
+      {
+        "item": "DD-214",
+        "status": "submitted",
+        "required": true
+      },
+      {
+        "item": "Sleep study results",
+        "status": "submitted",
+        "required": true
+      },
+      {
+        "item": "Nexus letter linking sleep apnea to service-connected PTSD",
+        "status": "submitted",
+        "required": true
+      },
+      {
+        "item": "CPAP prescription records",
+        "status": "pending",
+        "required": false
+      }
+    ],
+    "assigned_representative": null,
+    "estimated_completion": "2026-07-12",
+    "notes": "Demo secondary condition claim. Texas jurisdiction for multi-state testing.",
+    "data_status": "placeholder"
+  },
+  {
+    "id": "claim-demo-004",
+    "veteran_display_name": "Demo Veteran Four",
+    "is_demo": true,
+    "jurisdiction": "AL",
+    "claim_type": "appeal_supplemental",
+    "conditions": [
+      {
+        "name": "Lumbar strain",
+        "diagnostic_code": "5237",
+        "denied_rating": 0,
+        "claimed_rating": 20
+      },
+      {
+        "name": "Radiculopathy, right lower extremity",
+        "diagnostic_code": "8520",
+        "claimed_rating": 20
+      }
+    ],
+    "claim_status": "appeal_docketed",
+    "status_history": [
+      {
+        "status": "claim_received",
+        "date": "2024-06-01",
+        "note": "Initial claim filed"
+      },
+      {
+        "status": "decision_issued",
+        "date": "2025-03-15",
+        "note": "Denied - lumbar strain"
+      },
+      {
+        "status": "appeal_docketed",
+        "date": "2025-08-01",
+        "note": "Supplemental claim with new MRI submitted"
+      }
+    ],
+    "filed_date": "2025-08-01",
+    "evidence_checklist": [
+      {
+        "item": "DD-214",
+        "status": "submitted",
+        "required": true
+      },
+      {
+        "item": "New MRI showing disc herniation",
+        "status": "submitted",
+        "required": true
+      },
+      {
+        "item": "Orthopedic nexus opinion",
+        "status": "submitted",
+        "required": true
+      },
+      {
+        "item": "VA Form 20-0995 (Supplemental Claim)",
+        "status": "submitted",
+        "required": true
+      },
+      {
+        "item": "Prior decision letter",
+        "status": "submitted",
+        "required": true
+      }
+    ],
+    "assigned_representative": "American Legion Accredited Rep (Demo)",
+    "estimated_completion": "2026-06-01",
+    "notes": "Demo supplemental claim/appeal workflow for denied conditions.",
+    "data_status": "placeholder"
+  }
+]

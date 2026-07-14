@@ -1,0 +1,1523 @@
+{
+  "metadata": {
+    "description": "State and territorial tax treatment of VA disability compensation and military retirement pay",
+    "total_jurisdictions": 56,
+    "last_reviewed": "2026-01-15",
+    "data_status": "placeholder",
+    "disclaimer": "Tax laws change frequently. Consult a tax professional and official state revenue sources."
+  },
+  "rules": [
+    {
+      "jurisdiction_id": "AL",
+      "jurisdiction_name": "Alabama",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "Alabama does not tax VA disability compensation; state law mirrors federal treatment.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Alabama exempts military retirement pay from state income tax for retirees age 55+ (phased implementation; verify current year thresholds)."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Alabama offers homestead exemptions for disabled veterans (100% rated) and surviving spouses; additional exemptions for veterans over 65. County assessors administer programs. ADVA coordinates certification."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.85,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://va.alabama.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "AK",
+      "jurisdiction_name": "Alaska",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "Alaska has no state income tax; VA disability compensation is not taxed at the state level.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Alaska has no state income tax; military retirement is not taxed at the state level."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Alaska provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.alaska.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "AZ",
+      "jurisdiction_name": "Arizona",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Arizona provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://dvs.az.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "AR",
+      "jurisdiction_name": "Arkansas",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Arkansas provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.veterans.arkansas.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "CA",
+      "jurisdiction_name": "California",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "California provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.calvet.ca.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "CO",
+      "jurisdiction_name": "Colorado",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Colorado provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://dmva.colorado.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "CT",
+      "jurisdiction_name": "Connecticut",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Connecticut provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://portal.ct.gov/DVA"
+      ]
+    },
+    {
+      "jurisdiction_id": "DE",
+      "jurisdiction_name": "Delaware",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Delaware provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veteransaffairs.delaware.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "FL",
+      "jurisdiction_name": "Florida",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "Florida has no state income tax; VA disability compensation is not taxed at the state level.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Florida has no state income tax; military retirement is not taxed at the state level."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Florida provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://floridavets.org"
+      ]
+    },
+    {
+      "jurisdiction_id": "GA",
+      "jurisdiction_name": "Georgia",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Georgia provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.georgia.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "HI",
+      "jurisdiction_name": "Hawaii",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Hawaii provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://dod.hawaii.gov/ovs"
+      ]
+    },
+    {
+      "jurisdiction_id": "ID",
+      "jurisdiction_name": "Idaho",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Idaho provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.idaho.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "IL",
+      "jurisdiction_name": "Illinois",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Illinois fully exempts military retirement pay from state income tax."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Illinois provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www2.illinois.gov/veterans"
+      ]
+    },
+    {
+      "jurisdiction_id": "IN",
+      "jurisdiction_name": "Indiana",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Indiana provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.in.gov/dva"
+      ]
+    },
+    {
+      "jurisdiction_id": "IA",
+      "jurisdiction_name": "Iowa",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Iowa exempts military retirement pay from state income tax for eligible retirees."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Iowa provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://va.iowa.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "KS",
+      "jurisdiction_name": "Kansas",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Kansas exempts up to $75,000 of military retirement pay from state income tax."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Kansas provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://kcva.ks.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "KY",
+      "jurisdiction_name": "Kentucky",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Kentucky provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.ky.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "LA",
+      "jurisdiction_name": "Louisiana",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Louisiana provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://vetaffairs.la.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "ME",
+      "jurisdiction_name": "Maine",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Maine provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.maine.gov/veterans"
+      ]
+    },
+    {
+      "jurisdiction_id": "MD",
+      "jurisdiction_name": "Maryland",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Maryland provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.maryland.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "MA",
+      "jurisdiction_name": "Massachusetts",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Massachusetts provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.mass.gov/orgs/massachusetts-department-of-veterans-services"
+      ]
+    },
+    {
+      "jurisdiction_id": "MI",
+      "jurisdiction_name": "Michigan",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Michigan exempts military retirement pay from state income tax for veterans who served before 1986 or meet age/service criteria."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Michigan provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.michigan.gov/mvaa"
+      ]
+    },
+    {
+      "jurisdiction_id": "MN",
+      "jurisdiction_name": "Minnesota",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Minnesota provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://mn.gov/mdva"
+      ]
+    },
+    {
+      "jurisdiction_id": "MS",
+      "jurisdiction_name": "Mississippi",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Mississippi exempts military retirement pay from state income tax."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Mississippi provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.msva.ms.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "MO",
+      "jurisdiction_name": "Missouri",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Missouri provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://mvc.dps.mo.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "MT",
+      "jurisdiction_name": "Montana",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Montana provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://mtvets.mt.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "NE",
+      "jurisdiction_name": "Nebraska",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Nebraska provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.nebraska.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "NV",
+      "jurisdiction_name": "Nevada",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Nevada has no state income tax; military retirement is not taxed at the state level."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Nevada provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.nv.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "NH",
+      "jurisdiction_name": "New Hampshire",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "New Hampshire provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.nhveterans.nh.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "NJ",
+      "jurisdiction_name": "New Jersey",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "New Jersey provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.nj.gov/military/veterans"
+      ]
+    },
+    {
+      "jurisdiction_id": "NM",
+      "jurisdiction_name": "New Mexico",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "New Mexico provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.nmdvs.org"
+      ]
+    },
+    {
+      "jurisdiction_id": "NY",
+      "jurisdiction_name": "New York",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "New York provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.ny.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "NC",
+      "jurisdiction_name": "North Carolina",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "North Carolina provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.milvets.nc.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "ND",
+      "jurisdiction_name": "North Dakota",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "North Dakota provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.nd.gov/veterans"
+      ]
+    },
+    {
+      "jurisdiction_id": "OH",
+      "jurisdiction_name": "Ohio",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Ohio provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://dvs.ohio.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "OK",
+      "jurisdiction_name": "Oklahoma",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Oklahoma provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://oklahoma.gov/veterans"
+      ]
+    },
+    {
+      "jurisdiction_id": "OR",
+      "jurisdiction_name": "Oregon",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Oregon provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.oregon.gov/odva"
+      ]
+    },
+    {
+      "jurisdiction_id": "PA",
+      "jurisdiction_name": "Pennsylvania",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Pennsylvania does not tax military retirement pay."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Pennsylvania provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.dmva.pa.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "RI",
+      "jurisdiction_name": "Rhode Island",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Rhode Island provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://vets.ri.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "SC",
+      "jurisdiction_name": "South Carolina",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "South Carolina provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://va.sc.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "SD",
+      "jurisdiction_name": "South Dakota",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "South Dakota has no state income tax; military retirement is not taxed at the state level."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "South Dakota provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://vetaffairs.sd.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "TN",
+      "jurisdiction_name": "Tennessee",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Tennessee has no state income tax on wages and retirement; military retirement is not taxed at the state level."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Tennessee provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.tn.gov/veteran"
+      ]
+    },
+    {
+      "jurisdiction_id": "TX",
+      "jurisdiction_name": "Texas",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "Texas has no state income tax; VA disability compensation is not taxed at the state level.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Texas has no state income tax; military retirement is not taxed at the state level."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Texas provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.tvc.texas.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "UT",
+      "jurisdiction_name": "Utah",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Utah provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.utah.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "VT",
+      "jurisdiction_name": "Vermont",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Vermont provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.vermont.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "VA",
+      "jurisdiction_name": "Virginia",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Virginia provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.dvs.virginia.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "WA",
+      "jurisdiction_name": "Washington",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Washington has no state income tax; military retirement is not taxed at the state level."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Washington provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.dva.wa.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "WV",
+      "jurisdiction_name": "West Virginia",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "Partial exemption applies to military retirement pay; consult state revenue code for thresholds and phase-outs."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "West Virginia provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.wv.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "WI",
+      "jurisdiction_name": "Wisconsin",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Military retirement pay is taxed as ordinary income with no special exemption."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Wisconsin provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://dva.wi.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "WY",
+      "jurisdiction_name": "Wyoming",
+      "jurisdiction_type": "state",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": true,
+        "partially_exempt": false,
+        "taxable": false,
+        "summary": "Wyoming has no state income tax; military retirement is not taxed at the state level."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Wyoming provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://wyomilitary.wyo.gov/veterans-commission"
+      ]
+    },
+    {
+      "jurisdiction_id": "DC",
+      "jurisdiction_name": "District of Columbia",
+      "jurisdiction_type": "district",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is not subject to state/territorial income tax.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": true,
+        "taxable": false,
+        "summary": "District of Columbia provides limited deductions for military retirement; consult current DC tax code."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "District of Columbia provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://ova.dc.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "PR",
+      "jurisdiction_name": "Puerto Rico",
+      "jurisdiction_type": "territory",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is generally not taxed locally; confirm territorial rules.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Territorial income tax treatment varies; consult local revenue authority for military retirement."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Puerto Rico provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.opva.pr.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "GU",
+      "jurisdiction_name": "Guam",
+      "jurisdiction_type": "territory",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is generally not taxed locally; confirm territorial rules.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Territorial income tax treatment varies; consult local revenue authority for military retirement."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Guam provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://veterans.guam.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "VI",
+      "jurisdiction_name": "U.S. Virgin Islands",
+      "jurisdiction_type": "territory",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is generally not taxed locally; confirm territorial rules.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Territorial income tax treatment varies; consult local revenue authority for military retirement."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "U.S. Virgin Islands provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.veterans.vi.gov"
+      ]
+    },
+    {
+      "jurisdiction_id": "AS",
+      "jurisdiction_name": "American Samoa",
+      "jurisdiction_type": "territory",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is generally not taxed locally; confirm territorial rules.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Territorial income tax treatment varies; consult local revenue authority for military retirement."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "American Samoa provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.americansamoa.gov/veterans"
+      ]
+    },
+    {
+      "jurisdiction_id": "MP",
+      "jurisdiction_name": "Northern Mariana Islands",
+      "jurisdiction_type": "territory",
+      "va_disability_compensation": {
+        "taxable": false,
+        "summary": "VA disability compensation is generally not taxed locally; confirm territorial rules.",
+        "notes": "VA disability compensation is federally tax-exempt. Most states follow federal treatment."
+      },
+      "military_retirement_pay": {
+        "fully_exempt": false,
+        "partially_exempt": false,
+        "taxable": true,
+        "summary": "Territorial income tax treatment varies; consult local revenue authority for military retirement."
+      },
+      "property_tax_veteran_exemptions": {
+        "available": true,
+        "summary": "Northern Mariana Islands provides property tax exemptions or reductions for qualifying disabled veterans and surviving spouses. Eligibility typically requires VA disability rating thresholds and primary residence status. Contact the county assessor and state veterans agency for current limits."
+      },
+      "last_reviewed": "2026-01-15",
+      "confidence_score": 0.4,
+      "data_status": "placeholder",
+      "citations": [
+        "https://www.va.gov/vetdata/",
+        "https://www.cnmilaw.org/veterans"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+[
+  {
+    "id": "al-claims-assistance",
+    "category": "claims_assistance",
+    "title": "VA Claims Assistance via County Veteran Service Officers",
+    "summary": "Alabama's 67 counties maintain Veteran Service Officer (VSO) programs that provide free assistance filing VA disability claims, appeals, and benefits enrollment. VSOs are accredited and work closely with ADVA.",
+    "eligibility": "Honorably discharged veterans, active duty members preparing to separate, and eligible dependents. No income requirement for basic claims assistance.",
+    "how_to_apply": "Contact your county veterans service office or ADVA. Schedule an intake appointment. Bring DD-214, medical records, and any existing VA correspondence.",
+    "agency": "Alabama Department of Veterans Affairs",
+    "url": "https://va.alabama.gov/veteran-service-officers/",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.82,
+    "data_status": "placeholder",
+    "citations": [
+      "https://va.alabama.gov",
+      "https://www.va.gov/ogc/accreditation.asp"
+    ]
+  },
+  {
+    "id": "al-state-veterans-homes",
+    "category": "state_veterans_homes",
+    "title": "Alabama State Veterans Homes",
+    "summary": "Three ADVA-operated veterans homes provide skilled nursing, memory care, and domiciliary services: Bill Nichols (Alexander City), Floyd E. 'Tut' Fann (Huntsville), and Colonel Robert L. Howard (Pell City).",
+    "eligibility": "Honorably discharged Alabama veterans with 90+ days active duty (wartime or peacetime per facility rules). Clinical need for nursing home level of care. Residency requirements apply.",
+    "how_to_apply": "Submit application through ADVA. Obtain physician certification of need. Veterans with 70%+ VA disability rating may receive priority admission.",
+    "agency": "Alabama Department of Veterans Affairs",
+    "url": "https://va.alabama.gov/state-veterans-homes/",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.8,
+    "data_status": "placeholder",
+    "citations": [
+      "https://va.alabama.gov"
+    ]
+  },
+  {
+    "id": "al-property-tax-exemption",
+    "category": "property_tax_exemptions",
+    "title": "Disabled Veteran Property Tax Exemptions",
+    "summary": "Alabama provides full or partial homestead property tax exemptions for veterans with 100% permanent and total disability ratings, and additional exemptions for veterans age 65+ with qualifying disabilities.",
+    "eligibility": "100% P&T disabled veterans (full exemption on primary residence). Partial exemptions for other disability ratings. Surviving spouses may qualify if unremarried.",
+    "how_to_apply": "Apply through county revenue commissioner/assessor office. Provide VA disability rating letter and proof of homestead. Annual renewal may be required.",
+    "agency": "Alabama Department of Revenue / County Assessors",
+    "url": "https://revenue.alabama.gov/property-tax/exemptions/",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.78,
+    "data_status": "placeholder",
+    "citations": [
+      "https://revenue.alabama.gov",
+      "https://va.alabama.gov"
+    ]
+  },
+  {
+    "id": "al-education-gi-dependents",
+    "category": "education_benefits",
+    "title": "G.I. Dependents' Scholarship Program",
+    "summary": "Provides tuition assistance at Alabama public institutions for dependents of veterans who are 20-50% disabled, MIA, POW, or deceased from service-connected causes.",
+    "eligibility": "Dependent children (typically ages 16-26) of qualifying veterans. Veteran must meet disability or casualty criteria. Alabama residency requirements apply.",
+    "how_to_apply": "Apply through Alabama Department of Veterans Affairs. Submit dependent application, veteran's DD-214, and VA disability or casualty documentation.",
+    "agency": "Alabama Department of Veterans Affairs",
+    "url": "https://va.alabama.gov/education/",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.8,
+    "data_status": "placeholder",
+    "citations": [
+      "https://va.alabama.gov"
+    ]
+  },
+  {
+    "id": "al-employment-preference",
+    "category": "employment_support",
+    "title": "Veterans Preference in State Employment",
+    "summary": "Alabama law provides hiring preference for veterans and disabled veterans in state government positions. Career Centers offer priority of service for veteran job seekers.",
+    "eligibility": "Honorably discharged veterans. Enhanced preference for veterans with VA service-connected disability ratings.",
+    "how_to_apply": "Apply through Alabama State Personnel Department for state jobs. Register with Alabama Career Center and identify as a veteran for priority services.",
+    "agency": "Alabama State Personnel Department / Alabama Department of Labor",
+    "url": "https://personnel.alabama.gov/veterans-preference/",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.75,
+    "data_status": "placeholder",
+    "citations": [
+      "https://personnel.alabama.gov",
+      "https://va.alabama.gov"
+    ]
+  },
+  {
+    "id": "al-driver-license-designation",
+    "category": "driver_license_veteran_designation",
+    "title": "Veteran Designation on Alabama Driver License",
+    "summary": "Alabama offers an optional veteran designation on driver licenses and non-driver ID cards for honorably discharged veterans.",
+    "eligibility": "Honorably discharged U.S. military veterans with valid Alabama driver's license or ID.",
+    "how_to_apply": "Visit an Alabama Law Enforcement Agency (ALEA) driver license office. Present DD-214 or equivalent discharge documentation.",
+    "agency": "Alabama Law Enforcement Agency",
+    "url": "https://www.alea.gov/dps/driver-license",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.85,
+    "data_status": "placeholder",
+    "citations": [
+      "https://www.alea.gov"
+    ]
+  },
+  {
+    "id": "al-hunting-fishing",
+    "category": "hunting_fishing_benefits",
+    "title": "Disabled Veteran Hunting and Fishing Licenses",
+    "summary": "Alabama offers discounted or complimentary hunting and fishing licenses for veterans with qualifying VA disability ratings. Lifetime licenses available for 100% disabled veterans.",
+    "eligibility": "Alabama resident veterans with VA disability ratings of 20% or greater (tiered benefits by rating). 100% P&T veterans eligible for free lifetime licenses.",
+    "how_to_apply": "Apply through Alabama Department of Conservation and Natural Resources. Provide VA disability rating letter and proof of residency.",
+    "agency": "Alabama Department of Conservation and Natural Resources",
+    "url": "https://www.outdooralabama.com/licenses",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.78,
+    "data_status": "placeholder",
+    "citations": [
+      "https://www.outdooralabama.com",
+      "https://va.alabama.gov"
+    ]
+  },
+  {
+    "id": "al-burial-death",
+    "category": "burial_death_benefits",
+    "title": "Alabama State Veterans Memorial Cemetery",
+    "summary": "Alabama operates the Alabama State Veterans Memorial Cemetery at Spanish Fort, providing burial options for eligible veterans and spouses at reduced or no cost.",
+    "eligibility": "Honorably discharged veterans meeting residency requirements. Spouses and dependent children may qualify for burial alongside veteran.",
+    "how_to_apply": "Contact cemetery office for pre-need registration. At time of need, funeral director coordinates with cemetery administration.",
+    "agency": "Alabama Department of Veterans Affairs",
+    "url": "https://va.alabama.gov/cemetery/",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.8,
+    "data_status": "placeholder",
+    "citations": [
+      "https://va.alabama.gov"
+    ]
+  },
+  {
+    "id": "al-survivor-benefits",
+    "category": "survivor_benefits",
+    "title": "Surviving Spouse and Dependent Benefits",
+    "summary": "Alabama extends property tax exemptions, education scholarships, and veterans home consideration to qualifying surviving spouses and dependents of deceased veterans.",
+    "eligibility": "Unremarried surviving spouses of veterans who died from service-connected or qualifying causes. Dependents meeting G.I. Dependents' Scholarship criteria.",
+    "how_to_apply": "Apply through ADVA for education benefits. Property tax exemptions through county revenue office. Present death certificate and VA documentation.",
+    "agency": "Alabama Department of Veterans Affairs",
+    "url": "https://va.alabama.gov",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.75,
+    "data_status": "placeholder",
+    "citations": [
+      "https://va.alabama.gov"
+    ]
+  },
+  {
+    "id": "al-national-guard",
+    "category": "national_guard_benefits",
+    "title": "Alabama National Guard Education Assistance",
+    "summary": "Education assistance for Alabama Army and Air National Guard members attending Alabama public institutions. Tuition and fee support for qualifying service.",
+    "eligibility": "Active Alabama National Guard members in good standing. Must meet service commitment requirements.",
+    "how_to_apply": "Apply through Alabama National Guard education office or state military department. Coordinate with unit readiness NCO.",
+    "agency": "Alabama National Guard / Alabama Military Department",
+    "url": "https://al.ng.mil",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.72,
+    "data_status": "placeholder",
+    "citations": [
+      "https://al.ng.mil",
+      "https://va.alabama.gov"
+    ]
+  },
+  {
+    "id": "al-reserve-benefits",
+    "category": "reserve_benefits",
+    "title": "Reserve Component Member Support",
+    "summary": "Alabama provides employment protections, license reinstatement support, and access to state veterans programs for Reserve and National Guard members.",
+    "eligibility": "Members of U.S. Armed Forces Reserve components with Alabama ties. USERRA protections apply federally.",
+    "how_to_apply": "Contact ADVA or employer HR for USERRA guidance. Use state veterans programs same as active duty veterans upon eligibility.",
+    "agency": "Alabama Department of Veterans Affairs",
+    "url": "https://va.alabama.gov",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.7,
+    "data_status": "placeholder",
+    "citations": [
+      "https://va.alabama.gov",
+      "https://www.dol.gov/agencies/vets/programs/userra"
+    ]
+  },
+  {
+    "id": "al-active-duty-transition",
+    "category": "active_duty_transition",
+    "title": "Transition Assistance Program (TAP) Coordination",
+    "summary": "Alabama coordinates with military installations and ADVA to support transitioning service members with benefits briefings, employment resources, and state program enrollment.",
+    "eligibility": "Service members within 12 months of separation or retirement. Spouses may attend.",
+    "how_to_apply": "Attend TAP sessions through installation transition office. Follow up with ADVA for state-specific benefits enrollment.",
+    "agency": "Alabama Department of Veterans Affairs",
+    "url": "https://va.alabama.gov",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.72,
+    "data_status": "placeholder",
+    "citations": [
+      "https://va.alabama.gov",
+      "https://www.dol.gov/agencies/vets/programs/tap"
+    ]
+  },
+  {
+    "id": "al-county-vso",
+    "category": "county_veteran_service_offices",
+    "title": "County Veteran Service Office Network",
+    "summary": "All 67 Alabama counties maintain veteran service offices or designated VSO contacts providing local claims assistance, benefits counseling, and referral to state and federal programs.",
+    "eligibility": "All veterans, service members, and eligible family members.",
+    "how_to_apply": "Locate your county VSO through ADVA directory. Walk-in or appointment-based services vary by county.",
+    "agency": "Alabama Department of Veterans Affairs",
+    "url": "https://va.alabama.gov/county-offices/",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.85,
+    "data_status": "placeholder",
+    "citations": [
+      "https://va.alabama.gov"
+    ]
+  },
+  {
+    "id": "al-legion-pro",
+    "category": "american_legion_pro_training",
+    "title": "American Legion Post Resource Officer Training",
+    "summary": "The American Legion Department of Alabama trains Post Service Officers and accredited representatives to assist veterans with VA claims at the community level, complementing county VSO services.",
+    "eligibility": "American Legion members who complete VA accreditation training. Veterans seeking assistance may visit any participating post.",
+    "how_to_apply": "Contact local American Legion post or Alabama Department of Alabama headquarters for accredited representative referral.",
+    "agency": "The American Legion Department of Alabama",
+    "url": "https://www.alalpost44.org",
+    "last_reviewed": "2026-01-15",
+    "confidence_score": 0.68,
+    "data_status": "placeholder",
+    "citations": [
+      "https://www.legion.org",
+      "https://va.alabama.gov"
+    ]
+  }
+]

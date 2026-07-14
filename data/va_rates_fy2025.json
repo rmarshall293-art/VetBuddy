@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "fiscal_year": 2025,
+    "effective_date": "2024-12-01",
+    "cola_percentage": 3.2,
+    "cola_effective": "2024-12-01",
+    "data_status": "placeholder",
+    "disclaimer": "Educational/placeholder rate table. Verify current rates at VA.gov before use.",
+    "source_reference": "https://www.va.gov/disability/compensation-rates/veteran-rates/"
+  },
+  "rates": [
+    {
+      "rating_percent": 10,
+      "veteran_alone_monthly": 171.23
+    },
+    {
+      "rating_percent": 20,
+      "veteran_alone_monthly": 338.49
+    },
+    {
+      "rating_percent": 30,
+      "veteran_alone_monthly": 524.31,
+      "with_spouse_monthly": 586.31,
+      "with_spouse_one_child_monthly": 632.31
+    },
+    {
+      "rating_percent": 40,
+      "veteran_alone_monthly": 755.28,
+      "with_spouse_monthly": 838.28,
+      "with_spouse_one_child_monthly": 904.28
+    },
+    {
+      "rating_percent": 50,
+      "veteran_alone_monthly": 1075.16,
+      "with_spouse_monthly": 1179.16,
+      "with_spouse_one_child_monthly": 1266.16
+    },
+    {
+      "rating_percent": 60,
+      "veteran_alone_monthly": 1361.88,
+      "with_spouse_monthly": 1486.88,
+      "with_spouse_one_child_monthly": 1594.88
+    },
+    {
+      "rating_percent": 70,
+      "veteran_alone_monthly": 1716.28,
+      "with_spouse_monthly": 1862.28,
+      "with_spouse_one_child_monthly": 1993.28
+    },
+    {
+      "rating_percent": 80,
+      "veteran_alone_monthly": 1995.01,
+      "with_spouse_monthly": 2162.01,
+      "with_spouse_one_child_monthly": 2315.01
+    },
+    {
+      "rating_percent": 90,
+      "veteran_alone_monthly": 2241.91,
+      "with_spouse_monthly": 2429.91,
+      "with_spouse_one_child_monthly": 2603.91
+    },
+    {
+      "rating_percent": 100,
+      "veteran_alone_monthly": 3737.85,
+      "with_spouse_monthly": 3948.85,
+      "with_spouse_one_child_monthly": 4225.85
+    }
+  ],
+  "additional_dependent_amounts": {
+    "each_additional_child_under_18": 31.0,
+    "each_additional_child_over_18_in_school": 101.0,
+    "aid_and_attendance_spouse": 57.0,
+    "helpless_child": 173.0
+  },
+  "notes": "Rates shown are monthly VA disability compensation for standard combinations. SMC and special rates not included."
+}

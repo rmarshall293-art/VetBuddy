@@ -1,0 +1,85 @@
+# VetBuddy Docker Compose — local full stack
+# Copy .env.example to .env and adjust values before running:
+#   docker compose up --build
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-vetbuddy}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-vetbuddy}
+      POSTGRES_DB: ${POSTGRES_DB:-vetbuddy}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - vetbuddy_pgdata:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./database/indexes.sql:/docker-entrypoint-initdb.d/02-indexes.sql:ro
+      - ./database/views.sql:/docker-entrypoint-initdb.d/03-views.sql:ro
+      - ./database/rls_policies.sql:/docker-entrypoint-initdb.d/04-rls.sql:ro
+      - ./database/seed_data.sql:/docker-entrypoint-initdb.d/05-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-vetbuddy} -d ${POSTGRES_DB:-vetbuddy}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    profiles: ["redis"]
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER:-vetbuddy}:${POSTGRES_PASSWORD:-vetbuddy}@db:5432/${POSTGRES_DB:-vetbuddy}
+      SECRET_KEY: ${SECRET_KEY:-CHANGE_ME_DEV_ONLY_use_openssl_rand_hex_32}
+      ENVIRONMENT: ${ENVIRONMENT:-development}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://localhost:5173,http://localhost}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
+      VA_MOCK_MODE: ${VA_MOCK_MODE:-true}
+      STRIPE_MOCK_MODE: ${STRIPE_MOCK_MODE:-true}
+      CONSUMER_PRICE_CENTS: ${CONSUMER_PRICE_CENTS:-599}
+      REDIS_URL: redis://redis:6379/0
+      REDIS_ENABLED: ${REDIS_ENABLED:-false}
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  vetbuddy_pgdata:

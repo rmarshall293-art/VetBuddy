@@ -1,0 +1,88 @@
+{
+  "metadata": {
+    "description": "Historical COLA percentages applied to VA disability compensation and other federal benefits",
+    "data_status": "placeholder",
+    "last_reviewed": "2026-01-15"
+  },
+  "va_disability_compensation_cola": [
+    {
+      "year": 2016,
+      "cola_percent": 0.0,
+      "effective_date": "2015-12-01"
+    },
+    {
+      "year": 2017,
+      "cola_percent": 0.3,
+      "effective_date": "2016-12-01"
+    },
+    {
+      "year": 2018,
+      "cola_percent": 2.0,
+      "effective_date": "2017-12-01"
+    },
+    {
+      "year": 2019,
+      "cola_percent": 2.8,
+      "effective_date": "2018-12-01"
+    },
+    {
+      "year": 2020,
+      "cola_percent": 1.6,
+      "effective_date": "2019-12-01"
+    },
+    {
+      "year": 2021,
+      "cola_percent": 1.3,
+      "effective_date": "2020-12-01"
+    },
+    {
+      "year": 2022,
+      "cola_percent": 5.9,
+      "effective_date": "2021-12-01"
+    },
+    {
+      "year": 2023,
+      "cola_percent": 8.7,
+      "effective_date": "2022-12-01"
+    },
+    {
+      "year": 2024,
+      "cola_percent": 3.2,
+      "effective_date": "2023-12-01"
+    },
+    {
+      "year": 2025,
+      "cola_percent": 2.5,
+      "effective_date": "2024-12-01"
+    },
+    {
+      "year": 2026,
+      "cola_percent": 2.8,
+      "effective_date": "2025-12-01",
+      "note": "Projected placeholder"
+    }
+  ],
+  "social_security_cola_reference": [
+    {
+      "year": 2022,
+      "cola_percent": 5.9
+    },
+    {
+      "year": 2023,
+      "cola_percent": 8.7
+    },
+    {
+      "year": 2024,
+      "cola_percent": 3.2
+    },
+    {
+      "year": 2025,
+      "cola_percent": 2.5
+    },
+    {
+      "year": 2026,
+      "cola_percent": 2.8,
+      "note": "Projected placeholder"
+    }
+  ]
+}

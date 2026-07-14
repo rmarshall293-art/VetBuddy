@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "fiscal_year": 2026,
+    "effective_date": "2025-12-01",
+    "cola_percentage": 2.8,
+    "cola_effective": "2025-12-01",
+    "data_status": "placeholder",
+    "disclaimer": "Projected/placeholder rate table based on estimated 2.8% COLA. Verify official VA publication.",
+    "source_reference": "https://www.va.gov/disability/compensation-rates/veteran-rates/"
+  },
+  "rates": [
+    {
+      "rating_percent": 10,
+      "veteran_alone_monthly": 176.02
+    },
+    {
+      "rating_percent": 20,
+      "veteran_alone_monthly": 347.97
+    },
+    {
+      "rating_percent": 30,
+      "veteran_alone_monthly": 538.99,
+      "with_spouse_monthly": 602.73,
+      "with_spouse_one_child_monthly": 650.01
+    },
+    {
+      "rating_percent": 40,
+      "veteran_alone_monthly": 776.43,
+      "with_spouse_monthly": 861.75,
+      "with_spouse_one_child_monthly": 929.6
+    },
+    {
+      "rating_percent": 50,
+      "veteran_alone_monthly": 1105.26,
+      "with_spouse_monthly": 1212.18,
+      "with_spouse_one_child_monthly": 1301.61
+    },
+    {
+      "rating_percent": 60,
+      "veteran_alone_monthly": 1400.01,
+      "with_spouse_monthly": 1528.51,
+      "with_spouse_one_child_monthly": 1639.54
+    },
+    {
+      "rating_percent": 70,
+      "veteran_alone_monthly": 1764.34,
+      "with_spouse_monthly": 1914.42,
+      "with_spouse_one_child_monthly": 2049.09
+    },
+    {
+      "rating_percent": 80,
+      "veteran_alone_monthly": 2050.87,
+      "with_spouse_monthly": 2222.55,
+      "with_spouse_one_child_monthly": 2379.83
+    },
+    {
+      "rating_percent": 90,
+      "veteran_alone_monthly": 2304.68,
+      "with_spouse_monthly": 2497.95,
+      "with_spouse_one_child_monthly": 2676.82
+    },
+    {
+      "rating_percent": 100,
+      "veteran_alone_monthly": 3842.51,
+      "with_spouse_monthly": 4059.42,
+      "with_spouse_one_child_monthly": 4344.17
+    }
+  ],
+  "additional_dependent_amounts": {
+    "each_additional_child_under_18": 31.87,
+    "each_additional_child_over_18_in_school": 103.83,
+    "aid_and_attendance_spouse": 58.6,
+    "helpless_child": 177.84
+  },
+  "notes": "Projected FY2026 rates applying 2.8% COLA to FY2025 base amounts. Official rates published by VA each December."
+}

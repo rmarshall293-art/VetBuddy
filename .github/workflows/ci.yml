@@ -2,9 +2,17 @@ name: VetBuddy CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+
+env:
+  DATABASE_URL: sqlite+pysqlite:///:memory:
+  SECRET_KEY: ci-test-secret-key-not-for-production-use
+  ENVIRONMENT: test
+  STRIPE_MOCK_MODE: "true"
+  VA_MOCK_MODE: "true"
+  REDIS_ENABLED: "false"
 
 jobs:
   backend:
@@ -14,13 +22,31 @@ jobs:
         working-directory: backend
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
       - name: Install backend dependencies
         run: pip install -r requirements.txt
-      - name: Run backend tests
-        run: pytest -q
+
+      - name: Lint (ruff)
+        run: ruff check app
+
+      - name: Type check (mypy, non-blocking)
+        continue-on-error: true
+        run: mypy app --ignore-missing-imports --no-error-summary
+
+      - name: Run pytest
+        run: pytest -q --tb=short
+
+      - name: Validate Alembic migration present
+        run: test -f alembic/versions/001_canonical_schema.py
+
+      - name: Validate RLS SQL present
+        run: test -f app/db/rls.sql
 
   frontend:
     runs-on: ubuntu-latest
@@ -29,12 +55,76 @@ jobs:
         working-directory: frontend
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
           cache: npm
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: frontend/package.json
+
       - name: Install frontend dependencies
         run: npm install
+
       - name: Build frontend
         run: npm run build
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate docker-compose config
+        run: docker compose config
+
+      - name: Build backend image
+        run: docker build -f backend/Dockerfile -t vetbuddy-backend:ci .
+
+      - name: Build frontend image
+        run: docker build -t vetbuddy-frontend:ci ./frontend
+
+      - name: Validate SQL init artifacts
+        run: |
+          test -f database/schema.sql
+          test -f database/seed_data.sql
+          test -f data/jurisdictions_56.json
+          test -f load_tests/locustfile.py
+
+  migrations:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: vetbuddy
+          POSTGRES_PASSWORD: vetbuddy
+          POSTGRES_DB: vetbuddy
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U vetbuddy -d vetbuddy"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      DATABASE_URL: postgresql+psycopg2://vetbuddy:vetbuddy@localhost:5432/vetbuddy
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install backend dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Alembic upgrade
+        run: alembic upgrade head
+
+      - name: Validate canonical SQL files exist
+        run: |
+          test -f ../database/schema.sql
+          test -f ../database/rls_policies.sql
+          test -f ../database/canonical_migration.sql

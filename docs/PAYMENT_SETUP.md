@@ -1,0 +1,233 @@
+# Payment Setup (Stripe)
+
+Configure Stripe for VetBuddy's $5.99/month consumer subscription tier.
+
+## Overview
+
+VetBuddy offers a consumer subscription at **$5.99/month** (599 cents) for premium features including state benefit comparisons, claim tracking tools, and document storage.
+
+| Item | Value |
+|------|-------|
+| Price | $5.99/month |
+| Amount (cents) | 599 |
+| Currency | USD |
+| Billing model | Recurring monthly subscription |
+| Provider | Stripe |
+
+## Mock Mode (Default)
+
+By default, payments are mocked:
+
+```env
+STRIPE_MOCK_MODE=true
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+STRIPE_PRICE_ID_CONSUMER=
+```
+
+In mock mode:
+
+- No real charges are processed
+- Subscription records can be created locally in the `subscriptions` table
+- Stripe webhook endpoints return mock success responses
+- Frontend checkout flow may show a "demo mode" banner
+
+## Stripe Account Setup
+
+### 1. Create Stripe Account
+
+1. Sign up at [https://dashboard.stripe.com](https://dashboard.stripe.com)
+2. Complete business verification
+3. Start in **Test Mode** (toggle in dashboard)
+
+### 2. Create Product and Price
+
+In Stripe Dashboard → Products:
+
+1. Create product: **VetBuddy Consumer**
+2. Add price:
+   - Amount: **$5.99**
+   - Billing period: **Monthly**
+   - Currency: **USD**
+3. Copy the **Price ID** (e.g., `price_1ABC...`)
+
+Or via Stripe CLI:
+
+```bash
+stripe products create --name="VetBuddy Consumer" \
+  --description="Monthly veteran support platform subscription"
+
+stripe prices create \
+  --product=prod_XXXXX \
+  --unit-amount=599 \
+  --currency=usd \
+  --recurring-interval=month
+```
+
+### 3. Configure Environment Variables
+
+```env
+STRIPE_MOCK_MODE=false
+STRIPE_SECRET_KEY=sk_test_...          # Test mode first
+STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+STRIPE_PRICE_ID_CONSUMER=price_...
+CONSUMER_PRICE_CENTS=599
+```
+
+Frontend (`.env`):
+
+```env
+VITE_STRIPE_PUBLISHABLE_KEY=pk_test_...
+```
+
+### 4. Webhook Configuration
+
+Create a webhook endpoint in Stripe Dashboard:
+
+- **URL:** `https://yourdomain.com/api/v1/payments/webhook`
+- **Events to listen for:**
+  - `checkout.session.completed`
+  - `customer.subscription.created`
+  - `customer.subscription.updated`
+  - `customer.subscription.deleted`
+  - `invoice.payment_succeeded`
+  - `invoice.payment_failed`
+
+Copy the webhook signing secret to `STRIPE_WEBHOOK_SECRET`.
+
+Local testing with Stripe CLI:
+
+```bash
+stripe listen --forward-to localhost:8000/api/v1/payments/webhook
+```
+
+## Database Schema
+
+### `subscriptions` Table
+
+| Column | Purpose |
+|--------|---------|
+| `user_id` | VetBuddy user |
+| `stripe_subscription_id` | Stripe `sub_*` ID |
+| `stripe_customer_id` | Stripe `cus_*` ID |
+| `status` | active, trialing, past_due, canceled, inactive |
+| `price_id` | Stripe price ID |
+| `amount_cents` | 599 |
+| `current_period_start/end` | Billing period |
+
+### `payment_events` Table
+
+Stores raw Stripe webhook events for idempotent processing:
+
+| Column | Purpose |
+|--------|---------|
+| `stripe_event_id` | Unique event ID (dedup key) |
+| `event_type` | e.g., `invoice.payment_succeeded` |
+| `payload` | Full event JSON |
+
+### `users.stripe_customer_id`
+
+Links VetBuddy user to Stripe customer. Created on first checkout.
+
+## Checkout Flow
+
+```
+User clicks Subscribe
+    → Frontend calls POST /api/v1/payments/checkout
+    → Backend creates Stripe Checkout Session
+    → User redirected to Stripe hosted checkout
+    → Payment completed
+    → Stripe sends webhook
+    → Backend updates subscriptions table
+    → User redirected to success page
+```
+
+## RLS Policies
+
+Payment records are protected:
+
+- Users can read their own `subscriptions` and `payment_events`
+- Admins can read all payment records
+- Webhook inserts use service role (bypasses RLS)
+
+## Going Live
+
+### Pre-Launch Checklist
+
+- [ ] Switch from test to live Stripe keys
+- [ ] Update `STRIPE_PRICE_ID_CONSUMER` with live price ID
+- [ ] Configure live webhook endpoint with HTTPS
+- [ ] Test full checkout → webhook → subscription activation flow
+- [ ] Publish Terms of Service and refund policy
+- [ ] Display subscription price clearly before checkout
+- [ ] Implement subscription cancellation flow
+- [ ] Set `STRIPE_MOCK_MODE=false`
+
+### Legal Requirements
+
+- Terms of Service covering subscription billing (checklist: `legal_terms_of_service`)
+- Stripe Terms compliance (checklist: `legal_stripe_tos`)
+- Clear cancellation and refund policy
+- Receipt/invoice delivery via Stripe
+
+## Subscription Management
+
+Users should be able to:
+
+- View current subscription status
+- Cancel subscription (at period end)
+- Update payment method (via Stripe Customer Portal)
+
+Stripe Customer Portal setup:
+
+```bash
+# Enable in Stripe Dashboard → Settings → Customer Portal
+# Configure: cancel subscriptions, update payment methods, view invoices
+```
+
+Portal URL generated by backend:
+
+```python
+# POST /api/v1/payments/portal
+# Returns Stripe billing portal session URL
+```
+
+## Testing
+
+### Test Cards (Stripe Test Mode)
+
+| Card Number | Result |
+|-------------|--------|
+| 4242 4242 4242 4242 | Success |
+| 4000 0000 0000 0002 | Decline |
+| 4000 0000 0000 3220 | 3D Secure required |
+
+### Verify Webhook Processing
+
+```sql
+SELECT event_type, created_at
+FROM payment_events
+ORDER BY created_at DESC
+LIMIT 10;
+
+SELECT status, current_period_end
+FROM subscriptions
+WHERE user_id = '<user-uuid>';
+```
+
+## Revenue and Pricing Notes
+
+- $5.99/month is the default consumer tier (`consumer_price_cents: 599` in config)
+- VSO/organization tiers are not yet implemented in schema
+- Stripe fees: ~2.9% + $0.30 per transaction (standard US pricing)
+- Net revenue per subscriber: approximately $5.52/month before infrastructure costs
+
+## What Is Not Implemented
+
+- Annual billing option
+- Free trial period
+- Promo codes / coupons
+- Organization/enterprise billing
+- Stripe Connect for VSO revenue sharing
+- Dunning email notifications for failed payments

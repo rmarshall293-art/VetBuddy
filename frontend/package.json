@@ -1,0 +1,17 @@
+{
+  "name": "vetbuddy-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "node --test e2e/*.e2e.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1",
+    "vite": "8.3.4"
+  }
+}

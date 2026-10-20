@@ -1,3 +1,8 @@
+# Render blueprint for the API. Values marked sync:false are set in the Render
+# dashboard, never in git. preDeployCommand migrates with the OWNER
+# DATABASE_URL; the running service uses the least-privilege APP_DATABASE_URL.
+# Sign-in stays off until a real identity provider is wired (gap G17), so only
+# guest routes answer; saved-plan routes return 401.
 services:
   - type: web
     name: vetbuddy-api
@@ -5,14 +10,17 @@ services:
     plan: starter
     rootDir: backend
     buildCommand: pip install -r requirements.txt
+    preDeployCommand: python -m app.migrate
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /
+    healthCheckPath: /api/v1/health/live
     envVars:
       - key: ENVIRONMENT
-        value: production
+        value: staging
+      - key: AUTH_MODE
+        value: "off"
       - key: DATABASE_URL
         sync: false
-      - key: SUPABASE_URL
+      - key: APP_DATABASE_URL
         sync: false
-      - key: SUPABASE_SERVICE_ROLE_KEY
+      - key: CORS_ORIGINS
         sync: false

@@ -40,7 +40,8 @@ class RouterRequest(Strict):
 
 
 class RatingsRequest(Strict):
-    ratings: list[int] = Field(min_length=1, max_length=40)
+    ratings: list[int] = Field(default_factory=list, max_length=40)
+    bilateral: list[int] = Field(default_factory=list, max_length=20)
 
 
 class ConsentRequest(Strict):

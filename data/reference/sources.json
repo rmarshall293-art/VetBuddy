@@ -9,6 +9,18 @@
    "tier": 1,
    "title": "38 CFR 4.25 — Combined ratings table (eCFR via LII)"
   },
+  "src.cfr.38_4_26": {
+   "kind": "primary",
+   "origin": "https://www.ecfr.gov/current/title-38/chapter-I/part-4/subpart-A/section-4.26",
+   "tier": 1,
+   "title": "38 CFR 4.26 — Bilateral factor"
+  },
+  "src.cfr.38_part4": {
+   "kind": "primary",
+   "origin": "https://www.ecfr.gov/current/title-38/chapter-I/part-4",
+   "tier": 1,
+   "title": "38 CFR Part 4 — Schedule for Rating Disabilities (eCFR, current text)"
+  },
   "src.dod.vgli_afb": {
    "kind": "primary",
    "origin": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Veterans-Group-Life-Insurance-(VGLI)",
@@ -50,6 +62,18 @@
    "origin": "upload: Military-to-Civilian_Transition_Finances_A_Data-Driven_Roadmap_for_VetBuddy.md",
    "tier": 4,
    "title": "Military-to-Civilian Transition Finances: A Data-Driven Roadmap for VetBuddy"
+  },
+  "src.upload.va_claims_data": {
+   "kind": "transcription",
+   "origin": "upload: va_claims_data.json",
+   "tier": null,
+   "title": "va_claims_data.json v2.1.0 (uploaded; FY2025; not integrated, see ledger)"
+  },
+  "src.upload.va_rating_app": {
+   "kind": "transcription",
+   "origin": "upload: va-rating-app.html",
+   "tier": null,
+   "title": "VA Disability Rating & PACT Act Reference (uploaded app; 2020 CFR transcription, 2026 pay table)"
   },
   "src.va.claim_status": {
    "kind": "primary",

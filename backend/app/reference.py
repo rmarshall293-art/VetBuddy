@@ -16,7 +16,7 @@ from functools import lru_cache
 from pathlib import Path
 
 DEFAULT_DIR = Path(__file__).resolve().parents[2] / "data" / "reference"
-DATASETS = ("governance", "sources", "transition_timeline", "conflicts")
+DATASETS = ("governance", "sources", "transition_timeline", "conflicts", "rating_schedule")
 
 ROW_STATUSES = {"UNVERIFIED", "SOURCE_CHECKED", "CONTESTED", "SUPERSEDED", "VERIFIED", "ILLUSTRATIVE", "HEURISTIC",
                 "RESOLVED_BY_DESIGN"}
@@ -83,6 +83,24 @@ def validate(data: dict[str, dict]) -> None:
     for c in data["conflicts"]["conflicts"]:
         if c["status"] not in ROW_STATUSES or len(c["readings"]) < 2 and c["status"] == "CONTESTED":
             fail(f"conflict {c['subject']} needs a status and two or more readings")
+        if any(s not in sources for s in c.get("sources", [])):
+            fail(f"conflict {c['subject']} cites an unknown source")
+
+    rs = data["rating_schedule"]
+    if any(s not in sources for s in rs["_meta"]["sources"]):
+        fail("rating_schedule cites an unknown source")
+    seen = set()
+    for row in rs["codes"]:
+        code = row["code"]
+        if not (len(code) == 4 and code.isdigit()) or code in seen:
+            fail(f"rating code {code!r} is malformed or duplicated")
+        seen.add(code)
+        if row["status"] not in ROW_STATUSES or row["status"] == "VERIFIED" and not row.get("verified_by"):
+            fail(f"rating code {code} has status {row['status']} without a named reviewer")
+        if any(not (0 <= t["percent"] <= 100 and t["percent"] % 10 == 0) for t in row["criteria"]):
+            fail(f"rating code {code} has a criteria percent outside 0-100 in steps of 10")
+        if "keywords" in row or "symptoms" in row:
+            fail(f"rating code {code} carries symptom keywords; mapping symptoms to codes is prohibited")
 
 
 def governance() -> dict:

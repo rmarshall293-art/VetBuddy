@@ -3,6 +3,7 @@
 Read `docs/VETBUDDY_MASTER_SPEC.md` before making architecture, database, AI-agent, routing or migration changes.
 
 - VetBuddy is a Veteran Operating System; one Master Mission/Master Case; CRM is a contained subsystem.
+- Product layout and module names: `docs/PRODUCT_LAYOUT.md`. Case Management is the core; CRM is the relationship layer, never the core. Governance rules win over layout details (`docs/ADR/0003-product-layout.md`).
 - Observe code before making claims; report missing source as `SOURCE_NOT_AVAILABLE`.
 - Preserve the Base44 prototype; never overwrite/deprecate a feature without mapped tests and rollback.
 - GitHub is the code source of truth; PostgreSQL/Supabase is the canonical data store.

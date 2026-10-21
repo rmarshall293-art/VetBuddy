@@ -89,3 +89,42 @@ def test_reference_api(guest_client):
     assert guest_client.get("/api/v1/reference/../../etc/passwd").status_code == 404
     assert guest_client.get("/api/v1/reference/secrets").status_code == 404
     assert len(guest_client.get("/api/v1/crisis-resources").json()["contacts"]) == 6
+
+
+# ── rating schedule (737 codes from the uploaded rating app, 2020 edition) ──
+
+def test_rating_schedule_loaded_unverified_without_symptom_keywords():
+    rs = reference.load()["rating_schedule"]
+    codes = rs["codes"]
+    assert len(codes) == 737 and len({c["code"] for c in codes}) == 737
+    assert {c["status"] for c in codes} == {"UNVERIFIED", "SUPERSEDED"}
+    assert all(c["status"] == "SUPERSEDED" for c in codes if c["body_system"] == "THE DIGESTIVE SYSTEM")
+    assert not any("keywords" in c or "symptoms" in c for c in codes)
+    assert "not an assessment of your condition" in rs["_meta"]["label"]
+
+
+def test_known_codes_match_the_cfr_names():
+    by = {c["code"]: c["name"] for c in reference.load()["rating_schedule"]["codes"]}
+    assert by["6847"] == "Sleep Apnea Syndromes" and by["9411"] == "Posttraumatic stress disorder"
+    assert "9999" not in by and "6848" not in by  # invented codes in the rejected va_claims_data.json
+
+
+def test_validator_refuses_symptom_keywords_on_codes():
+    d = _data()
+    d["rating_schedule"]["codes"][0]["keywords"] = ["back pain"]
+    with pytest.raises(reference.ReferenceDataError, match="symptom keywords"):
+        reference.validate(d)
+
+
+def test_validator_refuses_verified_code_without_reviewer():
+    d = _data()
+    d["rating_schedule"]["codes"][0]["status"] = "VERIFIED"
+    with pytest.raises(reference.ReferenceDataError, match="named reviewer"):
+        reference.validate(d)
+
+
+def test_bilateral_api(guest_client):
+    r = guest_client.post("/api/v1/ratings/combine", json={"ratings": [50], "bilateral": [30, 20]}).json()
+    assert r["combined_rating"] == 70 and r["bilateral"]["value_with_factor"] == 48
+    assert guest_client.post("/api/v1/ratings/combine", json={"ratings": [50], "bilateral": [30]}).status_code == 422
+    assert guest_client.post("/api/v1/ratings/combine", json={}).status_code == 422

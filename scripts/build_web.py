@@ -89,6 +89,10 @@ def fixtures() -> dict:
     for rs in ([50, 30], [40, 20], [60, 40, 20], [10], [0], [100, 10], [90, 90, 90, 90], [30, 20, 10],
                [70, 50], [10, 10, 10, 10, 10, 10], [80, 30, 20, 10], [20, 60, 40]):
         out["ratings"].append({"input": rs, "expected": ratings.combine_ratings(rs)})
+    out["bilateral"] = []
+    for rs, bi in (([], [30, 10]), ([], [40, 20]), ([50], [30, 20]), ([60, 10], [20, 20]), ([70], [50, 50, 10, 10]),
+                   ([10, 10], [10, 10]), ([90, 30], [60, 40]), ([0], [0, 10]), ([], [40, 30, 20, 10]), ([100], [50, 50])):
+        out["bilateral"].append({"ratings": rs, "bilateral": bi, "expected": ratings.combine_ratings(rs, bi)})
     return out
 
 

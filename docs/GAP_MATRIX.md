@@ -20,8 +20,8 @@ Single list of what is open. Update this file in the same commit that closes a g
 |---|---|---|
 | G19 | Outbox dispatcher / worker (reminders, referral follow-ups) | Open — table + in-transaction writes exist |
 | G2/G3 | No verified jurisdiction or education records | Open (needs G1) |
-| G4/G5 | Rating schedule data (Part 4 codes) | Open; only 4.25 arithmetic implemented |
-| A-03 | §4.26 bilateral factor | Open; labeled in UI and API response |
+| G4/G5 | Rating schedule data (Part 4 codes) | Partial: 737 codes loaded (2020 edition, UNVERIFIED; digestive SUPERSEDED; 373 without criteria text). Re-transcribe from current eCFR |
+| A-03 | §4.26 bilateral factor | **Closed** (integer kernel in Python + browser, parity fixtures, calculator toggle) |
 | CB-01/02 | ADA metamorphic test for career module | Open; write before any career code |
 | T0-12 | Self-approval prohibition in running code | Open; no approval workflow exists yet |
 | — | Free-text crisis detector (CrisisGate) | Open; today there are no free-text inputs to screen |
@@ -43,8 +43,12 @@ Their wording and their status in this repo are data: `data/reference/governance
 | 855-row reference corpus (women veterans, compensation, state benefits, Guard/Reserve, Alabama, statistics, education) | `SOURCE_NOT_AVAILABLE` — only sources, timeline, governance and 15 conflicts are in hand |
 | 12 transition windows | Loaded, all `UNVERIFIED`; shown as leads, never as personal deadlines (G1) |
 | 3 new crisis numbers | Need re-verification against official pages before release |
-| Per-reading sources for the 15 contested values | `SOURCE_NOT_AVAILABLE` |
+| Per-reading sources for the 15 contested values | `SOURCE_NOT_AVAILABLE` (the 2 rows added 21 Oct carry sources) |
+| Product layout vs governance conflicts | Resolved in `docs/ADR/0003-product-layout.md` (governance wins) |
 
 ## Next bounded slice (recommended)
+
+**Per `docs/PRODUCT_LAYOUT.md` §106:** Workspace Shell + Veteran Profile + Master Case foundation (profile and service-record tables under the same RLS/consent model; subcase owner and status; shell navigation using the layout's sidebar names). Then:
+
 
 **Source registry + Alabama rule pack skeleton (P4), behind verification status.** Tables `source_records`, `source_snapshots`, `rules`, `rule_versions` with forced RLS; a three-valued screener that returns only `NEEDS_INFORMATION` / `UNVERIFIED_OR_STALE` until a named reviewer marks a rule VERIFIED; trust-card endpoint; tests that an unverified rule can never produce `POTENTIALLY_ELIGIBLE`. Needs G1 for any real content.

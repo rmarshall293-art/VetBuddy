@@ -128,20 +128,37 @@ export function readiness(rows) {
   });
 }
 
-// 38 CFR 4.25 — integer arithmetic only, half-up per Table I step, one final
-// conversion to the nearest 10 with 5s up. Mirrors backend kernel/ratings.py.
-export function combineRatings(ratings) {
-  if (!ratings.length) throw new RangeError("at least one rating is required");
-  for (const r of ratings) if (!Number.isInteger(r) || r < 0 || r > 100 || r % 10 !== 0)
+// 38 CFR 4.25 + 4.26 — integer arithmetic only, half-up per Table I step, one
+// final conversion to the nearest 10 with 5s up. Bilateral ratings (paired
+// extremities) are combined first, 10% of that value is added (rounded
+// half-up), and the result is treated as one disability. Mirrors
+// backend/app/kernel/ratings.py.
+function checkRatings(rs) {
+  for (const r of rs) if (!Number.isInteger(r) || r < 0 || r > 100 || r % 10 !== 0)
     throw new RangeError("each rating must be a whole multiple of 10 from 0 to 100");
-  const ordered = [...ratings].sort((a, b) => b - a);
+}
+function combineValues(values) {
+  const ordered = [...values].sort((a, b) => b - a);
   let combined = ordered[0]; const steps = [combined];
-  for (const r of ordered.slice(1)) {
-    const num = (100 - combined) * r;
-    combined += Math.floor((2 * num + 100) / 200);
-    steps.push(combined);
+  for (const v of ordered.slice(1)) { combined += Math.floor((2 * (100 - combined) * v + 100) / 200); steps.push(combined); }
+  return [ordered, steps];
+}
+export function combineRatings(ratings, bilateral = []) {
+  if (!ratings.length && !bilateral.length) throw new RangeError("at least one rating is required");
+  checkRatings(ratings); checkRatings(bilateral);
+  if (bilateral.length === 1) throw new RangeError("the bilateral factor needs ratings on both sides (at least two)");
+  const out = { citation: "38 CFR 4.25", bilateral_factor_applied: bilateral.length > 0 };
+  const values = [...ratings];
+  if (bilateral.length) {
+    const [bOrdered, bSteps] = combineValues(bilateral);
+    const bCombined = bSteps[bSteps.length - 1];
+    const value = Math.floor((10 * bCombined + bCombined + 5) / 10);
+    out.bilateral = { ratings: bOrdered, steps: bSteps, combined_value: bCombined, factor_tenths: bCombined,
+                      value_with_factor: value, citation: "38 CFR 4.26" };
+    values.push(value);
   }
-  return { ratings: ordered, steps, combined_value: combined,
-           combined_rating: Math.min(Math.floor((combined + 5) / 10) * 10, 100),
-           citation: "38 CFR 4.25", bilateral_factor_applied: false };
+  const [ordered, steps] = combineValues(values);
+  const combined = steps[steps.length - 1];
+  return { ...out, ratings: ordered, steps, combined_value: combined,
+           combined_rating: Math.min(Math.floor((combined + 5) / 10) * 10, 100) };
 }

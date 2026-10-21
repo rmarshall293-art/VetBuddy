@@ -27,6 +27,13 @@ for (const c of fx.ratings) {
   });
 }
 
+for (const c of fx.bilateral) {
+  test(`bilateral ${c.bilateral.join("+")} with ${c.ratings.join("+") || "none"} -> ${c.expected.combined_rating}`, () => {
+    assert.deepEqual(combineRatings(c.ratings, c.bilateral), c.expected);
+  });
+}
+
 test("rating input errors match Python's refusals", () => {
+  assert.throws(() => combineRatings([50], [30]), RangeError);
   for (const bad of [[], [15], [110], [-10], [true], ["50"], [50.5]]) assert.throws(() => combineRatings(bad), RangeError);
 });

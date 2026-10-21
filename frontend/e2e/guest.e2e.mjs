@@ -47,6 +47,9 @@ test("guest tools send nothing and store nothing", async () => {
   await page.goto(BASE + "/#rating");
   await page.click("text=Example: 60, 40, 20");
   assert.equal((await page.textContent(".result-num")).trim(), "80%");
+  await page.click("text=Example: 50 + both knees 30, 20");
+  assert.equal((await page.textContent(".result-num")).trim(), "70%");  // 30+20 -> 44, +4.4 -> 48; 50 & 48 -> 74 -> 70
+  assert.ok(await page.isVisible("text=gives 48"));
 
   await page.goto(BASE + "/#finder");
   await page.selectOption("#fj", "AL");

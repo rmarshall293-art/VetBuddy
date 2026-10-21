@@ -2,6 +2,18 @@
 
 What every supplied input became, what was dropped as a duplicate, and what is still not in hand. Add a row whenever a new input is integrated.
 
+## 21 Oct 2026 (second batch)
+
+Privacy check first: all 13 uploads and the full git history were scanned for personal VA-decision data (names with claim or file numbers, ratings, dates of birth, SSNs, decision text). **None found.** The only SSN-shaped value in the repository is the synthetic `000-00-0000` a test uses to prove SSNs are refused. The owner's first name appears in planning documents (not committed); the GitHub username appears in repo URLs.
+
+| Input | What it is | Disposition |
+|---|---|---|
+| `va-rating-app.html` | Self-contained React reference app: 737 diagnostic codes of 38 CFR Part 4 (2020 edition), 2026 pay table, presumptive lists, a calculator | **Partly integrated.** The 737 codes → `data/reference/rating_schedule.json`, all `UNVERIFIED`, the 51 digestive codes `SUPERSEDED` (rule changed 2024-05-19); its symptom→body-system keyword table was **not** imported. Its calculator was **not** used: unrounded floating-point combining disagrees with 38 CFR 4.25 in 31 of 714 rating combinations (always 10 points low, e.g. 30+20+10+10 → 50 instead of 60), and it saves ratings and dependents to `localStorage`. Its 4.26 bilateral idea was rebuilt in the repo kernel with whole-number rounding. Its two different 60% rates went to `conflicts.json`. |
+| `va_claims_data.json` | FY2025 "VASRD" catalog: 101 code rows, rates, SMC, evidence, forms, organizations | **Not integrated.** Against the 737-code schedule: 6 codes do not exist (9420, 9999, 8110, 6814, 6848, 6399), about 25 carry another condition's name (e.g. 9421, 9424, 6832), 17 maximum ratings differ (e.g. 6847 sleep apnea 50 vs 100). It maps 339 symptom keywords to diagnostic codes (prohibited, governance §5), coaches claim strategy ("File ITF before gathering evidence… maximizing retroactive compensation"), mislabels 21-4142 as the buddy-statement form, cites 38 U.S.C. 3313 for the PACT Act, omits TDIU's 40% single-disability condition, and lists VBA and Vet Centers as accredited organizations. Its 70% rate went to `conflicts.json` as evidence. |
+| `VA_Benefits.html` | Saved copy of codeplatoon.org/va-benefits (a coding bootcamp's marketing page, with Google Analytics, Google Ads and HubSpot trackers and three named alumni) | **Not integrated.** Not a VA source; school-participation claims (GI Bill, VR&E, VET TEC 2.0) need confirmation against VA before any use; kept as a lead for the education module only. |
+| `VeteranOS_VetBuddy_Onboarding_MultiLayer_CRM_Master_Prompt.md` | CRM-centered consolidation prompt | **Not adopted** as the layout (owner: "don't make this a CRM"). Superseded by `docs/PRODUCT_LAYOUT.md`; see ADR 0003 for what was kept. |
+| Product layout directive (owner, in chat) | VetBuddy Veteran Operating System layout | **Adopted** → `docs/PRODUCT_LAYOUT.md`; conflicts with governance resolved in `docs/ADR/0003-product-layout.md`. |
+
 ## 21 Oct 2026
 
 | Input | What it is | Disposition |
@@ -33,7 +45,7 @@ What every supplied input became, what was dropped as a duplicate, and what is s
 ### Still not in hand (`SOURCE_NOT_AVAILABLE`)
 
 - The 855-row reference corpus itself: women veterans directory (152), compensation (363), state benefits (94), Guard/Reserve authorities (24), Alabama landscape (54), statistics (30), education registry (22), modules (8), and 8 of the 23 conflict rows.
-- The v2.0 `veteranos` source and datasets (737 diagnostic codes, 2026 rate tables, presumptive conditions, 87 manifests, 10 rule packs).
+- The v2.0 `veteranos` source and datasets (the 737 diagnostic codes are now in hand from `va-rating-app.html`, 2020 edition; still missing: 2026 rate tables as source data, presumptive conditions, 87 manifests, 10 rule packs).
 - The Women Veterans 181-row seed; Education Navigator and Women Veterans runtime source; the Base44 export.
 
 Per the Record's own instruction: recover these rather than re-creating them from memory.

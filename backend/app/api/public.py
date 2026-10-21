@@ -94,10 +94,10 @@ def evaluate(body: RouterRequest, request: Request):
 @router.post("/ratings/combine")
 def combine(body: RatingsRequest):
     try:
-        res = ratings.combine_ratings(body.ratings)
+        res = ratings.combine_ratings(body.ratings, body.bilateral)
     except ValueError as e:
         raise ApiError(422, "INVALID_INPUT", str(e)) from None
     return {**res, "educational_only": True,
-            "notice": "Arithmetic on the numbers you entered, following 38 CFR 4.25. Not a prediction of what VA "
-                      "will rate; the bilateral factor (38 CFR 4.26) is not applied. VA decides your rating.",
+            "notice": "Arithmetic on the numbers you entered, following 38 CFR 4.25 (and 4.26 for ratings you marked "
+                      "as affecting both arms or both legs). Not a prediction of what VA will rate. VA decides your rating.",
             "vso_referral": language.VSO_REFERRAL}

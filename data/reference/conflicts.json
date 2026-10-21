@@ -1,8 +1,10 @@
 {
  "_meta": {
-  "note": "Contested readings carried as data so they are shown as contested, never silently resolved. The per-reading sources were not in hand (SOURCE_NOT_AVAILABLE); only the subject and readings are integrated. 15 of the record's 23 rows were rendered in it; 8 are missing.",
+  "note": "Contested readings carried as data so they are shown as contested, never silently resolved. The per-reading sources were not in hand (SOURCE_NOT_AVAILABLE); only the subject and readings are integrated. 15 of the record's 23 rows were rendered in it; 8 are missing. Rows added 21 Oct 2026 carry their own sources.",
   "sources": [
-   "src.gov.integrated_record"
+   "src.gov.integrated_record",
+   "src.upload.va_claims_data",
+   "src.upload.va_rating_app"
   ]
  },
  "conflicts": [
@@ -128,6 +130,31 @@
    ],
    "status": "RESOLVED_BY_DESIGN",
    "subject": "Crisis contacts: one source of truth vs deliberate redundancy"
+  },
+  {
+   "readings": [
+    "$1,759.05 (va_claims_data.json)",
+    "$1,759.19 (implied by va-rating-app.html: its 2026 rate $1,808.45 / 1.028)"
+   ],
+   "sources": [
+    "src.upload.va_claims_data",
+    "src.upload.va_rating_app"
+   ],
+   "status": "CONTESTED",
+   "subject": "VA compensation, 70%, veteran alone, effective 2024-12-01 (new evidence)",
+   "verify_against": "VA.gov compensation rate tables (2025)"
+  },
+  {
+   "readings": [
+    "$1,435.01 (va-rating-app.html summary table)",
+    "$1,435.02 (va-rating-app.html dependents table)"
+   ],
+   "sources": [
+    "src.upload.va_rating_app"
+   ],
+   "status": "CONTESTED",
+   "subject": "VA compensation, 60%, veteran alone, effective 2025-12-01",
+   "verify_against": "VA.gov compensation rate tables (2026)"
   }
  ]
 }

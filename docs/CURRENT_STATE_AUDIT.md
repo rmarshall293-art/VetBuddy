@@ -46,7 +46,7 @@ Labels: `IMPLEMENTED_VERIFIED` = code + passing automated test; `MOCK`; `PARTIAL
 | Privacy Mode C (managed case) | NOT_PRESENT (unreachable by DB CHECK) | `test_mode_c_unreachable` |
 | Deterministic Mission Router → Master Mission, Master Case, lanes, tasks, Mission Brief, next action, readiness by dimension | IMPLEMENTED_VERIFIED | `test_router.py` (24 boundary cases, determinism), `test_consent_and_work.py` |
 | Task status with optimistic concurrency | IMPLEMENTED_VERIFIED | `test_task_status_with_optimistic_concurrency` |
-| Combined rating, 38 CFR 4.25, integer half-up, single final rounding | IMPLEMENTED_VERIFIED | `test_ratings.py` (regulation examples; AST ban on float/round) |
+| Combined rating, 38 CFR 4.25 + 4.26 bilateral factor, integer half-up, single final rounding | IMPLEMENTED_VERIFIED | `test_ratings.py` (regulation examples; AST ban on float/round) |
 | Browser kernel ≡ server kernel | IMPLEMENTED_VERIFIED | 27 router + 12 rating golden fixtures, `frontend/tests/parity.test.mjs` |
 | Hash-chained, append-only audit (refuses UPDATE/DELETE/TRUNCATE for owner) | IMPLEMENTED_VERIFIED | `test_audit_and_schema.py` |
 | Transactional outbox | PARTIAL | Rows written in-transaction; **no dispatcher** (G19) |
@@ -61,8 +61,8 @@ Labels: `IMPLEMENTED_VERIFIED` = code + passing automated test; `MOCK`; `PARTIAL
 ## 4. Commands and results (latest run, 21 Oct 2026, after integrating guest app v3/v4 and the Integrated Record)
 
 ```
-cd backend && pytest                          -> 150 passed (PostgreSQL 16.15, real non-owner role)
-cd frontend && npm test                       -> 41 passed (browser/server parity)
+cd backend && pytest                          -> 163 passed (PostgreSQL 16.15, real non-owner role)
+cd frontend && npm test                       -> 51 passed (browser/server parity, incl. 10 bilateral cases)
 cd frontend && npm run build                  -> OK (vite 8.3.4)
 cd frontend && npm run test:e2e               -> guest: 1 passed; full stack (with running API): 2 passed
 npm audit                                     -> 0 vulnerabilities

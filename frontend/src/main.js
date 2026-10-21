@@ -7,7 +7,7 @@ import { planView, planEnabled } from "./plan.js";
 
 // ── UI ──────────────────────────────────────────────────────────────────────
 // No storage, no network: all state lives in this object and dies with the tab.
-const S = { brief: null, done: new Set(), ratings: [70, 50], finder: "AL" };
+const S = { brief: null, done: new Set(), ratings: [{ v: 70, both: false }, { v: 50, both: false }], finder: "AL" };
 const TODAY = (() => { const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); })();
 
 function el(tag, attrs = {}, ...kids) {
@@ -168,33 +168,43 @@ function briefView({ inp, out }) {
 
 // ── Rating calculator ──
 function vRating() {
+  // S.ratings holds { v, both }: `both` marks a rating for a condition affecting both arms or both legs (38 CFR 4.26).
   let res = null, err = null;
-  try { res = S.ratings.length ? combineRatings(S.ratings) : null; } catch (e) { err = e.message; }
+  const plain = S.ratings.filter(r => !r.both).map(r => r.v), both = S.ratings.filter(r => r.both).map(r => r.v);
+  try { res = S.ratings.length ? combineRatings(plain, both) : null; } catch (e) { err = e.message; }
   const set = r => { S.ratings = r; show("rating"); };
+  const toggle = i => set(S.ratings.map((r, j) => j === i ? { ...r, both: !r.both } : r));
+  const b = res && res.bilateral;
   return el("section", { class: "view" },
     el("h1", {}, "Combined rating calculator"),
     el("p", { class: "lede" }, "VA doesn't add disability percentages. Each rating applies to the part of you that is still “efficient” after the ones before it, and the total is rounded to the nearest 10 only once, at the end."),
     el("div", { class: "grid2" },
       el("div", { class: "card" }, el("h2", {}, "Your ratings"),
-        el("div", { class: "ratings", "aria-live": "polite" }, S.ratings.length ? S.ratings.map((r, i) => el("span", { class: "rpill" }, r + "%",
-          el("button", { type: "button", "aria-label": `Remove ${r}%`, onclick: () => set(S.ratings.filter((_, j) => j !== i)) }, "×"))) : el("span", { class: "small" }, "No ratings yet.")),
+        el("div", { class: "ratings", "aria-live": "polite" }, S.ratings.length ? S.ratings.map((r, i) => el("span", { class: "rpill" }, r.v + "%",
+          el("label", { class: "small", style: "display:inline-flex;gap:4px;align-items:center;font-family:var(--body)" },
+            el("input", { type: "checkbox", checked: r.both, onchange: () => toggle(i), "aria-label": `${r.v}% affects both arms or both legs` }), "both sides"),
+          el("button", { type: "button", "aria-label": `Remove ${r.v}%`, onclick: () => set(S.ratings.filter((_, j) => j !== i)) }, "×"))) : el("span", { class: "small" }, "No ratings yet.")),
         el("p", { class: "hint", id: "addh" }, "Add a rating:"),
         el("div", { class: "addr", role: "group", "aria-labelledby": "addh" }, [10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map(v =>
-          el("button", { type: "button", onclick: () => set([...S.ratings, v]) }, v + "%"))),
+          el("button", { type: "button", onclick: () => set([...S.ratings, { v, both: false }]) }, v + "%"))),
+        el("p", { class: "hint" }, "Tick “both sides” on ratings for the same kind of condition in both arms or both legs (for example, each knee). VA's bilateral factor then applies."),
         el("div", { class: "row" }, el("button", { class: "btn", type: "button", onclick: () => set([]) }, "Clear"),
-          el("button", { class: "btn", type: "button", onclick: () => set([60, 40, 20]) }, "Example: 60, 40, 20"))),
+          el("button", { class: "btn", type: "button", onclick: () => set([60, 40, 20].map(v => ({ v, both: false }))) }, "Example: 60, 40, 20"),
+          el("button", { class: "btn", type: "button", onclick: () => set([{ v: 50, both: false }, { v: 30, both: true }, { v: 20, both: true }]) }, "Example: 50 + both knees 30, 20"))),
       el("div", { class: "card", "aria-live": "polite" }, el("h2", {}, "Result"),
         res ? [
           el("div", { class: "result-num" }, res.combined_rating + "%"),
+          b ? el("p", {}, `Bilateral: ${b.ratings.join("% + ")}% combine to ${b.combined_value}; adding 10% (${b.factor_tenths / 10}) gives ${b.value_with_factor}, which then counts as one rating.`) : null,
           el("p", {}, `Combined value ${res.combined_value}, rounded once to the nearest 10 (values ending in 5 go up).`),
           el("div", { class: "tw" }, el("table", { class: "steps" },
             el("thead", {}, el("tr", {}, el("th", {}, "Step"), el("th", {}, "Rating"), el("th", {}, "Applies to"), el("th", {}, "Combined"))),
-            el("tbody", {}, res.ratings.map((r, i) => el("tr", {}, el("td", {}, i + 1), el("td", {}, r + "%"),
+            el("tbody", {}, res.ratings.map((r, i) => el("tr", {}, el("td", {}, i + 1),
+              el("td", {}, (b && r === b.value_with_factor ? "bilateral " : "") + r + "%"),
               el("td", {}, i === 0 ? "100" : String(100 - res.steps[i - 1])), el("td", {}, res.steps[i]))))))
         ] : el("p", { class: "small" }, err || "Add at least one rating."))),
     el("div", { class: "banner" }, el("strong", {}, "Educational only"),
-      "This follows the combining and rounding rules in 38 CFR 4.25. It does not apply the bilateral factor (38 CFR 4.26) for conditions affecting both arms or both legs, and it can't tell you what VA will rate. VA decides your rating."),
-    el("p", { class: "foot" }, "Source: 38 CFR 4.25 (eCFR, checked 2026-10-20). Regulation examples reproduced: 50+30 → 65 → 70; 40+20 → 52 → 50; 60+40+20 → 76 → 81 → 80."));
+      "This follows the combining and rounding rules in 38 CFR 4.25 and the bilateral factor in 38 CFR 4.26 for ratings you mark. It is arithmetic on numbers you enter: it can't tell you what VA will rate. VA decides your rating."),
+    el("p", { class: "foot" }, "Sources: 38 CFR 4.25 and 4.26 (eCFR). Regulation examples reproduced: 50+30 → 65 → 70; 40+20 → 52 → 50; 60+40+20 → 76 → 81 → 80."));
 }
 
 // ── Claims guide ──

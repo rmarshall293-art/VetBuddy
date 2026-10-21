@@ -34,7 +34,6 @@ const L = {
 };
 const VIEWS = [["home", "Start"], ["brief", "Mission brief"], ["rating", "Rating calculator"], ["claims", "Claims guide"], ["finder", "Benefits finder"],
   ...(planEnabled ? [["plan", "Saved plan"]] : []), ["trust", "How it's built"]];
-const FIND_REP = "https://www.va.gov/get-help-from-accredited-representative/find-rep/";
 
 function show(view) {
   if (!VIEWS.some(v => v[0] === view)) view = "home";
@@ -59,7 +58,7 @@ function vHome() {
       tile("claims", "Claims guide", "What each VA claim status means, the windows that matter, and where to get free accredited help.", "VA sources"),
       tile("finder", "Benefits finder", "Pick your state or territory. See exactly what VetBuddy has verified there, which today is nothing yet.", "57 jurisdictions"),
       tile("trust", "How it's built", "The rules every answer follows, what is real, and what is still a mock.", null)),
-    el("p", { class: "foot" }, "VetBuddy is not VA, a VSO, an attorney or a clinician. It explains and organizes; it does not decide claims, file anything, or guarantee an outcome."));
+    el("p", { class: "foot" }, KDATA.LANGUAGE.standard_disclaimer));
 }
 
 // ── Mission brief ──
@@ -210,38 +209,33 @@ function vClaims() {
     ["Final review", "A senior reviewer does a final review of the claim and the letter."],
     ["Claim decided", "The decision letter is available in VA's claim status tool."],
   ];
-  const windows = [
-    ["You submit an Intent to File", "You generally have 1 year to file the completed claim; the intent date can become the effective date."],
-    ["Separation date is known", "A claim filed within 1 year of separation can take the day after separation as its effective date."],
-    ["180 to 90 days before separation", "The Benefits Delivery at Discharge window for filing before you separate."],
-    ["You get a decision letter", "1 year to request a Higher-Level Review or Board Appeal; a Supplemental Claim can be filed any time, but within 1 year keeps the effective date."],
-    ["You separate (life insurance)", "VGLI: apply within 1 year and 120 days; within 240 days no proof of good health is needed."],
-  ];
-  const lane = [
-    ["Explain benefits, rating rules and deadlines in general terms", true],
-    ["Calculate a combined rating from numbers you enter", true],
-    ["Keep track of your own documents and deadlines", true],
-    ["Tell you what to claim, what to write, or how to argue your claim", false],
-    ["Fill in, sign or submit VA forms (21-526EZ, 21-0966, 21-22, decision reviews)", false],
-    ["Charge for anything claims-related", false],
-  ];
+  // Windows, the legal lane and referral wording come from the reference
+  // corpus and config/governance_language.yaml (generated into KDATA).
+  const ANCHOR = { intent_to_file: "After an Intent to File", separation: "Around separation", decision_letter: "After a decision letter", retirement: "At retirement", career: "Over a career" };
+  const claimAnchors = ["intent_to_file", "separation", "decision_letter"];
+  const windows = KDATA.TIMELINE.windows.filter(w => claimAnchors.includes(w.anchor) && w.kind !== "limit");
+  const srcName = id => (KDATA.SOURCES[id] || {}).title || id;
+  const ALLOWED = { yes: ["Yes, free", "yes"], share_card: ["Only with your approval", "yes"], no: ["No: free accredited help instead", "no"] };
   return el("section", { class: "view" },
     el("h1", {}, "Claims guide"),
     el("p", { class: "lede" }, "What VA's claim statuses mean, the time windows worth knowing, and what VetBuddy will and won't do."),
     el("div", { class: "card" }, el("h2", {}, "The 8 disability-claim statuses on VA.gov"),
       el("ol", { class: "track" }, steps.map(([t, d]) => el("li", {}, el("div", {}, el("h3", {}, t), el("p", { class: "why" }, d))))),
-      el("p", { class: "small" }, "Source: VA.gov, “What your claim status means” (checked 2026-10-20). Other claim types use a shorter 5-status track.")),
+      el("p", { class: "small" }, `Source: ${srcName("src.va.claim_status")} (checked 2026-10-20). Other claim types use a shorter 5-status track.`)),
     el("div", { class: "card" }, el("h2", {}, "Windows worth knowing"),
-      el("div", { class: "tw" }, el("table", { class: "lane" }, el("thead", {}, el("tr", {}, el("th", {}, "When"), el("th", {}, "What to know"))),
-        el("tbody", {}, windows.map(([a, b]) => el("tr", {}, el("td", {}, el("strong", {}, a)), el("td", {}, b)))))),
+      el("div", { class: "tw" }, el("table", { class: "lane" }, el("thead", {}, el("tr", {}, el("th", {}, "When"), el("th", {}, "What to know"), el("th", {}, "Check against"))),
+        el("tbody", {}, windows.map(w => el("tr", {},
+          el("td", {}, el("strong", {}, ANCHOR[w.anchor] || w.anchor), el("div", { class: "small mono" }, w.offset)),
+          el("td", {}, w.item, el("div", { class: "small" }, "Source: " + w.sources.map(srcName).join("; "))),
+          el("td", {}, w.verify_against, el("div", {}, el("span", { class: "chip c-ochre" }, KDATA.TIMELINE.default_status.toLowerCase())))))))),
       el("div", { class: "banner" }, el("strong", {}, "Confirm your own dates with VA or an accredited representative"),
-        "These are general rules drawn from VA's published guidance. Exceptions exist, and VetBuddy doesn't compute your personal deadlines in this guest version.")),
+        "No window here has been checked against its authority by a named reviewer yet, so treat each one as a lead. Exceptions exist, and VetBuddy doesn't compute your personal deadlines in this guest version.")),
     el("div", { class: "card" }, el("h2", {}, "What VetBuddy will and won't do"),
       el("div", { class: "tw" }, el("table", { class: "lane" }, el("thead", {}, el("tr", {}, el("th", {}, "Activity"), el("th", {}, "VetBuddy"))),
-        el("tbody", {}, lane.map(([a, ok]) => el("tr", {}, el("td", {}, a), el("td", { class: ok ? "yes" : "no" }, ok ? "Yes, free" : "No — free accredited help instead")))))),
-      el("p", {}, "Accredited VSO representatives, claims agents and attorneys can help you prepare a claim. VSO representatives help for free, and fees for an initial claim are generally not allowed."),
-      el("div", { class: "row" }, el("a", { class: "btn primary", href: FIND_REP, target: "_blank", rel: "noopener" }, "Find an accredited representative on VA.gov")),
-      el("p", { class: "small" }, FIND_REP)));
+        el("tbody", {}, KDATA.LEGAL_LANE.map(r => el("tr", {}, el("td", {}, r.activity), el("td", { class: ALLOWED[r.allowed][1] }, ALLOWED[r.allowed][0])))))),
+      el("p", {}, KDATA.LANGUAGE.vso_referral_block),
+      el("div", { class: "row" }, el("a", { class: "btn primary", href: KDATA.LANGUAGE.vso_search_url, target: "_blank", rel: "noopener" }, "Find an accredited representative on VA.gov")),
+      el("p", { class: "small" }, KDATA.LANGUAGE.vso_search_url)));
 }
 
 // ── Benefits finder ──
@@ -264,36 +258,27 @@ function vFinder() {
 
 // ── How it's built ──
 function vTrust() {
-  const rules = [
-    ["Says it is an AI", "Never claims to be VA, a VSO, an attorney or a clinician."],
-    ["The engine decides, agents explain", "Eligibility, ratings and amounts come only from deterministic rules."],
-    ["Never files for you", "No path prepares, signs or submits a claim, Intent to File, review or Form 21-22."],
-    ["Claims help stays free", "Calculators, explanations and deadline reminders are never behind a paywall."],
-    ["Unknown is not “no”", "A missing fact asks a question. It never becomes “not eligible” or an estimate."],
-    ["Every fact has a source", "Primary sources (tiers 1–3) only; uncited, expired or wrong-state claims are blocked."],
-    ["Crisis comes first", "Crisis language stops every flow and shows the Veterans Crisis Line before anything else runs."],
-    ["No Social Security numbers", "VetBuddy never asks for one, not even the last four digits."],
-  ];
-  const status = [
-    ["This guest page", "Working", "Everything on this page runs in your browser. Nothing is stored or sent."],
-    ["Mission router", "Working", "Same rules and wording as the server version, checked by an automated parity test."],
-    ["Rating calculator", "Working, educational", "38 CFR 4.25 only; no bilateral factor."],
-    ["Benefit rules", "Not verified", "0 of 57 jurisdictions verified. Matches stay off until a person verifies them."],
-    ["Saved plans and sign-in", "Development only", "The server version saves private plans; real sign-in (ID.me / Microsoft) is not connected yet."],
-    ["AI assistant", "Not built", "No model is called anywhere in VetBuddy today."],
-    ["VA data connection", "Not built", "No live government integration exists. Anything shown as one would be labeled MOCK."],
-  ];
+  // Every rule and status below is generated from data/reference/governance.json;
+  // this page restates nothing by hand.
+  const LABEL = { IMPLEMENTED_VERIFIED: ["Built and tested", "yes"], IMPLEMENTED_UNTESTED: ["Built, not yet tested", "no"],
+    PARTIAL: ["Partly built", "no"], MOCK: ["Stand-in only", "no"], NOT_PRESENT: ["Not built yet", "no"],
+    BLOCKED_SOURCE: ["Waiting on source material", "no"], DEFERRED: ["Deferred", "no"] };
+  const counts = {};
+  for (const r of KDATA.AGENT_RULES) counts[r.repo_status] = (counts[r.repo_status] || 0) + 1;
   return el("section", { class: "view" },
     el("h1", {}, "How it's built"),
-    el("p", { class: "lede" }, "Agents may explain and organize. They never decide. Every answer traces to a written rule and a source, and gaps are shown as gaps."),
-    el("div", { class: "card" }, el("h2", {}, "Rules every answer follows"),
-      el("div", { class: "grid2" }, rules.map(([a, b]) => el("div", {}, el("h3", {}, a), el("p", { class: "why" }, b)))),
-      el("p", { class: "small" }, "A selection of the 22 agent rules (R1–R22) in VetBuddy's governance record. Each one is enforced in code and proven by a test, not left to a prompt.")),
-    el("div", { class: "card" }, el("h2", {}, "What's real today"),
-      el("div", { class: "tw" }, el("table", { class: "lane" }, el("thead", {}, el("tr", {}, el("th", {}, "Part"), el("th", {}, "Status"), el("th", {}, "Detail"))),
-        el("tbody", {}, status.map(([a, b, c]) => el("tr", {}, el("td", {}, el("strong", {}, a)), el("td", { class: b.startsWith("Working") ? "yes" : "no" }, b), el("td", {}, c))))))),
+    el("p", { class: "lede" }, KDATA.GOVERNING_SENTENCE),
+    el("div", { class: "card" }, el("h2", {}, "Four non-negotiables"),
+      el("div", { class: "grid2" }, KDATA.NON_NEGOTIABLES.map(n => el("div", {}, el("h3", {}, n.name), el("p", { class: "why" }, n.text))))),
+    el("div", { class: "card" }, el("h2", {}, "The 22 agent rules, and what exists today"),
+      el("p", { class: "hint" }, `${counts.IMPLEMENTED_VERIFIED || 0} built and tested · ${counts.PARTIAL || 0} partly built · ${counts.NOT_PRESENT || 0} not built yet. No AI agent runs in VetBuddy today, so rules about agents are written down before the agents exist.`),
+      el("div", { class: "tw" }, el("table", { class: "lane" }, el("thead", {}, el("tr", {}, el("th", {}, "Rule"), el("th", {}, "Status"))),
+        el("tbody", {}, KDATA.AGENT_RULES.map(r => el("tr", {},
+          el("td", {}, el("span", { class: "mono small" }, r.id + " "), r.rule),
+          el("td", { class: (LABEL[r.repo_status] || ["", "no"])[1] }, (LABEL[r.repo_status] || [r.repo_status])[0]))))))),
     el("div", { class: "card" }, el("h2", {}, "Your privacy on this page"),
-      el("p", {}, "Guest mode stores nothing: no account, no cookies, no browser storage, no analytics. Your answers exist only in this tab's memory and disappear when you close it.")),
+      el("p", {}, "Guest mode stores nothing: no account, no cookies, no browser storage, no analytics. Your answers exist only in this tab's memory and disappear when you close it."),
+      el("p", {}, `Benefit rules verified so far: ${KDATA.JURISDICTIONS.filter(j => j.verification_status === "verified").length} of ${KDATA.JURISDICTIONS.length} jurisdictions. Sign-in, the AI assistant and any VA data connection are not built yet.`)),
     el("p", { class: "foot" }, `Router ${KDATA.ROUTER_POLICY_VERSION} · rules engine has no network access · not affiliated with or endorsed by VA or DoD`));
 }
 

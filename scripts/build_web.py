@@ -20,6 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "backend"))
 
+from app import reference  # noqa: E402
 from app.kernel import crisis, ratings, router, vocab  # noqa: E402
 from app.kernel.jurisdictions import JURISDICTIONS  # noqa: E402
 
@@ -29,7 +30,12 @@ TODAY = date(2026, 10, 20)
 
 
 def kernel_data() -> dict:
+    ref = reference.load()
+    gov = ref["governance"]
     return {
+        "AGENT_RULES": gov["agent_rules"], "GOVERNING_SENTENCE": gov["governing_sentence"], "LANGUAGE": gov["language"],
+        "LEGAL_LANE": gov["legal_lane"], "NON_NEGOTIABLES": gov["non_negotiables"],
+        "SOURCES": ref["sources"]["sources"], "TIMELINE": ref["transition_timeline"],
         "AUTHORITIES": list(vocab.AUTHORITIES), "BRANCHES": list(vocab.BRANCHES), "COMPONENTS": list(vocab.COMPONENTS),
         "CRISIS_CONTACTS": list(crisis.CRISIS_CONTACTS), "DIMENSIONS": list(vocab.DIMENSIONS), "GOALS": list(vocab.GOALS),
         "GOAL_LANES": vocab.GOAL_LANES, "GOAL_TEMPLATES": {k: list(v) for k, v in vocab.GOAL_TEMPLATES.items()},

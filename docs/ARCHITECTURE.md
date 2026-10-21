@@ -48,6 +48,7 @@ sequenceDiagram
 | Mission / case / lanes / tasks | Work OS | Owner, with live consent |
 | Audit | Operations | Append via API; chain by trigger; nobody updates |
 | Router rules & wording | `kernel/vocab.py` | Code review only |
+| Governance wording, rule status, sources, windows, conflicts | `data/reference/*.json` (validated by `app/reference.py`) | Code review only; `VERIFIED` needs a named reviewer |
 
 ## Privacy modes
 

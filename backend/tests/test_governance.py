@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 BLOCKED = [
     ("guarantee", "You will get this benefit."), ("guarantee", "You qualify for the GI Bill."),
-    ("guarantee", "This is guaranteed."), ("guarantee", "You're owed back pay."),
+    ("guarantee", "This is guaranteed."), ("guarantee", "We guarantee approval."), ("guarantee", "You're owed back pay."),
     ("rating", "You should be rated at 70%."), ("rating", "This is worth 50%."), ("rating", "Likely 70% for this."),
     ("diagnosis", "You have PTSD."), ("diagnosis", "That sounds like sleep apnea."),
     ("representation", "We'll file for you."), ("representation", "I am your claim agent."),
@@ -72,7 +72,8 @@ def test_required_blocks_are_present():
     assert "accredited" in language.VSO_REFERRAL and "free" in language.VSO_REFERRAL
     assert "VA alone decides" in language.STANDARD_DISCLAIMER
     src = (ROOT / "frontend" / "src" / "main.js").read_text()
-    assert "va.gov/get-help-from-accredited-representative/find-rep" in src
+    data = (ROOT / "frontend" / "src" / "kernel_data.js").read_text()
+    assert "KDATA.LANGUAGE.vso_search_url" in src and "va.gov/get-help-from-accredited-representative/find-rep" in data
 
 
 def test_generated_browser_files_are_in_sync():

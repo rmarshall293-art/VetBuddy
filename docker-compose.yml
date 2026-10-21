@@ -14,7 +14,7 @@ services:
       retries: 30
 
   migrate:
-    build: ./backend
+    build: { context: ., dockerfile: backend/Dockerfile }
     depends_on: { db: { condition: service_healthy } }
     environment:
       DATABASE_URL: postgresql://vetbuddy_owner:local-dev-only@db:5432/vetbuddy
@@ -23,7 +23,7 @@ services:
     command: ["python", "-m", "app.migrate"]
 
   api:
-    build: ./backend
+    build: { context: ., dockerfile: backend/Dockerfile }
     depends_on: { migrate: { condition: service_completed_successfully } }
     environment:
       ENVIRONMENT: development

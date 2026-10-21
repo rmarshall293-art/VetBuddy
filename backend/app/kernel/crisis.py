@@ -24,4 +24,17 @@ CRISIS_CONTACTS: tuple[dict, ...] = (
         "phone": "1-800-799-7233",
         "text": "START to 88788",
     },
+    {
+        "key": "women_veterans_call_center",
+        "label": "VA Women Veterans Call Center",
+        "phone": "1-855-829-6636",
+        "text": "1-855-829-6636",
+    },
+    {"key": "homeless_veterans_call_center", "label": "National Call Center for Homeless Veterans", "phone": "1-877-424-3838"},
+    {
+        "key": "dod_safe_helpline",
+        "label": "DoD Safe Helpline (sexual assault support)",
+        "phone": "1-877-995-5247",
+        "chat_url": "https://www.safehelpline.org/",
+    },
 )

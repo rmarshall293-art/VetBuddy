@@ -45,8 +45,9 @@ backend/app/api/          /api/v1 routes, schemas (unknown fields -> 422), error
 backend/app/services/     Work OS persistence (consent, missions, tasks, audit, outbox)
 backend/migrations/       forward-only SQL migrations (roles, RLS, consent, audit)
 frontend/src/             guest app + saved-plan view; kernel_data.js is generated
-scripts/build_web.py      generates browser data and parity fixtures from Python
-docs/                     master spec, audit, gap matrix, migration map, ADRs, architecture
+data/reference/           governance wording + rule status, sources, transition windows, conflicts (single author)
+scripts/build_web.py      generates browser data and parity fixtures from Python + data/reference
+docs/                     master spec, audit, gap matrix, integration ledger, migration map, ADRs, architecture
 ```
 
 ## Rules that bind every change

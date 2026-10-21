@@ -1,15 +1,18 @@
 """Required language and the ClaimsBoundaryGuard pattern list (governance §7).
 
-These strings live here, versioned, not in prompts, so the guard can check for
-them and legal review can change them in one place. Wording of the required
-blocks is copied from VetBuddy Agent Governance Rules (20 Oct 2026) and still
-needs attorney / accredited-agent review before public launch (§12).
+The disclaimer, VSO referral and accredited-rep search URL are authored once
+in data/reference/governance.json (also generated into the browser). The rest
+live here, versioned, not in prompts, so the guard can check for them and legal
+review can change them in one place. All wording still needs attorney /
+accredited-agent review before public launch (§12).
 """
 
 from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+
+from .. import reference
 
 LANGUAGE_VERSION = "governance-language.v1.0.0"
 
@@ -18,17 +21,9 @@ AI_DISCLOSURE = (
     "It explains and organizes; it does not decide claims, file anything, or guarantee an outcome."
 )
 
-STANDARD_DISCLAIMER = (
-    "VetBuddy provides information and recommendations only. It does not guarantee any benefit, rating, "
-    "or outcome, and it is not a substitute for an accredited representative. VA alone decides eligibility "
-    "and disability ratings."
-)
+STANDARD_DISCLAIMER = reference.governance()["language"]["standard_disclaimer"]
 
-VSO_REFERRAL = (
-    "For help preparing or filing a VA claim, work with a VA-accredited Veterans Service Organization "
-    "representative, claims agent, or attorney. Accredited VSO help is free. You can find one using VA's "
-    "accredited representative search, or through a VSO such as The American Legion, DAV, or VFW."
-)
+VSO_REFERRAL = reference.governance()["language"]["vso_referral_block"]
 
 CFR_REFERENCE_LABEL = (
     "This is VA's published regulation, shown for reference. It explains how VA describes criteria; "
@@ -37,7 +32,7 @@ CFR_REFERENCE_LABEL = (
 
 RESUME_LABEL = "Draft built from the information you provided. Review every line before you use it."
 
-FIND_REP_URL = "https://www.va.gov/get-help-from-accredited-representative/find-rep/"
+FIND_REP_URL = reference.governance()["language"]["vso_search_url"]
 
 
 @dataclass(frozen=True)
@@ -53,7 +48,8 @@ PROHIBITED: dict[str, tuple[str, ...]] = {
     "guarantee": (
         r"\byou(?:'ll| will) (?:definitely )?(?:get|receive)\b(?! help)",
         r"\byou (?:do |definitely )?qualify for\b",
-        r"\bguaranteed?\b(?! (?:any|a|an) )",
+        r"\bguaranteed\b(?! (?:any|a|an) )",
+        r"\bwe guarantee\b",
         r"\byou(?:'re| are) owed\b",
         r"\byou(?:'re| are) (?:eligible|entitled)\b",
     ),

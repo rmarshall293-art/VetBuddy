@@ -52,9 +52,20 @@ test("guest tools send nothing and store nothing", async () => {
   await page.selectOption("#fj", "AL");
   assert.ok(await page.isVisible("text=Verification required"));
 
+  // Claims guide and "How it's built" render from data/reference, not hand-copied text.
+  await page.goto(BASE + "/#claims");
+  assert.ok(await page.isVisible("text=After an Intent to File"));
+  assert.ok(await page.isVisible("text=38 CFR 3.155"));
+  assert.ok((await page.locator("table.lane .chip").count()) >= 3, "timeline windows must carry their unverified status");
+  assert.equal(await page.locator("table.lane >> text=Only with your approval").count(), 1);
+  await page.goto(BASE + "/#trust");
+  assert.ok(await page.isVisible("text=Four non-negotiables"));
+  assert.equal(await page.locator("table.lane tbody tr").count(), 22);
+
   await page.click("#help-btn");
   assert.ok(await page.isVisible("#help >> text=Veterans Crisis Line"));
   assert.ok(await page.isVisible("#help >> text=838255"));
+  assert.equal(await page.locator("#crisis li").count(), 6);
 
   const later = requests.slice(afterLoad).filter(u => !u.startsWith(BASE + "/#"));
   assert.deepEqual(later, [], "guest actions made network requests");

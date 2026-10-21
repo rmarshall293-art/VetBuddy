@@ -1,0 +1,67 @@
+{
+ "_meta": {
+  "note": "Source registry. tier: 1 statute/regulation, 2 agency, 3 official secondary, 4 research report, null = internal governance document. Being listed is not verification."
+ },
+ "sources": {
+  "src.cfr.38_4_25": {
+   "kind": "primary",
+   "origin": "https://www.law.cornell.edu/cfr/text/38/4.25",
+   "tier": 1,
+   "title": "38 CFR 4.25 — Combined ratings table (eCFR via LII)"
+  },
+  "src.dod.vgli_afb": {
+   "kind": "primary",
+   "origin": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Veterans-Group-Life-Insurance-(VGLI)",
+   "tier": 3,
+   "title": "myAirForceBenefits — Veterans Group Life Insurance (VGLI)"
+  },
+  "src.gov.governance_rules": {
+   "kind": "governance",
+   "origin": "upload: VetBuddy_Agent_Governance_Rules.pdf",
+   "tier": null,
+   "title": "VetBuddy Agent Governance Rules (20 Oct 2026)"
+  },
+  "src.gov.integrated_record": {
+   "kind": "governance",
+   "origin": "upload: VetBuddy_Integrated_Record-2.html",
+   "tier": null,
+   "title": "VetBuddy Integrated Record (20 Oct 2026)"
+  },
+  "src.gov.master_record": {
+   "kind": "governance",
+   "origin": "doc artifact 86ed77cc-b80a-4cbe-8651-30a663c026cf",
+   "tier": null,
+   "title": "VetBuddy Master Record (7 Oct 2026)"
+  },
+  "src.gov.service_architecture": {
+   "kind": "governance",
+   "origin": "upload: VetBuddy_Agent_Governance__Service_Architecture.pdf",
+   "tier": null,
+   "title": "VetBuddy Agent Governance & Service Architecture (7 Oct 2026)"
+  },
+  "src.rr.alabama_tap": {
+   "kind": "research_report",
+   "origin": "upload: Alabama_s_Transition_Assistance_Program_at_an_Inflection_Point_2025_Strategic_An.md",
+   "tier": 4,
+   "title": "Alabama's Transition Assistance Program at an Inflection Point (2025)"
+  },
+  "src.rr.transition_finances": {
+   "kind": "research_report",
+   "origin": "upload: Military-to-Civilian_Transition_Finances_A_Data-Driven_Roadmap_for_VetBuddy.md",
+   "tier": 4,
+   "title": "Military-to-Civilian Transition Finances: A Data-Driven Roadmap for VetBuddy"
+  },
+  "src.va.claim_status": {
+   "kind": "primary",
+   "origin": "https://www.va.gov/resources/what-your-claim-status-means/",
+   "tier": 2,
+   "title": "VA.gov — What your claim status means"
+  },
+  "src.va.find_rep": {
+   "kind": "primary",
+   "origin": "https://www.va.gov/get-help-from-accredited-representative/find-rep/",
+   "tier": 2,
+   "title": "VA.gov — Find a VA accredited representative or VSO"
+  }
+ }
+}

@@ -32,26 +32,18 @@ Single list of what is open. Update this file in the same commit that closes a g
 | C-06 | RLS on with no policy | **Closed** (migration 0006 guard + test) |
 | CB-03 | Foreclosed consent purposes storable | **Closed** (CHECK constraint, proven against owner) |
 
-## Agent rules R1–R22 / Tier 0 rules — status in this repo
+## Agent rules, Tier 0 rules, release gates
 
-No runtime agent exists, so rules about agent behavior hold only because the capability is absent.
+Their wording and their status in this repo are data: `data/reference/governance.json` (served at `/api/v1/reference/governance`, shown on the web app's "How it's built" page). Update `repo_status` there in the same commit that changes the code. No runtime agent exists, so rules about agent behavior hold only because the capability is absent.
 
-| Rule | Status here |
+## Reference data gaps (from the 21 Oct integration, see `docs/INTEGRATION_LEDGER.md`)
+
+| Gap | Status |
 |---|---|
-| R1 Says it is software, not VA/VSO/attorney/clinician | Disclosure on every brief, API header, footer |
-| R2 / T0-05 Engine decides, never a model | Router + rating kernel deterministic; no model |
-| R3 / T0-04 Never prepares/signs/submits a claim or ITF | No such path exists |
-| R4 Claims help free | No billing exists |
-| R5 Refer to accredited rep | Links VA's Find a Rep; VSO referral block in API |
-| R6 / T0-06 Citation for every fact | NOT_PRESENT (no source registry) |
-| R7 / T0-07 Unknown stays unknown | Missing date → stage `unknown` + task; Guard authority `unknown` → task |
-| R10 Numbers from engine only | Yes |
-| R11/I2 ContextPacket / Guardian | NOT_PRESENT |
-| R12 Acts only for signed-in person | Subject bound from token; cross-user → 404 |
-| R14 Never asks for SSN | Unknown fields → 422, tested |
-| R16 / T0-08 Crisis first | Crisis floor on every screen; no detector |
-| T0-01..03 No guarantee / rating / diagnosis language | Copy lint over all shipped strings (CI) |
-| T0-11 Purpose-scoped consent | `plan_storage` consent checked by RLS in-transaction |
+| 855-row reference corpus (women veterans, compensation, state benefits, Guard/Reserve, Alabama, statistics, education) | `SOURCE_NOT_AVAILABLE` — only sources, timeline, governance and 15 conflicts are in hand |
+| 12 transition windows | Loaded, all `UNVERIFIED`; shown as leads, never as personal deadlines (G1) |
+| 3 new crisis numbers | Need re-verification against official pages before release |
+| Per-reading sources for the 15 contested values | `SOURCE_NOT_AVAILABLE` |
 
 ## Next bounded slice (recommended)
 

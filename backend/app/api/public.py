@@ -10,6 +10,7 @@ from datetime import date
 
 from fastapi import APIRouter, Request
 
+from .. import reference
 from ..governance import language
 from ..kernel import crisis, ratings, router as kernel, vocab
 from ..kernel.jurisdictions import JURISDICTIONS
@@ -59,6 +60,23 @@ def policy_language():
     return {"version": language.LANGUAGE_VERSION, "ai_disclosure": language.AI_DISCLOSURE,
             "standard_disclaimer": language.STANDARD_DISCLAIMER, "vso_referral": language.VSO_REFERRAL,
             "find_rep_url": language.FIND_REP_URL}
+
+
+@router.get("/reference")
+def reference_index():
+    data = reference.load()
+    tl = data["transition_timeline"]
+    verified = sum(1 for w in tl["windows"] if w.get("status", tl["default_status"]) == "VERIFIED")
+    return {"datasets": {name: (data[name].get("_meta") or {}).get("note", "") for name in reference.DATASETS},
+            "verified_rows": verified,
+            "notice": "Reference material for explanation. Nothing here is a determination; unverified rows are leads."}
+
+
+@router.get("/reference/{dataset}")
+def reference_dataset(dataset: str):
+    if dataset not in reference.DATASETS:
+        raise ApiError(404, "NOT_FOUND", "Not found.")
+    return reference.load()[dataset]
 
 
 @router.post("/mission-router/evaluate")

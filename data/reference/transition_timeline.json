@@ -1,0 +1,141 @@
+{
+ "default_status": "UNVERIFIED",
+ "use_rule": "Reference for the Mission Router and explainer copy. Windows marked statutory_window are deadlines that would bind a veteran, so they may only reach a user as a deadline after a named reviewer verifies them against the cited authority (deadlines must cite a source: CHECK statutory_deadline_cites_source in the v2.0 schema). Task copy in task_library.py stays free of amounts and deadlines (content-safety lint).",
+ "windows": [
+  {
+   "anchor": "separation",
+   "id": "tl.tap_start",
+   "item": "Begin TAP (pre-separation counseling) no later than 365 days before separation.",
+   "kind": "statutory_window",
+   "offset": "-365 days or earlier",
+   "sources": [
+    "src.rr.alabama_tap"
+   ],
+   "verify_against": "10 U.S.C. 1142; DoDI 1332.35"
+  },
+  {
+   "anchor": "separation",
+   "id": "tl.tap_capstone",
+   "item": "TAP Capstone verification at least 90 days before separation.",
+   "kind": "statutory_window",
+   "offset": "-90 days or earlier",
+   "sources": [
+    "src.rr.alabama_tap"
+   ],
+   "verify_against": "DoDI 1332.35"
+  },
+  {
+   "anchor": "separation",
+   "id": "tl.bdd",
+   "item": "Benefits Delivery at Discharge (pre-discharge VA claim) window.",
+   "kind": "program_window",
+   "offset": "-180 to -90 days",
+   "sources": [
+    "src.gov.service_architecture",
+    "src.rr.transition_finances"
+   ],
+   "verify_against": "VA BDD program page"
+  },
+  {
+   "anchor": "separation",
+   "id": "tl.sgli_extension",
+   "item": "SGLI coverage continues at no cost for 120 days after separation.",
+   "kind": "statutory_window",
+   "offset": "+120 days",
+   "sources": [
+    "src.rr.transition_finances"
+   ],
+   "verify_against": "38 U.S.C. 1968; VA SGLI page"
+  },
+  {
+   "anchor": "separation",
+   "id": "tl.vgli_no_underwriting",
+   "item": "Convert SGLI to VGLI within 240 days without medical underwriting.",
+   "kind": "statutory_window",
+   "offset": "+240 days",
+   "sources": [
+    "src.dod.vgli_afb",
+    "src.rr.transition_finances"
+   ],
+   "verify_against": "38 U.S.C. 1977; VA VGLI page"
+  },
+  {
+   "anchor": "separation",
+   "id": "tl.military_onesource",
+   "item": "Military OneSource remains available for 365 days after separation (modelled as an expiring right in Next Best Action band 2).",
+   "kind": "program_window",
+   "offset": "+365 days",
+   "sources": [
+    "src.gov.master_record"
+   ],
+   "verify_against": "Military OneSource eligibility page"
+  },
+  {
+   "anchor": "retirement",
+   "id": "tl.sbp_election",
+   "item": "Survivor Benefit Plan election.",
+   "kind": "program_window",
+   "offset": "election at retirement; irrevocable after the one-year window",
+   "sources": [
+    "src.rr.transition_finances"
+   ],
+   "verify_against": "DFAS SBP pages"
+  },
+  {
+   "anchor": "career",
+   "id": "tl.leave_sellback",
+   "item": "Leave sell-back limited to 60 days over a career.",
+   "kind": "limit",
+   "offset": "lifetime",
+   "sources": [
+    "src.rr.transition_finances"
+   ],
+   "verify_against": "37 U.S.C. 501"
+  },
+  {
+   "anchor": "intent_to_file",
+   "id": "tl.itf",
+   "item": "An Intent to File preserves the effective date for one year (the platform tracks the expiry; it never files).",
+   "kind": "statutory_window",
+   "offset": "+1 year",
+   "sources": [
+    "src.gov.master_record",
+    "src.gov.service_architecture"
+   ],
+   "verify_against": "38 CFR 3.155"
+  },
+  {
+   "anchor": "separation",
+   "id": "tl.vgli_apply",
+   "item": "Last day to apply for VGLI after separation (proof of good health is needed after day 240).",
+   "kind": "statutory_window",
+   "offset": "+1 year 120 days",
+   "sources": [
+    "src.dod.vgli_afb"
+   ],
+   "verify_against": "38 U.S.C. 1977; VA VGLI page"
+  },
+  {
+   "anchor": "separation",
+   "id": "tl.effective_date_separation",
+   "item": "A disability claim received within 1 year of separation can take the day after separation as its effective date.",
+   "kind": "statutory_window",
+   "offset": "+1 year",
+   "sources": [
+    "src.gov.service_architecture"
+   ],
+   "verify_against": "38 CFR 3.400(b)(2)"
+  },
+  {
+   "anchor": "decision_letter",
+   "id": "tl.decision_review",
+   "item": "Request a Higher-Level Review or Board Appeal within 1 year of the decision letter; a Supplemental Claim filed within 1 year keeps the original effective date.",
+   "kind": "statutory_window",
+   "offset": "+1 year",
+   "sources": [
+    "src.gov.service_architecture"
+   ],
+   "verify_against": "38 CFR 3.2500; VA decision review pages"
+  }
+ ]
+}

@@ -24,6 +24,7 @@ As of 20 Oct 2026, branch `claude/dazzling-clarke-59kw1x`. Observed facts first,
 | CLAUDE.md (project rules) | Available → `/CLAUDE.md` |
 | Agent Governance Rules (PDF, 13 pp) | Available → summarized with enforcement status in `docs/GAP_MATRIX.md` |
 | Build Reference (HTML) | Available. Describes an earlier build (47 tests, 10 migrations). **That code was not in this repo**; this change rebuilds the equivalent slice and re-proves it. |
+| Guest app v2–v4, Integrated Record (21 Oct) | Integrated; see `docs/INTEGRATION_LEDGER.md` |
 | `vetbuddy.html` guest app | Available. Its browser kernel and data were ported into `frontend/` unchanged (generated data verified byte-for-byte equal after re-generation from Python). |
 | Base44 application export (source, entities, data) | `SOURCE_NOT_AVAILABLE` |
 | Earlier code archives, 737-code VA rating dataset | `SOURCE_NOT_AVAILABLE` |
@@ -51,15 +52,16 @@ Labels: `IMPLEMENTED_VERIFIED` = code + passing automated test; `MOCK`; `PARTIAL
 | Transactional outbox | PARTIAL | Rows written in-transaction; **no dispatcher** (G19) |
 | Sign-in | MOCK | HMAC dev tokens, 10-min TTL, refused in staging/production; one swap point (`auth.verify_token`) |
 | ClaimsBoundaryGuard (prohibited-phrase list, governance §7) | PARTIAL | Lints all shipped copy in CI; weak on negation; not yet applied to model output (no model exists) |
-| Crisis floor (hard-coded contacts, every screen, no network) | IMPLEMENTED_VERIFIED (UI) / NOT_PRESENT (detector) | browser test opens it; no free-text crisis detector yet (no free-text input exists) |
+| Reference data (`data/reference`: governance, sources, timeline, conflicts), validated at load, served read-only at `/api/v1/reference/*`, generated into the browser | IMPLEMENTED_VERIFIED (content UNVERIFIED) | `test_reference.py`; guest e2e checks claims guide and rules render from it |
+| Crisis floor (6 hard-coded contacts, every screen, no network) | IMPLEMENTED_VERIFIED (UI) / NOT_PRESENT (detector) | browser test opens it; no free-text crisis detector yet (no free-text input exists) |
 | Benefit eligibility engine, source registry, rule packs | NOT_PRESENT / BLOCKED_SOURCE | G1: no human-verified rule |
 | Agents, model gateway, ContextPackets, Trust Kernel PDP/PEP | NOT_PRESENT | Blocked on model-provider contract (G21/G23) |
 | Documents, claims tracker, referrals, CRM, community, education, career | NOT_PRESENT / DEFERRED | See `MIGRATION_MAP.md` |
 
-## 4. Commands and results (this execution)
+## 4. Commands and results (latest run, 21 Oct 2026, after integrating guest app v3/v4 and the Integrated Record)
 
 ```
-cd backend && pytest                          -> 135 passed (PostgreSQL 16.15, real non-owner role)
+cd backend && pytest                          -> 150 passed (PostgreSQL 16.15, real non-owner role)
 cd frontend && npm test                       -> 41 passed (browser/server parity)
 cd frontend && npm run build                  -> OK (vite 8.3.4)
 cd frontend && npm run test:e2e               -> guest: 1 passed; full stack (with running API): 2 passed

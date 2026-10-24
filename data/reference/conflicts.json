@@ -1,0 +1,160 @@
+{
+ "_meta": {
+  "note": "Contested readings carried as data so they are shown as contested, never silently resolved. The per-reading sources were not in hand (SOURCE_NOT_AVAILABLE); only the subject and readings are integrated. 15 of the record's 23 rows were rendered in it; 8 are missing. Rows added 21 Oct 2026 carry their own sources.",
+  "sources": [
+   "src.gov.integrated_record",
+   "src.upload.va_claims_data",
+   "src.upload.va_rating_app"
+  ]
+ },
+ "conflicts": [
+  {
+   "readings": [
+    "303,253",
+    "334,000",
+    "377,310"
+   ],
+   "status": "CONTESTED",
+   "subject": "Alabama veteran population"
+  },
+  {
+   "readings": [
+    "20,334",
+    "23,000+"
+   ],
+   "status": "CONTESTED",
+   "subject": "Alabama all-program VA education beneficiaries, FY2023"
+  },
+  {
+   "readings": [
+    "$575",
+    "~$300"
+   ],
+   "status": "CONTESTED",
+   "subject": "ADVA budget per veteran"
+  },
+  {
+   "readings": [
+    "$1,759.19",
+    "$1,759.05"
+   ],
+   "status": "CONTESTED",
+   "subject": "VA compensation, 70%, veteran alone, effective 2024-12-01"
+  },
+  {
+   "readings": [
+    "Gen-3 client: E-8 '18yr' = 6739, E-9 '20yr' = 7448, O-3 '6yr' = 7113",
+    "Finance report table: E-8 over 18 = 6562 (6739 is over 20); E-9 over 18 = 7448; O-3 over 4 = 7113 (over 6 = 7454)"
+   ],
+   "status": "CONTESTED",
+   "subject": "FY2025 base pay longevity gates in the legacy client"
+  },
+  {
+   "readings": [
+    "23 clinics in 22 states + DC (23 listed)",
+    "22 clinics",
+    "22 clinics / 21 states (older CVN materials, cited by the report)"
+   ],
+   "status": "CONTESTED",
+   "subject": "Cohen Veterans Network clinic count"
+  },
+  {
+   "readings": [
+    "15 states + DC (stated)",
+    "16 states + DC (listed)"
+   ],
+   "status": "CONTESTED",
+   "subject": "Headstrong Project coverage"
+  },
+  {
+   "readings": [
+    "25 or younger on the first day of the term",
+    "under 21"
+   ],
+   "status": "CONTESTED",
+   "subject": "Hazlewood Legacy Act child age ceiling"
+  },
+  {
+   "readings": [
+    "50 credit hours",
+    "150 credit hours"
+   ],
+   "status": "CONTESTED",
+   "subject": "Hazlewood hours for dependents of members who died, are MIA or totally disabled"
+  },
+  {
+   "readings": [
+    "any service-connected rating",
+    "10% or more"
+   ],
+   "status": "CONTESTED",
+   "subject": "Florida $5,000 disabled-veteran property deduction threshold"
+  },
+  {
+   "readings": [
+    "50%+ rating: free hunting and fishing",
+    "100% rating: free five-year hunting and fishing license (other sources give different thresholds)"
+   ],
+   "status": "CONTESTED",
+   "subject": "Florida free hunting, fishing and park access rating thresholds"
+  },
+  {
+   "readings": [
+    "38 of 51 including the 9 with no income tax",
+    "approximately 28 income-tax states",
+    "30 states named in the report's own full-exemption list"
+   ],
+   "status": "CONTESTED",
+   "subject": "How many jurisdictions fully exempt military retirement (TY2025)"
+  },
+  {
+   "readings": [
+    "full exemption (with income limits, recent legislation)",
+    "up to $30,000 exemption"
+   ],
+   "status": "CONTESTED",
+   "subject": "New Mexico military retirement exemption"
+  },
+  {
+   "readings": [
+    "$400 per credit hour (HB284, effective 2024-07-31)",
+    "unretrieved: cap form unknown (dollar, rate, credit-hour or semester limit)"
+   ],
+   "status": "CONTESTED",
+   "subject": "Alabama G.I. Dependents' Scholarship award cap (Education Navigator oq.al.31-6.award_cap)"
+  },
+  {
+   "readings": [
+    "One config file every surface reads (VetBuddy config/crisis_floor.yaml)",
+    "Four independent copies so a dead API or DB still shows a hotline (Women Veterans module)"
+   ],
+   "status": "RESOLVED_BY_DESIGN",
+   "subject": "Crisis contacts: one source of truth vs deliberate redundancy"
+  },
+  {
+   "readings": [
+    "$1,759.05 (va_claims_data.json)",
+    "$1,759.19 (implied by va-rating-app.html: its 2026 rate $1,808.45 / 1.028)"
+   ],
+   "sources": [
+    "src.upload.va_claims_data",
+    "src.upload.va_rating_app"
+   ],
+   "status": "CONTESTED",
+   "subject": "VA compensation, 70%, veteran alone, effective 2024-12-01 (new evidence)",
+   "verify_against": "VA.gov compensation rate tables (2025)"
+  },
+  {
+   "readings": [
+    "$1,435.01 (va-rating-app.html summary table)",
+    "$1,435.02 (va-rating-app.html dependents table)"
+   ],
+   "sources": [
+    "src.upload.va_rating_app"
+   ],
+   "status": "CONTESTED",
+   "subject": "VA compensation, 60%, veteran alone, effective 2025-12-01",
+   "verify_against": "VA.gov compensation rate tables (2026)"
+  }
+ ]
+}

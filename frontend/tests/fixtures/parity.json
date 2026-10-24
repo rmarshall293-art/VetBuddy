@@ -1,0 +1,3131 @@
+{
+ "bilateral": [
+  {
+   "bilateral": [
+    30,
+    10
+   ],
+   "expected": {
+    "bilateral": {
+     "citation": "38 CFR 4.26",
+     "combined_value": 37,
+     "factor_tenths": 37,
+     "ratings": [
+      30,
+      10
+     ],
+     "steps": [
+      30,
+      37
+     ],
+     "value_with_factor": 41
+    },
+    "bilateral_factor_applied": true,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 40,
+    "combined_value": 41,
+    "ratings": [
+     41
+    ],
+    "steps": [
+     41
+    ]
+   },
+   "ratings": []
+  },
+  {
+   "bilateral": [
+    40,
+    20
+   ],
+   "expected": {
+    "bilateral": {
+     "citation": "38 CFR 4.26",
+     "combined_value": 52,
+     "factor_tenths": 52,
+     "ratings": [
+      40,
+      20
+     ],
+     "steps": [
+      40,
+      52
+     ],
+     "value_with_factor": 57
+    },
+    "bilateral_factor_applied": true,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 60,
+    "combined_value": 57,
+    "ratings": [
+     57
+    ],
+    "steps": [
+     57
+    ]
+   },
+   "ratings": []
+  },
+  {
+   "bilateral": [
+    30,
+    20
+   ],
+   "expected": {
+    "bilateral": {
+     "citation": "38 CFR 4.26",
+     "combined_value": 44,
+     "factor_tenths": 44,
+     "ratings": [
+      30,
+      20
+     ],
+     "steps": [
+      30,
+      44
+     ],
+     "value_with_factor": 48
+    },
+    "bilateral_factor_applied": true,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 70,
+    "combined_value": 74,
+    "ratings": [
+     50,
+     48
+    ],
+    "steps": [
+     50,
+     74
+    ]
+   },
+   "ratings": [
+    50
+   ]
+  },
+  {
+   "bilateral": [
+    20,
+    20
+   ],
+   "expected": {
+    "bilateral": {
+     "citation": "38 CFR 4.26",
+     "combined_value": 36,
+     "factor_tenths": 36,
+     "ratings": [
+      20,
+      20
+     ],
+     "steps": [
+      20,
+      36
+     ],
+     "value_with_factor": 40
+    },
+    "bilateral_factor_applied": true,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 80,
+    "combined_value": 78,
+    "ratings": [
+     60,
+     40,
+     10
+    ],
+    "steps": [
+     60,
+     76,
+     78
+    ]
+   },
+   "ratings": [
+    60,
+    10
+   ]
+  },
+  {
+   "bilateral": [
+    50,
+    50,
+    10,
+    10
+   ],
+   "expected": {
+    "bilateral": {
+     "citation": "38 CFR 4.26",
+     "combined_value": 80,
+     "factor_tenths": 80,
+     "ratings": [
+      50,
+      50,
+      10,
+      10
+     ],
+     "steps": [
+      50,
+      75,
+      78,
+      80
+     ],
+     "value_with_factor": 88
+    },
+    "bilateral_factor_applied": true,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 100,
+    "combined_value": 96,
+    "ratings": [
+     88,
+     70
+    ],
+    "steps": [
+     88,
+     96
+    ]
+   },
+   "ratings": [
+    70
+   ]
+  },
+  {
+   "bilateral": [
+    10,
+    10
+   ],
+   "expected": {
+    "bilateral": {
+     "citation": "38 CFR 4.26",
+     "combined_value": 19,
+     "factor_tenths": 19,
+     "ratings": [
+      10,
+      10
+     ],
+     "steps": [
+      10,
+      19
+     ],
+     "value_with_factor": 21
+    },
+    "bilateral_factor_applied": true,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 40,
+    "combined_value": 36,
+    "ratings": [
+     21,
+     10,
+     10
+    ],
+    "steps": [
+     21,
+     29,
+     36
+    ]
+   },
+   "ratings": [
+    10,
+    10
+   ]
+  },
+  {
+   "bilateral": [
+    60,
+    40
+   ],
+   "expected": {
+    "bilateral": {
+     "citation": "38 CFR 4.26",
+     "combined_value": 76,
+     "factor_tenths": 76,
+     "ratings": [
+      60,
+      40
+     ],
+     "steps": [
+      60,
+      76
+     ],
+     "value_with_factor": 84
+    },
+    "bilateral_factor_applied": true,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 100,
+    "combined_value": 99,
+    "ratings": [
+     90,
+     84,
+     30
+    ],
+    "steps": [
+     90,
+     98,
+     99
+    ]
+   },
+   "ratings": [
+    90,
+    30
+   ]
+  },
+  {
+   "bilateral": [
+    0,
+    10
+   ],
+   "expected": {
+    "bilateral": {
+     "citation": "38 CFR 4.26",
+     "combined_value": 10,
+     "factor_tenths": 10,
+     "ratings": [
+      10,
+      0
+     ],
+     "steps": [
+      10,
+      10
+     ],
+     "value_with_factor": 11
+    },
+    "bilateral_factor_applied": true,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 10,
+    "combined_value": 11,
+    "ratings": [
+     11,
+     0
+    ],
+    "steps": [
+     11,
+     11
+    ]
+   },
+   "ratings": [
+    0
+   ]
+  },
+  {
+   "bilateral": [
+    40,
+    30,
+    20,
+    10
+   ],
+   "expected": {
+    "bilateral": {
+     "citation": "38 CFR 4.26",
+     "combined_value": 69,
+     "factor_tenths": 69,
+     "ratings": [
+      40,
+      30,
+      20,
+      10
+     ],
+     "steps": [
+      40,
+      58,
+      66,
+      69
+     ],
+     "value_with_factor": 76
+    },
+    "bilateral_factor_applied": true,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 80,
+    "combined_value": 76,
+    "ratings": [
+     76
+    ],
+    "steps": [
+     76
+    ]
+   },
+   "ratings": []
+  },
+  {
+   "bilateral": [
+    50,
+    50
+   ],
+   "expected": {
+    "bilateral": {
+     "citation": "38 CFR 4.26",
+     "combined_value": 75,
+     "factor_tenths": 75,
+     "ratings": [
+      50,
+      50
+     ],
+     "steps": [
+      50,
+      75
+     ],
+     "value_with_factor": 83
+    },
+    "bilateral_factor_applied": true,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 100,
+    "combined_value": 100,
+    "ratings": [
+     100,
+     83
+    ],
+    "steps": [
+     100,
+     100
+    ]
+   },
+   "ratings": [
+    100
+   ]
+  }
+ ],
+ "ratings": [
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 70,
+    "combined_value": 65,
+    "ratings": [
+     50,
+     30
+    ],
+    "steps": [
+     50,
+     65
+    ]
+   },
+   "input": [
+    50,
+    30
+   ]
+  },
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 50,
+    "combined_value": 52,
+    "ratings": [
+     40,
+     20
+    ],
+    "steps": [
+     40,
+     52
+    ]
+   },
+   "input": [
+    40,
+    20
+   ]
+  },
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 80,
+    "combined_value": 81,
+    "ratings": [
+     60,
+     40,
+     20
+    ],
+    "steps": [
+     60,
+     76,
+     81
+    ]
+   },
+   "input": [
+    60,
+    40,
+    20
+   ]
+  },
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 10,
+    "combined_value": 10,
+    "ratings": [
+     10
+    ],
+    "steps": [
+     10
+    ]
+   },
+   "input": [
+    10
+   ]
+  },
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 0,
+    "combined_value": 0,
+    "ratings": [
+     0
+    ],
+    "steps": [
+     0
+    ]
+   },
+   "input": [
+    0
+   ]
+  },
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 100,
+    "combined_value": 100,
+    "ratings": [
+     100,
+     10
+    ],
+    "steps": [
+     100,
+     100
+    ]
+   },
+   "input": [
+    100,
+    10
+   ]
+  },
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 100,
+    "combined_value": 100,
+    "ratings": [
+     90,
+     90,
+     90,
+     90
+    ],
+    "steps": [
+     90,
+     99,
+     100,
+     100
+    ]
+   },
+   "input": [
+    90,
+    90,
+    90,
+    90
+   ]
+  },
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 50,
+    "combined_value": 50,
+    "ratings": [
+     30,
+     20,
+     10
+    ],
+    "steps": [
+     30,
+     44,
+     50
+    ]
+   },
+   "input": [
+    30,
+    20,
+    10
+   ]
+  },
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 90,
+    "combined_value": 85,
+    "ratings": [
+     70,
+     50
+    ],
+    "steps": [
+     70,
+     85
+    ]
+   },
+   "input": [
+    70,
+    50
+   ]
+  },
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 50,
+    "combined_value": 47,
+    "ratings": [
+     10,
+     10,
+     10,
+     10,
+     10,
+     10
+    ],
+    "steps": [
+     10,
+     19,
+     27,
+     34,
+     41,
+     47
+    ]
+   },
+   "input": [
+    10,
+    10,
+    10,
+    10,
+    10,
+    10
+   ]
+  },
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 90,
+    "combined_value": 90,
+    "ratings": [
+     80,
+     30,
+     20,
+     10
+    ],
+    "steps": [
+     80,
+     86,
+     89,
+     90
+    ]
+   },
+   "input": [
+    80,
+    30,
+    20,
+    10
+   ]
+  },
+  {
+   "expected": {
+    "bilateral_factor_applied": false,
+    "citation": "38 CFR 4.25",
+    "combined_rating": 80,
+    "combined_value": 81,
+    "ratings": [
+     60,
+     40,
+     20
+    ],
+    "steps": [
+     60,
+     76,
+     81
+    ]
+   },
+   "input": [
+    20,
+    60,
+    40
+   ]
+  }
+ ],
+ "router": [
+  {
+   "expected": {
+    "days_to_separation": 800,
+    "input_hash": "afa0bbe721677059612c1045c62f750975861e36924c7d8118001fb44936df66",
+    "lanes": [
+     "benefits",
+     "career",
+     "healthcare_coverage",
+     "housing_stability",
+     "state_local"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "in_service",
+    "stage_label": "In-service readiness (more than 24 months out)",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your installation TAP office",
+      "dimension": "career",
+      "lane": "career",
+      "priority": 1,
+      "template_id": "TAP-01",
+      "title": "Contact your installation's Transition Assistance Program (TAP) office",
+      "why": "Ask which transition counseling and workshops apply to you and when to start them."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     }
+    ],
+    "track": "pcs"
+   },
+   "input": {
+    "branch": "Army",
+    "component": "active_duty",
+    "current_jurisdiction": "AL",
+    "destination_jurisdiction": "AK",
+    "goals": [],
+    "legal_authority": null,
+    "persona": "service_member",
+    "separation_date": "2028-12-28",
+    "urgency": "immediate"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 400,
+    "input_hash": "bff2f3d1b5498806ea86ec326bd9a23859f681cb835ab49a2474c999a116e302",
+    "lanes": [
+     "benefits",
+     "guard_reserve",
+     "career",
+     "healthcare_coverage"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     },
+     {
+      "code": "AUTHORITY_UNKNOWN",
+      "message": "Guard/Reserve authority is unknown. Nothing has been assumed about Title 10 or Title 32 service."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_24_12m",
+    "stage_label": "24 to 12 months before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "the citation block on your orders, or your unit administrator",
+      "dimension": "documents",
+      "lane": "guard_reserve",
+      "priority": 1,
+      "template_id": "GR-AUTH",
+      "title": "Find the legal authority printed on your orders (Title 10, Title 32, or State Active Duty)",
+      "why": "For Guard and Reserve members, what you may qualify for follows the authority cited on your orders, not the mission. You marked it as unknown, so nothing is assumed."
+     },
+     {
+      "confirm_with": "your installation TAP office",
+      "dimension": "career",
+      "lane": "career",
+      "priority": 1,
+      "template_id": "TAP-01",
+      "title": "Contact your installation's Transition Assistance Program (TAP) office",
+      "why": "Ask which transition counseling and workshops apply to you and when to start them."
+     },
+     {
+      "confirm_with": "your state's veterans affairs agency",
+      "dimension": "benefits",
+      "lane": "benefits",
+      "priority": 2,
+      "template_id": "BEN-01",
+      "title": "Contact your state veterans affairs office about state benefits",
+      "why": "VetBuddy has not yet verified any state's benefit rules against primary sources, so it will not show you benefit matches. The state office is the authoritative source."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "guard_reserve",
+      "priority": 2,
+      "template_id": "GR-RECORD",
+      "title": "Keep a running list of every set of orders: authority, start date and end date",
+      "why": "Guard and Reserve benefits often depend on cumulative time under specific authorities. A complete list prevents under-counting later."
+     }
+    ],
+    "track": "guard_reserve"
+   },
+   "input": {
+    "branch": "Navy",
+    "component": "national_guard",
+    "current_jurisdiction": "AR",
+    "destination_jurisdiction": null,
+    "goals": [
+     "benefits"
+    ],
+    "legal_authority": "unknown",
+    "persona": "guard_reserve",
+    "separation_date": "2027-11-24",
+    "urgency": "7_days"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 200,
+    "input_hash": "9fedfe3f008605d6c75aaafa5c2b6092ca34844db7b569d5b533434eacde4d1e",
+    "lanes": [
+     "claims_evidence",
+     "housing_stability",
+     "benefits",
+     "career",
+     "healthcare_coverage",
+     "guard_reserve"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_12_6m",
+    "stage_label": "12 to 6 months before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your installation TAP office",
+      "dimension": "career",
+      "lane": "career",
+      "priority": 1,
+      "template_id": "TAP-01",
+      "title": "Contact your installation's Transition Assistance Program (TAP) office",
+      "why": "Ask which transition counseling and workshops apply to you and when to start them."
+     },
+     {
+      "confirm_with": "VA's accreditation search for a representative",
+      "dimension": "claims_evidence",
+      "lane": "claims_evidence",
+      "priority": 2,
+      "template_id": "CLM-01",
+      "title": "Before filing a VA disability claim, talk with an accredited representative",
+      "why": "Accredited Veterans Service Organization representatives, attorneys and claims agents can help with a claim. VetBuddy is not a representative and does not file claims."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "guard_reserve",
+      "priority": 2,
+      "template_id": "GR-RECORD",
+      "title": "Keep a running list of every set of orders: authority, start date and end date",
+      "why": "Guard and Reserve benefits often depend on cumulative time under specific authorities. A complete list prevents under-counting later."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-02",
+      "title": "Write down your housing plan for the first 90 days after separation",
+      "why": "You chose housing as a goal. A written plan makes gaps visible before they become urgent."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "claims_evidence",
+      "lane": "claims_evidence",
+      "priority": 3,
+      "template_id": "CLM-02",
+      "title": "Start a private list of health conditions and the dates and places they began",
+      "why": "A dated personal record makes it easier to talk with a representative later. Keep it yourself \u2014 VetBuddy does not store health details in this version."
+     }
+    ],
+    "track": "guard_reserve"
+   },
+   "input": {
+    "branch": "Marine Corps",
+    "component": "reserve",
+    "current_jurisdiction": "CT",
+    "destination_jurisdiction": null,
+    "goals": [
+     "claims",
+     "housing"
+    ],
+    "legal_authority": "title_10",
+    "persona": "guard_reserve",
+    "separation_date": "2027-05-08",
+    "urgency": "30_days"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 120,
+    "input_hash": "5ee387a978c776e58a6e8c94f7a15b4a4e22aecfa8ca4164b654b5a08d66f252",
+    "lanes": [
+     "career",
+     "education",
+     "benefits",
+     "healthcare_coverage",
+     "housing_stability",
+     "state_local"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_180_90d",
+    "stage_label": "180 to 90 days before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 2,
+      "template_id": "CAR-01",
+      "title": "Write down your military occupation code and the duties you actually performed",
+      "why": "This is the raw material for translating your experience into civilian job titles and a resume."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": "your branch's transcript service",
+      "dimension": "education",
+      "lane": "education",
+      "priority": 2,
+      "template_id": "EDU-01",
+      "title": "Request your military training transcript (for example JST or CCAF)",
+      "why": "Schools use it to evaluate credit for military training."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 3,
+      "template_id": "CAR-02",
+      "title": "Pick two or three civilian job titles you want to explore",
+      "why": "A target keeps the resume and job search focused."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "education",
+      "lane": "education",
+      "priority": 3,
+      "template_id": "EDU-02",
+      "title": "Write down the programs or schools you are considering",
+      "why": "Education benefit rules depend on the specific program and school. A short list lets you confirm the right ones."
+     }
+    ],
+    "track": "retirement"
+   },
+   "input": {
+    "branch": "Air Force",
+    "component": "retired",
+    "current_jurisdiction": "GA",
+    "destination_jurisdiction": "HI",
+    "goals": [
+     "education",
+     "career"
+    ],
+    "legal_authority": null,
+    "persona": "veteran",
+    "separation_date": "2027-02-17",
+    "urgency": "90_days"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 60,
+    "input_hash": "40f84e19d7ddeb792592f1bc7bc425326dce1e47cdebf2118a121c6934dd113b",
+    "lanes": [
+     "benefits",
+     "career",
+     "claims_evidence",
+     "recreation_community",
+     "education",
+     "family_caregiver_survivor",
+     "financial",
+     "housing_stability",
+     "healthcare_coverage",
+     "guard_reserve"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_90_30d",
+    "stage_label": "90 to 30 days before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your state's veterans affairs agency",
+      "dimension": "benefits",
+      "lane": "benefits",
+      "priority": 2,
+      "template_id": "BEN-01",
+      "title": "Contact your state veterans affairs office about state benefits",
+      "why": "VetBuddy has not yet verified any state's benefit rules against primary sources, so it will not show you benefit matches. The state office is the authoritative source."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 2,
+      "template_id": "CAR-01",
+      "title": "Write down your military occupation code and the duties you actually performed",
+      "why": "This is the raw material for translating your experience into civilian job titles and a resume."
+     },
+     {
+      "confirm_with": "VA's accreditation search for a representative",
+      "dimension": "claims_evidence",
+      "lane": "claims_evidence",
+      "priority": 2,
+      "template_id": "CLM-01",
+      "title": "Before filing a VA disability claim, talk with an accredited representative",
+      "why": "Accredited Veterans Service Organization representatives, attorneys and claims agents can help with a claim. VetBuddy is not a representative and does not file claims."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": "your branch's transcript service",
+      "dimension": "education",
+      "lane": "education",
+      "priority": 2,
+      "template_id": "EDU-01",
+      "title": "Request your military training transcript (for example JST or CCAF)",
+      "why": "Schools use it to evaluate credit for military training."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "financial",
+      "lane": "financial",
+      "priority": 2,
+      "template_id": "FIN-01",
+      "title": "Build a transition budget that compares your pay and allowances now with expected income after",
+      "why": "Pay, allowances and tax treatment can change at separation. A side-by-side budget shows the gap early."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-02",
+      "title": "Write down your housing plan for the first 90 days after separation",
+      "why": "You chose housing as a goal. A written plan makes gaps visible before they become urgent."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 3,
+      "template_id": "CAR-02",
+      "title": "Pick two or three civilian job titles you want to explore",
+      "why": "A target keeps the resume and job search focused."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "claims_evidence",
+      "lane": "claims_evidence",
+      "priority": 3,
+      "template_id": "CLM-02",
+      "title": "Start a private list of health conditions and the dates and places they began",
+      "why": "A dated personal record makes it easier to talk with a representative later. Keep it yourself \u2014 VetBuddy does not store health details in this version."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "community",
+      "lane": "recreation_community",
+      "priority": 3,
+      "template_id": "COM-01",
+      "title": "Identify one veteran or transition community near you to connect with",
+      "why": "You chose community as a goal. This is optional and private \u2014 VetBuddy does not post or share anything for you."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "education",
+      "lane": "education",
+      "priority": 3,
+      "template_id": "EDU-02",
+      "title": "Write down the programs or schools you are considering",
+      "why": "Education benefit rules depend on the specific program and school. A short list lets you confirm the right ones."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "family",
+      "lane": "family_caregiver_survivor",
+      "priority": 3,
+      "template_id": "FAM-01",
+      "title": "Talk with your household about the plan and who needs copies of which documents",
+      "why": "Family members often need to act on your behalf. Decide together; VetBuddy never shares records automatically."
+     }
+    ],
+    "track": "guard_reserve"
+   },
+   "input": {
+    "branch": "Space Force",
+    "component": "retired_reserve_gray_area",
+    "current_jurisdiction": "IL",
+    "destination_jurisdiction": null,
+    "goals": [
+     "benefits",
+     "claims",
+     "education",
+     "career",
+     "financial",
+     "housing",
+     "family",
+     "community"
+    ],
+    "legal_authority": null,
+    "persona": "guard_reserve",
+    "separation_date": "2026-12-19",
+    "urgency": "long_term"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 10,
+    "input_hash": "22c0a0a4f30e5ca16eabc7d1bdcd6f60c72d1a202f7bee90a944dbb103954c9b",
+    "lanes": [
+     "recreation_community",
+     "family_caregiver_survivor",
+     "financial",
+     "benefits",
+     "healthcare_coverage"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_30d_sep",
+    "stage_label": "Final 30 days before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "financial",
+      "lane": "financial",
+      "priority": 2,
+      "template_id": "FIN-01",
+      "title": "Build a transition budget that compares your pay and allowances now with expected income after",
+      "why": "Pay, allowances and tax treatment can change at separation. A side-by-side budget shows the gap early."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "community",
+      "lane": "recreation_community",
+      "priority": 3,
+      "template_id": "COM-01",
+      "title": "Identify one veteran or transition community near you to connect with",
+      "why": "You chose community as a goal. This is optional and private \u2014 VetBuddy does not post or share anything for you."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "family",
+      "lane": "family_caregiver_survivor",
+      "priority": 3,
+      "template_id": "FAM-01",
+      "title": "Talk with your household about the plan and who needs copies of which documents",
+      "why": "Family members often need to act on your behalf. Decide together; VetBuddy never shares records automatically."
+     }
+    ],
+    "track": "re_entry"
+   },
+   "input": {
+    "branch": "Coast Guard",
+    "component": "separated",
+    "current_jurisdiction": "KS",
+    "destination_jurisdiction": null,
+    "goals": [
+     "family",
+     "financial",
+     "community"
+    ],
+    "legal_authority": null,
+    "persona": "veteran",
+    "separation_date": "2026-10-30",
+    "urgency": "info_only"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 0,
+    "input_hash": "7f82b910b72b1559bc878d6942f70d47032a4e297e8cab68b15d737e061cd923",
+    "lanes": [
+     "benefits",
+     "claims_evidence",
+     "healthcare_coverage",
+     "housing_stability",
+     "state_local"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_30d_sep",
+    "stage_label": "Final 30 days before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your IDES / MEB point of contact",
+      "dimension": "claims_evidence",
+      "lane": "claims_evidence",
+      "priority": 1,
+      "template_id": "MED-01",
+      "title": "Ask your IDES / MEB point of contact which documents you should gather now",
+      "why": "Medical separation runs on its own process and timeline. The point of contact assigned to you is the authoritative source for what it needs."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     }
+    ],
+    "track": "medical_separation"
+   },
+   "input": {
+    "branch": "Army",
+    "component": "medically_separated",
+    "current_jurisdiction": "ME",
+    "destination_jurisdiction": "MD",
+    "goals": [],
+    "legal_authority": null,
+    "persona": "veteran",
+    "separation_date": "2026-10-20",
+    "urgency": "immediate"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": -1,
+    "input_hash": "a427754646591a27333c842175be65cb901176bfd4a0553f759b799f9360db2d",
+    "lanes": [
+     "benefits"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "day_0_30",
+    "stage_label": "First 30 days after separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your state's veterans affairs agency",
+      "dimension": "benefits",
+      "lane": "benefits",
+      "priority": 2,
+      "template_id": "BEN-01",
+      "title": "Contact your state veterans affairs office about state benefits",
+      "why": "VetBuddy has not yet verified any state's benefit rules against primary sources, so it will not show you benefit matches. The state office is the authoritative source."
+     }
+    ],
+    "track": "ets_eas"
+   },
+   "input": {
+    "branch": "Navy",
+    "component": "active_duty",
+    "current_jurisdiction": "MI",
+    "destination_jurisdiction": null,
+    "goals": [
+     "benefits"
+    ],
+    "legal_authority": null,
+    "persona": "service_member",
+    "separation_date": "2026-10-19",
+    "urgency": "7_days"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": -45,
+    "input_hash": "56cb6cc03ff8e548953839e93acffc194e956a276de94fe6eaee7c95376bb028",
+    "lanes": [
+     "claims_evidence",
+     "housing_stability",
+     "benefits",
+     "guard_reserve"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     },
+     {
+      "code": "AUTHORITY_UNKNOWN",
+      "message": "Guard/Reserve authority is unknown. Nothing has been assumed about Title 10 or Title 32 service."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "day_31_90",
+    "stage_label": "Days 31 to 90 after separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "the citation block on your orders, or your unit administrator",
+      "dimension": "documents",
+      "lane": "guard_reserve",
+      "priority": 1,
+      "template_id": "GR-AUTH",
+      "title": "Find the legal authority printed on your orders (Title 10, Title 32, or State Active Duty)",
+      "why": "For Guard and Reserve members, what you may qualify for follows the authority cited on your orders, not the mission. You marked it as unknown, so nothing is assumed."
+     },
+     {
+      "confirm_with": "VA's accreditation search for a representative",
+      "dimension": "claims_evidence",
+      "lane": "claims_evidence",
+      "priority": 2,
+      "template_id": "CLM-01",
+      "title": "Before filing a VA disability claim, talk with an accredited representative",
+      "why": "Accredited Veterans Service Organization representatives, attorneys and claims agents can help with a claim. VetBuddy is not a representative and does not file claims."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "guard_reserve",
+      "priority": 2,
+      "template_id": "GR-RECORD",
+      "title": "Keep a running list of every set of orders: authority, start date and end date",
+      "why": "Guard and Reserve benefits often depend on cumulative time under specific authorities. A complete list prevents under-counting later."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-02",
+      "title": "Write down your housing plan for the first 90 days after separation",
+      "why": "You chose housing as a goal. A written plan makes gaps visible before they become urgent."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "claims_evidence",
+      "lane": "claims_evidence",
+      "priority": 3,
+      "template_id": "CLM-02",
+      "title": "Start a private list of health conditions and the dates and places they began",
+      "why": "A dated personal record makes it easier to talk with a representative later. Keep it yourself \u2014 VetBuddy does not store health details in this version."
+     }
+    ],
+    "track": "guard_reserve"
+   },
+   "input": {
+    "branch": "Marine Corps",
+    "component": "national_guard",
+    "current_jurisdiction": "MO",
+    "destination_jurisdiction": null,
+    "goals": [
+     "claims",
+     "housing"
+    ],
+    "legal_authority": "unknown",
+    "persona": "guard_reserve",
+    "separation_date": "2026-09-05",
+    "urgency": "30_days"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": -200,
+    "input_hash": "f09306b03932120b523fa4d6a8025071634288bbbe84d890712a1360695ea59c",
+    "lanes": [
+     "career",
+     "education",
+     "benefits",
+     "guard_reserve",
+     "housing_stability",
+     "state_local"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "month_3_12",
+    "stage_label": "Months 3 to 12 after separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 2,
+      "template_id": "CAR-01",
+      "title": "Write down your military occupation code and the duties you actually performed",
+      "why": "This is the raw material for translating your experience into civilian job titles and a resume."
+     },
+     {
+      "confirm_with": "your branch's transcript service",
+      "dimension": "education",
+      "lane": "education",
+      "priority": 2,
+      "template_id": "EDU-01",
+      "title": "Request your military training transcript (for example JST or CCAF)",
+      "why": "Schools use it to evaluate credit for military training."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "guard_reserve",
+      "priority": 2,
+      "template_id": "GR-RECORD",
+      "title": "Keep a running list of every set of orders: authority, start date and end date",
+      "why": "Guard and Reserve benefits often depend on cumulative time under specific authorities. A complete list prevents under-counting later."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 3,
+      "template_id": "CAR-02",
+      "title": "Pick two or three civilian job titles you want to explore",
+      "why": "A target keeps the resume and job search focused."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "education",
+      "lane": "education",
+      "priority": 3,
+      "template_id": "EDU-02",
+      "title": "Write down the programs or schools you are considering",
+      "why": "Education benefit rules depend on the specific program and school. A short list lets you confirm the right ones."
+     }
+    ],
+    "track": "guard_reserve"
+   },
+   "input": {
+    "branch": "Air Force",
+    "component": "reserve",
+    "current_jurisdiction": "NV",
+    "destination_jurisdiction": "NH",
+    "goals": [
+     "education",
+     "career"
+    ],
+    "legal_authority": "title_10",
+    "persona": "guard_reserve",
+    "separation_date": "2026-04-03",
+    "urgency": "90_days"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": -500,
+    "input_hash": "42f2635d316374db0d9af4a3b6ff338f68cde56832f7365c07546186a1d4a68a",
+    "lanes": [
+     "benefits",
+     "career",
+     "claims_evidence",
+     "recreation_community",
+     "education",
+     "family_caregiver_survivor",
+     "financial",
+     "housing_stability"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "year_1_2",
+    "stage_label": "Year 1 to 2 after separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your state's veterans affairs agency",
+      "dimension": "benefits",
+      "lane": "benefits",
+      "priority": 2,
+      "template_id": "BEN-01",
+      "title": "Contact your state veterans affairs office about state benefits",
+      "why": "VetBuddy has not yet verified any state's benefit rules against primary sources, so it will not show you benefit matches. The state office is the authoritative source."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 2,
+      "template_id": "CAR-01",
+      "title": "Write down your military occupation code and the duties you actually performed",
+      "why": "This is the raw material for translating your experience into civilian job titles and a resume."
+     },
+     {
+      "confirm_with": "VA's accreditation search for a representative",
+      "dimension": "claims_evidence",
+      "lane": "claims_evidence",
+      "priority": 2,
+      "template_id": "CLM-01",
+      "title": "Before filing a VA disability claim, talk with an accredited representative",
+      "why": "Accredited Veterans Service Organization representatives, attorneys and claims agents can help with a claim. VetBuddy is not a representative and does not file claims."
+     },
+     {
+      "confirm_with": "your branch's transcript service",
+      "dimension": "education",
+      "lane": "education",
+      "priority": 2,
+      "template_id": "EDU-01",
+      "title": "Request your military training transcript (for example JST or CCAF)",
+      "why": "Schools use it to evaluate credit for military training."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "financial",
+      "lane": "financial",
+      "priority": 2,
+      "template_id": "FIN-01",
+      "title": "Build a transition budget that compares your pay and allowances now with expected income after",
+      "why": "Pay, allowances and tax treatment can change at separation. A side-by-side budget shows the gap early."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-02",
+      "title": "Write down your housing plan for the first 90 days after separation",
+      "why": "You chose housing as a goal. A written plan makes gaps visible before they become urgent."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 3,
+      "template_id": "CAR-02",
+      "title": "Pick two or three civilian job titles you want to explore",
+      "why": "A target keeps the resume and job search focused."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "claims_evidence",
+      "lane": "claims_evidence",
+      "priority": 3,
+      "template_id": "CLM-02",
+      "title": "Start a private list of health conditions and the dates and places they began",
+      "why": "A dated personal record makes it easier to talk with a representative later. Keep it yourself \u2014 VetBuddy does not store health details in this version."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "community",
+      "lane": "recreation_community",
+      "priority": 3,
+      "template_id": "COM-01",
+      "title": "Identify one veteran or transition community near you to connect with",
+      "why": "You chose community as a goal. This is optional and private \u2014 VetBuddy does not post or share anything for you."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "education",
+      "lane": "education",
+      "priority": 3,
+      "template_id": "EDU-02",
+      "title": "Write down the programs or schools you are considering",
+      "why": "Education benefit rules depend on the specific program and school. A short list lets you confirm the right ones."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "family",
+      "lane": "family_caregiver_survivor",
+      "priority": 3,
+      "template_id": "FAM-01",
+      "title": "Talk with your household about the plan and who needs copies of which documents",
+      "why": "Family members often need to act on your behalf. Decide together; VetBuddy never shares records automatically."
+     }
+    ],
+    "track": "retirement"
+   },
+   "input": {
+    "branch": "Space Force",
+    "component": "retired",
+    "current_jurisdiction": "NM",
+    "destination_jurisdiction": null,
+    "goals": [
+     "benefits",
+     "claims",
+     "education",
+     "career",
+     "financial",
+     "housing",
+     "family",
+     "community"
+    ],
+    "legal_authority": null,
+    "persona": "veteran",
+    "separation_date": "2025-06-07",
+    "urgency": "long_term"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": -900,
+    "input_hash": "58fd3f11f8dee8d734749102e6bd45240e6a831c550fb552f076330ed50c8ccf",
+    "lanes": [
+     "recreation_community",
+     "family_caregiver_survivor",
+     "financial",
+     "benefits",
+     "guard_reserve"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "year_2_3",
+    "stage_label": "Year 2 to 3 after separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "financial",
+      "lane": "financial",
+      "priority": 2,
+      "template_id": "FIN-01",
+      "title": "Build a transition budget that compares your pay and allowances now with expected income after",
+      "why": "Pay, allowances and tax treatment can change at separation. A side-by-side budget shows the gap early."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "community",
+      "lane": "recreation_community",
+      "priority": 3,
+      "template_id": "COM-01",
+      "title": "Identify one veteran or transition community near you to connect with",
+      "why": "You chose community as a goal. This is optional and private \u2014 VetBuddy does not post or share anything for you."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "family",
+      "lane": "family_caregiver_survivor",
+      "priority": 3,
+      "template_id": "FAM-01",
+      "title": "Talk with your household about the plan and who needs copies of which documents",
+      "why": "Family members often need to act on your behalf. Decide together; VetBuddy never shares records automatically."
+     }
+    ],
+    "track": "guard_reserve"
+   },
+   "input": {
+    "branch": "Coast Guard",
+    "component": "retired_reserve_gray_area",
+    "current_jurisdiction": "ND",
+    "destination_jurisdiction": null,
+    "goals": [
+     "family",
+     "financial",
+     "community"
+    ],
+    "legal_authority": null,
+    "persona": "guard_reserve",
+    "separation_date": "2024-05-03",
+    "urgency": "info_only"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": -1500,
+    "input_hash": "ae54df6737b9615ddf580d69343aae7903c8411cec7ecc609cf70bc58969cc7c",
+    "lanes": [
+     "benefits",
+     "housing_stability",
+     "state_local"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "year_3_5",
+    "stage_label": "Year 3 to 5 after separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     }
+    ],
+    "track": "re_entry"
+   },
+   "input": {
+    "branch": "Army",
+    "component": "separated",
+    "current_jurisdiction": "OR",
+    "destination_jurisdiction": "PA",
+    "goals": [],
+    "legal_authority": null,
+    "persona": "veteran",
+    "separation_date": "2022-09-11",
+    "urgency": "immediate"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": -2500,
+    "input_hash": "fb163bbd2ecafcc71f6fa9a4d2d30cbb739ecaa74fd22fbce11263a6b883b96d",
+    "lanes": [
+     "benefits",
+     "claims_evidence"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "ongoing",
+    "stage_label": "Ongoing veteran life (more than 5 years)",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your IDES / MEB point of contact",
+      "dimension": "claims_evidence",
+      "lane": "claims_evidence",
+      "priority": 1,
+      "template_id": "MED-01",
+      "title": "Ask your IDES / MEB point of contact which documents you should gather now",
+      "why": "Medical separation runs on its own process and timeline. The point of contact assigned to you is the authoritative source for what it needs."
+     },
+     {
+      "confirm_with": "your state's veterans affairs agency",
+      "dimension": "benefits",
+      "lane": "benefits",
+      "priority": 2,
+      "template_id": "BEN-01",
+      "title": "Contact your state veterans affairs office about state benefits",
+      "why": "VetBuddy has not yet verified any state's benefit rules against primary sources, so it will not show you benefit matches. The state office is the authoritative source."
+     }
+    ],
+    "track": "medical_separation"
+   },
+   "input": {
+    "branch": "Navy",
+    "component": "medically_separated",
+    "current_jurisdiction": "SC",
+    "destination_jurisdiction": null,
+    "goals": [
+     "benefits"
+    ],
+    "legal_authority": null,
+    "persona": "veteran",
+    "separation_date": "2019-12-16",
+    "urgency": "7_days"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": null,
+    "input_hash": "f8fdb67d9f327608e12cda95516b3f9793035d73026f8069af2861d5ea4adbeb",
+    "lanes": [
+     "benefits",
+     "recreation_community"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     },
+     {
+      "code": "STAGE_UNKNOWN",
+      "message": "Your transition stage is unknown because no separation date was given."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "unknown",
+    "stage_label": "Not yet known \u2014 separation date not provided",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your unit personnel office or your orders",
+      "dimension": "documents",
+      "lane": "other",
+      "priority": 1,
+      "template_id": "FACT-DATE",
+      "title": "Confirm your separation, retirement or release-from-orders date",
+      "why": "Your transition stage and the order of your next steps are calculated from this date. It is missing, so VetBuddy is not guessing a stage."
+     },
+     {
+      "confirm_with": "your state's veterans affairs agency",
+      "dimension": "benefits",
+      "lane": "benefits",
+      "priority": 2,
+      "template_id": "BEN-01",
+      "title": "Contact your state veterans affairs office about state benefits",
+      "why": "VetBuddy has not yet verified any state's benefit rules against primary sources, so it will not show you benefit matches. The state office is the authoritative source."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "community",
+      "lane": "recreation_community",
+      "priority": 3,
+      "template_id": "COM-01",
+      "title": "Identify one veteran or transition community near you to connect with",
+      "why": "You chose community as a goal. This is optional and private \u2014 VetBuddy does not post or share anything for you."
+     }
+    ],
+    "track": "re_entry"
+   },
+   "input": {
+    "branch": "Coast Guard",
+    "component": "separated",
+    "current_jurisdiction": "PR",
+    "destination_jurisdiction": "PR",
+    "goals": [
+     "community",
+     "benefits",
+     "community"
+    ],
+    "legal_authority": null,
+    "persona": "service_member",
+    "separation_date": null,
+    "urgency": "info_only"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": null,
+    "input_hash": "d75d04e031bbda58caffe198aef57acbfd729a27340b259c03aadfeb7bc828ab",
+    "lanes": [
+     "benefits",
+     "recreation_community"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     },
+     {
+      "code": "STAGE_UNKNOWN",
+      "message": "Your transition stage is unknown because no separation date was given."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "unknown",
+    "stage_label": "Not yet known \u2014 separation date not provided",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your unit personnel office or your orders",
+      "dimension": "documents",
+      "lane": "other",
+      "priority": 1,
+      "template_id": "FACT-DATE",
+      "title": "Confirm your separation, retirement or release-from-orders date",
+      "why": "Your transition stage and the order of your next steps are calculated from this date. It is missing, so VetBuddy is not guessing a stage."
+     },
+     {
+      "confirm_with": "your state's veterans affairs agency",
+      "dimension": "benefits",
+      "lane": "benefits",
+      "priority": 2,
+      "template_id": "BEN-01",
+      "title": "Contact your state veterans affairs office about state benefits",
+      "why": "VetBuddy has not yet verified any state's benefit rules against primary sources, so it will not show you benefit matches. The state office is the authoritative source."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "community",
+      "lane": "recreation_community",
+      "priority": 3,
+      "template_id": "COM-01",
+      "title": "Identify one veteran or transition community near you to connect with",
+      "why": "You chose community as a goal. This is optional and private \u2014 VetBuddy does not post or share anything for you."
+     }
+    ],
+    "track": "re_entry"
+   },
+   "input": {
+    "branch": "Coast Guard",
+    "component": "separated",
+    "current_jurisdiction": "PR",
+    "destination_jurisdiction": "PR",
+    "goals": [
+     "community",
+     "benefits",
+     "community"
+    ],
+    "legal_authority": null,
+    "persona": "veteran",
+    "separation_date": null,
+    "urgency": "info_only"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": null,
+    "input_hash": "1eb3f57fa86f27efd1a3309bbc32facdc3b94d4027149a8a89ec0d7b53b932fc",
+    "lanes": [
+     "benefits",
+     "recreation_community"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     },
+     {
+      "code": "STAGE_UNKNOWN",
+      "message": "Your transition stage is unknown because no separation date was given."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "unknown",
+    "stage_label": "Not yet known \u2014 separation date not provided",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your unit personnel office or your orders",
+      "dimension": "documents",
+      "lane": "other",
+      "priority": 1,
+      "template_id": "FACT-DATE",
+      "title": "Confirm your separation, retirement or release-from-orders date",
+      "why": "Your transition stage and the order of your next steps are calculated from this date. It is missing, so VetBuddy is not guessing a stage."
+     },
+     {
+      "confirm_with": "your state's veterans affairs agency",
+      "dimension": "benefits",
+      "lane": "benefits",
+      "priority": 2,
+      "template_id": "BEN-01",
+      "title": "Contact your state veterans affairs office about state benefits",
+      "why": "VetBuddy has not yet verified any state's benefit rules against primary sources, so it will not show you benefit matches. The state office is the authoritative source."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "community",
+      "lane": "recreation_community",
+      "priority": 3,
+      "template_id": "COM-01",
+      "title": "Identify one veteran or transition community near you to connect with",
+      "why": "You chose community as a goal. This is optional and private \u2014 VetBuddy does not post or share anything for you."
+     }
+    ],
+    "track": "re_entry"
+   },
+   "input": {
+    "branch": "Coast Guard",
+    "component": "separated",
+    "current_jurisdiction": "PR",
+    "destination_jurisdiction": "PR",
+    "goals": [
+     "community",
+     "benefits",
+     "community"
+    ],
+    "legal_authority": null,
+    "persona": "guard_reserve",
+    "separation_date": null,
+    "urgency": "info_only"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": null,
+    "input_hash": "da371aa18faeb88804828357430aa6faafe17f947b36d2e6e9a7ae56d0036b9c",
+    "lanes": [
+     "benefits",
+     "recreation_community"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     },
+     {
+      "code": "STAGE_UNKNOWN",
+      "message": "Your transition stage is unknown because no separation date was given."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "unknown",
+    "stage_label": "Not yet known \u2014 separation date not provided",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your state's veterans affairs agency",
+      "dimension": "benefits",
+      "lane": "benefits",
+      "priority": 2,
+      "template_id": "BEN-01",
+      "title": "Contact your state veterans affairs office about state benefits",
+      "why": "VetBuddy has not yet verified any state's benefit rules against primary sources, so it will not show you benefit matches. The state office is the authoritative source."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "community",
+      "lane": "recreation_community",
+      "priority": 3,
+      "template_id": "COM-01",
+      "title": "Identify one veteran or transition community near you to connect with",
+      "why": "You chose community as a goal. This is optional and private \u2014 VetBuddy does not post or share anything for you."
+     }
+    ],
+    "track": "spouse_family"
+   },
+   "input": {
+    "branch": "Coast Guard",
+    "component": "separated",
+    "current_jurisdiction": "PR",
+    "destination_jurisdiction": "PR",
+    "goals": [
+     "community",
+     "benefits",
+     "community"
+    ],
+    "legal_authority": null,
+    "persona": "spouse_family",
+    "separation_date": null,
+    "urgency": "info_only"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": null,
+    "input_hash": "52b6f93dc363b056a438c1221b56ba880001a03d2afcf7fb64f565edc67f4561",
+    "lanes": [
+     "benefits",
+     "recreation_community"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     },
+     {
+      "code": "STAGE_UNKNOWN",
+      "message": "Your transition stage is unknown because no separation date was given."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "unknown",
+    "stage_label": "Not yet known \u2014 separation date not provided",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your state's veterans affairs agency",
+      "dimension": "benefits",
+      "lane": "benefits",
+      "priority": 2,
+      "template_id": "BEN-01",
+      "title": "Contact your state veterans affairs office about state benefits",
+      "why": "VetBuddy has not yet verified any state's benefit rules against primary sources, so it will not show you benefit matches. The state office is the authoritative source."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "community",
+      "lane": "recreation_community",
+      "priority": 3,
+      "template_id": "COM-01",
+      "title": "Identify one veteran or transition community near you to connect with",
+      "why": "You chose community as a goal. This is optional and private \u2014 VetBuddy does not post or share anything for you."
+     }
+    ],
+    "track": "spouse_family"
+   },
+   "input": {
+    "branch": "Coast Guard",
+    "component": "separated",
+    "current_jurisdiction": "PR",
+    "destination_jurisdiction": "PR",
+    "goals": [
+     "community",
+     "benefits",
+     "community"
+    ],
+    "legal_authority": null,
+    "persona": "caregiver",
+    "separation_date": null,
+    "urgency": "info_only"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": null,
+    "input_hash": "e503ebd4d55311648350f5e9bfd18b7f20af0c5a493cd7e02379bf0f8d687089",
+    "lanes": [
+     "benefits",
+     "recreation_community"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     },
+     {
+      "code": "STAGE_UNKNOWN",
+      "message": "Your transition stage is unknown because no separation date was given."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "unknown",
+    "stage_label": "Not yet known \u2014 separation date not provided",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your state's veterans affairs agency",
+      "dimension": "benefits",
+      "lane": "benefits",
+      "priority": 2,
+      "template_id": "BEN-01",
+      "title": "Contact your state veterans affairs office about state benefits",
+      "why": "VetBuddy has not yet verified any state's benefit rules against primary sources, so it will not show you benefit matches. The state office is the authoritative source."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "community",
+      "lane": "recreation_community",
+      "priority": 3,
+      "template_id": "COM-01",
+      "title": "Identify one veteran or transition community near you to connect with",
+      "why": "You chose community as a goal. This is optional and private \u2014 VetBuddy does not post or share anything for you."
+     }
+    ],
+    "track": "spouse_family"
+   },
+   "input": {
+    "branch": "Coast Guard",
+    "component": "separated",
+    "current_jurisdiction": "PR",
+    "destination_jurisdiction": "PR",
+    "goals": [
+     "community",
+     "benefits",
+     "community"
+    ],
+    "legal_authority": null,
+    "persona": "survivor",
+    "separation_date": null,
+    "urgency": "info_only"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 95,
+    "input_hash": "4751a060182078072ac3907f796d4fbfbf52f06314d6be6b9a6eedad2eadd458",
+    "lanes": [
+     "career",
+     "benefits",
+     "healthcare_coverage",
+     "housing_stability",
+     "state_local"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_180_90d",
+    "stage_label": "180 to 90 days before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your installation TAP office",
+      "dimension": "career",
+      "lane": "career",
+      "priority": 1,
+      "template_id": "TAP-01",
+      "title": "Contact your installation's Transition Assistance Program (TAP) office",
+      "why": "Ask which transition counseling and workshops apply to you and when to start them."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 2,
+      "template_id": "CAR-01",
+      "title": "Write down your military occupation code and the duties you actually performed",
+      "why": "This is the raw material for translating your experience into civilian job titles and a resume."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 3,
+      "template_id": "CAR-02",
+      "title": "Pick two or three civilian job titles you want to explore",
+      "why": "A target keeps the resume and job search focused."
+     }
+    ],
+    "track": "pcs"
+   },
+   "input": {
+    "branch": "Space Force",
+    "component": "active_duty",
+    "current_jurisdiction": "AL",
+    "destination_jurisdiction": "FEDERAL",
+    "goals": [
+     "career"
+    ],
+    "legal_authority": null,
+    "persona": "service_member",
+    "separation_date": "2027-01-23",
+    "urgency": "immediate"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 95,
+    "input_hash": "a7976d26fe445a85f30200088671785790bf1d15f9ffc8185b19f95b922aef53",
+    "lanes": [
+     "career",
+     "benefits",
+     "healthcare_coverage",
+     "guard_reserve",
+     "housing_stability",
+     "state_local"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_180_90d",
+    "stage_label": "180 to 90 days before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your installation TAP office",
+      "dimension": "career",
+      "lane": "career",
+      "priority": 1,
+      "template_id": "TAP-01",
+      "title": "Contact your installation's Transition Assistance Program (TAP) office",
+      "why": "Ask which transition counseling and workshops apply to you and when to start them."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 2,
+      "template_id": "CAR-01",
+      "title": "Write down your military occupation code and the duties you actually performed",
+      "why": "This is the raw material for translating your experience into civilian job titles and a resume."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "guard_reserve",
+      "priority": 2,
+      "template_id": "GR-RECORD",
+      "title": "Keep a running list of every set of orders: authority, start date and end date",
+      "why": "Guard and Reserve benefits often depend on cumulative time under specific authorities. A complete list prevents under-counting later."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 3,
+      "template_id": "CAR-02",
+      "title": "Pick two or three civilian job titles you want to explore",
+      "why": "A target keeps the resume and job search focused."
+     }
+    ],
+    "track": "guard_reserve"
+   },
+   "input": {
+    "branch": "Space Force",
+    "component": "national_guard",
+    "current_jurisdiction": "AL",
+    "destination_jurisdiction": "FEDERAL",
+    "goals": [
+     "career"
+    ],
+    "legal_authority": "state_active_duty",
+    "persona": "service_member",
+    "separation_date": "2027-01-23",
+    "urgency": "immediate"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 95,
+    "input_hash": "3759f1f4536fba4082e967540a52978dacc222a9faaedada71c66c79f0b75664",
+    "lanes": [
+     "career",
+     "benefits",
+     "healthcare_coverage",
+     "guard_reserve",
+     "housing_stability",
+     "state_local"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_180_90d",
+    "stage_label": "180 to 90 days before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your installation TAP office",
+      "dimension": "career",
+      "lane": "career",
+      "priority": 1,
+      "template_id": "TAP-01",
+      "title": "Contact your installation's Transition Assistance Program (TAP) office",
+      "why": "Ask which transition counseling and workshops apply to you and when to start them."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 2,
+      "template_id": "CAR-01",
+      "title": "Write down your military occupation code and the duties you actually performed",
+      "why": "This is the raw material for translating your experience into civilian job titles and a resume."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "guard_reserve",
+      "priority": 2,
+      "template_id": "GR-RECORD",
+      "title": "Keep a running list of every set of orders: authority, start date and end date",
+      "why": "Guard and Reserve benefits often depend on cumulative time under specific authorities. A complete list prevents under-counting later."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 3,
+      "template_id": "CAR-02",
+      "title": "Pick two or three civilian job titles you want to explore",
+      "why": "A target keeps the resume and job search focused."
+     }
+    ],
+    "track": "guard_reserve"
+   },
+   "input": {
+    "branch": "Space Force",
+    "component": "reserve",
+    "current_jurisdiction": "AL",
+    "destination_jurisdiction": "FEDERAL",
+    "goals": [
+     "career"
+    ],
+    "legal_authority": "state_active_duty",
+    "persona": "service_member",
+    "separation_date": "2027-01-23",
+    "urgency": "immediate"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 95,
+    "input_hash": "906e275fbbbf9167bff206f3da4986b16e194cc8aded4fd9bbf33f94968ba329",
+    "lanes": [
+     "career",
+     "benefits",
+     "healthcare_coverage",
+     "housing_stability",
+     "state_local"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_180_90d",
+    "stage_label": "180 to 90 days before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 2,
+      "template_id": "CAR-01",
+      "title": "Write down your military occupation code and the duties you actually performed",
+      "why": "This is the raw material for translating your experience into civilian job titles and a resume."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 3,
+      "template_id": "CAR-02",
+      "title": "Pick two or three civilian job titles you want to explore",
+      "why": "A target keeps the resume and job search focused."
+     }
+    ],
+    "track": "retirement"
+   },
+   "input": {
+    "branch": "Space Force",
+    "component": "retired",
+    "current_jurisdiction": "AL",
+    "destination_jurisdiction": "FEDERAL",
+    "goals": [
+     "career"
+    ],
+    "legal_authority": null,
+    "persona": "service_member",
+    "separation_date": "2027-01-23",
+    "urgency": "immediate"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 95,
+    "input_hash": "11937d7ad75df9e32622b6125fab54deb47face7a3f6614e0344ad625b305cc9",
+    "lanes": [
+     "career",
+     "benefits",
+     "healthcare_coverage",
+     "housing_stability",
+     "state_local",
+     "guard_reserve"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_180_90d",
+    "stage_label": "180 to 90 days before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 2,
+      "template_id": "CAR-01",
+      "title": "Write down your military occupation code and the duties you actually performed",
+      "why": "This is the raw material for translating your experience into civilian job titles and a resume."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 3,
+      "template_id": "CAR-02",
+      "title": "Pick two or three civilian job titles you want to explore",
+      "why": "A target keeps the resume and job search focused."
+     }
+    ],
+    "track": "guard_reserve"
+   },
+   "input": {
+    "branch": "Space Force",
+    "component": "retired_reserve_gray_area",
+    "current_jurisdiction": "AL",
+    "destination_jurisdiction": "FEDERAL",
+    "goals": [
+     "career"
+    ],
+    "legal_authority": null,
+    "persona": "service_member",
+    "separation_date": "2027-01-23",
+    "urgency": "immediate"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 95,
+    "input_hash": "0ff3d9636dcaa8b7a3922581f9e099c5a3196aa4e3a93ae46a36b0b6d0261a67",
+    "lanes": [
+     "career",
+     "benefits",
+     "healthcare_coverage",
+     "housing_stability",
+     "state_local"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_180_90d",
+    "stage_label": "180 to 90 days before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 2,
+      "template_id": "CAR-01",
+      "title": "Write down your military occupation code and the duties you actually performed",
+      "why": "This is the raw material for translating your experience into civilian job titles and a resume."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 3,
+      "template_id": "CAR-02",
+      "title": "Pick two or three civilian job titles you want to explore",
+      "why": "A target keeps the resume and job search focused."
+     }
+    ],
+    "track": "re_entry"
+   },
+   "input": {
+    "branch": "Space Force",
+    "component": "separated",
+    "current_jurisdiction": "AL",
+    "destination_jurisdiction": "FEDERAL",
+    "goals": [
+     "career"
+    ],
+    "legal_authority": null,
+    "persona": "service_member",
+    "separation_date": "2027-01-23",
+    "urgency": "immediate"
+   }
+  },
+  {
+   "expected": {
+    "days_to_separation": 95,
+    "input_hash": "2204cd45a9e42cb5d9a62069889cffa370e2dbeff1f00050a0be7eabcd732cfc",
+    "lanes": [
+     "career",
+     "benefits",
+     "claims_evidence",
+     "healthcare_coverage",
+     "housing_stability",
+     "state_local"
+    ],
+    "notices": [
+     {
+      "code": "BENEFIT_SCREENING_NOT_AVAILABLE",
+      "message": "VetBuddy does not show benefit matches yet. No eligibility rule has completed primary-source verification by a named reviewer, and VetBuddy will not guess."
+     }
+    ],
+    "policy_version": "mission-router.v0.1.0",
+    "stage": "t_180_90d",
+    "stage_label": "180 to 90 days before separation",
+    "tasks": [
+     {
+      "confirm_with": null,
+      "dimension": "documents",
+      "lane": "benefits",
+      "priority": 1,
+      "template_id": "DOC-01",
+      "title": "Locate your service and separation documents and keep a copy somewhere safe",
+      "why": "Almost every benefit, school, employer and agency process starts by asking for proof of service (for example a DD-214, or an NGB-22 for National Guard)."
+     },
+     {
+      "confirm_with": "your IDES / MEB point of contact",
+      "dimension": "claims_evidence",
+      "lane": "claims_evidence",
+      "priority": 1,
+      "template_id": "MED-01",
+      "title": "Ask your IDES / MEB point of contact which documents you should gather now",
+      "why": "Medical separation runs on its own process and timeline. The point of contact assigned to you is the authoritative source for what it needs."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 2,
+      "template_id": "CAR-01",
+      "title": "Write down your military occupation code and the duties you actually performed",
+      "why": "This is the raw material for translating your experience into civilian job titles and a resume."
+     },
+     {
+      "confirm_with": "your installation benefits or personnel office",
+      "dimension": "coverage",
+      "lane": "healthcare_coverage",
+      "priority": 2,
+      "template_id": "COV-01",
+      "title": "List the health and life insurance coverage you have today, and ask how each one changes when you separate",
+      "why": "Coverage changes at separation are easy to miss. Write down what you have now so nothing lapses silently."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "housing_relocation",
+      "lane": "housing_stability",
+      "priority": 2,
+      "template_id": "HOU-01",
+      "title": "List housing options and costs at your destination",
+      "why": "You told VetBuddy you are moving. Knowing real costs at the destination early keeps the budget honest."
+     },
+     {
+      "confirm_with": "the veterans affairs agency in your destination state",
+      "dimension": "housing_relocation",
+      "lane": "state_local",
+      "priority": 2,
+      "template_id": "REL-01",
+      "title": "Check how moving changes your state-level benefits and taxes",
+      "why": "Your current and destination jurisdictions differ. VetBuddy will not compare them until both are verified."
+     },
+     {
+      "confirm_with": null,
+      "dimension": "career",
+      "lane": "career",
+      "priority": 3,
+      "template_id": "CAR-02",
+      "title": "Pick two or three civilian job titles you want to explore",
+      "why": "A target keeps the resume and job search focused."
+     }
+    ],
+    "track": "medical_separation"
+   },
+   "input": {
+    "branch": "Space Force",
+    "component": "medically_separated",
+    "current_jurisdiction": "AL",
+    "destination_jurisdiction": "FEDERAL",
+    "goals": [
+     "career"
+    ],
+    "legal_authority": null,
+    "persona": "service_member",
+    "separation_date": "2027-01-23",
+    "urgency": "immediate"
+   }
+  }
+ ],
+ "today": "2026-10-20"
+}

@@ -54,3 +54,6 @@ uploads/
 *.zip
 *.tar
 *.gz
+
+# Frontend e2e build output
+dist-e2e/

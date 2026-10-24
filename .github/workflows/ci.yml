@@ -2,25 +2,43 @@ name: VetBuddy CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main, "claude/**"]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   backend:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: ci-only
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 2s --health-retries 30
     defaults:
       run:
         working-directory: backend
+    env:
+      TEST_DATABASE_ADMIN_URL: postgresql://postgres:ci-only@localhost:5432/postgres
+      VB_REQUIRE_DB: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      - name: Install backend dependencies
-        run: pip install -r requirements.txt
-      - name: Run backend tests
-        run: pytest -q
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: backend/requirements-dev.txt
+      - run: pip install -r requirements-dev.txt
+      - name: Generated browser files are in sync with the Python kernel
+        run: python ../scripts/build_web.py --check
+      - name: Unit, database, isolation, consent, audit and governance tests
+        run: pytest
 
   frontend:
     runs-on: ubuntu-latest
@@ -31,10 +49,57 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "22"
           cache: npm
           cache-dependency-path: frontend/package-lock.json
-      - name: Install frontend dependencies
-        run: npm install
-      - name: Build frontend
-        run: npm run build
+      - run: npm ci
+      - name: Browser kernel parity with Python golden fixtures
+        run: npm test
+      - run: npm run build
+
+  e2e:
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: ci-only
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 2s --health-retries 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: pip install -r backend/requirements.txt
+      - name: Migrate and start the API (synthetic data, development sign-in)
+        working-directory: backend
+        env:
+          DATABASE_URL: postgresql://postgres:ci-only@localhost:5432/postgres
+          APP_DB_LOGIN: vetbuddy_api
+          APP_DB_PASSWORD: ci-only-api
+        run: |
+          python -m app.migrate
+          APP_DATABASE_URL=postgresql://vetbuddy_api:ci-only-api@localhost:5432/postgres \
+          AUTH_MODE=dev AUTH_DEV_SECRET="$(python -c 'import secrets; print(secrets.token_hex(24))')" \
+          ENVIRONMENT=test CORS_ORIGINS=http://127.0.0.1:4180 \
+          nohup uvicorn app.main:app --port 8011 > ../api.log 2>&1 &
+      - working-directory: frontend
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          npm run build
+      - name: Browser tests (guest privacy + full stack)
+        working-directory: frontend
+        env:
+          VB_E2E_API_URL: http://127.0.0.1:8011
+        run: npm run test:e2e
+      - if: failure()
+        run: tail -n 100 api.log

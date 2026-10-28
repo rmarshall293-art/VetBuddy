@@ -1,0 +1,90 @@
+{
+  "dataset": "alabama",
+  "title": "Alabama transition landscape: installations, TAP delivery, state programs, oversight findings",
+  "version": "2026.10.20",
+  "as_of": "2025-07-31",
+  "review_by": "2027-01-31",
+  "default_status": "UNVERIFIED",
+  "scope_note": "Factual content only. Market sizing, pitch framing and 'investable insight' language from the landscape report are excluded under CLAUDE.md (no sales or investor work). Statistics live in statistics.json; disagreements in conflicts.json.",
+  "sources": ["src.rr.alabama_landscape", "src.rr.alabama_tap"],
+  "installations": [
+    {"id": "inst.al.maxwell_gunter", "name": "Maxwell-Gunter AFB", "place": "Montgomery", "branch": "Air Force", "role": "Air University, PME (Air War College, ACSC, SOS, CCAF)", "approx_population": "~12,000", "tap_delivery": "Full TAP at 42d Force Support Squadron Airman & Family Readiness Center (Bldg 677); five-day workshop. SkillBridge applications moved into AFVEC on 2025-06-26.", "sources": ["src.rr.alabama_landscape", "src.rr.alabama_tap"]},
+    {"id": "inst.al.redstone", "name": "Redstone Arsenal", "place": "Huntsville", "branch": "Army", "role": "AMC, MDA, NASA Marshall, FBI HQ-South", "approx_population": "~40,000 (largely civilian)", "tap_delivery": "Virtual-only SFL-TAP since 2025-05-12; was a volunteer-supported satellite, never a funded center. In-person fallback is Fort Rucker (334-255-2558); 50+ miles away use the SFL-TAP Virtual Center (1-800-325-4715).", "sources": ["src.rr.alabama_landscape", "src.rr.alabama_tap"]},
+    {"id": "inst.al.fort_rucker", "name": "Fort Rucker (formerly Fort Novosel)", "place": "Dale County", "branch": "Army", "role": "U.S. Army Aviation Center of Excellence", "approx_population": "~12,000–15,000", "tap_delivery": "Only fully resourced contractor-staffed SFL-TAP center in Alabama; primary live node after the Redstone change. Heavy warrant-officer and aviator flow; strong SkillBridge use.", "redesignation": {"from": "Fort Novosel", "to": "Fort Rucker", "effective": "2025-06-11", "authority": "Department of the Army General Orders 2025-18"}, "sources": ["src.rr.alabama_tap", "src.rr.alabama_landscape"]},
+    {"id": "inst.al.anniston", "name": "Anniston Army Depot", "place": "Calhoun County", "branch": "Army", "role": "Tracked combat vehicles and small arms (mostly civilian workforce)", "approx_population": "~7,000", "tap_delivery": "No full TAP center; Virtual Center, or travel to Fort Rucker, Fort Moore (GA) or Fort Campbell (KY). GAO small/remote-installation profile.", "sources": ["src.rr.alabama_landscape", "src.rr.alabama_tap"]},
+    {"id": "inst.al.uscg_mobile", "name": "USCG Aviation Training Center Mobile", "place": "Mobile", "branch": "Coast Guard", "role": "Fixed and rotary aviation training", "approx_population": "~700", "tap_delivery": "Coast Guard TAP; still implementing FY19 NDAA counseling pathways as of late 2023.", "sources": ["src.rr.alabama_landscape", "src.rr.alabama_tap"]}
+  ],
+  "guard_reserve_note": "Alabama Army and Air National Guard members route through the Yellow Ribbon Reintegration Program and demobilization-site TAP.",
+  "state_programs": [
+    {"id": "al.adva", "name": "Alabama Department of Veterans Affairs (ADVA)", "detail": "About $230M total budget including federal pass-through and trust funds; $175.6M tracked state appropriation in FY2025 ($5.08M General Fund + $170.5M earmarked). 62 county Veterans Service Offices (12 added in the past 36 months per source). Main line (334) 242-5077.", "sources": ["src.rr.alabama_tap", "src.rr.alabama_landscape"]},
+    {"id": "al.avrc", "name": "Alabama Veterans Resource Center (AVRC)", "detail": "Public corporation created by Senate Bill 70 (2025) with a $5M initial appropriation, located in Montgomery; board appointments announced July 2025. Designed to fill the state flagship-program gap.", "sources": ["src.rr.alabama_tap"]},
+    {"id": "al.gi_dependents", "name": "Alabama G.I. Dependents' Scholarship", "detail": "HB284 (2024) raised the cap from $250 to $400 per credit hour effective 2024-07-31. See state_benefits sb.AL.gi_dependents.", "sources": ["src.rr.alabama_tap", "src.rr.alabama_landscape"]},
+    {"id": "al.state_homes", "name": "State veterans homes", "detail": "Five homes (~700+ beds). CSM Bennie G. Adkins State Veterans Home in Enterprise opened September 2024 (~$115M federal-state cost share).", "sources": ["src.rr.alabama_tap"]},
+    {"id": "al.jvsg", "name": "Jobs for Veterans State Grant staffing (Alabama Career Centers)", "detail": "21 DVOP specialists, 12 LVERs, 3 Consolidated Outreach and Development Liaisons; $2.5–4M JVSG per year (estimate).", "sources": ["src.rr.alabama_tap"]},
+    {"id": "al.hvrp", "name": "Homeless Veterans Reintegration Program grantees", "detail": "Aletheia House (Birmingham, Montgomery); Volunteers of America Southeast (Mobile Eagle's Landing, Tuscaloosa Valor Grove); typically $300K–$500K per grantee per year.", "sources": ["src.rr.alabama_tap"]},
+    {"id": "al.workforce_portal", "name": "Workforce Alabama job portal and ADOL DVOP/LVER specialists", "detail": "Above-federal-floor service without a branded state transition flagship.", "sources": ["src.rr.alabama_landscape"]},
+    {"id": "al.heroes_welcome", "name": "Heroes Welcome Initiative (interstate licensure compact participation)", "detail": "Named as the lever for military-spouse licensing; links to reciprocity gap CB-06.", "sources": ["src.rr.alabama_tap"]},
+    {"id": "al.no_home_loan_program", "name": "No state veteran home-loan program", "detail": "Alabama veterans rely on the federal VA loan (contrast Texas VLB, CalVet, Wisconsin trust fund).", "sources": ["src.rr.alabama_landscape"]}
+  ],
+  "peer_flagships": [
+    {"jurisdiction": "VA", "name": "Virginia Values Veterans (V3)", "detail": "Codified employer certification (Code of VA § 2.2-2001.2) with transition teams at installations."},
+    {"jurisdiction": "FL", "name": "Veterans Florida", "detail": "State-authorized nonprofit integrating SkillBridge, entrepreneurship and a career portal."},
+    {"jurisdiction": "TX", "name": "Texas Veterans Commission + GLO Veterans Land Board", "detail": "170+ employment reps in 75+ cities; Hazlewood; College Credit for Heroes; Operation Welcome Home."},
+    {"jurisdiction": "NC", "name": "NC4ME", "detail": "Public-private partnership with NCWorks priority postings and 50 veteran specialists."},
+    {"jurisdiction": "SC", "name": "Operation Palmetto Employment", "detail": "Tiered veteran-friendly employer recognition; SC Smart Start virtual platform."},
+    {"jurisdiction": "GA", "name": "GA VECTR Center (Warner Robins)", "detail": "Purpose-built brick-and-mortar transition center."},
+    {"jurisdiction": "CA", "name": "CalTAP", "detail": "23-module state curriculum, online and in eight regional centers."},
+    {"jurisdiction": "TN", "name": "STRONG Act / Helping Heroes Grant", "detail": "Named by the TAP report as Tennessee's state program."}
+  ],
+  "peer_flagships_sources": ["src.rr.alabama_landscape", "src.rr.alabama_tap"],
+  "tap_structure": {
+    "authority": "10 U.S.C. §§1142, 1144; DoDI 1332.35 (updated 2019-09-26); Army Regulation 600-81",
+    "start_requirement": "TAP must begin no later than 365 days before separation.",
+    "counseling_tiers": "Individualized Initial Counseling assigns Tier 1 (minimum), Tier 2 (moderate), Tier 3 (maximum; mandatory two-day track).",
+    "core_curriculum": ["Pre-separation counseling", "DoD Transition Day", "VA Benefits and Services (Briefings I and II; no exemption permitted)", "DOL Employment Fundamentals of Career Transition"],
+    "two_day_tracks": ["DOL Employment", "DoD Education", "DOL Vocational / Career Technical", "SBA Boots to Business"],
+    "capstone": "Capstone verification at least 90 days before separation.",
+    "status": "UNVERIFIED",
+    "sources": ["src.rr.alabama_tap"]
+  },
+  "oversight_findings": [
+    {"id": "gao-23-104538", "citation": "GAO-23-104538 (Dec 2022)", "finding": "70% of separating members did not start TAP at least one year out; about 25% of Tier 3 members skipped the mandatory two-day class; services waived the two-day class for 53% of members."},
+    {"id": "gao-24-106248", "citation": "GAO-24-106248 (Mar 2024)", "finding": "4,300 required warm handovers to VA, DOL or SBA not delivered (Apr 2021–Mar 2023); one-third of ~41,000 logged handovers unverified; 77,711 members verified by commanders with no recorded handover."},
+    {"id": "gao-24-107752", "citation": "GAO-24-107752 (2024)", "finding": "inTransition did not connect with over 70% of eligible members it identified in 2022."},
+    {"id": "dodig-2022-030", "citation": "DODIG-2022-030", "finding": "All five suicide-prevention recommendations for transitioning members still open as of January 2024."},
+    {"id": "rand-rr-a1363-12", "citation": "RAND RR-A1363-12 (2023)", "finding": "Of $14.3B federal transition spending in FY2019 only $140M went to TAP; raw analysis associates TAP participation with lower wages, attributed mainly to selection effects."},
+    {"id": "ivmf-o2o-eval", "citation": "Penn State Clearinghouse evaluation of IVMF Onward to Opportunity (2022)", "finding": "Only rigorously evaluated transition program found; positive effects on starting salary and six-month retention."},
+    {"id": "bsf-mfls-2024", "citation": "Blue Star Families Military Family Lifestyle Survey 2024", "finding": "28% of veterans used TAP and found it helpful, 23% used it and did not, 49% did not use it; 54% who found useful resources found them through peers."},
+    {"id": "vfw-2023", "citation": "VFW congressional testimony (May 2023)", "finding": "62% began TAP less than a year out; one-third did not get or did not know about required community-resource connections; nearly one-third did not know their tier; 15%+ of spouses could not attend or did not know they could."},
+    {"id": "legion-2025", "citation": "American Legion testimony 'Mission Incomplete' (Mar 2025)", "finding": "Veterans' main hurdle is finding reliable resources."}
+  ],
+  "oversight_findings_sources": ["src.rr.alabama_tap"],
+  "what_works": [
+    "SBA Boots to Business: 241,000+ graduates since 2013; 91% of veteran-founded businesses operating after one year (per SBA as cited).",
+    "VA Benefits Briefings I and II: 94–96% satisfaction historically.",
+    "DoD SkillBridge: 12,000+ enrolled in Q1–Q2 FY2024; 3,000+ partner organizations.",
+    "DAV Transition Service Officers: 38 TSOs at 109+ installations; 39,000+ members assisted in 2024.",
+    "Counseling pathways: 90%+ participation Apr 2021–Mar 2022.",
+    "VA Solid Start: permanent under the Solid Start Act of 2022 (Pub. L. 117-205); contacted 71% of eligible veterans in 2021."
+  ],
+  "policy_timeline": [
+    {"date": "2019-10-01", "event": "FY2019 NDAA TAP reforms take effect (Pub. L. 115-232 §552): tiers, counselor meetings, self-assessment, 365-day start."},
+    {"date": "2020-01", "precision": "month", "event": "DoD Military-Civilian Transition Office created (TVPO + Office of Reintegration Programs)."},
+    {"date": "2021-01-05", "event": "Isakson-Roe Act §4303 (Pub. L. 116-315) authorizes DOL Off-Base Transition Training pilot; no Alabama site; five-year authority sunsetting absent reauthorization."},
+    {"date": "2022", "precision": "year", "event": "Solid Start Act of 2022 (Pub. L. 117-205) makes VA Solid Start permanent."},
+    {"date": "2023", "precision": "year", "event": "FY2024 NDAA (Pub. L. 118-31) adds TAP accountability and SkillBridge oversight."},
+    {"date": "2024-07-31", "event": "HB284: Alabama G.I. Dependents' Scholarship cap $250 → $400 per credit hour."},
+    {"date": "2024-09", "precision": "month", "event": "CSM Bennie G. Adkins State Veterans Home opens in Enterprise."},
+    {"date": "2025-05-12", "event": "Redstone Arsenal SFL-TAP becomes virtual-only."},
+    {"date": "2025-05", "precision": "month", "event": "SB70 creates the Alabama Veterans Resource Center with $5M."},
+    {"date": "2025-06-11", "event": "Fort Novosel redesignated Fort Rucker (ceremony 2025-07-17)."},
+    {"date": "2025-06-26", "event": "Air Force SkillBridge applications move into AFVEC."}
+  ],
+  "product_implications": [
+    "Start the transition clock at 365+ days: most members start TAP late, so the Mission Brief should surface TAP timing as a first-five action.",
+    "Spouses are routinely excluded from TAP; spouse_family is already a transition track and should get its own brief.",
+    "Warm handovers fail silently; the closed-loop referral state machine (Plane 2) is the countermeasure.",
+    "Rural installations (Fort Rucker, Anniston) and the Redstone virtual shift raise the value of a digital state layer.",
+    "First-year post-separation suicide risk is about 2.5x the active-duty rate and inTransition misses 70%+: the crisis floor must be on every screen (already true) and the crisis detector (R16) is a priority once agents exist."
+  ]
+}

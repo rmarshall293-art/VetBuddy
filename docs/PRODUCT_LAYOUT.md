@@ -1,5 +1,5 @@
 <!-- Product layout directive supplied by the project owner, 21 Oct 2026. Governs module layout and
-     naming. Where it conflicts with the governance rules or the master spec, docs/ADR/0003-product-layout.md
+     naming. Where it conflicts with the governance rules or the master spec, docs/ADR/0006-product-layout.md
      records which rule wins and why. VetBuddy is NOT a CRM; the CRM is the relationship layer. -->
 
 # VETBUDDY — AI-Powered Veteran Benefits, Transition & Life Navigation Operating System
@@ -148,7 +148,7 @@ Every agent has: Agent ID, Name, Description, Avatar, Version, Status, Owner, De
 Agents may not modify information outside their scope. The Education Agent may recommend education programs but must not modify a disability claim. The Financial Agent may create budgeting education but must not interpret VA claims regulations. The Claims Agent may organize claim information but must not alter educational records. Only the Orchestrator or an authorized workflow engine can coordinate cross-domain changes.
 
 ### 14. AI confidence system
-Every consequential AI finding contains confidence, source, source authority, source date, jurisdiction, reason, limitations and verification status. Never fabricate confidence. *(See ADR 0003: confidence is shown as evidence and verification status; a number appears only when computed deterministically.)*
+Every consequential AI finding contains confidence, source, source authority, source date, jurisdiction, reason, limitations and verification status. Never fabricate confidence. *(See ADR 0006: confidence is shown as evidence and verification status; a number appears only when computed deterministically.)*
 
 ### 15. Knowledge architecture
 Separate knowledge spaces: Global (public authoritative), Federal, State (each state and territory), Organization (private), Department, Case (authorized for the specific case), Agent. Maintain strict data separation.
@@ -160,7 +160,7 @@ RAG with semantic, embedding, metadata-filtered, hybrid, keyword and full-text s
 Upload, drag-and-drop, mobile scan, OCR, classification, tagging, case and evidence association, metadata, document date, source, type, summary, AI analysis, version history, duplicate detection, approval workflow, retention controls, document-level permissions, search, export. Categories: DD-214, service treatment records, VA decisions, medical evidence, statements, education documents, transcripts, resumes, employment records, financial documents, correspondence, forms, state documents, identification, organization documents. Sensitive documents require stricter access rules.
 
 ### 18. Benefits Center
-Unified benefits discovery filtered by branch, component, veteran status, disability status, service era, discharge, state, county, family status, education status, employment status, age and transition stage. Results categorized (confirmed / likely / possible eligibility, more information needed, likely not eligible). Never describe uncertain eligibility as guaranteed. *(See ADR 0003 for the status vocabulary actually used.)*
+Unified benefits discovery filtered by branch, component, veteran status, disability status, service era, discharge, state, county, family status, education status, employment status, age and transition stage. Results categorized (confirmed / likely / possible eligibility, more information needed, likely not eligible). Never describe uncertain eligibility as guaranteed. *(See ADR 0006 for the status vocabulary actually used.)*
 
 ### 19. Jurisdiction system
 Supports 50 states, DC, territories and other supported jurisdictions. Each holds veteran agency, benefit programs, eligibility rules, property, education, employment, licensing, recreational, family and tax benefits, contact information, official links, last verified date and source history. Alabama first; the rest added without redesign.
@@ -262,7 +262,7 @@ Every benefits source tracks name, URL, authority level, publication and effecti
 Registration → Intake Agent → Master Case → Orchestrator detects needs → Federal, State, Education and Career agents → Research Quality Agent validates → "Your VetBuddy Plan" → user chooses an action → workflow updates the case → VetBuddy monitors progress. Counselor dashboard with assigned veterans, priority cases, deadlines, documents needed, pending referrals and AI reviews; counselor approves, modifies or rejects the Recommended Next Action. Every important modification records who, when, old and new values, reason, source, automated/manual and agent. Developer Console: API explorer, webhooks, API keys, logs, sandbox, agent and workflow testers, event explorer, docs, integration management. Future marketplace of approved agents, integrations, templates, content and connectors under security review and permission manifests.
 
 ### 97. Monetization architecture
-Design billing support without forcing monetization into the veteran experience; veteran-access business decisions remain configurable. *(Deferred — see ADR 0003.)*
+Design billing support without forcing monetization into the veteran experience; veteran-access business decisions remain configurable. *(Deferred — see ADR 0006.)*
 
 ### 98–100. Solo-founder development format
 Every feature is divisible into small independent jobs with: objective, user story, database, UI, API and agent changes, permissions, workflows, edge cases, security concerns, tests, acceptance criteria, Base44 build prompt. Feature responses follow: (1) Feature Objective (2) User Story (3) User Flow (4) Screens (5) Database Entities (6) Field Definitions (7) Relationships (8) API Requirements (9) AI Agents Involved (10) Workflow Events (11) Permissions (12) Security Controls (13) UI Components (14) Validation (15) Error States (16) Test Cases (17) Acceptance Criteria (18) Base44 Implementation Prompt (19) Future Expansion. Internal Product Workspace: Vision, Roadmap, Features, Requirements, User Stories, Base44 Prompts, Architecture, Database, APIs, AI Agents, Design System, Security, Testing, Bugs, Releases, Documentation. *(This replaces the earlier multi-agent CRM development concept.)*

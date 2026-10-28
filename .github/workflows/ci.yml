@@ -1,105 +1,28 @@
-name: VetBuddy CI
-
-on:
-  push:
-    branches: [main, "claude/**"]
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-
+name: ci
+on: [push, pull_request]
 jobs:
   backend:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     services:
       postgres:
         image: postgres:16
-        env:
-          POSTGRES_PASSWORD: ci-only
+        env: { POSTGRES_HOST_AUTH_METHOD: trust }
         ports: ["5432:5432"]
-        options: >-
-          --health-cmd "pg_isready -U postgres" --health-interval 2s --health-retries 30
-    defaults:
-      run:
-        working-directory: backend
-    env:
-      TEST_DATABASE_ADMIN_URL: postgresql://postgres:ci-only@localhost:5432/postgres
-      VB_REQUIRE_DB: "1"
+        options: --health-cmd pg_isready --health-interval 5s --health-retries 10
+    env: { PGHOST: localhost, PGUSER: postgres }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-          cache: pip
-          cache-dependency-path: backend/requirements-dev.txt
-      - run: pip install -r requirements-dev.txt
-      - name: Generated browser files are in sync with the Python kernel
-        run: python ../scripts/build_web.py --check
-      - name: Unit, database, isolation, consent, audit and governance tests
-        run: pytest
-
-  frontend:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: npm
-          cache-dependency-path: frontend/package-lock.json
-      - run: npm ci
-      - name: Browser kernel parity with Python golden fixtures
-        run: npm test
-      - run: npm run build
-
-  e2e:
-    runs-on: ubuntu-latest
-    needs: [backend, frontend]
-    services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_PASSWORD: ci-only
-        ports: ["5432:5432"]
-        options: >-
-          --health-cmd "pg_isready -U postgres" --health-interval 2s --health-retries 30
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: npm
-          cache-dependency-path: frontend/package-lock.json
-      - run: pip install -r backend/requirements.txt
-      - name: Migrate and start the API (synthetic data, development sign-in)
-        working-directory: backend
-        env:
-          DATABASE_URL: postgresql://postgres:ci-only@localhost:5432/postgres
-          APP_DB_LOGIN: vetbuddy_api
-          APP_DB_PASSWORD: ci-only-api
-        run: |
-          python -m app.migrate
-          APP_DATABASE_URL=postgresql://vetbuddy_api:ci-only-api@localhost:5432/postgres \
-          AUTH_MODE=dev AUTH_DEV_SECRET="$(python -c 'import secrets; print(secrets.token_hex(24))')" \
-          ENVIRONMENT=test CORS_ORIGINS=http://127.0.0.1:4180 \
-          nohup uvicorn app.main:app --port 8011 > ../api.log 2>&1 &
-      - working-directory: frontend
-        run: |
-          npm ci
-          npx playwright install --with-deps chromium
-          npm run build
-      - name: Browser tests (guest privacy + full stack)
-        working-directory: frontend
-        env:
-          VB_E2E_API_URL: http://127.0.0.1:8011
-        run: npm run test:e2e
-      - if: failure()
-        run: tail -n 100 api.log
+        with: { python-version: "3.13" }
+      - run: sudo apt-get update && sudo apt-get install -y libpq5 postgresql-client
+      - run: pip install -r requirements.txt
+      - name: Secret scan (fail on likely keys)
+        run: "! git grep -nE '(sk-ant-|sk-[A-Za-z0-9]{32,}|eyJhbGciOi|-----BEGIN [A-Z ]*PRIVATE KEY)' -- . ':!*.md' ':!.github/workflows/ci.yml'"
+      - name: Unit + integration (real Postgres, RLS as non-owner role)
+        run: scripts/test.sh
+      - name: Browser smoke
+        run: python -m playwright install --with-deps chromium && scripts/test.sh --ui
+      - name: Generated web kernel and standalone build are current
+        run: python scripts/build_web.py --check
+      - name: Reference corpus validates and its generated seed is current
+        run: python scripts/build_reference.py --check

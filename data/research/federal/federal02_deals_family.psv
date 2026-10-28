@@ -1,0 +1,128 @@
+# VetBuddy Benefit Vault research ledger, federal 02 (deals, tickets, travel, scholarships, survivors, jobs, health)
+# Format: CAT|TITLE|GROUPS|RULE|ELIGIBLE|VALUE|URL  (see data/research/RESEARCH_LOG.md)
+# Commercial offers come from the vendor's own page (tier 3) and change often. Rows from tier 1 or 3 pages import as SOURCE_CHECKED, the rest as UNVERIFIED; none is VERIFIED until a named reviewer checks it (G1).
+
+# JUR=US SRC=https://corporate.homedepot.com/news/company/how-claim-your-military-discount-home-depot OPENED=2026-10-27 PAGE_UPDATED=2022-06-28
+DEALS|Home Depot military discount|ad,vet,sp|sm | vet | sp|U.S. veterans, active members and spouses verified through SheerID (Guard, Reserve and retirees: confirm with the store)|10% off eligible purchases in store and online|PAGE
+
+# JUR=US SRC=https://www.lowes.com/l/about/honor-our-military OPENED=2026-10-27 PAGE_UPDATED=none
+DEALS|Lowe's military discount|ad,ng,rsv,vet,sp|sm | (vet & hon) | sp|Current members and honorably discharged veterans (Guard included) and verified spouses, enrolled through ID.me|10% off most full-price items; excludes sale items, major appliances, gift cards and services|PAGE
+
+# JUR=US SRC=https://www.amtrak.com/active-military-and-veterans-discount OPENED=2026-10-27 PAGE_UPDATED=none
+TRAVEL|Amtrak military and veterans discount|ad,vet,sp,ch|ad | vet | (dep & spsm)|Active duty members, their spouses and children, and veterans with proof of status (Guard, Reserve and retirees not named)|10% off regular Coach fares; limited seats; not combinable|PAGE
+
+# JUR=US SRC=https://www.t-mobile.com/cell-phone-plans/military-discount-plans OPENED=2026-10-27 PAGE_UPDATED=none TAIL_UNREAD=7042
+DEALS|T-Mobile military plans|ad,ng,rsv,vet,ret,sp|sm | vet | ret | dep|Military and veteran families; the account holder verifies status within 45 days|Discounted multi-line plans (for example 3 lines $120-$165 a month with AutoPay)|PAGE
+
+# JUR=US SRC=https://www.verizon.com/military/ OPENED=2026-10-27 PAGE_UPDATED=none
+DEALS|Verizon military discount|ad,ng,rsv,vet,ret,gs|sm | vet | ret | gs|Current and former active duty, retirees, veterans, Guard and Reserve members and Gold Star families, verified through ID.me|10% off personal mobile plans; Fios from $26 a month with AutoPay; 25% off select accessories online|PAGE
+
+# JUR=US SRC=https://www.shadesofgreen.org/ticket-prices OPENED=2026-10-27 PAGE_UPDATED=none
+TICKETS|Disney military promotional tickets (2026)|ad,ng,rsv,ret,sp|sm | ret | (sp & (spsm | spret))|Active or retired members (Guard, Reserve, Coast Guard, Space Force, USPHS and NOAA included) or their spouse with a Uniformed Services ID; up to six tickets|4- to 6-day Park Hopper tickets from $405, valid January 1-December 18, 2026, with blackout dates|PAGE
+
+# JUR=US SRC=https://www.sixflags.com/overgeorgia/military-discounts OPENED=2026-10-27 PAGE_UPDATED=none
+TICKETS|Six Flags military tickets (offers vary by park)|ad,ng,rsv,ret|sm | ret|Active and retired military verified through ID.me; each park sets its own offer (this example is Six Flags Over Georgia)|Example: tickets from $35 online and 2026 season passes from $65|PAGE
+
+# JUR=US SRC=https://www.fisherhouse.org/programs/hotel-for-heroes/ OPENED=2026-10-27 PAGE_UPDATED=none
+FAMILY|Fisher House lodging and Hotels for Heroes|ad,ng,rsv,vet,sp,ch|sm | vet | dep|Families of members and veterans in treatment at military or VA medical centers with a Fisher House; hotels when the house is full (members without travel funding)|Free lodging near the hospital; free hotel rooms from donated points for medical stays|PAGE
+
+# JUR=US SRC=https://www.halekoa.com/about-hale-koa-hotel/eligibility OPENED=2026-10-27 PAGE_UPDATED=none
+MWR|Hale Koa Hotel (Waikiki)|ad,ng,rsv,ret,vet,dv,sp,ch,ss|sm | ret | (vet & (sc | ph | pow)) | ss | dep|Members, retirees, 100% disabled veterans, veterans with a VHIC showing Purple Heart, POW or service-connected, surviving spouses, DoD civilians and families|Military resort hotel; a sponsor may book two extra rooms for guests|PAGE
+
+# JUR=US SRC=https://www.militaryonesource.mil/benefits/information-tickets-travel-program/ OPENED=2026-10-27 PAGE_UPDATED=none
+TICKETS|Information, Tickets and Travel (ITT) offices|ad,ng,rsv,ret,sp,ch|sm | ret | dep|Active duty, reserve and retired members, DoD civilians and families; offerings vary by installation|Discounted event and attraction tickets, travel planning and the American Forces Travel site|PAGE
+
+# JUR=US SRC=https://www.mynavyexchange.com/Veterans OPENED=2026-10-27 PAGE_UPDATED=none
+MWR|Exchange online shopping for veterans|vet|vet & hon|All honorably discharged veterans, online only (in-store access needs a VHIC showing service-connected, Purple Heart or POW)|Tax-free exchange online shopping; uniforms, alcohol and tobacco excluded|PAGE
+
+# JUR=US SRC=https://www.hilton.com/en/offers/military-rate-2000000074/ OPENED=2026-10-27 PAGE_UPDATED=none
+TRAVEL|Hilton Military Family Rate|ad,rsv,ret,vet,sp,ch|sm | ret | vet | dep|U.S. and Canadian active duty and reserve members, retirees, veterans and families on leisure travel, with military ID at check-in|Discounted rates at participating Hilton hotels (varies by hotel)|PAGE
+
+# JUR=US SRC=https://www.nps.gov/planyourvisit/passes.htm OPENED=2026-10-27 PAGE_UPDATED=2026-10-09
+PASS|America the Beautiful Access Pass|dv|sev | pt|U.S. citizens and permanent residents with a documented permanent disability|Free lifetime entrance and standard amenity fees at federal recreation sites|PAGE
+PASS|National park fee-free days (2026)|all|true|U.S. citizens and permanent residents (nonresidents pay from 2026); every NPS site that charges entrance fees|Free entrance on eight dates in 2026, ending with Veterans Day, November 11|PAGE
+
+# JUR=US SRC=https://department.va.gov/veteran-sports/national-veterans-golden-age-games/ OPENED=2026-10-27 PAGE_UPDATED=none
+MWR|National Veterans Golden Age Games|vet|vet & age>=55|Veterans enrolled in VA health care who are 55 or older by December 31, 2027|Next games June 23-29, 2027 in Cleveland; VA also runs the Wheelchair Games and Winter Sports Clinic|PAGE
+
+# JUR=US SRC=https://foldsofhonor.org/scholarships/ OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|Folds of Honor military scholarships|sp,ss,ch|(sp | ss | ch) & (spkia | spsc)|Spouses and children of fallen or disabled service members, for K-12 or higher education|Up to $2,500 a college term; up to $5,000 a year for private K-12; apply February 1-March 31|https://foldsofhonor.org/scholarships/military-scholarships/
+
+# JUR=US SRC=https://www.legion.org/get-involved/scholarships/the-american-legion-legacy-scholarship OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|American Legion Legacy Scholarship|ch,gs|ch & (spkia | spr>=50)|Children of post-9/11 members who died on active duty, or of post-9/11 veterans rated 50%+; high school seniors and graduates|Up to $20,000 (children of the fallen) or $5,000 (children of disabled veterans); 2026 deadline March 25|PAGE
+
+# JUR=US SRC=https://www.vfw.org/assistance/student-veterans-support OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|VFW Sport Clips Help A Hero Scholarship|ad,ng,rsv,vet|sm | vet|U.S. citizens serving or separated at E-5 or below who finished training, with financial need, in a VA-approved program|Up to $5,000 for tuition and fees; cycles January 1-April 30 and August 1-November 15|https://webportalapp.com/sp/help_a_hero
+
+# JUR=US SRC=https://www.mcsf.org/apply/eligibility/ OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|Marine Corps Scholarship Foundation|ch|ch & (spsm | spret | spvet | spkia)|Children of active, reserve, honorably discharged or fallen Marines and attached Navy corpsmen; 2.0 GPA; family AGI $134,000 or less|Need-based awards; children of the fallen $7,500 a year for four years|PAGE
+
+# JUR=US SRC=https://www.nmcrs.org/our-services/scholarships OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|NMCRS education assistance|sp,ss,ch|(sp & (spsm | spret)) | (ch & age<23 & (spsm | spret | spdec)) | ss|Spouses and children under 23 of active duty, retired or deceased Navy and Marine Corps members|Scholarships $500-$3,000 and interest-free loans up to $4,000; 2027-28 window February 16-April 16, 2027|https://www.nmcrs.org/get-help/financial-assistance/education-assistance
+
+# JUR=US SRC=https://afas.org/hap-arnold-education-grant/ OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|General Henry H. Arnold Education Grant|sp,ch,ss|(ch | sp | ss) & (spsm | spret | spkia)|Children, spouses and surviving spouses of active, retired, retired Reserve or deceased Air Force and Space Force members; Guard and Reserve on Title 10|$500-$4,000 a year, need-based|https://afas.org/haparnoldgrant/
+
+# JUR=US SRC=https://mycgma.org/programs/seg/ OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|CGMA Supplemental Education Grant|ad,rsv,ret,sp,ch,ss|sm | ret | sp | (ch & age<23) | ss|Coast Guard active, Reserve and retired members, civilians and surviving spouses (CGMA members), for themselves, spouses or children under 23|Up to $750 a household a year ($1,500 dual-military) for fees, books and supplies, not tuition|PAGE
+
+# JUR=US SRC=https://pattillmanfoundation.org/eligibility-and-compensation-2/ OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|Tillman Scholar Program|ad,ng,rsv,vet,sp,ss|sm | vet | sp | ss|Veterans and members (pre- and post-9/11) and spouses, including surviving spouses, in full-time degree programs|Scholarship and leadership network; yearly application cycle|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Death-Gratuity- OPENED=2026-10-27 PAGE_UPDATED=none
+BONUS|Death gratuity|ss,ch,gs|(ss | dep | gs) & spkia|Primary next of kin of members who die on active duty or in certain reserve statuses, from any cause|$100,000 one-time payment from the member's command|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Dependency-and-Indemnity-Compensation-(DIC) OPENED=2026-10-27 PAGE_UPDATED=none
+BONUS|Dependency and Indemnity Compensation (DIC)|ss,ch,gs|(ss | ch | gs) & (spkia | spsc)|Surviving spouses, children and parents of members who died in the line of duty or veterans who died of a service-connected cause|Monthly tax-free VA payment (current rates on va.gov)|PAGE
+
+# JUR=US SRC=https://www.taps.org/family OPENED=2026-10-27 PAGE_UPDATED=none
+FAMILY|TAPS survivor support|ss,ch,gs|ss | gs | dep|Anyone grieving the death of someone who served, however, whenever or wherever they died|Free 24/7 helpline, peer mentors, seminars, retreats and camps for young survivors|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Burial-and-Memorial-Benefits- OPENED=2026-10-27 PAGE_UPDATED=none
+BURIAL|VA national cemetery burial and memorial items|vet,ret,sp,ch,ss|(vet & otd) | sm | dep | ss|Veterans not dishonorably discharged, members who die on active duty, certain reservists, spouses and dependent children|National cemetery burial; headstone or marker, flag and Presidential Memorial Certificate|PAGE
+BURIAL|VA burial allowance|vet|vet|Families of some veterans, depending on service-connected status and place of death (rules on va.gov)|Allowance toward burial and funeral costs (current amounts on va.gov)|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/VA-Home-Loans OPENED=2026-10-27 PAGE_UPDATED=none
+HOUSING|VA home loan guaranty|ad,ng,rsv,vet,ss|sm | vet | ss|Members, veterans, Guard and Reserve with qualifying service, and eligible surviving spouses|No down payment required by VA; no VA loan limit since January 1, 2020|PAGE
+HOUSING|VA funding fee waiver for Purple Heart recipients on active duty|ad|sm & ph|Active duty members awarded the Purple Heart who close on the home while still serving|VA funding fee waived|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Cancellation-of-Federal-Student-Loans OPENED=2026-10-27 PAGE_UPDATED=none
+EDU|Perkins Loan cancellation for hostile-area service|ad,ng,rsv|sm|Members serving in areas that qualify for hostile fire or imminent danger pay|Up to 100% of Federal Perkins or NDSL loans canceled|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Reimbursement-of-Qualifying-Spouse-Relicensing-Costs-and-Business-Costs OPENED=2026-10-27 PAGE_UPDATED=none
+LICENSE|Spouse relicensing and business cost reimbursement|sp|sp & spsm|Spouses with relicensing, certification or business costs after a PCS move across state lines (including OCONUS to stateside)|Up to $1,000 for relicensing plus up to $1,000 for business costs|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Servicemembers-Civil-Relief-Act-(SCRA) OPENED=2026-10-27 PAGE_UPDATED=none
+OTHER|Servicemembers Civil Relief Act (SCRA) protections|ad,ng,rsv,sp,ch|sm | (dep & spsm)|Active duty members, Guard and Reserve on qualifying federal orders, and their dependents|Protections on leases, installment contracts, credit card and mortgage interest, foreclosure, civil court and taxes|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Yellow-Ribbon-Reintegration-Program-(YRRP) OPENED=2026-10-27 PAGE_UPDATED=none
+FAMILY|Yellow Ribbon Reintegration Program|ng,rsv,sp,ch|ngany | rsv | (dep & spsm)|Guard and Reserve members and families across the deployment cycle|Events, resources and referrals before, during and after deployment|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Military-OneSource- OPENED=2026-10-27 PAGE_UPDATED=none
+FAMILY|Military OneSource|ad,ng,rsv,ret,sp,ch,ss|sm | ret | dep | ss|Members of all components, retirees, families and survivors|Free confidential non-medical counseling, financial counseling and tax help|https://www.militaryonesource.mil/
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Army-Emergency-Relief-(AER) OPENED=2026-10-27 PAGE_UPDATED=none
+BONUS|Army Emergency Relief|ad,ng,rsv,ret,sp,ch,ss|sm | ret | dep | ss|Army Soldiers (active, Guard and Reserve under AER rules, retired), their families, surviving spouses and orphans|Help with immediate needs such as rent, utilities and emergency travel|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/VA-Program-of-Comprehensive-Assistance-for-Family-Caregivers-(PCAFC) OPENED=2026-10-27 PAGE_UPDATED=none
+FAMILY|VA Program of Comprehensive Assistance for Family Caregivers|dv|vet & sc|Family caregivers of veterans of any era with serious service-connected injuries who need personal care (VA criteria)|Monthly stipend and caregiver support; legacy participants transition through September 30, 2028|PAGE
+
+# JUR=US SRC=https://www.opm.gov/fedshirevets/veteran-job-seekers/vets/ OPENED=2026-10-27 PAGE_UPDATED=none
+JOBS|Federal veterans' preference|vet,dv|vet & uhc|Veterans with honorable or general discharge and qualifying service (5 points); a service-connected disability or Purple Heart (10 points)|5 or 10 points in federal hiring|PAGE
+JOBS|Federal hiring authorities for veterans (VRA, 30% disabled, VEOA)|vet,dv|vet|Recently separated and other eligible veterans (VRA up to GS-11), veterans rated 30%+, and veterans with 3+ years of service (VEOA)|Noncompetitive appointments or access to merit promotion announcements|PAGE
+
+# JUR=US SRC=https://www.opm.gov/fedshirevets/veteran-job-seekers/veteran-family-members/ OPENED=2026-10-27 PAGE_UPDATED=none
+JOBS|Noncompetitive federal appointment for military spouses|sp,ss|(sp & (spsm | spr>=100)) | (ss & spkia)|Spouses of active duty members or of members rated 100% disabled, and unremarried spouses of members who died on active duty|Agencies may hire without competition (temporary, term or permanent jobs)|PAGE
+JOBS|Derived veterans' preference for family members|sp,ss,gs|sp | ss | gs|Spouses, widows or widowers and parents of veterans who could not use preference because of a service-connected disability or who died in service|10-point derived preference (SF-15)|PAGE
+
+# JUR=US SRC=https://www.va.gov/health-care/eligibility/priority-groups/ OPENED=2026-10-27 PAGE_UPDATED=2024-04-03
+HEALTH|VA health care|vet,dv|vet|Veterans who enroll; priority groups set costs (group 1: 50%+ rating, unemployable or Medal of Honor); combat veterans get 10 years of enhanced eligibility|Comprehensive VA medical care; costs depend on priority group|PAGE
+
+# JUR=US SRC=https://tricare.mil/FAQs/General/TAMP_Benefits OPENED=2026-10-27 PAGE_UPDATED=none
+HEALTH|Transitional Assistance Management Program (TAMP)|ad,ng,rsv|sm|Members separating under qualifying conditions; the service decides eligibility|180 days of TRICARE after regular coverage ends|PAGE
+
+# JUR=US SRC=none SEEN_IN_SEARCH=2026-10-27
+SCHOLARSHIP|NMFA Military Spouse Scholarships|sp,ss|sp | ss|Military spouses; the page blocks automated reading, so eligibility was not read|Scholarships for spouses; yearly cycle|https://scholarships.militaryfamily.org/offers/nmfa-spouse-scholarship/
+JOBS|USERRA reemployment rights|ad,ng,rsv|sm|Members of all components who leave civilian jobs for military service|Right to return to the civilian job with seniority, status and pay; protection from discrimination|https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Uniformed-Services-Employment-and-Reemployment-Rights-Act-%28USERRA%29
+JOBS|ESGR employer support and mediation|ng,rsv|ngany | rsv|Guard and Reserve members and their civilian employers|Free USERRA information and mediation|https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Employer-Support-of-the-Guard-and-Reserve-%28ESGR%29
+MWR|Commissary and exchange shopping for members, retirees and families|ad,ng,rsv,ret,sp,ch|sm | ret | dep|Members of all components, retirees and dependents with a Uniformed Services ID|Commissary groceries with a 5% surcharge and tax-free exchange shopping|https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Defense-Commissary-Agency-%28DeCA%29

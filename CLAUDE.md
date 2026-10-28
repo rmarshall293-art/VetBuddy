@@ -1,9 +1,9 @@
 # VetBuddy Claude Code Project Rules
 
-Read `docs/VETBUDDY_MASTER_SPEC.md` before making architecture, database, AI-agent, routing or migration changes.
+Read `docs/VETBUDDY_MASTER_SPEC.md` (v6 directive; v5 and canonical integration v2 preserved as subordinate appendices) before making architecture, database, AI-agent, routing or migration changes.
 
 - VetBuddy is a Veteran Operating System; one Master Mission/Master Case; CRM is a contained subsystem.
-- Product layout and module names: `docs/PRODUCT_LAYOUT.md`. Case Management is the core; CRM is the relationship layer, never the core. Governance rules win over layout details (`docs/ADR/0003-product-layout.md`).
+- Product layout and module names: `docs/PRODUCT_LAYOUT.md`. Case Management is the core; CRM is the relationship layer, never the core. Governance rules win over layout details (`docs/ADR/0006-product-layout.md`).
 - Observe code before making claims; report missing source as `SOURCE_NOT_AVAILABLE`.
 - Preserve the Base44 prototype; never overwrite/deprecate a feature without mapped tests and rollback.
 - GitHub is the code source of truth; PostgreSQL/Supabase is the canonical data store.
@@ -13,7 +13,10 @@ Read `docs/VETBUDDY_MASTER_SPEC.md` before making architecture, database, AI-age
 - Deterministic eligibility and policy services are authoritative; AI explains and drafts, cannot self-approve.
 - Never use real PII, V4/V5 health data, keys/tokens or sensitive prompt internals in git, logs, output, or public datasets.
 - No direct production writes, destructive migrations, filings, data sharing or external messages without approved human workflows.
-- Label implementations IMPLEMENTED_VERIFIED/PARTIAL/MOCK/NOT_PRESENT/BLOCKED_SOURCE/DEFERRED.
+- Label implementations IMPLEMENTED_TESTED/IMPLEMENTED_UNVERIFIED/PARTIAL/MOCK/PLANNED/DISABLED/BLOCKED (v6 §0); unavailable material is SOURCE_NOT_AVAILABLE.
+- No account collection launches before deletion, export and security are implemented (v6 §3, §15). Guest access never requires an account.
+- Eligibility outputs use the v6 vocabulary (PRELIMINARY_MATCH … HUMAN_REVIEW_REQUIRED); the Mission Router is never the eligibility engine.
+- No final domain, legal operator, pricing or government partnership is invented; keep them as configurable, release-blocking fields.
 - User experience: web/PWA-first, accessible, source-transparent, transition-to-thrive lifecycle.
 - No sales/pricing/acquisition/investor work.
 - Implement the next bounded vertical slice, test it, update docs/gap matrix, and report commands/results.

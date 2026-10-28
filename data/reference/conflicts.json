@@ -1,160 +1,390 @@
 {
- "_meta": {
-  "note": "Contested readings carried as data so they are shown as contested, never silently resolved. The per-reading sources were not in hand (SOURCE_NOT_AVAILABLE); only the subject and readings are integrated. 15 of the record's 23 rows were rendered in it; 8 are missing. Rows added 21 Oct 2026 carry their own sources.",
-  "sources": [
-   "src.gov.integrated_record",
-   "src.upload.va_claims_data",
-   "src.upload.va_rating_app"
-  ]
- },
- "conflicts": [
+ "dataset": "conflicts",
+ "title": "Source conflicts and supersessions surfaced by the integration",
+ "version": "2026.10.20",
+ "as_of": "2026-10-20",
+ "rule": "A conflict is surfaced, never resolved by picking whichever number appeared first or last. Every contested_unresolved record keeps two or more readings, each unverified. 'superseded' records name what replaced what so a stale value is caught on sight.",
+ "records": [
   {
+   "id": "conflict.al.veteran_population",
+   "subject": "Alabama veteran population",
+   "status": "contested_unresolved",
    "readings": [
-    "303,253",
-    "334,000",
-    "377,310"
+    {
+     "value": "303,253",
+     "basis": "VA VetPop2023",
+     "source": "src.rr.alabama_landscape"
+    },
+    {
+     "value": "334,000",
+     "basis": "BLS CPS 2024, civilian non-institutional 18+",
+     "source": "src.rr.alabama_tap"
+    },
+    {
+     "value": "377,310",
+     "basis": "ADVA citing VetPop",
+     "source": "src.rr.alabama_tap"
+    }
    ],
-   "status": "CONTESTED",
-   "subject": "Alabama veteran population"
+   "why_it_matters": "Every per-veteran figure (spending, density) changes with the denominator.",
+   "next_action": "Cite one methodology per screen and name it."
   },
   {
+   "id": "conflict.al.va_education_beneficiaries",
+   "subject": "Alabama all-program VA education beneficiaries, FY2023",
+   "status": "contested_unresolved",
    "readings": [
-    "20,334",
-    "23,000+"
+    {
+     "value": "20,334",
+     "source": "src.rr.alabama_landscape"
+    },
+    {
+     "value": "23,000+",
+     "source": "src.rr.alabama_tap"
+    }
    ],
-   "status": "CONTESTED",
-   "subject": "Alabama all-program VA education beneficiaries, FY2023"
+   "next_action": "Pull the VA education benefits state table."
   },
   {
+   "id": "conflict.al.adva_per_veteran",
+   "subject": "ADVA budget per veteran",
+   "status": "contested_unresolved",
    "readings": [
-    "$575",
-    "~$300"
+    {
+     "value": "$575",
+     "basis": "$230M / 303K (VetPop)",
+     "source": "src.rr.alabama_landscape"
+    },
+    {
+     "value": "~$300",
+     "basis": "$230M / 334K (BLS)",
+     "source": "src.rr.alabama_tap"
+    }
    ],
-   "status": "CONTESTED",
-   "subject": "ADVA budget per veteran"
+   "why_it_matters": "Both divide the same budget by a different population; neither nets out federal per diem for state homes (landscape report puts the pure state general fund at $20–40M)."
   },
   {
+   "id": "conflict.va_comp.2025_70pct_single",
+   "subject": "VA compensation, 70%, veteran alone, effective 2024-12-01",
+   "status": "contested_unresolved",
    "readings": [
-    "$1,759.19",
-    "$1,759.05"
+    {
+     "value": "$1,759.19",
+     "source": "src.rr.transition_finances",
+     "note": "also implied by va-rating-app.html (2026 rate $1,808.45 / 1.028)"
+    },
+    {
+     "value": "$1,759.05",
+     "source": "src.legacy.gen3_client"
+    },
+    {
+     "value": "$1,759.05",
+     "source": "src.legacy.va_claims_data"
+    }
    ],
-   "status": "CONTESTED",
-   "subject": "VA compensation, 70%, veteran alone, effective 2024-12-01"
+   "why_it_matters": "Quoted payment amounts must be reproducible to the cent.",
+   "next_action": "Read the VA rate table for that period; correct the losing value with a named reviewer."
   },
   {
+   "id": "conflict.base_pay.gate_labels",
+   "subject": "FY2025 base pay longevity gates in the legacy client",
+   "status": "contested_unresolved",
    "readings": [
-    "Gen-3 client: E-8 '18yr' = 6739, E-9 '20yr' = 7448, O-3 '6yr' = 7113",
-    "Finance report table: E-8 over 18 = 6562 (6739 is over 20); E-9 over 18 = 7448; O-3 over 4 = 7113 (over 6 = 7454)"
+    {
+     "value": "Gen-3 client: E-8 '18yr' = 6739, E-9 '20yr' = 7448, O-3 '6yr' = 7113",
+     "source": "src.legacy.gen3_client"
+    },
+    {
+     "value": "Finance report table: E-8 over 18 = 6562 (6739 is over 20); E-9 over 18 = 7448; O-3 over 4 = 7113 (over 6 = 7454)",
+     "source": "src.rr.transition_finances"
+    }
    ],
-   "status": "CONTESTED",
-   "subject": "FY2025 base pay longevity gates in the legacy client"
+   "why_it_matters": "A one-column shift changes a separation-cliff estimate by $150–$340 a month.",
+   "next_action": "Use the DFAS table; the legacy client constants are not carried."
   },
   {
+   "id": "conflict.wv.cohen_clinic_count",
+   "subject": "Cohen Veterans Network clinic count",
+   "status": "contested_unresolved",
    "readings": [
-    "23 clinics in 22 states + DC (23 listed)",
-    "22 clinics",
-    "22 clinics / 21 states (older CVN materials, cited by the report)"
-   ],
-   "status": "CONTESTED",
-   "subject": "Cohen Veterans Network clinic count"
+    {
+     "value": "23 clinics in 22 states + DC (23 listed)",
+     "source": "src.rr.women_veterans_50_state"
+    },
+    {
+     "value": "22 clinics",
+     "source": "src.mod.women_veterans"
+    },
+    {
+     "value": "22 clinics / 21 states (older CVN materials, cited by the report)",
+     "source": "src.rr.women_veterans_50_state"
+    }
+   ]
   },
   {
+   "id": "conflict.wv.headstrong_state_count",
+   "subject": "Headstrong Project coverage",
+   "status": "contested_unresolved",
    "readings": [
-    "15 states + DC (stated)",
-    "16 states + DC (listed)"
-   ],
-   "status": "CONTESTED",
-   "subject": "Headstrong Project coverage"
+    {
+     "value": "15 states + DC (stated)",
+     "source": "src.rr.women_veterans_50_state"
+    },
+    {
+     "value": "16 states + DC (listed)",
+     "source": "src.rr.women_veterans_50_state"
+    }
+   ]
   },
   {
+   "id": "conflict.tx.hazlewood_legacy_age",
+   "subject": "Hazlewood Legacy Act child age ceiling",
+   "status": "contested_unresolved",
    "readings": [
-    "25 or younger on the first day of the term",
-    "under 21"
+    {
+     "value": "25 or younger on the first day of the term",
+     "basis": "agency and university sources",
+     "source": "src.mod.sentinel"
+    },
+    {
+     "value": "under 21",
+     "basis": "one secondary source",
+     "source": "src.mod.sentinel"
+    }
    ],
-   "status": "CONTESTED",
-   "subject": "Hazlewood Legacy Act child age ceiling"
+   "next_action": "Resolve against the TVC policy manual before advising anyone."
   },
   {
+   "id": "conflict.tx.hazlewood_dependent_hours",
+   "subject": "Hazlewood hours for dependents of members who died, are MIA or totally disabled",
+   "status": "contested_unresolved",
    "readings": [
-    "50 credit hours",
-    "150 credit hours"
+    {
+     "value": "50 credit hours",
+     "source": "src.mod.sentinel"
+    },
+    {
+     "value": "150 credit hours",
+     "source": "src.mod.sentinel"
+    }
    ],
-   "status": "CONTESTED",
-   "subject": "Hazlewood hours for dependents of members who died, are MIA or totally disabled"
+   "why_it_matters": "May reflect different qualifying categories."
   },
   {
+   "id": "conflict.fl.5000_threshold",
+   "subject": "Florida $5,000 disabled-veteran property deduction threshold",
+   "status": "contested_unresolved",
    "readings": [
-    "any service-connected rating",
-    "10% or more"
+    {
+     "value": "any service-connected rating",
+     "source": "src.mod.sentinel"
+    },
+    {
+     "value": "10% or more",
+     "source": "src.rr.transition_finances"
+    }
    ],
-   "status": "CONTESTED",
-   "subject": "Florida $5,000 disabled-veteran property deduction threshold"
+   "next_action": "Read Fla. Stat. 196.24."
   },
   {
+   "id": "conflict.fl.recreation_thresholds",
+   "subject": "Florida free hunting, fishing and park access rating thresholds",
+   "status": "contested_unresolved",
    "readings": [
-    "50%+ rating: free hunting and fishing",
-    "100% rating: free five-year hunting and fishing license (other sources give different thresholds)"
+    {
+     "value": "50%+ rating: free hunting and fishing",
+     "source": "src.mod.sentinel"
+    },
+    {
+     "value": "100% rating: free five-year hunting and fishing license (other sources give different thresholds)",
+     "source": "src.mod.sentinel"
+    }
    ],
-   "status": "CONTESTED",
-   "subject": "Florida free hunting, fishing and park access rating thresholds"
+   "next_action": "Read FWC and DEP rules directly."
   },
   {
+   "id": "conflict.state_tax.full_exempt_count",
+   "subject": "How many jurisdictions fully exempt military retirement (TY2025)",
+   "status": "contested_unresolved",
    "readings": [
-    "38 of 51 including the 9 with no income tax",
-    "approximately 28 income-tax states",
-    "30 states named in the report's own full-exemption list"
+    {
+     "value": "38 of 51 including the 9 with no income tax",
+     "source": "src.rr.transition_finances"
+    },
+    {
+     "value": "approximately 28 income-tax states",
+     "source": "src.rr.transition_finances"
+    },
+    {
+     "value": "30 states named in the report's own full-exemption list",
+     "source": "src.rr.transition_finances"
+    }
    ],
-   "status": "CONTESTED",
-   "subject": "How many jurisdictions fully exempt military retirement (TY2025)"
+   "why_it_matters": "The report is internally inconsistent; the per-state summary is carried, the headline count is not."
   },
   {
+   "id": "conflict.state_tax.nm",
+   "subject": "New Mexico military retirement exemption",
+   "status": "contested_unresolved",
    "readings": [
-    "full exemption (with income limits, recent legislation)",
-    "up to $30,000 exemption"
-   ],
-   "status": "CONTESTED",
-   "subject": "New Mexico military retirement exemption"
+    {
+     "value": "full exemption (with income limits, recent legislation)",
+     "source": "src.rr.transition_finances"
+    },
+    {
+     "value": "up to $30,000 exemption",
+     "source": "src.rr.transition_finances"
+    }
+   ]
   },
   {
+   "id": "conflict.ednav.al_award_cap",
+   "subject": "Alabama G.I. Dependents' Scholarship award cap (Education Navigator oq.al.31-6.award_cap)",
+   "status": "contested_unresolved",
    "readings": [
-    "$400 per credit hour (HB284, effective 2024-07-31)",
-    "unretrieved: cap form unknown (dollar, rate, credit-hour or semester limit)"
+    {
+     "value": "$400 per credit hour (HB284, effective 2024-07-31)",
+     "source": "src.rr.alabama_tap"
+    },
+    {
+     "value": "unretrieved: cap form unknown (dollar, rate, credit-hour or semester limit)",
+     "source": "src.mod.education_navigator"
+    },
+    {
+     "value": "up to $250 per semester hour and $1,000 for books, after federal grants",
+     "source": "src.legacy.state_benefits_all"
+    }
    ],
-   "status": "CONTESTED",
-   "subject": "Alabama G.I. Dependents' Scholarship award cap (Education Navigator oq.al.31-6.award_cap)"
+   "why_it_matters": "The funding stack cannot compute an Alabama dependent's remaining gap without it. A tier-4 report is a lead, not the amended chapter text.",
+   "blocking_for": [
+    "funding_stack:AL",
+    "benefit_result:al.gi_dependents_scholarship"
+   ]
   },
   {
+   "id": "conflict.design.crisis_floor_copies",
+   "subject": "Crisis contacts: one source of truth vs deliberate redundancy",
+   "status": "resolved_by_design",
    "readings": [
-    "One config file every surface reads (VetBuddy config/crisis_floor.yaml)",
-    "Four independent copies so a dead API or DB still shows a hotline (Women Veterans module)"
+    {
+     "value": "One config file every surface reads (VetBuddy config/crisis_floor.yaml)",
+     "source": "src.gov.master_record"
+    },
+    {
+     "value": "Four independent copies so a dead API or DB still shows a hotline (Women Veterans module)",
+     "source": "src.mod.women_veterans"
+    }
    ],
-   "status": "RESOLVED_BY_DESIGN",
-   "subject": "Crisis contacts: one source of truth vs deliberate redundancy"
+   "resolution": "One authored source; generated copies. The API reads config/crisis_floor.yaml, the standalone app embeds a generated copy (web/kernel_data.js), and a test fails if any copy drifts. Redundant delivery, single authorship."
   },
   {
-   "readings": [
-    "$1,759.05 (va_claims_data.json)",
-    "$1,759.19 (implied by va-rating-app.html: its 2026 rate $1,808.45 / 1.028)"
-   ],
-   "sources": [
-    "src.upload.va_claims_data",
-    "src.upload.va_rating_app"
-   ],
-   "status": "CONTESTED",
-   "subject": "VA compensation, 70%, veteran alone, effective 2024-12-01 (new evidence)",
-   "verify_against": "VA.gov compensation rate tables (2025)"
-  },
-  {
-   "readings": [
-    "$1,435.01 (va-rating-app.html summary table)",
-    "$1,435.02 (va-rating-app.html dependents table)"
-   ],
-   "sources": [
-    "src.upload.va_rating_app"
-   ],
-   "status": "CONTESTED",
+   "id": "conflict.va_comp.2026_60pct_single",
    "subject": "VA compensation, 60%, veteran alone, effective 2025-12-01",
-   "verify_against": "VA.gov compensation rate tables (2026)"
+   "status": "contested_unresolved",
+   "readings": [
+    {
+     "value": "$1,435.01",
+     "basis": "summary table",
+     "source": "src.legacy.va_rating_app"
+    },
+    {
+     "value": "$1,435.02",
+     "basis": "dependents table, same file",
+     "source": "src.legacy.va_rating_app"
+    }
+   ],
+   "why_it_matters": "One file disagrees with itself; quoted amounts must be reproducible to the cent.",
+   "next_action": "Read VA's 2026 rate table; correct the losing value with a named reviewer."
+  },
+  {
+   "id": "conflict.license_reciprocity.two_datasets",
+   "subject": "State license reciprocity (teacher, Uniform Bar Exam, real estate), 51 jurisdictions",
+   "status": "contested_unresolved",
+   "readings": [
+    {
+     "value": "Vault table: e.g. TX, MS, OR lawyer_ube = false; teacher full reciprocity = true in most states",
+     "source": "src.legacy.vault_license_reciprocity"
+    },
+    {
+     "value": "Uploaded summary: e.g. TX, MS, OR lawyer_ube = true; teacher full reciprocity = false in most states; 42 of 51 states differ on at least one field",
+     "source": "src.legacy.state_benefits_all"
+    }
+   ],
+   "why_it_matters": "Spouses and members who move use this to plan a license transfer; neither reading names a primary source.",
+   "next_action": "Check lawyer_ube against NCBE's UBE jurisdiction list and teacher/real-estate fields against each state licensing board; correct with a named reviewer.",
+   "blocking_for": [
+    "benefit_result:license_reciprocity"
+   ]
+  }
+ ],
+ "supersessions": [
+  {
+   "id": "sup.fort_novosel",
+   "old": "Fort Novosel",
+   "new": "Fort Rucker",
+   "effective": "2025-06-11",
+   "note": "The landscape report and the BAH sample still use the old name.",
+   "sources": [
+    "src.rr.alabama_tap"
+   ]
+  },
+  {
+   "id": "sup.vcl_number",
+   "old": "1-800-273-8255",
+   "new": "988 then press 1",
+   "note": "Retired Veterans Crisis Line number still appears on some live VA pages; any record carrying it fails validation.",
+   "sources": [
+    "src.mod.women_veterans"
+   ]
+  },
+  {
+   "id": "sup.n426_180_day",
+   "old": "180-day minimum service for N-426",
+   "new": "No minimum; honorable-service assessment only",
+   "sources": [
+    "src.mod.sentinel"
+   ]
+  },
+  {
+   "id": "sup.reap",
+   "old": "Chapter 1607 (REAP)",
+   "new": "Sunset",
+   "sources": [
+    "src.mod.sentinel"
+   ]
+  },
+  {
+   "id": "sup.sbp_dic_offset",
+   "old": "SBP-DIC offset ('widow's tax')",
+   "new": "Eliminated January 2023",
+   "sources": [
+    "src.rr.transition_finances"
+   ]
+  },
+  {
+   "id": "sup.redstone_tap",
+   "old": "Redstone Arsenal in-person TAP",
+   "new": "Virtual-only from 2025-05-12",
+   "sources": [
+    "src.rr.alabama_tap",
+    "src.rr.alabama_landscape"
+   ]
+  },
+  {
+   "id": "sup.va_comp_2025",
+   "old": "VA compensation effective 2024-12-01",
+   "new": "2.8% COLA effective 2025-12-01 (full table not in hand)",
+   "sources": [
+    "src.rr.transition_finances"
+   ]
+  },
+  {
+   "id": "sup.bas_2025",
+   "old": "BAS 2025 ($465.77 / $320.78)",
+   "new": "BAS 2026 ($476.95 / $328.48)",
+   "sources": [
+    "src.rr.transition_finances"
+   ]
   }
  ]
 }

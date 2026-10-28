@@ -1,0 +1,180 @@
+{
+  "dataset": "compensation",
+  "title": "Military pay, allowances, retirement and VA compensation reference (FY2025, with 2026 deltas)",
+  "version": "2026.10.20",
+  "as_of": "2026-10-20",
+  "review_by": "2026-12-01",
+  "default_status": "UNVERIFIED",
+  "money_rule": "All money is integer cents (premise P8). Source values given only to the whole dollar are marked rounded=true and must not be shown as cent-accurate. No kernel may read a rate whose status is ILLUSTRATIVE or HEURISTIC, and no missing cell is interpolated.",
+  "authoritative_sources_to_verify_against": {
+    "military_pay": "DFAS military pay tables",
+    "bah_cola": "DTMO BAH and COLA calculators (travel.dod.mil)",
+    "va_compensation": "VA.gov current compensation rates",
+    "rmc": "DoD Selected Military Compensation Tables (Greenbook)"
+  },
+  "sources": ["src.rr.transition_finances"],
+  "va_compensation": {
+    "rate_set": "va_comp_2025",
+    "effective_from": "2024-12-01",
+    "effective_to": "2025-11-30",
+    "superseded_by_note": "VA rates rose 2.8% effective 2025-12-01; the source gives only the 100% single 2026 figure. The v2.0 build's 133-row 2026 table is described in the project but its data is not in hand.",
+    "status": "UNVERIFIED",
+    "veteran_alone": {"0": 0, "10": 17551, "20": 34695, "30": 53742, "40": 77416, "50": 110204, "60": 139593, "70": 175919, "80": 204489, "90": 229796, "100": 383130},
+    "with_spouse": {"30": 60142, "40": 85916, "50": 120804, "60": 152393, "70": 190819, "80": 221489, "90": 248996, "100": 404491},
+    "with_spouse_and_one_child": {"30": 64842, "50": 128704, "70": 201819, "100": 420135},
+    "with_spouse_and_one_child_missing": "40, 60, 80, 90 are not in the source. Do not cascade or interpolate; report the cell as unavailable.",
+    "addons": [
+      {"key": "child_under_18_each", "rating": 30, "amount_cents": 3100, "rounded": true},
+      {"key": "child_under_18_each", "rating": 50, "amount_cents": 5300, "rounded": true},
+      {"key": "child_under_18_each", "rating": 70, "amount_cents": 7400, "rounded": true},
+      {"key": "child_under_18_each", "rating": 100, "amount_cents": 10614},
+      {"key": "child_18_23_in_school_each", "rating": 100, "amount_cents": 34285},
+      {"key": "spouse_aid_and_attendance", "rating": 100, "amount_cents": 19592}
+    ],
+    "rate_2026_points": [
+      {"key": "veteran_alone", "rating": 100, "amount_cents": 393858, "effective_from": "2025-12-01", "note": "2.8% COLA. Only this cell is given by the source."}
+    ]
+  },
+  "va_special": {
+    "tdiu": {"status": "UNVERIFIED", "rule_text": "Paid at the 100% schedular rate when service-connected conditions prevent substantially gainful employment and the veteran has one condition rated 60% or more, or a combined 70% or more with at least one condition at 40% (38 CFR 4.16(a)).", "note": "The rating kernel's TDIU threshold check is PLANNED in this repo; the v2.0 build had it. Marginal-employment threshold cited by the source: about $14,580 (2025), approximate.", "sources": ["src.rr.transition_finances"]},
+    "smc_2025_approximate": {"status": "ILLUSTRATIVE", "note": "Source gives these with '~'. Shown for orientation only; never computed with.", "values": [
+      {"level": "K", "amount_cents": 13274, "kind": "add_on"},
+      {"level": "L", "amount_cents": 476800, "kind": "single_rate", "rounded": true},
+      {"level": "M", "amount_cents": 526100, "kind": "single_rate", "rounded": true},
+      {"level": "N", "amount_cents": 598500, "kind": "single_rate", "rounded": true},
+      {"level": "R.2", "amount_cents": 1080000, "kind": "single_rate", "rounded": true}
+    ]},
+    "permanent_and_total_unlocks": ["CHAMPVA for spouse and dependents", "Chapter 35 DEA education (source: about $1,574/month full-time, Oct 2025–Sep 2026)", "State property tax exemptions (state-dependent; see state_benefits)", "VA home loan funding fee waived", "Commissary, exchange and MWR access", "Space-A travel (per recent NDAA expansions)", "Federal student loan discharge (TPD)", "DIC eligibility for a surviving spouse if rated 100% for 8+ continuous years before death"],
+    "permanent_and_total_status": "UNVERIFIED"
+  },
+  "military_pay": {
+    "rate_set": "base_pay_2025",
+    "effective_from": "2025-01-01",
+    "status": "UNVERIFIED",
+    "rounded": true,
+    "unit": "usd_whole_dollars_monthly",
+    "note": "4.5% across-the-board raise effective 2025-01-01, plus about 10% targeted raise for E-1 to E-4 effective 2025-04-01. Selected longevity gates only, rounded to the dollar. 2026: +3.8% effective 2026-01-01 (no table in source).",
+    "caps_cents": {"o7_o10_level_ii": 1880820, "o6_and_below_level_v": 1525830, "senior_enlisted_advisor": 1075770},
+    "enlisted": {
+      "columns": ["<2", ">2", ">4", ">6", ">8", ">10", ">12", ">14", ">16", ">18", ">20", ">22", ">24", ">26", ">30"],
+      "rows": {
+        "E-1": [2319, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "E-2": [2599, 2599, 2599, 2599, 2599, 2599, 2599, 2599, 2599, 2599, 2599, null, null, null, null],
+        "E-3": [2733, 2905, 3081, 3081, 3081, 3081, 3081, 3081, 3081, 3081, 3081, null, null, null, null],
+        "E-4": [3027, 3182, 3525, 3676, 3676, 3676, 3676, 3676, 3676, 3676, 3676, null, null, null, null],
+        "E-5": [3221, 3467, 3802, 3959, 4142, 4234, 4260, 4260, 4260, 4260, 4260, 4260, 4260, 4260, 4260],
+        "E-6": [3277, 3606, 3920, 4081, 4444, 4585, 4859, 4943, 5004, 5075, 5075, 5075, 5075, 5075, 5075],
+        "E-7": [3788, 4134, 4502, 4666, 4947, 5106, 5387, 5622, 5781, 5951, 6017, 6238, 6357, 6809, 6809],
+        "E-8": [null, null, null, null, 5450, 5690, 5840, 6018, 6212, 6562, 6739, 7040, 7208, 7619, 7772],
+        "E-9": [null, null, null, null, null, 6657, 6808, 6998, 7221, 7448, 7809, 8115, 8436, 8928, 9374]
+      },
+      "row_notes": {"E-1": "Over 4 months of service."}
+    },
+    "officer": {
+      "columns": ["<2", ">2", ">4", ">6", ">10", ">14", ">18", ">20", ">22", ">26"],
+      "rows": {
+        "O-1": [3999, 4162, 5031, 5031, 5031, 5031, 5031, 5031, 5031, 5031],
+        "O-2": [4607, 5247, 6247, 6376, 6376, 6376, 6376, 6376, 6376, 6376],
+        "O-3": [5332, 6044, 7113, 7454, 8069, 8674, 8674, 8674, 8674, 8674],
+        "O-4": [6064, 7020, 7592, 8027, 9075, 9840, 10125, 10125, 10125, 10125],
+        "O-5": [7028, 7918, 8569, 8911, 9565, 10322, 11285, 11592, 11941, 11941],
+        "O-6": [8431, 9262, 9870, 9908, 10389, 10979, 12635, 13247, 13596, 14633],
+        "O-7": [11118, 11634, 12063, 12407, 13140, 13925, 16202, 16202, 16202, 16285],
+        "O-8": [13380, 13818, 14191, 14554, 15301, 16042, 17256, 17917, 18359, 18359],
+        "O-9/O-10": [null, null, null, null, null, null, null, 18808, 18808, 18808]
+      },
+      "row_notes": {"O-9/O-10": "Capped at the Level II Executive Schedule."}
+    },
+    "warrant": {
+      "columns": ["<2", ">2", ">4", ">6", ">10", ">14", ">18", ">22", ">26", ">30"],
+      "rows": {
+        "W-1": [3908, 4329, 4681, 4964, 5575, 6114, 6518, 6754, 6754, 6754],
+        "W-2": [4453, 4874, 5092, 5381, 6052, 6539, 6938, 7314, 7432, 7432],
+        "W-3": [5032, 5242, 5528, 5752, 6657, 7127, 7852, 8355, 8827, null],
+        "W-4": [5510, 5927, 6265, 6553, 7127, 7942, 8601, 9315, 10063, 10264],
+        "W-5": [null, null, null, null, null, null, null, 10294, 11074, 11629]
+      }
+    }
+  },
+  "bas": [
+    {"rate_set": "bas_2025", "effective_from": "2025-01-01", "enlisted_cents": 46577, "officer_cents": 32078, "bas_ii_enlisted_cents": 93154, "status": "UNVERIFIED"},
+    {"rate_set": "bas_2026", "effective_from": "2026-01-01", "enlisted_cents": 47695, "officer_cents": 32848, "status": "UNVERIFIED", "note": "From the source's own caveats section."}
+  ],
+  "bah_samples_2025": {
+    "status": "ILLUSTRATIVE",
+    "note": "Illustrative with-dependents midpoints. The DTMO lookup by ZIP and grade is authoritative. National BAH rose about 5.4% in 2025 and about 4.2% in 2026. BAH is rate-protected during an assignment and ends on the separation date with no taper.",
+    "grades": ["E-5", "E-6", "E-7", "O-3", "O-5"],
+    "rows": [
+      {"mha": "San Diego, CA (CA038)", "jurisdiction": "CA", "values": [3612, 3801, 3966, 4515, 5079]},
+      {"mha": "Honolulu, HI", "jurisdiction": "HI", "values": [3486, 3621, 3762, 4260, 5082]},
+      {"mha": "Washington, DC (NCR)", "jurisdiction": "DC", "values": [3294, 3471, 3723, 3990, 4635]},
+      {"mha": "Norfolk / Hampton Roads, VA", "jurisdiction": "VA", "values": [2067, 2184, 2331, 2496, 2889]},
+      {"mha": "Colorado Springs, CO", "jurisdiction": "CO", "values": [2178, 2289, 2403, 2580, 2955]},
+      {"mha": "Killeen / Fort Cavazos, TX", "jurisdiction": "TX", "values": [1830, 1956, 2082, 2259, 2541]},
+      {"mha": "Fayetteville / Fort Liberty, NC", "jurisdiction": "NC", "values": [1659, 1749, 1866, 2019, 2316]},
+      {"mha": "Huntsville, AL (Redstone)", "jurisdiction": "AL", "values": [1704, 1800, 1899, 2058, 2394]},
+      {"mha": "Montgomery, AL (Maxwell)", "jurisdiction": "AL", "values": [1548, 1617, 1725, 1830, 2142]},
+      {"mha": "Enterprise, AL (Fort Rucker area)", "jurisdiction": "AL", "values": [1401, 1488, 1572, 1704, 1917], "note": "Source says 'Fort Novosel area'; Fort Novosel was redesignated Fort Rucker on 2025-06-11."}
+    ],
+    "dedupe_note": "The Gen-3 client's four BAH tiers (1572 / 1899 / 3966 / 4260) are this table's E-7 Enterprise, E-7 Huntsville and E-7 San Diego cells plus an O-3 Honolulu-range value. They are not a separate dataset and are not carried."
+  },
+  "special_pays_2025": {
+    "status": "UNVERIFIED",
+    "unit": "usd_whole_dollars_monthly",
+    "rows": [
+      {"pay": "Hazardous Duty Incentive Pay — aircrew", "min": 150, "max": 250},
+      {"pay": "HDIP — non-aircrew flight operations", "min": 150, "max": 150},
+      {"pay": "HDIP — parachute (static line)", "min": 200, "max": 200, "note": "Raised from $150 in Oct 2025; HALO $225."},
+      {"pay": "HDIP — demolition, toxic fuel, flight deck, bio-agent, pesticide, stress test", "min": 150, "max": 150, "note": "Maximum two HDIP types at once."},
+      {"pay": "Aviation Career Incentive Pay (officers)", "min": 125, "max": 1000},
+      {"pay": "Career Enlisted Flyer Incentive Pay", "min": 150, "max": 400},
+      {"pay": "Hostile Fire Pay", "min": 225, "max": 225, "note": "Full month, not prorated; cannot stack with IDP."},
+      {"pay": "Imminent Danger Pay", "min": 0, "max": 225, "note": "$7.50 per day."},
+      {"pay": "Diving Duty Pay (enlisted)", "min": 110, "max": 340},
+      {"pay": "Diving Duty Pay (officer)", "min": 110, "max": 240},
+      {"pay": "Career Sea Pay", "min": 50, "max": 845},
+      {"pay": "Special Duty Assignment Pay", "min": 75, "max": 450},
+      {"pay": "Hardship Duty Pay — location", "min": 50, "max": 150},
+      {"pay": "Hardship Duty Pay — mission", "min": 0, "max": 250},
+      {"pay": "Family Separation Allowance", "min": 250, "max": 250, "note": "After 30 continuous days separated."},
+      {"pay": "Submarine Duty Incentive Pay", "min": 75, "max": 835}
+    ]
+  },
+  "retirement_systems": {
+    "status": "UNVERIFIED",
+    "systems": [
+      {"id": "high3", "name": "High-3 (legacy)", "multiplier_pct_per_year": "2.5", "base": "average of highest 36 months of base pay", "eligibility": "Entered service 1980-09-08 to 2017-12-31 and did not opt into BRS; 20 years of service.", "tsp_match": false},
+      {"id": "brs", "name": "Blended Retirement System", "multiplier_pct_per_year": "2.0", "base": "average of highest 36 months of base pay", "eligibility": "Entered 2018-01-01 or later, or opted in during 2018.", "tsp_match": true, "tsp": "1% automatic after 60 days; matching begins at 2 years; up to 5% government total; vests at 2 years.", "continuation_pay": "Between 8 and 12 years of service for an added 4-year commitment; 2.5–13x monthly base pay (active), 0.5–6x (reserve); taxable.", "lump_sum": "25% or 50% of discounted present value of pension before full Social Security age; pension reduced until then."},
+      {"id": "redux", "name": "REDUX / Career Status Bonus (legacy)", "note": "Multiplier reduced 1 point per year under 30; COLA CPI minus 1% until age 62."},
+      {"id": "ch61", "name": "Disability retirement (Chapter 61), TDRL / PDRL", "note": "Service rating 30%+ may retire before 20 years. Pay is the greater of years x multiplier x High-3 or service rating x High-3, capped at 75%. TDRL up to 3 years before PDRL or separation."},
+      {"id": "reserve", "name": "Guard / Reserve retirement", "note": "50 points per good year (15 membership + 35 drill); 20 good years. Pay usually starts at 60, reduced by 90 days for each 90 days of qualifying active duty after 2008-01-28 (not below 50). Formula: points / 360 x multiplier x High-3."}
+    ],
+    "concurrent_receipt": [
+      {"id": "crdp", "name": "CRDP", "note": "20+ years (or qualifying TERA/Reserve at 60) and VA rating 50%+; automatic; restores full retired pay; taxable."},
+      {"id": "crsc", "name": "CRSC", "note": "Combat-related disability, any rating; tax-free; apply with DD Form 2860 to the parent service. CRDP or CRSC, chosen annually (typically January), never both."}
+    ],
+    "sbp": {"premium_pct_of_base": "6.5", "survivor_pct_of_base": "55", "paid_up": "30 years of payments and age 70", "low_cost_threshold_cents_2025": 109600, "dic_offset": "Eliminated January 2023; survivors may receive full SBP and full DIC.", "note": "Pre-tax premium."},
+    "tera_example_note": "TERA reduces the multiplier about 1% per year short of 20 (persona example in the source)."
+  },
+  "income_replacement_heuristics": {
+    "status": "HEURISTIC",
+    "apply_in_calculation": false,
+    "note": "Rule-of-thumb gross-up multipliers (35–40% low-cost, 55–65% high-cost; 1.35–1.40x base pay) are widely used but not DoD-published. The architecture of record already dropped the unsourced 1.385 gross-up factor ('documented, never applied'); these follow the same rule. Use the Greenbook RMC tables as system-of-record input.",
+    "formula_documented": "Civilian gross needed = base x 12 + (BAH + BAS) x 12 x tax multiplier + special pays + TRICARE replacement + TSP match loss + state tax adjustment; tax multiplier = 1 / (1 - marginal effective rate).",
+    "by_grade": [
+      {"grade": "E-4", "low_cost": "30-35%", "high_cost": "45-55%"},
+      {"grade": "E-5", "low_cost": "35-40%", "high_cost": "50-60%"},
+      {"grade": "E-6", "low_cost": "35-40%", "high_cost": "55-65%"},
+      {"grade": "E-7/E-8", "low_cost": "40-45%", "high_cost": "55-65%"},
+      {"grade": "W-3/W-4", "low_cost": "35-45%", "high_cost": "55-65%"},
+      {"grade": "O-3", "low_cost": "35-40%", "high_cost": "55-65%"},
+      {"grade": "O-4", "low_cost": "35-40%", "high_cost": "55-65%"},
+      {"grade": "O-5/O-6", "low_cost": "30-40%", "high_cost": "50-60%"}
+    ]
+  },
+  "separation_cliff_items": {
+    "status": "ILLUSTRATIVE",
+    "note": "What ends at separation, with typical monthly values from the source. For the financial-transition explainer only; never presented as the user's number.",
+    "items": ["BAH (ends on DD-214 date, no taper)", "BAS", "TRICARE Prime (replacement $500–$1,400/month premium share)", "Commissary/exchange savings ($150–$330/month)", "JAG legal services", "On-base CDC childcare savings ($400–$900/month)", "TSP 5% match (BRS)", "Clothing allowance", "Special and incentive pays", "CONUS/OCONUS COLA (OCONUS non-taxable, incl. Alaska and Hawaii)"]
+  }
+}

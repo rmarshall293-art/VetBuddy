@@ -1,0 +1,26 @@
+# Render blueprint for the API (slice 04 layout; see ADR 0007). Values marked
+# sync:false are set in the Render dashboard, never in git.
+#
+# Before the first deploy, as the database OWNER (DATABASE_ADMIN_URL), apply
+# the schema and the generated seeds once from a trusted machine:
+#   python scripts/migrate.py
+#   psql "$DATABASE_ADMIN_URL" -v ON_ERROR_STOP=1 -f database/seeds/0011_reference.sql
+#   psql "$DATABASE_ADMIN_URL" -v ON_ERROR_STOP=1 -1 -f database/seeds/0014_benefit_vault_seed.sql
+# The running service uses DATABASE_URL: a non-owner login in vetbuddy_app.
+# Sign-in stays disabled until a real identity provider is wired (G17), so
+# only guest (Mode A) routes answer.
+services:
+  - type: web
+    name: vetbuddy-api
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd backend && uvicorn app.api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /readyz
+    envVars:
+      - key: VB_AUTH_MODE
+        value: disabled
+      - key: VB_MODE_C_ENABLED
+        value: "false"
+      - key: DATABASE_URL
+        sync: false

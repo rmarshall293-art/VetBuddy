@@ -1,16 +1,13 @@
-# ADR 0001: Source of truth, data store and migration approach
+# ADR 0001 — Source of truth and migration approach
 
-Status: Accepted, 20 Oct 2026
+**Status:** Accepted (slice 01), 2026-10-20
 
-## Context
-The repository held only deployment config. The Base44 prototype source and data are not available. The project rules name GitHub as the code source of truth and PostgreSQL/Supabase as the canonical data store.
+**Context.** The intended inputs were the GitHub repo, the Base44 export, skeleton v1, and the planning docs. Only skeleton v1 and the docs were available to this session.
 
-## Decision
-- **Code:** this repository. One modular monolith: `backend/` (FastAPI) and `frontend/` (Vite).
-- **Data:** PostgreSQL 16, schema `vb`. Any Postgres works (Supabase included); no Supabase-specific feature is used yet, so the store can be chosen later (Master Record conflict rows 11/13 stay open).
-- **Migrations:** plain SQL files applied in order by `python -m app.migrate`, each recorded with a checksum; editing an applied file is an error. Chosen over Alembic because the security model (roles, forced RLS, definer functions, CHECKs) is SQL-first and must be readable in review. Revisit if ORM models appear.
-- **Access model:** the API connects as a LOGIN role in `vetbuddy_app` (no ownership, no BYPASSRLS). Tenant/user context is set `LOCAL` per transaction; every table forces RLS; definer functions are owned by a separate NOLOGIN role whose policies are written per table.
-- **Base44:** when an export arrives, it enters as immutable staging and maps through `docs/MIGRATION_MAP.md`; nothing here invents its records.
+**Decision.**
+- PostgreSQL is the canonical store. SQL files in `database/migrations/` are the schema of record and apply in order through `scripts/migrate.py`, which records a sha256 per file and refuses edited history (fix forward only).
+- 0001–0008 are preserved unmodified. Corrections land in new files (0009+).
+- The API connects as `vb_app`, a non-owner role in `vetbuddy_app`. The owner DSN is used only for migrations and test fixtures.
+- Base44 is a migration source. When its export arrives, ingest it into raw/staging tables and map it route by route (master spec §11). Never import it straight into domain tables.
 
-## Consequences
-Isolation is enforced by the database and tested through it, not by query discipline. Service keys that bypass RLS (e.g. the legacy `SUPABASE_SERVICE_ROLE_KEY` in the old `render.yaml`) are not used for user requests.
+**Consequences.** Alembic stays in the plan but isn't used yet. If adopted, the SQL files become its baseline revision.

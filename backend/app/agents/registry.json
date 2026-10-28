@@ -1,0 +1,63 @@
+{
+  "_comment": "Mirrors agent_manifest table in 0005_agent_governance.sql. This JSON is the human-editable source; load it into the table at migration/seed time rather than hand-editing rows. Fill in readable_data_classes/allowed_purposes/approved_tools before flipping status to PRODUCTION.",
+  "agents": [
+    {
+      "agent_id": "career_mos_agent",
+      "status": "NOT_IMPLEMENTED",
+      "mission": "Translate MOS/AFSC/Rating into civilian occupations using the public mos_crosswalk table.",
+      "readable_data_classes": ["service_record.mos_afsc_rating", "service_record.branch"],
+      "writable_data_classes": ["career_profile.target_occupations"],
+      "prohibited_data_classes": ["health", "claims_evidence", "financial"],
+      "allowed_purposes": ["career_transition"],
+      "approved_tools": ["mos_crosswalk_lookup"]
+    },
+    {
+      "agent_id": "resume_builder_agent",
+      "status": "NOT_IMPLEMENTED",
+      "mission": "Draft a resume_document from an extracted DD-214 and career_profile.",
+      "readable_data_classes": ["document.dd214_extracted_facts", "career_profile.*"],
+      "writable_data_classes": ["resume_document.content"],
+      "prohibited_data_classes": ["health", "claims_evidence"],
+      "allowed_purposes": ["career_transition"],
+      "human_review_threshold": 1.0,
+      "note": "human_review_threshold=1.0: every draft requires explicit user approval before status can move past 'draft'."
+    },
+    {
+      "agent_id": "job_matching_agent",
+      "status": "NOT_IMPLEMENTED",
+      "mission": "Score job_match rows from career_profile + work_style_assessment output.",
+      "readable_data_classes": ["career_profile.*", "work_style_assessment.dimension_scores"],
+      "writable_data_classes": ["job_match.*"],
+      "prohibited_data_classes": ["health", "claims_evidence", "financial"],
+      "allowed_purposes": ["career_transition"]
+    },
+    {
+      "agent_id": "guard_reserve_agent",
+      "status": "NOT_IMPLEMENTED",
+      "mission": "Route Guard/Reserve users using legal_authority (Title 10/32/SAD), never component alone.",
+      "readable_data_classes": ["service_record.component", "service_record.legal_authority"],
+      "writable_data_classes": [],
+      "prohibited_data_classes": ["health"],
+      "allowed_purposes": ["benefit_discovery"]
+    },
+    {
+      "agent_id": "women_veterans_agent",
+      "status": "NOT_IMPLEMENTED",
+      "mission": "Trauma-informed resource routing for the women_veteran resource category.",
+      "readable_data_classes": ["resource.category=women_veteran"],
+      "writable_data_classes": [],
+      "prohibited_data_classes": ["mst_narrative_raw"],
+      "allowed_purposes": ["resource_routing"],
+      "note": "Must run behind the same MSTNarrativeGuard/PIIMinimizer pattern as the existing WV module. Do not build a separate, less-governed path."
+    },
+    {
+      "agent_id": "installation_navigator_agent",
+      "status": "NOT_IMPLEMENTED",
+      "mission": "Surface installation/base resources by jurisdiction and current/destination location.",
+      "readable_data_classes": ["resource.category=installation_base", "person_profile.state_territory"],
+      "writable_data_classes": [],
+      "prohibited_data_classes": ["health", "financial"],
+      "allowed_purposes": ["resource_routing"]
+    }
+  ]
+}

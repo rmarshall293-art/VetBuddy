@@ -1,120 +1,251 @@
-"""Generate browser kernel data and parity fixtures from the Python kernel.
+#!/usr/bin/env python3
+"""Generate the browser kernel's data from the single sources of truth, and
+build the self-contained standalone app.
 
-    python scripts/build_web.py          # write the generated files
-    python scripts/build_web.py --check  # exit 1 if any generated file is stale
+  web/kernel_data.js      <- router_policy.py, task_library.py, migration 0003
+                             jurisdiction seed, config/crisis_floor.yaml,
+                             config/jurisdiction_status.yaml,
+                             config/governance_language.yaml, and the
+                             reference corpus (timeline, sources, governance)
+  dist/vetbuddy.html      <- web/standalone.html with styles + kernel inlined, plus a
+                             compact Benefit Vault catalog generated from
+                             data/reference/benefit_vault_registry.json (search only)
+  dist/vetbuddy-record.html <- docs/record.html with every data-backed slot filled
+                             (governance, conflicts, corpus counts, crisis floor,
+                             migration and test counts)
 
-Outputs:
-  frontend/src/kernel_data.js           data half of the browser kernel
-  frontend/tests/fixtures/parity.json   golden router + rating cases (inputs and
-                                        Python's answers) that the browser
-                                        kernel must reproduce exactly
+  python3 scripts/build_web.py          write outputs
+  python3 scripts/build_web.py --check  write nothing; exit 1 if outputs are stale (CI)
 """
-
-from __future__ import annotations
-
 import json
+import re
 import sys
-from datetime import date, timedelta
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "backend"))
 
-from app import reference  # noqa: E402
-from app.kernel import crisis, ratings, router, vocab  # noqa: E402
-from app.kernel.jurisdictions import JURISDICTIONS  # noqa: E402
+from app.domains.missions import router_policy as rp  # noqa: E402
+from app.domains.missions.task_library import GOAL_LANES, GOAL_TEMPLATES, TEMPLATES  # noqa: E402
+from app.platform.crisis_floor import load_crisis_contacts  # noqa: E402
+from app.platform.jurisdiction_status import UNVERIFIED_DISCLAIMER  # noqa: E402
+from app.domains.reference import claims_boundary  # noqa: E402  (governance_language.yaml)
+from app.domains.reference.corpus import known_jurisdictions  # noqa: E402  (single 0003 parser)
 
-DATA_JS = ROOT / "frontend" / "src" / "kernel_data.js"
-FIXTURES = ROOT / "frontend" / "tests" / "fixtures" / "parity.json"
-TODAY = date(2026, 10, 20)
+REF = ROOT / "data" / "reference"
 
 
-def kernel_data() -> dict:
-    ref = reference.load()
-    gov = ref["governance"]
+def _ref(name: str) -> dict:
+    return json.loads((REF / f"{name}.json").read_text())
+
+
+def reference_slice() -> dict:
+    """The parts of the reference corpus the guest app shows. The corpus is
+    the only author; the app never restates a window, source or rule."""
+    tl, src, gov = _ref("transition_timeline"), _ref("sources"), _ref("governance")
+    used = {sid for w in tl["windows"] for sid in w["sources"]}
     return {
-        "AGENT_RULES": gov["agent_rules"], "GOVERNING_SENTENCE": gov["governing_sentence"], "LANGUAGE": gov["language"],
-        "LEGAL_LANE": gov["legal_lane"], "NON_NEGOTIABLES": gov["non_negotiables"],
-        "SOURCES": ref["sources"]["sources"], "TIMELINE": ref["transition_timeline"],
-        "AUTHORITIES": list(vocab.AUTHORITIES), "BRANCHES": list(vocab.BRANCHES), "COMPONENTS": list(vocab.COMPONENTS),
-        "CRISIS_CONTACTS": list(crisis.CRISIS_CONTACTS), "DIMENSIONS": list(vocab.DIMENSIONS), "GOALS": list(vocab.GOALS),
-        "GOAL_LANES": vocab.GOAL_LANES, "GOAL_TEMPLATES": {k: list(v) for k, v in vocab.GOAL_TEMPLATES.items()},
-        "JURISDICTIONS": list(JURISDICTIONS), "NOTICE_TEXT": vocab.NOTICE_TEXT, "PERSONAS": list(vocab.PERSONAS),
-        "ROUTER_POLICY_VERSION": vocab.ROUTER_POLICY_VERSION, "STAGE_LABELS": vocab.STAGE_LABELS,
-        "TEMPLATES": {k: {**v, "stages": list(v["stages"])} for k, v in vocab.TEMPLATES.items()},
-        "UNVERIFIED_DISCLAIMER": vocab.UNVERIFIED_DISCLAIMER, "URGENCIES": list(vocab.URGENCIES),
+        "TIMELINE": {"default_status": tl["default_status"], "use_rule": tl["use_rule"], "windows": tl["windows"]},
+        "SOURCES": {r["id"]: {"title": r["title"], "tier": r["tier"], "origin": r["origin"], "kind": r["kind"]}
+                    for r in src["records"] if r["id"] in used or r["kind"] == "primary"},
+        "NON_NEGOTIABLES": gov["non_negotiables"],
+        "AGENT_RULES": gov["agent_rules"],
+        "LEGAL_LANE": gov["legal_lane"],
+        "GOVERNING_SENTENCE": gov["governing_sentence"],
+        "LANGUAGE": {k: claims_boundary.required_text(k)
+                     for k in ("standard_disclaimer", "common_notice", "vso_referral_block", "vso_search_url")},
     }
 
 
-def data_js() -> str:
-    body = json.dumps(kernel_data(), indent=1, sort_keys=True)
-    return ("// GENERATED by scripts/build_web.py — do not edit. Edit the Python sources in backend/app/kernel.\n"
-            f"export const KDATA = {body};\n")
+def kernel_data() -> str:
+    data = {
+        "ROUTER_POLICY_VERSION": rp.ROUTER_POLICY_VERSION,
+        "PERSONAS": list(rp.PERSONAS), "COMPONENTS": list(rp.COMPONENTS), "AUTHORITIES": list(rp.AUTHORITIES),
+        "BRANCHES": list(rp.BRANCHES), "GOALS": list(rp.GOALS), "URGENCIES": list(rp.URGENCIES),
+        "DIMENSIONS": list(rp.DIMENSIONS), "STAGE_LABELS": rp.STAGE_LABELS, "NOTICE_TEXT": rp.NOTICE_TEXT,
+        "GOAL_LANES": GOAL_LANES, "GOAL_TEMPLATES": {k: list(v) for k, v in GOAL_TEMPLATES.items()},
+        "TEMPLATES": {k: {"lane": t.lane, "dimension": t.dimension, "title": t.title, "why": t.why,
+                          "priority": t.priority, "stages": sorted(t.stages), "confirm_with": t.confirm_with}
+                      for k, t in TEMPLATES.items()},
+        "JURISDICTIONS": known_jurisdictions(),
+        "UNVERIFIED_DISCLAIMER": UNVERIFIED_DISCLAIMER,
+        "CRISIS_CONTACTS": load_crisis_contacts(),
+        **reference_slice(),
+    }
+    return ("// GENERATED by scripts/build_web.py — do not edit. Edit the Python/SQL/YAML sources.\n"
+            "export const KDATA = " + json.dumps(data, indent=1, sort_keys=True) + ";\n")
 
 
-def router_cases() -> list[dict]:
-    """A fixed, varied set: every stage, every component, unknowns, relocation, all goals."""
-    offsets = [800, 400, 200, 120, 60, 10, 0, -1, -45, -200, -500, -900, -1500, -2500]
-    cases = []
-    comps = [("service_member", "active_duty", None), ("guard_reserve", "national_guard", "unknown"),
-             ("guard_reserve", "reserve", "title_10"), ("veteran", "retired", None),
-             ("guard_reserve", "retired_reserve_gray_area", None), ("veteran", "separated", None),
-             ("veteran", "medically_separated", None)]
-    goal_sets = [[], ["benefits"], ["claims", "housing"], ["education", "career"], list(vocab.GOALS), ["family", "financial", "community"]]
-    for i, off in enumerate(offsets):
-        persona, comp, auth = comps[i % len(comps)]
-        cases.append(dict(persona=persona, branch=vocab.BRANCHES[i % len(vocab.BRANCHES)], component=comp,
-                          legal_authority=auth, separation_date=(TODAY + timedelta(days=off)).isoformat(),
-                          current_jurisdiction=JURISDICTIONS[1 + i * 3]["code"],
-                          destination_jurisdiction=JURISDICTIONS[2 + i * 3]["code"] if i % 3 == 0 else None,
-                          goals=goal_sets[i % len(goal_sets)], urgency=vocab.URGENCIES[i % len(vocab.URGENCIES)]))
-    for persona in vocab.PERSONAS:
-        cases.append(dict(persona=persona, branch="Coast Guard", component="separated", legal_authority=None,
-                          separation_date=None, current_jurisdiction="PR", destination_jurisdiction="PR",
-                          goals=["community", "benefits", "community"], urgency="info_only"))
-    for comp in vocab.COMPONENTS:
-        auth = "state_active_duty" if comp in ("national_guard", "reserve") else None
-        cases.append(dict(persona="service_member", branch="Space Force", component=comp, legal_authority=auth,
-                          separation_date=(TODAY + timedelta(days=95)).isoformat(), current_jurisdiction="AL",
-                          destination_jurisdiction="FEDERAL", goals=["career"], urgency="immediate"))
-    return cases
+# ── the integrated record ────────────────────────────────────────────────────
+from html import escape as _e  # noqa: E402
+
+REPO_PILL = {"IMPLEMENTED_TESTED": ("ok", "Tested"), "IMPLEMENTED_UNVERIFIED": ("warn", "Untested"),
+             "PARTIAL": ("warn", "Partial"), "MOCK": ("info", "Mock"), "PLANNED": ("bad", "Planned"),
+             "DISABLED": ("info", "Disabled"), "BLOCKED": ("info", "Blocked"),
+             "SOURCE_NOT_AVAILABLE": ("info", "Source not available")}
+LANE_PILL = {"yes": ("ok", "Yes, free"), "share_card": ("warn", "With a Share Card"), "no": ("bad", "No")}
 
 
-def fixtures() -> dict:
-    out = {"today": TODAY.isoformat(), "router": [], "ratings": []}
-    for c in router_cases():
-        inp = router.RouterInput(**{**c, "goals": tuple(c["goals"]),
-                                    "separation_date": date.fromisoformat(c["separation_date"]) if c["separation_date"] else None})
-        out["router"].append({"input": c, "expected": router.route(inp, TODAY)})
-    for rs in ([50, 30], [40, 20], [60, 40, 20], [10], [0], [100, 10], [90, 90, 90, 90], [30, 20, 10],
-               [70, 50], [10, 10, 10, 10, 10, 10], [80, 30, 20, 10], [20, 60, 40]):
-        out["ratings"].append({"input": rs, "expected": ratings.combine_ratings(rs)})
-    out["bilateral"] = []
-    for rs, bi in (([], [30, 10]), ([], [40, 20]), ([50], [30, 20]), ([60, 10], [20, 20]), ([70], [50, 50, 10, 10]),
-                   ([10, 10], [10, 10]), ([90, 30], [60, 40]), ([0], [0, 10]), ([], [40, 30, 20, 10]), ([100], [50, 50])):
-        out["bilateral"].append({"ratings": rs, "bilateral": bi, "expected": ratings.combine_ratings(rs, bi)})
+def _pill(kind_label: tuple[str, str]) -> str:
+    return f'<span class="pill {kind_label[0]}">{_e(kind_label[1])}</span>'
+
+
+def _table(head: list[str], rows: list[list[str]], num_cols: tuple[int, ...] = ()) -> str:
+    th = "".join(f'<th{" class=\"num\"" if i in num_cols else ""}>{_e(h)}</th>' for i, h in enumerate(head))
+    body = "".join("<tr>" + "".join(f'<td{" class=\"num\"" if i in num_cols else ""}>{c}</td>' for i, c in enumerate(r))
+                   + "</tr>" for r in rows)
+    return f'<div class="tbl"><table><thead><tr>{th}</tr></thead><tbody>{body}</tbody></table></div>'
+
+
+def count_tests() -> int:
+    """Test methods the suite would run (discovery only; nothing executes)."""
+    import unittest
+    suite = unittest.defaultTestLoader.discover(str(ROOT / "backend/tests"), top_level_dir=str(ROOT / "backend"))
+
+    def walk(t):
+        return sum(walk(x) for x in t) if isinstance(t, unittest.TestSuite) else 1
+    return walk(suite)
+
+
+def record() -> str:
+    from app.domains.reference import corpus as corpus_mod
+    c = corpus_mod.build()
+    corpus_mod.validate(c)
+    gov, conf = _ref("governance"), _ref("conflicts")
+    rows_total = sum(len(r) for r in c.tables.values())
+    verified = sum(1 for rows in c.tables.values() for r in rows if r.get("status") == "VERIFIED")
+    contacts = load_crisis_contacts()
+    jur = known_jurisdictions()
+    migrations = len(list((ROOT / "database/migrations").glob("*.sql")))
+    e2e = len(list((ROOT / "tests/e2e").glob("smoke_*.py")))
+
+    def num(v):
+        return f"{v:,}"
+    crisis = ('<div class="crisis" role="note" aria-label="Crisis help"><b>Crisis help</b>'
+              + "".join(f'<span>{_e(x["label"])}: <span class="nw">{_e(x["phone"])}{" · " + _e(x["extra"]) if x.get("extra") else ""}</span>'
+                        f'{" · text <span class=\"nw\">" + _e(x["text"]) + "</span>" if x.get("text") and x.get("text") != x["phone"] else ""}</span>'
+                        for x in contacts) + "<span>Emergency: 911</span></div>")
+    figs = [(num(count_tests()), f"backend tests, plus {e2e} browser smoke tests", False), (str(migrations), "migrations", False),
+            (num(rows_total), "sourced reference rows", False), (str(verified), "rows verified by a named human", verified == 0),
+            (f'{sum(j["verification_status"] == "verified" for j in jur)} / {len(jur)}', "jurisdictions verified", True),
+            (str(len(contacts)), "crisis contacts, one config", False)]
+    corpus_rows = [[f"<code>{_e(d['dataset_id'])}</code>", num(d["record_count"]), _e(d["title"]),
+                    _e(d["review_by"] or "")] for d in c.datasets]
+    corpus_rows.append(["<strong>Total</strong>", num(sum(d["record_count"] for d in c.datasets)),
+                        f"{len(c.tables)} <code>ref</code> tables from {len(c.datasets)} JSON datasets", ""])
+    conflict_rows = [[_e(r["subject"]), " · ".join(f'<span class="mono">{_e(x["value"])}</span>' for x in r["readings"]),
+                      _pill(("bad", "Contested") if r["status"] == "contested_unresolved" else ("ok", "Resolved by design"))]
+                     for r in conf["records"]]
+    vault = json.loads((REF / "benefit_vault_registry.json").read_text(encoding="utf-8"))
+    vc = vault["counts"]
+    kind_label = {"STATE_BENEFIT": "State and territory benefits", "FEDERAL_BENEFIT": "Federal benefits",
+                  "NONPROFIT_PROGRAM": "Nonprofit programs", "COMMERCIAL_DEAL": "Retail and service offers"}
+    vault_html = (
+        '<div class="figs">'
+        + "".join(f'<div class="fig{" alert" if alert else ""}"><b>{v}</b><span>{_e(l)}</span></div>' for v, l, alert in (
+            (num(vc["benefits"]), "records", False), (num(vc["sources"]), "sources", False),
+            (f'{vc["jurisdictions_covered"]} / {len(vault["jurisdictions"])}', "jurisdiction rows with a source", False),
+            (str(vc["verified"]), "records verified by a named reviewer", vc["verified"] == 0)))
+        + "</div>"
+        + _table(["Kind", "Records"], [[_e(kind_label.get(k, k)), num(n)] for k, n in sorted(vc["by_kind"].items(), key=lambda kv: -kv[1])], (1,))
+        + _table(["#", "Component", "Status"],
+                 [[f'<code>{_e(c["id"])}</code>', _e(c["name"]) + (f'<br><span class="sub">{_e(c["note"])}</span>' if c.get("note") else ""),
+                   _pill(REPO_PILL[c["status"]])] for c in vault["components"]])
+        + f'<p class="sub">Registry {_e(vault["version"])}, as of {_e(vault["as_of"])}, sha256 <code>{_e(vault["integrity"]["sha256"][:12])}…</code>. '
+          f'Record status: {", ".join(f"{_e(k)} {num(n)}" for k, n in sorted(vc["by_record_status"].items()))}.</p>')
+    slots = {
+        "CRISIS": crisis,
+        "VAULT": vault_html,
+        "META": f'<span>Generated from the repository · router <strong>{_e(rp.ROUTER_POLICY_VERSION)}</strong></span>'
+                f'<span>Governance data <strong>{_e(gov["version"])}</strong></span>',
+        "GOVERNING": _e(gov["governing_sentence"]),
+        "FIGS": '<div class="figs">' + "".join(f'<div class="fig{" alert" if alert else ""}"><b>{v}</b><span>{_e(l)}</span></div>'
+                                              for v, l, alert in figs) + "</div>",
+        "STATUSES": '<div class="chips" aria-label="Status vocabulary">'
+                    + "".join(f"<span>{s_}</span>" for s_ in corpus_mod.STATUSES) + "</div>",
+        "CORPUS": _table(["Dataset", "Rows", "Contents", "Review by"], corpus_rows, (1,)),
+        "NON_NEGOTIABLES": '<ol class="steps">' + "".join(f'<li><div><strong>{_e(n["name"])}.</strong> {_e(n["text"])}</div></li>'
+                                                          for n in gov["non_negotiables"]) + "</ol>",
+        "LEGAL_LANE": _table(["Activity", "VetBuddy", "Rules"],
+                             [[_e(r["activity"]), _pill(LANE_PILL[r["allowed"]]), _e(r["rules"])] for r in gov["legal_lane"]]),
+        "AGENT_RULES": _table(["#", "Rule", "This repo", "v2.0 build"],
+                              [[f'<code>{_e(r["id"])}</code>', _e(r["rule"]) + (f'<br><span class="sub">{_e(r["repo_note"])}</span>' if r.get("repo_note") else ""),
+                                _pill(REPO_PILL[r["repo_status"]]), _e(r["v2_0_status"])] for r in gov["agent_rules"]]),
+        "TIER0": _table(["#", "Rule", "Enforced by", "This repo"],
+                        [[f'<code>{_e(r["id"])}</code>', _e(r["rule"]), _e(r["enforced_by"]), _pill(REPO_PILL[r["repo_status"]])]
+                         for r in gov["tier0_rules"]]),
+        "PIPELINE": '<div class="pipeline">' + "<i>→</i>".join(
+            f'<span{" class=\"model\"" if p.startswith("Model call") else ""}>{_e(p)}</span>' for p in gov["pipeline_order"]) + "</div>",
+        "HITL": _table(["Level", "Example", "Who decides"],
+                       [[str(h["level"]), _e(h["example"]), _e(h["decider"])] for h in gov["hitl_levels"]], (0,)),
+        "GATES": _table(["#", "Gate", "This repo"],
+                        [[f'<code>{_e(g["id"])}</code>', _e(g["gate"]), _pill(REPO_PILL[g["repo_status"]])] for g in gov["release_gates"]]),
+        "CONFLICTS": _table(["Subject", "Readings", "State"], conflict_rows),
+    }
+    out = (ROOT / "docs/record.html").read_text()
+    for k, v in slots.items():
+        marker = f"<!--@@{k}@@-->"
+        if marker not in out:
+            raise SystemExit(f"record template is missing slot {marker}")
+        out = out.replace(marker, v)
+    left = re.findall(r"<!--@@[A-Z_]+@@-->", out)
+    if left:
+        raise SystemExit(f"unfilled record slots: {left}")
     return out
 
 
-def outputs() -> dict[Path, str]:
-    return {DATA_JS: data_js(), FIXTURES: json.dumps(fixtures(), indent=1, sort_keys=True) + "\n"}
+def vault_catalog_js() -> str:
+    """The guest app's Benefits finder data: every vault record's public fields,
+    as arrays to keep the page small. Search and filter only; matching needs the
+    server's deterministic kernel. The registry is the only author."""
+    reg = json.loads((ROOT / "data/reference/benefit_vault_registry.json").read_text(encoding="utf-8"))
+    cols = ["benefit_id", "jurisdiction", "category", "title", "value", "who_it_is_for", "official_url", "record_status"]
+    data = {
+        "version": reg["version"], "as_of": reg["as_of"], "sha256": reg["integrity"]["sha256"],
+        "notice": reg["notice"], "caveat": reg["caveats"]["not_verified"],
+        "categories": reg["vocabulary"]["categories"],
+        "jurisdictions": [{k: j[k] for k in ("code", "name", "coverage", "benefit_count")} for j in reg["jurisdictions"]],
+        "cols": cols,
+        "records": [[b[c] for c in cols] for b in reg["benefits"]],
+    }
+    return "const VAULT = " + json.dumps(data, separators=(",", ":"), ensure_ascii=False, sort_keys=True) + ";\n"
 
 
-def main(argv: list[str]) -> int:
+def standalone(kdata_js: str) -> str:
+    tpl = (ROOT / "web/standalone.html").read_text()
+    kernel = (ROOT / "web/kernel.js").read_text()
+    kernel = re.sub(r'^import .*?;\n', "", kernel, flags=re.M)
+    inline = (kdata_js + "\n" + kernel + "\n" + vault_catalog_js())
+    inline = re.sub(r"^export ", "", inline, flags=re.M)
+    inline = inline.replace("</script", "<\\/script")
+    return tpl.replace("/*@@KERNEL@@*/", inline)
+
+
+def main() -> int:
+    check = "--check" in sys.argv
+    kd = kernel_data()
+    def wrap(body: str) -> str:
+        return ("<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n"
+                "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,viewport-fit=cover\">\n"
+                "</head>\n<body>\n" + body + "\n</body>\n</html>\n")
+    # Pages are authored body-only (the artifact publisher adds its own
+    # skeleton); dist/ holds the full documents for opening or hosting.
+    outputs = {ROOT / "web/kernel_data.js": kd,
+               ROOT / "dist/vetbuddy.html": wrap(standalone(kd)),
+               ROOT / "dist/vetbuddy-record.html": wrap(record())}
     stale = []
-    for path, text in outputs().items():
-        if "--check" in argv:
-            if not path.exists() or path.read_text() != text:
-                stale.append(str(path.relative_to(ROOT)))
-        else:
-            path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(text)
-            print(f"wrote {path.relative_to(ROOT)}")
-    if stale:
-        print("stale generated files (run python scripts/build_web.py): " + ", ".join(stale), file=sys.stderr)
+    for path, content in outputs.items():
+        if not path.exists() or path.read_text() != content:
+            stale.append(path.relative_to(ROOT))
+            if not check:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(content)
+    if check and stale:
+        print("STALE (run scripts/build_web.py):", *stale, sep="\n  ")
         return 1
+    print("up to date" if not stale else "wrote: " + ", ".join(map(str, stale)))
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main(sys.argv[1:]))
+    sys.exit(main())

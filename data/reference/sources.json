@@ -1,91 +1,198 @@
 {
- "_meta": {
-  "note": "Source registry. tier: 1 statute/regulation, 2 agency, 3 official secondary, 4 research report, null = internal governance document. Being listed is not verification."
- },
- "sources": {
-  "src.cfr.38_4_25": {
-   "kind": "primary",
-   "origin": "https://www.law.cornell.edu/cfr/text/38/4.25",
-   "tier": 1,
-   "title": "38 CFR 4.25 — Combined ratings table (eCFR via LII)"
-  },
-  "src.cfr.38_4_26": {
-   "kind": "primary",
-   "origin": "https://www.ecfr.gov/current/title-38/chapter-I/part-4/subpart-A/section-4.26",
-   "tier": 1,
-   "title": "38 CFR 4.26 — Bilateral factor"
-  },
-  "src.cfr.38_part4": {
-   "kind": "primary",
-   "origin": "https://www.ecfr.gov/current/title-38/chapter-I/part-4",
-   "tier": 1,
-   "title": "38 CFR Part 4 — Schedule for Rating Disabilities (eCFR, current text)"
-  },
-  "src.dod.vgli_afb": {
-   "kind": "primary",
-   "origin": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Veterans-Group-Life-Insurance-(VGLI)",
-   "tier": 3,
-   "title": "myAirForceBenefits — Veterans Group Life Insurance (VGLI)"
-  },
-  "src.gov.governance_rules": {
-   "kind": "governance",
-   "origin": "upload: VetBuddy_Agent_Governance_Rules.pdf",
-   "tier": null,
-   "title": "VetBuddy Agent Governance Rules (20 Oct 2026)"
-  },
-  "src.gov.integrated_record": {
-   "kind": "governance",
-   "origin": "upload: VetBuddy_Integrated_Record-2.html",
-   "tier": null,
-   "title": "VetBuddy Integrated Record (20 Oct 2026)"
-  },
-  "src.gov.master_record": {
-   "kind": "governance",
-   "origin": "doc artifact 86ed77cc-b80a-4cbe-8651-30a663c026cf",
-   "tier": null,
-   "title": "VetBuddy Master Record (7 Oct 2026)"
-  },
-  "src.gov.service_architecture": {
-   "kind": "governance",
-   "origin": "upload: VetBuddy_Agent_Governance__Service_Architecture.pdf",
-   "tier": null,
-   "title": "VetBuddy Agent Governance & Service Architecture (7 Oct 2026)"
-  },
-  "src.rr.alabama_tap": {
+ "dataset": "sources",
+ "title": "Source registry for the reference corpus",
+ "version": "2026.10.20",
+ "as_of": "2026-10-20",
+ "note": "Every reference record names one or more of these sources. Tier follows the VetBuddy authority hierarchy: 1 statute/CFR/court, 2 federal or state agency, 3 accredited VSO or recognized nonprofit, 4 secondary compilation, news, research report. A tier-4 source may locate a lead; it may never be the sole basis of an eligibility conclusion. Internal governance documents carry tier null because they govern the build and assert no external fact.",
+ "records": [
+  {
+   "id": "src.rr.women_veterans_50_state",
+   "title": "VetBuddy Resource Database: Support Resources for Women Veterans Across All 50 States",
    "kind": "research_report",
-   "origin": "upload: Alabama_s_Transition_Assistance_Program_at_an_Inflection_Point_2025_Strategic_An.md",
    "tier": 4,
-   "title": "Alabama's Transition Assistance Program at an Inflection Point (2025)"
+   "as_of": "2026-10-20",
+   "origin": "upload: VetBuddy_Resource_Database_Support_Resources_for_Women_Veterans_Across_All_50_St.md",
+   "note": "Compiles VA, state-agency and nonprofit pages. Staff names and emails are volatile; this corpus keeps office-level contacts only."
   },
-  "src.rr.transition_finances": {
+  {
+   "id": "src.rr.transition_finances",
+   "title": "Military-to-Civilian Transition Finances: A Data-Driven Roadmap for VetBuddy",
    "kind": "research_report",
+   "tier": 4,
+   "as_of": "2026-10-20",
    "origin": "upload: Military-to-Civilian_Transition_Finances_A_Data-Driven_Roadmap_for_VetBuddy.md",
+   "note": "Rates are FY2025 by design; its own caveats name the 2026 changes. Rule-of-thumb multipliers are not DoD-published."
+  },
+  {
+   "id": "src.rr.alabama_landscape",
+   "title": "Alabama Veteran Transition Landscape: 50-State Competitive Ranking",
+   "kind": "research_report",
    "tier": 4,
-   "title": "Military-to-Civilian Transition Finances: A Data-Driven Roadmap for VetBuddy"
+   "as_of": "2025-05-31",
+   "origin": "upload: Alabama_Veteran_Transition_Landscape_50-State_Competitive_Ranking_and_Strategic_.md",
+   "note": "Outcome metrics only are carried. Market and pitch framing is excluded under the project's no-sales rule."
   },
-  "src.upload.va_claims_data": {
-   "kind": "transcription",
-   "origin": "upload: va_claims_data.json",
+  {
+   "id": "src.rr.alabama_tap",
+   "title": "Alabama's Transition Assistance Program at an Inflection Point (2025)",
+   "kind": "research_report",
+   "tier": 4,
+   "as_of": "2025-07-31",
+   "origin": "upload: Alabama_s_Transition_Assistance_Program_at_an_Inflection_Point_2025_Strategic_An.md",
+   "note": "Cites GAO, RAND, VFW, BSF and Alabama statutes; each cited finding is carried with its original citation."
+  },
+  {
+   "id": "src.mod.sentinel",
+   "title": "Operation Sentinel — Duty Status & Benefits Determination (Module 01)",
+   "kind": "module_source",
+   "tier": 4,
+   "as_of": "2026-08-05",
+   "origin": "upload: sentinel.html",
+   "note": "Single-file tool. Each record cites its authority; its 'verified' label means cross-checked by that build, not signed by a named human, so it maps to SOURCE_CHECKED here."
+  },
+  {
+   "id": "src.mod.women_veterans",
+   "title": "VetBuddy Women Veterans Module & Agent OS — reverse-engineering specification (women_veterans v1.1.0)",
+   "kind": "module_spec",
+   "tier": 4,
+   "as_of": "2026-08-05",
+   "origin": "upload + artifact: VetBuddy_Women_Veterans_Module.html",
+   "note": "Crisis floor and territory DV coalitions were checked against primary sources on 2026-08-05. The 181-row production seed was never supplied (Tier C)."
+  },
+  {
+   "id": "src.mod.education_navigator",
+   "title": "VeteranOS Education Navigator — reverse-engineering specification",
+   "kind": "module_spec",
+   "tier": 4,
+   "as_of": "2026-10-20",
+   "origin": "upload + artifact: Education_Navigator_Architecture.html",
+   "note": "Source code not supplied; seed shapes and counts carried from the spec."
+  },
+  {
+   "id": "src.gov.master_record",
+   "title": "VetBuddy Master Record (7 Oct 2026)",
+   "kind": "governance",
    "tier": null,
-   "title": "va_claims_data.json v2.1.0 (uploaded; FY2025; not integrated, see ledger)"
+   "as_of": "2026-10-07",
+   "origin": "doc artifact 86ed77cc-b80a-4cbe-8651-30a663c026cf",
+   "note": "Canonical record of decisions and open conflicts. Precedence #1."
   },
-  "src.upload.va_rating_app": {
-   "kind": "transcription",
-   "origin": "upload: va-rating-app.html",
+  {
+   "id": "src.gov.agent_rules",
+   "title": "VetBuddy Agent Governance Rules (20 Oct 2026)",
+   "kind": "governance",
    "tier": null,
-   "title": "VA Disability Rating & PACT Act Reference (uploaded app; 2020 CFR transcription, 2026 pay table)"
+   "as_of": "2026-10-20",
+   "origin": "doc artifact 6550634f-0320-4e0b-b7ce-66a72331effe; identical PDF upload",
+   "note": "Four non-negotiables, Tier 0 rules, disclaimers, prohibited phrases."
   },
-  "src.va.claim_status": {
+  {
+   "id": "src.legacy.gen3_client",
+   "title": "VetBuddy/VTOS v4.0.0 Gen-3 client constants (via the reverse-engineering spec in the project)",
+   "kind": "legacy_build",
+   "tier": 4,
+   "as_of": "2026-09-21",
+   "origin": "project doc: VetBuddy_Architecture_Reverse_Engineering.md",
+   "note": "Used only to detect conflicts with newer figures; never a source of a current value."
+  },
+  {
+   "id": "src.cfr.38_4_25",
+   "title": "38 CFR 4.25 — Combined ratings table (eCFR via LII)",
    "kind": "primary",
+   "tier": 1,
+   "as_of": "2026-10-20",
+   "origin": "https://www.law.cornell.edu/cfr/text/38/4.25",
+   "note": "Read 2026-10-20 for the combining and single-rounding rule and the regulation's worked examples; backs backend/app/domains/kernel/ratings.py."
+  },
+  {
+   "id": "src.va.claim_status",
+   "title": "VA.gov — What your claim status means",
+   "kind": "primary",
+   "tier": 2,
+   "as_of": "2026-10-20",
    "origin": "https://www.va.gov/resources/what-your-claim-status-means/",
-   "tier": 2,
-   "title": "VA.gov — What your claim status means"
+   "note": "Eight disability-claim statuses and the five-status track for other claims, read 2026-10-20."
   },
-  "src.va.find_rep": {
+  {
+   "id": "src.va.find_rep",
+   "title": "VA.gov — Find a VA accredited representative or VSO",
    "kind": "primary",
-   "origin": "https://www.va.gov/get-help-from-accredited-representative/find-rep/",
    "tier": 2,
-   "title": "VA.gov — Find a VA accredited representative or VSO"
+   "as_of": "2026-10-20",
+   "origin": "https://www.va.gov/get-help-from-accredited-representative/find-rep/",
+   "note": "VA's own accredited-representative search; the referral target for every claims question (R5)."
+  },
+  {
+   "id": "src.dod.vgli_afb",
+   "title": "myAirForceBenefits — Veterans Group Life Insurance (VGLI)",
+   "kind": "primary",
+   "tier": 3,
+   "as_of": "2026-10-20",
+   "origin": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Veterans-Group-Life-Insurance-(VGLI)",
+   "note": "DoD benefits library; states the 1 year 120 day application window and the 240-day no-proof-of-health window. Confirm on VA's VGLI page."
+  },
+  {
+   "id": "src.gov.service_architecture",
+   "title": "VetBuddy Agent Governance & Service Architecture (7 Oct 2026)",
+   "kind": "governance",
+   "tier": null,
+   "as_of": "2026-10-07",
+   "origin": "upload: VetBuddy_Agent_Governance__Service_Architecture.pdf",
+   "note": "Deadline-trigger table (ITF, separation effective date, BDD, decision review, VGLI) citing VA pages; folded into the Master Record."
+  },
+  {
+   "id": "src.cfr.38_part4",
+   "title": "38 CFR Part 4 — Schedule for Rating Disabilities (eCFR, current text)",
+   "kind": "primary",
+   "tier": 1,
+   "as_of": "2026-10-28",
+   "origin": "https://www.ecfr.gov/current/title-38/chapter-I/part-4",
+   "note": "Authority the transcribed rating schedule must be re-checked against."
+  },
+  {
+   "id": "src.cfr.38_4_26",
+   "title": "38 CFR 4.26 — Bilateral factor",
+   "kind": "primary",
+   "tier": 1,
+   "as_of": "2026-10-28",
+   "origin": "https://www.ecfr.gov/current/title-38/chapter-I/part-4/subpart-A/section-4.26",
+   "note": "Basis of the bilateral-factor kernel step."
+  },
+  {
+   "id": "src.legacy.va_rating_app",
+   "title": "VA Disability Rating & PACT Act Reference (uploaded app: 2020 CFR Part 4 transcription, 2026 pay table)",
+   "kind": "legacy_build",
+   "tier": 4,
+   "as_of": "2026-10-21",
+   "origin": "upload: va-rating-app.html",
+   "note": "Its calculator combines unrounded floats (31 of 714 combinations 10 points low) and was not used; only the transcribed codes were imported."
+  },
+  {
+   "id": "src.legacy.va_claims_data",
+   "title": "va_claims_data.json v2.1.0 (uploaded FY2025 catalog)",
+   "kind": "legacy_build",
+   "tier": 4,
+   "as_of": "2026-10-21",
+   "origin": "upload: va_claims_data.json",
+   "note": "Not integrated: invented codes and symptom-to-code mapping. Cited only as a conflicting reading."
+  },
+  {
+   "id": "src.legacy.state_benefits_all",
+   "title": "state_benefits_all.json (uploaded 56-jurisdiction summary, labelled last_verified 2025-01-01)",
+   "kind": "legacy_build",
+   "tier": 4,
+   "as_of": "2026-10-28",
+   "origin": "upload: state_benefits_all.json",
+   "note": "No per-row sources; its 'confidence' labels are not used. Cited only as a conflicting reading."
+  },
+  {
+   "id": "src.legacy.vault_license_reciprocity",
+   "title": "Benefit Vault license_reciprocity table (recovered earlier VetBuddy dataset)",
+   "kind": "legacy_build",
+   "tier": 4,
+   "as_of": "2026-10-27",
+   "origin": "data/reference/benefit_vault_registry.json#license_reciprocity",
+   "note": "Recovered without a primary source; see data/research/recovered/RECOVERY_MANIFEST.json."
   }
- }
+ ]
 }

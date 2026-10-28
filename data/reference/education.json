@@ -1,0 +1,37 @@
+{
+  "dataset": "education",
+  "title": "Education benefit program registry (deduplicated across the Education Navigator, the v2.0 build and Sentinel)",
+  "version": "2026.10.20",
+  "as_of": "2026-10-20",
+  "default_status": "UNVERIFIED",
+  "rule": "Each program appears once, with every build that carried it. Every row is an authority stub: identity and enabling citation only. No rates, caps or eligibility tests are stored, so the funding stack returns UNKNOWN_HUMAN_VERIFICATION_REQUIRED for any combination (gap G3). The Education Navigator's synthetic demonstration grant and its five demonstration institutions are not real programs and are not carried.",
+  "sources": ["src.mod.education_navigator", "src.gov.master_record", "src.mod.sentinel"],
+  "programs": [
+    {"id": "edu.fed.ch33", "name": "Post-9/11 GI Bill", "authority": "38 U.S.C. ch. 33", "carried_by": ["ednav:fed.ch33.post911", "v2.0", "sentinel:gr.ch33"], "stacking_notes": "Must elect one with ch. 30, 1606 and 31 (Rudisill nuance); may not combine with TA for the same charges; sequence against the Alabama scholarship unverified."},
+    {"id": "edu.fed.yellow_ribbon", "name": "Yellow Ribbon Program", "authority": "38 U.S.C. 3317", "carried_by": ["ednav:fed.ch33.yellow_ribbon", "v2.0"], "stacking_notes": "Requires ch. 33 at the 100% tier; limited, school-funded."},
+    {"id": "edu.fed.teb", "name": "Transfer of Entitlement", "authority": "38 U.S.C. 3319", "carried_by": ["ednav:fed.ch33.teb", "v2.0"]},
+    {"id": "edu.fed.ch35_dea", "name": "Survivors' and Dependents' Educational Assistance (DEA)", "authority": "38 U.S.C. ch. 35", "carried_by": ["ednav:fed.ch35.dea", "v2.0"], "note": "Finance report cites about $1,574/month full-time for Oct 2025–Sep 2026 (unverified)."},
+    {"id": "edu.fed.fry", "name": "Fry Scholarship", "authority": "38 U.S.C. 3311(b)(8)–(9) (verify)", "carried_by": ["ednav:fed.ch35.fry", "v2.0"]},
+    {"id": "edu.fed.ch31_vre", "name": "Veteran Readiness and Employment", "authority": "38 U.S.C. ch. 31", "carried_by": ["ednav:fed.ch31.vre", "v2.0"]},
+    {"id": "edu.fed.ch30_mgib_ad", "name": "Montgomery GI Bill — Active Duty", "authority": "38 U.S.C. ch. 30", "carried_by": ["ednav:fed.ch30.mgib_ad", "v2.0"]},
+    {"id": "edu.fed.ch1606_mgib_sr", "name": "Montgomery GI Bill — Selected Reserve", "authority": "10 U.S.C. ch. 1606", "carried_by": ["ednav:fed.ch1606.mgib_sr", "v2.0", "sentinel:gr.ch1606"]},
+    {"id": "edu.fed.instate_3679c", "name": "In-state tuition protection", "authority": "38 U.S.C. 3679(c)", "carried_by": ["ednav:fed.instate_tuition_protection", "v2.0"]},
+    {"id": "edu.dod.ta", "name": "Federal Tuition Assistance", "authority": "10 U.S.C. 2007; DoDI 1322.25", "carried_by": ["ednav:dod.tuition_assistance", "v2.0", "sentinel:gr.fta"], "note": "Subject to appropriation. Sentinel's FY26 figures are in guard_reserve.json."},
+    {"id": "edu.dod.ca", "name": "Credentialing Assistance", "authority": "AR 621-5 (Army)", "carried_by": ["v2.0", "sentinel:gr.army_ca"]},
+    {"id": "edu.dod.spouse", "name": "DoD spouse education program", "authority": "10 U.S.C. 1784a", "carried_by": ["ednav:dod.spouse_education_program"]},
+    {"id": "edu.fed.licensing", "name": "Licensing and certification test reimbursement", "authority": "38 U.S.C. (verify)", "carried_by": ["v2.0"]},
+    {"id": "edu.fed.national_testing", "name": "National testing reimbursement", "authority": "38 U.S.C. (verify)", "carried_by": ["v2.0"]},
+    {"id": "edu.fed.work_study", "name": "VA work study", "authority": "38 U.S.C. 3485 (verify)", "carried_by": ["v2.0"]},
+    {"id": "edu.fed.tutorial", "name": "Tutorial assistance", "authority": "38 U.S.C. (verify)", "carried_by": ["v2.0"]},
+    {"id": "edu.fed.apprenticeship_ojt", "name": "Apprenticeship and on-the-job training", "authority": "38 U.S.C. (verify)", "carried_by": ["v2.0"]},
+    {"id": "edu.fed.vsoc", "name": "VetSuccess on Campus", "authority": "VA program (verify)", "carried_by": ["v2.0"]},
+    {"id": "edu.fed.rogers_stem", "name": "Edith Nourse Rogers STEM Scholarship", "authority": "38 U.S.C. 3320 (verify)", "carried_by": ["v2.0"]},
+    {"id": "edu.np.o2o", "name": "Onward to Opportunity (IVMF, Syracuse University)", "authority": "Nonprofit program", "carried_by": ["v2.0"], "note": "The only real (non-stub) program in the v2.0 registry; the only transition program with a rigorous third-party evaluation per the TAP report.", "status": "UNVERIFIED"},
+    {"id": "edu.al.gi_dependents", "name": "Alabama G.I. Dependents' Scholarship", "authority": "Ala. Code §31-6 (operative section unverified)", "carried_by": ["ednav:al.gi_dependents_scholarship", "state_benefits:sb.AL.gi_dependents"], "note": "Award cap question open (conflict.ednav.al_award_cap). Whether the Launch 0 finder covers it is an open decision."},
+    {"id": "edu.al.angeap", "name": "Alabama National Guard Educational Assistance Program", "authority": "Ala. Code §31-10 (enabling section unverified; EdNav confidence 0.55)", "carried_by": ["ednav:al.national_guard_education_assistance", "v2.0 AL rule pack"], "note": "EdNav marks this a stub that can never reach a conclusion (always HUMAN_REQUIRED)."}
+  ],
+  "excluded": [
+    {"id": "inst.demo.veteran_completion_grant", "reason": "Synthetic workflow record in the Education Navigator."},
+    {"id": "inst.al.* and inst.us.private_online_university", "reason": "Five demonstration institutions with synthetic costs ($28,850/yr total for the public university); never real data."}
+  ]
+}

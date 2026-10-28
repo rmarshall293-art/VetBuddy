@@ -1,0 +1,43 @@
+# Single AUTHORED source of truth for crisis contacts. Every surface reads
+# this file or a copy generated from it (web/kernel_data.js for the offline
+# standalone app). Delivery is redundant; authorship is single. A test fails
+# if any generated copy drifts (conflict.design.crisis_floor_copies).
+#
+# These contacts are shielded from redaction/PII-scrubbing pipelines and
+# must survive verbatim (pinned defect: "988 (Press 1)" was mangled to
+# "9881" by a phone normalizer that ran before the allowlist check).
+#
+# Slice 02 merged the Women Veterans module floor (checked against primary
+# sources 2026-08-05: veteranscrisisline.net, womenshealth.va.gov,
+# thehotline.org, va.gov/homeless, safehelpline.org). Re-verify before each
+# release. Never add 1-800-273-8255: it is the RETIRED crisis line number.
+contacts:
+  - key: veterans_crisis_line
+    label: "Veterans Crisis Line"
+    phone: "988"
+    extra: "Press 1"
+    text: "838255"
+    chat_url: "https://www.veteranscrisisline.net/get-help-now/chat/"
+  - key: "988"
+    label: "988 Suicide & Crisis Lifeline"
+    phone: "988"
+  - key: domestic_violence_hotline
+    label: "National Domestic Violence Hotline"
+    phone: "1-800-799-7233"
+    text: "START to 88788"
+  - key: women_veterans_call_center
+    label: "VA Women Veterans Call Center"
+    phone: "1-855-829-6636"
+    text: "1-855-829-6636"
+  - key: homeless_veterans_call_center
+    label: "National Call Center for Homeless Veterans"
+    phone: "1-877-424-3838"
+  - key: dod_safe_helpline
+    label: "DoD Safe Helpline (sexual assault support)"
+    phone: "1-877-995-5247"
+    chat_url: "https://www.safehelpline.org/"
+emergency:
+  label: "Immediate danger"
+  phone: "911"
+retired_numbers:
+  "+18002738255": "Retired Veterans Crisis Line. Current: 988 then press 1."

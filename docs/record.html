@@ -1,0 +1,421 @@
+<title>VetBuddy Integrated Record</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<!-- TEMPLATE. scripts/build_web.py fills every named slot marker from the
+     repository's own data (governance.json, conflicts.json, crisis_floor.yaml,
+     the corpus loader, the migrations folder, the test suite) and writes
+     dist/vetbuddy-record.html. Edit prose here; never type a count or a rule. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;0,800;1,400&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a field record. Sticky section index on the left, one reading column on the right; stacks to one column on phones. */
+:root{
+  --bg:#F3F4F1; --paper:#FFFFFF; --fg:#18211D; --muted:#56615B; --line:#D7DBD5;
+  --accent:#24584A; --accent-soft:#E2ECE7;
+  --ok:#1E6B45; --ok-bg:#DDEFE3; --warn:#8A5A10; --warn-bg:#F6EBD3;
+  --bad:#9A2B23; --bad-bg:#F6DEDA; --info:#2D4F7C; --info-bg:#DFE7F2; --crisis:#B3261E;
+  --display:"Public Sans",system-ui,sans-serif; --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --label:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111614; --paper:#182019; --fg:#E4E9E5; --muted:#9AA69F; --line:#2C3631; --accent:#7FC2AA; --accent-soft:#1E2E28;
+  --ok:#7DCB9C; --ok-bg:#183323; --warn:#E3B565; --warn-bg:#352812; --bad:#F0948A; --bad-bg:#3A1C19; --info:#9DB9E6; --info-bg:#1A2638; --crisis:#FF8A80;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111614; --paper:#182019; --fg:#E4E9E5; --muted:#9AA69F; --line:#2C3631; --accent:#7FC2AA; --accent-soft:#1E2E28;
+  --ok:#7DCB9C; --ok-bg:#183323; --warn:#E3B565; --warn-bg:#352812; --bad:#F0948A; --bad-bg:#3A1C19; --info:#9DB9E6; --info-bg:#1A2638; --crisis:#FF8A80;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.crisis{max-width:1180px;margin:16px auto 0;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;
+  border:1px solid var(--line);border-left:4px solid var(--crisis);background:var(--paper);padding:10px 14px;font-size:14px}
+.crisis b{color:var(--crisis);font-family:var(--label);text-transform:uppercase;letter-spacing:.06em}
+.crisis span{font-family:var(--mono);font-size:13px}
+.crisis .nw{white-space:nowrap}
+header.top{max-width:1180px;margin:0 auto;padding-block:40px 28px;border-bottom:2px solid var(--fg)}
+.eyebrow{font-family:var(--label);text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:var(--muted)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;margin:.3em 0 .35em;letter-spacing:-.02em;text-wrap:balance}
+.lede{max-width:68ch;color:var(--muted);margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:20px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.meta strong{color:var(--fg);font-weight:500}
+.shell{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px;padding-block:32px 64px}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;font-size:14px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px;counter-reset:s}
+nav.toc li{counter-increment:s}
+nav.toc a{display:flex;gap:10px;padding:5px 8px;text-decoration:none;color:var(--muted);border-left:2px solid transparent}
+nav.toc a::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:12px;padding-top:2px}
+nav.toc a:hover{color:var(--fg);border-left-color:var(--accent)}
+@media (max-width:860px){.shell{grid-template-columns:minmax(0,1fr);gap:24px}
+  nav.toc{position:static;border:1px solid var(--line);background:var(--paper);padding:12px}
+  nav.toc ol{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}}
+main{min-width:0;display:grid;gap:56px}
+section{scroll-margin-top:20px;min-width:0}
+h2{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.01em;margin:0 0 6px;display:flex;align-items:baseline;gap:12px;text-wrap:balance}
+h2 .n{font-family:var(--mono);font-size:.9rem;font-weight:500;color:var(--accent)}
+h3{font-family:var(--label);text-transform:uppercase;letter-spacing:.08em;font-size:.9rem;color:var(--muted);margin:28px 0 10px}
+p{max-width:70ch;margin:.6em 0}
+.sub{color:var(--muted);margin-top:0}
+ul.plain{margin:.4em 0;padding-left:1.2em;max-width:70ch}
+ul.plain li{margin:.25em 0}
+.tbl{overflow-x:auto;border:1px solid var(--line);background:var(--paper);margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--label);text-transform:uppercase;letter-spacing:.06em;font-size:12.5px;color:var(--muted);font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);white-space:nowrap}
+code,.mono{font-family:var(--mono);font-size:.88em}
+td code{white-space:nowrap}
+.pill{display:inline-block;font-family:var(--label);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:3px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)} .warn{color:var(--warn);background:var(--warn-bg)}
+.bad{color:var(--bad);background:var(--bad-bg)} .info{color:var(--info);background:var(--info-bg)}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:18px 0}
+.fig{background:var(--paper);padding:14px 16px}
+.fig b{display:block;font-family:var(--display);font-weight:800;font-size:1.9rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.fig span{font-size:13px;color:var(--muted)}
+.fig.alert b{color:var(--bad)}
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);padding:14px 18px;max-width:72ch;margin:16px 0}
+.callout.red{border-left-color:var(--bad);background:var(--bad-bg)}
+.callout p{margin:.3em 0}
+ol.steps{list-style:none;padding:0;margin:12px 0;display:grid;gap:10px;counter-reset:st;max-width:72ch}
+ol.steps li{counter-increment:st;display:grid;grid-template-columns:36px minmax(0,1fr);gap:8px;align-items:start}
+ol.steps li::before{content:counter(st);font-family:var(--mono);font-weight:500;width:28px;height:28px;border:1.5px solid var(--accent);color:var(--accent);display:grid;place-items:center;border-radius:50%;font-size:13px}
+.pipeline{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0;font-size:13.5px}
+.pipeline span{border:1px solid var(--line);background:var(--paper);padding:5px 9px;font-family:var(--mono);font-size:12.5px}
+.pipeline span.model{border-style:dashed;color:var(--muted)}
+.pipeline i{color:var(--muted);font-style:normal}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chips span{border:1px solid var(--line);background:var(--paper);padding:3px 9px;font-size:13.5px;border-radius:2px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.cols > div{min-width:0}
+.planes{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin:14px 0}
+.planes div{display:grid;grid-template-columns:190px minmax(0,1fr);background:var(--paper)}
+.planes b{padding:10px 12px;font-family:var(--mono);font-weight:500;font-size:13px;background:var(--bg)}
+.planes span{padding:10px 12px;font-size:14.5px}
+@media (max-width:560px){.planes div{grid-template-columns:1fr}}
+footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-block:20px 40px;font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<!--@@CRISIS@@-->
+
+<header class="top">
+  <div class="eyebrow">VetBuddy / VeteranOS · Transition application · Project entry point</div>
+  <h1>VetBuddy Integrated Record</h1>
+  <p class="lede">One record for the whole project, under master prompt v6: what governs, what is built, what the reference corpus holds, the Benefit Vault, the rules every agent must follow, the decisions waiting on the owner, and what comes next. Every count, rule and table that exists as data in the repository is generated from that data, so this page can't drift from the code.</p>
+  <div class="meta"><!--@@META@@--></div>
+</header>
+
+<div class="shell">
+<nav class="toc" aria-label="Sections"><ol>
+  <li><a href="#governs">What governs</a></li>
+  <li><a href="#status">Build status</a></li>
+  <li><a href="#corpus">Reference corpus</a></li>
+  <li><a href="#governance">Governance</a></li>
+  <li><a href="#architecture">Architecture</a></li>
+  <li><a href="#waiting">Waiting on the owner</a></li>
+  <li><a href="#launch">Launch scope</a></li>
+  <li><a href="#gaps">Gap register</a></li>
+  <li><a href="#conflicts">Open conflicts</a></li>
+  <li><a href="#missing">Not in hand</a></li>
+  <li><a href="#next">Next steps</a></li>
+  <li><a href="#where">Where things live</a></li>
+</ol></nav>
+
+<main>
+
+<section id="governs">
+  <h2><span class="n">01</span>What governs, in order</h2>
+  <p class="sub">When two sources disagree, the newer confirmed decision wins. Running code and real test results outrank any document.</p>
+  <div class="tbl"><table>
+    <thead><tr><th class="num">#</th><th>Source</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>VetBuddy Master Record (7 Oct)</td><td>Canonical decisions, 34 open conflicts (§7.1), what waits on the owner (§7.3)</td></tr>
+      <tr><td class="num">2</td><td>Agent Governance Rules (20 Oct); Agent Governance &amp; Service Architecture (7 Oct, folded into #1)</td><td>Four non-negotiables, Tier 0 rules, R1–R22, legal lane, required language</td></tr>
+      <tr><td class="num">3</td><td>Master prompt v6 (24 Oct) + CLAUDE.md (in the repo); v5 and canonical integration v2 kept inside it as subordinate appendices</td><td>Governing build directive: account lifecycle and deletion, privacy, benefits boundaries, platforms, legal register, labels and sequence</td></tr>
+      <tr><td class="num">3a</td><td>Unified Master Build v8 (26 Oct; Base44 directive v7.0 + CRM amendment)</td><td>Product scope for the Base44 runtime: CRM contained, SARGE optional, one task owner, regression scenarios. v6 stays this repository's engineering directive (ADR 0005)</td></tr>
+      <tr><td class="num">4</td><td>Merged Blueprint; Mission OS</td><td>v2.0 architecture: seven planes, engines, datasets</td></tr>
+      <tr><td class="num">5</td><td>Master Build Prompt; Security &amp; Agent Architecture; Architecture of Record</td><td>Mechanism detail: twelve invariants, Trust Kernel, premises P1–P12, lineage of six earlier builds</td></tr>
+      <tr><td class="num">6</td><td>Module specs: Education Navigator, Women Veterans, Operation Sentinel</td><td>Domain detail; integrated as data in slice 02</td></tr>
+      <tr><td class="num">7</td><td>Foundation Handoff; Field Manual; research reports (4)</td><td>Execution steps and Tier-4 leads</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><p><strong>The governing sentence.</strong> <!--@@GOVERNING@@--></p></div>
+</section>
+
+<section id="status">
+  <h2><span class="n">02</span>Where the build stands</h2>
+  <p class="sub">One codebase lineage: skeleton v1 → slice 01 → session 2 → slice 02 → consolidation → slice 03 (v6 integration, export and deletion) → slice 04 (Benefit Vault, v8 placed, aggregation kernel). Evidence per capability is in <code>docs/GAP_MATRIX.md</code>; status against each v6 requirement is in <code>docs/REQUIREMENTS_TRACEABILITY.md</code>.</p>
+  <!--@@FIGS@@-->
+  <div class="tbl"><table>
+    <thead><tr><th>Capability</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Tenant isolation: forced, fail-closed RLS; non-owner app role</td><td><span class="pill ok">Tested</span></td></tr>
+      <tr><td>Privacy modes A (guest) and B (consented); C unreachable by design</td><td><span class="pill ok">Tested</span></td></tr>
+      <tr><td>Consent: in-transaction checks, revocation, allowlist, 9 foreclosed purposes</td><td><span class="pill ok">Tested</span></td></tr>
+      <tr><td>Deterministic Mission Router: Master Mission, lane cases, tasks, Mission Brief</td><td><span class="pill ok">Tested</span></td></tr>
+      <tr><td>Combined rating, 38 CFR 4.25; browser and server kernels identical</td><td><span class="pill ok">Tested</span></td></tr>
+      <tr><td>Reference corpus: read-only <code>ref</code> schema, <code>/api/v1/reference/*</code></td><td><span class="pill warn">Loaded, unverified</span></td></tr>
+      <tr><td>Guest app reads windows, legal lane, rules and wording from the corpus and config</td><td><span class="pill ok">Tested</span> no hand-copied facts; Clear session</td></tr>
+      <tr><td>Data export and account deletion (v6 §3): full data-graph purge, receipt with no personal data, sessions fail closed</td><td><span class="pill ok">Tested</span> shared accounts refused; backups and processors not yet</td></tr>
+      <tr><td>Hash-chained audit; transactional outbox</td><td><span class="pill warn">Partial</span> no outbox dispatcher</td></tr>
+      <tr><td>Sign-in</td><td><span class="pill info">Mock</span> waits on G17</td></tr>
+      <tr><td>Benefit Vault: 1,362-record registry, deterministic matcher (v6 outcomes), search, household, pull governance with a hash-chained ledger; guest and account screens</td><td><span class="pill warn">Partial</span> no record verified (G1); account routes on the mock sign-in</td></tr>
+      <tr><td>Account deletion reaches every tenant table, including the vault's; 0014 fails if any table escapes the purger</td><td><span class="pill ok">Tested</span></td></tr>
+      <tr><td>k-anonymity aggregation kernel (k = 11, rows and columns protected)</td><td><span class="pill ok">Tested</span> nothing feeds it yet</td></tr>
+      <tr><td>Verified rule packs</td><td><span class="pill bad">Not present</span> G1</td></tr>
+      <tr><td>Agents, model gateway, crisis detector</td><td><span class="pill bad">Not present</span> G21/G23</td></tr>
+      <tr><td>4.26 bilateral factor, TDIU check</td><td><span class="pill bad">Not present</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="corpus">
+  <h2><span class="n">03</span>The reference corpus</h2>
+  <p class="sub">Every row names its sources and carries a status. None is VERIFIED: that needs a named human reviewer, and the database enforces it. Dispositions of every input, duplicates removed and exclusions are in <code>docs/INTEGRATION_LEDGER.md</code>.</p>
+  <!--@@STATUSES@@-->
+  <!--@@CORPUS@@-->
+  <h3>Benefit Vault · migration 0014 · <code>/api/v1/vault</code></h3>
+  <p class="sub">Federal, state, nonprofit and retail benefits for service members, Guard and Reserve, veterans and families, from research ledgers read page by page. A deterministic matcher answers in the v6 outcome words and never decides; in production nothing shows as a match until a named reviewer verifies it (G1). Generated from <code>data/reference/benefit_vault_registry.json</code>; defects VD01–VD22 are in <code>docs/BENEFIT_VAULT_ARCHITECTURE.md</code> and ADR 0005.</p>
+  <!--@@VAULT@@-->
+</section>
+
+<section id="governance">
+  <h2><span class="n">04</span>Governance</h2>
+  <h3>Four non-negotiables</h3>
+  <!--@@NON_NEGOTIABLES@@-->
+  <div class="callout red">
+    <p><strong>Claims legal lane</strong> (38 CFR 14.629, 14.636; 38 U.S.C. 5901). VetBuddy may inform, calculate, organize and refer. It may never prepare, sign, submit or argue a claim, ITF or review, and nothing claims-related may carry a fee. The GUARD VA Benefits Act (H.R. 1732) is pending; build as if it were enacted.</p>
+  </div>
+  <!--@@LEGAL_LANE@@-->
+  <h3>Agent rules R1–R22</h3>
+  <p class="sub">“This repo” is the status of the code delivered here; “v2.0 build” is the governance record's own column for the earlier build, which is not in hand.</p>
+  <!--@@AGENT_RULES@@-->
+  <h3>Tier 0 rules</h3>
+  <!--@@TIER0@@-->
+  <h3>Pipeline order</h3>
+  <!--@@PIPELINE@@-->
+  <h3>Human-in-the-loop levels</h3>
+  <!--@@HITL@@-->
+  <h3>Release gates</h3>
+  <!--@@GATES@@-->
+  <h3>Privacy modes and data classes</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Mode</th><th>What it means</th><th>This repo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>A</strong> guest</td><td>Nothing stored</td><td><span class="pill ok">Tested</span></td></tr>
+      <tr><td><strong>B</strong> private account</td><td>Minimum profile, user only, with consent</td><td><span class="pill ok">Tested</span></td></tr>
+      <tr><td><strong>C</strong> managed case</td><td>Shared with a named rep or caseworker the user chooses</td><td><span class="pill info">Unreachable by design</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>Class</th><th>Kept where</th><th>May reach a model</th></tr></thead>
+    <tbody>
+      <tr><td><code>V0</code> Public</td><td>Reference tables, CDN</td><td>Yes</td></tr>
+      <tr><td><code>V1</code> Internal</td><td>PostgreSQL, metrics not user-linked</td><td>Yes</td></tr>
+      <tr><td><code>V2</code> PII</td><td>Mode B minimum; Mode C with consent; email only as HMAC</td><td>Masked only</td></tr>
+      <tr><td><code>V3</code> High-risk PII</td><td>Mode C only; field-encrypted per person</td><td>Never</td></tr>
+      <tr><td><code>V4</code> Health</td><td>User-controlled Symptom Vault or Mode C case; field-encrypted</td><td>Only with purpose consent, redaction and a zero-retention contract</td></tr>
+      <tr><td><code>V5</code> Special restriction</td><td>Mode C only, separate key per person and category</td><td>Never to an external model</td></tr>
+    </tbody>
+  </table></div>
+  <p>Two flagged items: add sickle cell anemia to V5 (38 U.S.C. 7332), and the Symptom Vault needs opt-in consent if it ships in Mode B (Alabama APDPA).</p>
+</section>
+
+<section id="architecture">
+  <h2><span class="n">05</span>Architecture</h2>
+  <p class="sub">A modular monolith with four isolated services where credentials or untrusted files demand it. The CRM is a contained subsystem inside the Work OS, never the organizing model. Detail in <code>docs/ARCHITECTURE.md</code>.</p>
+  <div class="planes">
+    <div><b>1 Trust &amp; Identity</b><span>Auth, tenancy, consent, privacy modes, audit. <em>Built: tenancy, consent, audit; mock auth.</em></span></div>
+    <div><b>2 Work OS</b><span>Master Mission, Master Case, lanes, tasks, deadlines. <em>Built: mission, cases, tasks.</em></span></div>
+    <div><b>3 Secure Context Fabric</b><span>Guardian, ContextPackets, policy decision and enforcement points. <em>Not built.</em></span></div>
+    <div><b>4 Source Intelligence</b><span>Jurisdictions, reference corpus, rule packs, determinations. <em>Corpus loaded; 0 verified rules.</em></span></div>
+    <div><b>5 AI Workforce</b><span>Orchestrator and bounded specialists behind manifests. <em>Manifests DRAFT; no runtime.</em></span></div>
+    <div><b>6 Integration Gateway</b><span>VA connector (read-only, session-only), document intake (sandboxed), model gateway. <em>Not built.</em></span></div>
+    <div><b>7 Operations Center</b><span>Monitoring, outbox worker, source polling, kill switch. <em>Outbox table only.</em></span></div>
+  </div>
+  <h3>Twelve non-interference invariants</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>Invariant</th><th>This repo</th></tr></thead>
+    <tbody>
+      <tr><td><code>I1</code></td><td>Determinism: byte-identical output for fixed facts and epoch; clock injected</td><td><span class="pill warn">Partial</span> router and ratings; no replay receipts</td></tr>
+      <tr><td><code>I2</code></td><td>Fact isolation: broker projects each agent's allowlist</td><td><span class="pill bad">Not present</span></td></tr>
+      <tr><td><code>I3</code></td><td>No shared mutable state between agents</td><td><span class="pill info">No agents</span></td></tr>
+      <tr><td><code>I4</code></td><td>Epoch pinning: a mid-flight pack publish can't change a running determination</td><td><span class="pill warn">Partial</span> policy version and input hash per mission</td></tr>
+      <tr><td><code>I5</code></td><td>Idempotency, at-most-once effects</td><td><span class="pill warn">Partial</span> outbox keys; no dispatcher</td></tr>
+      <tr><td><code>I6</code></td><td>Bounded authority: per-agent roles, FORCE RLS, no excess grants</td><td><span class="pill warn">Partial</span> least-privilege app role; no per-agent roles</td></tr>
+      <tr><td><code>I7</code></td><td>Untrusted-content quarantine</td><td><span class="pill info">No uploads</span></td></tr>
+      <tr><td><code>I8</code></td><td>Crisis preemption: the monitor can interrupt anything</td><td><span class="pill bad">Not present</span></td></tr>
+      <tr><td><code>I9</code></td><td>Observability without identification</td><td><span class="pill warn">Partial</span> logs carry ids only; audit stores no facts</td></tr>
+      <tr><td><code>I10</code></td><td>Fail-closed: failures degrade toward uncertainty</td><td><span class="pill ok">Tested</span></td></tr>
+      <tr><td><code>I11</code></td><td>No agent-to-agent trust</td><td><span class="pill info">No agents</span></td></tr>
+      <tr><td><code>I12</code></td><td>Tenant and channel isolation; default deny</td><td><span class="pill ok">Tested</span> tenants; channel split not built</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><p><strong>Still to write first: the ADA metamorphic test.</strong> For any profile and any value of a health-derived fact, career output must not change. It gates the career module (CB-01, CB-02).</p></div>
+</section>
+
+<section id="waiting">
+  <h2><span class="n">06</span>Waiting on the owner</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Decision</th><th>Recommended default</th><th>Unblocks</th></tr></thead>
+    <tbody>
+      <tr><td><strong>G1</strong> who verifies rules</td><td>Named accredited service officers read primary statute</td><td>Every benefit answer; turning reference leads into rules</td></tr>
+      <tr><td><strong>G17</strong> token model and sign-in</td><td>10-minute access tokens, rotating refresh; ID.me + Microsoft</td><td>Real accounts</td></tr>
+      <tr><td>Claims-lane legal opinion</td><td>Veterans-law attorney before Launch 1; claims features free until then</td><td>Launch 1 claims screens</td></tr>
+      <tr><td><strong>G21/G23</strong> model provider contract</td><td>Zero-retention, no-training</td><td>Every agent</td></tr>
+      <tr><td><strong>G18</strong> VA Lighthouse</td><td>Apply for the sandbox now (read scopes)</td><td>VA connector</td></tr>
+      <tr><td>VSO partnerships</td><td>Neutral accredited list; disclosure policy first (R5)</td><td>Referrals</td></tr>
+      <tr><td>Hosting</td><td>One US region, private networking</td><td>Secrets manager, KMS, the vault's source watcher and discovery search</td></tr>
+      <tr><td><strong>VD06</strong> vault agent ids</td><td>Map to v8's roster: vault → Benefits Intelligence; claims navigator → Claims Navigation; crisis → a Tier 0 rule</td><td>Pull providers over the slice 03 stores</td></tr>
+      <tr><td><strong>VD21</strong> non-matches from unreviewed rules</td><td>Show them as leads to review in production, not hidden</td><td>No benefit hidden by a wrongly encoded rule</td></tr>
+      <tr><td>G1 reviewer roster</td><td>Handles only, never names or emails, kept by the owner</td><td>VERIFIED records, PRELIMINARY_MATCH in production</td></tr>
+      <tr><td>Area-need reporting</td><td>Add a county field and a <code>geographic_insight</code> purpose, default off</td><td>The aggregation kernel</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cols">
+    <div>
+      <h3>Also open</h3>
+      <ul class="plain">
+        <li>Partner CRM timing (recommended: defer; v8 keeps it contained)</li>
+        <li>Whether to anchor the vault ledger's chain head outside the database (VD09)</li>
+        <li>Whether the household flow should pull from other agents (VD11)</li>
+        <li>Which policy draft's operator name, retention and analytics wording is right (<code>docs/POLICY_CLAIMS_REGISTER.md</code>)</li>
+        <li>American Legion Dept. of Alabama as a tenant or a design input</li>
+        <li>Whether the Launch 0 finder covers the G.I. Dependents' Scholarship</li>
+        <li>Rule review windows (statute 24 months, regulation 12, agency 12, dollar figures 6)</li>
+        <li>Ship Launch 0 with only verified rules (recommended)</li>
+        <li>Show CONTESTED with both positions (recommended)</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Reserved for counsel</h3>
+      <ul class="plain">
+        <li>Fee exposure under 38 U.S.C. 5905 and 38 CFR 14.636</li>
+        <li>Whether mission routing is an automated decision under the Alabama APDPA</li>
+        <li>HIPAA and FTC Health Breach Rule applicability</li>
+        <li>Unauthorized practice of law by state</li>
+        <li>Retention duties for state-channel case records</li>
+        <li>Every Alabama citation, line by line</li>
+        <li>A named contact and address for privacy requests</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="launch">
+  <h2><span class="n">07</span>Launch scope</h2>
+  <div class="cols">
+    <div>
+      <h3>Launch 0 · vetbuddy.com, static</h3>
+      <p>A guest-only Alabama finder evaluated in the browser. It shows "verification required" until G1 closes, crisis help on every page, and real privacy, terms and accessibility pages. The standalone guest app already meets these privacy gates.</p>
+    </div>
+    <div>
+      <h3>Launch 1 · app.vetbuddy.com</h3>
+      <ul class="plain">
+        <li>Authentication, profile and progressive intake</li>
+        <li>Master Case, tasks, deadlines, documents</li>
+        <li>Engine-backed Alabama discovery</li>
+        <li>ResourceHub (fed by the reference corpus)</li>
+        <li>Read-only claims organization</li>
+        <li>Constrained AI with a static router</li>
+        <li>Audit, account deletion, consent controls</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout red"><p><strong>Never, at any phase:</strong> storing an SSN; presenting AI output as an official determination; claiming a certification not held; presenting uncertain eligibility as guaranteed; presenting stale information as current.</p></div>
+</section>
+
+<section id="gaps">
+  <h2><span class="n">08</span>Gap register</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>ID</th><th>Gap</th><th>State</th></tr></thead>
+    <tbody>
+      <tr><td><code>G1 / G2</code></td><td>No verified rule; no verified state records</td><td><span class="pill bad">Open</span> the main blocker</td></tr>
+      <tr><td><code>G3</code></td><td>Education programs are authority stubs</td><td><span class="pill bad">Open</span></td></tr>
+      <tr><td><code>G4 / G5</code></td><td>Rating schedule 2020 edition; 279 untranscribed codes; digestive changed 2024-05-19 (v2.0 data, not in hand)</td><td><span class="pill info">Blocked on source</span></td></tr>
+      <tr><td><code>G17</code></td><td>Identity provider; blocks verification, recovery, MFA, step-up before deletion and the public deletion request (v6 §2–3)</td><td><span class="pill info">Mock</span> release blocker</td></tr>
+      <tr><td><code>V6-21</code></td><td>Backups, processors and legal holds wired into deletion</td><td><span class="pill bad">Planned</span> release blocker</td></tr>
+      <tr><td><code>V6-26</code></td><td>Legal operator, privacy contact and public origin unset (sources disagree on the entity)</td><td><span class="pill info">Owner decision</span> release blocker</td></tr>
+      <tr><td><code>V6-38</code></td><td>iOS, Android and Microsoft Store packaging and policy matrices</td><td><span class="pill bad">Planned</span> v6 sequence step 7</td></tr>
+      <tr><td><code>G18</code></td><td>VA Lighthouse</td><td><span class="pill bad">Open</span></td></tr>
+      <tr><td><code>G19</code></td><td>Outbox worker, ITF reminders</td><td><span class="pill warn">Table only</span></td></tr>
+      <tr><td><code>G21 / G23</code></td><td>Model gateway, agent runtime</td><td><span class="pill bad">Open</span></td></tr>
+      <tr><td><code>CB-01 / 02</code></td><td>Career agents gated by class not fact; no ADA metamorphic test</td><td><span class="pill bad">Open</span> before any career module</td></tr>
+      <tr><td><code>CB-03</code></td><td>Foreclosed consent purposes</td><td><span class="pill ok">Closed</span> migration 0010</td></tr>
+      <tr><td><code>CB-04…10</code></td><td>DB ADA backstop; zero-PII receipts; epoch pinning; work-environment preference; EEOC framing</td><td><span class="pill bad">Open</span></td></tr>
+      <tr><td><code>CB-05</code></td><td>k=11 suppression</td><td><span class="pill warn">Partial</span> kernel tested (GA-01…05 fixed); no data source</td></tr>
+      <tr><td><code>CB-06</code></td><td>License reciprocity corpus</td><td><span class="pill warn">Partial</span> 51-state lead table in the vault, tier 4, unverified</td></tr>
+      <tr><td><code>VD01–22</code></td><td>Benefit Vault defects: nothing verified; evidence depth; American Samoa; agent ids; sign-in; ledger anchoring; family coverage; blocking calls; hidden non-matches</td><td><span class="pill bad">Open</span> <code>docs/BENEFIT_VAULT_ARCHITECTURE.md</code>, ADR 0005</td></tr>
+      <tr><td><code>A-01 / 02</code></td><td>Rounding; client/server disagreement</td><td><span class="pill ok">Closed</span></td></tr>
+      <tr><td><code>A-03</code></td><td>4.26 bilateral factor</td><td><span class="pill bad">Open</span> labelled in UI</td></tr>
+      <tr><td><code>C-06</code></td><td>RLS on with no policy</td><td><span class="pill ok">Closed</span> migration 0009 guard</td></tr>
+      <tr><td><code>WV</code></td><td>Runtime guards spec-only; 181-row seed missing; refresh crawler never built</td><td><span class="pill info">Blocked on source</span></td></tr>
+      <tr><td><code>EdNav</code></td><td>Engines spec-only (148 tests not in hand)</td><td><span class="pill info">Blocked on source</span></td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>About the v2.0 numbers.</strong> Counts such as 93 tables, 4,184 rows and 474 tests describe the v2.0 build, which is not in hand. Do not compare them with this repo's numbers.</p>
+</section>
+
+<section id="conflicts">
+  <h2><span class="n">09</span>Open conflicts to settle</h2>
+  <h3>Master Record §7.1 · engineering-relevant rows</h3>
+  <div class="chips">
+    <span>Company name spellings and location</span><span>Canonical master prompt</span><span>Outcome vocabulary (11 vs 7)</span><span>Authority tiers (4 vs 5)</span><span>Rule format (YAML vs JSON)</span><span>Which eight Alabama rules</span><span>Mode B data ceiling</span><span>Database hosting and identity provider</span><span>Career instruments</span><span>Jurisdiction count (56 vs 62; vault 57 = 56 + federal)</span><span>Operator name in the two policy drafts</span><span>WCAG 2.1 vs 2.2</span><span>Meaning of red (this build: crisis only)</span><span>Python version</span><span>VA Lighthouse timing</span>
+  </div>
+  <h3>Reference corpus · served at <code>/api/v1/reference/conflicts</code></h3>
+  <!--@@CONFLICTS@@-->
+</section>
+
+<section id="missing">
+  <h2><span class="n">10</span>Not in hand anywhere</h2>
+  <ul class="plain">
+    <li>The v2.0 <code>veteranos</code> source and datasets (737 diagnostic codes, 2026 rate tables, presumptive conditions, 87 manifests, 10 rule packs)</li>
+    <li>The Women Veterans 181-row seed</li>
+    <li>Education Navigator and Women Veterans runtime source</li>
+    <li>The Base44 export (v8 Phase 0 inspects it)</li>
+    <li>The consent package's <code>consent_enforcement.py</code>, <code>test_consent.py</code>, schema and ethics charter</li>
+    <li>A GitHub re-scan of <code>rmarshall293-art/VetBuddy</code></li>
+  </ul>
+  <div class="callout"><p>Recover these before rebuilding them. Do not re-create the datasets from memory.</p></div>
+</section>
+
+<section id="next">
+  <h2><span class="n">11</span>Next steps, in order</h2>
+  <ol class="steps">
+    <li><div><strong>Close G1.</strong> Name the verifier and verify the eight Alabama rules. Then the highest-risk reference rows: the 13 MST residential programs (2009 source), the G.I. Dependents' cap, 2026 VA and BAS rates, and the statutory timeline windows.</div></li>
+    <li><div><strong>Recover the v2.0 source</strong>, or re-transcribe the rating schedule from current eCFR.</div></li>
+    <li><div><strong>Decide G17</strong> (identity provider and token model). It unblocks every remaining account release blocker in v6 §2–3: verification, recovery, MFA, step-up before deletion and the public deletion request, and the vault's account routes in production.</div></li>
+    <li><div><strong>Vault follow-through.</strong> Decide VD06 and VD21; then wire pull providers over the slice 03 stores, move vault store calls off the event loop (VD22), and start G1 review with the Alabama records and the 47 SOURCE_CHECKED rows.</div></li>
+    <li><div><strong>Slice 05.</strong> Outbox dispatcher with idempotent consumers (deletion already purges queued events), an axe and assistive-technology accessibility pass, and the v6 legal applicability register seeded with UNKNOWN rows for all 56 jurisdictions.</div></li>
+    <li><div><strong>Before any career module:</strong> the ADA metamorphic test and the fact-level allowlist (CB-01/02). The work-style assessment needs an instrument or licence decision first.</div></li>
+    <li><div><strong>Later, education-only content:</strong> insurance (VGLI/SGLI, no product rankings) and a regulatory change feed for VA law history, never a static page.</div></li>
+  </ol>
+</section>
+
+<section id="where">
+  <h2><span class="n">12</span>Where things live</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Path</th><th>Holds</th></tr></thead>
+    <tbody>
+      <tr><td><code>docs/record.html</code> → <code>dist/vetbuddy-record.html</code></td><td>This record (template, and the generated page)</td></tr>
+      <tr><td><code>docs/VETBUDDY_MASTER_SPEC.md</code></td><td>Master prompt v6 (v5 and canonical integration v2 inside as appendices)</td></tr>
+      <tr><td><code>docs/REQUIREMENTS_TRACEABILITY.md</code></td><td>Status of every v6 requirement, with evidence and release blockers</td></tr>
+      <tr><td><code>docs/GAP_MATRIX.md</code></td><td>Every capability with a status label and its evidence</td></tr>
+      <tr><td><code>docs/ACCOUNT_DELETION_RUNBOOK.md</code></td><td>How export and deletion work, and what must exist before real accounts launch</td></tr>
+      <tr><td><code>docs/INTEGRATION_LEDGER.md</code></td><td>What every input became; duplicates removed; exclusions</td></tr>
+      <tr><td><code>docs/ARCHITECTURE.md</code>, <code>docs/ADR/</code></td><td>Current structure, contracts for upcoming slices, decisions</td></tr>
+      <tr><td><code>data/reference/</code></td><td>The corpus JSON: the single author of windows, rates, rules and conflicts; and the Benefit Vault registry (generated from <code>data/research/</code> and <code>config/benefit_vault_policy.yaml</code>)</td></tr>
+      <tr><td><code>docs/BENEFIT_VAULT_ARCHITECTURE.md</code>, <code>docs/ADR/0005-…</code></td><td>The vault's design, defects and how it was integrated</td></tr>
+      <tr><td><code>docs/POLICY_CLAIMS_REGISTER.md</code></td><td>Every promise in the two policy drafts, checked against the build</td></tr>
+      <tr><td><code>config/crisis_floor.yaml</code>, <code>config/governance_language.yaml</code></td><td>The one crisis floor; required and prohibited language</td></tr>
+      <tr><td><code>dist/vetbuddy.html</code></td><td>Guest app (no server, stores nothing)</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+</main>
+</div>
+
+<footer>Engineering documentation. Not legal advice. Not a government eligibility determination. Not affiliated with or endorsed by VA or DoD.</footer>

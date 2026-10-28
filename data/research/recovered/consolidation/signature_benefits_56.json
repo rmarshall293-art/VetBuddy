@@ -1,0 +1,694 @@
+{
+ "AL": [
+  [
+   "property_tax",
+   "100% P&T Ad Valorem Exemption",
+   "Full property-tax exemption on primary residence + 160 acres for 100% P&T disabled or residents 65+ with income ≤ $12,000."
+  ],
+  [
+   "income_tax",
+   "Military Retirement Fully Exempt",
+   "Military retirement pay and SBP payments are fully exempt from Alabama income tax."
+  ],
+  [
+   "education",
+   "Alabama GI Dependent Scholarship",
+   "Up to 10 semesters tuition at AL state schools for children/spouses of 40%+ disabled, KIA, POW, MIA veterans (payer of last resort since Fall 2024)."
+  ],
+  [
+   "recreation",
+   "State Park & License Discounts",
+   "Free state-park admission; $2 hunting/fishing license for 100% disabled; reduced fees at 20/40/50%+ tiers."
+  ]
+ ],
+ "AK": [
+  [
+   "property_tax",
+   "Disabled Veteran Property Exemption",
+   "Property-tax exemption up to $150,000 assessed value for 50%+ disabled veterans."
+  ],
+  [
+   "housing",
+   "AHFC Interest Reduction",
+   "Alaska Housing Finance Corp. 1% interest-rate reduction on qualifying veteran mortgages."
+  ],
+  [
+   "land",
+   "25% State Land Discount",
+   "25% discount on state residential/recreational land purchases for qualifying veterans."
+  ]
+ ],
+ "AZ": [
+  [
+   "property_tax",
+   "Disabled Veteran Exemption (2026)",
+   "Full property-tax exemption for 100% disabled veterans (constitutional update effective Jan 2026); partial for lower ratings within limits."
+  ],
+  [
+   "financial",
+   "Military Family Relief Fund",
+   "Emergency financial assistance for service-connected hardship."
+  ]
+ ],
+ "AR": [
+  [
+   "property_tax",
+   "Full Homestead Exemption",
+   "Full homestead property-tax exemption for 100% P&T / SMC / blind veterans and eligible surviving spouses."
+  ],
+  [
+   "income_tax",
+   "Military Retired Pay Exempt",
+   "Military retired pay is exempt from Arkansas income tax."
+  ]
+ ],
+ "CA": [
+  [
+   "property_tax",
+   "Disabled Veterans' Exemption",
+   "Property-tax exemption up to ~$271,000 (higher with income limit) for qualifying disabled veterans."
+  ],
+  [
+   "education",
+   "CalVet College Fee Waiver",
+   "Tuition/fee waiver at CA public colleges for eligible dependents of disabled/deceased veterans."
+  ],
+  [
+   "housing",
+   "CalVet Home Loans",
+   "State-run home and farm loan program (CalVet)."
+  ],
+  [
+   "employment",
+   "DVBE 3% Contracting Goal",
+   "Disabled Veteran Business Enterprise 3% state-contracting participation goal."
+  ]
+ ],
+ "CO": [
+  [
+   "property_tax",
+   "Disabled Veteran Exemption (Amend. G)",
+   "50% exemption on first $200,000 of value; Amendment G expanded eligibility to individually-unemployable veterans."
+  ],
+  [
+   "education",
+   "Dependents Tuition Assistance",
+   "Tuition assistance for dependents of veterans who died or are permanently disabled from service."
+  ]
+ ],
+ "CT": [
+  [
+   "property_tax",
+   "Full P&T Property Exemption",
+   "Full property-tax exemption for 100% P&T veterans; additional exemptions by income."
+  ],
+  [
+   "education",
+   "Public College Tuition Waiver",
+   "Tuition waiver at CT public colleges for qualifying wartime veterans."
+  ]
+ ],
+ "DE": [
+  [
+   "education",
+   "Educational Benefit for Dependents",
+   "Tuition assistance for children of deceased/POW/MIA/disabled veterans."
+  ],
+  [
+   "burial",
+   "Delaware Veterans Memorial Cemeteries",
+   "State veterans cemeteries at Bear and Millsboro."
+  ]
+ ],
+ "FL": [
+  [
+   "property_tax",
+   "Full Homestead Exemption 100% P&T",
+   "Full homestead property-tax exemption for 100% P&T; additional $5,000 and combat-disability discounts."
+  ],
+  [
+   "education",
+   "Congressman C.W. Bill Young Tuition Waiver",
+   "Tuition waiver for Purple Heart and certain combat-decorated veterans."
+  ],
+  [
+   "employment",
+   "Veterans' Preference",
+   "Strong state veterans' hiring preference statute."
+  ]
+ ],
+ "GA": [
+  [
+   "property_tax",
+   "Disabled Veteran Homestead Exemption",
+   "Homestead exemption value ~$126,526 (2026) for qualifying disabled veterans."
+  ],
+  [
+   "education",
+   "National Guard Service Cancelable Loan",
+   "Tuition assistance for GA National Guard members."
+  ]
+ ],
+ "HI": [
+  [
+   "property_tax",
+   "Total Property Exemption",
+   "100% disabled veterans pay only the minimum tax — among the most generous exemptions in the nation."
+  ],
+  [
+   "income_tax",
+   "Military Retirement Exempt",
+   "Military retirement pay is exempt from Hawaii income tax."
+  ]
+ ],
+ "ID": [
+  [
+   "property_tax",
+   "Property Tax Reduction",
+   "Property-tax reduction for 100% service-connected disabled veterans regardless of income."
+  ],
+  [
+   "financial",
+   "Emergency Relief",
+   "Veteran emergency financial relief up to ~$1,500."
+  ]
+ ],
+ "IL": [
+  [
+   "property_tax",
+   "70%+ Full Homestead Exemption",
+   "Standard Homestead Exemption for Veterans with Disabilities: full exemption at 70%+; tiered below."
+  ],
+  [
+   "education",
+   "Illinois Veteran Grant (IVG)",
+   "Up to 120 units tuition at IL public colleges; plus MIA/POW Scholarship."
+  ]
+ ],
+ "IN": [
+  [
+   "property_tax",
+   "Disabled Veteran Property Deductions",
+   "Multi-tier property-tax deductions for disabled / 62+ wartime veterans."
+  ],
+  [
+   "education",
+   "Remission of Fees (Child of Veteran)",
+   "Tuition remission for children of qualifying disabled veterans."
+  ]
+ ],
+ "IA": [
+  [
+   "property_tax",
+   "Military Service Property Exemption + Disabled Homestead",
+   "$1,852 Military Service property exemption; full homestead credit for 100% disabled veterans."
+  ],
+  [
+   "income_tax",
+   "Military Retirement Exempt",
+   "Military retirement pay exempt from Iowa income tax."
+  ]
+ ],
+ "KS": [
+  [
+   "property_tax",
+   "Homestead Refund (Disabled Veteran)",
+   "Property-tax refund program for disabled veterans."
+  ],
+  [
+   "recreation",
+   "Reduced License Fees",
+   "Reduced hunting/fishing license fees for disabled veterans."
+  ]
+ ],
+ "KY": [
+  [
+   "education",
+   "Tuition Waiver for Dependents",
+   "Tuition waiver at KY public colleges for children/spouses of qualifying veterans."
+  ],
+  [
+   "healthcare",
+   "State Veterans Centers",
+   "Thomson-Hood + four KY state veterans centers (long-term care)."
+  ]
+ ],
+ "LA": [
+  [
+   "property_tax",
+   "Tiered Homestead Exemption",
+   "Tiered exemption at 50–69% / 70–99% / 100% disability ratings."
+  ],
+  [
+   "education",
+   "Louisiana State Aid Tuition Exemption",
+   "Tuition exemption for dependents of disabled/deceased veterans."
+  ]
+ ],
+ "ME": [
+  [
+   "property_tax",
+   "$6,000 Veteran Homestead Exemption",
+   "$6,000 property-tax exemption for qualifying wartime veterans (more for paraplegic)."
+  ],
+  [
+   "education",
+   "Veterans Dependents Educational Benefit",
+   "Tuition waiver at ME public colleges for dependents of disabled/deceased veterans."
+  ]
+ ],
+ "MD": [
+  [
+   "income_tax",
+   "Military Retirement Exclusion",
+   "Up to $20,000 military-retirement income exclusion (age-based tiers)."
+  ],
+  [
+   "property_tax",
+   "100% Disabled Exemption",
+   "Full property-tax exemption for 100% service-connected disabled veterans."
+  ]
+ ],
+ "MA": [
+  [
+   "financial",
+   "Welcome Home Bonus",
+   "$500–$2,000 bonus for qualifying service; plus Chapter 115 needs-based benefits."
+  ],
+  [
+   "property_tax",
+   "Clause 22 Exemptions",
+   "Tiered property-tax exemptions by disability category."
+  ]
+ ],
+ "MI": [
+  [
+   "property_tax",
+   "100% Disabled Full Exemption",
+   "Full property-tax exemption for 100% disabled veterans; plus Michigan Veterans Trust Fund emergency grants."
+  ],
+  [
+   "financial",
+   "Veterans Trust Fund",
+   "Emergency grants for temporary financial hardship."
+  ]
+ ],
+ "MN": [
+  [
+   "property_tax",
+   "Market Value Exclusion",
+   "$150,000 exclusion at 70%+; $300,000 at 100% disability."
+  ],
+  [
+   "education",
+   "Minnesota GI Bill",
+   "Up to $3,000/yr, $10,000 lifetime education benefit."
+  ]
+ ],
+ "MS": [
+  [
+   "housing",
+   "Veterans Home Purchase Board",
+   "State home-loan program up to ~$400,000 for eligible veterans."
+  ],
+  [
+   "property_tax",
+   "100% Disabled Exemption",
+   "Property-tax exemption for 100% service-connected disabled veterans."
+  ]
+ ],
+ "MO": [
+  [
+   "education",
+   "Returning Heroes Education Act",
+   "Tuition capped at ~$50/credit-hour at MO public colleges for combat veterans."
+  ],
+  [
+   "healthcare",
+   "Seven State Veterans Homes",
+   "Network of seven Missouri state veterans homes."
+  ]
+ ],
+ "MT": [
+  [
+   "property_tax",
+   "Disabled Veteran Assistance (tiered)",
+   "Income-tiered property-tax assistance for 100% disabled veterans and surviving spouses."
+  ],
+  [
+   "recreation",
+   "Distinctive Plates & License Discounts",
+   "24 distinctive plates; reduced recreational license fees."
+  ]
+ ],
+ "NE": [
+  [
+   "property_tax",
+   "Homestead Exemption (Disabled Veteran)",
+   "Income-based homestead exemption for disabled veterans."
+  ],
+  [
+   "education",
+   "Waiver of Tuition",
+   "Tuition waiver for dependents of qualifying veterans; military retirement now exempt."
+  ]
+ ],
+ "NV": [
+  [
+   "property_tax",
+   "Wartime Veteran Tax Exemption",
+   "~$3,080 exemption (transferable to vehicle privilege tax); larger for disabled."
+  ],
+  [
+   "education",
+   "National Guard Tuition Waiver",
+   "Full tuition waiver for NV National Guard members."
+  ]
+ ],
+ "NH": [
+  [
+   "financial",
+   "GWOT Bonus",
+   "$100 Global War on Terror bonus (most state bonus programs now closed)."
+  ],
+  [
+   "property_tax",
+   "Optional Veterans' Tax Credit",
+   "Municipal-option property-tax credit for veterans and disabled veterans."
+  ]
+ ],
+ "NJ": [
+  [
+   "property_tax",
+   "$250 Deduction + 100% Exemption",
+   "$250 annual property-tax deduction for veterans; full exemption for 100% P&T."
+  ],
+  [
+   "income_tax",
+   "Veteran Income Tax Exemption",
+   "Additional $6,000 state income-tax exemption for qualifying veterans."
+  ]
+ ],
+ "NM": [
+  [
+   "property_tax",
+   "$10,000 Veteran Exemption (HB 47)",
+   "$10,000 property-tax exemption (expanded 2025); full exemption for 100% disabled."
+  ],
+  [
+   "education",
+   "Vietnam Veterans Scholarship",
+   "Tuition scholarship for qualifying NM Vietnam-era veterans."
+  ]
+ ],
+ "NY": [
+  [
+   "property_tax",
+   "Alternative Veterans' Exemption",
+   "15% + 10% combat + disability-rating-based reductions on assessed value."
+  ],
+  [
+   "income_tax",
+   "Military Retirement Exempt",
+   "Military retirement pay is exempt from NY income tax."
+  ]
+ ],
+ "NC": [
+  [
+   "property_tax",
+   "$45,000 Disabled Veteran Exclusion",
+   "$45,000 homestead-value exclusion for 100% P&T veterans."
+  ],
+  [
+   "income_tax",
+   "Bailey Settlement / Retirement Exempt",
+   "Qualifying military retirement pay exempt from NC income tax."
+  ]
+ ],
+ "ND": [
+  [
+   "property_tax",
+   "Disabled Veteran Credit",
+   "Property-tax credit scaled to disability rating (50%+)."
+  ],
+  [
+   "housing",
+   "Veterans Aid Loan Fund",
+   "Low-interest aid loans for North Dakota veterans."
+  ]
+ ],
+ "OH": [
+  [
+   "property_tax",
+   "$50,000 Homestead Exemption",
+   "Enhanced $50,000 homestead exemption for 100% disabled veterans."
+  ],
+  [
+   "financial",
+   "Military Injury Relief Fund",
+   "Grants for service members injured in service."
+  ]
+ ],
+ "OK": [
+  [
+   "property_tax",
+   "100% P&T Full Homestead",
+   "Full homestead property-tax exemption for 100% P&T veterans."
+  ],
+  [
+   "financial",
+   "Sales Tax Exemption",
+   "Up to $25,000/yr sales-tax exemption for 100% disabled veterans."
+  ]
+ ],
+ "OR": [
+  [
+   "property_tax",
+   "Disabled Veteran Exemption",
+   "Property-tax exemption for disabled veterans / surviving spouses (annual)."
+  ],
+  [
+   "housing",
+   "Oregon Veteran Home Loan",
+   "State-run veteran home-loan program (ODVA)."
+  ]
+ ],
+ "PA": [
+  [
+   "property_tax",
+   "Real Estate Tax Exemption (100% P&T)",
+   "Full real-estate tax exemption for 100% P&T veterans with financial need."
+  ],
+  [
+   "education",
+   "Educational Gratuity",
+   "Grants for children of qualifying disabled/deceased veterans."
+  ]
+ ],
+ "RI": [
+  [
+   "property_tax",
+   "Veterans' Property Tax Exemption",
+   "Municipal veterans' exemptions; enhanced for disabled / Gold Star."
+  ],
+  [
+   "burial",
+   "RI Veterans Memorial Cemetery",
+   "State veterans cemetery in Exeter."
+  ]
+ ],
+ "SC": [
+  [
+   "property_tax",
+   "Full Exemption 100% P&T",
+   "Full property-tax exemption on home + up to 1 acre for 100% P&T veterans."
+  ],
+  [
+   "income_tax",
+   "Military Retirement Fully Exempt",
+   "Military retirement pay fully exempt from SC income tax."
+  ]
+ ],
+ "SD": [
+  [
+   "property_tax",
+   "$150,000 Exemption (100% P&T)",
+   "$150,000 property-tax exemption for 100% P&T veterans."
+  ],
+  [
+   "financial",
+   "Veterans Bonus Program",
+   "State bonus for qualifying wartime service."
+  ]
+ ],
+ "TN": [
+  [
+   "property_tax",
+   "$175,000 Property Tax Relief",
+   "Property-tax relief on up to $175,000 of value for disabled veterans."
+  ],
+  [
+   "education",
+   "STRONG Act Tuition",
+   "Tuition assistance for TN National Guard (STRONG Act)."
+  ]
+ ],
+ "TX": [
+  [
+   "education",
+   "Hazlewood Act",
+   "Up to 150 credit-hours tuition exemption at TX public colleges (transferable to dependents)."
+  ],
+  [
+   "housing",
+   "Texas Veterans Land Board Loans",
+   "Home, land, and home-improvement loans via the VLB."
+  ],
+  [
+   "property_tax",
+   "Disabled Veteran Exemption",
+   "Property-tax exemption scaled by disability rating; 100% = full residence-homestead exemption."
+  ]
+ ],
+ "UT": [
+  [
+   "property_tax",
+   "Disabled Veteran Abatement",
+   "Property-tax abatement prorated by disability percentage."
+  ],
+  [
+   "education",
+   "Veterans Tuition Gap / Purple Heart Waiver",
+   "Tuition support for qualifying veterans."
+  ]
+ ],
+ "VT": [
+  [
+   "burial",
+   "Vermont Veterans Memorial Cemetery",
+   "State veterans cemetery in Randolph Center."
+  ],
+  [
+   "property_tax",
+   "Disabled Veteran Exemption",
+   "$10,000+ municipal-option exemption for disabled veterans."
+  ]
+ ],
+ "VA": [
+  [
+   "property_tax",
+   "100% P&T Full Exemption + Vehicle",
+   "Full property-tax exemption for 100% P&T plus one-vehicle exemption."
+  ],
+  [
+   "education",
+   "VMSDEP",
+   "Virginia Military Survivors & Dependents Education Program — tuition at VA public colleges."
+  ]
+ ],
+ "WA": [
+  [
+   "property_tax",
+   "Income-Based Exemption",
+   "Income-based property-tax exemption for disabled veterans."
+  ],
+  [
+   "financial",
+   "Veterans Innovations Program (VIP)",
+   "Emergency assistance for post-9/11 veterans."
+  ]
+ ],
+ "WV": [
+  [
+   "financial",
+   "Post-9/11 Veterans Bonus",
+   "State bonus for qualifying post-9/11 service."
+  ],
+  [
+   "burial",
+   "Donel C. Kinnard Memorial State Veterans Cemetery",
+   "State veterans cemetery in Dunbar."
+  ]
+ ],
+ "WI": [
+  [
+   "education",
+   "Wisconsin GI Bill",
+   "Full tuition remission (8 semesters) at UW System / WTCS for eligible veterans/dependents."
+  ],
+  [
+   "property_tax",
+   "Veterans & Surviving Spouses Property Tax Credit",
+   "Refundable credit equal to property taxes for 100% disabled veterans."
+  ]
+ ],
+ "WY": [
+  [
+   "property_tax",
+   "$3,000 Veteran Exemption",
+   "$3,000 property-tax exemption (transferable to vehicle registration fee)."
+  ],
+  [
+   "burial",
+   "Oregon Trail State Veterans Cemetery",
+   "State veterans cemetery in Evansville."
+  ]
+ ],
+ "DC": [
+  [
+   "property_tax",
+   "Disabled Veteran Homestead Deduction",
+   "Property-tax homestead deduction for qualifying disabled DC veterans."
+  ],
+  [
+   "employment",
+   "DC Veterans' Preference",
+   "Hiring preference for DC government positions."
+  ]
+ ],
+ "PR": [
+  [
+   "benefits",
+   "Territory Veteran Benefits",
+   "Puerto Rico provides bonus, tuition, and tax-relief programs; confirm current eligibility with the PR veterans advocate office."
+  ],
+  [
+   "healthcare",
+   "VA Caribbean Healthcare System",
+   "VA Caribbean HCS (San Juan) serves PR and USVI veterans."
+  ]
+ ],
+ "GU": [
+  [
+   "benefits",
+   "Territory Veteran Benefits",
+   "Guam offers veteran preference and local programs; confirm with the Guam Veterans Affairs Office."
+  ],
+  [
+   "healthcare",
+   "Guam VA Clinic",
+   "VA community-based outpatient care on Guam."
+  ]
+ ],
+ "VI": [
+  [
+   "benefits",
+   "Territory Veteran Benefits",
+   "USVI provides local veteran assistance; care coordinated through VA Caribbean HCS."
+  ]
+ ],
+ "AS": [
+  [
+   "benefits",
+   "Territory Veteran Benefits",
+   "American Samoa veteran assistance is coordinated through the territorial VA office and Pacific VA facilities."
+  ]
+ ],
+ "MP": [
+  [
+   "benefits",
+   "Territory Veteran Benefits",
+   "CNMI veteran assistance is coordinated through the territorial VA office and Pacific VA facilities."
+  ]
+ ]
+}

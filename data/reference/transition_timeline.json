@@ -1,0 +1,37 @@
+{
+  "dataset": "transition_timeline",
+  "title": "Separation timeline windows and preparation steps",
+  "version": "2026.10.20",
+  "as_of": "2026-10-20",
+  "review_by": "2027-01-31",
+  "default_status": "UNVERIFIED",
+  "use_rule": "Reference for the Mission Router and explainer copy. Windows marked statutory_window are deadlines that would bind a veteran, so they may only reach a user as a deadline after a named reviewer verifies them against the cited authority (deadlines must cite a source: CHECK statutory_deadline_cites_source in the v2.0 schema). Task copy in task_library.py stays free of amounts and deadlines (content-safety lint).",
+  "sources": ["src.rr.transition_finances", "src.rr.alabama_tap", "src.mod.women_veterans"],
+  "windows": [
+    {"id": "tl.tap_start", "kind": "statutory_window", "anchor": "separation", "offset": "-365 days or earlier", "item": "Begin TAP (pre-separation counseling) no later than 365 days before separation.", "verify_against": "10 U.S.C. 1142; DoDI 1332.35", "sources": ["src.rr.alabama_tap"]},
+    {"id": "tl.tap_capstone", "kind": "statutory_window", "anchor": "separation", "offset": "-90 days or earlier", "item": "TAP Capstone verification at least 90 days before separation.", "verify_against": "DoDI 1332.35", "sources": ["src.rr.alabama_tap"]},
+    {"id": "tl.bdd", "kind": "program_window", "anchor": "separation", "offset": "-180 to -90 days", "item": "Benefits Delivery at Discharge (pre-discharge VA claim) window.", "verify_against": "VA BDD program page", "sources": ["src.gov.service_architecture", "src.rr.transition_finances"]},
+    {"id": "tl.sgli_extension", "kind": "statutory_window", "anchor": "separation", "offset": "+120 days", "item": "SGLI coverage continues at no cost for 120 days after separation.", "verify_against": "38 U.S.C. 1968; VA SGLI page", "sources": ["src.rr.transition_finances"]},
+    {"id": "tl.vgli_no_underwriting", "kind": "statutory_window", "anchor": "separation", "offset": "+240 days", "item": "Convert SGLI to VGLI within 240 days without medical underwriting.", "verify_against": "38 U.S.C. 1977; VA VGLI page", "sources": ["src.dod.vgli_afb", "src.rr.transition_finances"]},
+    {"id": "tl.military_onesource", "kind": "program_window", "anchor": "separation", "offset": "+365 days", "item": "Military OneSource remains available for 365 days after separation (modelled as an expiring right in Next Best Action band 2).", "verify_against": "Military OneSource eligibility page", "sources": ["src.gov.master_record"]},
+    {"id": "tl.sbp_election", "kind": "program_window", "anchor": "retirement", "offset": "election at retirement; irrevocable after the one-year window", "item": "Survivor Benefit Plan election.", "verify_against": "DFAS SBP pages", "sources": ["src.rr.transition_finances"]},
+    {"id": "tl.leave_sellback", "kind": "limit", "anchor": "career", "offset": "lifetime", "item": "Leave sell-back limited to 60 days over a career.", "verify_against": "37 U.S.C. 501", "sources": ["src.rr.transition_finances"]},
+    {"id": "tl.itf", "kind": "statutory_window", "anchor": "intent_to_file", "offset": "+1 year", "item": "An Intent to File preserves the effective date for one year (the platform tracks the expiry; it never files).", "verify_against": "38 CFR 3.155", "sources": ["src.gov.master_record", "src.gov.service_architecture"]},
+    {"id": "tl.vgli_apply", "kind": "statutory_window", "anchor": "separation", "offset": "+1 year 120 days", "item": "Last day to apply for VGLI after separation (proof of good health is needed after day 240).", "verify_against": "38 U.S.C. 1977; VA VGLI page", "sources": ["src.dod.vgli_afb"]},
+    {"id": "tl.effective_date_separation", "kind": "statutory_window", "anchor": "separation", "offset": "+1 year", "item": "A disability claim received within 1 year of separation can take the day after separation as its effective date.", "verify_against": "38 CFR 3.400(b)(2)", "sources": ["src.gov.service_architecture"]},
+    {"id": "tl.decision_review", "kind": "statutory_window", "anchor": "decision_letter", "offset": "+1 year", "item": "Request a Higher-Level Review or Board Appeal within 1 year of the decision letter; a Supplemental Claim filed within 1 year keeps the original effective date.", "verify_against": "38 CFR 3.2500; VA decision review pages", "sources": ["src.gov.service_architecture"]}
+  ],
+  "preparation_steps": [
+    {"months_before": 18, "steps": ["Update TSP allocation and beneficiaries", "Confirm state of legal residence", "Start resume and LinkedIn", "Check SkillBridge eligibility"]},
+    {"months_before": 15, "steps": ["Run the civilian salary comparison", "Shortlist 2–3 candidate states"]},
+    {"months_before": 12, "steps": ["Start TAP", "Plan a pre-discharge (BDD) claim with an accredited representative", "Review BRS continuation pay window if 8–12 years of service"]},
+    {"months_before": 9, "steps": ["Review retirement-system choices", "Understand the SBP election"]},
+    {"months_before": 6, "steps": ["Compare health coverage (employer, ACA marketplace, COBRA, CHCBP, TRS for Reserve)", "Lock the housing plan", "Request a VA home loan Certificate of Eligibility if buying"]},
+    {"months_before": 4, "steps": ["Get every claimed condition documented before separation exams", "Review SGLI conversion"]},
+    {"months_before": 3, "steps": ["Final pay and leave sell-back", "BRS lump-sum decision"]},
+    {"months_before": 2, "steps": ["Decide on VGLI or commercial term life"]},
+    {"months_before": 1, "steps": ["Verify direct deposit", "Confirm the VA claim was submitted by your representative", "Finalize state residency", "Update DEERS"]},
+    {"months_before": 0, "steps": ["Receive DD-214", "Confirm commissary and exchange access if retiring"]}
+  ],
+  "preparation_steps_note": "Adapted from the finance report's timeline. Wording follows the claims legal lane: VetBuddy never files or pre-fills a claim, so 'file a BDD claim' becomes 'plan a pre-discharge claim with an accredited representative'."
+}

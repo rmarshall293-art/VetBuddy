@@ -1,0 +1,260 @@
+# Benefit Vault policy: the authored half of the vault registry.
+#
+# scripts/build_vault_registry.py combines this file with the research ledgers
+# (data/research) and the recovered leads into data/reference/benefit_vault_registry.json,
+# the single runtime source. Edit policy here, never in the generated registry;
+# a test fails if the registry drifts from this file.
+#
+# Engineering governance text, not legal advice. Master Prompt v6 governs:
+# agents orchestrate, gather and explain; they never decide.
+version: "1.0.0"
+as_of: "2026-10-27"
+
+# The notice on every vault response is the Master Prompt v6 common notice,
+# read by the registry builder from config/governance_language.yaml
+# (common_notice). It is not restated here (C-09; vault defect VD15).
+notice_from: governance_language.common_notice
+
+publish_policy:
+  # verified_only: only a VERIFIED record (named reviewer, gate G1) can be a
+  # PRELIMINARY_MATCH; every other record that the facts fit is shown as a
+  # HUMAN_REVIEW_REQUIRED lead with its official link.
+  # preview_unverified: records read from the program's own page or an official
+  # summary may show as PRELIMINARY_MATCH, flagged with their status.
+  environments:
+    production: verified_only
+    staging: verified_only
+    development: preview_unverified
+    test: preview_unverified
+  default_environment: production
+
+review:
+  stale_after_days: 180
+
+grants:
+  default_days: 30
+  max_days: 90
+  session_max_hours: 24
+
+packets:
+  ttl_seconds: 600
+
+# Agent manifests. No manifest means no access. Every agent is pinned to
+# may_issue_determinations: false; only the Benefit Vault agent may pull from
+# other agents, and only through the broker with the person's grant. An agent
+# may expose a fact only at the fact's own data class, never above V2.
+# The ids below are the vault-side names for agents in the blueprint; mapping
+# them to slice 03 agent ids is an integration step (defect register VD06).
+agents:
+  - agent_id: benefit_vault_agent
+    name: Benefit Vault
+    plane: 5
+    role: Searches and matches benefits and deals and explains what the encoded rules say. Pulls facts from other agents only through the broker, with the person's grant.
+    may_issue_determinations: false
+    may_pull_from_agents: true
+    highest_class_held: V2
+    exposes: []
+  - agent_id: service_profile_agent
+    name: Service Profile
+    plane: 2
+    role: Holds the service history the person entered.
+    may_issue_determinations: false
+    may_pull_from_agents: false
+    highest_class_held: V2
+    exposes:
+      - {fact_key: residence_state, data_class: V1}
+      - {fact_key: duty_station_state, data_class: V1}
+      - {fact_key: service_status, data_class: V1}
+      - {fact_key: component, data_class: V1}
+      - {fact_key: guard_state, data_class: V1}
+      - {fact_key: on_active_duty_orders, data_class: V1}
+      - {fact_key: active_duty_days, data_class: V1}
+      - {fact_key: wartime_service, data_class: V1}
+      - {fact_key: discharge, data_class: V2}
+      - {fact_key: purple_heart, data_class: V2}
+      - {fact_key: medal_of_honor, data_class: V2}
+      - {fact_key: former_pow, data_class: V2}
+  - agent_id: va_status_agent
+    name: VA Status
+    plane: 2
+    role: Holds the rating facts the person copied from their VA letter. It also holds conditions, which are V4 and never leave it.
+    may_issue_determinations: false
+    may_pull_from_agents: false
+    highest_class_held: V4
+    exposes:
+      - {fact_key: va_rating, data_class: V2}
+      - {fact_key: rating_permanent_total, data_class: V2}
+      - {fact_key: individual_unemployability, data_class: V2}
+  - agent_id: household_agent
+    name: Household
+    plane: 2
+    role: Holds family relationships for the family information packet.
+    may_issue_determinations: false
+    may_pull_from_agents: false
+    highest_class_held: V2
+    exposes:
+      - {fact_key: relationship, data_class: V1}
+      - {fact_key: age, data_class: V1}
+      - {fact_key: gold_star_family, data_class: V2}
+      - {fact_key: sponsor_status, data_class: V2}
+      - {fact_key: sponsor_died_in_line_of_duty, data_class: V2}
+  - agent_id: coverage_bridge_agent
+    name: Coverage Bridge (migration 0013)
+    plane: 2
+    role: Holds checklist progress, resume drafts and the family packet. Nothing a vault rule reads.
+    may_issue_determinations: false
+    may_pull_from_agents: false
+    highest_class_held: V2
+    exposes: []
+  - agent_id: claims_navigator_agent
+    name: Claims Navigator
+    plane: 3
+    role: Explains claim steps and points to accredited representatives. Holds condition details (V4); exposes nothing.
+    may_issue_determinations: false
+    may_pull_from_agents: false
+    highest_class_held: V4
+    exposes: []
+  - agent_id: crisis_support_agent
+    name: Crisis Support
+    plane: 3
+    role: Shows the crisis floor. Holds nothing a vault rule may read (V5); exposes nothing.
+    may_issue_determinations: false
+    may_pull_from_agents: false
+    highest_class_held: V5
+    exposes: []
+
+caveats:
+  state_definition_trap: >-
+    Many state benefits use the state's own definition of a veteran, which often requires federal
+    active duty. Guard or Reserve service of only drills, annual training or State Active Duty may
+    not meet it (Texas Hazlewood, for example, needs 181 days). Check with the state veterans agency.
+  guard_post911: >-
+    For Guard and Reserve members, drills, annual training and State Active Duty do not count toward
+    the Post-9/11 GI Bill; qualifying federal active duty does.
+  rudisill_contested: >-
+    The 48-month rule for two service periods was decided for the Montgomery and Post-9/11 GI Bills.
+    Whether it reaches the Selected Reserve GI Bill (Chapter 1606) is contested.
+  army_approval_lead: >-
+    Unchecked lead: since March 19, 2026 Army Tuition Assistance and Credentialing Assistance requests
+    may need supervisor or commander approval in ArmyIgnitED. Confirm with your education center.
+  commercial: >-
+    This is a company's offer, not a government benefit. Offers change often; confirm the current
+    terms on the company's page. VetBuddy does not endorse any company.
+  nonprofit: >-
+    A private organization runs this program, not the government. Confirm the current terms with
+    the organization.
+  seen_in_search: >-
+    VetBuddy saw this link in search results but could not read the page, so the description may be
+    incomplete.
+  not_verified: >-
+    No reviewer has checked this record yet. Read the official page before relying on it.
+  tail_unread: >-
+    Part of the source page was not read, so other benefits from this state or territory may be missing.
+  uncertain_facts: >-
+    This depends on answers you marked as unsure. Your documents, such as a DD 214 or a VA rating
+    letter, settle them.
+  mode_a_dropped: >-
+    Some answers were not used because a guest search holds only basic facts. A private account can
+    use rating, discharge and award answers.
+  stale: >-
+    The source page was last read more than the review period ago and may have changed.
+  superseded: >-
+    This rule was replaced. It is shown only so you can see what changed.
+  recovered_lead: >-
+    This lead came from an earlier VetBuddy dataset, not from a page read for the vault. Treat it as
+    a pointer only.
+
+# Rule leads (from the slice 02 Guard and Reserve dataset) attached to records.
+lead_links:
+  us.post-9-11-gi-bill-chapter-33: [gr.ch33]
+  us.montgomery-gi-bill-selected-reserve-chapter-1606: [gr.ch1606]
+  us.military-tuition-assistance: [gr.fta]
+  us.army-tuition-assistance-armyignited: [gr.fta, gr.army_ca]
+  us.extra-entitlement-for-two-or-more-service-periods-rudisill: [gr.rudisill]
+
+# Caveats attached to specific records (in addition to the automatic ones).
+record_caveats:
+  us.post-9-11-gi-bill-chapter-33: [guard_post911]
+  us.extra-entitlement-for-two-or-more-service-periods-rudisill: [rudisill_contested]
+  us.army-tuition-assistance-armyignited: [army_approval_lead]
+
+# Recovered recreation leads checked against records read for the vault.
+# relation: agrees, differs (the opened page wins), or none (no record yet).
+recovered_cross_checks:
+  RB01: {benefit_id: us.america-the-beautiful-military-lifetime-pass, relation: agrees}
+  RB02: {benefit_id: us.america-the-beautiful-military-lifetime-pass, relation: differs,
+         note: "The lead says Corps of Engineers day use is free for veterans; the opened NPS page says the military passes cover those fees."}
+  RB03: {benefit_id: al.parks-for-patriots-free-state-park-admission, relation: differs,
+         note: "The lead describes a disabled-veteran discount; the Alabama record read for the vault is the Parks for Patriots program."}
+  RB04: {benefit_id: null, relation: none, note: "Single-park discount; no record read for the vault."}
+  RB05: {benefit_id: null, relation: none, note: "Single-park discount; no record read for the vault."}
+  RB06: {benefit_id: null, relation: none, note: "Local attraction discount; no record read for the vault."}
+  RB07: {benefit_id: us.disney-military-promotional-tickets-2026, relation: differs,
+         note: "The lead lists 100% P&T veterans; the opened Shades of Green ticket page lists active or retired members and spouses."}
+  RB08: {benefit_id: us.waves-of-honor-seaworld-busch-gardens-and-partner-parks, relation: none,
+         note: "The official page blocks automated reading; the terms could not be compared."}
+  RB09: {benefit_id: us.six-flags-military-tickets-offers-vary-by-park, relation: differs,
+         note: "The lead includes veterans; the opened park page lists active and retired military."}
+  RB10: {benefit_id: us.information-tickets-and-travel-itt-offices, relation: differs,
+         note: "The lead names service-connected veterans; the opened page lists active, reserve and retired members, civilians and families."}
+  RB11: {benefit_id: us.national-park-fee-free-days-2026, relation: differs,
+         note: "From 2026 fee-free days apply only to U.S. citizens and permanent residents."}
+  RB12: {benefit_id: us.commissary-exchange-and-mwr-access-for-disabled-veterans-purple-heart-re, relation: differs,
+         note: "The lead says a 10% minimum rating; the opened fact sheet says any service-connected rating, 0% included."}
+  RB13: {benefit_id: null, relation: none, note: "Single-park discount; no record read for the vault."}
+  RS01: {benefit_id: us.america-the-beautiful-military-lifetime-pass, relation: agrees}
+  RS02: {benefit_id: us.america-the-beautiful-access-pass, relation: agrees}
+  RS03: {benefit_id: us.national-veterans-golden-age-games, relation: differs,
+         note: "The lead describes VA adaptive sports grants; the record read for the vault is the Golden Age Games page."}
+  RS04: {benefit_id: us.national-veterans-golden-age-games, relation: agrees}
+  RS05: {benefit_id: null, relation: none, note: "Private outdoor program; no page read for the vault."}
+  RS06: {benefit_id: us.information-tickets-and-travel-itt-offices, relation: agrees}
+  RS07: {benefit_id: us.space-available-space-a-flights, relation: agrees}
+  RS08: {benefit_id: null, relation: none, note: "Seasonal retail offers change every year; not recorded."}
+  RS09: {benefit_id: null, relation: none, note: "Covered by the state PARKS records instead of one national lead."}
+  RS10: {benefit_id: us.america-the-beautiful-military-lifetime-pass, relation: differs,
+         note: "The lead mentions on-base privileges for survivors; the opened NPS page covers the pass only."}
+
+# Discovery may build search queries only from these templates and the V0
+# vocabulary (jurisdiction names, category labels, group labels). Raw facts
+# and the person's own words never reach a query.
+discovery:
+  templates:
+    jur_cat_vet: "{jurisdiction} {category} for veterans"
+    jur_cat_guard: "{jurisdiction} {category} for National Guard members"
+    jur_cat_family: "{jurisdiction} {category} for military families"
+    cat_group: "{category} for {group}"
+  search_endpoints: []
+
+# Vault components and their v6 build status.
+components:
+  - {id: V01, name: Research ledger importer, status: IMPLEMENTED_TESTED}
+  - {id: V02, name: Canonical registry with JSON Schema and integrity stamp, status: IMPLEMENTED_TESTED}
+  - {id: V03, name: Rule language and three-valued evaluator, status: IMPLEMENTED_TESTED}
+  - {id: V04, name: Fact catalog and data classes, status: IMPLEMENTED_TESTED}
+  - {id: V05, name: Household derivation, status: IMPLEMENTED_TESTED}
+  - {id: V06, name: Matcher (v6 outcomes, publish policy, caveats), status: IMPLEMENTED_TESTED}
+  - {id: V07, name: Search, status: IMPLEMENTED_TESTED}
+  - {id: V08, name: Response envelope and determinism hashes, status: IMPLEMENTED_TESTED}
+  - {id: V09, name: Agent manifests and pins, status: IMPLEMENTED_TESTED}
+  - {id: V10, name: Pull grants, status: IMPLEMENTED_TESTED}
+  - {id: V11, name: Context packets (seven invariants), status: IMPLEMENTED_TESTED}
+  - {id: V12, name: Pull broker (Privacy and Consent Guardian), status: PARTIAL,
+     note: "Tested with in-memory providers; no slice 03 agent store is wired as a provider yet."}
+  - {id: V13, name: Hash-chained pull ledger, status: IMPLEMENTED_TESTED}
+  - {id: V14, name: Egress guard, status: IMPLEMENTED_TESTED}
+  - {id: V15, name: Discovery planner, status: IMPLEMENTED_TESTED}
+  - {id: V16, name: Source watcher, status: PARTIAL,
+     note: "Change detection is tested with an injected fetcher; no network fetcher is wired (hosting decision)."}
+  - {id: V17, name: Vault agent pipeline and guards, status: IMPLEMENTED_TESTED}
+  - {id: V18, name: API routes (Mode A), status: IMPLEMENTED_TESTED}
+  - {id: V19, name: API routes (Mode B grants, pulls, saved benefits), status: PARTIAL,
+     note: "Mounted in the app with the platform session and consent rule; works with the development sign-in (MOCK); production sign-in waits on G17."}
+  - {id: V20, name: Migration 0014 and generated seed, status: IMPLEMENTED_TESTED,
+     note: "Tested on the real slice 03 chain (0001-0014); account deletion reaches the three tenant tables."}
+  - {id: V21, name: Named-reviewer verification workflow, status: BLOCKED, note: "Gate G1."}
+  - {id: V22, name: Model-written explanations, status: BLOCKED, note: "Gates G21 and G23; no model call exists."}
+  - {id: V23, name: American Samoa coverage, status: SOURCE_NOT_AVAILABLE}
+  - {id: V24, name: Recovered lead import, status: IMPLEMENTED_TESTED}
+  - {id: V25, name: Screens, status: IMPLEMENTED_TESTED,
+     note: "Web shell Benefits view (search, compare, save) and the guest app's catalog finder; browser smoke tests."}

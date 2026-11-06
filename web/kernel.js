@@ -147,7 +147,7 @@ export function combineRatings(ratings, bilateral = []) {
   const values = [...ratings]; let b = null;
   if (bilateral.length) {
     const [bo, bs] = tableI(bilateral); const v = bs[bs.length - 1];
-    b = { ratings: bo, steps: bs, combined_value: v, factor_tenths: v, value_with_factor: Math.floor((22 * v + 10) / 20),
+    b = { ratings: bo, steps: bs, combined_value: v, factor_tenths: v, value_with_factor: Math.min(Math.floor((22 * v + 10) / 20), 100),
           citation: "38 CFR 4.26" };
     values.push(b.value_with_factor);
   }

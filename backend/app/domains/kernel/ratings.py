@@ -21,7 +21,8 @@ Bilateral factor (38 CFR 4.26, closes A-03): ratings the user marks as
 affecting both arms or both legs (paired extremities) are combined first;
 10% of that combined value is ADDED (not combined), rounded half-up to a
 whole number, and the result is treated as one disability, placed in order
-of severity among the others for all further combining.
+of severity among the others for all further combining. The result is
+capped at 100, since no evaluation exceeds total disability.
 
 NOT MODELED: Table I verification cell by cell, and anything VA decides
 about which conditions are rated or whether they are bilateral.
@@ -96,7 +97,9 @@ def combine(ratings: list[int] | tuple[int, ...], bilateral: list[int] | tuple[i
     if bilateral:
         b_ordered, b_steps = _table_i(bilateral)
         b_value = b_steps[-1]
-        step = BilateralStep(b_ordered, b_steps, b_value, b_value, _half_up_div(11 * b_value, 10))
+        # Capped at 100: no evaluation exceeds total disability. Uncapped, high paired
+        # ratings gave values like 109 and made later Table I steps go DOWN.
+        step = BilateralStep(b_ordered, b_steps, b_value, b_value, min(_half_up_div(11 * b_value, 10), 100))
         values.append(step.value_with_factor)
     ordered, steps = _table_i(values)
     combined = steps[-1]

@@ -180,6 +180,8 @@ async def preview_brief(request: Request):
     from starlette.concurrency import run_in_threadpool
     try:
         raw = await request.json()
+        if not isinstance(raw, dict):
+            return error(request, 400, "INVALID_JSON", "Request body must be a JSON object.")
         raw.pop("consent", None)
         raw.pop("display_name", None)
         body = OnboardingIn.model_validate(raw)

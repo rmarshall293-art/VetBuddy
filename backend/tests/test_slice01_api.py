@@ -201,6 +201,14 @@ class ConsentAndPrivacy(ApiCase):
         self.assertIsNone(r.json()["mission_id"])
         self.assertEqual(before, counts())
 
+    def test_guest_preview_rejects_non_object_json(self):
+        # Regression: a JSON array/null/number/string body reached dict.pop() and returned 500.
+        for body in ("[]", "null", "123", '"text"'):
+            with self.subTest(body=body):
+                r = self.client.post("/api/v1/brief/preview", content=body, headers={"content-type": "application/json"})
+                self.assertEqual(r.status_code, 400, r.text)
+                self.assertEqual(r.json()["error"]["code"], "INVALID_JSON")
+
     def test_guard_reserve_without_authority_rejected_by_database(self):
         h = self.signup()
         mid = self.onboard(h)

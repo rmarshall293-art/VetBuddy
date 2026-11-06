@@ -65,6 +65,18 @@ class BilateralFactor(unittest.TestCase):
     def test_bilateral_value_is_ordered_with_the_others(self):
         self.assertEqual(ratings.combine([40], [30, 20]).ratings, (48, 40))
 
+    def test_bilateral_value_never_exceeds_100(self):
+        # Regression: 90+90 -> 99, +9.9 = 108.9 gave 109, and the next Table I
+        # step then went DOWN (109 -> 108) because remaining efficiency was negative.
+        r = ratings.combine([10], [90, 90])
+        self.assertEqual(r.bilateral.value_with_factor, 100)
+        self.assertEqual(r.steps, (100, 100))
+        for b in itertools.combinations_with_replacement(range(0, 101, 10), 2):
+            for other in ([], [10], [50, 30]):
+                c = ratings.combine(other, list(b))
+                self.assertLessEqual(c.combined_value, 100)
+                self.assertEqual(list(c.steps), sorted(c.steps))   # adding a rating never lowers the value
+
     def test_needs_both_sides(self):
         with self.assertRaises(ratings.RatingInputError):
             ratings.combine([50], [30])

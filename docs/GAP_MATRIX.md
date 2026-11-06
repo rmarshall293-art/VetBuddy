@@ -158,3 +158,12 @@ Decisions: ADR 0005. Vault components (V01–V25) and its own defects (VD01–VD
 | Financial OS complete specification `.docx`; legacy Financial OS SDK | BLOCKED (`SOURCE_NOT_AVAILABLE`) | Upload |
 | Alabama HB77 early property-tax exemption certificate (100% disabled, home purchase) | PLANNED (verification queue) | Read the enrolled act; today the only source is a governor's press release (2026-04) |
 
+
+## Defects found by exploratory testing (2026-11-06)
+
+| ID | Defect | Status |
+|---|---|---|
+| A-04 | 38 CFR 4.26: high paired ratings pushed the bilateral value over 100 (90+90 gave 109) and the next Table I step then went *down* (109 → 108) because remaining efficiency was negative. The final rating was always capped at 100, but the step table showed impossible values | **Closed**: value capped at 100 in both kernels; `test_bilateral_value_never_exceeds_100`, 3 new parity fixtures |
+| API-01 | `POST /api/v1/brief/preview` returned 500 for a JSON body that is not an object (`[]`, `null`, a number or a string) | **Closed**: 400 `INVALID_JSON`; `test_guest_preview_rejects_non_object_json` |
+
+Method: every route probed with malformed, oversized, Unicode, injection and path-traversal input, missing or forged tokens, cross-user ids and account deletion (0 remaining findings); 4,374 random router and rating cases compared between Python and the browser kernel (0 disagreements); both apps crawled tab by tab in light and dark, desktop and phone, clicking every control (0 JS errors, 0 server errors, no overflow, no unnamed controls); no HTML-injection sinks in the UI.

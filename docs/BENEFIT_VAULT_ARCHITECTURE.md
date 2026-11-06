@@ -13,6 +13,11 @@ runs on the real chain. What changed on integration:
   standing in for psycopg.
 - **New defects:** VD21 and VD22 are listed in ADR 0005.
 
+**Owner decisions, 2026-10-29 (ADR 0006).**
+- **VD21 decided:** unchecked rules never hide a benefit.
+- **VD06 closed:** the helper ids follow the v8 roster (migration 0015), and the service profile provider is wired.
+- **G1:** the reviewer roster and review workflow exist (migration 0016, `scripts/vault_review.py`), so V21 is now PARTIAL.
+
 The Benefit Vault finds benefits and deals for active duty members, National Guard and Reserve members,
 veterans and their families: state and federal benefits, scholarships, park and museum passes, hunting and
 fishing licenses, plates, tax relief, homes, cemeteries, travel, MWR and retail offers. It is the only agent

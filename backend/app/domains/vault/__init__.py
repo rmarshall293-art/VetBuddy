@@ -28,4 +28,4 @@ kernel in ``matcher`` and uses the v6 outcome vocabulary.
 ENGINE_NAME = "vetbuddy.vault.matcher"
 ENGINE_VERSION = "1.0.0"
 REGISTRY_NAME = "vetbuddy.benefit_vault_registry"
-VAULT_AGENT_ID = "benefit_vault_agent"
+VAULT_AGENT_ID = "benefits_intelligence_agent"   # v8 "Benefits Intelligence" (migration 0015)

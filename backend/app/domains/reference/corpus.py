@@ -172,9 +172,16 @@ def build() -> Corpus:
     for a in vc["addons"]:
         rate(vc["rate_set"], {"addon": a["key"], "rating": a["rating"]}, a["amount_cents"], vc["effective_from"],
              eff_to=vc["effective_to"], rounded=a.get("rounded", False))
-    for p in vc["rate_2026_points"]:
-        rate("va_comp_2026", {"dependents": p["key"], "rating": p["rating"]}, p["amount_cents"], p["effective_from"],
-             note=p.get("note"))
+    v26 = comp["va_compensation_2026"]                     # contested cells live in the conflict record, not here
+
+    def rate26(dims, cents):
+        track("compensation", "rate", {"rate_set": v26["rate_set"], "dims": dims, "amount_cents": cents, "rounded": False,
+                                       "effective_from": v26["effective_from"], "effective_to": None, "note": None,
+                                       "conflict_id": None, "status": v26["status"], "source_ids": v26["sources"]})
+    for rating, cents in v26["veteran_alone"].items():
+        rate26({"dependents": "veteran_alone", "rating": int(rating)}, cents)
+    for table, cents in v26["dependents_100"].items():
+        rate26({"dependents": table, "rating": 100}, cents)
     for v in comp["va_special"]["smc_2025_approximate"]["values"]:
         rate("smc_2025_approx", {"level": v["level"], "kind": v["kind"]}, v["amount_cents"], vc["effective_from"],
              rounded=v.get("rounded", False), status="ILLUSTRATIVE")

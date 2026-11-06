@@ -38,7 +38,7 @@ Labels (v6 §0, ADR 0004): IMPLEMENTED_TESTED · IMPLEMENTED_UNVERIFIED · PARTI
 | Benefit screening / eligibility engine (P4) | PLANNED, intentionally withheld in the UI | **G1: zero verified rules.** A named human must verify the 8 Alabama rules |
 | Benefits, agents and career routes | PLANNED | contracts in `docs/ARCHITECTURE.md` §3 (skeleton stub routers removed in consolidation) |
 | Runtime agents (P5) | PLANNED; manifests are DRAFT | Model-provider zero-retention contract (Master Record default #5) |
-| Documents, claims, referrals, career, education, MoneyLife, VSN | PLANNED | P6–P9 |
+| Documents, claims, referrals, education, VSN | PLANNED | P6–P9 (career core: ADR 0007; MoneyLife core: ADR 0008) |
 | Base44 route/entity parity map | BLOCKED | Base44 export not supplied |
 | GitHub re-scan / CI run on GitHub | BLOCKED | GitHub not linked to this session |
 | FastAPI / psycopg / Vite | PLANNED | Registries blocked here. See ADR 0002 |
@@ -54,7 +54,7 @@ Labels (v6 §0, ADR 0004): IMPLEMENTED_TESTED · IMPLEMENTED_UNVERIFIED · PARTI
 |---|---|---|
 | Nine foreclosed consent purposes as rows; grant refused by trigger even for the owner; rows immutable (CB-03) | IMPLEMENTED_TESTED | `0010`, `test_foreclosed_purposes_refused_everywhere` |
 | Combined rating kernel, 38 CFR 4.25 (integer, half-up per Table I step, one final conversion) | IMPLEMENTED_TESTED | `test_kernel_ratings` (regulation examples, A-01 regression, AST purity) |
-| Bilateral factor 38 CFR 4.26 (A-03) | IMPLEMENTED_TESTED | integer kernel + browser twin + guest toggle; `test_kernel_ratings.py::BilateralFactor`, parity fixtures, guest smoke test (ADR 0007) |
+| Bilateral factor 38 CFR 4.26 (A-03) | IMPLEMENTED_TESTED | integer kernel + browser twin + guest toggle; `test_kernel_ratings.py::BilateralFactor`, parity fixtures, guest smoke test (ADR 0010) |
 | Browser kernel `web/kernel.js` = Python kernel | IMPLEMENTED_TESTED | `test_web_parity`: 22 router + 11 rating fixtures via Node |
 | Generated kernel data / standalone build current | IMPLEMENTED_TESTED | `scripts/build_web.py --check` in tests and CI |
 | Standalone guest app `dist/vetbuddy.html` (Launch-0 privacy gates) | IMPLEMENTED_TESTED (smoke) | `tests/e2e/smoke_standalone.py`: no non-font network requests, no storage, no overflow, light/dark |
@@ -80,7 +80,7 @@ See `docs/INTEGRATION_LEDGER.md` for sources, removed duplicates and conflicts.
 | Education program registry (22, deduplicated) | PARTIAL | authority stubs only (G3) |
 | TDIU threshold check | PLANNED | v2.0 had it; source not in hand (4.26 is now implemented, see A-03) |
 | WV runtime (CrisisGate, PIIMinimizer, MSTNarrativeGuard), EdNav engines | BLOCKED | specs only |
-| v2.0 datasets: 737 codes | PARTIAL | 737 codes + criteria text (2020 edition) in `ref.rating_code` (migration 0015), all UNVERIFIED, digestive SUPERSEDED; re-transcribe from current eCFR |
+| v2.0 datasets: 737 codes | PARTIAL | 737 codes + criteria text (2020 edition) in `ref.rating_code` (migration 0017), all UNVERIFIED, digestive SUPERSEDED; re-transcribe from current eCFR |
 | v2.0 datasets: 2026 rates, presumptives, 87 manifests | BLOCKED | not in any upload |
 | License reciprocity (teacher, UBE, real estate) | BLOCKED | two unsourced datasets disagree for 42 of 51 states (`conflict.license_reciprocity.two_datasets`); verify against NCBE and state boards |
 
@@ -102,7 +102,7 @@ See `docs/INTEGRATION_LEDGER.md` for sources, removed duplicates and conflicts.
 | Prototype defects to re-check when the v2.0 source returns: CAREGIVER missing from the dependent context set; `any_of_rules` operator declared but unimplemented | P1 | BLOCKED |
 | Disclaimer renders on every unverified-jurisdiction result in every client before any state-2 data, even as drafts | P1 | web shell, guest app and API do today |
 | Data Trust Card on every new benefit or resource row, enforced at insert | P1 | `ref` schema enforces sources and status; tenant `benefit` table enforces citation, tier and dates |
-| Career/MOS module: crosswalk, job matching, DD-214 resume builder | P2 | after CB-01/02; see ARCHITECTURE §3–4 |
+| Career/MOS module: O*NET crosswalk, persistence, routes, career agent manifest | P2 | core done (ADR 0007); persistence and routes after G17 |
 | Work-style assessment | P2 | blocked on instrument or licence decision (ARCHITECTURE §4) |
 | Regulatory change feed for "50 years of VA law" content | P2 | never a static page |
 | Insurance content (VGLI/SGLI education, no product rankings) | P2 | until a licensed producer partnership exists |
@@ -145,17 +145,48 @@ Decisions: ADR 0005. Vault components (V01–V25) and its own defects (VD01–VD
 | CRM bounded context (v8) | PLANNED | Contained subsystem only; never CRM-first |
 
 **New open items:**
-- **VD21 (decision):** in production, a non-match from an *unverified* rule hides the record (counted, not listed). Show these as review leads instead?
 - **VD22:** vault handlers make blocking database calls inside `async` routes; move store calls to the threadpool.
-- **VD06:** agent-id mapping; v8's roster is the proposed target.
 - **GA:** county field, consent purpose and a county domain list are needed before any area report.
 
-## Inputs not in hand (2026-11-06)
+## Owner decisions (2026-10-29), ADR 0006
+
+| Capability | Status | Evidence |
+|---|---|---|
+| VD21: unchecked rules never hide a benefit (listed last as review leads in production) | IMPLEMENTED_TESTED | `tests/vault/test_matcher.py` VD21 tests (mutation-checked) |
+| VD06: helper ids follow the v8 roster (migration 0015); crisis help is a Tier 0 rule | IMPLEMENTED_TESTED | `test_helper_ids_follow_the_v8_roster`; upgrade tested on a database holding old grants |
+| Vault pulls from slice 03 onboarding data (component, service status only) | PARTIAL | `VaultPullsFromOnboarding`; VA status and household have no slice 03 store |
+| G1 reviewer roster kept by the project owner; database-enforced; logged (migration 0016) | PARTIAL | `tests/test_vault_review.py`; no reviewer on the roster yet |
+
+## Career Navigator core (2026-10-29, ADR 0007)
+
+| Capability | Status | Evidence |
+|---|---|---|
+| ADA metamorphic test: health and protected facts can't change matrix, labels or tailoring (CB-01) | IMPLEMENTED_TESTED | `test_career.ADAMetamorphic` (20 facts × 3 people × 3 announcements); clause-level `redact_protected`; mutant fails 18 tests |
+| Fact-level allowlist: never-grantable fields, per-module allowlists, wellness severed, refusals audited (CB-02) | IMPLEMENTED_TESTED | `ConsentBroker`; `test_cb02_*`, `Consent`, `UntestedSurfaces` |
+| Evidence gate: provenance, verified-only citation, metric-licensed numbers, absences never support, protected content voids the document, no hiring guarantees | IMPLEMENTED_TESTED | `Fabrication`, `Assembly`, `Regressions`, `FixtureMatrix` |
+| Qualification matrix and per-category labels (no composite score); legally required credentials block | IMPLEMENTED_TESTED | `MatrixAndCompetitiveness`, `DocumentedFixes`, `SampleFindings` (CN-11 to CN-14) |
+| Resume (6 types), cover letter, STAR stories, all through the gate | IMPLEMENTED_TESTED | `FixtureMatrix`; demo "Their career" view; `tests/e2e/smoke_demo.py` |
+| Career persistence, `/api/v1/career` routes, deletion/export coverage, career agent manifest | PLANNED | after G17 (ADR 0007 §8) |
+| MOS/AFSC/rating translation from O*NET / CareerOneStop crosswalks | PLANNED | crosswalk data not in hand |
+
+## MoneyLife Military, Financial OS core (2026-11-06, ADR 0008)
+
+| Capability | Status | Evidence |
+|---|---|---|
+| Deterministic integer-cent calculators: loan, emergency fund, DTI, debt payoff, savings, VA illustration, regular/reserve/Chapter 61 retirement, cash flow, 48-month forecast, state formula | IMPLEMENTED_TESTED | `backend/app/domains/moneylife/calc.py`; `test_moneylife` (golden values: $1,896.20 mortgage, $4,428.10 VA, 10 U.S.C. 1409/12733/1401 formulas) |
+| Same engine in the browser, identical to the cent and in wording | IMPLEMENTED_TESTED | `web/moneylife.js`; `test_moneylife.BrowserParity` (51 golden + 19 refusal cases); a browser-only mutant fails it |
+| Spec controls: unknown is never zero; illustrative VA and proposed law never confirmed; VA not confirmed beside active-duty pay; retired pay and VA never simply added; DoD and VA percentages separate | IMPLEMENTED_TESTED | `test_moneylife.Controls`, `ReferenceScenarios`; mutants fail 3 and 2 tests |
+| Stateless API: `GET /api/v1/moneylife/capabilities`, `POST /api/v1/moneylife/{calc_type}` (Mode A, nothing stored) | IMPLEMENTED_TESTED | `test_moneylife.Api` |
+| Guest "Money plan" view with three invented examples | IMPLEMENTED_TESTED | `tests/e2e/smoke_standalone.py` (every tab, refusal, 390 px overflow check) |
+| 2026 VA compensation table | PARTIAL | agreed cells loaded UNVERIFIED (`va_comp_2026`); 42 dependent cells at 30–90% contested (`conflict.va_comp.2026_dependent_cells`), shown as a floor; VA.gov check and G1 review pending |
+| Saved households and scenarios; export and deletion coverage | PLANNED | after G17 |
+| Pay tables, BAH/OHA/COLA, taxes, insurance comparison, college cost, learning academy, governance agents | PLANNED | need dated DFAS/DTMO/IRS/state tables and an agent manifest |
+| Bank account connections | BLOCKED | needs an aggregator vendor, consent, server-side tokens and deletion (spec §13); the UI and capabilities say "not available" |
+
+## Verification queue added 2026-11-06
 
 | Item | Status | Next step |
 |---|---|---|
-| Newer build: career core, MoneyLife core, reviewer roster (migration 0016), 494 tests | BLOCKED (`SOURCE_NOT_AVAILABLE`) | Upload its repository bundle; merge plan in `docs/INTEGRATION_LEDGER.md` §12 |
-| Financial OS complete specification `.docx`; legacy Financial OS SDK | BLOCKED (`SOURCE_NOT_AVAILABLE`) | Upload |
 | Alabama HB77 early property-tax exemption certificate (100% disabled, home purchase) | PLANNED (verification queue) | Read the enrolled act; today the only source is a governor's press release (2026-04) |
 
 

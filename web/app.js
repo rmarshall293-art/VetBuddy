@@ -543,7 +543,9 @@ async function viewBenefits() {
           env.questions.length ? el("div", {}, el("h3", { class: "disp" }, "Questions that would change these results"),
             el("ul", {}, env.questions.slice(0, 6).map(q => el("li", {}, q.question + (q.can_answer_here ? "" : " (answered only in a private account)"))))) : null),
         ...env.items.slice(0, 40).map(i => recordCard({ ...i, caveats: i.caveats },
-          el("span", { class: "chip " + OUTCOME[i.outcome][1] }, OUTCOME[i.outcome][0]))));
+          i.reasons.includes("RULE_NOT_VERIFIED")
+            ? el("span", { class: "chip muted" }, "Doesn't fit the rule as written; the rule isn't checked yet")
+            : el("span", { class: "chip " + OUTCOME[i.outcome][1] }, OUTCOME[i.outcome][0]))));
     } },
     el("h2", { class: "disp" }, "What may apply to me"),
     el("p", { class: "small" }, vaultState.account

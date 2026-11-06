@@ -1,6 +1,6 @@
-# ADR 0006: Product layout — Veteran Operating System, not a CRM
+# ADR 0009: Product layout — Veteran Operating System, not a CRM
 
-**Status:** Accepted, 2026-10-21 (owner direction: "don't make this a CRM; this is how the app should lay out to prevent conflict"); carried onto the slice 04 base 2026-10-28 (ADR 0007).
+**Status:** Accepted, 2026-10-21 (owner direction: "don't make this a CRM; this is how the app should lay out to prevent conflict"); carried onto the slice 04 base 2026-10-28 (ADR 0010).
 
 ## Decision
 `docs/PRODUCT_LAYOUT.md` is the governing **product layout**: module names, the workspace tree, the Veteran Master Record, Master Case + subcases, and the layer hierarchy. Case Management is the core; the CRM is the **relationship layer** and never owns the primary data model.

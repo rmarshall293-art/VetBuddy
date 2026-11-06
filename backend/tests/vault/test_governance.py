@@ -46,7 +46,19 @@ def test_registry_manifests_load(manifests):
     assert [m.agent_id for m in manifests.all() if m.may_pull_from_agents] == [VAULT_AGENT_ID]
     assert manifests.sources_for("va_rating") == ["va_status_agent"]
     assert manifests.sources_for("severe_disability") == []
-    assert manifests.get("crisis_support_agent").exposes == ()
+    assert manifests.get("claims_navigation_agent").exposes == ()
+
+
+def test_helper_ids_follow_the_v8_roster(manifests):
+    """Owner decision VD06 (migration 0015): v8 role names; crisis help is a Tier 0 rule, not an agent."""
+    from app.domains.vault.guards import CrisisGate
+    ids = {m.agent_id for m in manifests.all()}
+    assert VAULT_AGENT_ID == "benefits_intelligence_agent"
+    assert {"benefits_intelligence_agent", "claims_navigation_agent"} <= ids
+    assert not ids & {"benefit_vault_agent", "claims_navigator_agent", "crisis_support_agent"}
+    assert not any("crisis" in i for i in ids)
+    gate = CrisisGate()                      # the rule that replaced the agent still answers
+    assert gate.triggered("I want to end my life") and gate.response()["crisis_floor"]
 
 
 def base_items(registry):

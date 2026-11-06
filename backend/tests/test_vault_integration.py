@@ -122,3 +122,51 @@ class VaultAccount(ApiCase):
             self.assertEqual({t: n for t, n in rows_for(a, tenant).items() if n}, {})
         self.assertEqual(self.client.get(f"{VAULT}/ledger", headers=h).status_code, 403)
         self.assertEqual(self.client.post(f"{VAULT}/match", headers=h, json={"facts": TX_VET}).json()["mode"], "A")
+
+
+class VaultPullsFromOnboarding(ApiCase):
+    """VD06 (ADR 0006): with the person's grant, the vault reads what onboarding recorded;
+    never without a grant, never a guessed fact, and the ledger holds keys, never values."""
+
+    def _account(self):
+        h = self.signup()
+        self.onboard(h)        # national_guard, separation 2027-06-30, today 2026-10-20
+        return h
+
+    def test_no_grant_no_pull(self):
+        h = self._account()
+        env = self.client.post(f"{VAULT}/match", headers=h, json={"facts": {"relationship": "self"}}).json()
+        self.assertEqual(env["mode"], "B")
+        self.assertEqual(env["subject"]["facts_pulled"], [])
+
+    def test_grant_pulls_only_what_onboarding_recorded(self):
+        h = self._account()
+        g = self.client.post(f"{VAULT}/grants", headers=h, json={
+            "source_agent": "service_profile_agent", "confirm": True,
+            "fact_keys": ["component", "service_status", "residence_state"]})
+        self.assertEqual(g.status_code, 200, g.text)
+        env = self.client.post(f"{VAULT}/match", headers=h, json={"facts": {"relationship": "self"}}).json()
+        pulled = {f["fact_key"]: f["source_agent"] for f in env["subject"]["facts_pulled"]}
+        self.assertEqual(pulled, {"component": "service_profile_agent", "service_status": "service_profile_agent"})
+        # "where you live now" is not legal residence, so it is never handed over as one
+        self.assertNotIn("residence_state", pulled)
+        ledger = self.client.get(f"{VAULT}/ledger", headers=h).json()
+        allowed = [e for e in ledger["entries"] if e["event"] == "PULL_ALLOWED"]
+        self.assertEqual(allowed[-1]["fact_keys"], ["component", "service_status"])
+        self.assertTrue(ledger["chain_ok"])
+        self.assertNotIn("guard", str(ledger["entries"]).replace("benefits_intelligence_agent", ""))  # keys, never values
+        # the pulled values reached the matcher
+        self.assertIn("component", env["subject"]["facts_used"])
+
+
+class ProviderDerivation(__import__("unittest").TestCase):
+    def test_only_what_the_record_supports(self):
+        import datetime as dt
+        from app.domains.vault.providers import derive
+        today = dt.date(2026, 10, 29)
+        self.assertEqual(derive("national_guard", dt.date(2027, 6, 30), today), {"component": "guard", "service_status": "serving"})
+        self.assertEqual(derive("active_duty", None, today), {"component": "active", "service_status": "serving"})
+        self.assertEqual(derive("reserve", dt.date(2025, 1, 1), today), {"component": "reserve"})   # past end: ambiguous
+        self.assertEqual(derive("retired", None, today), {"service_status": "retired"})
+        self.assertEqual(derive("medically_separated", None, today), {"service_status": "separated"})
+        self.assertEqual(derive("retired_reserve_gray_area", None, today), {})

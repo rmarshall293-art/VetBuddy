@@ -146,7 +146,7 @@ footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-b
 
 <section id="status">
   <h2><span class="n">02</span>Where the build stands</h2>
-  <p class="sub">One codebase lineage: skeleton v1 → slice 01 → session 2 → slice 02 → consolidation → slice 03 (v6 integration, export and deletion) → slice 04 (Benefit Vault, v8 placed, aggregation kernel). Evidence per capability is in <code>docs/GAP_MATRIX.md</code>; status against each v6 requirement is in <code>docs/REQUIREMENTS_TRACEABILITY.md</code>.</p>
+  <p class="sub">One codebase lineage: skeleton v1 → slice 01 → session 2 → slice 02 → consolidation → slice 03 (v6 integration, export and deletion) → slice 04 (Benefit Vault, v8 placed, aggregation kernel) → career core (ADR 0007) → MoneyLife core (ADR 0008) → merged with the GitHub branch: bilateral factor and rating schedule (ADR 0010). Evidence per capability is in <code>docs/GAP_MATRIX.md</code>; status against each v6 requirement is in <code>docs/REQUIREMENTS_TRACEABILITY.md</code>.</p>
   <!--@@FIGS@@-->
   <div class="tbl"><table>
     <thead><tr><th>Capability</th><th>Status</th></tr></thead>
@@ -164,9 +164,13 @@ footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-b
       <tr><td>Benefit Vault: 1,362-record registry, deterministic matcher (v6 outcomes), search, household, pull governance with a hash-chained ledger; guest and account screens</td><td><span class="pill warn">Partial</span> no record verified (G1); account routes on the mock sign-in</td></tr>
       <tr><td>Account deletion reaches every tenant table, including the vault's; 0014 fails if any table escapes the purger</td><td><span class="pill ok">Tested</span></td></tr>
       <tr><td>k-anonymity aggregation kernel (k = 11, rows and columns protected)</td><td><span class="pill ok">Tested</span> nothing feeds it yet</td></tr>
+      <tr><td>Career Navigator core: consent allowlist, evidence gate, qualification matrix, six resume types and a cover letter; held lines shown with reasons</td><td><span class="pill warn">Partial</span> tested library and demo view; no storage or routes until G17</td></tr>
+      <tr><td>MoneyLife Military (Financial OS): twelve integer-cent calculators and a 48-month forecast, identical on server and in the guest app; estimates and proposed law never count as income</td><td><span class="pill warn">Partial</span> tested; no saved scenarios, pay tables, taxes or bank links yet</td></tr>
       <tr><td>Verified rule packs</td><td><span class="pill bad">Not present</span> G1</td></tr>
       <tr><td>Agents, model gateway, crisis detector</td><td><span class="pill bad">Not present</span> G21/G23</td></tr>
-      <tr><td>4.26 bilateral factor, TDIU check</td><td><span class="pill bad">Not present</span></td></tr>
+      <tr><td>38 CFR 4.26 bilateral factor in both kernels and the guest calculator (value capped at 100)</td><td><span class="pill ok">Tested</span> ADR 0010</td></tr>
+      <tr><td>Rating schedule, 38 CFR Part 4: 737 codes with criteria text in <code>ref.rating_code</code>, <code>/api/v1/reference/rating-schedule</code></td><td><span class="pill warn">Loaded, unverified</span> 2020 edition; digestive marked superseded</td></tr>
+      <tr><td>TDIU check</td><td><span class="pill bad">Not present</span></td></tr>
     </tbody>
   </table></div>
 </section>
@@ -253,7 +257,7 @@ footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-b
       <tr><td><code>I12</code></td><td>Tenant and channel isolation; default deny</td><td><span class="pill ok">Tested</span> tenants; channel split not built</td></tr>
     </tbody>
   </table></div>
-  <div class="callout"><p><strong>Still to write first: the ADA metamorphic test.</strong> For any profile and any value of a health-derived fact, career output must not change. It gates the career module (CB-01, CB-02).</p></div>
+  <div class="callout"><p><strong>The ADA metamorphic test is in place.</strong> For any profile and any value of a health-derived fact, career output must not change. Twenty health and protected-class facts injected into three people's records leave the matrix, labels and tailoring order identical across three announcements (CB-01). Health fields can't be granted to the career module at all (CB-02). ADR 0007.</p></div>
 </section>
 
 <section id="waiting">
@@ -268,9 +272,7 @@ footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-b
       <tr><td><strong>G18</strong> VA Lighthouse</td><td>Apply for the sandbox now (read scopes)</td><td>VA connector</td></tr>
       <tr><td>VSO partnerships</td><td>Neutral accredited list; disclosure policy first (R5)</td><td>Referrals</td></tr>
       <tr><td>Hosting</td><td>One US region, private networking</td><td>Secrets manager, KMS, the vault's source watcher and discovery search</td></tr>
-      <tr><td><strong>VD06</strong> vault agent ids</td><td>Map to v8's roster: vault → Benefits Intelligence; claims navigator → Claims Navigation; crisis → a Tier 0 rule</td><td>Pull providers over the slice 03 stores</td></tr>
-      <tr><td><strong>VD21</strong> non-matches from unreviewed rules</td><td>Show them as leads to review in production, not hidden</td><td>No benefit hidden by a wrongly encoded rule</td></tr>
-      <tr><td>G1 reviewer roster</td><td>Handles only, never names or emails, kept by the owner</td><td>VERIFIED records, PRELIMINARY_MATCH in production</td></tr>
+      <tr><td><strong>G1</strong> first reviewers on the roster</td><td>Decided 29 Oct: the owner keeps the roster; accredited service officers; Alabama first. Add handles to <code>config/reviewer_roster.yaml</code></td><td>VERIFIED records, PRELIMINARY_MATCH in production</td></tr>
       <tr><td>Area-need reporting</td><td>Add a county field and a <code>geographic_insight</code> purpose, default off</td><td>The aggregation kernel</td></tr>
     </tbody>
   </table></div>
@@ -334,7 +336,7 @@ footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-b
     <tbody>
       <tr><td><code>G1 / G2</code></td><td>No verified rule; no verified state records</td><td><span class="pill bad">Open</span> the main blocker</td></tr>
       <tr><td><code>G3</code></td><td>Education programs are authority stubs</td><td><span class="pill bad">Open</span></td></tr>
-      <tr><td><code>G4 / G5</code></td><td>Rating schedule 2020 edition; 279 untranscribed codes; digestive changed 2024-05-19 (v2.0 data, not in hand)</td><td><span class="pill info">Blocked on source</span></td></tr>
+      <tr><td><code>G4 / G5</code></td><td>Rating schedule: 737 codes loaded from the 2020 edition, unverified; digestive changed 2024-05-19 and is marked superseded; current eCFR text not yet transcribed</td><td><span class="pill info">Blocked on source</span></td></tr>
       <tr><td><code>G17</code></td><td>Identity provider; blocks verification, recovery, MFA, step-up before deletion and the public deletion request (v6 §2–3)</td><td><span class="pill info">Mock</span> release blocker</td></tr>
       <tr><td><code>V6-21</code></td><td>Backups, processors and legal holds wired into deletion</td><td><span class="pill bad">Planned</span> release blocker</td></tr>
       <tr><td><code>V6-26</code></td><td>Legal operator, privacy contact and public origin unset (sources disagree on the entity)</td><td><span class="pill info">Owner decision</span> release blocker</td></tr>
@@ -342,14 +344,14 @@ footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-b
       <tr><td><code>G18</code></td><td>VA Lighthouse</td><td><span class="pill bad">Open</span></td></tr>
       <tr><td><code>G19</code></td><td>Outbox worker, ITF reminders</td><td><span class="pill warn">Table only</span></td></tr>
       <tr><td><code>G21 / G23</code></td><td>Model gateway, agent runtime</td><td><span class="pill bad">Open</span></td></tr>
-      <tr><td><code>CB-01 / 02</code></td><td>Career agents gated by class not fact; no ADA metamorphic test</td><td><span class="pill bad">Open</span> before any career module</td></tr>
+      <tr><td><code>CB-01 / 02</code></td><td>Career agents gated by class not fact; no ADA metamorphic test</td><td><span class="pill ok">Closed</span> career core, 29 Oct (ADR 0007)</td></tr>
       <tr><td><code>CB-03</code></td><td>Foreclosed consent purposes</td><td><span class="pill ok">Closed</span> migration 0010</td></tr>
       <tr><td><code>CB-04…10</code></td><td>DB ADA backstop; zero-PII receipts; epoch pinning; work-environment preference; EEOC framing</td><td><span class="pill bad">Open</span></td></tr>
       <tr><td><code>CB-05</code></td><td>k=11 suppression</td><td><span class="pill warn">Partial</span> kernel tested (GA-01…05 fixed); no data source</td></tr>
       <tr><td><code>CB-06</code></td><td>License reciprocity corpus</td><td><span class="pill warn">Partial</span> 51-state lead table in the vault, tier 4, unverified</td></tr>
-      <tr><td><code>VD01–22</code></td><td>Benefit Vault defects: nothing verified; evidence depth; American Samoa; agent ids; sign-in; ledger anchoring; family coverage; blocking calls; hidden non-matches</td><td><span class="pill bad">Open</span> <code>docs/BENEFIT_VAULT_ARCHITECTURE.md</code>, ADR 0005</td></tr>
+      <tr><td><code>VD01–22</code></td><td>Benefit Vault defects: nothing verified; evidence depth; American Samoa; sign-in; ledger anchoring; family coverage; blocking calls. VD06 and VD21 closed 29 Oct (ADR 0006)</td><td><span class="pill bad">Open</span> <code>docs/BENEFIT_VAULT_ARCHITECTURE.md</code>, ADRs 0005–0006</td></tr>
       <tr><td><code>A-01 / 02</code></td><td>Rounding; client/server disagreement</td><td><span class="pill ok">Closed</span></td></tr>
-      <tr><td><code>A-03</code></td><td>4.26 bilateral factor</td><td><span class="pill bad">Open</span> labelled in UI</td></tr>
+      <tr><td><code>A-03</code></td><td>4.26 bilateral factor</td><td><span class="pill ok">Closed</span> both kernels, parity-tested (ADR 0010)</td></tr>
       <tr><td><code>C-06</code></td><td>RLS on with no policy</td><td><span class="pill ok">Closed</span> migration 0009 guard</td></tr>
       <tr><td><code>WV</code></td><td>Runtime guards spec-only; 181-row seed missing; refresh crawler never built</td><td><span class="pill info">Blocked on source</span></td></tr>
       <tr><td><code>EdNav</code></td><td>Engines spec-only (148 tests not in hand)</td><td><span class="pill info">Blocked on source</span></td></tr>
@@ -371,12 +373,11 @@ footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-b
 <section id="missing">
   <h2><span class="n">10</span>Not in hand anywhere</h2>
   <ul class="plain">
-    <li>The v2.0 <code>veteranos</code> source and datasets (737 diagnostic codes, 2026 rate tables, presumptive conditions, 87 manifests, 10 rule packs)</li>
+    <li>The v2.0 <code>veteranos</code> source and datasets (current-edition diagnostic codes, 2026 rate tables, presumptive conditions, 87 manifests, 10 rule packs)</li>
     <li>The Women Veterans 181-row seed</li>
     <li>Education Navigator and Women Veterans runtime source</li>
     <li>The Base44 export (v8 Phase 0 inspects it)</li>
     <li>The consent package's <code>consent_enforcement.py</code>, <code>test_consent.py</code>, schema and ethics charter</li>
-    <li>A GitHub re-scan of <code>rmarshall293-art/VetBuddy</code></li>
   </ul>
   <div class="callout"><p>Recover these before rebuilding them. Do not re-create the datasets from memory.</p></div>
 </section>
@@ -387,9 +388,9 @@ footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-b
     <li><div><strong>Close G1.</strong> Name the verifier and verify the eight Alabama rules. Then the highest-risk reference rows: the 13 MST residential programs (2009 source), the G.I. Dependents' cap, 2026 VA and BAS rates, and the statutory timeline windows.</div></li>
     <li><div><strong>Recover the v2.0 source</strong>, or re-transcribe the rating schedule from current eCFR.</div></li>
     <li><div><strong>Decide G17</strong> (identity provider and token model). It unblocks every remaining account release blocker in v6 §2–3: verification, recovery, MFA, step-up before deletion and the public deletion request, and the vault's account routes in production.</div></li>
-    <li><div><strong>Vault follow-through.</strong> Decide VD06 and VD21; then wire pull providers over the slice 03 stores, move vault store calls off the event loop (VD22), and start G1 review with the Alabama records and the 47 SOURCE_CHECKED rows.</div></li>
+    <li><div><strong>Start G1 review.</strong> Add the first accredited reviewers' handles to <code>config/reviewer_roster.yaml</code>, then work <code>scripts/vault_review.py queue</code>: Alabama first, then the 47 source-checked records. Also move vault store calls off the event loop (VD22).</div></li>
     <li><div><strong>Slice 05.</strong> Outbox dispatcher with idempotent consumers (deletion already purges queued events), an axe and assistive-technology accessibility pass, and the v6 legal applicability register seeded with UNKNOWN rows for all 56 jurisdictions.</div></li>
-    <li><div><strong>Before any career module:</strong> the ADA metamorphic test and the fact-level allowlist (CB-01/02). The work-style assessment needs an instrument or licence decision first.</div></li>
+    <li><div><strong>Career, next:</strong> storage and routes once G17 lands (tenant tables under RLS, covered by deletion and export, a career agent manifest), and MOS translation once O*NET / CareerOneStop crosswalk data is in hand. The work-style assessment needs an instrument or licence decision first.</div></li>
     <li><div><strong>Later, education-only content:</strong> insurance (VGLI/SGLI, no product rankings) and a regulatory change feed for VA law history, never a static page.</div></li>
   </ol>
 </section>
@@ -411,6 +412,7 @@ footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-b
       <tr><td><code>docs/POLICY_CLAIMS_REGISTER.md</code></td><td>Every promise in the two policy drafts, checked against the build</td></tr>
       <tr><td><code>config/crisis_floor.yaml</code>, <code>config/governance_language.yaml</code></td><td>The one crisis floor; required and prohibited language</td></tr>
       <tr><td><code>dist/vetbuddy.html</code></td><td>Guest app (no server, stores nothing)</td></tr>
+      <tr><td><code>dist/vetbuddy-demo.html</code></td><td>Demo: the guest app plus four sample people (<code>data/demo/personas.json</code>); benefit results computed by the real matcher at build time; account actions simulated</td></tr>
     </tbody>
   </table></div>
 </section>

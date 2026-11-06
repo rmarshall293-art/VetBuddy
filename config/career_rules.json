@@ -1,0 +1,525 @@
+{
+  "_comment": "Career Navigator rule tables (ADR 0007). The single source for app/domains/career; any future browser engine must read this file, never restate it (spec §16.1 option B). Patterns are Python regular expressions; 'flags' is 'i' or ''. Reconstructed from 'VeteranOS Career Navigator — Architecture' (2026-10-29): where that document gives a pattern verbatim it is used verbatim (JS version where the two runtimes diverged, since the spec judges JS the correct one); REQ_CATEGORY_RULES and the full STOPWORDS list are described there only by intent, so these were written from that intent and are pinned by tests, not copied.",
+  "version": "2026-10-29",
+  "needs_verification": "Additional information or user verification is required before this statement can be included.",
+  "protected_patterns": [
+    [
+      "social security number",
+      "\\b\\d{3}-\\d{2}-\\d{4}\\b",
+      ""
+    ],
+    [
+      "va disability rating",
+      "\\b(?:\\d{1,3}\\s*%|\\d{1,3}\\s*percent)\\s*(?:VA\\s*)?(?:service[- ]connected|disab\\w*)",
+      "i"
+    ],
+    [
+      "va disability rating",
+      "\\b(?:VA\\s+)?(?:service[- ]connected\\s+)?disab\\w*\\s*(?:rating\\s*)?(?:of\\s*)?\\d{1,3}\\s*%",
+      "i"
+    ],
+    [
+      "permanent and total rating",
+      "\\b100\\s*%?\\s*(?:permanent\\s+and\\s+total|P&T)\\b",
+      "i"
+    ],
+    [
+      "full date of birth",
+      "\\b(?:date of birth|DOB|born)\\b\\s*:?\\s*\\d",
+      "i"
+    ],
+    [
+      "marital status",
+      "\\b(?:marital status|married|divorced|widowed)\\b",
+      "i"
+    ],
+    [
+      "medical diagnosis",
+      "\\b(?:PTSD|TBI|diagnos\\w+|prescrib\\w+|therap(?:y|ist))\\b",
+      "i"
+    ],
+    [
+      "religion",
+      "\\b(?:religion|religious affiliation)\\b",
+      "i"
+    ],
+    [
+      "race or ethnicity",
+      "\\b(?:race|ethnicity)\\s*:",
+      "i"
+    ],
+    [
+      "salary target",
+      "\\b(?:salary (?:target|requirements?|expectations?)|desired salary|target salary)\\b",
+      "i"
+    ]
+  ],
+  "structural_patterns": [
+    [
+      "\\b24/7\\b",
+      ""
+    ],
+    [
+      "\\b[EWO]-\\d\\b",
+      "i"
+    ],
+    [
+      "\\bGS-\\d{1,4}(?:-\\d{1,2})?\\b",
+      "i"
+    ],
+    [
+      "\\b\\d{4}-\\d{2}-\\d{2}\\b",
+      ""
+    ],
+    [
+      "\\bTitle\\s+(?:10|32)\\b",
+      "i"
+    ],
+    [
+      "\\b\\d{1,2}(?:\\.\\d)?\\s*(?:hours?|hrs?)\\s*(?:per\\s+week|/\\s*week|a\\s+week)\\b",
+      "i"
+    ],
+    [
+      "\\b\\d{1,2}/(?:19|20)\\d{2}\\b",
+      ""
+    ],
+    [
+      "\\b(?:19|20)\\d{2}\\s*[-–]\\s*(?:19|20)\\d{2}\\b",
+      ""
+    ],
+    [
+      "\\bSY0-\\d{3}\\b",
+      "i"
+    ],
+    [
+      "\\bClass\\s+[AB]\\b",
+      "i"
+    ],
+    [
+      "\\b\\d{2}[A-Z]\\d?\\b",
+      ""
+    ],
+    [
+      "\\b\\d[A-Z]\\d[X\\d]\\d\\b",
+      ""
+    ],
+    [
+      "\\b[A-Z]{2,3}[123]\\b",
+      ""
+    ],
+    [
+      "\\b(?:19|20)\\d{2}\\b",
+      ""
+    ]
+  ],
+  "number_token": "\\d[\\d,]*(?:\\.\\d+)?",
+  "prohibited_assurances": "\\b(?:guarantee\\w*|you will be hired|assured? (?:of )?(?:the )?(?:job|position)|certain to (?:get|receive)|definitely (?:get|land))\\b",
+  "stopwords": [
+    "a",
+    "abilities",
+    "ability",
+    "able",
+    "about",
+    "above",
+    "accredited",
+    "active",
+    "all",
+    "also",
+    "an",
+    "and",
+    "any",
+    "applicant",
+    "applicants",
+    "appropriate",
+    "are",
+    "as",
+    "assigned",
+    "at",
+    "be",
+    "been",
+    "being",
+    "below",
+    "both",
+    "but",
+    "by",
+    "can",
+    "candidate",
+    "candidates",
+    "could",
+    "current",
+    "currently",
+    "demonstrate",
+    "demonstrated",
+    "desired",
+    "did",
+    "do",
+    "does",
+    "down",
+    "duties",
+    "each",
+    "either",
+    "equivalent",
+    "etc",
+    "every",
+    "excellent",
+    "experience",
+    "experienced",
+    "field",
+    "fields",
+    "five",
+    "for",
+    "four",
+    "from",
+    "good",
+    "had",
+    "has",
+    "have",
+    "he",
+    "her",
+    "his",
+    "how",
+    "if",
+    "in",
+    "include",
+    "includes",
+    "including",
+    "into",
+    "is",
+    "it",
+    "its",
+    "job",
+    "just",
+    "knowledge",
+    "lead",
+    "leading",
+    "least",
+    "less",
+    "level",
+    "levels",
+    "maintain",
+    "maintaining",
+    "may",
+    "might",
+    "minimum",
+    "more",
+    "most",
+    "must",
+    "neither",
+    "no",
+    "nor",
+    "not",
+    "obtain",
+    "of",
+    "on",
+    "one",
+    "only",
+    "onto",
+    "or",
+    "other",
+    "others",
+    "our",
+    "out",
+    "over",
+    "own",
+    "per",
+    "perform",
+    "performing",
+    "plus",
+    "position",
+    "positions",
+    "preferred",
+    "prior",
+    "program",
+    "programs",
+    "qualification",
+    "qualifications",
+    "related",
+    "relevant",
+    "required",
+    "requirement",
+    "requirements",
+    "responsibilities",
+    "role",
+    "same",
+    "shall",
+    "she",
+    "should",
+    "similar",
+    "six",
+    "skill",
+    "skills",
+    "so",
+    "some",
+    "strong",
+    "such",
+    "than",
+    "that",
+    "the",
+    "their",
+    "them",
+    "then",
+    "these",
+    "they",
+    "this",
+    "those",
+    "three",
+    "to",
+    "too",
+    "two",
+    "under",
+    "up",
+    "valid",
+    "very",
+    "via",
+    "was",
+    "we",
+    "were",
+    "what",
+    "when",
+    "where",
+    "which",
+    "while",
+    "who",
+    "whom",
+    "will",
+    "with",
+    "within",
+    "without",
+    "work",
+    "working",
+    "would",
+    "year",
+    "years",
+    "you",
+    "your"
+  ],
+  "req_category_rules": [
+    [
+      "credential",
+      true,
+      "\\b(?:RN|registered nurse)\\b[^.]*\\blicen[cs]e\\b|\\bunencumbered\\b[^.]*\\blicen[cs]e\\b|\\blicensure\\b|\\bcompact privilege\\b"
+    ],
+    [
+      "credential",
+      true,
+      "\\bcommercial driver'?s? licen[cs]e\\b|\\bCDL\\b"
+    ],
+    [
+      "credential",
+      false,
+      "\\bcertif(?:ication|ied)\\b|\\bBLS\\b|\\bACLS\\b|Security\\+|\\bSix Sigma\\b|\\b8570\\b"
+    ],
+    [
+      "education",
+      false,
+      "\\bdegree\\b|\\bbachelor'?s?\\b|\\bassociate'?s? degree\\b|\\bBSN\\b|\\bADN\\b|\\bdiploma\\b|\\bgraduate education\\b|\\btranscripts?\\b|\\bPh\\.?D\\b"
+    ],
+    [
+      "clearance",
+      false,
+      "\\bclearance\\b|\\bcitizenship\\b|\\bU\\.?S\\.? citizen\\b"
+    ],
+    [
+      "experience",
+      false,
+      "\\b\\d+\\+?\\s*years?\\b|\\byear of specialized\\b|\\bexperience\\b|\\bsupervis\\w*|\\bcharge nurse\\b"
+    ],
+    [
+      "skill",
+      false,
+      "\\bWMS\\b|\\bSIEM\\b|\\bEpic\\b|\\bEHR\\b|\\bknowledge of\\b|\\bability to\\b|\\bsystems?\\b|\\bSTIG\\b|\\bcompliance\\b"
+    ]
+  ],
+  "headings": {
+    "other": "^(?:RESPONSIBILITIES|DUTIES|HOW YOU WILL BE EVALUATED|REQUIRED DOCUMENTS|EDUCATION SUBSTITUTION|VETERANS PREFERENCE|ABOUT|SUMMARY|BENEFITS|HOW TO APPLY)",
+    "preferred": "^(?:PREFERRED|PREFERRED QUALIFICATIONS|DESIRED)",
+    "required": "^(?:REQUIRED|REQUIREMENTS|MINIMUM QUALIFICATIONS|REQUIRED QUALIFICATIONS|SPECIALIZED EXPERIENCE|KNOWLEDGE, SKILLS AND ABILITIES|QUALIFICATIONS)"
+  },
+  "jargon": [
+    [
+      "\\bNCOERs?\\b",
+      "annual performance evaluation"
+    ],
+    [
+      "\\bPMCS\\b",
+      "operator-level preventive maintenance checks"
+    ],
+    [
+      "\\bdrill weekends?\\b",
+      "monthly training assembly"
+    ],
+    [
+      "\\bproperty book\\b",
+      "equipment accountability record"
+    ],
+    [
+      "\\bhand receipts?\\b",
+      "signed equipment accountability record"
+    ],
+    [
+      "\\bSTIGs?\\b",
+      "Security Technical Implementation Guide (STIG) baseline"
+    ],
+    [
+      "\\bwing communications flight\\b",
+      "installation network operations team"
+    ],
+    [
+      "\\bairmen\\b",
+      "technicians"
+    ],
+    [
+      "\\bsoldiers\\b",
+      "personnel"
+    ],
+    [
+      "\\bsailors\\b",
+      "personnel"
+    ]
+  ],
+  "status_labels": [
+    "Strong match",
+    "Competitive with minor gaps",
+    "Potential match with addressable gaps",
+    "Significant qualifications gap",
+    "Insufficient information"
+  ],
+  "audit_actions": [
+    "consent.granted",
+    "consent.grant.refused",
+    "consent.revoked",
+    "crossmodule.read",
+    "crossmodule.read.denied",
+    "evidence.added",
+    "evidence.verified",
+    "document.assembled",
+    "document.held.protected_content",
+    "career.profile.loaded",
+    "job.match.completed",
+    "job.opportunity.saved",
+    "resume.user.approved",
+    "resume.flagged.human_review",
+    "education.gap.request.created",
+    "business.referral.created",
+    "interview.practice.recorded",
+    "counselor.decision.recorded"
+  ],
+  "never_grantable_fields": [
+    "va_disability_rating",
+    "combined_rating",
+    "rating_permanent_total",
+    "individual_unemployability",
+    "diagnosis",
+    "diagnostic_code",
+    "conditions",
+    "medical_records",
+    "medications",
+    "va_claim_status",
+    "wellness_band",
+    "phq9_total",
+    "gad7_total",
+    "pcl5_total",
+    "moral_injury_score",
+    "full_ssn",
+    "date_of_birth",
+    "marital_status",
+    "religion",
+    "race",
+    "ethnicity",
+    "account_balances",
+    "debt_detail",
+    "credit_score",
+    "licensed_third_party_assessment_results",
+    "benefit_eligibility_determination",
+    "entity_registration_actions",
+    "severe_disability"
+  ],
+  "module_catalog": [
+    {
+      "id": "vetbuddy",
+      "purpose": "resume_generation",
+      "fields": [
+        "service_history",
+        "branch",
+        "component",
+        "mos_title",
+        "duty_titles",
+        "training_records",
+        "awards_text"
+      ],
+      "default_on": true
+    },
+    {
+      "id": "mission_transition",
+      "purpose": "skill_translation",
+      "fields": [
+        "target_occupation",
+        "transition_stage",
+        "separation_window"
+      ],
+      "default_on": true
+    },
+    {
+      "id": "education_navigator",
+      "purpose": "credential_gap",
+      "fields": [
+        "degrees",
+        "credits_earned",
+        "certifications",
+        "enrollment_status"
+      ],
+      "default_on": true
+    },
+    {
+      "id": "personality_compass",
+      "purpose": "career_fit",
+      "fields": [
+        "work_values",
+        "fit_dimensions"
+      ],
+      "default_on": true
+    },
+    {
+      "id": "moneylife_military",
+      "purpose": "salary_target_comparison",
+      "fields": [
+        "salary_target"
+      ],
+      "default_on": true
+    },
+    {
+      "id": "resourcehub",
+      "purpose": "referral",
+      "fields": [
+        "referral_categories"
+      ],
+      "default_on": true
+    },
+    {
+      "id": "business_launchpad",
+      "purpose": "business_referral",
+      "fields": [
+        "business_stage",
+        "naics_interest"
+      ],
+      "default_on": false
+    },
+    {
+      "id": "vsn",
+      "purpose": "communication",
+      "fields": [
+        "contact_preferences"
+      ],
+      "default_on": false
+    },
+    {
+      "id": "wellness_checkin",
+      "purpose": null,
+      "fields": [],
+      "default_on": false,
+      "severed": true
+    }
+  ],
+  "_structural_note": "Patterns 12-14 are identifiers, not claims: Army MOS (88M, 25B), Air Force AFSC (3D0X2) and Navy rating with class (IT1, ET2). Like SY0-701 and Class A in the specification, they were added because real records contain them.",
+  "_structural_order_note": "Order is load-bearing: compound patterns before the bare-year pattern, or '05/2019' leaves '05' behind."
+}

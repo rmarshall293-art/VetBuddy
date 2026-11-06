@@ -36,12 +36,12 @@ in ADR 0004.
 | V6-25 | 4 | Separate consent purposes; withdrawal as easy as grant; server-enforced | PARTIAL | purpose allowlist + 9 foreclosed purposes (0010); in-transaction checks; revocation test | AI, analytics, notification and sharing purposes arrive with those features |
 | V6-26 | 4, 15 | Legal operator, contact, origin are configurable and release-blocking | IMPLEMENTED_TESTED | `legal_operator/privacy_contact/public_origin: null` in config; `test_no_invented_domain_or_operator_in_pages` | owner decision (Master Record §7.1 rows 1–3) |
 | V6-27 | 5 | Common notice wording | IMPLEMENTED_TESTED | `common_notice` in config → guest app trust page; `test_required_language_is_the_config` | counsel review before release |
-| V6-28 | 5 | Eligibility vocabulary PRELIMINARY_MATCH … HUMAN_REVIEW_REQUIRED; missing facts never become eligible | PARTIAL | Benefit Vault matcher emits only the seven v6 outcomes and `determination: none` (`tests/vault/test_matcher.py`, `test_agent.py`). Production policy `verified_only` shows no PRELIMINARY_MATCH (`test_catalog_carries_the_common_notice_and_no_determination`). The Mission Router still never screens (`benefit_screening: DISABLED`) | G1 verified rules; VD21 |
+| V6-28 | 5 | Eligibility vocabulary PRELIMINARY_MATCH … HUMAN_REVIEW_REQUIRED; missing facts never become eligible | PARTIAL | Benefit Vault matcher emits only the seven v6 outcomes and `determination: none` (`tests/vault/test_matcher.py`, `test_agent.py`). Production policy `verified_only` shows no PRELIMINARY_MATCH (`test_catalog_carries_the_common_notice_and_no_determination`). The Mission Router still never screens (`benefit_screening: DISABLED`) | G1: roster and workflow exist (ADR 0006), no reviewer listed yet. Unchecked non-matches are listed as leads (VD21 decided) |
 | V6-29 | 5 | Guard/Reserve authority never assumed | IMPLEMENTED_TESTED | DB CHECK + router validation + tests | — |
 | V6-30 | 5 | No diagnosis, rating prediction, nexus, coaching | PARTIAL | rating calculator is math on entered numbers only; claims-boundary pattern scan; vault OutputGuard and ClaimsBoundaryGuard on every response (`test_output_guard_blocks_prohibited_language`) | agents beyond the vault |
 | V6-31 | 6 | Representative verification (VA OGC registry), referral as approved transmission | PLANNED | app links VA's official Find-a-Rep search only | registry access terms; referral workflow |
 | V6-32 | 7 | Forms: official templates, DRAFT marking, NOT_SUBMITTED, burial 40-10007 | PLANNED | no form flows built | verified current templates |
-| V6-33 | 8 | Career, resume (no invented facts), optional Behavioral Style & Strengths Profile | PLANNED | ARCHITECTURE §3–4 | CB-01/02 ADA metamorphic test first |
+| V6-33 | 8 | Career, resume (no invented facts), optional Behavioral Style & Strengths Profile | PARTIAL | `backend/app/domains/career/`, `tests/test_career.py`, ADR 0007 | Core, gate and CB-01/02 done; persistence, routes, crosswalks after G17; work-style assessment blocked on instrument |
 | V6-34 | 9 | Authorization on every sensitive operation; no caller-supplied tenant | IMPLEMENTED_TESTED | principal binds tenant; forced RLS; cross-tenant tests; purge bound to caller (`test_purge_function_is_bound_to_the_caller`); vault account routes resolve the tenant from the session only (`test_account_rows_are_tenant_scoped_and_exported`) | uploads, vectors, workers, realtime don't exist yet |
 | V6-35 | 9 | Personal "immutability" must not defeat deletion | IMPLEMENTED_TESTED | audit append-only except the sanctioned purge; `test_audit_stays_append_only_outside_the_purge` | — |
 | V6-36 | 9 | Uploads: scanning, quarantine, injection defenses | PLANNED | no upload path | document intake service |
@@ -77,3 +77,22 @@ v8 governs the Base44 runtime. These rows trace what it adds that applies to thi
 3. Legal operator, privacy contact and public origin set by the owner; privacy notice and terms reviewed by counsel (V6-24, V6-26).
 4. Accessibility audit with assistive technology (V6-41).
 5. G1 verified rules before any eligibility output (V6-28).
+
+## Financial OS specification v4.0 (ADR 0008)
+
+| ID | Spec § | Requirement | Status | Evidence | Gate / next |
+|---|---|---|---|---|---|
+| FO-01 | 1, 3 | Module inside VetBuddy, engine reusable standalone; no CRM, no duplicate profiles | IMPLEMENTED_TESTED | pure library + stateless routes; no new tables; reads the existing jurisdiction registry and corpus | — |
+| FO-02 | 10 | Reject invalid values; unknown is not zero; no NaN/Infinity; cents preserved | IMPLEMENTED_TESTED | `Refusal.*`, `Controls.test_unknown_is_never_zero`, `Arithmetic.test_no_floats_reach_any_output` | — |
+| FO-03 | 10 | Envelope with ruleset, source version, effective date, assumptions, exclusions, status, confidence, warnings, disclaimer, audit id | IMPLEMENTED_TESTED | `Controls.test_every_result_carries_the_full_envelope` | audit ids aren't stored (nothing is) |
+| FO-04 | 3, 10 | Loan, emergency fund, DTI, debt payoff, savings, retirement (High-3, BRS, reserve, Chapter 61), state formula | IMPLEMENTED_TESTED | `Arithmetic.*` | — |
+| FO-05 | 7 | VA with dependents and effective date; never percent of retirement | PARTIAL | `va_illustration`; agreed 2026 cells | 42 contested cells; VA.gov verification; SMC and parents not modelled |
+| FO-06 | 7 | CRDP/CRSC: never simply sum retired pay and VA; DoD vs VA percentages separate | IMPLEMENTED_TESTED | `Controls.test_retired_pay_and_va_are_never_simply_added`; Chapter 61 inputs | election modelling (CRDP vs CRSC) PLANNED |
+| FO-07 | 11 | 24-month before/after forecast, three cases, unapproved VA never guaranteed | IMPLEMENTED_TESTED | `transition_forecast`; `Controls.test_estimated_va_counts_only_in_the_optimistic_case` | tax, insurance and salary sensitivity PLANNED |
+| FO-08 | 4 (ref. scenarios) | Alabama/Texas 100% P&T; E-5 OHA ETS; 15-year Chapter 61 at 50%; Guard/AGR; unknown fields; no bank provider | IMPLEMENTED_TESTED | `ReferenceScenarios.*` | state tax and homestead values need verified state rules (vault G1) |
+| FO-09 | 1 (registry) | 56 selectable jurisdictions | IMPLEMENTED_TESTED | `test_all_56_jurisdictions_are_selectable_from_the_existing_registry` | each jurisdiction's rules still unverified |
+| FO-10 | 5 | Pay by grade and longevity; BAH/OHA/BAS/COLA; special pays; tax and net pay | PLANNED | corpus holds FY2025 rounded gates and BAS 2026 (UNVERIFIED) | dated DFAS and DTMO tables |
+| FO-11 | 8, 9, 12 | Insurance continuity, learning academy, geography data | PLANNED | — | sources and content review |
+| FO-12 | 13 | Manual entry first; bank links only through a vetted server-side aggregator | IMPLEMENTED_TESTED (manual) / BLOCKED (links) | guest view; `test_unavailable_bank_provider_is_said_plainly` | vendor, consent, G17 |
+| FO-13 | 14 | Governance agent and specialist agents with manifests | PLANNED | — | agent manifests via the Trust Kernel |
+| FO-14 | 16, 17 | Persisted households, scenarios, export and deletion | PLANNED | — | G17 |

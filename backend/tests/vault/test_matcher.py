@@ -193,3 +193,49 @@ def test_every_record_evaluates_without_error(matcher, registry):
         for benefit in registry.benefits.values():
             item = matcher.evaluate(benefit, fs, "preview_unverified", opts())
             assert item["outcome"] in OUTCOMES
+
+
+# ── VD21 (owner decision, ADR 0006): an unchecked rule never hides a benefit ──
+
+def test_unreviewed_non_match_is_a_lead_in_production(matcher):
+    facts = dict(TX_VET_100, va_rating=10, individual_unemployability=False)                      # the homestead rule needs 100%
+    item = item_for(run(matcher, facts, environment="production", include_non_matches=True), HOMESTEAD)
+    assert item["outcome"] == "HUMAN_REVIEW_REQUIRED"
+    assert item["reasons"] == ["ENCODED_CONDITION_NOT_MET", "RULE_NOT_VERIFIED"]
+    assert item["official_url"].startswith("https://")
+    ids = {c["id"] for c in item["caveats"]}
+    assert "unreviewed_rule_not_met" in ids and "not_verified" not in ids
+    # listed by default, not only with include_non_matches
+    assert HOMESTEAD in {i["benefit_id"] for i in run(matcher, facts, environment="production").items}
+
+
+def test_fitting_leads_come_before_unmet_ones(matcher):
+    result = run(matcher, dict(TX_VET_100, va_rating=10, individual_unemployability=False), environment="production")
+    leads = [i for i in result.items if i["outcome"] == "HUMAN_REVIEW_REQUIRED"]
+    flags = ["RULE_NOT_VERIFIED" in i["reasons"] for i in leads]
+    assert any(flags) and not all(flags)
+    assert flags == sorted(flags)                                 # all False first, then True
+
+
+def test_a_reviewed_rule_still_says_does_not_meet(registry):
+    benefit = registry.benefits[HOMESTEAD]
+    reviewed = registry.with_reviews([Review(HOMESTEAD, "reviewer-01", "2026-10-28", benefit.content_hash)])
+    result = Matcher(reviewed).match(FactSet.from_mapping(dict(TX_VET_100, va_rating=10, individual_unemployability=False)),
+                                     opts(environment="production", include_non_matches=True))
+    assert item_for(result, HOMESTEAD)["outcome"] == "DOES_NOT_MEET_ENCODED_RULES"
+
+
+def test_preview_policy_keeps_does_not_meet(matcher):
+    result = run(matcher, dict(TX_VET_100, va_rating=10, individual_unemployability=False), environment="development", include_non_matches=True)
+    assert item_for(result, HOMESTEAD)["outcome"] == "DOES_NOT_MEET_ENCODED_RULES"
+
+
+def test_superseded_and_contested_non_matches_stay_hidden(matcher, registry):
+    from app.domains.vault.matcher import UNREVIEWED_SHOWN
+    assert UNREVIEWED_SHOWN == {"UNVERIFIED", "SOURCE_CHECKED"}
+    benefit = registry.benefits[HOMESTEAD]
+    for status in ("SUPERSEDED", "CONTESTED"):
+        changed = replace(benefit, record_status=status)
+        item = matcher.evaluate(changed, FactSet.from_mapping(dict(TX_VET_100, va_rating=10, individual_unemployability=False)), "verified_only",
+                                opts(environment="production"))
+        assert item["outcome"] == "DOES_NOT_MEET_ENCODED_RULES", status

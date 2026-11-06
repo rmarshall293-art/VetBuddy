@@ -1,4 +1,4 @@
-# ADR 0007: One codebase — slice 04 is the base of the GitHub branch
+# ADR 0010: One codebase — slice 04 is the base of the GitHub branch
 
 **Status:** Accepted, 2026-10-28 (owner decision)
 
@@ -14,8 +14,8 @@ The two 38 CFR 4.25 kernels agree on all 1,364 combinations of up to four rating
 - The branch now carries the slice 04 tree as its base. Only **content** was imported: the bundle's commit history was not merged, because its commits carry a personal name and email address and this repository is public.
 - This branch's unique work was ported onto it:
   - 38 CFR 4.26 in `backend/app/domains/kernel/ratings.py` and its browser twin `web/kernel.js`, with parity fixtures and the guest calculator toggle;
-  - the 737-code schedule as `data/reference/rating_schedule.json` → `ref.rating_code` / `ref.rating_criterion` (migration 0015), served at `/api/v1/reference/rating-schedule`;
-  - `docs/PRODUCT_LAYOUT.md` and ADR 0006 (was ADR 0003 on this branch).
+  - the 737-code schedule as `data/reference/rating_schedule.json` → `ref.rating_code` / `ref.rating_criterion` (migration 0017), served at `/api/v1/reference/rating-schedule`;
+  - `docs/PRODUCT_LAYOUT.md` and ADR 0009 (was ADR 0003 on this branch).
 - The stack swap to FastAPI + psycopg remains planned (ADR 0002), as its own slice.
 
 ## Feature map (nothing removed without a covering test)
@@ -30,7 +30,7 @@ The two 38 CFR 4.25 kernels agree on all 1,364 combinations of up to four rating
 | Hash-chained append-only audit | `domains/trust` | `test_slice01_api.py`, `test_privacy_rights.py` |
 | Guest mode stores nothing | standalone guest app + Mode A API | `tests/e2e/smoke_standalone.py`, `test_slice01_api.py` |
 | Reference data (governance, sources, timeline, conflicts) | `ref` schema corpus (superset) | `test_reference_corpus.py` |
-| 737-code rating schedule | migration 0015 | `test_rating_schedule.py` |
+| 737-code rating schedule | migration 0017 | `test_rating_schedule.py` |
 | Dev sign-in (mock) | `domains/trust/principal` (mock) | `test_slice01_api.py` |
 | FastAPI app, Vite build, Dockerfile, Compose | **Not carried**: Starlette app and `scripts/dev.sh` serve the same API shape; Vite build not needed for the framework-free `web/` | — |
 

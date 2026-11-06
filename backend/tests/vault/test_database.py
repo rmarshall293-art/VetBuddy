@@ -70,7 +70,7 @@ def account_grant(registry, tenant, source="service_profile_agent", keys=("servi
 
 def append(store, tenant, i=0, **overrides):
     fields = dict(tenant_ref=tenant, occurred_at=NOW + timedelta(microseconds=i), event="PULL_ALLOWED",
-                  requester="benefit_vault_agent", source_agent="service_profile_agent", purpose="benefit_matching",
+                  requester="benefits_intelligence_agent", source_agent="service_profile_agent", purpose="benefit_matching",
                   fact_keys=["service_status", "component"], grant_id=str(uuid.uuid4()),
                   packet_id=str(uuid.uuid4()), reason="ALLOWED")
     fields.update(overrides)
@@ -122,7 +122,7 @@ def test_seed_is_an_exact_copy_of_the_registry(pg, registry):
         links = set(conn.execute("SELECT benefit_id, lead_id FROM ref.vault_benefit_lead"))
         assert links == {(b.benefit_id, lead) for b in registry.benefits.values() for lead in b.lead_ids}
         assert conn.execute("SELECT agent_id FROM ref.vault_agent_manifest WHERE may_pull_from_agents").fetchall() == [
-            ("benefit_vault_agent",)]
+            ("benefits_intelligence_agent",)]
         assert one(conn, "SELECT count(*) FROM ref.vault_agent_manifest WHERE may_issue_determinations") == (0,)
         assert one(conn, "SELECT count(*) FROM ref.vault_benefit WHERE record_status = 'VERIFIED'") == (0,)
 
@@ -174,7 +174,16 @@ def test_verified_needs_a_named_reviewer_and_unchanged_content(pg, seedtest, reg
         refused(conn, errors.CheckViolation, mark, ("reviewer-01", "0" * 64, benefit.benefit_id))
         refused(conn, errors.CheckViolation, "UPDATE ref.vault_benefit SET verified_by = 'reviewer-01'"
                                              " WHERE benefit_id = %s", (benefit.benefit_id,))
+        # Migration 0016: a well-formed handle is not enough; it must be on the owner's roster,
+        # active, and scoped to the record's jurisdiction.
+        refused(conn, errors.CheckViolation, mark, ("reviewer-01", benefit.content_hash, benefit.benefit_id))
+        roster = ("INSERT INTO ref.vault_reviewer (handle, role, scope, added_on, added_by)"
+                  " VALUES (%s, 'accredited_vso_representative', %s, '2026-10-28', 'project_owner')")
         with conn.transaction():
+            conn.execute(roster, ("reviewer-02", ["ZZ"] if benefit.jurisdiction != "ZZ" else ["AA"]))
+        refused(conn, errors.CheckViolation, mark, ("reviewer-02", benefit.content_hash, benefit.benefit_id))
+        with conn.transaction():
+            conn.execute(roster, ("reviewer-01", [benefit.jurisdiction]))
             conn.execute(mark, ("reviewer-01", benefit.content_hash, benefit.benefit_id))
     # Reseeding the same registry keeps the mark.
     pg.run_file(SEED, dbname=seedtest)
@@ -233,14 +242,14 @@ def test_seed_prunes_rows_from_older_registries(pg, seedtest):
 
 def test_governance_pins_hold_in_sql(pg, seedtest):
     statements = (
-        "UPDATE ref.vault_agent_manifest SET may_issue_determinations = true WHERE agent_id = 'benefit_vault_agent'",
+        "UPDATE ref.vault_agent_manifest SET may_issue_determinations = true WHERE agent_id = 'benefits_intelligence_agent'",
         "UPDATE ref.vault_agent_manifest SET may_pull_from_agents = true WHERE agent_id = 'household_agent'",
         "INSERT INTO ref.vault_agent_manifest (agent_id, name, plane, role, may_pull_from_agents, highest_class_held,"
         " registry_sha256) VALUES ('second_puller', 'x', 2, 'x', true, 'V1', repeat('0', 64))",
         "INSERT INTO ref.vault_agent_exposure VALUES ('household_agent', 'severe_disability', 'V2')",
         "INSERT INTO ref.vault_agent_exposure VALUES ('household_agent', 'va_rating', 'V1')",
-        "INSERT INTO ref.vault_agent_exposure VALUES ('benefit_vault_agent', 'age', 'V1')",
-        "INSERT INTO ref.vault_agent_exposure VALUES ('crisis_support_agent', 'age', 'V3')",
+        "INSERT INTO ref.vault_agent_exposure VALUES ('benefits_intelligence_agent', 'age', 'V1')",
+        "INSERT INTO ref.vault_agent_exposure VALUES ('claims_navigation_agent', 'age', 'V3')",
         "UPDATE ref.vault_agent_exposure SET data_class = 'V2' WHERE agent_id = 'household_agent' AND fact_key = 'age'",
         "UPDATE ref.vault_fact SET pullable = true WHERE fact_key = 'severe_disability'",
         "UPDATE ref.vault_fact SET session_only = true WHERE fact_key = 'age'",
@@ -260,7 +269,7 @@ def test_every_vault_function_pins_its_search_path(pg):
             " JOIN pg_namespace n ON n.oid = p.pronamespace"
             " WHERE n.nspname IN ('public', 'ref') AND (p.proname LIKE 'vault%' OR p.proname = 'vb_vault_discard')"
         ).fetchall()
-    assert len(rows) == 7          # six trigger functions and vb_vault_discard
+    assert len(rows) == 9          # eight trigger functions (two from 0016) and vb_vault_discard
     for name, definer, config in rows:
         assert config and any(c.startswith("search_path=pg_catalog, public") for c in config), name
         if definer:
@@ -324,7 +333,7 @@ def test_tenants_see_and_change_only_their_own_rows(app_conn, registry, new_tena
             " VALUES (%s, 'us.death-gratuity', 'INTERESTED', repeat('0', 64))", (mine,), tenant=theirs)
     refused(app_conn, errors.InsufficientPrivilege,
             "INSERT INTO public.vault_pull_ledger (tenant_id, seq, occurred_at, event, requester, source_agent,"
-            " purpose, reason, prev_hash, row_hash) VALUES (%s, 0, now(), 'GRANT_CREATED', 'benefit_vault_agent',"
+            " purpose, reason, prev_hash, row_hash) VALUES (%s, 0, now(), 'GRANT_CREATED', 'benefits_intelligence_agent',"
             " 'household_agent', 'benefit_matching', 'ALLOWED', repeat('0', 64), repeat('0', 64))", (mine,),
             tenant=theirs)
     refused(app_conn, errors.InsufficientPrivilege,
@@ -380,7 +389,7 @@ def test_grant_rules_hold_in_sql(app_conn, pg, registry, new_tenant):
 
     for params in (row(keys=("va_rating",)),                                  # not exposed by this agent
                    row(source="household_agent", keys=("severe_disability",)),  # session-only, never exposed
-                   row(source="benefit_vault_agent"),                         # the vault grants nothing to itself
+                   row(source="benefits_intelligence_agent"),                         # the vault grants nothing to itself
                    row(source="nobody_agent"),                                # no manifest
                    row(days=91), row(days=0),                                 # 1 to 90 days
                    row(mode="A"),                                             # session grants stay in memory
@@ -439,7 +448,7 @@ def test_the_app_cannot_forge_sequence_or_hashes(app_conn, new_tenant):
             app_conn,
             "INSERT INTO public.vault_pull_ledger (tenant_id, seq, occurred_at, event, requester, source_agent,"
             " purpose, fact_keys, reason, prev_hash, row_hash) VALUES (%s, 999, %s, 'GRANT_CREATED',"
-            " 'benefit_vault_agent', 'household_agent', 'benefit_matching', ARRAY['relationship', 'age', 'age'],"
+            " 'benefits_intelligence_agent', 'household_agent', 'benefit_matching', ARRAY['relationship', 'age', 'age'],"
             " 'ALLOWED', repeat('a', 64), repeat('b', 64)) RETURNING seq, prev_hash, row_hash, fact_keys",
             (tenant, NOW))
     entries = store.entries(tenant)

@@ -210,43 +210,58 @@ Decisions are in ADR 0005. Originals are kept in `docs/sources/originals/2026-10
 | Account & Privacy | Settings: export, delete, consents, privacy mode | IMPLEMENTED_TESTED |
 | Version timeline | `docs/INTEGRATION_LEDGER.md` and git history | — |
 
-## 11. One codebase, and the 2026-10-21 / 2026-10-28 inputs (ADR 0007)
+## 11. Career Navigator architecture (2026-10-29)
+
+Decisions are in ADR 0007.
+
+| Input | Duplicate of | Became |
+|---|---|---|
+| `VeteranOS-Career-Navigator-Architecture.html` | — | `backend/app/domains/career/` (one Python implementation; the browser copy isn't ported), `config/career_rules.json`, `data/demo/career.json` (four synthetic people), `backend/tests/test_career.py` (74 tests), and the demo's "Their career" view. All ten documented defects are fixed, plus CN-11 to CN-14 found by running the samples, and CB-01/02 are implemented. The `veteranos-career-navigator` repository it describes was not supplied: SOURCE_NOT_AVAILABLE. Category regexes and the full stopword list were reconstructed from the spec's intent and are pinned by tests |
+
+## 12. Financial OS v4.0 (2026-11-06)
+
+Decisions are in ADR 0008.
+
+| Input | Duplicate of | Became |
+|---|---|---|
+| `VetBuddy_Financial_OS_COMPLETE_SPECIFICATION_FIXED.docx` | — | Requirements FO-01 to FO-14 (traceability). The core is `backend/app/domains/moneylife/` + `web/moneylife.js` (parity-tested), `config/moneylife_rules.json`, the stateless `/api/v1/moneylife` routes and the guest "Money plan" view |
+| `VetBuddy_Financial_OS_CLAUDE_BASE44_PROMPTS_FIXED.docx` / `.txt` | each other, by content | Process instructions, not architecture. The steps they ask for map to the traceability section, ADR 0008, the browser QA below and the tests |
+| `VetBuddy_Financial_OS_BROWSER_TESTED.html` | supersedes the 27 Oct `FinancialOS.html` as the MoneyLife reference | Not adopted as code. We browser-tested it (1280 and 390 px, light and dark): navigation, export and layout work with no console errors. Defects F1–F9 (ADR 0008) are fixed in the core: an illustrative VA amount counted as income, VA added on top of active-duty pay, blank becomes $0, negatives accepted, college ages ignored, Chapter 61 and VA summed, float money, rates hard-coded in UI, and disputed 30–90% VA cells. It is registered as source `src.legacy.financial_os_v4` |
+| `VetBuddy_Financial_OS_DOCUMENTS_FIXED.zip` | byte-identical copies of the three documents above | Nothing new |
+
+## 13. One codebase, and the 2026-10-21 / 2026-10-28 inputs (ADR 0010)
 
 **Privacy first.** All uploads and the slice 04 bundle (tree and every commit on every branch) were scanned for personal VA-decision data (claim or file numbers, ratings, dates of birth, SSNs, decision text). None found; the only SSN- and phone-shaped values are synthetic test fixtures. The bundle's commit history was **not** imported because its commits carry the owner's name and email; only file content was. The owner's first name in planning text is replaced with "the owner", and business names in the draft policies with `[OPERATOR NAME]`, pending counsel.
 
 | Input | Disposition |
 |---|---|
-| `VetBuddy-slice04.zip` (git bundle + source zip; branches slice 01–04) | **Base of the branch** (ADR 0007). 369 of 371 of its tests passed as received; the 2 failures were stale generated counts, now regenerated |
-| GitHub branch work at `108a9ec` | Ported onto the base: 38 CFR 4.26 bilateral factor (kernel, browser twin, guest calculator), the 737-code schedule (migration 0015), `docs/PRODUCT_LAYOUT.md` + ADR 0006 |
+| `VetBuddy-slice04.zip` (git bundle + source zip; branches slice 01–04) | **Base of the branch** (ADR 0010). 369 of 371 of its tests passed as received; the 2 failures were stale generated counts, now regenerated |
+| GitHub branch work at `108a9ec` | Ported onto the base: 38 CFR 4.26 bilateral factor (kernel, browser twin, guest calculator), the 737-code schedule (migration 0017), `docs/PRODUCT_LAYOUT.md` + ADR 0009 |
 | `va-rating-app.html` (21 Oct) | 737 diagnostic codes → `ref.rating_code` / `ref.rating_criterion`, UNVERIFIED, digestive SUPERSEDED; symptom-keyword table **not** imported. Its calculator was **not** used: unrounded floats disagree with 38 CFR 4.25 in 31 of 714 combinations (always 10 points low) and it writes ratings to `localStorage`. Its two different 2026 60% rates → `conflict.va_comp.2026_60pct_single`; its implied 2025 70% rate added to `conflict.va_comp.2025_70pct_single` |
 | `va_claims_data.json` (21 Oct) | **Not integrated**: 6 invented codes (9420, 9999, 8110, 6814, 6848, 6399), about 25 codes carrying another condition's name, 17 wrong maximums, 339 symptom keywords mapped to codes (prohibited, governance §5), claim-strategy coaching, 21-4142 mislabelled as the buddy-statement form, PACT Act cited as 38 U.S.C. 3313. Its 70% rate is a reading in `conflict.va_comp.2025_70pct_single` |
 | `VA_Benefits.html` (21 Oct) | **Not integrated**: a coding bootcamp's marketing page (Google Analytics, Google Ads, HubSpot; named alumni). School-participation claims need VA confirmation; lead for the education module only |
-| CRM master prompt (21 Oct) | **Not adopted** as layout (owner: "don't make this a CRM"); see ADR 0006 |
-| Product layout directive (owner, 21 Oct) | `docs/PRODUCT_LAYOUT.md`; conflicts with governance resolved in ADR 0006 (governance wins) |
+| CRM master prompt (21 Oct) | **Not adopted** as layout (owner: "don't make this a CRM"); see ADR 0009 |
+| Product layout directive (owner, 21 Oct) | `docs/PRODUCT_LAYOUT.md`; conflicts with governance resolved in ADR 0009 (governance wins) |
 | `state_benefits_all.json` (28 Oct) | **Not integrated as data**: an earlier, shorter form of `state_benefits.json` with no sources and unsupported "confidence: high" labels; it blanks values the corpus has (DE, GA, ID property tax). New evidence kept as readings: Alabama dependents' scholarship "$250 per semester hour" (`conflict.ednav.al_award_cap`) and license reciprocity, which disagrees with the vault's table for 42 of 51 states (`conflict.license_reciprocity.two_datasets`) |
 | `vetbuddy-vault-0014.html` (28 Oct) | Already handled in §10 (rendered view of the registry; not committed) |
 | `VetBuddy_Master_Prompt_v6.html` (28 Oct) | Already handled in §9 (rendering of the governing spec) |
 | `FinancialOS.html` (28 Oct) | Already handled in §10 (MoneyLife reference; pricing screens out of scope) |
 
-## 12. The 2026-11-06 inputs, and a newer build that is not in hand
+## 14. The 2026-11-06 inputs and the newer build, merged (ADR 0010)
 
-**Privacy first.** All five uploads were scanned for personal VA-decision data (claim or file numbers, ratings, dates of birth, SSNs, decision text): none found. The only personal item is the owner's first name in the record's headings, which is why that page is not committed. Each file was uploaded twice under different names; the copies are byte-identical (sha256) and were treated as one.
+**Privacy first.** Every upload and the newer build's tree were scanned for personal VA-decision data (claim or file numbers, ratings, dates of birth, SSNs, decision text): none found. The build's git history was **not** imported (its commits carry the owner's name and email); only file content was, committed as one merge. Names it reintroduced in planning text are again replaced with "the owner" and `[OPERATOR NAME]`.
 
 | Input | What it is | Disposition |
 |---|---|---|
-| `VetBuddy_Financial_OS_CLAUDE_BASE44_PROMPTS_FIXED.txt` / `.docx` | Claude Code, Base44 and QA prompts for Financial OS (v4.0, 2026-11-06). The `.docx` is the `.txt` plus a title block | **One copy** → `docs/FINANCIAL_OS_PROMPTS.md`, with how each instruction maps onto this repository. The specification `.docx` and "legacy Financial OS SDK" it names were not supplied: `SOURCE_NOT_AVAILABLE` |
-| `VetBuddy_Financial_OS_BROWSER_TESTED.html` | Standalone MoneyLife Military prototype: cash flow, 56-jurisdiction comparison, ETS/PCS/retirement, Guard/Reserve points, family and college, homeownership, budget and debt, learning, source register | **Not committed as a page** (one author per screen; the newer build's MoneyLife core already absorbed it, see below). It handles the risky parts correctly: bank pairing says "Not connected", the Richard Star Act is a proposal and never counted as income, presets are fictional. One new claim goes to the verification queue: Alabama HB77 (early tentative property-tax exemption certificate for 100%-disabled veterans buying a home), sourced only to a governor's press release, not the act |
-| `VetBuddy_Integrated_Record-3.html` | Generated record of a **newer build** (see below) | **Not committed**: generated output of code not in hand, and it names the owner |
-| `VetBuddy_Demo.html` | Generated guest app of the same newer build (adds a `MONEYLIFE` data section and career and sample-person views) | **Not committed**, for the same reason; nothing was ported from its generated JavaScript, because the Python it was generated from is the authority (single authorship) |
+| `VetBuddy-latest.zip` | Repository of the newer build: career core (ADR 0007), MoneyLife Military core (ADR 0008), owner decisions VD06/VD21 and the reviewer roster (ADR 0006, migrations 0015–0016), the demo app | **Merged** with slice 04 as the common ancestor. Collisions renumbered on this branch's side only: product layout ADR 0006 → **0009**, merge ADR 0007 → **0010**, rating-schedule migration 0015 → **0017**. The bilateral factor, the rating schedule, the preview 400 fix and the CI fixes are carried onto it |
+| `VetBuddy_Financial_OS_COMPLETE_SPECIFICATION_FIXED.docx` | The Financial OS specification | Same bytes as the copy inside the documents zip; already handled by §12 and ADR 0008 |
+| `VetBuddy_Financial_OS_DOCUMENTS_FIXED.zip` | The specification, prompts and tested HTML | Byte-identical copies; nothing new |
+| `VetBuddy_Financial_OS_CLAUDE_BASE44_PROMPTS_FIXED.txt` | The prompts | Identical to the copy handled in §12 |
+| `VetBuddy-6.html` | The newer build's guest app | `dist/vetbuddy.html` wrapped for display (3 lines differ); not committed, it is generated output |
 
-### The newer build (SOURCE_NOT_AVAILABLE)
+**Earlier inputs from the same day.** `VetBuddy_Integrated_Record-3.html` and `VetBuddy_Demo.html` were generated output of this build and are superseded by `dist/`. `VetBuddy_Financial_OS_BROWSER_TESTED.html` is handled in §12. One claim from it stays in the verification queue (`docs/GAP_MATRIX.md`): Alabama HB77, an early tentative property-tax exemption certificate for 100%-disabled veterans buying a home, sourced so far only to a governor's press release.
 
-The record and demo are outputs of a fork of slice 04 made in another workspace after 2026-10-28. By its own record it has 494 backend tests, 16 migrations and 874 reference rows, and it adds: a career core (its ADR 0007), a MoneyLife Military core with twelve integer-cent calculators and a 48-month forecast (its ADR 0008), a named-reviewer verification roster (its migration 0016, `scripts/vault_review.py`), and vault defects VD06 and VD21 closed (its ADR 0006). It forked **before** this branch's 8526a33, so it still lists the 38 CFR 4.26 bilateral factor as "not present" and the 737-code schedule as "not in hand".
+**Redundancies removed.** `docs/FINANCIAL_OS_PROMPTS.md` (this branch's mapping of the prompts) is deleted: ADR 0008 and §12 cover the same inputs with code behind them. The "inputs not in hand" rows in the gap matrix are gone, since the build and the specification are now in hand.
 
-**To make one codebase again** the fork's repository is needed (a git bundle or source zip, like `VetBuddy-slice04.zip`). Merging it will need: its migration 0016 renumbered or this branch's 0015 moved (both follow 0014); ADR renumbering (its 0006–0008 collide with this branch's 0006 product layout and 0007 merge); the bilateral factor and rating schedule carried onto it; and its record regenerated without the owner's name.
-
-### Redundancy review of the repository
-
-- Removed: nothing. The only byte-identical files are `data/research/recovered/slice02/guard_reserve.json` and `crisis_floor.yaml`, which duplicate the live files on purpose: they are hash-pinned provenance snapshots cited by path in `benefit_vault_registry.json` and checked by `tests/vault/test_importer_registry.py`, so they must stay frozen when the live files change.
-- The remote branch `cursor/vetbuddy-production-ready-5b45` (Cursor Agent, 2026-07-14) predates this work and was not reviewed or merged; deleting a branch is left to the owner.
+**Kept on purpose.** `data/research/recovered/slice02/guard_reserve.json` and `crisis_floor.yaml` duplicate live files byte for byte. They are hash-pinned provenance snapshots cited by `benefit_vault_registry.json` and checked by `tests/vault/test_importer_registry.py`. The remote branch `cursor/vetbuddy-production-ready-5b45` (2026-07-14) was not reviewed or merged; deleting a branch is left to the owner.
 

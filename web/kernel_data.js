@@ -652,6 +652,354 @@ export const KDATA = {
    "rules": "R4"
   }
  ],
+ "MONEYLIFE": {
+  "CONTESTED": [
+   [
+    "each_additional_child_18_23_in_school",
+    30
+   ],
+   [
+    "each_additional_child_18_23_in_school",
+    40
+   ],
+   [
+    "each_additional_child_18_23_in_school",
+    50
+   ],
+   [
+    "each_additional_child_18_23_in_school",
+    60
+   ],
+   [
+    "each_additional_child_18_23_in_school",
+    70
+   ],
+   [
+    "each_additional_child_18_23_in_school",
+    80
+   ],
+   [
+    "each_additional_child_18_23_in_school",
+    90
+   ],
+   [
+    "each_additional_child_under_18",
+    30
+   ],
+   [
+    "each_additional_child_under_18",
+    40
+   ],
+   [
+    "each_additional_child_under_18",
+    50
+   ],
+   [
+    "each_additional_child_under_18",
+    60
+   ],
+   [
+    "each_additional_child_under_18",
+    70
+   ],
+   [
+    "each_additional_child_under_18",
+    80
+   ],
+   [
+    "each_additional_child_under_18",
+    90
+   ],
+   [
+    "spouse_aid_and_attendance",
+    30
+   ],
+   [
+    "spouse_aid_and_attendance",
+    40
+   ],
+   [
+    "spouse_aid_and_attendance",
+    50
+   ],
+   [
+    "spouse_aid_and_attendance",
+    60
+   ],
+   [
+    "spouse_aid_and_attendance",
+    70
+   ],
+   [
+    "spouse_aid_and_attendance",
+    80
+   ],
+   [
+    "spouse_aid_and_attendance",
+    90
+   ],
+   [
+    "with_child",
+    30
+   ],
+   [
+    "with_child",
+    40
+   ],
+   [
+    "with_child",
+    50
+   ],
+   [
+    "with_child",
+    60
+   ],
+   [
+    "with_child",
+    70
+   ],
+   [
+    "with_child",
+    80
+   ],
+   [
+    "with_child",
+    90
+   ],
+   [
+    "with_spouse",
+    30
+   ],
+   [
+    "with_spouse",
+    40
+   ],
+   [
+    "with_spouse",
+    50
+   ],
+   [
+    "with_spouse",
+    60
+   ],
+   [
+    "with_spouse",
+    70
+   ],
+   [
+    "with_spouse",
+    80
+   ],
+   [
+    "with_spouse",
+    90
+   ],
+   [
+    "with_spouse_and_child",
+    30
+   ],
+   [
+    "with_spouse_and_child",
+    40
+   ],
+   [
+    "with_spouse_and_child",
+    50
+   ],
+   [
+    "with_spouse_and_child",
+    60
+   ],
+   [
+    "with_spouse_and_child",
+    70
+   ],
+   [
+    "with_spouse_and_child",
+    80
+   ],
+   [
+    "with_spouse_and_child",
+    90
+   ]
+  ],
+  "ENGINE": "vetbuddy.moneylife.core@1.0.0",
+  "EXAMPLES": [
+   {
+    "id": "e5_overseas_ets",
+    "label": "E-5 leaving an overseas post",
+    "note": "Married, one child, stationed in Germany with Overseas Housing Allowance, separating in 4 months with a job search under way. No VA claim decided yet.",
+    "plan": {
+     "civilian_net_after": "3,600",
+     "current_savings": "8,000",
+     "expenses_after": "4,300",
+     "expenses_before": "4,700",
+     "months_until_separation": "4",
+     "move_cost": "6,000",
+     "net_income_before": "5,100",
+     "va_monthly": "",
+     "va_status": "none"
+    },
+    "va": {
+     "children_in_school": "0",
+     "children_under_18": "1",
+     "married": true,
+     "rating": "30",
+     "spouse_aid_and_attendance": false
+    }
+   },
+   {
+    "id": "chapter61_15y",
+    "label": "Medical retirement at 15 years",
+    "note": "Single E-6 retiring under Chapter 61 with a DoD rating of 50% and a VA award letter in hand. Retired pay entered after the VA waiver, as DFAS shows it.",
+    "plan": {
+     "civilian_net_after": "3,200",
+     "current_savings": "15,000",
+     "expenses_after": "4,900",
+     "expenses_before": "4,900",
+     "months_until_separation": "2",
+     "move_cost": "",
+     "net_income_before": "4,800",
+     "retired_pay_net_after": "777.10",
+     "va_monthly": "1,132.90",
+     "va_status": "confirmed"
+    },
+    "retirement": {
+     "dod_pct": "50",
+     "high36": "4,200",
+     "kind": "chapter61",
+     "service_extra_months": "0",
+     "service_years": "15",
+     "system": "high3"
+    },
+    "va": {
+     "children_in_school": "0",
+     "children_under_18": "0",
+     "married": false,
+     "rating": "50",
+     "spouse_aid_and_attendance": false
+    }
+   },
+   {
+    "id": "guard_member",
+    "label": "Guard member leaving drill status",
+    "note": "Married, two children, keeps a civilian job; drill pay stops. 3,200 retirement points so far.",
+    "plan": {
+     "civilian_net_after": "5,800",
+     "current_savings": "20,000",
+     "expenses_after": "5,200",
+     "expenses_before": "5,200",
+     "job_delay_base": "0",
+     "job_delay_downside": "0",
+     "job_delay_optimistic": "0",
+     "months_until_separation": "12",
+     "move_cost": "",
+     "net_income_before": "6,100",
+     "va_monthly": "",
+     "va_status": "none"
+    },
+    "retirement": {
+     "high36": "6,000",
+     "kind": "reserve",
+     "points": "3,200",
+     "system": "high3"
+    }
+   }
+  ],
+  "PER_YEAR_BP": {
+   "brs": 200,
+   "high3": 250
+  },
+  "RULES": {
+   "_comment": "MoneyLife Military engine settings (ADR 0008). Rates are NOT here: VA compensation and retirement multipliers are read from data/reference/compensation.json so there is one copy of every number. These are limits, vocabularies, scenario defaults and wording.",
+   "always_hypothetical": {
+    "proposed_legislation": "Proposed law isn't current law. It is counted as hypothetical only, never in confirmed income.",
+    "va_illustration": "An illustration from a rate table is not an award. It is counted as hypothetical only."
+   },
+   "citations": {
+    "chapter61": "10 U.S.C. 1401: disability retired pay uses the greater of the years-of-service or the DoD disability percentage method, capped at 75%.",
+    "concurrent_receipt": "10 U.S.C. 1414 (CRDP) and 1413a (CRSC); 38 U.S.C. 5304-5305 (VA waiver of retired pay).",
+    "regular_multiplier": "10 U.S.C. 1409(b): 2.5% per year (High-3), 2.0% per year (Blended Retirement System).",
+    "reserve_points": "10 U.S.C. 12733: years of service for retired pay = points / 360.",
+    "va_active_duty": "38 U.S.C. 5304(c): VA compensation isn't paid for any period in which the person receives active-service pay."
+   },
+   "confidence": [
+    "confirmed",
+    "expected",
+    "hypothetical"
+   ],
+   "disclaimer": "An estimate from the numbers you entered and dated rate tables. It isn't financial, tax or legal advice, and it isn't a VA, DFAS or lender decision. Check amounts with the paying agency.",
+   "limits": {
+    "max_apr_bp": 10000,
+    "max_cents": 100000000000,
+    "max_children": 15,
+    "max_debts": 20,
+    "max_lines": 40,
+    "max_months": 600,
+    "max_months_before_separation": 24,
+    "max_reserve_points": 20000,
+    "max_service_months": 600,
+    "months_after_separation": 24
+   },
+   "line_kinds": [
+    "civilian_wages",
+    "spouse_wages",
+    "military_pay",
+    "military_allowance",
+    "guard_reserve_drill",
+    "military_retired_pay",
+    "va_compensation",
+    "va_illustration",
+    "proposed_legislation",
+    "other"
+   ],
+   "ruleset_version": "moneylife-2026.11.06",
+   "scenario_defaults": {
+    "_note": "Assumptions, shown to the person and editable. Not research findings.",
+    "job_delay_months": {
+     "base": 3,
+     "downside": 6,
+     "optimistic": 0
+    },
+    "va_estimate_delay_months": {
+     "optimistic": 6
+    }
+   },
+   "verify_links": {
+    "dfas_crdp": "https://www.dfas.mil/retiredmilitary/disability/crdp/",
+    "dfas_crsc": "https://www.dfas.mil/retiredmilitary/disability/crsc/",
+    "dfas_retired": "https://www.dfas.mil/retiredmilitary/",
+    "va_rates": "https://www.va.gov/disability/compensation-rates/veteran-rates/"
+   }
+  },
+  "SOURCE_VERSION": "2026.10.20",
+  "V26": {
+   "contested_conflict_id": "conflict.va_comp.2026_dependent_cells",
+   "dependents_100": {
+    "each_additional_child_18_23_in_school": 35245,
+    "each_additional_child_under_18": 10911,
+    "spouse_aid_and_attendance": 20141,
+    "with_child": 408543,
+    "with_spouse": 415817,
+    "with_spouse_and_child": 431899
+   },
+   "effective_from": "2025-12-01",
+   "rate_set": "va_comp_2026",
+   "status": "UNVERIFIED",
+   "veteran_alone": {
+    "10": 18042,
+    "100": 393858,
+    "20": 35666,
+    "30": 55247,
+    "40": 79584,
+    "50": 113290,
+    "60": 143502,
+    "70": 180845,
+    "80": 210215,
+    "90": 236230
+   }
+  }
+ },
  "NON_NEGOTIABLES": [
   {
    "id": "NN-1",

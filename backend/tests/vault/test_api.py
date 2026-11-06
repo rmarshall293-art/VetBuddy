@@ -138,7 +138,7 @@ def test_governance_route_shows_the_pins(client):
     body = client.get(f"{PREFIX}/governance").json()
     agents = {a["agent_id"]: a for a in body["agents"]}
     assert all(a["may_issue_determinations"] is False for a in agents.values())
-    assert [a for a, m in agents.items() if m["may_pull_from_agents"]] == ["benefit_vault_agent"]
+    assert [a for a, m in agents.items() if m["may_pull_from_agents"]] == ["benefits_intelligence_agent"]
     assert body["mode_ceiling"] == {"A": "V1", "B": "V2"} and body["never_pullable"] == ["V3", "V4", "V5"]
 
 

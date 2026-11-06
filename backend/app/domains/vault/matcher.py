@@ -15,6 +15,11 @@ using only the v6 outcomes:
   a match (not verified under the verified_only policy, link only seen in
   search, illustrative data, or a link off the egress allowlist). It always
   carries the official link so the person can read the source.
+  Under verified_only it is also used when the facts miss the encoded rule of
+  a record no reviewer has checked (reason RULE_NOT_VERIFIED, owner decision
+  VD21, ADR 0006): an unchecked rule must not hide a benefit. Those leads sort
+  after the ones the facts fit. A VERIFIED record's rule still gives
+  DOES_NOT_MEET_ENCODED_RULES.
 
 Nothing here calls a model or the network. The same registry, facts and
 options always give the same output, and the envelope carries hashes that
@@ -32,6 +37,11 @@ from .registry import Benefit, VaultRegistry
 from .rules import evaluate, tokens
 from .tri import Tri
 from .vocab import CATEGORY_LABELS, JURISDICTIONS, OUTCOMES
+
+# Record statuses whose unmet rule is shown as a lead under verified_only (VD21).
+# SUPERSEDED, CONTESTED, ILLUSTRATIVE and HEURISTIC records stay hidden when the
+# facts miss them: they are not a reliable pointer either way.
+UNREVIEWED_SHOWN = frozenset({"UNVERIFIED", "SOURCE_CHECKED"})
 
 OUTCOME_ORDER = {name: index for index, name in enumerate(
     ("PRELIMINARY_MATCH", "NEEDS_EVIDENCE", "NEEDS_INFORMATION", "HUMAN_REVIEW_REQUIRED",
@@ -146,6 +156,11 @@ class Matcher:
             elif policy == "verified_only" and benefit.record_status != "VERIFIED" and outcome != "NEEDS_INFORMATION":
                 outcome = "HUMAN_REVIEW_REQUIRED"
                 reasons.append("RECORD_NOT_VERIFIED")
+        elif (policy == "verified_only" and benefit.record_status in UNREVIEWED_SHOWN and link_ok
+              and benefit.official_url_status != "SEEN_IN_SEARCH" and not self._stale(source, options.as_of)):
+            # VD21: an unchecked rule may not hide a benefit. The person reads the official page instead.
+            outcome = "HUMAN_REVIEW_REQUIRED"
+            reasons.append("RULE_NOT_VERIFIED")
 
         caveat_ids = list(benefit.caveat_ids)
         if benefit.kind == "COMMERCIAL_DEAL":
@@ -154,7 +169,9 @@ class Matcher:
             caveat_ids.append("nonprofit")
         if benefit.official_url_status == "SEEN_IN_SEARCH":
             caveat_ids.append("seen_in_search")
-        if benefit.record_status != "VERIFIED":
+        if "RULE_NOT_VERIFIED" in reasons:
+            caveat_ids.append("unreviewed_rule_not_met")
+        elif benefit.record_status != "VERIFIED":
             caveat_ids.append("not_verified")
         if source["tail_unread_chars"]:
             caveat_ids.append("tail_unread")
@@ -255,5 +272,6 @@ class Matcher:
             counts[item["outcome"]] += 1
         if not options.include_non_matches:
             items = [i for i in items if i["outcome"] != "DOES_NOT_MEET_ENCODED_RULES"]
-        items.sort(key=lambda i: (OUTCOME_ORDER[i["outcome"]], scope_rank[i["jurisdiction"]], i["category"], i["benefit_id"]))
+        items.sort(key=lambda i: (OUTCOME_ORDER[i["outcome"]], "RULE_NOT_VERIFIED" in i["reasons"],
+                                  scope_rank[i["jurisdiction"]], i["category"], i["benefit_id"]))
         return MatchResult(items=items, counts=counts, scope=scope, policy=policy, evaluated=sum(counts.values()))

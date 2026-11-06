@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Fresh test DB -> unit + integration tests. Add --ui to also run the browser smoke test.
+# Fresh test DB -> unit + integration tests. Add --ui to also run the browser smoke tests (web shell, guest app + record, demo).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 VB_DB=vetbuddy_test scripts/dev_db.sh --reset >/dev/null
@@ -12,4 +12,5 @@ if [[ "${1:-}" == "--ui" ]]; then
   sleep 2; trap 'kill $(cat /tmp/vb-ui.pid)' EXIT
   BASE_URL=http://localhost:8765 python3 tests/e2e/smoke_ui.py
   python3 tests/e2e/smoke_standalone.py
+  python3 tests/e2e/smoke_demo.py
 fi

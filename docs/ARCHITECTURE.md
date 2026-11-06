@@ -84,10 +84,9 @@ holds the draft manifests for the planned career, Guard/Reserve, women
 veterans and installation agents; fill readable classes, purposes and tools
 before any status change.
 
-**Career** (P8). MOS translation uses public O*NET / CareerOneStop crosswalks.
-The DD-214 resume builder produces a draft that needs explicit user approval
-before export. The ADA metamorphic test and fact-level allowlist (CB-01/02)
-come first.
+**Career** (P8). The core is built (§8, ADR 0007). MOS translation will use
+public O*NET / CareerOneStop crosswalks. Resume drafts need explicit user
+approval before export.
 
 ## 4. Work-style assessment: licensing flag
 
@@ -127,6 +126,12 @@ How it sits in this app:
   the ledger allows DELETE only to `vetbuddy_purger` during that tenant's
   purge; 0014's postcondition fails if any tenant table is unreachable.
 - **Errors** follow the `/api/v1` contract.
+- **Pulls** (ADR 0006): `domains/vault/providers.py` gives `service_profile_agent`
+  the declared component and service status from `service_record`, and nothing
+  it would have to guess; only under the person's grant, logged by key.
+- **Reviews** (gate G1, migration 0016): only an active, in-scope handle on the
+  owner's roster can mark a record VERIFIED, through `scripts/vault_review.py`;
+  every review is logged append-only; the app role can read neither table.
 - **Tests.** `tests/vault/` (pytest style, run by `tests/pytest_bridge.py`)
   plus `tests/test_vault_integration.py` for the seams.
 
@@ -138,3 +143,32 @@ every line (rows and columns) until withheld cells hold at least k people.
 Nothing feeds it: there is no county field and no `geographic_insight`
 consent purpose (both owner decisions; re-identification of aggregates is a
 foreclosed purpose).
+
+## 8. Career Navigator core (ADR 0007)
+
+`domains/career/`: a pure library, with its rule tables in `config/career_rules.json`.
+Generators propose; a deterministic gate disposes.
+
+- `enforcement`: closed-vocabulary audit; consent broker; protected-content guard and
+  `redact_protected`; evidence bank; fabrication guard; document assembler.
+  - The consent broker enforces the fact-level allowlist and severs wellness (CB-02).
+  - `redact_protected` drops any clause carrying a health or protected fact before
+    matching (CB-01).
+  - The document assembler checks protected content first, and a hit voids the document.
+- `analysis`: one tokenizer and stemmer (acronyms are atoms); announcement extraction;
+  qualification matrix; one label per category, with no composite score.
+  - In the matrix, absences never support and legally required credentials block.
+- `documents`: six resume types, a cover letter and STAR stories, all through the gate.
+  - The letter names a missing requirement only when a record documents it as missing.
+
+There is no persistence, route or model call yet. These come after G17 and need tenant
+tables under RLS, deletion and export coverage, and a career agent manifest.
+
+## 9. MoneyLife Military, the Financial OS core (ADR 0008)
+
+`domains/moneylife/calc.py`, mirrored by `web/moneylife.js`, with a parity test on shared golden cases.
+
+- **Arithmetic:** integer cents, basis points in, BigInt-equivalent fixed-point for interest. Each result is an envelope with sources, effective date, assumptions, exclusions, status, confidence, warnings and an audit id.
+- **Rates:** read from `data/reference/compensation.json`, so there is one copy of every number. Contested cells are conflicts, never loaded values.
+- **API:** stateless guest routes under `/api/v1/moneylife`.
+- **Not built yet:** stored households, pay tables, taxes, insurance, the learning academy, agents and bank links (ADR 0008 §8).

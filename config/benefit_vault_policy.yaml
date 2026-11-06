@@ -43,11 +43,16 @@ packets:
 # may_issue_determinations: false; only the Benefit Vault agent may pull from
 # other agents, and only through the broker with the person's grant. An agent
 # may expose a fact only at the fact's own data class, never above V2.
-# The ids below are the vault-side names for agents in the blueprint; mapping
-# them to slice 03 agent ids is an integration step (defect register VD06).
+# Ids follow the v8 Tier 2 role roster (owner decision VD06, 2026-10-29;
+# migration 0015, ADR 0006): the vault is Benefits Intelligence (Federal
+# Benefits, State & Territory and Guard/Reserve roles), the claims helper is
+# Claims Navigation, and crisis help is a Tier 0 rule (CrisisGate and
+# config/crisis_floor.yaml), not an agent. The plane 2 holders below are data
+# holders, not routed agents. Former ids: benefit_vault_agent,
+# claims_navigator_agent, crisis_support_agent.
 agents:
-  - agent_id: benefit_vault_agent
-    name: Benefit Vault
+  - agent_id: benefits_intelligence_agent
+    name: Benefits Intelligence (Benefit Vault)
     plane: 5
     role: Searches and matches benefits and deals and explains what the encoded rules say. Pulls facts from other agents only through the broker, with the person's grant.
     may_issue_determinations: false
@@ -106,21 +111,13 @@ agents:
     may_pull_from_agents: false
     highest_class_held: V2
     exposes: []
-  - agent_id: claims_navigator_agent
-    name: Claims Navigator
+  - agent_id: claims_navigation_agent
+    name: Claims Navigation
     plane: 3
     role: Explains claim steps and points to accredited representatives. Holds condition details (V4); exposes nothing.
     may_issue_determinations: false
     may_pull_from_agents: false
     highest_class_held: V4
-    exposes: []
-  - agent_id: crisis_support_agent
-    name: Crisis Support
-    plane: 3
-    role: Shows the crisis floor. Holds nothing a vault rule may read (V5); exposes nothing.
-    may_issue_determinations: false
-    may_pull_from_agents: false
-    highest_class_held: V5
     exposes: []
 
 caveats:
@@ -148,6 +145,9 @@ caveats:
     incomplete.
   not_verified: >-
     No reviewer has checked this record yet. Read the official page before relying on it.
+  unreviewed_rule_not_met: >-
+    Your answers don't fit this program's rule as VetBuddy wrote it, but no reviewer has checked that
+    rule yet, so it is listed instead of hidden. Read the official page to see whether it applies to you.
   tail_unread: >-
     Part of the source page was not read, so other benefits from this state or territory may be missing.
   uncertain_facts: >-
@@ -240,7 +240,7 @@ components:
   - {id: V10, name: Pull grants, status: IMPLEMENTED_TESTED}
   - {id: V11, name: Context packets (seven invariants), status: IMPLEMENTED_TESTED}
   - {id: V12, name: Pull broker (Privacy and Consent Guardian), status: PARTIAL,
-     note: "Tested with in-memory providers; no slice 03 agent store is wired as a provider yet."}
+     note: "service_profile_agent is wired over slice 03 onboarding data (component and service status only); va_status_agent and household_agent have no slice 03 store yet."}
   - {id: V13, name: Hash-chained pull ledger, status: IMPLEMENTED_TESTED}
   - {id: V14, name: Egress guard, status: IMPLEMENTED_TESTED}
   - {id: V15, name: Discovery planner, status: IMPLEMENTED_TESTED}
@@ -252,7 +252,8 @@ components:
      note: "Mounted in the app with the platform session and consent rule; works with the development sign-in (MOCK); production sign-in waits on G17."}
   - {id: V20, name: Migration 0014 and generated seed, status: IMPLEMENTED_TESTED,
      note: "Tested on the real slice 03 chain (0001-0014); account deletion reaches the three tenant tables."}
-  - {id: V21, name: Named-reviewer verification workflow, status: BLOCKED, note: "Gate G1."}
+  - {id: V21, name: Named-reviewer verification workflow, status: PARTIAL,
+     note: "Roster kept by the project owner, database-enforced, logged (migration 0016, scripts/vault_review.py); no reviewer is on the roster yet (G1)."}
   - {id: V22, name: Model-written explanations, status: BLOCKED, note: "Gates G21 and G23; no model call exists."}
   - {id: V23, name: American Samoa coverage, status: SOURCE_NOT_AVAILABLE}
   - {id: V24, name: Recovered lead import, status: IMPLEMENTED_TESTED}

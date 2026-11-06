@@ -45,7 +45,7 @@
      }
     }
    },
-   "if": {"properties": {"agent_id": {"not": {"const": "benefit_vault_agent"}}}},
+   "if": {"properties": {"agent_id": {"not": {"const": "benefits_intelligence_agent"}}}},
    "then": {"properties": {"may_pull_from_agents": {"const": false}}},
    "else": {"properties": {"may_pull_from_agents": {"const": true}, "exposes": {"maxItems": 0}}}
   },
@@ -268,7 +268,7 @@
      "type": "array",
      "minItems": 1,
      "items": {"$ref": "#/$defs/agent"},
-     "contains": {"properties": {"agent_id": {"const": "benefit_vault_agent"}}},
+     "contains": {"properties": {"agent_id": {"const": "benefits_intelligence_agent"}}},
      "minContains": 1,
      "maxContains": 1
     },

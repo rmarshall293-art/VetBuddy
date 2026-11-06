@@ -19,6 +19,7 @@ from starlette.routing import Route
 
 from app.domains.missions import router_policy as rp
 from app.domains.missions import service as svc
+from app.domains.moneylife import calc as moneylife
 from app.domains.privacy import service as privacy
 from app.domains.reference import service as ref
 from app.domains.trust import auth, consent
@@ -198,6 +199,29 @@ async def preview_brief(request: Request):
         return error(request, 422, "VALIDATION_FAILED", str(e), fields=[{"field": e.field, "message": str(e)}])
 
 
+# ── MoneyLife Military calculators (Mode A: computed, never stored; ADR 0008) ─
+
+async def moneylife_capabilities(request: Request):
+    return JSONResponse(moneylife.capabilities())
+
+
+async def moneylife_calculate(request: Request):
+    """Guest Mode A. Deterministic, stateless: no tenant, no rows, no audit row.
+    The response carries its own audit_id (a hash of type, ruleset and inputs)."""
+    try:
+        raw = await request.json()
+    except ValueError:
+        return error(request, 400, "INVALID_JSON", "Request body must be JSON.")
+    try:
+        return JSONResponse(moneylife.calculate(request.path_params["calc_type"], raw, _today(request).isoformat()))
+    except moneylife.MoneyInputError as e:
+        if e.field == "calculation_type":
+            return error(request, 404, "UNKNOWN_CALCULATION", "No calculation with that name.",
+                         available=sorted(moneylife.CALCULATORS))
+        return error(request, 422, "VALIDATION_FAILED", "Some fields are invalid.",
+                     fields=[{"field": e.field, "message": e.message}])
+
+
 # ── reference corpus (Mode A, V0 public, read-only) ──────────────────────────
 
 async def _ref(request: Request, fn, *args):
@@ -339,6 +363,8 @@ routes = [
     Route("/crisis-contacts", crisis_contacts, methods=["GET"]),
     Route("/jurisdictions", list_jurisdictions, methods=["GET"]),
     Route("/brief/preview", preview_brief, methods=["POST"]),
+    Route("/moneylife/capabilities", moneylife_capabilities, methods=["GET"]),
+    Route("/moneylife/{calc_type}", moneylife_calculate, methods=["POST"]),
     Route("/reference", reference_overview, methods=["GET"]),
     Route("/reference/women-veterans", reference_women_veterans, methods=["GET"]),
     Route("/reference/jurisdictions/{code}", reference_jurisdiction, methods=["GET"]),
@@ -391,7 +417,7 @@ def vault_tenant(request: Request) -> Optional[str]:
     return str(p.tenant_id)
 
 
-def vault_routes(settings, log=None) -> list:
+def vault_routes(settings, log=None, today=None) -> list:
     """Build the vault agent once (registry plus any named-reviewer VERIFIED marks
     kept in the database, gate G1) and return its routes."""
     from app.domains.vault import api as vault_api
@@ -409,7 +435,11 @@ def vault_routes(settings, log=None) -> list:
         # registry status (none is VERIFIED), which only ever shows less.
         if log:
             log("vault_reviews_unavailable", sqlstate=exc.sqlstate)
-    agent = BenefitVaultAgent(registry)
+    from app.domains.vault.providers import ServiceProfileProvider
+    # VD06 (ADR 0006): the one slice 03 store the vault may pull from, only under the person's grant.
+    providers = {"service_profile_agent": ServiceProfileProvider(lambda: pg_compat.connect(settings.database_url),
+                                                                 today=today or dt.date.today)}
+    agent = BenefitVaultAgent(registry, providers=providers)
 
     def store_factory(tenant: str):
         return VaultStore(connect=lambda: pg_compat.connect(settings.database_url))

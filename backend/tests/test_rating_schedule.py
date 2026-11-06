@@ -1,4 +1,4 @@
-"""38 CFR Part 4 rating schedule as reference data (migration 0015).
+"""38 CFR Part 4 rating schedule as reference data (migration 0017).
 
 The schedule explains how VA describes criteria. It is never matched against
 a veteran's symptoms (governance section 5), so the tests prove there is no

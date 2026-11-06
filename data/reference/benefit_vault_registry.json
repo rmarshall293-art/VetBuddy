@@ -41223,7 +41223,8 @@
   "state_definition_trap": "Many state benefits use the state's own definition of a veteran, which often requires federal active duty. Guard or Reserve service of only drills, annual training or State Active Duty may not meet it (Texas Hazlewood, for example, needs 181 days). Check with the state veterans agency.",
   "superseded": "This rule was replaced. It is shown only so you can see what changed.",
   "tail_unread": "Part of the source page was not read, so other benefits from this state or territory may be missing.",
-  "uncertain_facts": "This depends on answers you marked as unsure. Your documents, such as a DD 214 or a VA rating letter, settle them."
+  "uncertain_facts": "This depends on answers you marked as unsure. Your documents, such as a DD 214 or a VA rating letter, settle them.",
+  "unreviewed_rule_not_met": "Your answers don't fit this program's rule as VetBuddy wrote it, but no reviewer has checked that rule yet, so it is listed instead of hidden. Read the official page to see whether it applies to you."
  },
  "components": [
   {
@@ -41286,7 +41287,7 @@
   {
    "id": "V12",
    "name": "Pull broker (Privacy and Consent Guardian)",
-   "note": "Tested with in-memory providers; no slice 03 agent store is wired as a provider yet.",
+   "note": "service_profile_agent is wired over slice 03 onboarding data (component and service status only); va_status_agent and household_agent have no slice 03 store yet.",
    "status": "PARTIAL"
   },
   {
@@ -41337,8 +41338,8 @@
   {
    "id": "V21",
    "name": "Named-reviewer verification workflow",
-   "note": "Gate G1.",
-   "status": "BLOCKED"
+   "note": "Roster kept by the project owner, database-enforced, logged (migration 0016, scripts/vault_review.py); no reviewer is on the roster yet (G1).",
+   "status": "PARTIAL"
   },
   {
    "id": "V22",
@@ -41653,22 +41654,22 @@
  "governance": {
   "agents": [
    {
-    "agent_id": "benefit_vault_agent",
+    "agent_id": "benefits_intelligence_agent",
     "exposes": [],
     "highest_class_held": "V2",
     "may_issue_determinations": false,
     "may_pull_from_agents": true,
-    "name": "Benefit Vault",
+    "name": "Benefits Intelligence (Benefit Vault)",
     "plane": 5,
     "role": "Searches and matches benefits and deals and explains what the encoded rules say. Pulls facts from other agents only through the broker, with the person's grant."
    },
    {
-    "agent_id": "claims_navigator_agent",
+    "agent_id": "claims_navigation_agent",
     "exposes": [],
     "highest_class_held": "V4",
     "may_issue_determinations": false,
     "may_pull_from_agents": false,
-    "name": "Claims Navigator",
+    "name": "Claims Navigation",
     "plane": 3,
     "role": "Explains claim steps and points to accredited representatives. Holds condition details (V4); exposes nothing."
    },
@@ -41681,16 +41682,6 @@
     "name": "Coverage Bridge (migration 0013)",
     "plane": 2,
     "role": "Holds checklist progress, resume drafts and the family packet. Nothing a vault rule reads."
-   },
-   {
-    "agent_id": "crisis_support_agent",
-    "exposes": [],
-    "highest_class_held": "V5",
-    "may_issue_determinations": false,
-    "may_pull_from_agents": false,
-    "name": "Crisis Support",
-    "plane": 3,
-    "role": "Shows the crisis floor. Holds nothing a vault rule may read (V5); exposes nothing."
    },
    {
     "agent_id": "household_agent",
@@ -42364,7 +42355,7 @@
  "integrity": {
   "algorithm": "sha256",
   "canonical": "JSON with sorted keys, separators (',', ':'), UTF-8, no NaN; the integrity member excluded",
-  "sha256": "c8fb4d6c2ea24098947cbbe82e5b7d494f22e4af7392bb342981a08964218035"
+  "sha256": "fd3bf518e89c7b79721a9264ad578e202736537d1468d51a8c1b78da64af878e"
  },
  "jurisdictions": [
   {

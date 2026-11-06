@@ -84,7 +84,7 @@ def create_app(settings: config.Settings | None = None, clock=None) -> Starlette
 
     routes = [
         Route("/readyz", readyz, methods=["GET"]),
-        *v1.vault_routes(settings, log=log_event),          # /api/v1/vault/... (migration 0014)
+        *v1.vault_routes(settings, log=log_event, today=clock),          # /api/v1/vault/... (migration 0014)
         Mount("/api/v1", routes=v1.routes + [Route("/{rest:path}", api_not_found)]),
     ]
     if settings.web_dir.exists():

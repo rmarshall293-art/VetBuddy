@@ -5,7 +5,7 @@ runtime source. Loading it checks, independently of the JSON Schema:
 
 * the integrity stamp over the canonical JSON;
 * every agent manifest has ``may_issue_determinations`` false;
-* exactly one agent, ``benefit_vault_agent``, may pull from other agents;
+* exactly one agent, ``benefits_intelligence_agent``, may pull from other agents;
 * an agent exposes a fact only at the catalog's class, never above V2 and
   never a session-only fact;
 * every rule compiles to the stored canonical spelling, every record's

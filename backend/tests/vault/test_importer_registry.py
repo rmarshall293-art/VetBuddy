@@ -309,7 +309,7 @@ def _agent(data, agent_id):
 @pytest.mark.parametrize("mutate,match", [
     (lambda d: _agent(d, "household_agent").update(may_issue_determinations=True), "determinations"),
     (lambda d: _agent(d, "household_agent").update(may_pull_from_agents=True), "pull"),
-    (lambda d: _agent(d, "benefit_vault_agent").update(may_pull_from_agents=False), "pull"),
+    (lambda d: _agent(d, "benefits_intelligence_agent").update(may_pull_from_agents=False), "pull"),
     (lambda d: _agent(d, "va_status_agent")["exposes"].append({"fact_key": "severe_disability", "data_class": "V4"}),
      "expose"),
     (lambda d: _agent(d, "service_profile_agent")["exposes"][0].update(data_class="V1" if

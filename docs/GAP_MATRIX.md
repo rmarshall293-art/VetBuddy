@@ -149,3 +149,12 @@ Decisions: ADR 0005. Vault components (V01–V25) and its own defects (VD01–VD
 - **VD22:** vault handlers make blocking database calls inside `async` routes; move store calls to the threadpool.
 - **VD06:** agent-id mapping; v8's roster is the proposed target.
 - **GA:** county field, consent purpose and a county domain list are needed before any area report.
+
+## Inputs not in hand (2026-11-06)
+
+| Item | Status | Next step |
+|---|---|---|
+| Newer build: career core, MoneyLife core, reviewer roster (migration 0016), 494 tests | BLOCKED (`SOURCE_NOT_AVAILABLE`) | Upload its repository bundle; merge plan in `docs/INTEGRATION_LEDGER.md` §12 |
+| Financial OS complete specification `.docx`; legacy Financial OS SDK | BLOCKED (`SOURCE_NOT_AVAILABLE`) | Upload |
+| Alabama HB77 early property-tax exemption certificate (100% disabled, home purchase) | PLANNED (verification queue) | Read the enrolled act; today the only source is a governor's press release (2026-04) |
+

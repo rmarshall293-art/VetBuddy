@@ -228,3 +228,25 @@ Decisions are in ADR 0005. Originals are kept in `docs/sources/originals/2026-10
 | `VetBuddy_Master_Prompt_v6.html` (28 Oct) | Already handled in §9 (rendering of the governing spec) |
 | `FinancialOS.html` (28 Oct) | Already handled in §10 (MoneyLife reference; pricing screens out of scope) |
 
+## 12. The 2026-11-06 inputs, and a newer build that is not in hand
+
+**Privacy first.** All five uploads were scanned for personal VA-decision data (claim or file numbers, ratings, dates of birth, SSNs, decision text): none found. The only personal item is the owner's first name in the record's headings, which is why that page is not committed. Each file was uploaded twice under different names; the copies are byte-identical (sha256) and were treated as one.
+
+| Input | What it is | Disposition |
+|---|---|---|
+| `VetBuddy_Financial_OS_CLAUDE_BASE44_PROMPTS_FIXED.txt` / `.docx` | Claude Code, Base44 and QA prompts for Financial OS (v4.0, 2026-11-06). The `.docx` is the `.txt` plus a title block | **One copy** → `docs/FINANCIAL_OS_PROMPTS.md`, with how each instruction maps onto this repository. The specification `.docx` and "legacy Financial OS SDK" it names were not supplied: `SOURCE_NOT_AVAILABLE` |
+| `VetBuddy_Financial_OS_BROWSER_TESTED.html` | Standalone MoneyLife Military prototype: cash flow, 56-jurisdiction comparison, ETS/PCS/retirement, Guard/Reserve points, family and college, homeownership, budget and debt, learning, source register | **Not committed as a page** (one author per screen; the newer build's MoneyLife core already absorbed it, see below). It handles the risky parts correctly: bank pairing says "Not connected", the Richard Star Act is a proposal and never counted as income, presets are fictional. One new claim goes to the verification queue: Alabama HB77 (early tentative property-tax exemption certificate for 100%-disabled veterans buying a home), sourced only to a governor's press release, not the act |
+| `VetBuddy_Integrated_Record-3.html` | Generated record of a **newer build** (see below) | **Not committed**: generated output of code not in hand, and it names the owner |
+| `VetBuddy_Demo.html` | Generated guest app of the same newer build (adds a `MONEYLIFE` data section and career and sample-person views) | **Not committed**, for the same reason; nothing was ported from its generated JavaScript, because the Python it was generated from is the authority (single authorship) |
+
+### The newer build (SOURCE_NOT_AVAILABLE)
+
+The record and demo are outputs of a fork of slice 04 made in another workspace after 2026-10-28. By its own record it has 494 backend tests, 16 migrations and 874 reference rows, and it adds: a career core (its ADR 0007), a MoneyLife Military core with twelve integer-cent calculators and a 48-month forecast (its ADR 0008), a named-reviewer verification roster (its migration 0016, `scripts/vault_review.py`), and vault defects VD06 and VD21 closed (its ADR 0006). It forked **before** this branch's 8526a33, so it still lists the 38 CFR 4.26 bilateral factor as "not present" and the 737-code schedule as "not in hand".
+
+**To make one codebase again** the fork's repository is needed (a git bundle or source zip, like `VetBuddy-slice04.zip`). Merging it will need: its migration 0016 renumbered or this branch's 0015 moved (both follow 0014); ADR renumbering (its 0006–0008 collide with this branch's 0006 product layout and 0007 merge); the bilateral factor and rating schedule carried onto it; and its record regenerated without the owner's name.
+
+### Redundancy review of the repository
+
+- Removed: nothing. The only byte-identical files are `data/research/recovered/slice02/guard_reserve.json` and `crisis_floor.yaml`, which duplicate the live files on purpose: they are hash-pinned provenance snapshots cited by path in `benefit_vault_registry.json` and checked by `tests/vault/test_importer_registry.py`, so they must stay frozen when the live files change.
+- The remote branch `cursor/vetbuddy-production-ready-5b45` (Cursor Agent, 2026-07-14) predates this work and was not reviewed or merged; deleting a branch is left to the owner.
+

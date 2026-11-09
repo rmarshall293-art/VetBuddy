@@ -1,4 +1,4 @@
-"""38 CFR Part 4 rating schedule as reference data (migration 0017).
+"""38 CFR Part 4 rating schedule as reference data (migrations 0017, 0018).
 
 The schedule explains how VA describes criteria. It is never matched against
 a veteran's symptoms (governance section 5), so the tests prove there is no
@@ -6,7 +6,9 @@ symptom column, no symptom search, and nothing VERIFIED without a reviewer.
 """
 import copy
 import json
+import sys
 import unittest
+from pathlib import Path
 
 from app.domains.reference import corpus
 from app.infra.db import DatabaseError, connect
@@ -14,6 +16,14 @@ from app.infra.db import DatabaseError, connect
 from tests.support import ADMIN_DSN, APP_DSN, ApiCase
 
 C = corpus.build()
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
+import rebuild_rating_criteria as rebuild  # noqa: E402
+
+BY_CODE = {c["code"]: c for c in json.loads((corpus.DATA / "rating_schedule.json").read_text())["codes"]}
+
+
+def rows(code):
+    return [(k["percent"], k.get("percent_minor")) for k in BY_CODE[code]["criteria"]]
 
 
 class Shape(unittest.TestCase):
@@ -21,7 +31,7 @@ class Shape(unittest.TestCase):
         codes = C.tables["rating_code"]
         self.assertEqual(len(codes), 737)
         self.assertEqual(len({r["code"] for r in codes}), 737)
-        self.assertEqual(sum(r["has_criteria"] for r in codes), 364)
+        self.assertEqual(sum(r["has_criteria"] for r in codes), 383)
         self.assertGreater(len(C.tables["rating_criterion"]), 700)
 
     def test_statuses(self):
@@ -46,6 +56,54 @@ class Shape(unittest.TestCase):
         for table in ("rating_code", "rating_criterion"):
             for r in C.tables[table]:
                 self.assertFalse({"keywords", "symptoms"} & set(r), table)
+
+
+class TranscriptionDamage(unittest.TestCase):
+    """The 2020 PDF parse had one percent column and leaked page headers. These pin the repair
+    (scripts/rebuild_rating_criteria.py, eCFR snapshot amended through 2026-08-27)."""
+
+    def test_no_row_shows_pdf_parse_damage(self):
+        bad = [(c["code"], k["text"][-60:]) for c in BY_CODE.values() for k in c["criteria"] if rebuild.DAMAGE.search(k["text"])]
+        self.assertEqual(bad, [])
+
+    def test_dataset_matches_the_ecfr_snapshot(self):
+        data = json.loads((corpus.DATA / "rating_schedule.json").read_text())
+        tables = rebuild.parse_tables(sorted(rebuild.SNAP_DIR.glob("38cfr_*.xml")))
+        self.assertEqual(rebuild.rebuilt(data, tables), [])
+
+    def test_major_and_minor_sides_are_separate(self):
+        # 38 CFR 4.73, DC 5301: severe 40 dominant / 30 non-dominant (the 2020 data showed 30 with "Severe 40" in the text)
+        self.assertEqual(rows("5301"), [(40, 30), (30, 20), (10, 10), (0, 0)])
+        self.assertEqual([k["text"] for k in BY_CODE["5301"]["criteria"]], ["Severe", "Moderately Severe", "Moderate", "Slight"])
+        # 38 CFR 4.124a, DC 8516 ulnar nerve
+        self.assertEqual(rows("8516"), [(60, 50), (40, 30), (30, 20), (10, 10)])
+        # 38 CFR 4.71a, DC 5202: every row keeps both sides
+        self.assertEqual(rows("5202"), [(80, 70), (60, 50), (50, 40), (30, 20), (20, 20), (30, 20), (20, 20)])
+
+    def test_lost_labels_and_bled_rows_are_repaired(self):
+        self.assertEqual(BY_CODE["5136"]["criteria"], [{"percent": 60, "text": "Thumb, long and little", "percent_minor": 50}])
+        self.assertEqual(BY_CODE["5230"]["criteria"], [{"percent": 0, "text": "Any limitation of motion", "percent_minor": 0}])
+        self.assertIn("special monthly compensation", BY_CODE["5120"]["criteria"][0]["text"])
+        for code in ("8710", "6091"):   # the official entry lists no rated rows; the 2020 rows came from neighbours
+            self.assertEqual(BY_CODE[code]["criteria"], [], code)
+            self.assertFalse(BY_CODE[code]["has_criteria"], code)
+
+    def test_header_strip_leaves_regulation_wording(self):
+        self.assertIn("General Rating Formula", BY_CODE["5243"]["criteria"][0]["text"])
+        self.assertEqual(rows("5243"), [(60, None), (40, None), (20, None), (10, None)])
+
+    def test_superseded_codes_are_not_replaced_with_current_text(self):
+        c = BY_CODE["7308"]
+        self.assertEqual(c["status"], "SUPERSEDED")
+        self.assertTrue(c["criteria"][1]["text"].startswith("Moderate; less frequent episodes"))
+
+    def test_rebuilt_codes_say_so(self):
+        notes = {c.get("status_note") for c in BY_CODE.values()}
+        self.assertTrue({rebuild.NOTE, rebuild.NOTE_COPIED, rebuild.NOTE_HEADER} <= notes)
+        for c in BY_CODE.values():
+            if any("percent_minor" in k for k in c["criteria"]):
+                self.assertEqual(c["status_note"], rebuild.NOTE, c["code"])
+                self.assertEqual(c["status"] if "status" in c else "UNVERIFIED", "UNVERIFIED")
 
 
 class ValidatorRejects(unittest.TestCase):
@@ -75,6 +133,12 @@ class ValidatorRejects(unittest.TestCase):
     def test_bad_percent(self):
         self.assertIn("steps of 10", self.mutate(lambda t: t["rating_criterion"][0].update(percent=15)))
 
+    def test_bad_minor_percent(self):
+        self.assertIn("percent_minor must be", self.mutate(lambda t: t["rating_criterion"][0].update(percent_minor=15)))
+
+    def test_minor_side_above_major_side(self):
+        self.assertIn("cannot rate above", self.mutate(lambda t: t["rating_criterion"][0].update(percent=10, percent_minor=20)))
+
     def test_orphan_criterion(self):
         self.assertIn("unknown code", self.mutate(lambda t: t["rating_criterion"][0].update(code="0000")))
 
@@ -99,6 +163,18 @@ class Database(unittest.TestCase):
                              "VALUES ('6847:99', '6847', 99, 15, 'x')")
 
 
+    def test_db_refuses_bad_minor_percent(self):
+        with connect(ADMIN_DSN) as conn:
+            with self.assertRaises(DatabaseError):
+                conn.query("INSERT INTO ref.rating_criterion (criterion_id, code, position, percent, percent_minor, criteria_text) "
+                             "VALUES ('6847:99', '6847', 99, 10, 15, 'x')")
+
+    def test_db_holds_both_sides(self):
+        with connect(APP_DSN) as conn:
+            r = conn.one("SELECT percent, percent_minor FROM ref.rating_criterion WHERE criterion_id = '5301:00'")
+            self.assertEqual((r["percent"], r["percent_minor"]), (40, 30))
+
+
 class Api(ApiCase):
     def test_index_has_no_symptom_search(self):
         j = self.client.get("/api/v1/reference/rating-schedule?body_system=THE%20EAR").json()
@@ -113,6 +189,13 @@ class Api(ApiCase):
         self.assertEqual(j["code"]["name"], "Sleep Apnea Syndromes")
         self.assertEqual(j["code"]["status"], "UNVERIFIED")
         self.assertEqual(max(c["percent"] for c in j["criteria"]), 100)
+
+    def test_code_detail_carries_the_minor_side(self):
+        j = self.client.get("/api/v1/reference/rating-schedule/5301").json()
+        self.assertEqual([(c["percent"], c["percent_minor"]) for c in j["criteria"]], [(40, 30), (30, 20), (10, 10), (0, 0)])
+        self.assertIn("4.69", j["code"]["status_note"])
+        j = self.client.get("/api/v1/reference/rating-schedule/6847").json()
+        self.assertTrue(all(c["percent_minor"] is None for c in j["criteria"]))
 
     def test_unknown_code_is_404(self):
         r = self.client.get("/api/v1/reference/rating-schedule/9999")

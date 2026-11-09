@@ -169,7 +169,7 @@ footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-b
       <tr><td>Verified rule packs</td><td><span class="pill bad">Not present</span> G1</td></tr>
       <tr><td>Agents, model gateway, crisis detector</td><td><span class="pill bad">Not present</span> G21/G23</td></tr>
       <tr><td>38 CFR 4.26 bilateral factor in both kernels and the guest calculator (value capped at 100)</td><td><span class="pill ok">Tested</span> ADR 0010</td></tr>
-      <tr><td>Rating schedule, 38 CFR Part 4: 737 codes with criteria text in <code>ref.rating_code</code>, <code>/api/v1/reference/rating-schedule</code></td><td><span class="pill warn">Loaded, unverified</span> 2020 edition; digestive marked superseded</td></tr>
+      <tr><td>Rating schedule, 38 CFR Part 4: 737 codes with criteria text in <code>ref.rating_code</code>, <code>/api/v1/reference/rating-schedule</code></td><td><span class="pill warn">Loaded, unverified</span> 2020 edition plus 113 codes from eCFR 2026-08-27; major and minor sides stored separately; digestive marked superseded</td></tr>
       <tr><td>TDIU check</td><td><span class="pill bad">Not present</span></td></tr>
     </tbody>
   </table></div>
@@ -336,7 +336,7 @@ footer{max-width:1180px;margin:0 auto;border-top:1px solid var(--line);padding-b
     <tbody>
       <tr><td><code>G1 / G2</code></td><td>No verified rule; no verified state records</td><td><span class="pill bad">Open</span> the main blocker</td></tr>
       <tr><td><code>G3</code></td><td>Education programs are authority stubs</td><td><span class="pill bad">Open</span></td></tr>
-      <tr><td><code>G4 / G5</code></td><td>Rating schedule: 737 codes loaded from the 2020 edition, unverified; digestive changed 2024-05-19 and is marked superseded; current eCFR text not yet transcribed</td><td><span class="pill info">Blocked on source</span></td></tr>
+      <tr><td><code>G4 / G5</code></td><td>Rating schedule: 737 codes, unverified; 113 re-transcribed from eCFR (amended through 2026-08-27), including every major/minor code; the rest are the 2020 edition; digestive marked superseded</td><td><span class="pill warn">Partial</span> rest of Part 4 to re-transcribe (A-06)</td></tr>
       <tr><td><code>G17</code></td><td>Identity provider; blocks verification, recovery, MFA, step-up before deletion and the public deletion request (v6 §2–3)</td><td><span class="pill info">Mock</span> release blocker</td></tr>
       <tr><td><code>V6-21</code></td><td>Backups, processors and legal holds wired into deletion</td><td><span class="pill bad">Planned</span> release blocker</td></tr>
       <tr><td><code>V6-26</code></td><td>Legal operator, privacy contact and public origin unset (sources disagree on the entity)</td><td><span class="pill info">Owner decision</span> release blocker</td></tr>

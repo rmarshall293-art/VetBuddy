@@ -80,7 +80,7 @@ See `docs/INTEGRATION_LEDGER.md` for sources, removed duplicates and conflicts.
 | Education program registry (22, deduplicated) | PARTIAL | authority stubs only (G3) |
 | TDIU threshold check | PLANNED | v2.0 had it; source not in hand (4.26 is now implemented, see A-03) |
 | WV runtime (CrisisGate, PIIMinimizer, MSTNarrativeGuard), EdNav engines | BLOCKED | specs only |
-| v2.0 datasets: 737 codes | PARTIAL | 737 codes + criteria text (2020 edition) in `ref.rating_code` (migration 0017), all UNVERIFIED, digestive SUPERSEDED; re-transcribe from current eCFR |
+| v2.0 datasets: 737 codes | PARTIAL | 737 codes + criteria text in `ref.rating_code` (migrations 0017–0018), all UNVERIFIED, digestive SUPERSEDED. 113 codes re-transcribed from the saved eCFR snapshot (amended through 2026-08-27), including every two-rating (major/minor) code; the rest are the 2020 text (see A-05) |
 | v2.0 datasets: 2026 rates, presumptives, 87 manifests | BLOCKED | not in any upload |
 | License reciprocity (teacher, UBE, real estate) | BLOCKED | two unsourced datasets disagree for 42 of 51 states (`conflict.license_reciprocity.two_datasets`); verify against NCBE and state boards |
 
@@ -195,6 +195,8 @@ Decisions: ADR 0005. Vault components (V01–V25) and its own defects (VD01–VD
 | ID | Defect | Status |
 |---|---|---|
 | A-04 | 38 CFR 4.26: high paired ratings pushed the bilateral value over 100 (90+90 gave 109) and the next Table I step then went *down* (109 → 108) because remaining efficiency was negative. The final rating was always capped at 100, but the step table showed impossible values | **Closed**: value capped at 100 in both kernels; `test_bilateral_value_never_exceeds_100`, 3 new parity fixtures |
+| A-05 | Rating schedule: the 2020 PDF parse had one percent column. In upper-extremity codes (38 CFR 4.69) the minor side was stored as the percent and the major side left in the text (DC 5301 showed 30 beside "Severe 40"); some rows lost their label (5136 read "60"), page headers leaked into 31 codes, and 8710 and 6091 carried a neighbour's rows | **Closed**: `percent` is the major side and `percent_minor` (migration 0018) the minor side; 113 codes re-transcribed from the saved eCFR snapshot by `scripts/rebuild_rating_criteria.py` (`--check` in CI); `test_rating_schedule.TranscriptionDamage` (6 of 7 fail on the old data) |
+| A-06 | Rating schedule, still open: heart codes 7000–7020 carry 2020 per-code criteria, but the current 38 CFR 4.104 rates them by a general formula; several codes' `notes` hold text from the next code (e.g. 8610–8730); the other sections are still the 2020 text | PLANNED: re-transcribe the rest of Part 4 from eCFR, then G1 review |
 | API-01 | `POST /api/v1/brief/preview` returned 500 for a JSON body that is not an object (`[]`, `null`, a number or a string) | **Closed**: 400 `INVALID_JSON`; `test_guest_preview_rejects_non_object_json` |
 
 Method: every route probed with malformed, oversized, Unicode, injection and path-traversal input, missing or forged tokens, cross-user ids and account deletion (0 remaining findings); 4,374 random router and rating cases compared between Python and the browser kernel (0 disagreements); both apps crawled tab by tab in light and dark, desktop and phone, clicking every control (0 JS errors, 0 server errors, no overflow, no unnamed controls); no HTML-injection sinks in the UI.

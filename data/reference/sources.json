@@ -177,6 +177,15 @@
       "note": "Authority the transcribed rating schedule must be re-checked against."
     },
     {
+      "id": "src.ecfr.38_part4_2026_08_27",
+      "title": "38 CFR Part 4 — eCFR snapshot, amended through 2026-08-27 (sections 4.71a, 4.73, 4.79, 4.87, 4.88b, 4.97, 4.104, 4.117, 4.118, 4.119, 4.124a)",
+      "kind": "primary",
+      "tier": 1,
+      "as_of": "2026-11-09",
+      "origin": "https://www.ecfr.gov/api/versioner/v1/full/2026-08-27/title-38.xml?part=4",
+      "note": "Saved under data/research/federal/ecfr_38cfr4_2026-08-27 (retrieved 2026-11-09; eCFR up to date as of 2026-11-05). scripts/rebuild_rating_criteria.py re-transcribes the two-rating (major/minor) codes and the codes damaged by the 2020 PDF parse from these files."
+    },
+    {
       "id": "src.cfr.38_4_26",
       "title": "38 CFR 4.26 — Bilateral factor",
       "kind": "primary",

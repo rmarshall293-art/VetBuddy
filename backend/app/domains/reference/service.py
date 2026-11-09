@@ -142,7 +142,7 @@ def rating_code(conn, code: str) -> dict:
     rows = _rows(conn, "SELECT * FROM ref.rating_code WHERE code = $1", [code])
     if not rows:
         raise UnknownRatingCode(code)
-    criteria = _rows(conn, "SELECT percent, criteria_text FROM ref.rating_criterion WHERE code = $1 ORDER BY position", [code])
+    criteria = _rows(conn, "SELECT percent, percent_minor, criteria_text FROM ref.rating_criterion WHERE code = $1 ORDER BY position", [code])
     return {"code": rows[0], "criteria": criteria, "label": CFR_REFERENCE_LABEL, "notice": notice(),
             "vso_referral": claims_boundary.required_text("vso_referral_block")}
 

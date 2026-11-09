@@ -375,7 +375,8 @@ def build() -> Corpus:
               "status_note": code.get("status_note"), "source_ids": rs["sources"]})
         for i, t in enumerate(code["criteria"]):
             track("rating_schedule", "rating_criterion", {"criterion_id": f"{code['code']}:{i:02d}", "code": code["code"], "position": i,
-                                       "percent": t["percent"], "criteria_text": t["text"]})
+                                       "percent": t["percent"], "percent_minor": t.get("percent_minor"),
+                                       "criteria_text": t["text"]})
 
     for name in DATASET_FILES:
         d = docs[name]
@@ -501,6 +502,11 @@ def validate(c: Corpus) -> None:
             errors.append(f"rating_criterion {r['criterion_id']}: unknown code {r['code']}")
         if not (isinstance(r["percent"], int) and 0 <= r["percent"] <= 100 and r["percent"] % 10 == 0):
             errors.append(f"rating_criterion {r['criterion_id']}: percent must be 0-100 in steps of 10")
+        pm = r.get("percent_minor")
+        if pm is not None and not (isinstance(pm, int) and not isinstance(pm, bool) and 0 <= pm <= 100 and pm % 10 == 0):
+            errors.append(f"rating_criterion {r['criterion_id']}: percent_minor must be 0-100 in steps of 10")
+        if pm is not None and pm > r["percent"]:
+            errors.append(f"rating_criterion {r['criterion_id']}: the minor side cannot rate above the major side")
     summary = {r["jurisdiction_code"] for r in t.get("state_summary", [])}
     expected = {j["code"] for j in known_jurisdictions() if j["kind"] == "state"} | {"DC"}
     if summary != expected:

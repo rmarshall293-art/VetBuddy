@@ -1061,6 +1061,12 @@ export const KDATA = {
    "tier": 3,
    "title": "myAirForceBenefits \u2014 Veterans Group Life Insurance (VGLI)"
   },
+  "src.ecfr.38_part4_2026_08_27": {
+   "kind": "primary",
+   "origin": "https://www.ecfr.gov/api/versioner/v1/full/2026-08-27/title-38.xml?part=4",
+   "tier": 1,
+   "title": "38 CFR Part 4 \u2014 eCFR snapshot, amended through 2026-08-27 (sections 4.71a, 4.73, 4.79, 4.87, 4.88b, 4.97, 4.104, 4.117, 4.118, 4.119, 4.124a)"
+  },
   "src.gov.master_record": {
    "kind": "governance",
    "origin": "doc artifact 86ed77cc-b80a-4cbe-8651-30a663c026cf",

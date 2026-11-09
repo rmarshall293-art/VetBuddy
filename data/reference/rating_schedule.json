@@ -1,15 +1,16 @@
 {
  "dataset": "rating_schedule",
- "title": "38 CFR Part 4 diagnostic codes and criteria text (2020 edition, transcribed)",
+ "title": "38 CFR Part 4 diagnostic codes and criteria text (2020 edition, transcribed; 113 codes re-transcribed from eCFR 2026-08-27)",
  "version": "2020-07-01",
- "as_of": "2026-10-28",
+ "as_of": "2026-11-09",
  "review_by": "2027-01-31",
  "default_status": "UNVERIFIED",
  "sources": [
   "src.legacy.va_rating_app",
-  "src.cfr.38_part4"
+  "src.cfr.38_part4",
+  "src.ecfr.38_part4_2026_08_27"
  ],
- "rule": "Diagnostic codes, names and criteria text of 38 CFR Part 4 as transcribed (2020 edition) inside the uploaded va-rating-app.html. Reference for explaining how VA describes criteria; never applied to a veteran's symptoms or records (governance section 5). Every row is UNVERIFIED until re-checked against current eCFR by a named reviewer; digestive codes are SUPERSEDED. The upload's symptom-keyword table was deliberately not imported.",
+ "rule": "Diagnostic codes, names and criteria text of 38 CFR Part 4 as transcribed (2020 edition) inside the uploaded va-rating-app.html. Reference for explaining how VA describes criteria; never applied to a veteran's symptoms or records (governance section 5). Every row is UNVERIFIED until re-checked against current eCFR by a named reviewer; digestive codes are SUPERSEDED. The upload's symptom-keyword table was deliberately not imported. Two-rating codes (38 CFR 4.69, dominant and non-dominant side) and codes damaged by the 2020 PDF parse are re-transcribed from the saved eCFR snapshot (amended through 2026-08-27) by scripts/rebuild_rating_criteria.py: there `percent` is the major (dominant) side and `percent_minor` the minor side. Each such code says so in its status_note. Those codes reflect current law; the rest remain the 2020 text.",
  "label": "This is VA's published regulation, shown for reference. It explains how VA describes criteria; it is not an assessment of your condition.",
  "codes": [
   {
@@ -87,17 +88,18 @@
    "criteria": [
     {
      "percent": 20,
-     "text": "Degenerative arthritis established by X-ray findings will be rated on the basis of limitation of motion under the appropriate diagnostic codes for the specific joint or joints involved (DC 5200 etc.). When however, the limitation of motion of the specific joint or joints involved is noncompensable under the appropriate diagnostic codes, a rating of 10 pct is for application for each such major joint or group of minor joints affected by limitation of motion, to be combined, not added under diagnostic code 5003. Limitation of motion must be objectively confirmed by findings such as swelling, muscle spasm, or satisfactory evidence of painful motion. In the absence of limitation of motion, rate as below: ACUTE, SUBACUTE, ORCHRONICDISEASES— Continued Rating With X-ray evidence of involvement of 2 or more major joints or 2 or more minor joint groups, with occasional incapacitating exacerbations"
+     "text": "Degenerative arthritis established by X-ray findings will be rated on the basis of limitation of motion under the appropriate diagnostic codes for the specific joint or joints involved (DC 5200 etc.). When however, the limitation of motion of the specific joint or joints involved is noncompensable under the appropriate diagnostic codes, a rating of 10 pct is for application for each such major joint or group of minor joints affected by limitation of motion, to be combined, not added under diagnostic code 5003. Limitation of motion must be objectively confirmed by findings such as swelling, muscle spasm, or satisfactory evidence of painful motion. In the absence of limitation of motion, rate as below: With X-ray evidence of involvement of 2 or more major joints or 2 or more minor joint groups, with occasional incapacitating exacerbations"
     },
     {
      "percent": 10,
-     "text": "With X-ray evidence of involvement of 2 or more major joints or 2 or more minor joint groups"
+     "text": "Degenerative arthritis established by X-ray findings will be rated on the basis of limitation of motion under the appropriate diagnostic codes for the specific joint or joints involved (DC 5200 etc.). When however, the limitation of motion of the specific joint or joints involved is noncompensable under the appropriate diagnostic codes, a rating of 10 pct is for application for each such major joint or group of minor joints affected by limitation of motion, to be combined, not added under diagnostic code 5003. Limitation of motion must be objectively confirmed by findings such as swelling, muscle spasm, or satisfactory evidence of painful motion. In the absence of limitation of motion, rate as below: With X-ray evidence of involvement of 2 or more major joints or 2 or more minor joint groups"
     }
    ],
    "has_criteria": true,
    "name": "Arthritis, degenerative (hypertrophic or osteoarthritis)",
    "notes": "NOTE(1): The 20 pct and 10 pct ratings based on X-ray findings, above, will not be combined with ratings based on limitation of motion. NOTE(2): The 20 pct and 10 pct ratings based on X-ray findings, above, will not be utilized in rating conditions listed under diagnostic codes 5013 to 5024, inclusive.",
-   "subsection": "Acute, Subacute, or Chronic Diseases"
+   "subsection": "Acute, Subacute, or Chronic Diseases",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -344,21 +346,25 @@
    "criteria": [
     {
      "percent": 100,
-     "text": "Prosthetic replacement of the shoulder joint: For 1 year following implantation of prosthesis 100"
+     "text": "Prosthetic replacement of the shoulder joint: For 1 year following implantation of prosthesis",
+     "percent_minor": 100
     },
     {
-     "percent": 50,
-     "text": "With chronic residuals consisting of severe, painful motion or weakness in the affected extremity 60"
+     "percent": 60,
+     "text": "Prosthetic replacement of the shoulder joint: With chronic residuals consisting of severe, painful motion or weakness in the affected extremity",
+     "percent_minor": 50
     },
     {
-     "percent": 20,
-     "text": "With intermediate degrees of residual weakness, pain or limitation of motion, rate by analogy to diagnostic codes 5200 and 5203. Minimum rating  30"
+     "percent": 30,
+     "text": "Prosthetic replacement of the shoulder joint: Minimum rating",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Shoulder replacement (prosthesis)",
    "notes": "",
-   "subsection": "Prosthetic Implants"
+   "subsection": "Prosthetic Implants",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -367,21 +373,25 @@
    "criteria": [
     {
      "percent": 100,
-     "text": "Prosthetic replacement of the elbow joint: For 1 year following implantation of prosthesis 100"
+     "text": "Prosthetic replacement of the elbow joint: For 1 year following implantation of prosthesis",
+     "percent_minor": 100
     },
     {
-     "percent": 40,
-     "text": "With chronic residuals consisting of severe painful motion or weakness in the affected extremity  50"
+     "percent": 50,
+     "text": "Prosthetic replacement of the elbow joint: With chronic residuals consisting of severe painful motion or weakness in the affected extremity",
+     "percent_minor": 40
     },
     {
-     "percent": 20,
-     "text": "With intermediate degrees of residual weakness, pain or limitation of motion rate by analogy to diagnostic codes 5205 through 5208. Minimum evaluation  30"
+     "percent": 30,
+     "text": "Prosthetic replacement of the elbow joint: Minimum evaluation",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Elbow replacement (prosthesis)",
    "notes": "",
-   "subsection": "Prosthetic Implants"
+   "subsection": "Prosthetic Implants",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -390,17 +400,25 @@
    "criteria": [
     {
      "percent": 100,
-     "text": "For 1 year following implantation of prosthesis 100"
+     "text": "Prosthetic replacement of wrist joint: For 1 year following implantation of prosthesis",
+     "percent_minor": 100
     },
     {
-     "percent": 30,
-     "text": "With chronic residuals consisting of severe, painful motion or weakness in the affected extremity 40"
+     "percent": 40,
+     "text": "Prosthetic replacement of wrist joint: With chronic residuals consisting of severe, painful motion or weakness in the affected extremity",
+     "percent_minor": 30
+    },
+    {
+     "percent": 20,
+     "text": "Prosthetic replacement of wrist joint: Minimum rating",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Wrist replacement (prosthesis)",
    "notes": "With intermediate degrees of residual weakness, pain or limitation of motion, rate by analogy to diagnostic code 5214. Minimum rating 20 20 5106 Anatomical loss of both hands NOTE: The 100 pct rating for 1 year following implantation of prosthesis will commence after initial grant of the 1month total rating assigned under following hospital discharge.",
-   "subsection": "Prosthetic Implants"
+   "subsection": "Prosthetic Implants",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -408,22 +426,31 @@
    "code": "5054",
    "criteria": [
     {
+     "percent": 100,
+     "text": "For 4 months following implantation of prosthesis or resurfacing"
+    },
+    {
+     "percent": 90,
+     "text": "Prosthetic replacement of the head of the femur or of the acetabulum: Following implantation of prosthesis with painful motion or weakness such as to require the use of crutches (Table note: Also entitled to special monthly compensation.)"
+    },
+    {
      "percent": 70,
-     "text": "Prosthetic replacement of the head of the femur or of the acetabulum: For 1 year following implantation of prosthesis Following implantation of prosthesis with painful motion or weakness such as to require the use of crutches 190 §4.71a PROSTHETICIMPLANTS—Continued Rating Major Minor Markedly severe residual weakness, pain or limitation of motion following implantation of prosthesis"
+     "text": "Prosthetic replacement of the head of the femur or of the acetabulum: Markedly severe residual weakness, pain or limitation of motion following implantation of prosthesis"
     },
     {
      "percent": 50,
-     "text": "Moderately severe residuals of weakness, pain or limitation of motion"
+     "text": "Prosthetic replacement of the head of the femur or of the acetabulum: Moderately severe residuals of weakness, pain or limitation of motion"
     },
     {
      "percent": 30,
-     "text": "Minimum rating"
+     "text": "Prosthetic replacement of the head of the femur or of the acetabulum: Minimum evaluation, total replacement only"
     }
    ],
    "has_criteria": true,
    "name": "Hip replacement (prosthesis)",
    "notes": "",
-   "subsection": "Prosthetic Implants"
+   "subsection": "Prosthetic Implants",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -555,111 +582,193 @@
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5120",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 100,
+     "text": "Forequarter amputation (involving complete removal of the humerus along with any portion of the scapula, clavicle, and/or ribs) (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 100
+    },
+    {
+     "percent": 90,
+     "text": "Disarticulation (involving complete removal of the humerus only) (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 90
+    }
+   ],
+   "has_criteria": true,
    "name": "Disarticulation",
    "notes": "190 190",
-   "subsection": "Amputations: Upper Extremity"
+   "subsection": "Amputations: Upper Extremity",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5121",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 90,
+     "text": "Above insertion of deltoid (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 80
+    }
+   ],
+   "has_criteria": true,
    "name": "Above insertion of deltoid",
    "notes": "190 180",
-   "subsection": "Amputations: Upper Extremity"
+   "subsection": "Amputations: Upper Extremity",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5122",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 80,
+     "text": "Below insertion of deltoid (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 70
+    }
+   ],
+   "has_criteria": true,
    "name": "Below insertion of deltoid",
    "notes": "180 170 Forearm, amputation of:",
-   "subsection": "Amputations: Upper Extremity"
+   "subsection": "Amputations: Upper Extremity",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5123",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 80,
+     "text": "Above insertion of pronator teres (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 70
+    }
+   ],
+   "has_criteria": true,
    "name": "Above insertion of pronator teres",
    "notes": "180 170 5142 Thumb and index",
-   "subsection": "Amputations: Upper Extremity"
+   "subsection": "Amputations: Upper Extremity",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5124",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 70,
+     "text": "Below insertion of pronator teres (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 60
+    }
+   ],
+   "has_criteria": true,
    "name": "Below insertion of pronator teres",
    "notes": "170 160 5143 Thumb and long",
-   "subsection": "Amputations: Upper Extremity"
+   "subsection": "Amputations: Upper Extremity",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5125",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 70,
+     "text": "Hand, loss of use of (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 60
+    }
+   ],
+   "has_criteria": true,
    "name": "Hand, loss of use of",
    "notes": "170 160 5144 Thumb and ring",
-   "subsection": "Amputations: Upper Extremity"
+   "subsection": "Amputations: Upper Extremity",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5126",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 70,
+     "text": "Five digits of one hand, amputation of (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 60
+    }
+   ],
+   "has_criteria": true,
    "name": "Five digits of one hand",
    "notes": "amputation of 170 160 5148 Index and little Four digits of one hand, amputation of:",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5127",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 70,
+     "text": "Thumb, index, long and ring (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 60
+    }
+   ],
+   "has_criteria": true,
    "name": "Thumb, index, long and ring",
    "notes": "170 160 5150 Long and little",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5128",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 70,
+     "text": "Thumb, index, long and little (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 60
+    }
+   ],
+   "has_criteria": true,
    "name": "Thumb, index, long and little",
    "notes": "170 160 5151 Ring and little",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5129",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 70,
+     "text": "Thumb, index, ring and little (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 60
+    }
+   ],
+   "has_criteria": true,
    "name": "Thumb, index, ring and little",
    "notes": "170 160",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5130",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 70,
+     "text": "Thumb, long, ring and little (Table note: Entitled to special monthly compensation.)",
+     "percent_minor": 60
+    }
+   ],
+   "has_criteria": true,
    "name": "Thumb, long, ring and little",
    "notes": "170 160",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -667,14 +776,16 @@
    "code": "5131",
    "criteria": [
     {
-     "percent": 50,
-     "text": "60"
+     "percent": 60,
+     "text": "Index, long, ring and little",
+     "percent_minor": 50
     }
    ],
    "has_criteria": true,
    "name": "Index, long, ring and little",
    "notes": "Three digits of one hand, amputation of:",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -682,14 +793,16 @@
    "code": "5132",
    "criteria": [
     {
-     "percent": 50,
-     "text": "60"
+     "percent": 60,
+     "text": "Thumb, index and long",
+     "percent_minor": 50
     }
    ],
    "has_criteria": true,
    "name": "Thumb, index and long",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -697,14 +810,16 @@
    "code": "5133",
    "criteria": [
     {
-     "percent": 50,
-     "text": "60"
+     "percent": 60,
+     "text": "Thumb, index and ring",
+     "percent_minor": 50
     }
    ],
    "has_criteria": true,
    "name": "Thumb, index and ring",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -712,14 +827,16 @@
    "code": "5134",
    "criteria": [
     {
-     "percent": 50,
-     "text": "60"
+     "percent": 60,
+     "text": "Thumb, index and little",
+     "percent_minor": 50
     }
    ],
    "has_criteria": true,
    "name": "Thumb, index and little",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -727,14 +844,16 @@
    "code": "5135",
    "criteria": [
     {
-     "percent": 50,
-     "text": "60"
+     "percent": 60,
+     "text": "Thumb, long and ring",
+     "percent_minor": 50
     }
    ],
    "has_criteria": true,
    "name": "Thumb, long and ring",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -742,28 +861,33 @@
    "code": "5136",
    "criteria": [
     {
-     "percent": 50,
-     "text": "60"
-    },
-    {
-     "percent": 50,
-     "text": "AMPUTATIONS: UPPEREXTREMITY—Continued Rating Major Minor 60"
+     "percent": 60,
+     "text": "Thumb, long and little",
+     "percent_minor": 50
     }
    ],
    "has_criteria": true,
    "name": "Thumb, long and little",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": null,
    "code": "5137",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 60,
+     "text": "Thumb, ring and little",
+     "percent_minor": 50
+    }
+   ],
+   "has_criteria": true,
    "name": "Thumb, ring and little",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -771,14 +895,16 @@
    "code": "5138",
    "criteria": [
     {
-     "percent": 40,
-     "text": "50"
+     "percent": 50,
+     "text": "Index, long and ring",
+     "percent_minor": 40
     }
    ],
    "has_criteria": true,
    "name": "Index, long and ring",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -786,14 +912,16 @@
    "code": "5139",
    "criteria": [
     {
-     "percent": 40,
-     "text": "50"
+     "percent": 50,
+     "text": "Index, long and little",
+     "percent_minor": 40
     }
    ],
    "has_criteria": true,
    "name": "Index, long and little",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -801,14 +929,16 @@
    "code": "5140",
    "criteria": [
     {
-     "percent": 40,
-     "text": "50"
+     "percent": 50,
+     "text": "Index, ring and little",
+     "percent_minor": 40
     }
    ],
    "has_criteria": true,
    "name": "Index, ring and little",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -816,56 +946,67 @@
    "code": "5141",
    "criteria": [
     {
-     "percent": 30,
-     "text": "40"
-    },
-    {
      "percent": 40,
-     "text": "Two digits of one hand, amputation of: 50"
-    },
-    {
-     "percent": 40,
-     "text": "50"
-    },
-    {
-     "percent": 40,
-     "text": "50"
+     "text": "Long, ring and little",
+     "percent_minor": 30
     }
    ],
    "has_criteria": true,
    "name": "Long, ring and little",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": null,
    "code": "5142",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 50,
+     "text": "Thumb and index",
+     "percent_minor": 40
+    }
+   ],
+   "has_criteria": true,
    "name": "Thumb and index",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": null,
    "code": "5143",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 50,
+     "text": "Thumb and long",
+     "percent_minor": 40
+    }
+   ],
+   "has_criteria": true,
    "name": "Thumb and long",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": null,
    "code": "5144",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 50,
+     "text": "Thumb and ring",
+     "percent_minor": 40
+    }
+   ],
+   "has_criteria": true,
    "name": "Thumb and ring",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -873,14 +1014,16 @@
    "code": "5145",
    "criteria": [
     {
-     "percent": 40,
-     "text": "50"
+     "percent": 50,
+     "text": "Thumb and little",
+     "percent_minor": 40
     }
    ],
    "has_criteria": true,
    "name": "Thumb and little",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -888,14 +1031,16 @@
    "code": "5146",
    "criteria": [
     {
-     "percent": 30,
-     "text": "40"
+     "percent": 40,
+     "text": "Index and long",
+     "percent_minor": 30
     }
    ],
    "has_criteria": true,
    "name": "Index and long",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -903,28 +1048,33 @@
    "code": "5147",
    "criteria": [
     {
-     "percent": 30,
-     "text": "40"
-    },
-    {
-     "percent": 30,
-     "text": "40"
+     "percent": 40,
+     "text": "Index and ring",
+     "percent_minor": 30
     }
    ],
    "has_criteria": true,
    "name": "Index and ring",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": null,
    "code": "5148",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 40,
+     "text": "Index and little",
+     "percent_minor": 30
+    }
+   ],
+   "has_criteria": true,
    "name": "Index and little",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -932,42 +1082,50 @@
    "code": "5149",
    "criteria": [
     {
-     "percent": 20,
-     "text": "30"
-    },
-    {
-     "percent": 20,
-     "text": "30"
-    },
-    {
-     "percent": 20,
-     "text": "30"
+     "percent": 30,
+     "text": "Long and ring",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Long and ring",
    "notes": "(a) The ratings for multiple finger amputations apply to amputations at the proximal interphalangeal joints or through proximal phalanges.. (b) Amputation through middle phalanges will be rated as prescribed for unfavorable ankylosis of the fingers.. Department of Veterans Affairs AMPUTATIONS: Rating Major Minor (c) Amputations at distal joints, or through distal phalanges, other than negligible losses, will be rated as prescribed for favorable ankylosis of the fingers.. (d) Amputation or resection of metacarpal bones (more than one-half the bone lost) in multiple fingers injuries will require a rating of 10 percent added to (not combined with) the ratings, multiple finger amputations, subject to the amputation rule applied to the forearm. (e) Combinations of finger amputations at various levels, or finger amputations with ankylosis or limitation of motion of the fingers will be rated on the basis of the grade of disability; i.e., amputation, unfavorable ankylosis, most representative of the levels or combinations. With an even number of fingers involved, and adjacent grades of disability, select the higher of the two grades. (f) Loss of use of the hand will be held to exist when no effective function remains other than that which would be equally well served by an amputation stump with a suitable prosthetic appliance.",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": null,
    "code": "5150",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 30,
+     "text": "Long and little",
+     "percent_minor": 20
+    }
+   ],
+   "has_criteria": true,
    "name": "Long and little",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": null,
    "code": "5151",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 30,
+     "text": "Ring and little",
+     "percent_minor": 20
+    }
+   ],
+   "has_criteria": true,
    "name": "Ring and little",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -975,22 +1133,26 @@
    "code": "5152",
    "criteria": [
     {
+     "percent": 40,
+     "text": "With metacarpal resection",
+     "percent_minor": 30
+    },
+    {
      "percent": 30,
-     "text": "§4.71a AMPUTATIONS: UPPEREXTREMITY—Continued Rating Major Minor With metacarpal resection 40"
+     "text": "At metacarpophalangeal joint or through proximal phalanx",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "At metacarpophalangeal joint or through proximal phalanx  30"
-    },
-    {
-     "percent": 20,
-     "text": "At distal joint or through distal phalanx 20"
+     "text": "At distal joint or through distal phalanx",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Thumb",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -998,22 +1160,26 @@
    "code": "5153",
    "criteria": [
     {
-     "percent": 20,
-     "text": ", amputation of With metacarpal resection (more than one-half the bone lost) 30"
+     "percent": 30,
+     "text": "With metacarpal resection (more than one-half the bone lost)",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Without metacarpal resection, at proximal interphalangeal joint or proximal thereto 20"
+     "text": "Without metacarpal resection, at proximal interphalangeal joint or proximal thereto",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Through middle phalanx or at distal joint 10"
+     "text": "Through middle phalanx or at distal joint",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Index finger",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1022,17 +1188,20 @@
    "criteria": [
     {
      "percent": 20,
-     "text": "With metacarpal resection (more than one-half the bone lost) 20"
+     "text": "With metacarpal resection (more than one-half the bone lost)",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Without metacarpal resection, at proximal interphalangeal joint or proximal thereto 10"
+     "text": "Without metacarpal resection, at proximal interphalangeal joint or proximal thereto",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Long finger",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1041,17 +1210,20 @@
    "criteria": [
     {
      "percent": 20,
-     "text": "With metacarpal resection (more than one-half the bone lost) 20"
+     "text": "With metacarpal resection (more than one-half the bone lost)",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Without metacarpal resection, at proximal interphalangeal joint or proximal thereto 10"
+     "text": "Without metacarpal resection, at proximal interphalangeal joint or proximal thereto",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Ring finger",
    "notes": "",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1060,17 +1232,20 @@
    "criteria": [
     {
      "percent": 20,
-     "text": "With metacarpal resection (more than one-half the bone lost) 20"
+     "text": "With metacarpal resection (more than one-half the bone lost)",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Without metacarpal resection, at proximal interphalangeal joint or proximal thereto 10"
+     "text": "Without metacarpal resection, at proximal interphalangeal joint or proximal thereto",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Little finger",
    "notes": "NOTE: The single finger amputation ratings are the only applicable ratings for amputations of whole or part of single fingers. 1Entitled to special monthly compensation. Department of Veterans Affairs AMPUTATIONS: LOWEREXTREMITY Rating Thigh, amputation of:",
-   "subsection": "Multiple Finger Amputations"
+   "subsection": "Multiple Finger Amputations",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1226,11 +1401,28 @@
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": "38 CFR 4.71a",
    "code": "5200",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 50,
+     "text": "Unfavorable, abduction limited to 25° from side",
+     "percent_minor": 40
+    },
+    {
+     "percent": 40,
+     "text": "Intermediate between favorable and unfavorable",
+     "percent_minor": 30
+    },
+    {
+     "percent": 30,
+     "text": "Favorable, abduction to 60°, can reach mouth and head",
+     "percent_minor": 20
+    }
+   ],
+   "has_criteria": true,
    "name": "Scapulohumeral articulation, ankylosis",
    "notes": "of: NOTE: The scapula and humerus move as one piece. Unfavorable, abduction limited to 25° from side 50 40 Intermediate between favorable and unfavorable 40 30 Favorable, abduction to 60°, can reach mouth and head 30 20",
-   "subsection": "Shoulder and Arm"
+   "subsection": "Shoulder and Arm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1238,22 +1430,26 @@
    "code": "5201",
    "criteria": [
     {
+     "percent": 40,
+     "text": "Flexion and/or abduction limited to 25° from side",
+     "percent_minor": 30
+    },
+    {
      "percent": 30,
-     "text": "To 25° from side 40"
+     "text": "Midway between side and shoulder level (flexion and/or abduction limited to 45°)",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Midway between side and shoulder level  30"
-    },
-    {
-     "percent": 20,
-     "text": "At shoulder level  20"
+     "text": "At shoulder level (flexion and/or abduction limited to 90°)",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Arm, limitation of motion",
    "notes": "",
-   "subsection": "Shoulder and Arm"
+   "subsection": "Shoulder and Arm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1262,37 +1458,45 @@
    "criteria": [
     {
      "percent": 80,
-     "text": "Loss of head of (flail shoulder)"
+     "text": "Loss of head of (flail shoulder)",
+     "percent_minor": 70
+    },
+    {
+     "percent": 60,
+     "text": "Nonunion of (false flail joint)",
+     "percent_minor": 50
     },
     {
      "percent": 50,
-     "text": "Nonunion of (false flail joint)  60"
+     "text": "Fibrous union of",
+     "percent_minor": 40
     },
     {
-     "percent": 40,
-     "text": "Fibrous union of  50"
-    },
-    {
-     "percent": 20,
-     "text": "Recurrent dislocation of at scapulohumeral joint. With frequent episodes and guarding of all arm movements 30"
-    },
-    {
-     "percent": 20,
-     "text": "With infrequent episodes, and guarding of movement only at shoulder level  20"
+     "percent": 30,
+     "text": "Recurrent dislocation of at scapulohumeral joint: With frequent episodes and guarding of all arm movements",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Malunion of: Marked deformity  30"
+     "text": "Recurrent dislocation of at scapulohumeral joint: With infrequent episodes and guarding of movement only at shoulder level (flexion and/or abduction at 90 °)",
+     "percent_minor": 20
+    },
+    {
+     "percent": 30,
+     "text": "Malunion of: Marked deformity",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Moderate deformity  20"
+     "text": "Malunion of: Moderate deformity",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Humerus, other impairment",
    "notes": "",
-   "subsection": "Shoulder and Arm"
+   "subsection": "Shoulder and Arm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1301,25 +1505,30 @@
    "criteria": [
     {
      "percent": 20,
-     "text": "Dislocation of 20"
+     "text": "Dislocation of",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Nonunion of: With loose movement  20"
+     "text": "Nonunion of: With loose movement",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Without loose movement  10"
+     "text": "Nonunion of: Without loose movement",
+     "percent_minor": 10
     },
     {
      "percent": 10,
-     "text": "Malunion of 10"
+     "text": "Malunion of",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Clavicle or scapula, impairment",
    "notes": "Or rate on impairment of function of contiguous joint. Rating Major Minor",
-   "subsection": "Shoulder and Arm"
+   "subsection": "Shoulder and Arm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1327,22 +1536,26 @@
    "code": "5205",
    "criteria": [
     {
+     "percent": 60,
+     "text": "Unfavorable, at an angle of less than 50° or with complete loss of supination or pronation",
+     "percent_minor": 50
+    },
+    {
      "percent": 50,
-     "text": "Unfavorable, at an angle of less than 50° or with complete loss of supination or pronation 60"
+     "text": "Intermediate, at an angle of more than 90°, or between 70° and 50°",
+     "percent_minor": 40
     },
     {
      "percent": 40,
-     "text": "Intermediate, at an angle of more than 9 0 ° , o r b e t w e e n 7 0 ° a n d 5 0 ° . . .. .. . .. .. .. . 50"
-    },
-    {
-     "percent": 30,
-     "text": "Fa v o r a b l e , a t a n a n g l e b e tw e e n 9 0 ° a n d 70°  40"
+     "text": "Favorable, at an angle between 90° and 70°",
+     "percent_minor": 30
     }
    ],
    "has_criteria": true,
    "name": "Elbow, ankylosis",
    "notes": "",
-   "subsection": "Elbow and Forearm"
+   "subsection": "Elbow and Forearm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1350,34 +1563,41 @@
    "code": "5206",
    "criteria": [
     {
+     "percent": 50,
+     "text": "Flexion limited to 45°",
+     "percent_minor": 40
+    },
+    {
      "percent": 40,
-     "text": "Flexion limited to 45° 50"
+     "text": "Flexion limited to 55°",
+     "percent_minor": 30
     },
     {
      "percent": 30,
-     "text": "Flexion limited to 55°  40"
+     "text": "Flexion limited to 70°",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Flexion limited to 70°  30"
-    },
-    {
-     "percent": 20,
-     "text": "Flexion limited to 90°  20"
+     "text": "Flexion limited to 90°",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Flexion limited to 100°  10"
+     "text": "Flexion limited to 100°",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "Flexion limited to 110°  0"
+     "text": "Flexion limited to 110°",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Forearm, limitation of flexion",
    "notes": "",
-   "subsection": "Elbow and Forearm"
+   "subsection": "Elbow and Forearm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1385,34 +1605,41 @@
    "code": "5207",
    "criteria": [
     {
+     "percent": 50,
+     "text": "Extension limited to 110°",
+     "percent_minor": 40
+    },
+    {
      "percent": 40,
-     "text": "Extension limited to 110° 50"
+     "text": "Extension limited to 100°",
+     "percent_minor": 30
     },
     {
-     "percent": 0,
-     "text": "E x t e n s i o n l i m i t e d t o 1 0 0° . . . . . . . . . . . . . . . . . . . . . . . 4 0 3"
-    },
-    {
-     "percent": 0,
-     "text": "E x t e n s i o n l i m i t e d t o 9 0° .. . . . . . . . . . . . . . . . . . . . . . . . 3 0 2"
+     "percent": 30,
+     "text": "Extension limited to 90°",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Extension limited to 75°  20"
+     "text": "Extension limited to 75°",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Extension limited to 60°  10"
+     "text": "Extension limited to 60°",
+     "percent_minor": 10
     },
     {
      "percent": 10,
-     "text": "Extension limited to 45°  10"
+     "text": "Extension limited to 45°",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Forearm, limitation of extension",
    "notes": "",
-   "subsection": "Elbow and Forearm"
+   "subsection": "Elbow and Forearm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1421,13 +1648,15 @@
    "criteria": [
     {
      "percent": 20,
-     "text": "to 100° and extension to 45° 20"
+     "text": "Forearm, flexion limited to 100° and extension to 45°",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Forearm, flexion limited",
    "notes": "",
-   "subsection": "Elbow and Forearm"
+   "subsection": "Elbow and Forearm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1435,18 +1664,21 @@
    "code": "5209",
    "criteria": [
     {
-     "percent": 50,
-     "text": "Flail joint 60"
+     "percent": 60,
+     "text": "Elbow, other impairment of Flail joint",
+     "percent_minor": 50
     },
     {
      "percent": 20,
-     "text": "§4.71a THEELBOWANDFOREARM—Continued Rating Major Minor Joint fracture, with marked cubitus varus or cubitus valgus deformity or with ununited fracture of head of radius  20"
+     "text": "Joint fracture, with marked cubitus varus or cubitus valgus deformity or with ununited fracture of head of radius",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Elbow, other impairment",
    "notes": "",
-   "subsection": "Elbow and Forearm"
+   "subsection": "Elbow and Forearm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1454,14 +1686,16 @@
    "code": "5210",
    "criteria": [
     {
-     "percent": 40,
-     "text": "of, with flail false joint 50"
+     "percent": 50,
+     "text": "Radius and ulna, nonunion of, with flail false joint",
+     "percent_minor": 40
     }
    ],
    "has_criteria": true,
    "name": "Radius and ulna, nonunion",
    "notes": "",
-   "subsection": "Elbow and Forearm"
+   "subsection": "Elbow and Forearm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1469,52 +1703,63 @@
    "code": "5211",
    "criteria": [
     {
-     "percent": 30,
-     "text": "Nonunion in upper half, with false movement: With loss of bone substance (1 inch (2.5 cms.) or more) and marked deformity 40"
-    },
-    {
-     "percent": 20,
-     "text": "Without loss of bone substance or deformity 30"
-    },
-    {
-     "percent": 20,
-     "text": "Nonunion in lower half  20"
-    },
-    {
-     "percent": 10,
-     "text": "Malunion of, with bad alignment 10"
+     "percent": 40,
+     "text": "Nonunion in upper half, with false movement: With loss of bone substance (1 inch (2.5 cms.) or more) and marked deformity",
+     "percent_minor": 30
     },
     {
      "percent": 30,
-     "text": "70 5212 Radius, impairment of: Nonunion in lower half, with false movement: With loss of bone substance (1 inch (2.5 cms.) or more) and marked deformity 40"
+     "text": "Nonunion in upper half, with false movement: Without loss of bone substance or deformity",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Without loss of bone substance or deformity 30"
-    },
-    {
-     "percent": 20,
-     "text": "Nonunion in upper half  20"
+     "text": "Nonunion in upper half, with false movement: Nonunion in lower half",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Malunion of, with bad alignment 10"
+     "text": "Nonunion in upper half, with false movement: Malunion of, with bad alignment",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Ulna, impairment",
    "notes": "",
-   "subsection": "Elbow and Forearm"
+   "subsection": "Elbow and Forearm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
    "cfr_section": null,
    "code": "5212",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 40,
+     "text": "Nonunion in lower half, with false movement: With loss of bone substance (1 inch (2.5 cms.) or more) and marked deformity",
+     "percent_minor": 30
+    },
+    {
+     "percent": 30,
+     "text": "Nonunion in lower half, with false movement: Without loss of bone substance or deformity",
+     "percent_minor": 20
+    },
+    {
+     "percent": 20,
+     "text": "Nonunion in lower half, with false movement: Nonunion in upper half",
+     "percent_minor": 20
+    },
+    {
+     "percent": 10,
+     "text": "Nonunion in lower half, with false movement: Malunion of, with bad alignment",
+     "percent_minor": 10
+    }
+   ],
+   "has_criteria": true,
    "name": "Radius, impairment",
    "notes": "",
-   "subsection": "Elbow and Forearm"
+   "subsection": "Elbow and Forearm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1522,34 +1767,41 @@
    "code": "5213",
    "criteria": [
     {
+     "percent": 40,
+     "text": "Loss of (bone fusion): The hand fixed in supination or hyperpronation",
+     "percent_minor": 30
+    },
+    {
      "percent": 30,
-     "text": "Loss of (bone fusion): The hand fixed in supination or hyperpronation 40"
+     "text": "Loss of (bone fusion): The hand fixed in full pronation",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "The hand fixed in full pronation 30"
+     "text": "Loss of (bone fusion): The hand fixed near the middle of the arc or moderate pronation",
+     "percent_minor": 20
+    },
+    {
+     "percent": 30,
+     "text": "Limitation of pronation: Motion lost beyond middle of arc",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "The hand fixed near the middle of the arc or moderate pronation  20"
-    },
-    {
-     "percent": 20,
-     "text": "Limitation of pronation: Motion lost beyond middle of arc  30"
-    },
-    {
-     "percent": 20,
-     "text": "Motion lost beyond last quarter of arc, the hand does not approach full pronation 20"
+     "text": "Limitation of pronation: Motion lost beyond last quarter of arc, the hand does not approach full pronation",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Limitation of supination: To 30° or less  10"
+     "text": "Limitation of supination: To 30° or less",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Supination and pronation, impairment",
    "notes": "NOTE: In all the forearm and wrist injuries, codes 5205 through 5213, multiple impaired finger movements due to tendon tie-up, muscle or nerve injury, are to be separately rated and combined not to exceed rating for loss of use of hand. Rating Major Minor",
-   "subsection": "Elbow and Forearm"
+   "subsection": "Elbow and Forearm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1557,22 +1809,26 @@
    "code": "5214",
    "criteria": [
     {
+     "percent": 50,
+     "text": "Unfavorable, in any degree of palmar flexion, or with ulnar or radial deviation",
+     "percent_minor": 40
+    },
+    {
      "percent": 40,
-     "text": "Unfavorable, in any degree of palmar flexion, or with ulnar or radial deviation 50"
+     "text": "Any other position, except favorable",
+     "percent_minor": 30
     },
     {
      "percent": 30,
-     "text": "Any other position, except favorable  40"
-    },
-    {
-     "percent": 20,
-     "text": "Favorable in 20° to 30° dorsiflexion 30"
+     "text": "Favorable in 20° to 30° dorsiflexion",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Wrist, ankylosis",
    "notes": "NO T E : E x tr e m e l y u n f a v o r a b le a n k y lo s is w i ll b e r a te d a s l o s s o f u s e o f h a n d s under diagnostic code 5125.",
-   "subsection": "Wrist"
+   "subsection": "Wrist",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1581,21 +1837,20 @@
    "criteria": [
     {
      "percent": 10,
-     "text": "Dorsiflexion less than 15° 10"
+     "text": "Dorsiflexion less than 15°",
+     "percent_minor": 10
     },
     {
      "percent": 10,
-     "text": "Palmar flexion limited in line with forearm 10"
-    },
-    {
-     "percent": 30,
-     "text": "[[PAGE 438]] §4.71a MOTION OF SINGLE OR MULTIPLE DIGITS OF Rating Major Minor (1) For the index, long, ring, and little fingers (digits II, III, IV, and V), zero degrees of flexion represents the fingers fully extended, making a straight line with the rest of the hand. The position of function of the hand is with the wrist dorsiflexed 20 to"
+     "text": "Palmar flexion limited in line with forearm",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Wrist, limitation of motion",
    "notes": "degrees, the metacarpophalangeal and proximal interphalangeal joints flexed to 30 degrees, and the thumb (digit I) abducted and rotated so that the thumb pad faces the finger pads. Only joints in these positions are considered to be in favorable position. For digits II through V, the metacarpophalangeal joint has a range of zero to 90 degrees of flexion, the proximal interphalangeal joint has a range of zero to 100 degrees of flexion, and the distal (terminal) interphalangeal joint has a range of zero to 70 or 80 degrees of flexion (2) When two or more digits of the same hand are affected by any combination of amputation, ankylosis, or limitation of motion that is not otherwise specified in the rating schedule, the evaluation level assigned will be that which best represents the overall disability (i.e., amputation, unfavorable or favorable ankylosis, or limitation of motion), assigning the higher level of evaluation when the level of disability is equally balanced between one level and the next higher level (3) Evaluation of ankylosis of the index, long, ring, and little fingers: (i) If both the metacarpophalangeal and proximal interphalangeal joints of a digit are ankylosed, and either is in extension or full flexion, or there is rotation or angulation of a bone, evaluate as amputation without metacarpal resection, at proximal interphalangeal joint or proximal thereto (ii) If both the metacarpophalangeal and proximal interphalangeal joints of a digit are ankylosed, evaluate",
-   "subsection": "Wrist"
+   "subsection": "Wrist",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1603,14 +1858,16 @@
    "code": "5216",
    "criteria": [
     {
-     "percent": 50,
-     "text": ", unfavorable ankylosis of 60"
+     "percent": 60,
+     "text": "Five digits of one hand, unfavorable ankylosis of",
+     "percent_minor": 50
     }
    ],
    "has_criteria": true,
    "name": "Five digits of one hand",
    "notes": "Note: Also consider whether evaluation as amputation is warranted.",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1618,18 +1875,21 @@
    "code": "5217",
    "criteria": [
     {
-     "percent": 50,
-     "text": "Thumb and any three fingers 60"
+     "percent": 60,
+     "text": "Thumb and any three fingers",
+     "percent_minor": 50
     },
     {
-     "percent": 40,
-     "text": "Index, long, ring, and little fingers .. 50"
+     "percent": 50,
+     "text": "Index, long, ring, and little fingers",
+     "percent_minor": 40
     }
    ],
    "has_criteria": true,
    "name": "Four digits of one hand",
    "notes": "Note: Also consider whether evaluation as amputation is warranted.",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1637,22 +1897,26 @@
    "code": "5218",
    "criteria": [
     {
+     "percent": 50,
+     "text": "Thumb and any two fingers",
+     "percent_minor": 40
+    },
+    {
      "percent": 40,
-     "text": "Thumb and any two fingers 50"
+     "text": "Index, long, and ring; index, long, and little; or index, ring, and little fingers",
+     "percent_minor": 30
     },
     {
      "percent": 30,
-     "text": "Index, long, and ring; index, long, and little; or index, ring, and little fingers 40"
-    },
-    {
-     "percent": 20,
-     "text": "Long, ring, and little fingers  30"
+     "text": "Long, ring, and little fingers",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Three digits of one hand",
    "notes": "Note: Also consider whether evaluation as amputation is warranted.",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1660,22 +1924,26 @@
    "code": "5219",
    "criteria": [
     {
+     "percent": 40,
+     "text": "Thumb and any finger",
+     "percent_minor": 30
+    },
+    {
      "percent": 30,
-     "text": "Two digits of one hand, unfavorable ankylosis of: Thumb and any finger 40"
+     "text": "Index and long; index and ring; or index and little fingers",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "[[PAGE 439]] Department of Veterans Affairs MOTION OF SINGLE OR MULTIPLE DIGITS OF THEHAND—Continued Rating Major Minor Index and long; index and ring; or index and little fingers  30"
-    },
-    {
-     "percent": 20,
-     "text": "Long and ring; long and little; or ring and little fingers 20"
+     "text": "Long and ring; long and little; or ring and little fingers",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Two digits of one hand Multiple Digits: Favorable Anky- losis:",
    "notes": "Note: Also consider whether evaluation as amputation is warranted. II. Multiple Digits: Favorable Ankylosis",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1683,14 +1951,16 @@
    "code": "5220",
    "criteria": [
     {
-     "percent": 40,
-     "text": ", favorable ankylosis of 50"
+     "percent": 50,
+     "text": "Five digits of one hand, favorable ankylosis of",
+     "percent_minor": 40
     }
    ],
    "has_criteria": true,
    "name": "Five digits of one hand",
    "notes": "",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1698,18 +1968,21 @@
    "code": "5221",
    "criteria": [
     {
-     "percent": 40,
-     "text": "Thumb and any three fingers 50"
+     "percent": 50,
+     "text": "Thumb and any three fingers",
+     "percent_minor": 40
     },
     {
-     "percent": 30,
-     "text": "Index, long, ring, and little fingers .. 40"
+     "percent": 40,
+     "text": "Index, long, ring, and little fingers",
+     "percent_minor": 30
     }
    ],
    "has_criteria": true,
    "name": "Four digits of one hand",
    "notes": "",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1717,22 +1990,26 @@
    "code": "5222",
    "criteria": [
     {
+     "percent": 40,
+     "text": "Thumb and any two fingers",
+     "percent_minor": 30
+    },
+    {
      "percent": 30,
-     "text": "Thumb and any two fingers 40"
+     "text": "Index, long, and ring; index, long, and little; or index, ring, and little fingers",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Index, long, and ring; index, long, and little; or index, ring, and little fingers 30"
-    },
-    {
-     "percent": 20,
-     "text": "Long, ring and little fingers  20"
+     "text": "Long, ring and little fingers",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Three digits of one hand",
    "notes": "",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1740,22 +2017,26 @@
    "code": "5223",
    "criteria": [
     {
-     "percent": 20,
-     "text": "Thumb and any finger 30"
+     "percent": 30,
+     "text": "Thumb and any finger",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Index and long; index and ring; or index and little fingers  20"
+     "text": "Index and long; index and ring; or index and little fingers",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Long and ring; long and little; or ring and little fingers 10"
+     "text": "Long and ring; long and little; or ring and little fingers",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Two digits of one hand",
    "notes": "III. Ankylosis of Individual Digits",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1764,17 +2045,20 @@
    "criteria": [
     {
      "percent": 20,
-     "text": "Unfavorable 20"
+     "text": "Unfavorable",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Favorable  10"
+     "text": "Favorable",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Thumb",
    "notes": "Note: Also consider whether evaluation as amputation is warranted and whether an additional evaluation is warranted for resulting limitation of motion of other digits or interference with overall function of the hand.",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1783,13 +2067,15 @@
    "criteria": [
     {
      "percent": 10,
-     "text": "Unfavorable or favorable 10"
+     "text": "Unfavorable or favorable",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Index finger",
    "notes": "Note: Also consider whether evaluation as amputation is warranted and whether an additional evaluation is warranted for resulting limitation of motion of other digits or interference with overall function of the hand.",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1798,13 +2084,15 @@
    "criteria": [
     {
      "percent": 10,
-     "text": "Unfavorable or favorable"
+     "text": "Unfavorable or favorable",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Long finger",
    "notes": "Note: Also consider whether evaluation as amputation is warranted and whether an additional evaluation is warranted for resulting limitation of motion of other digits or interference with overall function of the hand.",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1813,13 +2101,15 @@
    "criteria": [
     {
      "percent": 0,
-     "text": "Unfavorable or favorable 0"
+     "text": "Unfavorable or favorable",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Ring or little finger",
    "notes": "MOTION OF SINGLE OR MULTIPLE DIGITS OF Rating Major Minor Note: Also consider whether evaluation as amputation is warranted and whether an additional evaluation is warranted for resulting limitation of motion of other digits or interference with overall function of the hand. IV. Limitation of Motion of Individual Digits",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1828,21 +2118,25 @@
    "criteria": [
     {
      "percent": 20,
-     "text": "With a gap of more than two inches (5.1 cm.) between the thumb pad and the fingers, with the thumb attempting to oppose the fingers 20"
+     "text": "With a gap of more than two inches (5.1 cm.) between the thumb pad and the fingers, with the thumb attempting to oppose the fingers",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "With a gap of one to two inches (2.5 to 5.1 cm.) between the thumb pad and the fingers, with the thumb attempting to oppose the fingers 10"
+     "text": "With a gap of one to two inches (2.5 to 5.1 cm.) between the thumb pad and the fingers, with the thumb attempting to oppose the fingers",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "With a gap of less than one inch (2.5 cm.) between the thumb pad and the fingers, with the thumb attempting to oppose the fingers 0"
+     "text": "With a gap of less than one inch (2.5 cm.) between the thumb pad and the fingers, with the thumb attempting to oppose the fingers",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Thumb",
    "notes": "",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1850,22 +2144,21 @@
    "code": "5229",
    "criteria": [
     {
-     "percent": 30,
-     "text": "With a gap of one inch (2.5 cm.) or more between the fingertip and the proximal transverse crease of the palm, with the finger flexed to the extent possible, or; with extension limited by more than"
-    },
-    {
      "percent": 10,
-     "text": "degrees 10"
+     "text": "With a gap of one inch (2.5 cm.) or more between the fingertip and the proximal transverse crease of the palm, with the finger flexed to the extent possible, or; with extension limited by more than 30 degrees",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "With a gap of less than one inch (2.5 cm.) between the fingertip and the proximal transverse crease of the palm, with the finger flexed to the extent possible, and; extension is limited by no more than 30 degrees 0"
+     "text": "With a gap of less than one inch (2.5 cm.) between the fingertip and the proximal transverse crease of the palm, with the finger flexed to the extent possible, and; extension is limited by no more than 30 degrees",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Index or long finger",
    "notes": "",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1874,37 +2167,15 @@
    "criteria": [
     {
      "percent": 0,
-     "text": "Any limitation of motion 0"
-    },
-    {
-     "percent": 100,
-     "text": "Rating General Rating Formula for Diseases and Injuries of the Spine 10 (For diagnostic codes 5235 to 5243 unless 5243 is evaluated under the Formula for Rating Intervertebral Disc Syndrome Based on Incapacitating Episodes): With or without symptoms such as pain (whther or not it radiates), stiffness, or aching in the area of the spine affected by residuals of injury or disease Unfavorable ankylosis of the entire spine"
-    },
-    {
-     "percent": 50,
-     "text": "Unfavorable ankylosis of the entire thoracolumbar spine"
-    },
-    {
-     "percent": 30,
-     "text": "[[PAGE 440]] §4.71a THESPINE—Continued Rating Unfavorable ankylosis of the entire cervical spine; or, forward flexion of the thoracolumbar spine"
-    },
-    {
-     "percent": 40,
-     "text": "degrees or less; or, favorable ankylosis of the entire thoracolumbar spine"
-    },
-    {
-     "percent": 30,
-     "text": "Forward flexion of the cervical spine 15 degrees or less; or, favorable ankylosis of the entire cervical spine"
-    },
-    {
-     "percent": 20,
-     "text": "Forward flexion of the thoracolumbar spine greater than 30 degrees but not greater than 60 degrees; or, forward flexion of the cervical spine greater than 15 degrees but not greater than 30 degrees; or, the combined range of motion of the thoracolumbar spine not greater than 120 degrees; or, the combined range of motion of the cervical spine not greater than 170 degrees; or, muscle spasm or guarding severe enough to result in an abnormal gait or abnormal spinal contour such as scoliosis, reversed lordosis, or abnormal kyphosis"
+     "text": "Any limitation of motion",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Ring or little finger",
    "notes": "Forward flexion of the thoracolumbar spine greater than 60 degrees but not greater than 85 degrees; or, forward flexion of the cervical spine greater than 30 degrees but not greater than 40 degrees; or, combined range of motion of the thoracolumbar spine greater than 120 degrees but not greater than 235 degrees; or, combined range of motion of the cervical spine greater than 170 degrees but not greater than 335 degrees; or, muscle spasm, guarding, or localized tenderness not resulting in abnormal gait or abnormal spinal contour; or, vertebral body fracture with loss of 50 percent or more of the height Note (1): Evaluate any associated objective neurologic abnormalities, including, but not limited to, bowel or bladder impairment, separately, under an appropriate diagnostic code. Rating Note (2): (See also Plate V.) For VA compensation purposes, normal forward flexion of the cervical spine is zero to 45 degrees, extension is zero to 45 degrees, left and right lateral flexion are zero to 45 degrees, and left and right lateral rotation are zero to 80 degrees. Normal forward flexion of the thoracolumbar spine is zero to 90 degrees, extension is zero to 30 degrees, left and right lateral flexion are zero to 30 degrees, and left and right lateral rotation are zero to 30 degrees. The combined range of motion refers to the sum of the range of forward flexion, extension, left and right lateral flexion, and left and right rotation. The normal combined range of motion of the cervical spi",
-   "subsection": "Limitation of Motion"
+   "subsection": "Limitation of Motion",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -1993,7 +2264,7 @@
    "criteria": [
     {
      "percent": 60,
-     "text": "Evaluate intervertebral disc syndrome (preoperatively or postoperatively) either under the General Rating Formula for Diseases and Injuries of the Spine or under the Formula for Rating Intervertebral Disc Syndrome Based on Incapacitating Episodes, whichever method results in the higher evaluation when all disabilities are combined under §4.25. [[PAGE 441]] Department of Veterans Affairs THESPINE—Continued Rating Formula for Rating Intervertebral Disc Syndrome Based on Incapacitating Episodes With incapacitating episodes having a total duration of at least 6 weeks during the past 12 months"
+     "text": "Evaluate intervertebral disc syndrome (preoperatively or postoperatively) either under the General Rating Formula for Diseases and Injuries of the Spine or under the Formula for Rating Intervertebral Disc Syndrome Based on Incapacitating Episodes, whichever method results in the higher evaluation when all disabilities are combined under §4.25. Formula for Rating Intervertebral Disc Syndrome Based on Incapacitating Episodes With incapacitating episodes having a total duration of at least 6 weeks during the past 12 months"
     },
     {
      "percent": 40,
@@ -2011,7 +2282,8 @@
    "has_criteria": true,
    "name": "Intervertebral disc syndrome",
    "notes": "Rating Note (1): For purposes of evaluations under diagnostic code 5243, an incapacitating episode is a period of acute signs and symptoms due to intervertebral disc syndrome that requires bed rest prescribed by a physician and treatment by a physician. Note (2): If intervertebral disc syndrome is present in more than one spinal segment, provided that the effects in each spinal segment are clearly distinct, evaluate each segment on the basis of incapacitating episodes or under the General Rating Formula for Diseases and Injuries of the Spine, whichever method results in a higher evaluation for that segment. >HPG/<300.30ua72re Department of Veterans Affairs Rating",
-   "subsection": "Spine"
+   "subsection": "Spine",
+   "status_note": "2020 transcription with PDF page headers removed; checked against eCFR 38 CFR Part 4, amended through 2026-08-27, which lists no rated rows under this code."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -2292,21 +2564,26 @@
     },
     {
      "percent": 30,
-     "text": "Malunion of: With marked knee or ankle disability"
+     "text": "Medial tibial stress syndrome (MTSS), or shin splints: Requiring treatment for no less than 12 consecutive months, and unresponsive to surgery and either shoe orthotics or other conservative treatment, both lower extremities"
     },
     {
      "percent": 20,
-     "text": "§4.71a THEKNEEANDLEG—Continued Rating With moderate knee or ankle disability"
+     "text": "Medial tibial stress syndrome (MTSS), or shin splints: Requiring treatment for no less than 12 consecutive months, and unresponsive to surgery and either shoe orthotics or other conservative treatment, one lower extremity"
     },
     {
      "percent": 10,
-     "text": "With slight knee or ankle disability"
+     "text": "Medial tibial stress syndrome (MTSS), or shin splints: Requiring treatment for no less than 12 consecutive months, and unresponsive to either shoe orthotics or other conservative treatment, one or both lower extremities"
+    },
+    {
+     "percent": 0,
+     "text": "Medial tibial stress syndrome (MTSS), or shin splints: Treatment less than 12 consecutive months, one or both lower extremities"
     }
    ],
    "has_criteria": true,
    "name": "Tibia and fibula, impairment",
    "notes": "",
-   "subsection": "Knee and Leg"
+   "subsection": "Knee and Leg",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -2450,7 +2727,7 @@
    "criteria": [
     {
      "percent": 50,
-     "text": "Pronounced; marked pronation, extreme tenderness of plantar surfaces of the feet, marked inward displacement and severe spasm of the tendo achillis on manipulation, not improved by orthopedic shoes or appliances. Bilateral"
+     "text": "Bilateral"
     },
     {
      "percent": 30,
@@ -2462,11 +2739,11 @@
     },
     {
      "percent": 20,
-     "text": "Unilateral"
+     "text": "Severe; objective evidence of marked deformity (pronation, abduction, etc.), pain on manipulation and use accentuated, indication of swelling on use, characteristic callosities: Unilateral"
     },
     {
      "percent": 10,
-     "text": "[[PAGE 444]] §4.72 THEFOOT—Continued Rating Moderate; weight-bearing line over or medial to great toe, inward bowing of the tendo achillis, pain on manipulation and use of the feet, bilateral or unilateral"
+     "text": "Moderate; weight-bearing line over or medial to great toe, inward bowing of the tendo achillis, pain on manipulation and use of the feet, bilateral or unilateral"
     },
     {
      "percent": 0,
@@ -2476,7 +2753,8 @@
    "has_criteria": true,
    "name": "Flatfoot, acquired",
    "notes": "",
-   "subsection": "The Foot"
+   "subsection": "The Foot",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE MUSCULOSKELETAL SYSTEM",
@@ -2704,26 +2982,31 @@
    "code": "5301",
    "criteria": [
     {
-     "percent": 30,
-     "text": "Group I. Function: Upward rotation of scapula; elevation of arm above shoulder level. Extrinsic muscles of shoulder girdle: (1) Trapezius; (2) levator scapulae; (3) serratus magnus. Severe 40"
+     "percent": 40,
+     "text": "Severe",
+     "percent_minor": 30
     },
     {
-     "percent": 20,
-     "text": "Moderately Severe 30"
+     "percent": 30,
+     "text": "Moderately Severe",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Moderate 10"
+     "text": "Moderate",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "Slight  0"
+     "text": "Slight",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Group I Function: Upward rotation of scapula",
    "notes": "",
-   "subsection": "Shoulder Girdle and Arm"
+   "subsection": "Shoulder Girdle and Arm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "MUSCLE INJURIES",
@@ -2731,26 +3014,31 @@
    "code": "5302",
    "criteria": [
     {
+     "percent": 40,
+     "text": "Severe",
+     "percent_minor": 30
+    },
+    {
      "percent": 30,
-     "text": "Group II. Function: Depression of arm from vertical overhead to hanging at side (1, 2); downward rotation of scapula (3, 4); 1 and 2 act with Group III in forward and backward swing of arm. Extrinsic muscles of shoulder girdle: (1) Pectoralis major II (costosternal); (2) latissimus dorsi and teres major (teres major, although technically an intrinsic muscle, is included with latissimus dorsi); (3) pectoralis minor; (4) rhomboid. Severe 40"
+     "text": "Moderately Severe",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Moderately Severe 30"
-    },
-    {
-     "percent": 20,
-     "text": "Moderate 20"
+     "text": "Moderate",
+     "percent_minor": 20
     },
     {
      "percent": 0,
-     "text": "Slight"
+     "text": "Slight",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Group II Function: Depression of arm",
    "notes": "",
-   "subsection": "Shoulder Girdle and Arm"
+   "subsection": "Shoulder Girdle and Arm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "MUSCLE INJURIES",
@@ -2758,26 +3046,31 @@
    "code": "5303",
    "criteria": [
     {
+     "percent": 40,
+     "text": "Severe",
+     "percent_minor": 30
+    },
+    {
      "percent": 30,
-     "text": "Group III. Function: Elevation and abduction of arm to level of shoulder; act with 1 and 2 of Group II in forward and backward swing of arm. Intrinsic muscles of shoulder girdle: (1) Pectoralis major I (clavicular); (2) deltoid. Severe 40"
+     "text": "Moderately Severe",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Moderately Severe 30"
-    },
-    {
-     "percent": 20,
-     "text": "Moderate 20"
+     "text": "Moderate",
+     "percent_minor": 20
     },
     {
      "percent": 0,
-     "text": "Slight  0"
+     "text": "Slight",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Group III Function: Elevation and abduction of arm",
    "notes": "",
-   "subsection": "Shoulder Girdle and Arm"
+   "subsection": "Shoulder Girdle and Arm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "MUSCLE INJURIES",
@@ -2785,26 +3078,31 @@
    "code": "5304",
    "criteria": [
     {
-     "percent": 20,
-     "text": "Group IV. Function: Stabilization of shoulder against injury in strong movements, holding head of humerus in socket; abduction; outward rotation and inward rotation of arm. Intrinsic muscles of shoulder girdle: (1) Supraspinatus; (2) infraspinatus and teres minor; (3) subscapularis; (4) coracobrachialis. Severe 30"
+     "percent": 30,
+     "text": "Severe",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Moderately Severe 20"
+     "text": "Moderately Severe",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Moderate 10"
+     "text": "Moderate",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "Slight"
+     "text": "Slight",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Group IV Function: Stabilization of shoulder",
    "notes": "",
-   "subsection": "Shoulder Girdle and Arm"
+   "subsection": "Shoulder Girdle and Arm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "MUSCLE INJURIES",
@@ -2812,26 +3110,31 @@
    "code": "5305",
    "criteria": [
     {
-     "percent": 30,
-     "text": "Group V. Function: Elbow supination (1) (long head of biceps is stabilizer of shoulder joint); flexion of elbow (1, 2, 3). Flexor muscles of elbow: (1) Biceps; (2) brachialis; (3) brachioradialis. Severe 40"
+     "percent": 40,
+     "text": "Severe",
+     "percent_minor": 30
     },
     {
-     "percent": 20,
-     "text": "Moderately Severe 30"
+     "percent": 30,
+     "text": "Moderately Severe",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Moderate 10"
+     "text": "Moderate",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "Slight  0"
+     "text": "Slight",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Group V Function: Elbow supination",
    "notes": "",
-   "subsection": "Shoulder Girdle and Arm"
+   "subsection": "Shoulder Girdle and Arm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "MUSCLE INJURIES",
@@ -2839,26 +3142,31 @@
    "code": "5306",
    "criteria": [
     {
-     "percent": 30,
-     "text": "Group VI. Function: Extension of elbow (long head of triceps is stabilizer of shoulder joint). Extensor muscles of the elbow: (1) Triceps; (2) anconeus.. Severe 40"
+     "percent": 40,
+     "text": "Severe",
+     "percent_minor": 30
     },
     {
-     "percent": 20,
-     "text": "Moderately Severe 30"
+     "percent": 30,
+     "text": "Moderately Severe",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Moderate 10"
+     "text": "Moderate",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "Slight  0"
+     "text": "Slight",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Group VI Function: Extension of elbow",
    "notes": "Rating N o n - D o m i - d o m i - n a nt n a n t",
-   "subsection": "Shoulder Girdle and Arm"
+   "subsection": "Shoulder Girdle and Arm",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "MUSCLE INJURIES",
@@ -2866,26 +3174,31 @@
    "code": "5307",
    "criteria": [
     {
-     "percent": 30,
-     "text": "Group VII. Function: Flexion of wrist and fingers. Muscles arising from internal condyle of humerus: Flexors of the carpus and long flexors of fingers and thumb; pronator. Severe 40"
+     "percent": 40,
+     "text": "Severe",
+     "percent_minor": 30
     },
     {
-     "percent": 20,
-     "text": "Moderately Severe 30"
+     "percent": 30,
+     "text": "Moderately Severe",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Moderate 10"
+     "text": "Moderate",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "Slight  0"
+     "text": "Slight",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Group VII Function: Flexion of wrist and fingers",
    "notes": "",
-   "subsection": "Forearm and Hand"
+   "subsection": "Forearm and Hand",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "MUSCLE INJURIES",
@@ -2893,26 +3206,31 @@
    "code": "5308",
    "criteria": [
     {
-     "percent": 20,
-     "text": "Group VIII. Function: Extension of wrist, fingers, and thumb; abduction of thumb. Muscles arising mainly from external condyle of humerus: Extensors of carpus, fingers, and thumb; supinator. Severe 30"
+     "percent": 30,
+     "text": "Severe",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Moderately Severe 20"
+     "text": "Moderately Severe",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Moderate 10"
+     "text": "Moderate",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "Slight  0"
+     "text": "Slight",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Group VIII Function: Extension of wrist, fingers, thumb",
    "notes": "",
-   "subsection": "Forearm and Hand"
+   "subsection": "Forearm and Hand",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "MUSCLE INJURIES",
@@ -3936,7 +4254,7 @@
    "criteria": [
     {
      "percent": 100,
-     "text": "No more than light perception in one eye:1 In the other eye 5/200 (1.5/60)"
+     "text": "In the other eye 5/200 (1.5/60)"
     },
     {
      "percent": 90,
@@ -3948,7 +4266,7 @@
     },
     {
      "percent": 70,
-     "text": "[[PAGE 454]] §4.79 38 CFR Ch. I (7–1–20 Edition) DISEASESOFTHEEYE—Continued Rating In the other eye 20/200 (6/60)"
+     "text": "In the other eye 20/200 (6/60)"
     },
     {
      "percent": 60,
@@ -3970,7 +4288,8 @@
    "has_criteria": true,
    "name": "Other eye 10/200 (3/60)",
    "notes": "",
-   "subsection": "Impairment of Central Visual Acuity"
+   "subsection": "Impairment of Central Visual Acuity",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE EYE",
@@ -4271,7 +4590,7 @@
    "criteria": [
     {
      "percent": 30,
-     "text": "Rating Homonymous hemianopsia"
+     "text": "Homonymous hemianopsia"
     },
     {
      "percent": 30,
@@ -4279,77 +4598,78 @@
     },
     {
      "percent": 10,
-     "text": "Unilateral"
+     "text": "Loss of temporal half of visual field: Unilateral"
     },
     {
      "percent": 10,
-     "text": "Or evaluate each affected eye as 20/70 (6/21). Loss of nasal half of visual field: Bilateral"
+     "text": "Loss of nasal half of visual field: Bilateral"
     },
     {
      "percent": 10,
-     "text": "Unilateral"
+     "text": "Loss of nasal half of visual field: Unilateral"
     },
     {
      "percent": 30,
-     "text": "Or evaluate each affected eye as 20/50 (6/15). Loss of inferior half of visual field: Bilateral"
+     "text": "Loss of inferior half of visual field: Bilateral"
     },
     {
      "percent": 10,
-     "text": "Unilateral"
+     "text": "Loss of inferior half of visual field: Unilateral"
     },
     {
      "percent": 10,
-     "text": "Or evaluate each affected eye as 20/70 (6/21). Loss of superior half of visual field: [[PAGE 455]] Department of Veterans Affairs §4.85 RATINGSFORIMPAIRMENTOFVISUALFIELDS—Continued Rating Bilateral"
+     "text": "Loss of superior half of visual field: Bilateral"
     },
     {
      "percent": 10,
-     "text": "Unilateral"
+     "text": "Loss of superior half of visual field: Unilateral"
     },
     {
      "percent": 100,
-     "text": "Or evaluate each affected eye as 20/50 (6/15). Concentric contraction of visual field: With remaining field of 5 degrees:1 Bilateral"
+     "text": "Concentric contraction of visual field: Bilateral"
     },
     {
      "percent": 30,
-     "text": "Unilateral"
+     "text": "Concentric contraction of visual field: Unilateral"
     },
     {
      "percent": 70,
-     "text": "Or evaluate each affected eye as 5/200 (1.5/60). With remaining field of 6 to 15 degrees: Bilateral"
+     "text": "With remaining field of 6 to 15 degrees: Bilateral"
     },
     {
      "percent": 20,
-     "text": "Unilateral"
+     "text": "With remaining field of 6 to 15 degrees: Unilateral"
     },
     {
      "percent": 50,
-     "text": "Or evaluate each affected eye as 20/200 (6/60). With remaining field of 16 to 30 degrees: Bilateral"
+     "text": "With remaining field of 16 to 30 degrees: Bilateral"
     },
     {
      "percent": 10,
-     "text": "Unilateral"
+     "text": "With remaining field of 16 to 30 degrees: Unilateral"
     },
     {
      "percent": 30,
-     "text": "Or evaluate each affected eye as 20/100 (6/30). With remaining field of 31 to 45 degrees: Bilateral"
+     "text": "With remaining field of 31 to 45 degrees: Bilateral"
     },
     {
      "percent": 10,
-     "text": "Unilateral"
+     "text": "With remaining field of 31 to 45 degrees: Unilateral"
     },
     {
      "percent": 10,
-     "text": "Or evaluate each affected eye as 20/70 (6/21). With remaining field of 46 to 60 degrees: Bilateral"
+     "text": "With remaining field of 46 to 60 degrees: Bilateral"
     },
     {
      "percent": 10,
-     "text": "Unilateral"
+     "text": "With remaining field of 46 to 60 degrees: Unilateral"
     }
    ],
    "has_criteria": true,
    "name": "Field vision, impairment",
    "notes": "Or evaluate each affected eye as 20/50 (6/15).",
-   "subsection": "Impairment of Central Visual Acuity"
+   "subsection": "Impairment of Central Visual Acuity",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE EYE",
@@ -4380,20 +4700,12 @@
    "body_system": "THE EYE",
    "cfr_section": "38 CFR 4.79",
    "code": "6091",
-   "criteria": [
-    {
-     "percent": 30,
-     "text": "Evaluate under the General Rating Formula for Diseases of the Eye, lagophthalmos (diagnostic code 6022), disfigurement (diagnostic code 7800), etc., depending on the particular findings, and combine in accordance with §4.25 (Authority: 38 U.S.C. 1155) [73 FR 66550, Nov. 10, 2008, as amended at 83 FR 15321, Apr. 10, 2018] §§4.80–4.84 [Reserved] and must include a controlled speech §4.85 Evaluation of hearing impairment. (a) An examination for hearing impairment for VA purposes must be conPuretone ducted by a state-licensed audiologist discrimination test (Maryland CNC) and a puretone audiometry test. Examinations will be conducted without the use of hearing aids. (b) Table VI, ‘‘Numeric Designation of Hearing Impairment Based on Threshold Average and [[PAGE 456]] §4.85 Speech Discrimination,’’ is used to determine a Roman numeral designation (I through XI) for hearing impairment based on a combination of the percent of speech discrimination (horizontal rows) and the puretone threshold average (vertical columns). The Roman numeral designation is located at the point where the percentage of speech discrimination and puretone threshold average intersect. (c) Table VIa, ‘‘Numeric Designation of Hearing Impairment Based Only on Puretone Threshold Average,’’ is used to determine a Roman numeral designation (I through XI) for hearing impairment based only on the puretone threshold average. Table VIa will be used when the examiner certifies that use of the speech discrimination test is not appropriate because of language difficulties, inconsistent speech discrimination scores, etc., or when indicated under the provisions of §4.86. (d) ‘‘Puretone threshold average,’’ as used in Tables VI and VIa, is the sum of the puretone thresholds at 1000, 2000, 3000 and 4000 Hertz, divided by four. This average is used in all cases (including those in §4.86) to determine the Roman numeral designation for hearing impairment from Table VI or VIa. (e) Table VII, ‘‘Percentage Evaluations for Hearing Impairment,’’ is used to determine the percentage evaluation by combining the Roman numeral designations for hearing impairment of each ear. The horizontal rows represent the ear having the better hearing and the vertical columns the ear having the poorer hearing. The percentage evaluation is located at the point where the row and column intersect. (f) If impaired hearing is service-connected in only one ear, in order to determine the percentage evaluation from Table VII, the non-service-connected ear will be assigned a Roman Numeral designation for hearing impairment of I, subject to the provisions of §3.383 of this chapter. (g) When evaluating any claim for impaired hearing, refer to §3.350 of this chapter to determine whether the veteran may be entitled to special monthly compensation due either to deafness, or to deafness in combination with other specified disabilities. (h) Numeric tables VI, VIA*, and VII. [[PAGE 457]] Department of Veterans Affairs §4.85 [[PAGE 458]] §4.86 [64 FR 25206, May 11, 1999] §4.86 Exceptional patterns of hearing impairment. (a) When the puretone threshold at each of the four specified frequencies (1000, 2000, 3000, and 4000 Hertz) is 55 decibels or more, the rating specialist will determine the Roman numeral designation for hearing impairment from either Table VI or Table VIa, whichever results in the higher numeral. Each ear will be evaluated separately. (b) When the puretone threshold is"
-    },
-    {
-     "percent": 70,
-     "text": "decibels or less at 1000 Hertz, and"
-    }
-   ],
-   "has_criteria": true,
+   "criteria": [],
+   "has_criteria": false,
    "name": "Symblepharon",
    "notes": "decibels or more at 2000 Hertz, the rating specialist will determine the Roman numeral designation for hearing impairment from either Table VI or Table VIa, whichever results in the higher numeral. That numeral will then be elevated to the next higher Department of Veterans Affairs Roman numeral. Each ear will be evaluated separately. (Authority: 38 U.S.C. 1155) [64 FR 25209, May 11, 1999]",
-   "subsection": "Impairment of Central Visual Acuity"
+   "subsection": "Impairment of Central Visual Acuity",
+   "status_note": "The 2020 transcription repeated another code's rows here; eCFR 38 CFR Part 4, amended through 2026-08-27 lists none under this code."
   },
   {
    "body_system": "THE EYE",
@@ -4539,13 +4851,14 @@
    "criteria": [
     {
      "percent": 10,
-     "text": "§4.88a DISEASESOFTHEEAR—Continued Rating Swelling, dry and scaly or serous discharge, and itching requiring frequent and prolonged treatment"
+     "text": "Swelling, dry and scaly or serous discharge, and itching requiring frequent and prolonged treatment"
     }
    ],
    "has_criteria": true,
    "name": "Chronic otitis externa",
    "notes": "",
-   "subsection": null
+   "subsection": null,
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE EAR",
@@ -4888,13 +5201,14 @@
    "criteria": [
     {
      "percent": 100,
-     "text": "[[PAGE 462]] §4.88b As active disease"
+     "text": "As active disease"
     }
    ],
    "has_criteria": true,
    "name": "Hyperinfection syndrome or disseminated strongyloidiasis",
    "notes": "Note: Continue the rating of 100 percent through active disease followed by a mandatory VA exam. If there is no relapse, rate on residual disability. Any change in evaluation based upon that or any subsequent examination shall be subject to the provisions of §3.105(e) of this chapter.",
-   "subsection": null
+   "subsection": null,
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "INFECTIOUS DISEASES, IMMUNE DISORDERS AND NUTRITIONAL DEFICIENCIES",
@@ -5036,25 +5350,26 @@
     },
     {
      "percent": 60,
-     "text": "Which are nearly constant and restrict routine daily activities to less than 50 percent of the pre-illness level; or which wax and wane, resulting in periods of incapacitation of at least six weeks total duration per year"
+     "text": "Debilitating fatigue, cognitive impairments (such as inability to concentrate, forgetfulness, or confusion), or a combination of other signs and symptoms: Which are nearly constant and restrict routine daily activities to less than 50 percent of the pre-illness level; or which wax and wane, resulting in periods of incapacitation of at least six weeks total duration per year"
     },
     {
      "percent": 40,
-     "text": "[[PAGE 463]] Department of Veterans Affairs §4.89 Rating Which are nearly constant and restrict routine daily activities from 50 to 75 percent of the pre-illness level; or which wax and wane, resulting in periods of incapacitation of at least four but less than six weeks total duration per year"
+     "text": "Debilitating fatigue, cognitive impairments (such as inability to concentrate, forgetfulness, or confusion), or a combination of other signs and symptoms: Which are nearly constant and restrict routine daily activities from 50 to 75 percent of the pre-illness level; or which wax and wane, resulting in periods of incapacitation of at least four but less than six weeks total duration per year"
     },
     {
      "percent": 20,
-     "text": "Which are nearly constant and restrict routine daily activities by less than 25 percent of the pre-illness level; or which wax and wane, resulting in periods of incapacitation of at least two but less than four weeks total duration per year"
+     "text": "Debilitating fatigue, cognitive impairments (such as inability to concentrate, forgetfulness, or confusion), or a combination of other signs and symptoms: Which are nearly constant and restrict routine daily activities by less than 25 percent of the pre-illness level; or which wax and wane, resulting in periods of incapacitation of at least two but less than four weeks total duration per year"
     },
     {
      "percent": 10,
-     "text": "Which wax and wane but result in periods of incapacitation of at least one but less than two weeks total duration per year; or symptoms controlled by continuous medication"
+     "text": "Debilitating fatigue, cognitive impairments (such as inability to concentrate, forgetfulness, or confusion), or a combination of other signs and symptoms: Which wax and wane but result in periods of incapacitation of at least one but less than two weeks total duration per year; or symptoms controlled by continuous medication"
     }
    ],
    "has_criteria": true,
    "name": "Chronic Fatigue Syndrome (CFS)",
    "notes": "Note: For the purpose of evaluating this disability, incapacitation exists only when a licensed physician prescribes bed rest and treatment. [61 FR 39875, July 31, 1996, as amended at 84 FR 28230, June 18, 2019] Ratings for inactive nonpulrating cases in which the protective monary tuberculosis initially entiprovisions of Pub. L. 90–493 apply, the tled after August 19, 1968. former evaluations are retained in this Rating For 1 year after date of inactivity, following active tuberculosis 100 Thereafter: Rate residuals under the specific body system or systems affected. Following the total rating for the 1 year period after date of inactivity, the schedular evaluation for residuals of nonpulmonary tuberculosis, i.e., ankylosis, surgical removal of a part, etc., will be assigned under the appropriate diagnostic code for the residual preceded by the diagnostic code for tuberculosis of the body part affected. For example, tuberculosis of the hip joint with residual ankylosis would be coded 5001–5250. Where there are existing residuals of pulmonary and nonpulmonary conditions, the evaluations for residual separate functional impairment may be combined. Where there are existing pulmonary and nonpulmonary conditions, the total rating for the 1 year, after attainment of inactivity, may not be applied to both conditions during the same period. However, the total rating during the 1-year period for the pulmonary or for the nonpulmonary condition will be utilized, combined with evaluatio",
-   "subsection": null
+   "subsection": null,
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE RESPIRATORY SYSTEM",
@@ -5298,7 +5613,7 @@
    "criteria": [
     {
      "percent": 100,
-     "text": "[[PAGE 466]] §4.97 Wegener’s granulomatosis, lethal midline granuloma"
+     "text": "Wegener's granulomatosis, lethal midline granuloma"
     },
     {
      "percent": 20,
@@ -5308,7 +5623,8 @@
    "has_criteria": true,
    "name": "Granulomatous rhinitis",
    "notes": "DISEASES OF THE TRACHEA AND BRONCHI",
-   "subsection": "Nose and Throat"
+   "subsection": "Nose and Throat",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE RESPIRATORY SYSTEM",
@@ -5933,25 +6249,26 @@
    "criteria": [
     {
      "percent": 100,
-     "text": "Chronic pleural effusion or fibrosis. General Rating Formula for Restrictive Lung Disease (diagnostic codes 6840 through 6845): FEV–1 less than 40 percent of predicted value, or; the ratio of Forced Expiratory Volume in one second to Forced Vital Capacity (FEV–1/FVC) less than 40 percent, or; Diffusion Capacity of the Lung for Carbon Monoxide by the Single Breath Method (DLCO (SB)) less than 40-percent predicted, or; maximum exercise capacity less than 15 ml/kg/min oxygen consumption (with cardiac or respiratory limitation), or; cor pulmonale (right heart failure), or; right ventricular hypertrophy, or; pulmonary hypertension (shown by Echo or cardiac catheterization), or; episode(s) of acute respiratory failure, or; requires outpatient oxygen therapy"
+     "text": "General Rating Formula for Restrictive Lung Disease (diagnostic codes 6840 through 6845): FEV-1 less than 40 percent of predicted value, or; the ratio of Forced Expiratory Volume in one second to Forced Vital Capacity (FEV-1/FVC) less than 40 percent, or; Diffusion Capacity of the Lung for Carbon Monoxide by the Single Breath Method (DLCO (SB)) less than 40-percent predicted, or; maximum exercise capacity less than 15 ml/kg/min oxygen consumption (with cardiac or respiratory limitation), or; cor pulmonale (right heart failure), or; right ventricular hypertrophy, or; pulmonary hypertension (shown by Echo or cardiac catheterization), or; episode(s) of acute respiratory failure, or; requires outpatient oxygen therapy"
     },
     {
      "percent": 60,
-     "text": "FEV–1 of 40to 55-percent predicted, or; FEV–1/FVC of 40 to 55 percent, or; DLCO (SB) of 40to 55-percent predicted, or; maximum oxygen consumption of 15 to 20 ml/kg/min (with cardiorespiratory limit)"
+     "text": "General Rating Formula for Restrictive Lung Disease (diagnostic codes 6840 through 6845): FEV-1 of 40- to 55-percent predicted, or; FEV-1/FVC of 40 to 55 percent, or; DLCO (SB) of 40- to 55-percent predicted, or; maximum oxygen consumption of 15 to 20 ml/kg/min (with cardiorespiratory limit)"
     },
     {
      "percent": 30,
-     "text": "FEV–1 of 56to 70-percent predicted, or; FEV–1/FVC of 56 to 70 percent, or; DLCO (SB) 56to 65percent predicted"
+     "text": "General Rating Formula for Restrictive Lung Disease (diagnostic codes 6840 through 6845): FEV-1 of 56- to 70-percent predicted, or; FEV-1/FVC of 56 to 70 percent, or; DLCO (SB) 56- to 65-percent predicted"
     },
     {
      "percent": 10,
-     "text": "[[PAGE 469]] Department of Veterans Affairs §4.104 Rating FEV–1 of 71to 80-percent predicted, or; FEV–1/FVC of 71 to 80 percent, or; DLCO (SB) 66to 80percent predicted"
+     "text": "General Rating Formula for Restrictive Lung Disease (diagnostic codes 6840 through 6845): FEV-1 of 71- to 80-percent predicted, or; FEV-1/FVC of 71 to 80 percent, or; DLCO (SB) 66- to 80-percent predicted"
     }
    ],
    "has_criteria": true,
    "name": "Pleural effusion or fibrosis",
    "notes": "Or rate primary disorder. Note (1): A 100-percent rating shall be assigned for pleurisy with empyema, with or without pleurocutaneous fistula, until resolved. Note (2): Following episodes of total spontaneous pneumothorax, a rating of 100 percent shall be assigned as of the date of hospital admission and shall continue for three months from the first day of the month after hospital discharge. Note (3): Gunshot wounds of the pleural cavity with bullet or missile retained in lung, pain or discomfort on exertion, or with scattered rales or some limitation of excursion of diaphragm or of lower chest expansion shall be rated at least 20-percent disabling. Disabling injuries of shoulder girdle muscles (Groups I to IV) shall be separately rated and combined with ratings for respiratory involvement. Involvement of Muscle Group XXI (DC 5321), however, will not be separately rated.",
-   "subsection": "Restrictive Lung Disease"
+   "subsection": "Restrictive Lung Disease",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE RESPIRATORY SYSTEM",
@@ -6076,29 +6393,14 @@
    "criteria": [
     {
      "percent": 100,
-     "text": "For three months following cessation of therapy for active infection with cardiac involvement"
-    },
-    {
-     "percent": 100,
-     "text": "38 CFR Ch. I (7–1–20 Edition) DISEASESOFTHEHEART—Continued Rating Thereafter, with documented pericarditis resulting in: Chronic congestive heart failure, or; workload of 3 METs or less results in dyspnea, fatigue, angina, dizziness, or syncope, or; left ventricular dysfunction with an ejection fraction of less than 30 percent"
-    },
-    {
-     "percent": 60,
-     "text": "More than one episode of acute congestive heart failure in the past year, or; workload of greater than 3 METs but not greater than 5 METs results in dyspnea, fatigue, angina, dizziness, or syncope, or; left ventricular dysfunction with an ejection fraction of 30 to 50 percent"
-    },
-    {
-     "percent": 30,
-     "text": "Workload of greater than 5 METs but not greater than 7 METs results in dyspnea, fatigue, angina, dizziness, or syncope, or; evidence of cardiac hypertrophy or dilatation on electro-cardiogram, echocardiogram, or X-ray"
-    },
-    {
-     "percent": 10,
-     "text": "Workload of greater than 7 METs but not greater than 10 METs results in dyspnea, fatigue, angina, dizziness, or syncope, or; continuous medication required"
+     "text": "During active infection with cardiac involvement and for three months following cessation of therapy for the active infection"
     }
    ],
    "has_criteria": true,
    "name": "Pericarditis",
    "notes": "",
-   "subsection": "Diseases of the Heart"
+   "subsection": "Diseases of the Heart",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE CARDIOVASCULAR SYSTEM",
@@ -6223,7 +6525,7 @@
     },
     {
      "percent": 60,
-     "text": "§4.104 DISEASESOFTHEHEART—Continued Rating More than one episode of acute congestive heart failure in the past year, or; workload of greater than 3 METs but not greater than 5 METs results in dyspnea, fatigue, angina, dizziness, or syncope, or; left ventricular dysfunction with an ejection fraction of 30 to 50 percent"
+     "text": "More than one episode of acute congestive heart failure in the past year, or; workload of greater than 3 METs but not greater than 5 METs results in dyspnea, fatigue, angina, dizziness, or syncope, or; left ventricular dysfunction with an ejection fraction of 30 to 50 percent"
     },
     {
      "percent": 30,
@@ -6237,7 +6539,8 @@
    "has_criteria": true,
    "name": "Hypertensive heart disease",
    "notes": "",
-   "subsection": "Diseases of the Heart"
+   "subsection": "Diseases of the Heart",
+   "status_note": "2020 transcription with PDF page headers removed; checked against eCFR 38 CFR Part 4, amended through 2026-08-27, which lists no rated rows under this code."
   },
   {
    "body_system": "THE CARDIOVASCULAR SYSTEM",
@@ -6573,25 +6876,26 @@
    "criteria": [
     {
      "percent": 100,
-     "text": "Ischemic limb pain at rest, and; either deep ischemic ulcers or ankle/brachial index of 0.4 or less"
+     "text": "At least one of the following: Ankle/brachial index less than or equal to 0.39; ankle pressure less than 50 mm Hg; toe pressure less than 30 mm Hg; or transcutaneous oxygen tension less than 30 mm Hg"
     },
     {
      "percent": 60,
-     "text": "[[PAGE 474]] §4.104 DISEASESOFTHEHEART—Continued Rating Claudication on walking less than 25 yards on a level grade at 2 miles per hour, and; either persistent coldness of the extremity or ankle/brachial index of 0.5 or less"
+     "text": "At least one of the following: Ankle/brachial index of 0.40-0.53; ankle pressure of 50-65 mm Hg; toe pressure of 30-39 mm Hg; or transcutaneous oxygen tension of 30-39 mm Hg"
     },
     {
-     "percent": 100,
-     "text": "Claudication on walking between 25 and 100 yards on a level grade at 2 miles per hour, and; trophic changes (thin skin, absence of hair, dystrophic nails) or ankle/ brachial index of 0.7 or less Claudication on walking more than"
+     "percent": 40,
+     "text": "At least one of the following: Ankle/brachial index of 0.54-0.66; ankle pressure of 66-83 mm Hg; toe pressure of 40-49 mm Hg; or transcutaneous oxygen tension of 40-49 mm Hg"
     },
     {
      "percent": 20,
-     "text": "yards, and; diminished peripheral pulses or ankle/brachial index of 0.9 or less"
+     "text": "At least one of the following: Ankle/brachial index of 0.67-0.79; ankle pressure of 84-99 mm Hg; toe pressure of 50-59 mm Hg; or transcutaneous oxygen tension of 50-59 mm Hg"
     }
    ],
    "has_criteria": true,
    "name": "Arteriosclerosis obliterans",
    "notes": "NOTE(1): The ankle/brachial index is the ratio of the systolic blood pressure at the ankle (determined by Doppler study) divided by the simultaneous brachial artery systolic blood pressure. The normal index is 1.0 or greater. NOTE(2): Evaluate residuals of aortic and large arterial bypass surgery or arterial graft as arteriosclerosis obliterans. NOTE(3): These evaluations are for involvement of a single extremity. If more than one extremity is affected, evaluate each extremity separately and combine (under ), using the bilateral factor ( ), if applicable.",
-   "subsection": "Diseases of the Arteries and Veins"
+   "subsection": "Diseases of the Arteries and Veins",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE CARDIOVASCULAR SYSTEM",
@@ -7020,7 +7324,7 @@
     },
     {
      "percent": 40,
-     "text": "[[PAGE 477]] Department of Veterans Affairs Rating Moderate; less frequent episodes of epigastric disorders with characteristic mild circulatory symptoms after meals but with diarrhea and weight loss"
+     "text": "Moderate; less frequent episodes of epigastric disorders with characteristic mild circulatory symptoms after meals but with diarrhea and weight loss"
     },
     {
      "percent": 20,
@@ -7748,7 +8052,7 @@
     },
     {
      "percent": 30,
-     "text": "[[PAGE 479]] Department of Veterans Affairs Rating Moderately severe; with at least 4–7 typical attacks of abdominal pain per year with good remission between attacks"
+     "text": "Moderately severe; with at least 4–7 typical attacks of abdominal pain per year with good remission between attacks"
     },
     {
      "percent": 10,
@@ -8924,17 +9228,18 @@
    "criteria": [
     {
      "percent": 100,
-     "text": "For initial diagnosis requiring transfusion due to severe anemia, or if there are signs or symptoms related to central nervous system impairment, such as encephalopathy, myelopathy, or severe peripheral neuropathy, requiring parenteral B12therapy"
+     "text": "For initial diagnosis requiring transfusion due to severe anemia, or if there are signs or symptoms related to central nervous system impairment, such as encephalopathy, myelopathy, or severe peripheral neuropathy, requiring parenteral B12 therapy"
     },
     {
      "percent": 10,
-     "text": "38 CFR Ch. I (7–1–20 Edition) Rating Requiring continuous treatment with Vitamin B12 injections, Vitamin B12 sublingual or high-dose oral tablets, or Vitamin B12nasal spray or gel"
+     "text": "Requiring continuous treatment with Vitamin B12 injections, Vitamin B12 sublingual or high-dose oral tablets, or Vitamin B12 nasal spray or gel"
     }
    ],
    "has_criteria": true,
    "name": "Pernicious anemia and Vitamin B12 deficiency anemia",
    "notes": "Note: A 100 percent evaluation for pernicious anemia and Vitamin B12deficiency shall be assigned as of the date of the initial diagnosis requiring transfusion due to severe anemia or parenteral B12therapy and shall continue with a mandatory VA examination six months following hospital discharge or cessation of parenteral B12 therapy. Any reduction in evaluation based upon that or any subsequent examination shall be subject to the provisions of §3.105(e) of this chapter. Thereafter, evaluate at 10 percent and separately evaluate any residual effects of pernicious anemia, such as neurologic involvement causing peripheral neuropathy, myelopathy, dementia, or related gastrointestinal residuals, under the most appropriate diagnostic code",
-   "subsection": null
+   "subsection": null,
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE HEMATOLOGIC AND LYMPHATIC SYSTEMS",
@@ -8993,17 +9298,18 @@
     },
     {
      "percent": 60,
-     "text": "[[PAGE 487]] Department of Veterans Affairs Rating Requiring 4 or more blood or platelet transfusions per 12-month period; or infections requiring hospitalization 3 or more times per 12-month period"
+     "text": "Requiring 4 or more blood or platelet transfusions per 12-month period; or infections requiring hospitalization 3 or more times per 12-month period"
     },
     {
      "percent": 30,
-     "text": "Requiring at least 1 but no more than 3 blood or platelet transfusions per 12month period; infections requiring hospitalization at least 1 but no more than 2 times per 12-month period; or requiring biologic therapy on an ongoing basis or erythropoiesis stimulating agent (ESA) for 12 weeks or less per 12-month period"
+     "text": "Requiring at least 1 but no more than 3 blood or platelet transfusions per 12-month period; infections requiring hospitalization at least 1 but no more than 2 times per 12-month period; or requiring biologic therapy on an ongoing basis or erythropoiesis stimulating agent (ESA) for 12 weeks or less per 12-month period"
     }
    ],
    "has_criteria": true,
    "name": "Myelodysplastic syndromes",
    "notes": "Note (1): If the condition progresses to leukemia, evaluate as leukemia under diagnostic code 7703 Note (2): A 100 percent evaluation shall be assigned as of the date of hospital admission for peripheral blood or bone marrow stem cell transplant, or during the period of treatment with chemotherapy, and shall continue with a mandatory VA examination six months following hospital discharge or, in the case of chemotherapy treatment, six months after completion of treatment. Any reduction in evaluation based upon that or any subsequent examination shall be subject to the provisions of §3.105(e) of this chapter. If there has been no recurrence, residuals will be rated under the appropriate diagnostic codes [60 FR 49227, Sept. 22, 1995, as amended at 77 FR 6467, Feb. 8, 2012; 79 FR 2100, Jan. 13, 2014; 83 FR 54254, Oct. 29, 2018; 83 FR 54881, Nov. 1, 2018]",
-   "subsection": null
+   "subsection": null,
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE SKIN",
@@ -9100,11 +9406,11 @@
    "criteria": [
     {
      "percent": 60,
-     "text": "Evaluate any disabling effect(s) not considered in a rating provided under diagnostic codes 7800–04 under an appropriate diagnostic code. General Rating Formula For The Skin For DCs 7806, 7809, 7813–7816, 7820–7822, and 7824: At least one of the following"
+     "text": "General Rating Formula For The Skin For DCs 7806, 7809, 7813-7816, 7820-7822, and 7824: At least one of the following"
     },
     {
      "percent": 60,
-     "text": "Characteristic lesions involving more than 40 percent of the entire body or more than 40 percent of exposed areas affected; or 38 CFR Ch. I (7–1–20 Edition) Rating Constant or near-constant systemic therapy including, but not limited to, corticosteroids, phototherapy, retinoids, biologics, photochemotherapy, psoralen with long-wave ultraviolet-A light (PUVA), or other immunosuppressive drugs required over the past 12-month period"
+     "text": "General Rating Formula For The Skin For DCs 7806, 7809, 7813-7816, 7820-7822, and 7824: Constant or near-constant systemic therapy including, but not limited to, corticosteroids, phototherapy, retinoids, biologics, photochemotherapy, psoralen with long-wave ultraviolet-A light (PUVA), or other immunosuppressive drugs required over the past 12-month period"
     },
     {
      "percent": 30,
@@ -9112,17 +9418,18 @@
     },
     {
      "percent": 10,
-     "text": "Characteristic lesions involving 20 to 40 percent of the entire body or 20 to 40 percent of exposed areas affected; or Systemic therapy including, but not limited to, corticosteroids, phototherapy, retinoids, biologics, photochemotherapy, PUVA, or other immunosuppressive drugs required for a total duration of 6 weeks or more, but not constantly, over the past 12-month period. At least one of the following"
+     "text": "Characteristic lesions involving 20 to 40 percent of the entire body or 20 to 40 percent of exposed areas affected; or Systemic therapy including, but not limited to, corticosteroids, phototherapy, retinoids, biologics, photochemotherapy, PUVA, or other immunosuppressive drugs required for a total duration of 6 weeks or more, but not constantly, over the past 12-month period At least one of the following"
     },
     {
      "percent": 0,
-     "text": "Characteristic lesions involving at least 5 percent, but less than 20 percent, of the entire body affected; or At least 5 percent, but less than 20 percent, of exposed areas affected; or Intermittent systemic therapy including, but not limited to, corticosteroids, phototherapy, retinoids, biologics, photochemotherapy, PUVA, or other immunosuppressive drugs required for a total duration of less than 6 weeks over the past 12-month period. No more than topical therapy required over the past 12-month period and at least one of the following"
+     "text": "Characteristic lesions involving 20 to 40 percent of the entire body or 20 to 40 percent of exposed areas affected; or Systemic therapy including, but not limited to, corticosteroids, phototherapy, retinoids, biologics, photochemotherapy, PUVA, or other immunosuppressive drugs required for a total duration of 6 weeks or more, but not constantly, over the past 12-month period No more than topical therapy required over the past 12-month period and at least one of the following"
     }
    ],
    "has_criteria": true,
    "name": "Scars, other; and other effects of scars evaluated under diagnostic codes 7800, 7801, 7802, or 7804.",
    "notes": "Characteristic lesions involving less than 5 percent of the entire body affected; or Characteristic lesions involving less than 5 percent of exposed areas affected. Or rate as disfigurement of the head, face, or neck (DC 7800) or scars (DCs 7801, 7802, 7804, or 7805), depending upon the predominant disability. This rating instruction does not apply to DC 7824.",
-   "subsection": null
+   "subsection": null,
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE SKIN",
@@ -9324,8 +9631,12 @@
    "code": "7825",
    "criteria": [
     {
+     "percent": 60,
+     "text": "Chronic refractory urticaria that requires third line treatment for control (e.g., plasmapheresis, immunotherapy, immunosuppressives) due to ineffectiveness with first and second line treatments"
+    },
+    {
      "percent": 30,
-     "text": "For the purposes of this diagnostic code, chronic urticaria is defined as continuous urticaria at least twice per week, off treatment, for a period of six weeks or more. [[PAGE 490]] §4.118 Rating Chronic refractory urticaria that requires third line treatment for control (e.g., plasmapheresis, immunotherapy, immunosuppressives) due to ineffectiveness with first and second line treatments Chronic urticaria that requires second line treatment (e.g., corticosteroids, sympathomimetics, leukotriene inhibitors, neutrophil inhibitors, thyroid hormone) for control"
+     "text": "Chronic urticaria that requires second line treatment (e.g., corticosteroids, sympathomimetics, leukotriene inhibitors, neutrophil inhibitors, thyroid hormone) for control"
     },
     {
      "percent": 10,
@@ -9335,7 +9646,8 @@
    "has_criteria": true,
    "name": "Chronic urticaria",
    "notes": "",
-   "subsection": null
+   "subsection": null,
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE SKIN",
@@ -9394,21 +9706,22 @@
    "criteria": [
     {
      "percent": 30,
-     "text": "Deep acne (deep inflamed nodules and pusfilled cysts) affecting 40 percent or more of the face and neck"
+     "text": "Deep acne (deep inflamed nodules and pus-filled cysts) affecting 40 percent or more of the face and neck"
     },
     {
      "percent": 10,
-     "text": "38 CFR Ch. I (7–1–20 Edition) Rating Deep acne (deep inflamed nodules and pusfilled cysts) affecting less than 40 percent of the face and neck, or deep acne other than on the face and neck"
+     "text": "Deep acne (deep inflamed nodules and pus-filled cysts) affecting less than 40 percent of the face and neck, or deep acne other than on the face and neck"
     },
     {
      "percent": 0,
-     "text": "60 Superficial acne (comedones, papules, pustules) of any extent"
+     "text": "Superficial acne (comedones, papules, pustules) of any extent"
     }
    ],
    "has_criteria": true,
    "name": "Acne",
    "notes": "Or rate as disfigurement of the head, face, or neck (DC 7800) or scars (DCs 7801, 7802, 7804, or 7805), depending upon the predominant disability.",
-   "subsection": null
+   "subsection": null,
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE SKIN",
@@ -9614,7 +9927,7 @@
     },
     {
      "percent": 60,
-     "text": "[[PAGE 492]] §4.119 Rating Proximal upper or lower extremity muscle wasting that results in inability to rise from squatting position, climb stairs, rise from a deep chair without assistance, or raise arms"
+     "text": "Proximal upper or lower extremity muscle wasting that results in inability to rise from squatting position, climb stairs, rise from a deep chair without assistance, or raise arms"
     },
     {
      "percent": 30,
@@ -9624,7 +9937,8 @@
    "has_criteria": true,
    "name": "Cushing’s syndrome",
    "notes": "Note: The evaluations specifically indicated under this diagnostic code shall continue for six months following initial diagnosis. After six months, rate on residuals under the appropriate diagnostic code(s) within the appropriate body system(s).",
-   "subsection": null
+   "subsection": null,
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "THE ENDOCRINE SYSTEM",
@@ -10538,36 +10852,63 @@
    "code": "8510",
    "criteria": [
     {
-     "percent": 60,
-     "text": "Complete; all shoulder and elbow movements lost or severely affected, hand and wrist movements not affected 70"
+     "percent": 70,
+     "text": "Complete; all shoulder and elbow movements lost or severely affected, hand and wrist movements not affected",
+     "percent_minor": 60
+    },
+    {
+     "percent": 50,
+     "text": "Incomplete: Severe",
+     "percent_minor": 40
     },
     {
      "percent": 40,
-     "text": "Incomplete: Severe 50"
-    },
-    {
-     "percent": 30,
-     "text": "Moderate 40"
+     "text": "Incomplete: Moderate",
+     "percent_minor": 30
     },
     {
      "percent": 20,
-     "text": "Mild 20"
+     "text": "Incomplete: Mild",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Upper radicular group, paralysis",
    "notes": "",
-   "subsection": "Peripheral Nerves"
+   "subsection": "Peripheral Nerves",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",
    "cfr_section": null,
    "code": "8511",
-   "criteria": [],
-   "has_criteria": false,
+   "criteria": [
+    {
+     "percent": 70,
+     "text": "Complete; adduction, abduction and rotation of arm, flexion of elbow, and extension of wrist lost or severely affected",
+     "percent_minor": 60
+    },
+    {
+     "percent": 50,
+     "text": "Incomplete: Severe",
+     "percent_minor": 40
+    },
+    {
+     "percent": 40,
+     "text": "Incomplete: Moderate",
+     "percent_minor": 30
+    },
+    {
+     "percent": 20,
+     "text": "Incomplete: Mild",
+     "percent_minor": 20
+    }
+   ],
+   "has_criteria": true,
    "name": "Middle radicular group, paralysis",
    "notes": "",
-   "subsection": "Peripheral Nerves"
+   "subsection": "Peripheral Nerves",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",
@@ -10575,26 +10916,31 @@
    "code": "8512",
    "criteria": [
     {
-     "percent": 60,
-     "text": "Complete; all intrinsic muscles of hand, and some or all of flexors of wrist and fingers, paralyzed (substantial loss of use of hand) 70"
+     "percent": 70,
+     "text": "Complete; all intrinsic muscles of hand, and some or all of flexors of wrist and fingers, paralyzed (substantial loss of use of hand)",
+     "percent_minor": 60
+    },
+    {
+     "percent": 50,
+     "text": "Incomplete: Severe",
+     "percent_minor": 40
     },
     {
      "percent": 40,
-     "text": "Incomplete: Severe 50"
-    },
-    {
-     "percent": 30,
-     "text": "Moderate 40"
+     "text": "Incomplete: Moderate",
+     "percent_minor": 30
     },
     {
      "percent": 20,
-     "text": "Mild 20"
+     "text": "Incomplete: Mild",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Lower radicular group, paralysis",
    "notes": "",
-   "subsection": "Peripheral Nerves"
+   "subsection": "Peripheral Nerves",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",
@@ -10602,26 +10948,31 @@
    "code": "8513",
    "criteria": [
     {
-     "percent": 80,
-     "text": "Complete 90"
+     "percent": 90,
+     "text": "Complete",
+     "percent_minor": 80
     },
     {
-     "percent": 60,
-     "text": "Incomplete: Severe 70"
+     "percent": 70,
+     "text": "Incomplete: Severe",
+     "percent_minor": 60
     },
     {
-     "percent": 30,
-     "text": "Moderate 40"
+     "percent": 40,
+     "text": "Incomplete: Moderate",
+     "percent_minor": 30
     },
     {
      "percent": 20,
-     "text": "Mild 20"
+     "text": "Incomplete: Mild",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "All radicular groups, paralysis",
    "notes": "Department of Veterans Affairs DISEASESOFTHEPERIPHERALNERVES— Continued Rating Schedule of ratings Major Minor",
-   "subsection": "Peripheral Nerves"
+   "subsection": "Peripheral Nerves",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",
@@ -10629,26 +10980,31 @@
    "code": "8514",
    "criteria": [
     {
-     "percent": 60,
-     "text": "Complete; drop of hand and fingers, wrist and fingers perpetually flexed, the thumb adducted falling within the line of the outer border of the index finger; can not extend hand at wrist, extend proximal phalanges of fingers, extend thumb, or make lateral movement of wrist; supination of hand, extension and flexion of elbow weakened, the loss of synergic motion of extensors impairs the hand grip seriously; total paralysis of the triceps occurs only as the greatest rarity 70"
+     "percent": 70,
+     "text": "Complete; drop of hand and fingers, wrist and fingers perpetually flexed, the thumb adducted falling within the line of the outer border of the index finger; can not extend hand at wrist, extend proximal phalanges of fingers, extend thumb, or make lateral movement of wrist; supination of hand, extension and flexion of elbow weakened, the loss of synergic motion of extensors impairs the hand grip seriously; total paralysis of the triceps occurs only as the greatest rarity",
+     "percent_minor": 60
     },
     {
-     "percent": 40,
-     "text": "Incomplete: Severe 50"
+     "percent": 50,
+     "text": "Incomplete: Severe",
+     "percent_minor": 40
+    },
+    {
+     "percent": 30,
+     "text": "Incomplete: Moderate",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Moderate 30"
-    },
-    {
-     "percent": 20,
-     "text": "Mild 20"
+     "text": "Incomplete: Mild",
+     "percent_minor": 20
     }
    ],
    "has_criteria": true,
    "name": "Musculospiral nerve (radial), paralysis",
    "notes": "",
-   "subsection": "Peripheral Nerves"
+   "subsection": "Peripheral Nerves",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",
@@ -10656,26 +11012,31 @@
    "code": "8515",
    "criteria": [
     {
-     "percent": 60,
-     "text": "Complete; the hand inclined to the ulnar side, the index and middle fingers more extended than normally, considerable atrophy of the muscles of the thenar eminence, the thumb in the plane of the hand (ape hand); pronation incomplete and defective, absence of flexion of index finger and feeble flexion of middle finger, cannot make a fist, index and middle fingers remain extended; cannot flex distal phalanx of thumb, defective opposition and abduction of the thumb, at right angles to palm; flexion of wrist weakened; pain with trophic disturbances 70"
+     "percent": 70,
+     "text": "Complete; the hand inclined to the ulnar side, the index and middle fingers more extended than normally, considerable atrophy of the muscles of the thenar eminence, the thumb in the plane of the hand (ape hand); pronation incomplete and defective, absence of flexion of index finger and feeble flexion of middle finger, cannot make a fist, index and middle fingers remain extended; cannot flex distal phalanx of thumb, defective opposition and abduction of the thumb, at right angles to palm; flexion of wrist weakened; pain with trophic disturbances",
+     "percent_minor": 60
     },
     {
-     "percent": 40,
-     "text": "Incomplete: Severe 50"
+     "percent": 50,
+     "text": "Incomplete: Severe",
+     "percent_minor": 40
     },
     {
-     "percent": 20,
-     "text": "Moderate 30"
+     "percent": 30,
+     "text": "Incomplete: Moderate",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Mild 10"
+     "text": "Incomplete: Mild",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Median nerve, paralysis",
    "notes": "",
-   "subsection": "Peripheral Nerves"
+   "subsection": "Peripheral Nerves",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",
@@ -10683,26 +11044,31 @@
    "code": "8516",
    "criteria": [
     {
-     "percent": 50,
-     "text": "Complete; the ‘‘griffin claw’’ deformity, due to flexor contraction of ring and little fingers, atrophy very marked in dorsal interspace and thenar and hypothenar eminences; loss of extension of ring and little fingers cannot spread the fingers (or reverse), cannot adduct the thumb; flexion of wrist weakened 60"
+     "percent": 60,
+     "text": "Complete; the “griffin claw” deformity, due to flexor contraction of ring and little fingers, atrophy very marked in dorsal interspace and thenar and hypothenar eminences; loss of extension of ring and little fingers cannot spread the fingers (or reverse), cannot adduct the thumb; flexion of wrist weakened",
+     "percent_minor": 50
+    },
+    {
+     "percent": 40,
+     "text": "Incomplete: Severe",
+     "percent_minor": 30
     },
     {
      "percent": 30,
-     "text": "Incomplete: Severe 40"
-    },
-    {
-     "percent": 20,
-     "text": "Moderate 30"
+     "text": "Incomplete: Moderate",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "§4.124a DISEASESOFTHEPERIPHERALNERVES— Continued Rating Schedule of ratings Major Minor Mild 10"
+     "text": "Incomplete: Mild",
+     "percent_minor": 10
     }
    ],
    "has_criteria": true,
    "name": "Ulnar nerve, paralysis",
    "notes": "",
-   "subsection": "Peripheral Nerves"
+   "subsection": "Peripheral Nerves",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",
@@ -10710,26 +11076,31 @@
    "code": "8517",
    "criteria": [
     {
-     "percent": 20,
-     "text": "Complete; weakness but not loss of flexion of elbow and supination of forearm 30"
+     "percent": 30,
+     "text": "Complete; weakness but not loss of flexion of elbow and supination of forearm",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Incomplete: Severe 20"
+     "text": "Incomplete: Severe",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Moderate 10"
+     "text": "Incomplete: Moderate",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "Mild 0"
+     "text": "Incomplete: Mild",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Musculocutaneous nerve, paralysis",
    "notes": "",
-   "subsection": "Peripheral Nerves"
+   "subsection": "Peripheral Nerves",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",
@@ -10737,26 +11108,31 @@
    "code": "8518",
    "criteria": [
     {
-     "percent": 40,
-     "text": "Complete; abduction of arm is impossible, outward rotation is weakened; muscles supplied are deltoid and teres minor 50"
+     "percent": 50,
+     "text": "Complete; abduction of arm is impossible, outward rotation is weakened; muscles supplied are deltoid and teres minor",
+     "percent_minor": 40
     },
     {
-     "percent": 20,
-     "text": "Incomplete: Severe 30"
+     "percent": 30,
+     "text": "Incomplete: Severe",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Moderate 10"
+     "text": "Incomplete: Moderate",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "Mild 0"
+     "text": "Incomplete: Mild",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Circumflex nerve, paralysis",
    "notes": "",
-   "subsection": "Peripheral Nerves"
+   "subsection": "Peripheral Nerves",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",
@@ -10764,26 +11140,31 @@
    "code": "8519",
    "criteria": [
     {
-     "percent": 20,
-     "text": "Complete; inability to raise arm above shoulder level, winged scapula deformity 30"
+     "percent": 30,
+     "text": "Complete; inability to raise arm above shoulder level, winged scapula deformity",
+     "percent_minor": 20
     },
     {
      "percent": 20,
-     "text": "Incomplete: Severe 20"
+     "text": "Incomplete: Severe",
+     "percent_minor": 20
     },
     {
      "percent": 10,
-     "text": "Moderate 10"
+     "text": "Incomplete: Moderate",
+     "percent_minor": 10
     },
     {
      "percent": 0,
-     "text": "Mild 0"
+     "text": "Incomplete: Mild",
+     "percent_minor": 0
     }
    ],
    "has_criteria": true,
    "name": "Long thoracic nerve, paralysis",
    "notes": "NOTE: Not to be combined with lost motion above shoulder level.",
-   "subsection": "Peripheral Nerves"
+   "subsection": "Peripheral Nerves",
+   "status_note": "Criteria re-transcribed from eCFR 38 CFR Part 4, amended through 2026-08-27. Where the table has two columns, percent is the major (dominant) side and percent_minor the minor (non-dominant) side (38 CFR 4.69)."
   },
   {
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",
@@ -11263,28 +11644,12 @@
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",
    "cfr_section": "38 CFR 4.124a",
    "code": "8710",
-   "criteria": [
-    {
-     "percent": 60,
-     "text": "Neuralgia. Middle radicular group 10 8511 Paralysis of: Complete; adduction, abduction and rotation of arm, flexion of elbow, and extension of wrist lost or severely affected 70"
-    },
-    {
-     "percent": 40,
-     "text": "Incomplete: Severe 50"
-    },
-    {
-     "percent": 30,
-     "text": "Moderate 40"
-    },
-    {
-     "percent": 20,
-     "text": "Mild 20"
-    }
-   ],
-   "has_criteria": true,
+   "criteria": [],
+   "has_criteria": false,
    "name": "Neuralgia, upper radicular group",
    "notes": "30 8611 Neuritis. 20 8711 Neuralgia. Lower radicular group",
-   "subsection": "Peripheral Nerves"
+   "subsection": "Peripheral Nerves",
+   "status_note": "The 2020 transcription repeated another code's rows here; eCFR 38 CFR Part 4, amended through 2026-08-27 lists none under this code."
   },
   {
    "body_system": "ORGANIC DISEASES OF THE CENTRAL NERVOUS SYSTEM",

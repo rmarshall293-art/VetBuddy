@@ -16,6 +16,7 @@ scripts/test.sh         # fresh vetbuddy_test DB (migrations + reference seed) +
 scripts/test.sh --ui    # + Playwright browser smoke test
 python3 scripts/build_web.py   # regenerate web/kernel_data.js, dist/vetbuddy.html, dist/vetbuddy-demo.html and dist/vetbuddy-record.html
 python3 scripts/build_reference.py   # validate data/reference/*.json and regenerate database/seeds/0011_reference.sql
+python3 scripts/rebuild_rating_criteria.py   # re-transcribe damaged rating criteria from the saved eCFR snapshot (--check in CI)
 python3 scripts/build_vault_registry.py   # research ledgers + policy -> data/reference/benefit_vault_registry.json
 python3 scripts/build_vault_seed.py       # registry -> database/seeds/0014_benefit_vault_seed.sql
 scripts/vault_review.py queue             # owner: records awaiting review (Alabama first); also sync-roster, verify, withdraw
@@ -38,7 +39,7 @@ docs/record.html              integrated record template -> dist/vetbuddy-record
 docs/ARCHITECTURE.md          current structure, single-authorship map, contracts for upcoming slices
 docs/GAP_MATRIX.md            every capability with an honest status label, plus open work
 docs/ADR/                     decisions (source of truth; runtime stack)
-database/migrations/          0001–0008 skeleton (unchanged) + 0009 hardening/onboarding + 0010 foreclosed purposes + 0011 ref schema + 0012 v6 labels + 0013 account deletion + 0014 Benefit Vault + 0015 v8 helper names + 0016 reviewer roster + 0017 rating schedule
+database/migrations/          0001–0008 skeleton (unchanged) + 0009 hardening/onboarding + 0010 foreclosed purposes + 0011 ref schema + 0012 v6 labels + 0013 account deletion + 0014 Benefit Vault + 0015 v8 helper names + 0016 reviewer roster + 0017 rating schedule + 0018 major/minor rating column
 database/seeds/0011_reference.sql   GENERATED reference seed (do not edit; edit data/reference/*.json)
 database/seeds/0014_benefit_vault_seed.sql   GENERATED vault seed (edit data/research/ or config/benefit_vault_policy.yaml)
 data/research/                research ledgers (one benefit per line) and hash-checked recovered data

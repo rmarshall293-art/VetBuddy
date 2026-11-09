@@ -26,3 +26,5 @@ jobs:
         run: python scripts/build_web.py --check
       - name: Reference corpus validates and its generated seed is current
         run: python scripts/build_reference.py --check
+      - name: Rating criteria match the saved eCFR snapshot
+        run: python scripts/rebuild_rating_criteria.py --check

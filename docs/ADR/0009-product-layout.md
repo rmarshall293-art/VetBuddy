@@ -36,7 +36,7 @@ The *VeteranOS Onboarding Multi-Layer CRM Master Prompt* is **not adopted** as a
 | Veteran Case Management | Master Mission, lane cases, tasks (slice 01) | PARTIAL |
 | Veteran Master Record | person, household, service record with Guard/Reserve authority | PARTIAL |
 | Benefits Center | Benefit Vault: 1,362 sourced records, deterministic matcher in v6 words, leads only | PARTIAL (BLOCKED for matches until G1) |
-| Claims Center | claims guide, 4.25 + 4.26 calculator, 737-code reference schedule | PARTIAL (education only) |
+| Claims Center | claims guide, 4.25 + 4.26 calculator, 38 CFR Part 4 reference schedule (current eCFR) | PARTIAL (education only) |
 | Knowledge Base | `ref` schema reference corpus at `/api/v1/reference/*` | PARTIAL |
 | Security Center | forced RLS, consent, hash-chained audit, data export, real account deletion | PARTIAL |
 | VetBuddy AI, Orchestrator, agents | vault agent behind governance; no model gateway | PLANNED (G21/G23) |

@@ -362,21 +362,31 @@ def build() -> Corpus:
               "integrated": m["integrated"], "spec_only": m["spec_only"], "counts": m.get("counts", {}),
               "source_ids": m["sources"]})
 
-    # rating schedule (38 CFR Part 4 transcription). Regulation text is VA's wording,
-    # so it lives in criteria_text, which the claims-language scan does not read.
-    # Symptom keywords are never imported: mapping symptoms to codes is prohibited.
+    # rating schedule: generated from the eCFR text of 38 CFR Part 4 by scripts/build_rating_schedule.py.
+    # Regulation text is VA's wording, so it lives in criteria_text, which the claims-language scan does
+    # not read. Symptom keywords are never imported: mapping symptoms to codes is prohibited.
     rs = docs["rating_schedule"]
+    for f in rs.get("formulas", []):
+        track("rating_schedule", "rating_formula", {"formula_id": f["formula_id"], "cfr_section": f["cfr_section"],
+              "title": f["title"], "notes": f.get("notes") or None, "status": _status(f, rs["default_status"]),
+              "source_ids": rs["sources"]})
+        for i, t in enumerate(f["criteria"]):
+            track("rating_schedule", "rating_formula_criterion", {"criterion_id": f"{f['formula_id']}:{i:02d}",
+                  "formula_id": f["formula_id"], "position": i, "percent": t["percent"], "criteria_text": t["text"]})
     for code in rs["codes"]:
         if "keywords" in code or "symptoms" in code:
             raise CorpusError(f"rating_schedule {code['code']}: symptom keywords are prohibited (governance section 5)")
         track("rating_schedule", "rating_code", {"code": code["code"], "name": code["name"], "body_system": code["body_system"],
               "subsection": code.get("subsection"), "cfr_section": code.get("cfr_section"), "notes": code.get("notes") or None,
               "has_criteria": bool(code["has_criteria"]), "status": _status(code, rs["default_status"]),
-              "status_note": code.get("status_note"), "source_ids": rs["sources"]})
+              "status_note": code.get("status_note"), "source_ids": rs["sources"],
+              "cited_codes": code.get("cited_codes", [])})
         for i, t in enumerate(code["criteria"]):
             track("rating_schedule", "rating_criterion", {"criterion_id": f"{code['code']}:{i:02d}", "code": code["code"], "position": i,
                                        "percent": t["percent"], "percent_minor": t.get("percent_minor"),
                                        "criteria_text": t["text"]})
+        for fid in code.get("formula_ids", []):
+            track("rating_schedule", "rating_code_formula", {"code": code["code"], "formula_id": fid})
 
     for name in DATASET_FILES:
         d = docs[name]
@@ -394,7 +404,9 @@ PK = {"source": ("source_id",), "care_type": ("code",), "directory_entry": ("ent
       "state_summary": ("jurisdiction_code",), "benefit_lead": ("lead_id",), "duty_authority": ("authority_id",),
       "rule_lead": ("lead_id",), "timeline_window": ("window_id",), "education_program": ("program_id",),
       "installation": ("installation_id",), "finding": ("finding_id",), "governance_rule": ("rule_id",),
-      "module": ("module_id",), "rating_code": ("code",), "rating_criterion": ("criterion_id",)}
+      "module": ("module_id",), "rating_code": ("code",), "rating_criterion": ("criterion_id",),
+      "rating_formula": ("formula_id",), "rating_formula_criterion": ("criterion_id",),
+      "rating_code_formula": ("code", "formula_id")}
 
 
 def _key(row: dict, cols: tuple[str, ...]):
@@ -507,6 +519,19 @@ def validate(c: Corpus) -> None:
             errors.append(f"rating_criterion {r['criterion_id']}: percent_minor must be 0-100 in steps of 10")
         if pm is not None and pm > r["percent"]:
             errors.append(f"rating_criterion {r['criterion_id']}: the minor side cannot rate above the major side")
+    formulas = {r["formula_id"] for r in t.get("rating_formula", [])}
+    for r in t.get("rating_formula_criterion", []):
+        if r["formula_id"] not in formulas:
+            errors.append(f"rating_formula_criterion {r['criterion_id']}: unknown formula {r['formula_id']}")
+        if not (isinstance(r["percent"], int) and 0 <= r["percent"] <= 100 and r["percent"] % 10 == 0):
+            errors.append(f"rating_formula_criterion {r['criterion_id']}: percent must be 0-100 in steps of 10")
+    for r in t.get("rating_code_formula", []):
+        if r["code"] not in codes or r["formula_id"] not in formulas:
+            errors.append(f"rating_code_formula {r['code']} -> {r['formula_id']}: unknown code or formula")
+    for r in t.get("rating_code", []):
+        bad = [x for x in r.get("cited_codes", []) if x not in codes]
+        if bad:
+            errors.append(f"rating_code {r['code']}: cites unknown codes {bad}")
     summary = {r["jurisdiction_code"] for r in t.get("state_summary", [])}
     expected = {j["code"] for j in known_jurisdictions() if j["kind"] == "state"} | {"DC"}
     if summary != expected:

@@ -134,7 +134,8 @@ def rating_schedule(conn, body_system: str | None) -> dict:
     codes = _rows(conn, "SELECT code, name, body_system, subsection, cfr_section, has_criteria, status, status_note "
                         f"FROM ref.rating_code {where} ORDER BY code", params)
     systems = _rows(conn, "SELECT body_system, count(*) AS codes FROM ref.rating_code GROUP BY 1 ORDER BY 1")
-    return {"codes": codes, "body_systems": systems, "label": CFR_REFERENCE_LABEL, "notice": notice(),
+    formulas = _rows(conn, "SELECT formula_id, cfr_section, title, status FROM ref.rating_formula ORDER BY formula_id")
+    return {"codes": codes, "body_systems": systems, "formulas": formulas, "label": CFR_REFERENCE_LABEL, "notice": notice(),
             "vso_referral": claims_boundary.required_text("vso_referral_block")}
 
 
@@ -143,7 +144,12 @@ def rating_code(conn, code: str) -> dict:
     if not rows:
         raise UnknownRatingCode(code)
     criteria = _rows(conn, "SELECT percent, percent_minor, criteria_text FROM ref.rating_criterion WHERE code = $1 ORDER BY position", [code])
-    return {"code": rows[0], "criteria": criteria, "label": CFR_REFERENCE_LABEL, "notice": notice(),
+    formulas = _rows(conn, "SELECT f.formula_id, f.cfr_section, f.title, f.notes, f.status FROM ref.rating_code_formula l "
+                           "JOIN ref.rating_formula f USING (formula_id) WHERE l.code = $1 ORDER BY f.formula_id", [code])
+    for f in formulas:
+        f["criteria"] = _rows(conn, "SELECT percent, criteria_text FROM ref.rating_formula_criterion "
+                                    "WHERE formula_id = $1 ORDER BY position", [f["formula_id"]])
+    return {"code": rows[0], "criteria": criteria, "formulas": formulas, "label": CFR_REFERENCE_LABEL, "notice": notice(),
             "vso_referral": claims_boundary.required_text("vso_referral_block")}
 
 

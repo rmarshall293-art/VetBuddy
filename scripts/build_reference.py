@@ -27,7 +27,8 @@ SEED = ROOT / "database" / "seeds" / "0011_reference.sql"
 
 ORDER = ("source", "care_type", "conflict", "supersession", "directory_entry", "statistic", "rate", "state_summary",
          "benefit_lead", "duty_authority", "rule_lead", "timeline_window", "education_program", "installation",
-         "finding", "governance_rule", "module", "rating_code", "rating_criterion")
+         "finding", "governance_rule", "module", "rating_code", "rating_criterion",
+         "rating_formula", "rating_formula_criterion", "rating_code_formula")
 JSON_COLS = {"dims", "readings", "counts"}
 
 

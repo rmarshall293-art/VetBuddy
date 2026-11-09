@@ -310,7 +310,7 @@
   "military_pay": {
     "rate_set": "base_pay_2025",
     "effective_from": "2025-01-01",
-    "status": "UNVERIFIED",
+    "status": "SUPERSEDED",
     "rounded": true,
     "unit": "usd_whole_dollars_monthly",
     "note": "4.5% across-the-board raise effective 2025-01-01, plus about 10% targeted raise for E-1 to E-4 effective 2025-04-01. Selected longevity gates only, rounded to the dollar. 2026: +3.8% effective 2026-01-01 (no table in source).",
@@ -698,7 +698,9 @@
           11629
         ]
       }
-    }
+    },
+    "effective_to": "2025-12-31",
+    "superseded_note": "The calendar-2025 table. Military basic pay changes every January 1, so this table stopped applying on 2025-12-31; the 2026 table is not loaded. DFAS (dfas.mil) refuses automated reads, so the 2025 cells have not been checked against DFAS either. Use DFAS's current pay tables."
   },
   "bas": [
     {

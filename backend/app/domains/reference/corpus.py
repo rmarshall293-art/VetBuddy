@@ -200,6 +200,8 @@ def build() -> Corpus:
                 if v is None:
                     continue
                 rate(mp["rate_set"], {"grade": grade, "gate": gate}, _cents(v), mp["effective_from"], rounded=True,
+                     eff_to=mp.get("effective_to"), status=mp.get("status", "UNVERIFIED"),
+                     note=mp.get("superseded_note"),
                      conflict="conflict.base_pay.gate_labels" if (grade, gate) in gate_conflicts else None)
     for cap, cents in mp["caps_cents"].items():
         rate("base_pay_caps_2025", {"cap": cap}, cents, mp["effective_from"])

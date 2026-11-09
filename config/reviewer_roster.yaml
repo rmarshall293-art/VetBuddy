@@ -1,0 +1,25 @@
+# Benefit Vault reviewer roster (gate G1; migration 0016; ADR 0006).
+#
+# Kept by the project owner. Only people on this list, active, and scoped to a
+# record's jurisdiction can mark that record VERIFIED, and only through
+# scripts/vault_review.py, which logs every review.
+#
+# HANDLES ONLY. Never a name, email address or phone number: this file is in
+# git. Keep the real identity behind each handle, and proof of accreditation,
+# outside the repository.
+#
+# Roles: accredited_vso_representative | accredited_claims_agent |
+#        accredited_attorney | state_veterans_agency
+# Scope: jurisdiction codes (AL, US, TX, ...) or "*".
+# The owner's starting order: Alabama, then records whose source was already
+# checked (scripts/vault_review.py queue).
+#
+# Example (remove the # to add someone, then run: scripts/vault_review.py sync-roster):
+#   - handle: al-vso-01
+#     role: accredited_vso_representative
+#     scope: [AL, US]
+#     added_on: 2026-11-01
+#     active: true
+
+owner: project_owner
+reviewers: []

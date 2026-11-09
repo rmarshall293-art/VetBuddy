@@ -1,0 +1,121 @@
+# VetBuddy Benefit Vault research ledger, batch 08 (page tails past the first 100,000 characters)
+# Format: CAT|TITLE|GROUPS|RULE|ELIGIBLE|VALUE|URL  (see data/research/RESEARCH_LOG.md)
+# Every row is UNVERIFIED until a named reviewer checks the URL (G1). Tails read 2026-10-27 at offset 100,000.
+# A PART=tail block adds rows to the same jurisdiction's main block. A block with no rows records a tail
+# that was read and held nothing new (duplicates of main-block rows, medals, certificates or bare links).
+
+# JUR=LA SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Louisiana PART=tail
+
+# JUR=ME SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Maine PART=tail
+OTHER|Maine Veterans' Dental Network|vet|res & vet & hon|Maine residents with an honorable discharge, no 100% rating and no dental insurance|Free preventive, restorative and oral surgery dental care|https://www.maine.gov/veterans/benefits/healthcare/dental-care
+
+# JUR=MD SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Maryland PART=tail
+BURIAL|Maryland State Veterans Cemeteries|vet,sp,ch|vet | dep | ss|Veterans who entered service from Maryland or lived there two years, and dependents|Free plot, liner, headstone and burial for the veteran; dependents $1,002|https://veterans.maryland.gov/benefits-services/burial/veteran-cemeteries
+OTHER|WMATA reduced fare for veterans with disabilities|dv|vet & r>=60|Veterans rated 60%+ with a VA benefit summary letter|50% off Metrorail and Metrobus; 50% off the 7-day regional bus pass|https://www.wmata.com/pay/fare-programs/riders-with-disabilities.html
+OTHER|Maryland's Commitment to Veterans|ad,ng,rsv,vet,sp|res & (vet | sm | dep)|Members, veterans and families in Maryland needing mental health or substance use help|Referrals, peer support and suicide prevention training|https://health.maryland.gov/bha/veterans/Pages/Home.aspx
+
+# JUR=MA SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Massachusetts PART=tail
+BONUS|Welcome Home Bonus (post-9/11)|ad,ng,rsv,vet|sm | vet|Members and veterans with active duty after September 11, 2001 and Massachusetts domicile before entry|$1,000 (danger zone), $500 (6+ months elsewhere), $250 (repeat service)|https://www.mass.gov/global-war-on-terrorism-welcome-home-bonus-post-911-servicemembers
+BONUS|Persian Gulf War bonus|vet,ad|(vet | sm) & days>=30|Veterans and members with 30+ days of active duty from August 2, 1990 to April 10, 1991|$500 with the Southwest Asia medal; $300 otherwise|https://www.mass.gov/persian-gulf-war-veterans-bonus
+BONUS|Armed Forces Expeditionary Medal bonus|vet|vet | sm|Veterans awarded the AFEM for active duty in 1976-1989 or 1992-2000|$300|https://www.mass.gov/armed-forces-expeditionary-medal-afem-bonus-1976-2001
+BONUS|Vietnam, Korean War and World War II bonuses|vet,ss,ch|(vet & wartime) | ss | dep|Veterans with active duty in those periods; families if the veteran died on active duty|$100-$300 by service|https://www.mass.gov/vietnam-conflict-world-war-ii-and-korean-war-veterans-bonuses
+BONUS|Bonus for families of deceased members|ss,ch,gs|ss | dep | gs|Families of eligible veterans who died without receiving a bonus; spouse and children first|$2,000 (post-9/11 families) or $300 (Vietnam, Korea or World War II)|https://www.mass.gov/veterans-bonus-for-deceased-servicemembers
+BONUS|Massachusetts National Guard COVID-19 bonus|ng|ng|Massachusetts Guard members on state active duty for the COVID-19 emergency|$500 first activation; $250 each additional|https://www.mass.gov/massachusetts-covid-19-bonus-for-mass-national-guard
+OTHER|Chapter 115 benefits (veterans safety net)|vet,sp,ch,ss|res & (vet | dep | ss)|Low-income Massachusetts veterans and dependents with financial need|Need-based aid for living, medical and housing costs|https://www.mass.gov/info-details/chapter-115-benefitssafety-net-program
+OTHER|SAVE peer support|vet|vet|Veterans seeking peer support for benefits, mental health and transition|Peer outreach and support|https://www.mass.gov/info-details/statewide-advocacy-for-veterans-empowerment-save-program
+HOMES|Massachusetts Veterans Homes (Chelsea and Holyoke)|vet|res & vet & hon|Massachusetts veterans with 90 days of active duty including wartime, a Purple Heart or a service-connected rating|Long-term nursing, domiciliary and hospital care|https://www.mass.gov/info-details/eligibility-requirements-for-veterans-homes-0
+BURIAL|Massachusetts Veterans Memorial Cemeteries|vet,sp,ch|vet | dep | ss|VA national cemetery eligibility|Free veteran burial; family members pay a nominal fee|https://www.mass.gov/locations/massachusetts-veterans-memorial-cemetery-at-agawam
+
+# JUR=MN SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Minnesota PART=tail
+HOMES|Minnesota Veterans Homes (nursing and domiciliary)|vet,sp|res & ((vet & hon) | sp)|Honorably discharged Minnesota veterans with 181+ days of active duty; eligible spouses 55+|Skilled nursing, dementia care and domiciliary housing|https://mn.gov/mdva/homes/
+BURIAL|Minnesota State Veterans Cemeteries|vet,sp,ch|vet | dep | ss|VA national cemetery eligibility|Free veteran burial; spouse or child $1,002|https://mn.gov/mdva/memorials/stateveteranscemeteries/
+BONUS|Veterans Relief Grant|vet,sp,ch|res & (vet | dep | ss)|Minnesota veterans and families meeting MDVA criteria|Emergency financial grant|https://mn.gov/mdva/resources/familyassistance/veteransreliefgrant.jsp
+OTHER|Minnesota Service CORE|ad,ng,rsv,vet,sp,ch|vet | sm | dep|Veterans, members and families|Free counseling and financial, debt, addiction and disability help|https://mn.gov/mdva/resources/familyassistance/minnesotaservicecore.jsp
+OTHER|Homeless Veteran Registry|vet|vet | sm|Anyone who served in an active or reserve component, whatever the discharge|Connects homeless veterans to housing and services|https://mn.gov/mdva/resources/homelessnessandprevention/homelessveteranregistry.jsp
+OTHER|Free certified records for veterans' claims|vet,ss|(vet & hon) | ss|Honorably discharged veterans, surviving spouses and next of kin|Free certified birth, death, marriage and discharge records|https://law.justia.com/codes/minnesota/chapters-196-198/chapter-197/section-197-63/
+
+# JUR=NE SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Nebraska PART=tail
+
+# JUR=NJ SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/New-Jersey PART=tail
+HOMES|Veterans Transitional Housing (Veterans Haven North and South)|vet|vet & otd|Homeless veterans discharged other than dishonorably, registered with VA and drug and alcohol free|Transitional housing with rehabilitation services|https://www.nj.gov/dva/
+HOMES|New Jersey Veterans Memorial Homes|vet,sp,ss,gs|(vet & hon) | sp | ss | gs|Honorably discharged veterans, spouses, surviving spouses and Gold Star parents; two-year residents first|Long-term nursing and rehabilitation at three homes|https://www.nj.gov/dva/veterans/memorial-homes/
+BURIAL|Brigadier General William C. Doyle Veterans Memorial Cemetery|vet,sp,ch|vet | dep | ss|VA national cemetery eligibility plus New Jersey residency (may be waived)|Free burial, marker, liner and perpetual care|https://www.nj.gov/dva/veterans/services/cemetery/
+
+# JUR=NY SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/New-York PART=tail
+PARKS|Lifetime Liberty Pass|vet,ss,gs|res & (vet | ss | gs)|New York veterans (confirm the disability-rating requirement on the Parks page) and families of members killed in the line of duty|Free entry to parks and historic sites; discounted camping, cabins and marinas|https://parks.ny.gov/visit/passes/lifetime-liberty-pass
+BONUS|Gold Star Annuity|gs,ss,ch|res & gs|Spouse, child or parent of a member who died in the line of duty, meeting age, school or disability rules|Annuity paid in March and September|https://veterans.ny.gov/gold-star-families-annuity-program
+BONUS|Homes for Veterans mortgage program|vet,ad,ng,rsv|res & (vet | sm)|New York veterans discharged other than dishonorably; serving members who are first-time buyers|Rate 0.375% below standard; down payment help up to $15,000|https://veterans.ny.gov/homes-veterans-program
+BONUS|Blind Annuity|vet,ss|res & ((vet & wartime) | ss)|Legally blind wartime veterans with 90+ days, or unremarried surviving spouses|Annual annuity|https://veterans.ny.gov/new-york-state-blind-annuity-program
+HOMES|New York State Veterans Homes|vet,sp,gs|res & ((vet & hon) | sp | gs)|Honorably discharged New York veterans with 30+ days of active duty needing skilled nursing; spouses and Gold Star parents|Skilled nursing and rehabilitation at five homes|PAGE
+
+# JUR=OH SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Ohio PART=tail
+BURIAL|Ohio Veterans Home Cemetery|vet|res & vet|Veterans living in an Ohio Veterans Home|Free gravesite, liner, opening and closing, headstone and perpetual care|https://www.cem.va.gov/find-cemetery/state.asp?STATE=OH
+BONUS|Military Injury Relief Fund|ad,ng,rsv,vet|res & (sm | vet)|Ohio residents who served after October 7, 2001 and were injured or have PTSD from combat service|$500 tax-exempt grant, up to three fiscal years|https://dvs.ohio.gov/veteran-benefits/benefits-resources/military-injury-relief-fund
+OTHER|Concealed handgun license fee waiver|ad,ng,rsv,vet|sm | (vet & hon)|Members and honorably discharged veterans applying for or renewing an Ohio concealed handgun license|Application or renewal fee waived|https://www.ohioattorneygeneral.gov/law-enforcement/concealed-carry
+
+# JUR=PA SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Pennsylvania PART=tail
+BONUS|Blind Veterans Pension|vet|vet & hon & sc|Honorably discharged veterans with service-connected blindness who lived in Pennsylvania at entry|$150 a month|https://www.pa.gov/agencies/dmva/pennsylvania-veterans/pa-vetconnect/state-veterans-programs/financial-assistance/blind-veterans-pension
+BONUS|Amputee and Paralyzed Veterans Pension|vet|vet & hon & sc|Honorably discharged veterans with service-connected loss of use of two or more limbs rated 40%+ each|$150 a month|https://www.pa.gov/agencies/dmva/pennsylvania-veterans/pa-vetconnect/state-veterans-programs/financial-assistance/amputee-and-paralyzed-veterans-pension
+BONUS|Military Family Relief Assistance Program|ad,ng,rsv,sp,ch|sm | (dep & spsm)|Pennsylvania members with 30+ consecutive days of service and financial need tied to service, and families|Grants up to $5,000|https://www.pa.gov/services/dmva/apply-for-military-family-relief-assistance
+BURIAL|County burial, grave marker and headstone allowances|vet,ss|vet | ss|Deceased Pennsylvania resident veterans and surviving spouses; apply through the county within a year|Burial allowance, free grave marker and headstone allowance (amounts vary by county)|https://pccfa.com/veterans-resources/
+HOMES|Pennsylvania State Veterans Homes|vet,sp|(vet & hon) | sp|Honorably discharged veterans and spouses|Domiciliary, personal care, memory care and skilled nursing|https://www.pa.gov/agencies/dmva/pa-veterans-homes/veterans-homes-locations
+BURIAL|Pennsylvania Soldiers' and Sailors' Home Cemetery|vet|vet & hon|Honorably discharged veterans living at the Soldiers' and Sailors' Home at death|Burial at the state veterans cemetery|https://www.pa.gov/agencies/dmva/pa-veterans-homes/veterans-homes-locations/pa-soldiers-and-sailors/cemetery
+
+# JUR=TX SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Texas PART=tail
+BURIAL|Texas State Veterans Cemeteries|vet,sp,ch|vet | sm | dep | ss|Veterans not dishonorably discharged, active duty deaths, 20-year retirees, activated reservists, spouses and dependents|Free plot, opening and closing, liner, headstone and honors|https://www.glo.texas.gov/veterans/texas-state-veterans-cemeteries
+OTHER|License to Carry age and fee waivers|ad,ng,rsv|sm|Active duty and reserve members (age waiver); active duty (fee waivers)|Under-21 age waiver; fees waived on new and renewal licenses|https://www.dps.texas.gov/section/handgun-licensing
+OTHER|Texas Lawyers for Texas Veterans|vet,sp,ch|vet | dep|Veterans and families who cannot afford legal services|Free civil legal help at local clinics|https://www.texasbar.com/Content/NavigationMenu/AboutUs/StateBarPresident/TexasLawyersforTexasVeterans/default.htm
+
+# JUR=VA SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Virginia PART=tail
+OTHER|Virginia Veteran and Family Support|vet,ng,rsv,sp,ch,ss|res & (vet | ngany | rsv | dep | ss)|Virginia veterans of any discharge, Guard or Reserve not on federal active duty, and families|Needs assessment, referrals, peer mentoring and caregiver support|https://www.dvs.virginia.gov/benefits-services/veteran-and-family-support
+OTHER|WMATA reduced fare for veterans with disabilities|dv|vet & r>=60|Veterans rated 60%+ with a VA benefit summary letter|50% off Metrorail and Metrobus; 50% off the 7-day regional bus pass|https://www.wmata.com/pay/fare-programs/riders-with-disabilities.html
+OTHER|Military Spouse Liaison|sp|sp|Military spouses and families|Help with licensure reciprocity, employment, benefits and childcare|https://www.dvs.virginia.gov/benefits-services/military-spouse-support
+
+# JUR=WA SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Washington PART=tail
+BONUS|Veterans Innovations Program|vet|res & vet & hon|Honorably discharged Washington veterans who served on or after September 11, 2001 facing financial hardship|Financial assistance grants|https://dva.wa.gov/node/1383/veterans-innovations-program-vip
+BONUS|County veterans assistance programs|vet,sp,ch|res & (vet | dep)|Veterans and families in need, through the county|County emergency assistance|https://dva.wa.gov/county-services
+BURIAL|Washington State Veterans Cemetery|vet,sp,ch|vet | dep | ss|VA national cemetery eligibility; no Washington residency required|Free veteran burial; $311 for an eligible dependent|https://dva.wa.gov/veterans-service-members-and-their-families/cemetery
+JOBS|Military Spouse Initiative|sp|sp|Military spouses seeking work in Washington|Career and resource support|https://dva.wa.gov/militaryspouseinitiative
+
+# JUR=KS SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Kansas PART=tail
+OTHER|Free vital records for VA claims|vet,sp,ch|vet | dep | ss|Veterans and families requesting through the Kansas Office of Veterans Services for VA purposes|Free certified birth, marriage, divorce and death certificates|https://www.kovs.ks.gov/veteran-services/state-veterans-benefits-guide
+
+# JUR=IN SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Indiana PART=tail
+
+# JUR=MO SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Missouri PART=tail
+
+# JUR=MT SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Montana PART=tail
+
+# JUR=NC SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/North-Carolina PART=tail
+
+# JUR=ND SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/North-Dakota PART=tail
+
+# JUR=UT SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Utah PART=tail
+
+# JUR=OK SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Oklahoma PART=tail
+
+# JUR=AL SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Alabama PART=tail
+
+# JUR=CA SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/California PART=tail
+BURIAL|California State Veterans Cemeteries|vet,sp,ch|vet | dep | ss|VA national cemetery eligibility|Free veteran burial; fee waivers for families facing hardship|https://www.calvet.ca.gov/VetServices/Pages/State-Veterans-Cemeteries.aspx
+BONUS|California Military Family Relief Fund|ng|res & ng|California Guard members called to federal active duty for 60+ consecutive days|Short-term financial assistance grants|https://www.calvet.ca.gov/VetServices/Pages/Financial-Assistance.aspx
+OTHER|Military Families Financial Relief Act payment deferral|ng,rsv|ngany | rsv|Reserve component members called to state or federal active duty for 30+ days|Certain payments deferred up to 180 days in a 365-day period|https://law.justia.com/codes/california/code-mvc/division-4/chapter-3/
+OTHER|California Transition Assistance Program (CalTAP)|ad,ng,rsv,vet|vet | sm|Veterans and members leaving the military|Free transition workshops connecting to federal and state benefits|https://www.calvet.ca.gov/VetServices/Pages/California-Transition-Assistance-Program.aspx
+
+# JUR=CO SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Colorado PART=tail
+BONUS|Colorado Military Family Relief Fund|ad,ng,rsv,sp,ch|res & (ngany | rsv | ad | dep)|Colorado Guard and Reserve members activated 30+ days, active duty members, and families with deployment-related costs|Grants for lost income or food, housing, utility and medical costs|https://dmva.colorado.gov/sites/dmva/files/MFRF%20application-%20deployment%20related%20expense.pdf
+BONUS|Colorado National Guard Foundation assistance|ng|ng|Colorado Guard members with at least one year left on their enlistment facing hardship|Loans, grants and gift cards (private foundation)|https://congfoundation.org/
+
+# JUR=FL SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Florida PART=tail
+HUNTFISH|Free license for disabled veterans|dv|res & vet & r>=50|Resident veterans rated 50%+|Free five-year hunting and fishing license with snook and lobster permits|https://myfwc.com/license/accessibility/hunt-fish/
+HUNTFISH|Military Gold Sportsman's License|ad,ng,rsv,ret|(stn & ad) | (res & (sm | ret))|Nonresident active duty stationed in Florida, resident members and resident retirees|$20 a year for hunting and fishing with snook and lobster permits|https://myfwc.com/license/recreational/military-gold/
+HUNTFISH|No license needed on leave|ad,ng,rsv|res & sm & !stn|Resident members stationed outside Florida and home on leave for 30 days or less|Exempt from hunting and fishing license requirements|https://myfwc.com/license/recreational/do-i-need-one/
+PARKS|Military discount on annual state park passes|ad,ng,rsv,vet|sm | (vet & hon)|Active and reserve members and honorably discharged veterans|25% off annual entrance passes|https://www.floridastateparks.org/learn/florida-state-parks-annual-pass
+PARKS|Free lifetime state park pass|dv,ss,gs|(vet & sc) | (ss & spkia)|Veterans with service-connected disabilities and surviving spouses of members killed in combat|Free lifetime annual entrance pass|https://www.floridastateparks.org/learn/florida-state-parks-annual-pass
+PARKS|Operation Outdoor Freedom|dv,vet|res & vet & hon & (r>=30 | ph)|Resident honorably discharged veterans rated 30%+ or Purple Heart recipients|Free hunting, fishing and outdoor trips on state forest, agricultural and private land|https://www.fdacs.gov/Forest-Wildfire/Our-Forests/State-Forests/State-Forest-Recreation/Operation-Outdoor-Freedom
+HOMES|Florida State Veterans' Homes (domiciliary and nursing)|vet,sp|res & ((vet & hon) | sp)|Honorably discharged Florida residents a VA physician certifies need assisted living or skilled nursing; spouses if space allows|150-bed assisted living home and eight skilled nursing homes|https://floridavets.org/locations/state-veterans-nursing-homes/
+JOBS|Notary commission fee exemption for disabled veterans|dv|res & vet & wartime & r>=50|Resident wartime veterans rated 50%+|Notary public commission fee waived|PAGE
+
+# JUR=GA SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Georgia PART=tail
+
+# JUR=SC SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/South-Carolina PART=tail

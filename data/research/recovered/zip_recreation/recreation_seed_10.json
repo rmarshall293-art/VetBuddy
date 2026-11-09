@@ -1,0 +1,122 @@
+[
+ [
+  "National Park Service Veterans Free Access",
+  "national_park",
+  null,
+  "National Park Service",
+  "https://www.nps.gov/planyourvisit/veterans-and-gold-star-families-free-access.htm",
+  "free",
+  "Free entrance for veterans and Gold Star families",
+  false,
+  0,
+  "veteran,gold_star,active"
+ ],
+ [
+  "America the Beautiful — Access Pass",
+  "national_park",
+  null,
+  "U.S. Dept. of the Interior",
+  "https://www.nps.gov/planyourvisit/passes.htm",
+  "free",
+  "Free lifetime pass for U.S. citizens with permanent disabilities",
+  true,
+  0,
+  "disabled"
+ ],
+ [
+  "VA Adaptive Sports Program",
+  "adaptive_sports",
+  null,
+  "U.S. Dept. of Veterans Affairs",
+  "https://department.va.gov/veteran-sports/",
+  "free",
+  "Grants and clinics for adaptive sports and therapeutic recreation",
+  true,
+  0,
+  "veteran,disabled"
+ ],
+ [
+  "National Veterans Golden Age Games",
+  "adaptive_sports",
+  null,
+  "VA",
+  "https://department.va.gov/veteran-sports/national-veterans-golden-age-games/",
+  "free",
+  "Annual sports/wellness event for veterans 55+",
+  false,
+  0,
+  "veteran"
+ ],
+ [
+  "Disabled American Veterans (DAV) Outdoors",
+  "outdoors",
+  null,
+  "DAV",
+  "https://www.dav.org/",
+  "free",
+  "Sponsored hunting/fishing/outdoor recreation for disabled veterans",
+  true,
+  0,
+  "veteran,disabled"
+ ],
+ [
+  "Armed Forces Recreation / MWR ITT",
+  "mwr_itt",
+  null,
+  "DoD MWR",
+  "https://www.militaryonesource.mil/",
+  "discount",
+  "Discounted theme-park, travel, and lodging tickets via base ITT/Tickets & Travel offices",
+  false,
+  0,
+  "active,retiree,veteran_disabled"
+ ],
+ [
+  "Space-A Travel (Military Airlift)",
+  "travel",
+  null,
+  "DoD / AMC",
+  "https://www.amc.af.mil/Home/AMC-Travel-Site/",
+  "free",
+  "Space-available travel for retirees, 100% disabled veterans, and dependents per category",
+  true,
+  100,
+  "retiree,disabled,dependent"
+ ],
+ [
+  "Veterans Day Free Meals & Retail Discounts",
+  "discount",
+  null,
+  "Various retailers",
+  "https://www.va.gov/",
+  "discount",
+  "Seasonal Veterans Day meals and year-round retailer discounts (proof of service)",
+  false,
+  0,
+  "veteran,active,retiree"
+ ],
+ [
+  "State Park Veteran Admission (varies)",
+  "state_park",
+  null,
+  "State park agencies",
+  null,
+  "discount",
+  "Many states offer free/discounted state-park admission for veterans/disabled veterans",
+  false,
+  0,
+  "veteran,disabled"
+ ],
+ [
+  "Gold Star Family Recreation Access",
+  "family",
+  null,
+  "DoD / NPS",
+  "https://www.nps.gov/",
+  "free",
+  "Recreation access and on-base privileges for surviving family members",
+  false,
+  0,
+  "gold_star,dependent"
+ ]
+]

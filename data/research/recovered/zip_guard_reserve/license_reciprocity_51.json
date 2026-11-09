@@ -1,0 +1,257 @@
+{
+ "AL": [
+  0,
+  1,
+  "Full"
+ ],
+ "AK": [
+  1,
+  1,
+  "Partial"
+ ],
+ "AZ": [
+  1,
+  1,
+  "Partial"
+ ],
+ "AR": [
+  0,
+  1,
+  "Partial"
+ ],
+ "CA": [
+  0,
+  0,
+  "None"
+ ],
+ "CO": [
+  1,
+  1,
+  "Full"
+ ],
+ "CT": [
+  1,
+  1,
+  "Partial"
+ ],
+ "DE": [
+  0,
+  1,
+  "Partial"
+ ],
+ "FL": [
+  0,
+  0,
+  "Partial"
+ ],
+ "GA": [
+  0,
+  0,
+  "Partial"
+ ],
+ "HI": [
+  0,
+  0,
+  "Partial"
+ ],
+ "ID": [
+  1,
+  1,
+  "Partial"
+ ],
+ "IL": [
+  0,
+  1,
+  "Partial"
+ ],
+ "IN": [
+  1,
+  1,
+  "Partial"
+ ],
+ "IA": [
+  1,
+  1,
+  "Partial"
+ ],
+ "KS": [
+  1,
+  1,
+  "Partial"
+ ],
+ "KY": [
+  1,
+  1,
+  "Partial"
+ ],
+ "LA": [
+  0,
+  0,
+  "Partial"
+ ],
+ "ME": [
+  1,
+  1,
+  "Full"
+ ],
+ "MD": [
+  0,
+  1,
+  "Partial"
+ ],
+ "MA": [
+  1,
+  1,
+  "Partial"
+ ],
+ "MI": [
+  1,
+  0,
+  "Partial"
+ ],
+ "MN": [
+  1,
+  1,
+  "Partial"
+ ],
+ "MS": [
+  0,
+  0,
+  "Full"
+ ],
+ "MO": [
+  1,
+  1,
+  "Partial"
+ ],
+ "MT": [
+  1,
+  1,
+  "Partial"
+ ],
+ "NE": [
+  1,
+  1,
+  "Partial"
+ ],
+ "NV": [
+  0,
+  0,
+  "Partial"
+ ],
+ "NH": [
+  1,
+  1,
+  "Partial"
+ ],
+ "NJ": [
+  1,
+  1,
+  "Partial"
+ ],
+ "NM": [
+  1,
+  1,
+  "Partial"
+ ],
+ "NY": [
+  0,
+  1,
+  "Partial"
+ ],
+ "NC": [
+  1,
+  1,
+  "Partial"
+ ],
+ "ND": [
+  1,
+  1,
+  "Partial"
+ ],
+ "OH": [
+  1,
+  1,
+  "Partial"
+ ],
+ "OK": [
+  1,
+  1,
+  "Partial"
+ ],
+ "OR": [
+  1,
+  0,
+  "Partial"
+ ],
+ "PA": [
+  1,
+  1,
+  "Partial"
+ ],
+ "RI": [
+  0,
+  1,
+  "Partial"
+ ],
+ "SC": [
+  1,
+  1,
+  "Partial"
+ ],
+ "SD": [
+  1,
+  1,
+  "Partial"
+ ],
+ "TN": [
+  0,
+  1,
+  "Partial"
+ ],
+ "TX": [
+  0,
+  0,
+  "None"
+ ],
+ "UT": [
+  1,
+  1,
+  "Partial"
+ ],
+ "VT": [
+  1,
+  1,
+  "Partial"
+ ],
+ "VA": [
+  0,
+  1,
+  "Partial"
+ ],
+ "WA": [
+  1,
+  1,
+  "Partial"
+ ],
+ "WV": [
+  1,
+  1,
+  "Partial"
+ ],
+ "WI": [
+  1,
+  1,
+  "Partial"
+ ],
+ "WY": [
+  1,
+  1,
+  "Partial"
+ ],
+ "DC": [
+  0,
+  1,
+  "Partial"
+ ]
+}

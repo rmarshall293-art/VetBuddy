@@ -1,0 +1,17 @@
+{
+ "note": "Names of diagnostic codes that 38 CFR Part 4 has since removed, as they stood in the 2020 edition transcription (src.legacy.va_rating_app). Used only to label removed codes; every current name comes from Appendix B.",
+ "names": {
+  "5018": "Hydrarthrosis, intermittent",
+  "5020": "Synovitis",
+  "5022": "Periostitis",
+  "7305": "Ulcer, duodenal",
+  "7306": "Ulcer, marginal",
+  "7316": "Cholangitis, chronic",
+  "7321": "Amebiasis",
+  "7322": "Dysentery, bacillary",
+  "7324": "Distomiasis, intestinal or hepatic",
+  "7339": "Hernia, ventral, postoperative",
+  "7340": "Hernia, femoral",
+  "7510": "Ureterolithiasis"
+ }
+}

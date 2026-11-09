@@ -1,0 +1,251 @@
+{
+ "note": "Synthetic career samples for the demo people (data/demo/personas.json) and the career tests. Every person, employer and announcement is invented; announcements are marked SYNTHETIC ANNOUNCEMENT FOR DEMONSTRATION. Jordan's nursing case reproduces the specification's highest-value fixture (a legally required licence, a record of its absence, acronyms, a hyphenated specialty and a card that just says 'Current.').",
+ "people": {
+  "dana": {
+   "objective": "Operations leader ready to run transportation and dispatch teams",
+   "announcement": {
+    "title": "Transportation Operations Supervisor",
+    "employer": "State Department of Transportation (synthetic)",
+    "channel": "state",
+    "raw": "SYNTHETIC ANNOUNCEMENT FOR DEMONSTRATION\nTransportation Operations Supervisor\n\nABOUT THE POSITION\nSupervises a district dispatch and fleet section.\n\nMINIMUM QUALIFICATIONS\n- Two years of experience supervising transportation, dispatch or fleet operations\n- Valid Class A commercial driver's license\n- High school diploma or GED\n\nKNOWLEDGE, SKILLS AND ABILITIES\n- Knowledge of route planning and dispatch systems\n- Ability to maintain accurate vehicle maintenance records\n\nPREFERRED QUALIFICATIONS\n- Experience with fleet management software\n- Coursework in business or logistics\n\nREQUIRED DOCUMENTS\n- Copy of driver's license and DD-214 Member 4\n\nHOW TO APPLY\nApply through the state jobs portal.\n"
+   },
+   "evidence": [
+    {
+     "evidence_id": "ev_d_guard",
+     "kind": "military_experience",
+     "title": "Motor Transport Operator and Squad Leader (88M)",
+     "org": "Army National Guard (synthetic unit)",
+     "start_date": "2018-01",
+     "end_date": null,
+     "verification": "document_backed",
+     "summary": "Lead a squad of soldiers during drill weekends and annual training. Plan convoy routes and dispatch vehicles for unit movements. Maintain the property book and hand receipts for the section's vehicles. Conduct PMCS and track vehicle maintenance records.",
+     "skills": [
+      "convoy operations",
+      "dispatch",
+      "route planning",
+      "fleet maintenance"
+     ],
+     "source_ref": "NCOER (synthetic)",
+     "metrics": [
+      {
+       "value_text": "9",
+       "meaning": "soldiers led",
+       "source": "NCOER (synthetic)",
+       "verification": "document_backed",
+       "phrase": "Led a squad of {v} soldiers in convoy and dispatch operations."
+      },
+      {
+       "value_text": "14",
+       "meaning": "vehicles accounted for",
+       "source": "hand receipt (synthetic)",
+       "verification": "document_backed",
+       "phrase": "Accountable for {v} vehicles and their maintenance records."
+      },
+      {
+       "value_text": "$2.1 million",
+       "meaning": "equipment value",
+       "source": "property book (synthetic)",
+       "verification": "document_backed",
+       "phrase": "Maintained accountability for {v} in equipment with no losses."
+      }
+     ]
+    },
+    {
+     "evidence_id": "ev_d_dispatch",
+     "kind": "civilian_experience",
+     "title": "Dispatch Coordinator",
+     "org": "Regional trucking terminal (synthetic employer)",
+     "start_date": "2020-05",
+     "end_date": null,
+     "hours_per_week": 40,
+     "verification": "user_attested",
+     "summary": "Schedule drivers and loads for a regional trucking terminal. Track deliveries and resolve routing problems with drivers and customers. Use dispatch software to assign routes.",
+     "skills": [
+      "dispatch",
+      "route planning",
+      "dispatch software"
+     ],
+     "metrics": [
+      {
+       "value_text": "35",
+       "meaning": "drivers scheduled",
+       "source": "user statement",
+       "verification": "user_attested",
+       "phrase": "Scheduled a pool of {v} drivers each week."
+      }
+     ]
+    },
+    {
+     "evidence_id": "ev_d_cdl",
+     "kind": "credential",
+     "title": "Commercial driver's license, Class A",
+     "verification": "unverified",
+     "summary": "Class A CDL issued in Alabama. Copy not yet uploaded."
+    },
+    {
+     "evidence_id": "ev_d_college",
+     "kind": "education",
+     "title": "Coursework toward a B.S. in Business Administration",
+     "verification": "user_attested",
+     "summary": "Business and logistics coursework at a public university in Alabama, in progress."
+    }
+   ]
+  },
+  "marcus": {
+   "objective": "Systems administrator ready to support federal network operations",
+   "announcement": {
+    "title": "IT Specialist (SYSADMIN) GS-2210-11",
+    "employer": "Federal agency (synthetic)",
+    "channel": "federal",
+    "raw": "SYNTHETIC ANNOUNCEMENT FOR DEMONSTRATION\nIT Specialist (SYSADMIN) GS-2210-11\n\nDUTIES\nAdministers servers and directory services for a regional office.\n\nSPECIALIZED EXPERIENCE\nOne year of specialized experience equivalent to GS-09 administering Windows and Linux servers,\nmanaging Active Directory accounts and applying security configuration baselines such as STIGs to\nnetworked systems.\n\nQUALIFICATIONS\n- Security+ certification or another 8570 baseline certification within six months of appointment\n- Must be able to obtain and maintain a security clearance\n\nPREFERRED\n- Experience leading a team of technicians\n\nREQUIRED DOCUMENTS\n- Resume, transcripts if qualifying on education, DD-214 Member 4\n\nEDUCATION SUBSTITUTION\nA master's degree in a related field may substitute for specialized experience.\n"
+   },
+   "evidence": [
+    {
+     "evidence_id": "ev_m_navy",
+     "kind": "military_experience",
+     "title": "Information Systems Technician (IT1), U.S. Navy",
+     "org": "Navy shore command (synthetic)",
+     "start_date": "2013-06",
+     "end_date": "2025-08",
+     "hours_per_week": 40,
+     "verification": "document_backed",
+     "summary": "Administered Windows and Linux servers and the command network. Managed Active Directory accounts and group policy. Applied STIG baselines and patched networked systems monthly. Led a team of technicians on watch rotations.",
+     "skills": [
+      "Windows Server",
+      "Linux",
+      "Active Directory",
+      "STIG",
+      "network administration"
+     ],
+     "source_ref": "evaluation reports (synthetic)",
+     "metrics": [
+      {
+       "value_text": "450",
+       "meaning": "network users supported",
+       "source": "evaluation report (synthetic)",
+       "verification": "document_backed",
+       "phrase": "Administered servers and the network for {v} users."
+      },
+      {
+       "value_text": "6",
+       "meaning": "technicians led",
+       "source": "evaluation report (synthetic)",
+       "verification": "document_backed",
+       "phrase": "Led a team of {v} technicians."
+      }
+     ]
+    },
+    {
+     "evidence_id": "ev_m_help",
+     "kind": "civilian_experience",
+     "title": "IT Support Specialist",
+     "org": "Regional office (synthetic employer)",
+     "start_date": "2025-10",
+     "end_date": null,
+     "hours_per_week": 40,
+     "verification": "user_attested",
+     "summary": "Resolve help desk tickets for a regional office. Maintain Active Directory accounts and workstation images.",
+     "skills": [
+      "help desk",
+      "Active Directory",
+      "imaging"
+     ]
+    },
+    {
+     "evidence_id": "ev_m_secplus",
+     "kind": "credential",
+     "title": "CompTIA Security+ (SY0-701)",
+     "verification": "document_backed",
+     "summary": "Security+ certification, exam SY0-701, active."
+    },
+    {
+     "evidence_id": "ev_m_clear",
+     "kind": "credential",
+     "title": "Security clearance",
+     "verification": "unverified",
+     "negative": true,
+     "sensitive": true,
+     "summary": "A clearance was mentioned during intake. Level, adjudication date and current status are not recorded."
+    },
+    {
+     "evidence_id": "ev_m_bs",
+     "kind": "education",
+     "title": "B.S. Information Technology (in progress)",
+     "verification": "user_attested",
+     "summary": "Enrolled in an online information technology degree program."
+    }
+   ]
+  },
+  "jordan": {
+   "objective": "Registered nurse with medical-surgical and charge experience",
+   "announcement": {
+    "title": "Registered Nurse, Medical-Surgical",
+    "employer": "Community hospital (synthetic)",
+    "channel": "private",
+    "raw": "SYNTHETIC ANNOUNCEMENT FOR DEMONSTRATION\nRegistered Nurse, Medical-Surgical\n\nSUMMARY\nNight shift on a medical-surgical unit.\n\nREQUIRED QUALIFICATIONS\n- Current, unencumbered Florida RN license or multistate compact privilege\n- BLS certification from the American Heart Association\n- Two or more years of medical-surgical nursing experience\n- Associate's degree in nursing (ADN) or BSN\n\nPREFERRED QUALIFICATIONS\n- ACLS certification\n- Charge nurse experience\n- Experience documenting care in Epic EHR\n"
+   },
+   "evidence": [
+    {
+     "evidence_id": "ev_j_rn",
+     "kind": "civilian_experience",
+     "title": "Registered Nurse, Medical-Surgical Unit",
+     "org": "Hospital in Washington (synthetic)",
+     "start_date": "2021-03",
+     "end_date": "2024-06",
+     "hours_per_week": 36,
+     "verification": "user_attested",
+     "summary": "Provided nursing care on a medical-surgical unit on night shift. Served as relief charge nurse. Documented care in the Epic EHR and taught patients and families before discharge.",
+     "skills": [
+      "medical-surgical nursing",
+      "Epic EHR",
+      "patient education",
+      "charge nurse"
+     ],
+     "metrics": [
+      {
+       "value_text": "32",
+       "meaning": "beds on the unit",
+       "source": "user statement",
+       "verification": "user_attested",
+       "phrase": "Cared for patients on a {v}-bed medical-surgical unit."
+      }
+     ]
+    },
+    {
+     "evidence_id": "ev_j_bls",
+     "kind": "credential",
+     "title": "BLS Provider card",
+     "verification": "document_backed",
+     "summary": "American Heart Association BLS Provider. Current."
+    },
+    {
+     "evidence_id": "ev_j_acls",
+     "kind": "credential",
+     "title": "ACLS Provider",
+     "verification": "unverified",
+     "summary": "ACLS course completed. Card not yet uploaded."
+    },
+    {
+     "evidence_id": "ev_j_lic",
+     "kind": "credential",
+     "title": "RN licensure, Florida",
+     "verification": "unverified",
+     "negative": true,
+     "summary": "A Washington RN license is on file. No Florida RN license and no multistate compact privilege is recorded in this file."
+    },
+    {
+     "evidence_id": "ev_j_adn",
+     "kind": "education",
+     "title": "Associate Degree in Nursing (ADN)",
+     "verification": "document_backed",
+     "summary": "Associate degree in nursing from a community college (synthetic)."
+    }
+   ]
+  },
+  "ana": {
+   "objective": "Exploring work that fits caring for two children",
+   "announcement": null,
+   "evidence": []
+  }
+ }
+}

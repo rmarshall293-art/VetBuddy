@@ -1,0 +1,53 @@
+{
+  "note": "Sample people for the demo build (dist/vetbuddy-demo.html). Invented; any resemblance to a real person is accidental. Each one feeds the real Mission Router (router) and the real Benefit Vault matcher (vault_facts); scripts/build_web.py runs both and nothing here states an outcome.",
+  "people": [
+    {
+      "id": "dana",
+      "name": "Dana",
+      "headline": "Army National Guard sergeant in Alabama, leaving in about eight months",
+      "story": "Drills with the Alabama Guard, works full time, wants to finish a degree and line up a civilian job before her contract ends. Not sure what authority her last orders were under.",
+      "router": {"persona": "guard_reserve", "branch": "Army", "component": "national_guard", "legal_authority": "unknown",
+                 "separation_offset_days": 250, "current_jurisdiction": "AL", "destination_jurisdiction": null,
+                 "goals": ["education", "career", "benefits"], "urgency": "30_days"},
+      "vault_facts": {"residence_state": "AL", "service_status": "serving", "component": "guard", "guard_state": "AL",
+                      "on_active_duty_orders": false, "relationship": "self"},
+      "saved": ["al.alabama-national-guard-educational-assistance-program-angeap"]
+    },
+    {
+      "id": "marcus",
+      "name": "Marcus",
+      "headline": "Navy veteran in Texas, rated 100% permanent and total",
+      "story": "Separated about a year ago after 12 years, honorable discharge, Gulf War-era service. Settling near family in Texas and wants to know what the state offers for property tax, licenses and school for his kids.",
+      "router": {"persona": "veteran", "branch": "Navy", "component": "separated", "legal_authority": null,
+                 "separation_offset_days": -400, "current_jurisdiction": "TX", "destination_jurisdiction": null,
+                 "goals": ["benefits", "housing", "family"], "urgency": "90_days"},
+      "vault_facts": {"residence_state": "TX", "service_status": "separated", "component": "active", "relationship": "self",
+                      "discharge": "honorable", "va_rating": 100, "rating_permanent_total": true, "wartime_service": true},
+      "saved": ["tx.100-disabled-veteran-homestead-exemption"]
+    },
+    {
+      "id": "ana",
+      "name": "Ana",
+      "headline": "Surviving spouse in Virginia; her husband died on active duty",
+      "story": "Her husband, a Marine, died in the line of duty. She is raising two children in Virginia and wants to understand education help for them and what she can still use herself.",
+      "router": {"persona": "survivor", "branch": "Marine Corps", "component": "separated", "legal_authority": null,
+                 "separation_offset_days": null, "current_jurisdiction": "VA", "destination_jurisdiction": null,
+                 "goals": ["family", "education", "benefits"], "urgency": "90_days"},
+      "vault_facts": {"residence_state": "VA", "service_status": "never_served", "relationship": "surviving_spouse", "sponsor_status": "deceased",
+                      "sponsor_died_in_line_of_duty": true, "sponsor_service_connected": true, "gold_star_family": true},
+      "saved": ["va.virginia-military-survivors-and-dependents-education-program-vmsdep"]
+    },
+    {
+      "id": "jordan",
+      "name": "Jordan",
+      "headline": "Air Force spouse, stationed in Florida, legal residence in Washington",
+      "story": "Moved to Florida with an active-duty spouse. Still a Washington resident for taxes and voting, and wants to know what applies where, including hunting and fishing licenses and state parks.",
+      "router": {"persona": "spouse_family", "branch": "Air Force", "component": "active_duty", "legal_authority": null,
+                 "separation_offset_days": null, "current_jurisdiction": "FL", "destination_jurisdiction": null,
+                 "goals": ["family", "career", "community"], "urgency": "info_only"},
+      "vault_facts": {"residence_state": "WA", "duty_station_state": "FL", "relationship": "spouse", "sponsor_status": "serving",
+                      "component": "active", "service_status": "never_served"},
+      "saved": []
+    }
+  ]
+}

@@ -1,0 +1,981 @@
+<title>VetBuddy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="VetBuddy guest workspace: Mission Brief, combined-rating calculator, claims guide, benefits finder and crisis help. Runs entirely in your browser and stores nothing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: one-column workspace under a dark command bar; paper-stock surfaces
+   carried from the Sentinel prototype. Red is reserved for crisis help only. */
+:root {
+  --ink:#191714; --ink-2:#423C33; --ink-3:#6B6357; --bg:#E4DDCB; --panel:#EFEAdD; --panel-2:#F8F5EE;
+  --rule:#B8AF99; --seal:#1F4B3F; --on-seal:#FFFFFF; --ochre:#76591A; --ochre-bg:#F3E7C4;
+  --alert:#A8281E; --on-alert:#FFFFFF; --bar:#191714; --on-bar:#F2EEE3; --bar-2:#BDB39F; --focus:#1F4B3F;
+  --disp:'Saira Condensed','Arial Narrow','Helvetica Neue',Arial,sans-serif;
+  --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ink:#EDE8DC; --ink-2:#CFC7B6; --ink-3:#A79E8C; --bg:#16140F; --panel:#211E18; --panel-2:#2A261F;
+  --rule:#4A4438; --seal:#86C9B3; --on-seal:#0F1A16; --ochre:#E2BE62; --ochre-bg:#3A3220;
+  --alert:#C8372B; --on-alert:#FFFFFF; --bar:#0D0C09; --on-bar:#F2EEE3; --bar-2:#A79E8C; --focus:#9AD6C2; color-scheme:dark; } }
+:root[data-theme="dark"] {
+  --ink:#EDE8DC; --ink-2:#CFC7B6; --ink-3:#A79E8C; --bg:#16140F; --panel:#211E18; --panel-2:#2A261F;
+  --rule:#4A4438; --seal:#86C9B3; --on-seal:#0F1A16; --ochre:#E2BE62; --ochre-bg:#3A3220;
+  --alert:#C8372B; --on-alert:#FFFFFF; --bar:#0D0C09; --on-bar:#F2EEE3; --bar-2:#A79E8C; --focus:#9AD6C2; color-scheme:dark; }
+* { box-sizing:border-box; }
+body { background:var(--bg); color:var(--ink); font:16px/1.55 var(--body); margin:0; }
+body::before { content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bar); }
+h1,h2,h3 { text-wrap:balance; }
+.disp { font-family:var(--disp); text-transform:uppercase; letter-spacing:.04em; }
+.mono { font-family:var(--mono); }
+a { color:var(--seal); }
+:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
+.gut { padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)); }
+
+header.top { background:var(--bar); color:var(--on-bar); position:sticky; top:env(safe-area-inset-top,0px); z-index:5; }
+.top-inner { max-width:1080px; margin:0 auto; padding-block:10px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.brand { display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none; }
+.mark { display:grid; place-items:center; width:34px; height:34px; border:2px solid var(--on-bar); font:800 15px var(--disp); letter-spacing:.06em; }
+.brand b { font:800 23px var(--disp); text-transform:uppercase; letter-spacing:.04em; }
+nav.tabs { display:flex; gap:2px; flex:1; flex-wrap:wrap; min-width:0; }
+nav.tabs a { color:var(--bar-2); text-decoration:none; padding:10px 10px; font:600 14px var(--disp); text-transform:uppercase; letter-spacing:.05em; border-bottom:3px solid transparent; }
+nav.tabs a[aria-current="page"] { color:var(--on-bar); border-bottom-color:var(--seal); }
+.help-btn { background:var(--alert); color:var(--on-alert); border:0; border-radius:var(--r); padding:10px 16px; min-height:44px; font:700 15px var(--disp); text-transform:uppercase; letter-spacing:.06em; cursor:pointer; }
+.help-btn:focus-visible { outline-color:var(--on-bar); }
+.strip { background:var(--ochre-bg); color:var(--ochre); font:12px/1.4 var(--mono); padding-block:5px; border-bottom:1px solid var(--rule); display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; justify-content:center; text-align:center; }
+.clear-btn { font:600 12px var(--mono); color:var(--ochre); background:transparent; border:1px solid currentColor; border-radius:4px; padding:5px 10px; min-height:32px; cursor:pointer; }
+
+main { max-width:1080px; margin:0 auto; padding-block:24px 64px; }
+section.view { display:grid; gap:16px; }
+h1 { font:800 clamp(30px,5.4vw,44px)/1 var(--disp); text-transform:uppercase; letter-spacing:.03em; margin:0; }
+h2 { font:800 21px/1.15 var(--disp); text-transform:uppercase; letter-spacing:.04em; margin:0 0 8px; }
+h3 { font-size:16.5px; margin:0 0 4px; }
+.lede { font-size:17px; color:var(--ink-2); max-width:62ch; margin:0; }
+p { margin:0; max-width:68ch; }
+.card { background:var(--panel-2); border:1px solid var(--rule); border-radius:var(--r); padding:18px; min-width:0; }
+.card > * + * { margin-top:10px; }
+.grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:16px; }
+.grid3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr)); gap:12px; }
+.btn { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:10px 18px; border-radius:var(--r); border:1px solid var(--ink); background:transparent; color:var(--ink); font:600 15px var(--body); cursor:pointer; text-decoration:none; }
+.btn.primary { background:var(--seal); border-color:var(--seal); color:var(--on-seal); }
+.row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.chip { font:500 11.5px var(--mono); text-transform:uppercase; letter-spacing:.05em; padding:3px 8px; border:1px solid currentColor; border-radius:4px; display:inline-block; }
+.matrix { width:100%; border-collapse:collapse; font-size:14px; } .matrix th, .matrix td { text-align:left; vertical-align:top; padding:8px 10px 8px 0; border-top:1px solid var(--rule); }
+.tablewrap { overflow-x:auto; } .cdoc .cline { margin:4px 0; } .cdoc .role { font-weight:600; margin-top:12px; } .cdoc .held s { color:var(--ink-3); } .cdoc .why { display:block; color:var(--ochre); }
+.evlist { padding-left:18px; } .evlist li { margin:6px 0; } .evlist .chip { margin-left:6px; }
+.mlgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); gap:4px 18px; } .mlf { min-width:0; } .mlf select { width:100%; }
+.mlres td .small { display:block; } .card form { grid-template-columns:minmax(0,1fr); }
+.mlf input, .mlf select { max-width:none; } .mlres { margin-top:16px; border-top:1px solid var(--rule); padding-top:12px; }
+.mlmeta h4 { margin:12px 0 4px; } .mono { font-family:ui-monospace,Menlo,Consolas,monospace; overflow-wrap:anywhere; }
+.mlchart { margin:12px 0; } .mlchart svg { width:100%; height:auto; max-height:260px; display:block; }
+.mlchart polyline { fill:none; stroke-width:2.5; } .mlchart .base { stroke:var(--seal); } .mlchart .opt { stroke:var(--ink-3); stroke-dasharray:6 4; }
+.mlchart .down { stroke:var(--ochre); stroke-dasharray:2 3; } .mlchart .zero { stroke:var(--ink-2); stroke-width:1; } .mlchart .sep { stroke:var(--rule); stroke-width:1; stroke-dasharray:3 3; }
+.mlchart text { fill:var(--ink-3); font-size:11px; } .key::before { content:""; display:inline-block; width:18px; height:0; border-top:3px solid; vertical-align:middle; margin-right:4px; }
+.key.base::before { border-color:var(--seal); } .key.opt::before { border-color:var(--ink-3); border-top-style:dashed; } .key.down::before { border-color:var(--ochre); border-top-style:dotted; }
+.c-seal { color:var(--seal); } .c-ochre { color:var(--ochre); } .c-muted { color:var(--ink-3); }
+.banner { border-left:4px solid var(--ochre); background:var(--ochre-bg); padding:12px 14px; border-radius:0 var(--r) var(--r) 0; }
+.banner strong { display:block; }
+.small { font-size:13.5px; color:var(--ink-3); }
+.foot { font:12px/1.65 var(--mono); color:var(--ink-3); border-top:1px solid var(--rule); padding-top:12px; }
+
+/* forms */
+form { display:grid; gap:14px; }
+fieldset { border:1px solid var(--rule); border-radius:var(--r); padding:14px 16px 16px; margin:0; background:var(--panel-2); min-width:0; }
+legend { font:700 16px var(--disp); text-transform:uppercase; letter-spacing:.05em; padding:0 6px; }
+label.f { display:block; font-weight:600; margin:10px 0 4px; }
+.hint { font-size:13.5px; color:var(--ink-2); margin:0 0 8px; }
+select, input[type=date], input[type=number], input[type=search], input[type=text] { width:100%; max-width:420px; min-height:44px; padding:8px 10px; font:inherit; color:var(--ink); background:var(--panel); border:1px solid var(--rule); border-radius:var(--r); }
+.choices { display:flex; flex-wrap:wrap; gap:8px; }
+.choice { position:relative; }
+.choice input { position:absolute; opacity:0; inset:0; margin:0; cursor:pointer; }
+.choice span { display:inline-flex; align-items:center; min-height:44px; padding:8px 14px; border:1px solid var(--rule); border-radius:999px; background:var(--panel); }
+.choice input:checked + span { background:var(--ink); color:var(--panel-2); border-color:var(--ink); }
+.choice input:focus-visible + span { outline:3px solid var(--focus); outline-offset:2px; }
+.check { display:flex; gap:10px; align-items:flex-start; margin-top:10px; }
+.check input { width:22px; height:22px; margin-top:2px; flex-shrink:0; accent-color:var(--seal); }
+.errors { border:2px solid var(--ochre); background:var(--ochre-bg); padding:12px 14px; border-radius:var(--r); }
+
+/* brief */
+.stage { font:800 28px/1.05 var(--disp); text-transform:uppercase; letter-spacing:.03em; }
+dl.kv { display:grid; grid-template-columns:max-content minmax(0,1fr); gap:4px 14px; font-size:14.5px; margin:10px 0 0; }
+dl.kv dt { color:var(--ink-3); } dl.kv dd { margin:0; }
+/* demo build */
+.people { display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(min(100%, 400px), 1fr)); }
+.person { display:flex; flex-direction:column; gap:10px; } .person h2, .person p { margin:0; } .person .btn { align-self:flex-start; margin-top:auto; }
+ul.saved { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+ul.saved li { display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:10px; align-items:center; padding:10px 0; border-top:1px solid var(--rule); }
+ul.saved select { min-width:0; width:auto; }
+pre.export { max-height:320px; overflow:auto; background:var(--panel); border:1px solid var(--rule); border-radius:var(--r); padding:12px; font-size:12.5px; white-space:pre-wrap; word-break:break-word; }
+.card.danger { border-color:var(--ochre); }   /* red stays reserved for crisis help */
+.danger-btn { margin-top:12px; }
+@media (max-width:560px) { dl.kv { grid-template-columns:minmax(0,1fr); } dl.kv dd { margin-bottom:8px; } ul.saved li { grid-template-columns:minmax(0,1fr); } }
+ol.actions { list-style:none; padding:0; margin:0; }
+ol.actions li { display:grid; grid-template-columns:auto minmax(0,1fr); gap:12px; padding:14px 0; border-top:1px solid var(--rule); }
+ol.actions li:first-child { border-top:0; }
+.tick { width:26px; height:26px; margin-top:2px; accent-color:var(--seal); cursor:pointer; }
+li.done h3 { text-decoration:line-through; color:var(--ink-3); }
+.why { color:var(--ink-2); font-size:14.5px; margin-top:4px; }
+.confirm { font-size:13px; color:var(--ink-3); margin-top:6px; }
+.dims { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px; }
+.dim { border:1px solid var(--rule); border-radius:var(--r); padding:10px; background:var(--panel); }
+.dim .n { font:600 12.5px var(--mono); text-transform:uppercase; letter-spacing:.04em; }
+.dim .s { font-size:13.5px; margin-top:4px; }
+.dim[data-s="ready"] { border-color:var(--seal); } .dim[data-s="ready"] .s { color:var(--seal); }
+.dim[data-s="in_progress"] .s { color:var(--ochre); } .dim[data-s="not_assessed"] { opacity:.62; }
+
+/* rating calculator */
+.ratings { display:flex; flex-wrap:wrap; gap:8px; }
+.rpill { display:inline-flex; align-items:center; gap:6px; padding:6px 6px 6px 12px; border:1px solid var(--rule); border-radius:999px; background:var(--panel); font:600 15px var(--mono); }
+.rpill button { width:30px; height:30px; border-radius:50%; border:1px solid var(--rule); background:var(--panel-2); color:var(--ink); cursor:pointer; font-size:16px; line-height:1; }
+.addr { display:flex; flex-wrap:wrap; gap:6px; }
+.addr button { min-width:52px; min-height:44px; border:1px solid var(--rule); background:var(--panel-2); color:var(--ink); border-radius:var(--r); font:600 15px var(--mono); cursor:pointer; }
+.result-num { font:800 64px/1 var(--disp); font-variant-numeric:tabular-nums; }
+table.steps { border-collapse:collapse; width:100%; font:14px var(--mono); font-variant-numeric:tabular-nums; }
+table.steps th, table.steps td { text-align:left; padding:7px 8px; border-top:1px solid var(--rule); }
+.tw { overflow-x:auto; }
+
+/* claims */
+ol.track { list-style:none; padding:0; margin:0; display:grid; gap:0; counter-reset:s; }
+ol.track li { display:grid; grid-template-columns:44px minmax(0,1fr); gap:12px; padding:12px 0; border-top:1px solid var(--rule); counter-increment:s; }
+ol.track li::before { content:counter(s); display:grid; place-items:center; width:36px; height:36px; border:2px solid var(--ink); border-radius:50%; font:800 17px var(--disp); }
+table.lane { border-collapse:collapse; width:100%; font-size:14.5px; min-width:520px; }
+table.lane th, table.lane td { text-align:left; padding:9px 10px; border-top:1px solid var(--rule); vertical-align:top; }
+table.lane th { font:600 12.5px var(--mono); text-transform:uppercase; letter-spacing:.04em; color:var(--ink-3); }
+.yes { color:var(--seal); font-weight:600; } .no { color:var(--ochre); font-weight:600; }
+
+/* finder */
+.verdict { display:inline-block; font:800 14px var(--disp); text-transform:uppercase; letter-spacing:.1em; border:2.5px solid currentColor; padding:4px 10px 3px; transform:rotate(-2.5deg); color:var(--ochre); }
+
+dialog { border:0; border-radius:10px; padding:0; max-width:min(560px,calc(100vw - 32px)); background:var(--panel-2); color:var(--ink); }
+dialog::backdrop { background:rgba(10,8,6,.6); }
+.dbody { padding:22px; display:grid; gap:12px; }
+.crisis { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+.crisis li { border:1px solid var(--rule); border-radius:var(--r); padding:12px 14px; background:var(--panel); }
+.crisis .num { font:800 26px var(--disp); letter-spacing:.03em; user-select:all; }
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } }
+nav.tabs a { white-space:nowrap; }
+@media (max-width:900px) {
+  nav.tabs { order:3; flex:1 1 100%; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; margin-inline:-4px; }
+  .brand { flex:1; }
+}
+@media (max-width:560px) { .brand b { font-size:19px; } nav.tabs a { padding:9px 8px; font-size:13.5px; } .result-num { font-size:52px; }
+  table.lane { min-width:0; } table.lane th, table.lane td { padding:8px 6px; } }
+</style>
+
+<header class="top">
+  <div class="top-inner gut">
+    <a class="brand" href="#home" aria-label="VetBuddy home"><span class="mark" aria-hidden="true">VB</span><b>VetBuddy</b></a>
+    <nav class="tabs" aria-label="Primary" id="tabs"></nav>
+    <button class="help-btn" id="help-btn" type="button" aria-haspopup="dialog">Help me now</button>
+  </div>
+  <div class="strip gut"><span>Guest mode · runs entirely in your browser · nothing you enter is stored or sent anywhere</span>
+    <button class="clear-btn" id="clear-btn" type="button">Clear session</button></div>
+</header>
+<main class="gut" id="main" tabindex="-1"></main>
+<dialog id="help" aria-labelledby="help-h">
+  <div class="dbody">
+    <h2 id="help-h">Help, right now</h2>
+    <p>If you are in crisis or thinking about harming yourself, reach a person now. These lines are free and confidential.</p>
+    <ul class="crisis" id="crisis"></ul>
+    <p class="small">If you are in immediate danger, call 911. Numbers are shown as text so you can dial them from any phone.</p>
+    <form method="dialog"><button class="btn" type="submit" id="help-close">Close</button></form>
+  </div>
+</dialog>
+
+<script type="module">
+/*@@KERNEL@@*/
+
+// ── UI ──────────────────────────────────────────────────────────────────────
+// No storage, no network: all state lives in this object and dies with the tab.
+const S = { brief: null, done: new Set(), ratings: [{ v: 70, both: false }, { v: 50, both: false }], finder: "AL", person: null, saved: [], receipt: null, consent: true, policy: "today" };
+const TODAY = (() => { const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); })();
+
+function el(tag, attrs = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v === null || v === undefined || v === false) continue;
+    if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else if (k === "class") n.className = v;
+    else if (v === true) n.setAttribute(k, "");
+    else n.setAttribute(k, v);
+  }
+  for (const c of kids.flat(Infinity)) if (c !== null && c !== undefined && c !== false) n.append(c instanceof Node ? c : document.createTextNode(String(c)));
+  return n;
+}
+const L = {
+  persona: { service_member: "Service member (still serving)", veteran: "Veteran", guard_reserve: "National Guard or Reserve", spouse_family: "Spouse or family member", caregiver: "Caregiver", survivor: "Survivor" },
+  component: { active_duty: "Active duty", national_guard: "National Guard", reserve: "Reserve", retired: "Retired", retired_reserve_gray_area: "Retired Reserve (gray area)", separated: "Separated", medically_separated: "Medically separated" },
+  authority: { title_10: "Title 10 (federal orders)", title_32: "Title 32 (federal funding, state control)", state_active_duty: "State Active Duty", idt_annual_training: "Drill / annual training only", not_applicable: "Not applicable", unknown: "I don't know yet" },
+  goals: { benefits: "Benefits", claims: "VA disability claim", education: "School or training", career: "Job or career", financial: "Money and budget", housing: "Housing", family: "Family", community: "Community" },
+  urgency: { immediate: "Right now", "7_days": "This week", "30_days": "This month", "90_days": "Next 90 days", long_term: "Later", info_only: "Just exploring" },
+  dims: { documents: "Documents", benefits: "Benefits", claims_evidence: "Claims & evidence", coverage: "Coverage", career: "Career", education: "Education", financial: "Financial", housing_relocation: "Housing & relocation", family: "Family", community: "Community" },
+  dimStatus: { ready: "All steps done", in_progress: "In progress", not_started: "Not started", not_assessed: "No steps yet" },
+  lanes: { benefits: "Benefits", claims_evidence: "Claims & evidence", career: "Career", education: "Education", financial: "Financial", healthcare_coverage: "Coverage", housing_stability: "Housing", family_caregiver_survivor: "Family", guard_reserve: "Guard & Reserve", state_local: "State & local", recreation_community: "Community", citizenship: "Citizenship", other: "General" },
+};
+const VIEWS = DEMO
+  ? [["people", "Sample people"], ["brief", "Mission brief"], ["benefits", "Their benefits"], ["career", "Their career"], ["money", "Money plan"], ["account", "Account"], ["finder", "Benefits finder"], ["rating", "Rating calculator"], ["claims", "Claims guide"], ["trust", "How it's built"]]
+  : [["home", "Start"], ["brief", "Mission brief"], ["money", "Money plan"], ["rating", "Rating calculator"], ["claims", "Claims guide"], ["finder", "Benefits finder"], ["trust", "How it's built"]];
+
+function show(view) {
+  if (!VIEWS.some(v => v[0] === view)) view = VIEWS[0][0];
+  document.getElementById("tabs").replaceChildren(...VIEWS.map(([k, label]) => el("a", { href: "#" + k, "aria-current": k === view ? "page" : null }, label)));
+  const m = document.getElementById("main");
+  m.replaceChildren({ home: vHome, brief: vBrief, rating: vRating, claims: vClaims, finder: vFinder, trust: vTrust,
+                      people: vPeople, benefits: vBenefits, career: vCareer, money: vMoney, account: vAccount }[view]());
+  if (DEMO && S.person && view !== "people") m.prepend(personBar());
+  if (S.flash) { m.prepend(el("div", { class: "banner", role: "status" }, el("strong", {}, S.flash[0]), S.flash[1])); S.flash = null; }
+  m.focus({ preventScroll: true });
+}
+function go(view) { if (location.hash === "#" + view) show(view); else location.hash = view; }
+
+// ── Start ──
+function vHome() {
+  const tile = (view, title, body, chip) => el("a", { class: "card", href: "#" + view, style: "text-decoration:none;color:inherit;display:block" },
+    el("h2", {}, title), el("p", {}, body), chip ? el("span", { class: "chip c-muted" }, chip) : null);
+  return el("section", { class: "view" },
+    el("h1", {}, "What matters now, and what to do next"),
+    el("p", { class: "lede" }, "VetBuddy turns where you are in your transition into a short, honest plan. Fixed rules do the work, not AI. It never guesses about your benefits, and in this guest version nothing you type leaves this page."),
+    el("div", { class: "grid3" },
+      tile("brief", "Mission brief", "Six questions. Get your transition stage, focus areas and first five actions.", "about 2 minutes"),
+      tile("money", "Money plan", "Your savings month by month through separation, in three cases, plus VA, retirement, debt and loan calculators. Your numbers stay on this page.", "integer-cent math"),
+      tile("rating", "Rating calculator", "Combine disability percentages the way 38 CFR 4.25 does, with every step shown.", "educational"),
+      tile("claims", "Claims guide", "What each VA claim status means, the windows that matter, and where to get free accredited help.", "VA sources"),
+      tile("finder", "Benefits finder", "Pick your state or territory and read sourced benefits with their official links. None has been checked by a reviewer yet, and VetBuddy says so.", `${VAULT.records.length.toLocaleString()} records`),
+      tile("trust", "How it's built", "The rules every answer follows, what is real, and what is still a mock.", null)),
+    el("p", { class: "foot" }, KDATA.LANGUAGE.standard_disclaimer));
+}
+
+// ── Mission brief ──
+function vBrief() {
+  if (S.brief) return briefView(S.brief);
+  const errBox = el("div", { class: "errors", role: "alert", hidden: true, tabindex: "-1" });
+  const radios = (name, opts, checked) => el("div", { class: "choices", role: "radiogroup", "aria-label": name },
+    Object.entries(opts).map(([v, l]) => el("label", { class: "choice" }, el("input", { type: "radio", name, value: v, checked: v === checked }), el("span", {}, l))));
+  const js = KDATA.JURISDICTIONS.filter(j => j.kind !== "federal").sort((a, b) => a.name.localeCompare(b.name));
+  const jSel = (id, opt) => el("select", { id, name: id }, el("option", { value: "" }, opt ? "Not moving / not sure" : "Choose…"), js.map(j => el("option", { value: j.code }, j.name)));
+  const auth = el("div", { hidden: true },
+    el("label", { class: "f", for: "legal_authority" }, "Authority printed on your orders"),
+    el("p", { class: "hint" }, "What you may qualify for follows the authority on your orders, not the mission. Read it off the citation block. No orders handy? Choose “I don't know yet”."),
+    el("select", { id: "legal_authority", name: "legal_authority" }, el("option", { value: "" }, "Choose…"), Object.entries(L.authority).map(([v, l]) => el("option", { value: v }, l))));
+  const comp = el("select", { id: "component", name: "component", onchange: e => { auth.hidden = !["national_guard", "reserve"].includes(e.target.value); } },
+    el("option", { value: "" }, "Choose…"), Object.entries(L.component).map(([v, l]) => el("option", { value: v }, l)));
+  const date = el("input", { type: "date", id: "separation_date", name: "separation_date" });
+  const noDate = el("input", { type: "checkbox", id: "no_date", onchange: e => { date.disabled = e.target.checked; if (e.target.checked) date.value = ""; } });
+  const form = el("form", { novalidate: true, onsubmit: submit }, errBox,
+    el("fieldset", {}, el("legend", {}, "Who you are"), radios("persona", L.persona, null)),
+    el("fieldset", {}, el("legend", {}, "Service"),
+      el("p", { class: "hint" }, "Family members: answer for the service member."),
+      el("label", { class: "f", for: "branch" }, "Branch"),
+      el("select", { id: "branch", name: "branch" }, el("option", { value: "" }, "Choose…"), KDATA.BRANCHES.map(b => el("option", { value: b }, b))),
+      el("label", { class: "f", for: "component" }, "Status"), comp, auth),
+    el("fieldset", {}, el("legend", {}, "Timing"),
+      el("label", { class: "f", for: "separation_date" }, "Separation, retirement or release date (past or future)"), date,
+      el("label", { class: "check" }, noDate, el("span", {}, "I don't know the date yet. Don't guess it."))),
+    el("fieldset", {}, el("legend", {}, "Where"),
+      el("label", { class: "f", for: "current_jurisdiction" }, "Where you live now"), jSel("current_jurisdiction", false),
+      el("label", { class: "f", for: "destination_jurisdiction" }, "Where you're moving (optional)"), jSel("destination_jurisdiction", true)),
+    el("fieldset", {}, el("legend", {}, "What you want help with"),
+      el("div", { class: "choices" }, Object.entries(L.goals).map(([v, l]) => el("label", { class: "choice" }, el("input", { type: "checkbox", name: "goals", value: v }), el("span", {}, l))))),
+    el("fieldset", {}, el("legend", {}, "How soon"), radios("urgency", L.urgency, "30_days")),
+    el("div", { class: "row" }, el("button", { class: "btn primary", type: "submit" }, "Show my brief"),
+      el("button", { class: "btn", type: "button", onclick: sample }, "Fill in an example")));
+
+  function sample() {
+    form.querySelector('input[name=persona][value=guard_reserve]').checked = true;
+    form.branch.value = "Army"; comp.value = "national_guard"; auth.hidden = false; form.legal_authority.value = "unknown";
+    const d = new Date(TODAY); d.setUTCDate(d.getUTCDate() + 250); date.value = d.toISOString().slice(0, 10);
+    form.current_jurisdiction.value = "AL"; form.destination_jurisdiction.value = "TX";
+    form.querySelectorAll("input[name=goals]").forEach(c => { c.checked = ["education", "career", "benefits"].includes(c.value); });
+  }
+  async function submit(ev) {
+    ev.preventDefault();
+    const f = new FormData(form);
+    const inp = { persona: f.get("persona"), branch: f.get("branch"), component: f.get("component"),
+      legal_authority: f.get("legal_authority") || null, separation_date: noDate.checked ? null : (f.get("separation_date") || null),
+      current_jurisdiction: f.get("current_jurisdiction") || null, destination_jurisdiction: f.get("destination_jurisdiction") || null,
+      goals: f.getAll("goals"), urgency: f.get("urgency") || "30_days" };
+    if (auth.hidden) inp.legal_authority = null;
+    const miss = [];
+    if (!inp.persona) miss.push("who you are"); if (!inp.branch) miss.push("branch"); if (!inp.component) miss.push("status");
+    if (!auth.hidden && !inp.legal_authority) miss.push("the authority on your orders");
+    if (!inp.separation_date && !noDate.checked) miss.push("a date, or tick “I don't know the date yet”");
+    if (!inp.current_jurisdiction) miss.push("where you live now");
+    if (miss.length) return fail("Please add: " + miss.join(", ") + ".");
+    try { validate(inp, new Set(KDATA.JURISDICTIONS.map(j => j.code))); } catch (e) { return fail(e.message); }
+    S.brief = { inp, out: await route(inp, TODAY) }; S.done = new Set(); show("brief");
+  }
+  function fail(msg) { errBox.replaceChildren(el("strong", {}, "Almost there. "), msg); errBox.hidden = false; errBox.focus(); }
+  return el("section", { class: "view" }, el("h1", {}, "Mission brief"),
+    el("p", { class: "lede" }, "Six short sections. Only what's needed to plan: no Social Security number, no medical details."), form);
+}
+
+function briefView({ inp, out }) {
+  const tasks = out.tasks.map(t => ({ ...t, status: S.done.has(t.template_id) ? "done" : "todo" }));
+  const open = tasks.filter(t => t.status !== "done");
+  const jur = [inp.current_jurisdiction, inp.destination_jurisdiction].filter((c, i, a) => c && a.indexOf(c) === i)
+    .map(c => KDATA.JURISDICTIONS.find(j => j.code === c));
+  const s = out;
+  const item = t => el("li", { class: t.status === "done" ? "done" : "" },
+    el("input", { type: "checkbox", class: "tick", checked: t.status === "done", "aria-label": "Mark done: " + t.title,
+      onchange: e => { e.target.checked ? S.done.add(t.template_id) : S.done.delete(t.template_id); show("brief"); } }),
+    el("div", {}, el("h3", {}, t.title), el("p", { class: "why" }, t.why), t.confirm_with ? el("p", { class: "confirm" }, "Official answer: " + t.confirm_with) : null));
+  const noticeTitle = { BENEFIT_SCREENING_NOT_AVAILABLE: "Benefit matches are off", STAGE_UNKNOWN: "Stage unknown", AUTHORITY_UNKNOWN: "Orders authority unknown" };
+  return el("section", { class: "view" },
+    el("div", { class: "row" }, el("span", { class: "chip c-muted" }, DEMO && S.person ? "Sample person · not saved" : "Guest · not saved"),
+      el("span", { class: "chip c-muted" }, DEMO && S.person ? `Facts: ${S.person.name}'s sample answers` : "Facts: declared by you")),
+    el("h1", {}, "Mission brief"),
+    el("p", { class: "lede" }, `As of ${TODAY}. Built by fixed rules from what you told VetBuddy. Same answers in, same plan out.`),
+    el("div", { class: "grid2" },
+      el("div", { class: "card" }, el("h2", {}, "Your situation"),
+        el("div", { class: "stage" }, s.stage_label),
+        s.days_to_separation !== null ? el("p", { class: "small" }, s.days_to_separation >= 0 ? `${s.days_to_separation} days until separation` : `${-s.days_to_separation} days since separation`) : null,
+        el("dl", { class: "kv" },
+          el("dt", {}, "You are"), el("dd", {}, L.persona[inp.persona]),
+          el("dt", {}, "Service"), el("dd", {}, `${inp.branch} · ${L.component[inp.component]}`),
+          inp.legal_authority ? [el("dt", {}, "Orders authority"), el("dd", {}, L.authority[inp.legal_authority])] : null,
+          el("dt", {}, "Focus areas"), el("dd", {}, s.lanes.map(l => L.lanes[l] || l).join(", ")),
+          el("dt", {}, "How soon"), el("dd", {}, L.urgency[inp.urgency]))),
+      el("div", { class: "card" }, el("h2", {}, "What VetBuddy can't tell you yet"),
+        s.notices.map(n => el("div", { class: "banner" }, el("strong", {}, noticeTitle[n.code]), n.message)),
+        jur.map(j => el("div", { class: "banner" }, el("strong", {}, `${j.name}: not yet verified`), KDATA.UNVERIFIED_DISCLAIMER)))),
+    el("div", { class: "card" }, el("h2", {}, "Your first five actions"),
+      open.length ? el("ol", { class: "actions" }, open.slice(0, 5).map(item)) : el("p", {}, "Every action is checked off."),
+      tasks.length > 5 ? el("details", {}, el("summary", {}, `All ${tasks.length} actions`), el("ol", { class: "actions" }, tasks.map(item))) : null),
+    el("div", { class: "card" }, el("h2", {}, "Readiness by area"),
+      el("p", { class: "hint" }, "Progress on your steps in each area. Not a score, and not a prediction."),
+      el("div", { class: "dims" }, readiness(tasks.map(t => ({ readiness_dimension: t.dimension, status: t.status }))).map(d =>
+        el("div", { class: "dim", "data-s": d.status }, el("div", { class: "n" }, L.dims[d.dimension]), el("div", { class: "s" }, L.dimStatus[d.status] + (d.total ? ` · ${d.done}/${d.total}` : "")))))),
+    el("div", { class: "row" }, el("button", { class: "btn", type: "button", onclick: () => { S.brief = null; show("brief"); } }, "Start over")),
+    el("p", { class: "foot" }, "Everything here is based on facts you declared; none has been checked against your records. Check-offs vanish when you close the tab. ",
+      el("br"), `${s.policy_version} · input ${s.input_hash.slice(0, 12)}`));
+}
+
+// ── Rating calculator ──
+function vRating() {
+  // S.ratings holds { v, both }: `both` marks a rating for a condition affecting both arms or both legs (38 CFR 4.26).
+  let res = null, err = null;
+  const plain = S.ratings.filter(r => !r.both).map(r => r.v), both = S.ratings.filter(r => r.both).map(r => r.v);
+  try { res = S.ratings.length ? combineRatings(plain, both) : null; } catch (e) { err = e.message; }
+  const set = r => { S.ratings = r; show("rating"); };
+  const toggle = i => set(S.ratings.map((r, j) => j === i ? { ...r, both: !r.both } : r));
+  const b = res && res.bilateral;
+  return el("section", { class: "view" },
+    el("h1", {}, "Combined rating calculator"),
+    el("p", { class: "lede" }, "VA doesn't add disability percentages. Each rating applies to the part of you that is still “efficient” after the ones before it, and the total is rounded to the nearest 10 only once, at the end."),
+    el("div", { class: "grid2" },
+      el("div", { class: "card" }, el("h2", {}, "Your ratings"),
+        el("div", { class: "ratings", "aria-live": "polite" }, S.ratings.length ? S.ratings.map((r, i) => el("span", { class: "rpill" }, r.v + "%",
+          el("label", { class: "small", style: "display:inline-flex;gap:4px;align-items:center;font-family:var(--body)" },
+            el("input", { type: "checkbox", checked: r.both, onchange: () => toggle(i), "aria-label": `${r.v}% affects both arms or both legs` }), "both sides"),
+          el("button", { type: "button", "aria-label": `Remove ${r.v}%`, onclick: () => set(S.ratings.filter((_, j) => j !== i)) }, "×"))) : el("span", { class: "small" }, "No ratings yet.")),
+        el("p", { class: "hint", id: "addh" }, "Add a rating:"),
+        el("div", { class: "addr", role: "group", "aria-labelledby": "addh" }, [10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map(v =>
+          el("button", { type: "button", onclick: () => set([...S.ratings, { v, both: false }]) }, v + "%"))),
+        el("p", { class: "hint" }, "Tick “both sides” on ratings for the same kind of condition in both arms or both legs (for example, each knee). VA's bilateral factor then applies."),
+        el("div", { class: "row" }, el("button", { class: "btn", type: "button", onclick: () => set([]) }, "Clear"),
+          el("button", { class: "btn", type: "button", onclick: () => set([60, 40, 20].map(v => ({ v, both: false }))) }, "Example: 60, 40, 20"),
+          el("button", { class: "btn", type: "button", onclick: () => set([{ v: 50, both: false }, { v: 30, both: true }, { v: 20, both: true }]) }, "Example: 50 + both knees 30, 20"))),
+      el("div", { class: "card", "aria-live": "polite" }, el("h2", {}, "Result"),
+        res ? [
+          el("div", { class: "result-num" }, res.combined_rating + "%"),
+          b ? el("p", {}, `Bilateral: ${b.ratings.join("% + ")}% combine to ${b.combined_value}; adding 10% (${b.factor_tenths / 10}) gives ${b.value_with_factor}, which then counts as one rating.`) : null,
+          el("p", {}, `Combined value ${res.combined_value}, rounded once to the nearest 10 (values ending in 5 go up).`),
+          el("div", { class: "tw" }, el("table", { class: "steps" },
+            el("thead", {}, el("tr", {}, el("th", {}, "Step"), el("th", {}, "Rating"), el("th", {}, "Applies to"), el("th", {}, "Combined"))),
+            el("tbody", {}, res.ratings.map((r, i) => el("tr", {}, el("td", {}, i + 1),
+              el("td", {}, (b && r === b.value_with_factor ? "bilateral " : "") + r + "%"),
+              el("td", {}, i === 0 ? "100" : String(100 - res.steps[i - 1])), el("td", {}, res.steps[i]))))))
+        ] : el("p", { class: "small" }, err || "Add at least one rating."))),
+    el("div", { class: "banner" }, el("strong", {}, "Educational only"),
+      "This follows the combining and rounding rules in 38 CFR 4.25 and the bilateral factor in 38 CFR 4.26 for ratings you mark. It is arithmetic on numbers you enter: it can't tell you what VA will rate. VA decides your rating."),
+    el("p", { class: "foot" }, "Sources: 38 CFR 4.25 and 4.26 (eCFR). Regulation examples reproduced: 50+30 → 65 → 70; 40+20 → 52 → 50; 60+40+20 → 76 → 81 → 80."));
+}
+
+// ── Claims guide ──
+function vClaims() {
+  const steps = [
+    ["Claim received", "VA has the claim in its system."],
+    ["Initial review", "VA checks the claim for basic information it needs."],
+    ["Evidence gathering", "VA makes sure it has all the evidence and information it needs."],
+    ["Evidence review", "VA reviews all the evidence for the claim."],
+    ["Rating", "VA decides the claim and determines the disability rating."],
+    ["Preparing decision letter", "VA prepares the decision letter."],
+    ["Final review", "A senior reviewer does a final review of the claim and the letter."],
+    ["Claim decided", "The decision letter is available in VA's claim status tool."],
+  ];
+  // Windows, the legal lane and referral wording come from the reference
+  // corpus and config/governance_language.yaml (generated into KDATA).
+  const ANCHOR = { intent_to_file: "After an Intent to File", separation: "Around separation", decision_letter: "After a decision letter", retirement: "At retirement", career: "Over a career" };
+  const claimAnchors = ["intent_to_file", "separation", "decision_letter"];
+  const windows = KDATA.TIMELINE.windows.filter(w => claimAnchors.includes(w.anchor) && w.kind !== "limit");
+  const srcName = id => (KDATA.SOURCES[id] || {}).title || id;
+  const ALLOWED = { yes: ["Yes, free", "yes"], share_card: ["Only with your approval", "yes"], no: ["No: free accredited help instead", "no"] };
+  return el("section", { class: "view" },
+    el("h1", {}, "Claims guide"),
+    el("p", { class: "lede" }, "What VA's claim statuses mean, the time windows worth knowing, and what VetBuddy will and won't do."),
+    el("div", { class: "card" }, el("h2", {}, "The 8 disability-claim statuses on VA.gov"),
+      el("ol", { class: "track" }, steps.map(([t, d]) => el("li", {}, el("div", {}, el("h3", {}, t), el("p", { class: "why" }, d))))),
+      el("p", { class: "small" }, `Source: ${srcName("src.va.claim_status")} (checked 2026-10-20). Other claim types use a shorter 5-status track.`)),
+    el("div", { class: "card" }, el("h2", {}, "Windows worth knowing"),
+      el("div", { class: "tw" }, el("table", { class: "lane" }, el("thead", {}, el("tr", {}, el("th", {}, "When"), el("th", {}, "What to know"), el("th", {}, "Check against"))),
+        el("tbody", {}, windows.map(w => el("tr", {},
+          el("td", {}, el("strong", {}, ANCHOR[w.anchor] || w.anchor), el("div", { class: "small mono" }, w.offset)),
+          el("td", {}, w.item, el("div", { class: "small" }, "Source: " + w.sources.map(srcName).join("; "))),
+          el("td", {}, w.verify_against, el("div", {}, el("span", { class: "chip c-ochre" }, KDATA.TIMELINE.default_status.toLowerCase())))))))),
+      el("div", { class: "banner" }, el("strong", {}, "Confirm your own dates with VA or an accredited representative"),
+        "No window here has been checked against its authority by a named reviewer yet, so treat each one as a lead. Exceptions exist, and VetBuddy doesn't compute your personal deadlines in this guest version.")),
+    el("div", { class: "card" }, el("h2", {}, "What VetBuddy will and won't do"),
+      el("div", { class: "tw" }, el("table", { class: "lane" }, el("thead", {}, el("tr", {}, el("th", {}, "Activity"), el("th", {}, "VetBuddy"))),
+        el("tbody", {}, KDATA.LEGAL_LANE.map(r => el("tr", {}, el("td", {}, r.activity), el("td", { class: ALLOWED[r.allowed][1] }, ALLOWED[r.allowed][0])))))),
+      el("p", {}, KDATA.LANGUAGE.vso_referral_block),
+      el("div", { class: "row" }, el("a", { class: "btn primary", href: KDATA.LANGUAGE.vso_search_url, target: "_blank", rel: "noopener" }, "Find an accredited representative on VA.gov")),
+      el("p", { class: "small" }, KDATA.LANGUAGE.vso_search_url)));
+}
+
+// ── Benefits finder ──
+// Two things, kept apart: (1) the jurisdiction's verification status, and
+// (2) the Benefit Vault catalog for that place, generated at build time from
+// data/reference/benefit_vault_registry.json. The catalog is records to read,
+// each with its official link. Nothing here decides or matches anything, and
+// filtering happens in this page only.
+const VCOL = Object.fromEntries(VAULT.cols.map((c, i) => [c, i]));
+const VSTATUS = { VERIFIED: "Checked by a named reviewer", SOURCE_CHECKED: "Source checked, not reviewed", UNVERIFIED: "Not yet reviewed",
+  CONTESTED: "Contested", SUPERSEDED: "Superseded", ILLUSTRATIVE: "Illustrative only", HEURISTIC: "Rule of thumb" };
+function vFinder() {
+  S.fq = S.fq || ""; S.fc = S.fc || ""; S.fn = S.fn || 20; S.fus = S.fus !== false;
+  const js = [...KDATA.JURISDICTIONS].sort((a, b) => (a.kind === "federal" ? -1 : b.kind === "federal" ? 1 : a.name.localeCompare(b.name)));
+  const j = KDATA.JURISDICTIONS.find(x => x.code === S.finder);
+  const verified = KDATA.JURISDICTIONS.filter(x => x.verification_status === "verified").length;
+  const vj = VAULT.jurisdictions.find(x => x.code === S.finder) || { coverage: "SOURCE_NOT_AVAILABLE", benefit_count: 0 };
+  const list = el("div", { id: "vault-results", "aria-live": "polite" });
+  // Filters update only the result list, so the control being typed in is never replaced.
+  const refilter = () => { S.fn = 20; fill(); };
+  const fill = () => list.replaceChildren(...finderResults(j).filter(Boolean));
+  fill();
+  return el("section", { class: "view" },
+    el("h1", {}, "Benefits finder"),
+    el("p", { class: "lede" }, `${VAULT.records.length.toLocaleString()} sourced records for service members, Guard and Reserve, veterans and families: state and federal benefits, scholarships, park passes, hunting and fishing, plates, tax relief, and nonprofit and retail offers. Pick a place, then read the official page for anything that looks relevant.`),
+    el("div", { class: "card" },
+      el("label", { class: "f", for: "fj" }, "Jurisdiction"),
+      el("select", { id: "fj", onchange: e => { S.finder = e.target.value; S.fn = 20; show("finder"); } }, js.map(x => el("option", { value: x.code, selected: x.code === S.finder }, x.name)))),
+    el("div", { class: "card", "aria-live": "polite" },
+      el("div", { class: "row", style: "justify-content:space-between" }, el("h2", {}, j.name), el("span", { class: "verdict" }, "Verification required")),
+      el("p", {}, "No benefit rule for this jurisdiction has been checked against primary law by a named reviewer yet, so VetBuddy matches nothing to you here. The records below are things to read, not answers."),
+      el("div", { class: "banner" }, el("strong", {}, "Until verification is done"), KDATA.UNVERIFIED_DISCLAIMER),
+      el("p", { class: "small" }, `Verified jurisdictions today: ${verified} of ${KDATA.JURISDICTIONS.length}. Alabama is first in line: its rules are drafted and waiting on a human reviewer.`)),
+    el("div", { class: "card" },
+      el("h2", {}, "Benefits on record for " + j.name),
+      vj.coverage === "SOURCE_NOT_AVAILABLE"
+        ? el("p", {}, "No official source for this jurisdiction has been found yet, so there are no records here. Federal benefits still apply where the program says so.")
+        : el("p", { class: "small" }, `${vj.benefit_count} record${vj.benefit_count === 1 ? "" : "s"} for ${j.name}. ${VAULT.caveat}`),
+      el("div", { class: "grid2" },
+        el("div", {}, el("label", { class: "f", for: "fq" }, "Search these records"),
+          el("input", { id: "fq", type: "search", value: S.fq, placeholder: "e.g. hunting, property tax, tuition", oninput: e => { S.fq = e.target.value; refilter(); } })),
+        el("div", {}, el("label", { class: "f", for: "fc" }, "Kind of benefit"),
+          el("select", { id: "fc", onchange: e => { S.fc = e.target.value; refilter(); } }, el("option", { value: "" }, "Any"),
+            Object.entries(VAULT.categories).map(([k, label]) => el("option", { value: k, selected: k === S.fc }, label))))),
+      S.finder !== "US" ? el("label", { class: "choice" }, el("input", { type: "checkbox", id: "fus", checked: S.fus, onchange: e => { S.fus = e.target.checked; refilter(); } }), el("span", {}, "Include federal benefits")) : null,
+      el("p", { class: "small" }, VAULT.notice),
+      el("p", { class: "small" }, `Registry ${VAULT.version}, read ${VAULT.as_of}.`)),
+    list);
+}
+
+function finderResults(j) {
+  const words = S.fq.toLowerCase().split(/\s+/).filter(Boolean);
+  const places = new Set([S.finder, ...(S.fus && S.finder !== "US" ? ["US"] : [])]);
+  const hits = VAULT.records.filter(r => places.has(r[VCOL.jurisdiction]) && (!S.fc || r[VCOL.category] === S.fc)
+    && words.every(w => (r[VCOL.title] + " " + r[VCOL.value] + " " + r[VCOL.who_it_is_for]).toLowerCase().includes(w)));
+  return [
+    el("p", { class: "small" }, `${hits.length} record${hits.length === 1 ? "" : "s"}${hits.length > S.fn ? `, showing ${S.fn}` : ""}.`),
+    ...hits.slice(0, S.fn).map(r => el("article", { class: "card vault-item" },
+      el("h3", {}, r[VCOL.title]),
+      el("div", { class: "row" },
+        el("span", { class: "chip c-muted" }, r[VCOL.jurisdiction] === "US" ? "Federal" : j.name),
+        el("span", { class: "chip c-muted" }, VAULT.categories[r[VCOL.category]] || r[VCOL.category]),
+        el("span", { class: "chip c-ochre" }, VSTATUS[r[VCOL.record_status]] || r[VCOL.record_status])),
+      r[VCOL.value] ? el("p", {}, r[VCOL.value]) : null,
+      el("p", { class: "small" }, "Who it is for, as the source puts it: " + r[VCOL.who_it_is_for]),
+      el("a", { class: "btn", href: r[VCOL.official_url], target: "_blank", rel: "noopener noreferrer" }, "Official page"))),
+    hits.length > S.fn ? el("button", { class: "btn", type: "button", onclick: () => { S.fn += 20; document.getElementById("vault-results").replaceChildren(...finderResults(j).filter(Boolean)); } }, "Show more") : null,
+  ];
+}
+
+// ── Demo (dist/vetbuddy-demo.html only; DEMO is null in the guest app) ──
+// Sample people from data/demo/personas.json. Their Mission Briefs run in the
+// browser kernel above; their benefit results were computed at build time by
+// the real Benefit Vault matcher, in both publish policies. Account actions
+// are simulated in this tab's memory and say so.
+const OUTCOME = {
+  PRELIMINARY_MATCH: ["Fits the rules as written (preliminary)", "c-seal"],
+  NEEDS_EVIDENCE: ["Fits only with answers marked unsure", "c-ochre"],
+  NEEDS_INFORMATION: ["Needs an answer first", "c-muted"],
+  HUMAN_REVIEW_REQUIRED: ["May apply: not yet reviewed, read the official page", "c-ochre"],
+  CONFLICTING_AUTHORITY: ["Sources disagree", "c-ochre"],
+  SOURCE_STALE: ["Source may be out of date", "c-ochre"],
+};
+const SAVED_STATUS = { INTERESTED: "Interested", GATHERING_DOCUMENTS: "Gathering documents", APPLIED_ON_MY_OWN: "Applied on my own", NOT_FOR_ME: "Not for me" };
+const VREC = DEMO ? Object.fromEntries(VAULT.records.map(r => [r[VCOL.benefit_id], r])) : {};
+const placeName = c => c === "US" ? "Federal" : ((KDATA.JURISDICTIONS.find(j => j.code === c) || {}).name || c);
+const answerText = v => v === true ? "Yes" : v === false ? "No" : String(v).replace(/_/g, " ").replace(/^./, x => x.toUpperCase());
+
+function personBar() {
+  return el("div", { class: "banner", role: "note" }, el("strong", {}, `Viewing as ${S.person.name} (sample person)`),
+    S.person.headline + ". ", el("a", { href: "#people" }, "Switch person"));
+}
+
+async function choosePerson(p) {
+  const r = p.router;
+  let sep = null;
+  if (r.separation_offset_days !== null) { const d = new Date(TODAY); d.setUTCDate(d.getUTCDate() + r.separation_offset_days); sep = d.toISOString().slice(0, 10); }
+  const inp = { persona: r.persona, branch: r.branch, component: r.component, legal_authority: r.legal_authority,
+    separation_date: sep, current_jurisdiction: r.current_jurisdiction, destination_jurisdiction: r.destination_jurisdiction,
+    goals: r.goals, urgency: r.urgency };
+  validate(inp, new Set(KDATA.JURISDICTIONS.map(j => j.code)));
+  S.person = p; S.brief = { inp, out: await route(inp, TODAY) }; S.done = new Set();
+  S.saved = p.saved.map(id => ({ id, status: "INTERESTED" })); S.consent = true; S.receipt = null; S.policy = "today";
+  go("brief");
+}
+
+function needPerson(what) {
+  return el("section", { class: "view" }, el("h1", {}, what),
+    el("p", { class: "lede" }, "Pick a sample person first. Everything in this demo is seen through one of them."),
+    el("a", { class: "btn primary", href: "#people" }, "Choose a sample person"));
+}
+
+function vPeople() {
+  return el("section", { class: "view" },
+    el("h1", {}, "VetBuddy, shown through four sample people"),
+    el("p", { class: "lede" }, "Pick someone to see VetBuddy as they would: their Mission Brief, the benefits on record where they live, and what their account lets them do. The people are invented. The rules, records and links are the real ones in the app today."),
+    el("div", { class: "people" }, DEMO.people.map(p => {
+      const res = DEMO.results[p.id].today;
+      return el("article", { class: "card person" },
+        el("h2", {}, p.name), el("p", { class: "why" }, p.headline), el("p", {}, p.story),
+        el("div", { class: "row" },
+          el("span", { class: "chip c-muted" }, placeName(p.router.current_jurisdiction)),
+          el("span", { class: "chip c-muted" }, L.persona[p.router.persona]),
+          el("span", { class: "chip c-muted" }, `${res.evaluated} records compared`)),
+        el("button", { class: "btn primary", type: "button", onclick: () => choosePerson(p) }, `See VetBuddy as ${p.name}`));
+    })),
+    el("div", { class: "banner" }, el("strong", {}, "What is real here"),
+      "Mission Briefs come from the same fixed rules the app uses, run in this page. Benefit results were computed by the app's own matcher when this demo was built, against registry ", DEMO.engine.registry, ` (read ${DEMO.engine.as_of}). Sign-in, saving and deletion are simulated in this tab and disappear when you close it.`),
+    el("p", { class: "foot" }, KDATA.LANGUAGE.standard_disclaimer));
+}
+
+// ── Career (demo): computed at build time by the Career Navigator core, ADR 0007 ──
+const STRENGTH = { strong: ["Strong evidence", "c-seal"], moderate: ["Some evidence", "c-seal"], weak: ["Thin or unverified", "c-ochre"], none: ["No evidence on file", "c-muted"] };
+const PROBLEM = {
+  no_provenance: "No record on file backs this line.", unknown_evidence: "Cites a record that doesn't exist.",
+  unverified_evidence: "Cites a record that isn't verified yet.", absence_record: "Cites a record that says something is missing.",
+  untraceable_metric: "Uses a number no verified record contains.", protected_content: "Contains protected or health information.",
+  sensitive_not_opted_in: "Uses a sensitive record not chosen for this document.", prohibited_assurance: "Promises a hiring result." };
+const VERIF = { document_backed: "Document on file", user_attested: "Confirmed by them", unverified: "Not verified" };
+
+function docView(d) {
+  return el("div", { class: "card cdoc" }, el("h3", {}, d.title),
+    d.voided ? el("p", { class: "small" }, el("strong", {}, "Voided: "), "a line held protected information, so nothing in this document goes out.") : null,
+    d.sections.map(([h, lines]) => [h === "Letter" ? null : el("h4", {}, h),
+      lines.map(([text, kind, held]) => held === null
+        ? el("p", { class: kind === "role" ? "cline role" : "cline" }, text)
+        : el("p", { class: "cline held" }, el("span", { class: "chip c-ochre" }, "Held"), " ", el("s", {}, text),
+            el("span", { class: "small why" }, " ", (held.length ? held : [["", "Fine on its own; held because the document was voided."]]).map(([k, d2]) => PROBLEM[k] || d2).filter((x, i, a) => a.indexOf(x) === i).join(" "))))]));
+}
+
+function vCareer() {
+  if (!S.person) return needPerson("Their career");
+  const p = S.person, c = DEMO.career[p.id];
+  const evidence = el("div", { class: "card" }, el("h2", {}, `${p.name}'s evidence bank`),
+    c.evidence.length ? el("ul", { class: "evlist" }, c.evidence.map(([id, kind, title, v, neg, sens]) => el("li", {},
+      el("strong", {}, title), " ",
+      el("span", { class: "chip " + (neg ? "c-muted" : v === "unverified" ? "c-ochre" : "c-seal") }, neg ? "Records an absence" : VERIF[v]),
+      sens ? el("span", { class: "chip c-muted" }, "Sensitive · opt-in per document") : null)))
+      : el("p", {}, "Nothing recorded yet."),
+    el("p", { class: "small" }, "Only verified records can back a line in a document. A record that says something is missing is shown to them and never used as support."));
+  if (!c.announcement) return el("section", { class: "view" }, el("h1", {}, `Career for ${p.name}`), evidence,
+    el("div", { class: "card" }, el("h2", {}, "Nothing to compare yet"),
+      el("p", {}, `${p.name} hasn't added a job announcement or any experience. With nothing on file the honest answer is "Insufficient information", never a gap: not knowing isn't a negative finding.`)),
+    el("p", { class: "foot" }, KDATA.LANGUAGE.standard_disclaimer));
+  S.rtype = S.rtype && c.resumes[S.rtype] ? S.rtype : "ats";
+  const rows = c.rows.map(([id, text, kind, cat, legal, strength, blocking, gap, action, ev, unv, abs]) => el("tr", {},
+    el("td", {}, text, el("div", { class: "small" }, kind === "required" ? "Required" : "Preferred", legal ? " · required by law" : "")),
+    el("td", {}, el("span", { class: "chip " + (blocking ? "c-ochre" : STRENGTH[strength][1]) }, blocking ? "Blocks applying" : STRENGTH[strength][0])),
+    el("td", {}, gap ? el("div", { class: "small" }, gap) : null, action)));
+  const typeBtn = k => el("button", { class: "btn" + (S.rtype === k ? " primary" : ""), type: "button", "aria-pressed": S.rtype === k ? "true" : "false",
+    onclick: () => { S.rtype = k; show("career"); } }, c.resume_labels[k]);
+  const heldN = d => d.sections.reduce((n, [, ls]) => n + ls.filter(l => l[2] !== null).length, 0);
+  const r = c.resumes[S.rtype];
+  return el("section", { class: "view" },
+    el("h1", {}, `Career for ${p.name}`),
+    el("p", { class: "lede" }, `${c.announcement.title}, ${c.announcement.employer}. Every line below was checked against ${p.name}'s records by fixed rules when this demo was built. Lines the rules refused stay visible, crossed out, with the reason.`),
+    evidence,
+    el("div", { class: "card" }, el("h2", {}, "How the announcement lines up"),
+      el("div", { class: "tablewrap" }, el("table", { class: "matrix" },
+        el("thead", {}, el("tr", {}, el("th", {}, "The announcement asks for"), el("th", {}, "On file"), el("th", {}, "What it means"))),
+        el("tbody", {}, rows))),
+      el("h3", {}, "By area"),
+      el("dl", { class: "kv" }, c.labels.map(([cat, label, basis]) => [el("dt", {}, cat.replace(/^./, x => x.toUpperCase())), el("dd", {}, label, el("div", { class: "small" }, basis))])),
+      el("p", { class: "small" }, "One label per area and no overall score: a single number reads like a hiring probability, and VetBuddy can't know that. Health and disability information is removed before matching, so it can neither help nor hurt a result.")),
+    el("div", { class: "card" }, el("h2", {}, "Resume"),
+      el("div", { class: "row" }, Object.keys(c.resumes).map(typeBtn)),
+      el("p", { class: "small" }, heldN(r) ? `${heldN(r)} proposed line${heldN(r) > 1 ? "s were" : " was"} held.` : "Every proposed line passed.",
+        S.rtype === "ats" ? " This version deliberately proposes one invented figure so you can see the rule catch it." : "")),
+    docView(r),
+    el("div", { class: "card" }, el("h2", {}, "Cover letter"),
+      el("p", { class: "small" }, "It names a missing requirement only when a record documents it as missing. A requirement with nothing on file yet is unknown, so the letter says nothing either way.")),
+    docView(c.letter),
+    el("p", { class: "foot" }, "Sample people and job announcements are invented. VetBuddy never promises an interview or a job. ", KDATA.LANGUAGE.standard_disclaimer));
+}
+
+function vBenefits() {
+  if (!S.person) return needPerson("Their benefits");
+  const p = S.person, res = DEMO.results[p.id][S.policy];
+  const hidden = res.counts.DOES_NOT_MEET_ENCODED_RULES || 0;
+  const savedIds = new Set(S.saved.map(x => x.id));
+  // Leads whose unchecked rule the answers miss (owner decision VD21) are listed, in their own group, last.
+  const unmet = i => i[3].includes("unreviewed_rule_not_met");
+  const groups = [...Object.keys(OUTCOME).map(o => [OUTCOME[o][0], o, res.items.filter(i => i[1] === o && !unmet(i))]),
+                  ["Doesn't fit the rule as written, but the rule isn't checked yet", "HUMAN_REVIEW_REQUIRED", res.items.filter(unmet)]]
+    .filter(g => g[2].length);
+  const toggle = (key, label) => el("button", { class: "btn" + (S.policy === key ? " primary" : ""), type: "button", "aria-pressed": S.policy === key ? "true" : "false",
+    onclick: () => { S.policy = key; show("benefits"); } }, label);
+  const card = ([id, outcome, needed, caveats]) => {
+    const r = VREC[id];
+    return el("article", { class: "card vault-item" },
+      el("h3", {}, r[VCOL.title]),
+      el("div", { class: "row" },
+        caveats.includes("unreviewed_rule_not_met") ? el("span", { class: "chip c-muted" }, "Rule not checked yet")
+          : el("span", { class: "chip " + OUTCOME[outcome][1] }, OUTCOME[outcome][0]),
+        el("span", { class: "chip c-muted" }, placeName(r[VCOL.jurisdiction])),
+        el("span", { class: "chip c-muted" }, VAULT.categories[r[VCOL.category]] || r[VCOL.category])),
+      r[VCOL.value] ? el("p", {}, r[VCOL.value]) : null,
+      el("p", { class: "small" }, "Who it is for, as the source puts it: " + r[VCOL.who_it_is_for]),
+      needed.length ? el("p", { class: "small" }, el("strong", {}, "Would need: "), needed.join(" ")) : null,
+      caveats.filter(c => DEMO.caveats[c]).map(c => el("p", { class: "small" }, DEMO.caveats[c])),
+      el("div", { class: "row" },
+        el("a", { class: "btn", href: r[VCOL.official_url], target: "_blank", rel: "noopener noreferrer" }, "Official page"),
+        savedIds.has(id) ? el("span", { class: "chip c-seal" }, "Saved")
+          : el("button", { class: "btn", type: "button", disabled: !S.consent || null,
+              onclick: () => { S.saved.push({ id, status: "INTERESTED" }); S.flash = ["Saved", `${r[VCOL.title]} is on ${p.name}'s list. Manage it under Account.`]; show("benefits"); } },
+              S.consent ? "Save to list" : "Saving needs consent")));
+  };
+  return el("section", { class: "view" },
+    el("h1", {}, `Benefits for ${p.name}`),
+    el("div", { class: "card" },
+      el("h2", {}, `What ${p.name} told VetBuddy`),
+      el("dl", { class: "kv" }, p.answers.map(([q, v]) => [el("dt", {}, q), el("dd", {}, answerText(v))])),
+      el("p", { class: "small" }, "Only these answers were used. Nothing was pulled from other parts of the app.")),
+    el("div", { class: "card" },
+      el("h2", {}, "Which view"),
+      el("div", { class: "row" }, toggle("today", "As it works today"), toggle("preview", "Preview: once records are reviewed")),
+      el("p", {}, S.policy === "today"
+        ? "No record has been checked by a named reviewer yet, so VetBuddy shows nothing as a match. Anything the answers fit is a lead to read on the official page."
+        : "Preview only. This is how results will read once reviewers have checked the records. Today none has been checked, so the real app never shows this view to the public."),
+      el("p", { class: "small" }, S.policy === "today"
+        ? `Compared against ${res.evaluated} records for ${res.scope.map(placeName).join(", ")}. Because no rule is checked yet, records the answers don't fit are still listed, last, so a wrong rule can't hide a benefit.${hidden ? ` ${hidden} more are superseded, disputed or seen only in search and aren't listed.` : ""}`
+        : `Compared against ${res.evaluated} records for ${res.scope.map(placeName).join(", ")}. ${hidden} didn't fit the rules as written and aren't listed.`)),
+    res.questions.length ? el("div", { class: "card" }, el("h2", {}, "Questions that would change these results"),
+      el("ul", {}, res.questions.slice(0, 5).map(([q, n]) => el("li", {}, `${q} (affects ${n} record${n === 1 ? "" : "s"})`)))) : null,
+    groups.map(([label, o, items]) => el("div", {}, el("h2", {}, `${label} · ${items.length}`), items.slice(0, 12).map(card),
+      items.length > 12 ? el("p", { class: "small" }, `${items.length - 12} more in the full app.`) : null)),
+    el("p", { class: "small" }, VAULT.notice));
+}
+
+function vAccount() {
+  if (S.receipt) return el("section", { class: "view" },
+    el("h1", {}, "Account deleted"),
+    el("div", { class: "card" },
+      el("p", {}, `${S.receipt.name}'s sample account and everything stored for it are gone, and the session ended.`),
+      el("dl", { class: "kv" },
+        el("dt", {}, "Status"), el("dd", {}, "Complete"),
+        el("dt", {}, "Records removed"), el("dd", {}, String(S.receipt.rows)),
+        el("dt", {}, "Receipt number"), el("dd", { class: "mono" }, S.receipt.id)),
+      el("p", { class: "small" }, "Simulated. In the real app one database transaction removes every row for the account, including saved benefits and the access log, and the receipt holds nothing about the person."),
+      el("a", { class: "btn primary", href: "#people" }, "Choose another sample person")));
+  if (!S.person) return needPerson("Account");
+  const p = S.person;
+  const exportBox = el("pre", { class: "mono export", hidden: true, tabindex: "0", "aria-label": "Exported data" });
+  const delErr = el("p", { class: "errors", role: "alert", hidden: true });
+  const phrase = el("input", { type: "text", id: "confirm", autocomplete: "off", "aria-describedby": "confirm-hint" });
+  const data = () => ({ schema_version: "vetbuddy.account-export.v1", note: "Sample data from the VetBuddy demo",
+    profile: { name: p.name, persona: p.router.persona, branch: p.router.branch, jurisdiction: p.router.current_jurisdiction },
+    consents: [{ purpose: "personal_mission_planning", active: S.consent }],
+    mission: { stage: S.brief && S.brief.out.stage, tasks: S.brief ? S.brief.out.tasks.map(t => ({ title: t.title, done: S.done.has(t.template_id) })) : [] },
+    vault_saved_benefit: S.saved.map(x => ({ benefit_id: x.id, status: x.status })) });
+  return el("section", { class: "view" },
+    el("h1", {}, `${p.name}'s account`),
+    el("p", { class: "lede" }, "What a private account adds, simulated in this tab. In the app, each of these is a real server action on a database the person's account alone can see."),
+    el("div", { class: "card" },
+      el("h2", {}, "Consent"),
+      el("label", { class: "check" }, el("input", { type: "checkbox", id: "consent", checked: S.consent, onchange: e => { S.consent = e.target.checked; S.flash = S.consent ? ["Consent given", "Saving works again."] : ["Consent withdrawn", "Nothing new can be saved. Exporting and deleting still work."]; show("account"); } }),
+        el("span", {}, "Store my mission data so I can come back to it")),
+      el("p", { class: "small" }, "Withdrawing takes effect on the next action, not the next sign-in. Crisis help never depends on it.")),
+    el("div", { class: "card" },
+      el("h2", {}, "Saved benefits"),
+      S.saved.length ? el("ul", { class: "saved" }, S.saved.map((x, i) => {
+        const r = VREC[x.id];
+        return el("li", {}, el("div", {}, el("strong", {}, r[VCOL.title]), el("div", { class: "small" }, placeName(r[VCOL.jurisdiction]))),
+          el("select", { id: "st-" + i, "aria-label": "Status for " + r[VCOL.title], disabled: !S.consent || null, onchange: e => { x.status = e.target.value; } },
+            Object.entries(SAVED_STATUS).map(([k, l]) => el("option", { value: k, selected: k === x.status }, l))),
+          el("button", { class: "btn", type: "button", onclick: () => { S.saved.splice(i, 1); show("account"); } }, "Remove"));
+      })) : el("p", {}, "Nothing saved yet. Save records from Their benefits.")),
+    el("div", { class: "card" },
+      el("h2", {}, "Download my data"),
+      el("p", {}, "The app gives the person a file with everything stored for them, table by table. Here the export is shown on the page."),
+      el("button", { class: "btn", type: "button", onclick: () => { exportBox.textContent = JSON.stringify(data(), null, 2); exportBox.hidden = false; exportBox.focus(); } }, "Show my data"),
+      exportBox),
+    el("div", { class: "card danger" },
+      el("h2", {}, "Delete account"),
+      el("p", {}, "Removes the account and everything stored for it. This can't be undone."),
+      el("label", { class: "f", for: "confirm" }, "Type DELETE MY ACCOUNT to confirm"),
+      el("p", { class: "hint", id: "confirm-hint" }, "Logging out or closing the app does not delete anything. Only this does."),
+      phrase, delErr,
+      el("button", { class: "btn danger-btn", type: "button", onclick: () => {
+        if (phrase.value !== "DELETE MY ACCOUNT") { delErr.textContent = "Type DELETE MY ACCOUNT exactly, in capitals."; delErr.hidden = false; phrase.focus(); return; }
+        const rows = 4 + (S.brief ? S.brief.out.tasks.length : 0) + S.saved.length;
+        S.receipt = { name: p.name, rows, id: (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())) };
+        S.person = null; S.brief = null; S.saved = []; S.done = new Set(); show("account");
+      } }, "Delete my account and data")));
+}
+
+// ── How it's built ──
+// ── Money plan (MoneyLife Military, ADR 0008): web/moneylife.js, same engine as the server ──
+const ML_KD = KDATA.MONEYLIFE;
+const usd = c => { if (c === null || c === undefined) return "—"; const a = Math.abs(c); return (c < 0 ? "−$" : "$") + Math.floor(a / 100).toLocaleString("en-US") + "." + String(a % 100).padStart(2, "0"); };
+const usd0 = c => (c < 0 ? "−$" : "$") + Math.round(Math.abs(c) / 100).toLocaleString("en-US");
+const pctBp = b => (b / 100).toFixed(2).replace(/\.00$/, "") + "%";
+function toCents(s, label) {
+  const t = String(s ?? "").trim().replace(/[$,\s]/g, "");
+  if (!t) return null;
+  const m = /^(\d{1,9})(?:\.(\d{1,2}))?$/.exec(t);
+  if (!m) throw new Error(`${label}: enter dollars like 1,250 or 1,250.50`);
+  return Number(m[1]) * 100 + Number((m[2] || "").padEnd(2, "0"));
+}
+function toBp(s, label) {
+  const t = String(s ?? "").trim().replace(/%$/, "");
+  if (!t) return null;
+  const m = /^(\d{1,3})(?:\.(\d{1,2}))?$/.exec(t);
+  if (!m) throw new Error(`${label}: enter a percentage like 6.5`);
+  return Number(m[1]) * 100 + Number((m[2] || "").padEnd(2, "0"));
+}
+function toInt(s, label) {
+  const t = String(s ?? "").trim().replace(/,/g, "");
+  if (!t) return null;
+  if (!/^\d{1,6}$/.test(t)) throw new Error(`${label}: enter a whole number`);
+  return Number(t);
+}
+const ML_TABS = [["plan", "48-month plan"], ["va", "VA estimate"], ["retire", "Retirement"], ["basics", "Savings & debt"], ["loan", "Loan payment"]];
+const DS = { complete: ["Complete", "c-seal"], partial: ["Partial: something is unknown", "c-ochre"], unable_to_assess: ["Can't be worked out", "c-ochre"] };
+const CONF = { estimate: "Estimate", illustrative: "Illustration, not an award", none: "No estimate" };
+
+function mlMeta(r) {
+  return el("div", { class: "mlmeta" },
+    el("p", {}, el("span", { class: "chip " + DS[r.data_status][1] }, DS[r.data_status][0]), " ", el("span", { class: "chip c-muted" }, CONF[r.confidence])),
+    r.warnings.length ? el("div", { class: "banner" }, el("strong", {}, "Read this first"), el("ul", {}, r.warnings.map(w => el("li", {}, w)))) : null,
+    r.assumptions.length ? [el("h4", {}, "Assumptions"), el("ul", { class: "small" }, r.assumptions.map(w => el("li", {}, w)))] : null,
+    r.exclusions.length ? [el("h4", {}, "Left out"), el("ul", { class: "small" }, r.exclusions.map(w => el("li", {}, w)))] : null,
+    el("p", { class: "small" }, r.disclaimer),
+    el("p", { class: "small mono" }, `${r.calculation_type} · rules ${r.ruleset_version} · data ${r.source_version}` +
+      (r.effective_date ? ` · rates effective ${r.effective_date}` : "") + ` · as of ${r.as_of_date} · ${r.audit_id}`));
+}
+
+function mlForm(key, fields, build, render) {
+  const st = (S.mf[key] = S.mf[key] || {});
+  const errBox = el("div", { class: "errors", role: "alert", hidden: true, tabindex: "-1" });
+  const inputs = fields.map(([k, label, kind, opts]) => {
+    const id = `ml_${key}_${k}`;
+    if (kind === "bool") return el("label", { class: "check" }, el("input", { type: "checkbox", id, checked: !!st[k], onchange: e => { st[k] = e.target.checked; } }), el("span", {}, label));
+    const ctl = kind === "select"
+      ? el("select", { id, onchange: e => { st[k] = e.target.value; } }, opts.map(([v, l]) => el("option", { value: v, selected: String(st[k] ?? opts[0][0]) === v }, l)))
+      : el("input", { type: "text", id, inputmode: kind === "money" || kind === "pct" ? "decimal" : "numeric", autocomplete: "off",
+          value: st[k] ?? "", placeholder: opts || "", oninput: e => { st[k] = e.target.value; } });
+    return el("div", { class: "mlf" }, el("label", { class: "f", for: id }, label), ctl);
+  });
+  const run = ev => {
+    ev.preventDefault();
+    try {
+      const [type, raw] = build(st);
+      S.mres[key] = MoneyLife.calculate(type, raw, TODAY);
+      show("money");
+    } catch (e) {
+      const msg = e instanceof MoneyLife.MoneyInputError ? `${e.field.replaceAll("_", " ").replace(/ cents$/, "")}: ${e.message}` : e.message;
+      errBox.replaceChildren(el("strong", {}, "Check this. "), msg); errBox.hidden = false; errBox.focus();
+    }
+  };
+  return el("form", { novalidate: true, onsubmit: run }, errBox, el("div", { class: "mlgrid" }, inputs),
+    el("div", { class: "row" }, el("button", { class: "btn primary", type: "submit" }, "Work it out"),
+      el("button", { class: "btn", type: "button", onclick: () => { S.mf[key] = {}; delete S.mres[key]; show("money"); } }, "Clear")),
+    S.mres[key] ? render(S.mres[key]) : null);
+}
+
+function mlChart(cases) {
+  const W = 640, H = 220, P = 34, all = Object.values(cases).flatMap(c => c.rows.map(r => r[5]));
+  const lo = Math.min(0, ...all), hi = Math.max(0, ...all), rows = cases.base.rows, n = rows.length;
+  const x = i => P + (W - 2 * P) * (n === 1 ? 0 : i / (n - 1)), y = v => H - P - (H - 2 * P) * (hi === lo ? 0 : (v - lo) / (hi - lo));
+  const sepI = rows.findIndex(r => r[0] === 0);
+  const svgEl = (tag, attrs, ...kids) => { const e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); e.append(...kids); return e; };
+  const lineS = (c, cls) => svgEl("polyline", { class: cls, points: cases[c].rows.map((r, i) => `${x(i).toFixed(1)},${y(r[5]).toFixed(1)}`).join(" ") });
+  return el("figure", { class: "mlchart" },
+    svgEl("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Savings balance by month for the three cases; the table above has the key numbers" },
+      svgEl("line", { class: "zero", x1: P, x2: W - P, y1: y(0), y2: y(0) }),
+      sepI >= 0 ? svgEl("line", { class: "sep", x1: x(sepI), x2: x(sepI), y1: P / 2, y2: H - P }) : "",
+      sepI >= 0 ? svgEl("text", { x: x(sepI) + 4, y: P / 2 + 10 }, "Separation") : "",
+      svgEl("text", { x: 2, y: y(hi) + 4 }, usd0(hi)), svgEl("text", { x: 2, y: y(lo) + 4 }, usd0(lo)),
+      lineS("optimistic", "opt"), lineS("downside", "down"), lineS("base", "base")),
+    el("figcaption", { class: "small" }, el("span", { class: "key base" }, "Base"), " ", el("span", { class: "key opt" }, "Optimistic"), " ", el("span", { class: "key down" }, "Downside"), " · balance of savings each month; the flat line is $0."));
+}
+
+function vMoney() {
+  S.mf = S.mf || {}; S.mres = S.mres || {}; S.mtab = S.mtab || "plan";
+  const tab = (k, l) => el("button", { class: "btn" + (S.mtab === k ? " primary" : ""), type: "button", "aria-pressed": S.mtab === k ? "true" : "false", onclick: () => { S.mtab = k; show("money"); } }, l);
+  const load = ex => { S.mf.plan = { ...ex.plan }; if (ex.va) S.mf.va = { ...ex.va }; if (ex.retirement) S.mf.retire = { ...ex.retirement }; S.mres = {}; S.mtab = "plan"; S.flash = ["Example loaded", ex.note + " Every number is invented; change any of them."]; show("money"); };
+  const months = [["0", "Already separated"], ...Array.from({ length: 24 }, (_, i) => [String(i + 1), `${i + 1} month${i ? "s" : ""}`])];
+  const plan = mlForm("plan", [
+    ["months_until_separation", "Months until you separate or retire", "select", months],
+    ["current_savings", "Savings you could use today ($)", "money", "e.g. 8,000"],
+    ["net_income_before", "Take-home pay now, per month, after tax ($)", "money", "from your LES"],
+    ["expenses_before", "Spending now, per month ($)", "money", "rent, food, bills, debt payments"],
+    ["civilian_net_after", "Take-home pay after you leave, per month ($)", "money", "leave blank if no offer yet"],
+    ["expenses_after", "Spending after you leave, per month ($)", "money", "blank = same as now"],
+    ["retired_pay_net_after", "Military retired pay after any VA waiver, per month ($)", "money", "only if retiring"],
+    ["va_monthly", "VA compensation per month ($)", "money", "optional"],
+    ["va_status", "That VA amount is…", "select", [["none", "No VA amount"], ["confirmed", "On my award letter"], ["estimate", "My estimate (claim not decided)"]]],
+    ["move_cost", "One-time moving cost in your first month out ($)", "money", "optional"],
+    ["job_delay_optimistic", "Months before the job starts: optimistic", "int", "0"],
+    ["job_delay_base", "… base case", "int", "3"],
+    ["job_delay_downside", "… downside", "int", "6"]],
+    s => {
+      const raw = { months_until_separation: toInt(s.months_until_separation ?? "0", "Months"), current_savings_cents: toCents(s.current_savings, "Savings"),
+        net_income_before_cents: toCents(s.net_income_before, "Take-home now"), expenses_before_cents: toCents(s.expenses_before, "Spending now"),
+        civilian_net_after_cents: toCents(s.civilian_net_after, "Take-home after"), expenses_after_cents: toCents(s.expenses_after, "Spending after"),
+        retired_pay_net_after_cents: toCents(s.retired_pay_net_after, "Retired pay"), va_monthly_cents: toCents(s.va_monthly, "VA amount"),
+        va_status: s.va_status || "none" };
+      for (const c of ["optimistic", "base", "downside"]) { const v = toInt(s["job_delay_" + c], "Months before the job starts"); if (v !== null) raw["job_delay_" + c] = v; }
+      const move = toCents(s.move_cost, "Moving cost");
+      if (move) raw.one_time = [{ label: "Moving cost", month: 0, cents: move, direction: "out" }];
+      return ["transition_forecast", raw];
+    },
+    r => {
+      const c = r.output.cases, when = m => m === null ? "Never in these 48 months" : m < 0 ? `${-m} month${m === -1 ? "" : "s"} before separation` : `Month ${m + 1} after separation`;
+      return el("div", { class: "mlres", "aria-live": "polite" }, el("h3", {}, "What the next months look like"),
+        el("div", { class: "tw" }, el("table", { class: "steps" },
+          el("thead", {}, el("tr", {}, el("th", {}, "Case"), el("th", {}, "Savings at separation"), el("th", {}, "Lowest point"), el("th", {}, "Savings run out"), el("th", {}, "After 24 months"))),
+          el("tbody", {}, ["optimistic", "base", "downside"].map(k => el("tr", {}, el("th", { scope: "row" }, k[0].toUpperCase() + k.slice(1)),
+            el("td", {}, usd0(c[k].balance_at_separation_cents)), el("td", {}, usd0(c[k].lowest_balance_cents), el("span", { class: "small" }, when(c[k].lowest_month))),
+            el("td", {}, when(c[k].first_negative_month)), el("td", {}, usd0(c[k].end_balance_cents))))))),
+        mlChart(c), mlMeta(r));
+    });
+  const va = mlForm("va", [
+    ["rating", "Combined VA rating", "select", Array.from({ length: 11 }, (_, i) => [String(i * 10), i * 10 + "%"])],
+    ["married", "Married", "bool"], ["children_under_18", "Children under 18", "int", "0"], ["children_in_school", "Children 18 to 23 in school", "int", "0"],
+    ["spouse_aid_and_attendance", "Spouse receives Aid and Attendance", "bool"]],
+    s => ["va_illustration", { rating: toInt(s.rating ?? "0", "Rating"), married: !!s.married, children_under_18: toInt(s.children_under_18, "Children under 18"),
+      children_in_school: toInt(s.children_in_school, "Children in school"), spouse_aid_and_attendance: !!s.spouse_aid_and_attendance }],
+    r => el("div", { class: "mlres", "aria-live": "polite" },
+      r.output.monthly_cents !== undefined ? el("div", { class: "result-num" }, usd(r.output.monthly_cents), el("span", { class: "small" }, " a month")) : null,
+      el("p", {}, el("a", { href: ML_KD.RULES.verify_links.va_rates, target: "_blank", rel: "noopener" }, "VA's current rate table ↗")), mlMeta(r)));
+  const yrs = s => { const y = toInt(s.service_years, "Years of service"), m = toInt(s.service_extra_months, "Extra months"); return y === null ? null : y * 12 + (m || 0); };
+  const retire = mlForm("retire", [
+    ["kind", "Kind of retirement", "select", [["regular", "Regular (20+ years active)"], ["reserve", "Guard or Reserve (points)"], ["chapter61", "Disability retirement (Chapter 61)"]]],
+    ["system", "Retirement plan", "select", [["high3", "High-3 (legacy)"], ["brs", "Blended Retirement System"]]],
+    ["high36", "Average of your highest 36 months of base pay ($/month)", "money", "e.g. 5,000"],
+    ["service_years", "Years of service (regular and Chapter 61)", "int", "20"], ["service_extra_months", "Plus months", "int", "0"],
+    ["points", "Retirement points (Guard or Reserve)", "int", "e.g. 4,800"],
+    ["dod_pct", "DoD disability percentage (Chapter 61; not your VA rating)", "int", "e.g. 50"]],
+    s => {
+      const kind = s.kind || "regular", base = { system: s.system || "high3", high36_monthly_cents: toCents(s.high36, "High-36") };
+      if (kind === "reserve") return ["reserve_retirement", { ...base, points: toInt(s.points, "Points") }];
+      if (kind === "chapter61") return ["chapter61_retirement", { ...base, service_months: yrs(s), dod_disability_pct: toInt(s.dod_pct, "DoD percentage") }];
+      return ["regular_retirement", { ...base, service_months: yrs(s) }];
+    },
+    r => el("div", { class: "mlres", "aria-live": "polite" },
+      el("div", { class: "result-num" }, usd(r.output.monthly_gross_cents), el("span", { class: "small" }, " a month, before tax")),
+      el("p", {}, `Multiplier ${pctBp(r.output.multiplier_bp)}` + (r.output.method ? ` (the ${r.output.method} method gave more: years ${pctBp(r.output.years_method_bp)}, DoD rating ${pctBp(r.output.rating_method_bp)})` : "") +
+        (r.output.equivalent_years_hundredths !== undefined ? ` from ${(r.output.equivalent_years_hundredths / 100).toFixed(2)} equivalent years` : "") + "."),
+      mlMeta(r)));
+  const ef = mlForm("ef", [["essential", "Essential spending per month ($)", "money", "e.g. 4,200"], ["months", "Months to cover", "select", [["3", "3"], ["6", "6"], ["9", "9"], ["12", "12"]]],
+    ["saved", "Savings you could use today ($)", "money", "blank if unsure"]],
+    s => ["emergency_fund", { essential_monthly_cents: toCents(s.essential, "Essential spending"), target_months: toInt(s.months || "3", "Months"), liquid_savings_cents: toCents(s.saved, "Savings") }],
+    r => el("div", { class: "mlres", "aria-live": "polite" }, el("dl", { class: "kv" },
+      r.output.target_cents !== undefined ? [el("dt", {}, "Target"), el("dd", {}, usd(r.output.target_cents))] : null,
+      r.output.gap_cents !== undefined ? [el("dt", {}, "Still to save"), el("dd", {}, usd(r.output.gap_cents))] : null,
+      r.output.runway_tenths_of_month !== undefined && r.output.runway_tenths_of_month !== null ? [el("dt", {}, "Savings last"), el("dd", {}, (r.output.runway_tenths_of_month / 10).toFixed(1) + " months")] : null), mlMeta(r)));
+  const dti = mlForm("dti", [["debt", "Monthly debt payments ($)", "money", "loans, cards, car"], ["income", "Gross monthly income ($)", "money", "before tax"]],
+    s => ["debt_to_income", { monthly_debt_cents: toCents(s.debt, "Debt payments"), gross_monthly_income_cents: toCents(s.income, "Income") }],
+    r => el("div", { class: "mlres", "aria-live": "polite" }, r.output.dti_bp !== undefined ? el("div", { class: "result-num" }, pctBp(r.output.dti_bp)) : null, mlMeta(r)));
+  const debts = mlForm("debt", [
+    ...[1, 2, 3].flatMap(i => [[`d${i}_label`, `Debt ${i} name`, "text", i === 1 ? "e.g. Card" : "optional"], [`d${i}_bal`, "Balance ($)", "money", ""], [`d${i}_apr`, "APR (%)", "pct", ""], [`d${i}_min`, "Minimum payment ($)", "money", ""]]),
+    ["extra", "Extra you can pay each month ($)", "money", "0"], ["method", "Pay off first", "select", [["avalanche", "Highest interest (avalanche)"], ["snowball", "Smallest balance (snowball)"]]]],
+    s => ["debt_payoff", { method: s.method || "avalanche", extra_monthly_cents: toCents(s.extra, "Extra"),
+      debts: [1, 2, 3].filter(i => (s[`d${i}_label`] || "").trim()).map(i => ({ label: s[`d${i}_label`].trim(), balance_cents: toCents(s[`d${i}_bal`], `Debt ${i} balance`),
+        apr_bp: toBp(s[`d${i}_apr`], `Debt ${i} APR`), minimum_cents: toCents(s[`d${i}_min`], `Debt ${i} minimum`) })) }],
+    r => el("div", { class: "mlres", "aria-live": "polite" }, r.output.months !== undefined ? el("dl", { class: "kv" },
+      el("dt", {}, "Debt-free in"), el("dd", {}, r.output.months + " months"), el("dt", {}, "Interest paid"), el("dd", {}, usd(r.output.total_interest_cents)),
+      el("dt", {}, "Order"), el("dd", {}, r.output.payoff_order.join(", then "))) : null, mlMeta(r)));
+  const loan = mlForm("loan", [["principal", "Amount borrowed ($)", "money", "e.g. 300,000"], ["apr", "Interest rate (APR %)", "pct", "e.g. 6.5"], ["years", "Years", "int", "30"]],
+    s => ["loan_payment", { principal_cents: toCents(s.principal, "Amount"), apr_bp: toBp(s.apr, "Rate"), months: (toInt(s.years, "Years") ?? 0) * 12 }],
+    r => el("div", { class: "mlres", "aria-live": "polite" }, el("div", { class: "result-num" }, usd(r.output.payment_cents), el("span", { class: "small" }, " a month")),
+      el("p", {}, `Total interest ${usd(r.output.total_interest_cents)}; the last payment is ${usd(r.output.final_payment_cents)}.`), mlMeta(r)));
+  const body = { plan: [el("p", {}, "Month by month, from now to two years after you leave, in three cases. Unknown amounts stay unknown; an estimated VA amount counts only in the optimistic case."), plan],
+    va: [el("p", {}, "What VA's dated rate table shows for a rating and family. An illustration, never an award."), va],
+    retire: [el("p", {}, "The statutory formulas, so you can see the arithmetic. DFAS computes the real amount."), retire],
+    basics: [el("h3", {}, "Emergency fund"), ef, el("h3", {}, "Debt-to-income"), dti, el("h3", {}, "Paying off debts"), debts],
+    loan: [el("p", {}, "Principal and interest only."), loan] }[S.mtab];
+  return el("section", { class: "view" },
+    el("h1", {}, "Money plan"),
+    el("p", { class: "lede" }, "Work out what leaving service does to your money, with your own numbers. It runs on this page: nothing you type is sent or saved."),
+    el("div", { class: "row", role: "group", "aria-label": "Load an invented example" }, el("span", { class: "small" }, "Try an invented example:"),
+      ML_KD.EXAMPLES.map(ex => el("button", { class: "btn", type: "button", onclick: () => load(ex) }, ex.label))),
+    el("div", { class: "row", role: "group", "aria-label": "Calculators" }, ML_TABS.map(([k, l]) => tab(k, l))),
+    el("div", { class: "card" }, body),
+    el("div", { class: "banner" }, el("strong", {}, "No bank connection"),
+      "VetBuddy can't link bank accounts yet. That needs a secure server, your consent and sign-in. Type amounts in instead; never type a password or account number."),
+    el("p", { class: "foot" }, KDATA.LANGUAGE.standard_disclaimer));
+}
+
+function vTrust() {
+  // Every rule and status below is generated from data/reference/governance.json;
+  // this page restates nothing by hand.
+  const LABEL = { IMPLEMENTED_TESTED: ["Built and tested", "yes"], IMPLEMENTED_UNVERIFIED: ["Built, not yet tested", "no"],
+    PARTIAL: ["Partly built", "no"], MOCK: ["Stand-in only", "no"], PLANNED: ["Not built yet", "no"],
+    DISABLED: ["Switched off on purpose", "no"], BLOCKED: ["Waiting on source material", "no"] };
+  const counts = {};
+  for (const r of KDATA.AGENT_RULES) counts[r.repo_status] = (counts[r.repo_status] || 0) + 1;
+  return el("section", { class: "view" },
+    el("h1", {}, "How it's built"),
+    el("p", { class: "lede" }, KDATA.GOVERNING_SENTENCE),
+    el("div", { class: "banner" }, el("strong", {}, "What VetBuddy is, and isn't"), KDATA.LANGUAGE.common_notice),
+    el("div", { class: "card" }, el("h2", {}, "Four non-negotiables"),
+      el("div", { class: "grid2" }, KDATA.NON_NEGOTIABLES.map(n => el("div", {}, el("h3", {}, n.name), el("p", { class: "why" }, n.text))))),
+    el("div", { class: "card" }, el("h2", {}, "The 22 agent rules, and what exists today"),
+      el("p", { class: "hint" }, `${counts.IMPLEMENTED_TESTED || 0} built and tested · ${counts.PARTIAL || 0} partly built · ${counts.PLANNED || 0} not built yet. No AI agent runs in VetBuddy today, so rules about agents are written down before the agents exist.`),
+      el("div", { class: "tw" }, el("table", { class: "lane" }, el("thead", {}, el("tr", {}, el("th", {}, "Rule"), el("th", {}, "Status"))),
+        el("tbody", {}, KDATA.AGENT_RULES.map(r => el("tr", {},
+          el("td", {}, el("span", { class: "mono small" }, r.id + " "), r.rule),
+          el("td", { class: (LABEL[r.repo_status] || ["", "no"])[1] }, (LABEL[r.repo_status] || [r.repo_status])[0]))))))),
+    el("div", { class: "card" }, el("h2", {}, "Your privacy on this page"),
+      el("p", {}, "Guest mode stores nothing: no account, no cookies, no browser storage, no analytics. Your answers exist only in this tab's memory and disappear when you close it."),
+      el("p", {}, `Benefit rules verified so far: ${KDATA.JURISDICTIONS.filter(j => j.verification_status === "verified").length} of ${KDATA.JURISDICTIONS.length} jurisdictions. Sign-in, the AI assistant and any VA data connection are not built yet.`)),
+    el("p", { class: "foot" }, `Router ${KDATA.ROUTER_POLICY_VERSION} · rules engine has no network access · not affiliated with or endorsed by VA or DoD`));
+}
+
+// ── crisis (no network, from the single crisis-floor config) ──
+document.getElementById("crisis").replaceChildren(...KDATA.CRISIS_CONTACTS.map(c => el("li", {},
+  el("div", { class: "disp" }, c.label),
+  el("div", { class: "num" }, c.phone + (c.extra ? " · " + c.extra : "")),
+  c.text ? el("div", {}, "Text: ", el("strong", {}, c.text)) : null,
+  c.chat_url ? el("div", {}, el("a", { href: c.chat_url, target: "_blank", rel: "noopener" }, "Chat online")) : null)));
+document.getElementById("help-btn").addEventListener("click", () => document.getElementById("help").showModal());
+// v6 §2: guests can wipe everything this tab holds. Browser memory is not
+// secure erasure, so the confirmation says what it does and no more.
+document.getElementById("clear-btn").addEventListener("click", () => {
+  S.brief = null; S.done = new Set(); S.ratings = [{ v: 70, both: false }, { v: 50, both: false }]; S.finder = "AL";
+  S.person = null; S.saved = []; S.receipt = null; S.consent = true; S.policy = "today";
+  document.querySelectorAll("form").forEach(f => f.reset());
+  S.flash = ["Session cleared", "Your answers, checklist and calculator entries are gone from this page. Close the tab to clear the browser's own copy."];
+  go("home");
+});
+window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+if (DEMO) document.querySelector(".strip span").textContent = "Demo · four invented people · runs entirely in your browser · nothing is stored or sent anywhere";
+show(location.hash.slice(1) || VIEWS[0][0]);
+</script>

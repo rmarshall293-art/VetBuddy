@@ -1,0 +1,82 @@
+{
+ "AL": {
+  "name": "Alabama",
+  "re": "Full",
+  "ube": true,
+  "tax": "Military retirement fully exempt; BAH/BAS/combat pay exempt",
+  "edu": "Alabama NG Educational Assistance Program (ANGEAP): up to $6,017.50/semester, up to 120 credit hours; plus AL G.I. Dependents Scholarship ($400/credit hr for dependents of 40%+ rated vets)",
+  "health": "State veterans homes network (5 homes); ADVA county officers assist with VA healthcare enrollment",
+  "burial": "Alabama State Veterans Memorial Cemetery (Spanish Fort); burial fee waivers; spouse/dependent eligibility",
+  "notes": "Veteran hiring preference in state employment; full property-tax exemption at 100% rating or age 65+ (up to 160 acres)"
+ },
+ "GA": {
+  "name": "Georgia",
+  "re": "Partial",
+  "ube": true,
+  "tax": "$65K exemption at 65+; expanding to all ages TY2026",
+  "edu": "GA National Guard Service Cancelable Loan; HERO Scholarship",
+  "health": "State veterans homes; VECTR Center training access",
+  "burial": "Georgia Veterans Memorial Cemeteries (Glennville, Milledgeville)",
+  "notes": "VECTR Center — purpose-built transition facility"
+ },
+ "FL": {
+  "name": "Florida",
+  "re": "Partial",
+  "ube": false,
+  "tax": "No state income tax",
+  "edu": "FL NG Education Dollars for Duty (EDD) tuition waiver",
+  "health": "State veterans homes network",
+  "burial": "Multiple state veterans cemeteries; fee waivers",
+  "notes": "Veterans Florida flagship; in-state tuition for vets"
+ },
+ "TX": {
+  "name": "Texas",
+  "re": "None",
+  "ube": true,
+  "tax": "No state income tax",
+  "edu": "Hazlewood Act — 150 free public-college credit hours for vets/spouses/children; TX NG Tuition Assistance",
+  "health": "State veterans homes; VLB land/home/improvement loans",
+  "burial": "Texas State Veterans Cemeteries (4)",
+  "notes": "Full homestead property-tax exemption at 100%/TDIU"
+ },
+ "VA": {
+  "name": "Virginia",
+  "re": "Full",
+  "ube": false,
+  "tax": "$40,000 exemption TY2025+",
+  "edu": "VMSDEP — education for spouses/dependents of disabled vets",
+  "health": "Veterans care centers",
+  "burial": "State veterans cemeteries (3)",
+  "notes": "V3 employer-certification flagship; base-embedded transition teams"
+ },
+ "NC": {
+  "name": "North Carolina",
+  "re": "Partial",
+  "ube": true,
+  "tax": "Fully exempt (Bailey-qualifying and 2021 law)",
+  "edu": "NC Scholarship for children of disabled vets",
+  "health": "State veterans homes",
+  "burial": "State veterans cemeteries (4)",
+  "notes": "NC4ME flagship — 50 dedicated veteran employment specialists"
+ },
+ "SC": {
+  "name": "South Carolina",
+  "re": "Partial",
+  "ube": true,
+  "tax": "Fully exempt as of TY2025",
+  "edu": "Free tuition for children of certain disabled vets",
+  "health": "State veterans homes",
+  "burial": "M.J. 'Dolly' Cooper Veterans Cemetery",
+  "notes": "Operation Palmetto Employment — #1 WalletHub state"
+ },
+ "TN": {
+  "name": "Tennessee",
+  "re": "Partial",
+  "ube": true,
+  "tax": "No state income tax on wages",
+  "edu": "TN STRONG Act — NG tuition reimbursement",
+  "health": "State veterans homes",
+  "burial": "State veterans cemeteries (Knoxville, Memphis, Nashville, Parker's Crossroads)",
+  "notes": "Helmets to Hardhats and trade pipelines"
+ }
+}

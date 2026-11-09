@@ -1,0 +1,10 @@
+# Single source of truth for the disclaimer shown on any jurisdiction whose
+# verification_status is not 'verified'. Every client (web, future mobile,
+# any agent narration) pulls this text from here — do not restate it inline
+# in route handlers or front-end copy, or it will drift the way the crisis
+# floor did before consolidation.
+unverified_disclaimer: >
+  This state's benefit and resource data has not yet completed VetBuddy's
+  primary-source verification process. Information shown may be incomplete
+  or out of date. Confirm details with the official state veterans agency
+  before relying on this result.

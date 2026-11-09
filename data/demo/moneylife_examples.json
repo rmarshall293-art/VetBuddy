@@ -1,0 +1,32 @@
+{
+  "_comment": "Invented households for the guest app's Money plan. Every number is made up; none is a rate, an award or a real person's pay. Values are what a person would type, as strings. tests/test_moneylife.py runs each through both engines.",
+  "examples": [
+    {
+      "id": "e5_overseas_ets",
+      "label": "E-5 leaving an overseas post",
+      "note": "Married, one child, stationed in Germany with Overseas Housing Allowance, separating in 4 months with a job search under way. No VA claim decided yet.",
+      "plan": {"months_until_separation": "4", "current_savings": "8,000", "net_income_before": "5,100", "expenses_before": "4,700",
+               "expenses_after": "4,300", "civilian_net_after": "3,600", "va_monthly": "", "va_status": "none", "move_cost": "6,000"},
+      "va": {"rating": "30", "married": true, "children_under_18": "1", "children_in_school": "0", "spouse_aid_and_attendance": false}
+    },
+    {
+      "id": "chapter61_15y",
+      "label": "Medical retirement at 15 years",
+      "note": "Single E-6 retiring under Chapter 61 with a DoD rating of 50% and a VA award letter in hand. Retired pay entered after the VA waiver, as DFAS shows it.",
+      "plan": {"months_until_separation": "2", "current_savings": "15,000", "net_income_before": "4,800", "expenses_before": "4,900",
+               "expenses_after": "4,900", "civilian_net_after": "3,200", "retired_pay_net_after": "777.10", "va_monthly": "1,132.90",
+               "va_status": "confirmed", "move_cost": ""},
+      "va": {"rating": "50", "married": false, "children_under_18": "0", "children_in_school": "0", "spouse_aid_and_attendance": false},
+      "retirement": {"kind": "chapter61", "system": "high3", "high36": "4,200", "service_years": "15", "service_extra_months": "0", "dod_pct": "50"}
+    },
+    {
+      "id": "guard_member",
+      "label": "Guard member leaving drill status",
+      "note": "Married, two children, keeps a civilian job; drill pay stops. 3,200 retirement points so far.",
+      "plan": {"months_until_separation": "12", "current_savings": "20,000", "net_income_before": "6,100", "expenses_before": "5,200",
+               "expenses_after": "5,200", "civilian_net_after": "5,800", "va_monthly": "", "va_status": "none", "move_cost": "",
+               "job_delay_optimistic": "0", "job_delay_base": "0", "job_delay_downside": "0"},
+      "retirement": {"kind": "reserve", "system": "high3", "high36": "6,000", "points": "3,200"}
+    }
+  ]
+}

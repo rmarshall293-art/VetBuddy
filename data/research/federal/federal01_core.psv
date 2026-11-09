@@ -1,0 +1,85 @@
+# VetBuddy Benefit Vault research ledger, federal 01 (passes, travel, MWR, education, insurance)
+# Format: CAT|TITLE|GROUPS|RULE|ELIGIBLE|VALUE|URL  (see data/research/RESEARCH_LOG.md)
+# Federal blocks use JUR=US. OPENED=<date> means the SRC page was read; a block with SRC=none holds rows whose
+# URL was only seen in search results (page not read) and is published only as a lead for human review.
+# Rows from the agency's or operator's own page (tier 1 or 3) import as SOURCE_CHECKED, the rest as UNVERIFIED; none is VERIFIED until a named reviewer checks it (G1).
+
+# JUR=US SRC=https://www.nps.gov/subjects/military/entrance-passes.htm OPENED=2026-10-27 PAGE_UPDATED=2026-02-26
+PASS|America the Beautiful Military Annual Pass|ad,ng,rsv,sp,ch|sm | (dep & spsm)|Current members of the Armed Forces, Guard and Reserve, and their dependents, with a CAC, DD Form 1173 or Next Generation ID|Free annual pass for entrance and standard amenity fees on NPS, BLM, Reclamation, FWS, Forest Service and USACE lands|https://www.nps.gov/planyourvisit/veterans-and-gold-star-families-free-access.htm
+PASS|America the Beautiful Military Lifetime Pass|vet,gs|vet | gs|Veterans (Guard and Reserve service counts) with a DD 2, DD 2765, VHIC, VA ID or veteran-marked state ID; Gold Star families with a voucher|Free lifetime entrance and standard amenity fees at federal recreation lands (not camping or tours)|https://www.recreation.gov/interagency-pass/types/military-lifetime
+
+# JUR=US SRC=https://www.arts.gov/news/press-releases/2026/military-families-receive-free-admission-summer-participating-blue-star-museums-2026 OPENED=2026-10-27 PAGE_UPDATED=2026-05-16
+PASS|Blue Star Museums|ad,ng,rsv,sp,ch|sm | (dep & spsm)|Currently serving members (Guard, Reserve, USPHS and NOAA Corps included) with a CAC, DD 1173 or Next Generation ID; veterans are not included|Free admission for the member and up to five family members at participating museums, May 16-September 7, 2026|PAGE
+
+# JUR=US SRC=https://www.myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Space-Available-Travel-(Space-A-Travel)?serv=21 OPENED=2026-10-27 PAGE_UPDATED=2026-06-19
+TRAVEL|Space-Available (Space-A) flights|ad,ng,rsv,ret,sp,ch|sm | ret | (dep & (spsm | spret))|Active duty, Guard and Reserve, retirees (including gray-area retirees) and dependents traveling with their sponsor|Free seats on military flights when space allows; seats are never assured; priority categories I-VI|https://gatesea.mtmc.gov/amctravel/
+TRAVEL|Space-A flights for 100% P&T disabled veterans|dv|vet & pt & (r>=100 | iu)|Veterans whose permanent service-connected disability is rated as total (a 100% rating, or a total rating for unemployability)|Space-A within CONUS and between CONUS and Alaska, Hawaii, Puerto Rico, USVI, Guam or American Samoa|https://gatesea.mtmc.gov/amctravel/
+
+# JUR=US SRC=https://home.army.mil/picatinny/about/Garrison/DES/protection-division/physical-security/dod-expanding-access-fact-sheet OPENED=2026-10-27 PAGE_UPDATED=none
+MWR|Commissary, exchange and MWR access for disabled veterans, Purple Heart recipients, former POWs and caregivers|dv,vet|vet & (sc | ph | pow)|Veterans with a service-connected rating, Purple Heart recipients and former POWs with a VHIC; VA primary family caregivers with a VA letter|In-store commissary, exchange and most MWR (lodging, golf, bowling, travel); 5% commissary surcharge|PAGE
+
+# JUR=US SRC=https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Military-Tuition-Assistance-(MilTA)?serv=20 OPENED=2026-10-27 PAGE_UPDATED=2026-06-18
+EDU|Military Tuition Assistance|ad,ng,rsv|sm|Members on active duty, and Guard and Reserve members on qualifying Title 10 or Title 32 orders or as service rules allow|Up to $250 a semester hour and $4,500 a fiscal year (DoD cap; services may set lower limits)|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Tuition-Assistance-(TA) OPENED=2026-10-27 PAGE_UPDATED=none
+EDU|Army Tuition Assistance (ArmyIgnitED)|ad,ng,rsv|sm|Active Army Soldiers, Guard and Reserve Soldiers on active duty, and Troop Program Unit Soldiers|Up to $4,500 a fiscal year and 18 semester hours|https://armyignited.cce.af.mil/student/public/welcome
+
+# JUR=US SRC=https://www.va.gov/education/benefit-rates/post-9-11-gi-bill-rates/ OPENED=2026-10-27 PAGE_UPDATED=2026-08-01
+EDU|Post-9/11 GI Bill (Chapter 33)|ad,ng,rsv,vet,ret|sm | vet|90+ days of active duty after September 10, 2001 (Guard and Reserve active duty counts), a Purple Heart, or a service-connected discharge after 30 days|Tuition (private cap $30,908.34 a year for 2026-27), housing allowance by tier and up to $1,000 a year for books|https://www.va.gov/education/about-gi-bill-benefits/post-9-11/
+EDU|Yellow Ribbon Program|vet,ad,sp,ch|vet | sm | dep|Post-9/11 GI Bill users at the 100% tier (and Fry Scholarship users) at participating schools|School and VA share tuition above the GI Bill cap|https://www.va.gov/education/about-gi-bill-benefits/post-9-11/
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Post-9/11-GI-Bill OPENED=2026-10-27 PAGE_UPDATED=none
+EDU|Post-9/11 GI Bill transfer to family|sp,ch|dep & spsm|Spouses and children of members who transfer unused entitlement while serving (a DoD service commitment applies)|Transferred months of Post-9/11 GI Bill benefits|https://www.va.gov/family-and-caregiver-benefits/education-and-careers/transferred-gi-bill-benefits/
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Montgomery-GI-Bill-(MGIB) OPENED=2026-10-27 PAGE_UPDATED=none
+EDU|Montgomery GI Bill Active Duty (Chapter 30)|ad,vet|(sm | vet) & hon|Members and veterans enrolled in MGIB-AD at entry, with an honorable discharge|Up to 36 months of monthly payments|https://www.va.gov/education/about-gi-bill-benefits/montgomery-active-duty/
+EDU|Montgomery GI Bill Selected Reserve (Chapter 1606)|ng,rsv|ngany | rsv|Selected Reserve and Guard members with a six-year obligation, in good standing|Up to 36 months of monthly payments|PAGE
+EDU|Extra entitlement for two or more service periods (Rudisill)|vet,ad|vet | sm|Veterans and members with two or more separate qualifying periods of service, eligible for both Montgomery and Post-9/11 GI Bills|Up to 48 months of combined entitlement|https://www.va.gov/education/about-gi-bill-benefits/montgomery-active-duty/
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Survivors-and-Dependents-Education-Assistance-Program-(DEA) OPENED=2026-10-27 PAGE_UPDATED=none
+EDU|Survivors' and Dependents' Educational Assistance (DEA, Chapter 35)|sp,ch,ss,gs|(dep | ss) & (spr>=100 | spsc | spkia | sppm)|Spouses, surviving spouses and children of veterans who died of a service-connected cause or on active duty, are 100% P&T, or are missing or POW|Up to 36 months of monthly payments (45 if first used before August 1, 2018)|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Fry-Scholarship---Marine-Gunnery-Sergeant-John-David-Fry-Scholarship OPENED=2026-10-27 PAGE_UPDATED=none
+EDU|Fry Scholarship|ch,ss,gs|(ch | ss) & (spkia | spsc)|Children and surviving spouses of members who died in the line of duty after September 10, 2001|Up to 36 months at the 100% Post-9/11 rate: in-state tuition, housing and books|https://www.va.gov/family-and-caregiver-benefits/education-and-careers/fry-scholarship/rates/
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Veteran-Readiness-and-Employment-(VRandE) OPENED=2026-10-27 PAGE_UPDATED=none
+JOBS|Veteran Readiness and Employment (VR&E, Chapter 31)|vet,dv,ad|(vet & sc) | sm|Veterans with a service-connected rating and an employment handicap, and members awaiting discharge with a qualifying rating|Career counseling, training, education and job placement; up to 48 months combined with other VA education|PAGE
+
+# JUR=US SRC=https://www.militaryonesource.mil/benefits/spouseworks-scholarship/ OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|SpouseWorks Scholarship (formerly MyCAA)|sp|sp & spsm|Spouses of active duty members, and of Guard and Reserve members on Title 10 orders, in the Army, Marine Corps, Navy, Air Force or Space Force|Up to $4,000 for a license, certification, associate degree or required continuing education|https://mycaa.militaryonesource.mil/mycaa/
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Scholarships-for-Military-Children OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|Scholarships for Military Children (commissary program)|ch|ch & (spsm | spret)|Children of active duty, Guard, Reserve and retired sponsors; age, ID and enrollment rules on the program site|Annual scholarships funded through commissary partners|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Heroes-Legacy-Scholarship OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|Heroes' Legacy Scholarship|ch,gs|ch & (spkia | spsc | sppt)|Children of members who died or became disabled through active military service since September 11, 2001|Scholarship; 2026-2027 applications closed February 11, 2026 (yearly cycle)|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/MG-James-Ursano-Scholarship-Program OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|AER MG James Ursano Scholarship|ch|ch & (spsm | spret | spkia)|Children of Army Soldiers (active, Guard, Reserve, retired or deceased) seeking a first undergraduate degree; need-based|Need-based award, renewable up to four years; apply January 1-April 1|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Mrs-Patty-Shinseki-Spouse-Scholarship-Program OPENED=2026-10-27 PAGE_UPDATED=none
+SCHOLARSHIP|AER Mrs. Patty Shinseki Spouse Scholarship|sp,ss|(sp & (spsm | spret)) | ss|Spouses of active duty or retired Soldiers and surviving spouses of Soldiers who died on active duty or in retirement; need-based|Need-based award toward a first undergraduate degree|PAGE
+
+# JUR=US SRC=https://tricare.mil/FAQs/TRS/TRS_How_Much OPENED=2026-10-27 PAGE_UPDATED=2026-09-15
+HEALTH|TRICARE Reserve Select|ng,rsv,sp,ch|ngany | rsv | (dep & spsm)|Selected Reserve and Guard members not on active duty orders, and their families|2026 premiums $57.88 a month (member) or $286.66 (member and family)|https://tricare.mil/TRS
+
+# JUR=US SRC=https://www.benefits.va.gov/insurance/ OPENED=2026-10-27 PAGE_UPDATED=none
+INSURANCE|Servicemembers' Group Life Insurance (SGLI)|ad,ng,rsv|sm|Most active duty members and Ready Reserve and Guard members (automatic coverage)|Group term life coverage; can extend up to two years if totally disabled at separation|PAGE
+INSURANCE|Family SGLI (FSGLI)|sp,ch|dep & spsm|Spouses and children of SGLI-insured members|Spouse coverage up to the member's coverage; children covered at no charge|PAGE
+INSURANCE|Traumatic Injury Protection (TSGLI)|ad,ng,rsv|sm|SGLI-covered members with qualifying traumatic injuries such as amputation, blindness or paralysis|Lump-sum payment for qualifying traumatic losses|PAGE
+INSURANCE|Veterans' Group Life Insurance (VGLI)|vet|vet|Veterans who had full-time SGLI, applying after separation|Renewable term coverage converted from SGLI; premium holiday November 1, 2026-January 31, 2027|PAGE
+INSURANCE|VA Life Insurance (VALife)|dv|vet & sc & age<81|Veterans 80 and under with a service-connected rating|Up to $40,000 of whole life in $10,000 steps with no health questions; full coverage after two years|https://www.benefits.va.gov/insurance/valife.asp
+INSURANCE|Veterans' Mortgage Life Insurance (VMLI)|dv|vet & sc|Disabled veterans who received a Specially Adapted Housing grant, hold title and have a mortgage|Mortgage life insurance paid to the lender|PAGE
+
+# JUR=US SRC=https://www.shadesofgreen.org/about-shades-green/eligibility OPENED=2026-10-27 PAGE_UPDATED=none
+MWR|Shades of Green resort at Walt Disney World|ad,ng,rsv,ret,vet,dv,sp,ch,ss|sm | ret | (vet & (sc | ph | pow)) | ss | dep|Members, retirees, 100% disabled veterans, veterans with a VHIC showing Purple Heart, POW or service-connected, surviving spouses, DoD civilians and families|Military-only resort rooms and discounted Disney tickets; a sponsor may book up to three rooms|PAGE
+
+# JUR=US SRC=https://www.afvclub.com/new-member-welcome OPENED=2026-10-27 PAGE_UPDATED=none
+TRAVEL|Armed Forces Vacation Club|ad,ng,rsv,vet,ret,gs,sp,ch|sm | vet | ret | gs | dep|Current, veteran and retired members (Guard and Reserve included), Gold Star families, DoD civilians and immediate family|Free membership; Space-A resort weeks from $499 online plus taxes|PAGE
+
+# JUR=US SRC=https://www.vettix.org/visitor/the-team/about OPENED=2026-10-27 PAGE_UPDATED=none
+TICKETS|Vet Tix free event tickets|ad,ng,rsv,vet,gs|sm | (vet & hon) | gs|Currently serving members, honorably discharged veterans and families of troops killed in action, after status verification|Free donated tickets to sports, concerts and other events|https://www.vettix.org/
+
+# JUR=US SRC=none SEEN_IN_SEARCH=2026-10-27
+TICKETS|Waves of Honor (SeaWorld, Busch Gardens and partner parks)|ad,ng,rsv,vet,sp,ch|sm | vet | dep|Military offers for members, veterans and families; the page blocks automated reading, so terms were not read|Check the current year's free-admission and discount terms on the official page|https://wavesofhonor.com/
+JOBS|DoD SkillBridge|ad,ng,rsv|sm|Members in their last 180 days of service with commander approval; service rules vary|Civilian training, apprenticeships or internships during the last months of service|https://skillbridge.osd.mil/docs/INTERIM-GUIDANCE-ON-THE-IMPLEMENTATION-OF-THE-SKILLBRIDGE-PROGRAM.pdf

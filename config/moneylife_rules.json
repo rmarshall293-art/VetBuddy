@@ -1,0 +1,42 @@
+{
+  "_comment": "MoneyLife Military engine settings (ADR 0008). Rates are NOT here: VA compensation and retirement multipliers are read from data/reference/compensation.json so there is one copy of every number. These are limits, vocabularies, scenario defaults and wording.",
+  "ruleset_version": "moneylife-2026.11.06",
+  "limits": {
+    "max_cents": 100000000000,
+    "max_apr_bp": 10000,
+    "max_months": 600,
+    "max_months_before_separation": 24,
+    "months_after_separation": 24,
+    "max_lines": 40,
+    "max_debts": 20,
+    "max_children": 15,
+    "max_reserve_points": 20000,
+    "max_service_months": 600
+  },
+  "line_kinds": ["civilian_wages", "spouse_wages", "military_pay", "military_allowance", "guard_reserve_drill",
+                 "military_retired_pay", "va_compensation", "va_illustration", "proposed_legislation", "other"],
+  "confidence": ["confirmed", "expected", "hypothetical"],
+  "always_hypothetical": {
+    "va_illustration": "An illustration from a rate table is not an award. It is counted as hypothetical only.",
+    "proposed_legislation": "Proposed law isn't current law. It is counted as hypothetical only, never in confirmed income."
+  },
+  "scenario_defaults": {
+    "_note": "Assumptions, shown to the person and editable. Not research findings.",
+    "job_delay_months": {"optimistic": 0, "base": 3, "downside": 6},
+    "va_estimate_delay_months": {"optimistic": 6}
+  },
+  "citations": {
+    "va_active_duty": "38 U.S.C. 5304(c): VA compensation isn't paid for any period in which the person receives active-service pay.",
+    "concurrent_receipt": "10 U.S.C. 1414 (CRDP) and 1413a (CRSC); 38 U.S.C. 5304-5305 (VA waiver of retired pay).",
+    "regular_multiplier": "10 U.S.C. 1409(b): 2.5% per year (High-3), 2.0% per year (Blended Retirement System).",
+    "reserve_points": "10 U.S.C. 12733: years of service for retired pay = points / 360.",
+    "chapter61": "10 U.S.C. 1401: disability retired pay uses the greater of the years-of-service or the DoD disability percentage method, capped at 75%."
+  },
+  "disclaimer": "An estimate from the numbers you entered and dated rate tables. It isn't financial, tax or legal advice, and it isn't a VA, DFAS or lender decision. Check amounts with the paying agency.",
+  "verify_links": {
+    "va_rates": "https://www.va.gov/disability/compensation-rates/veteran-rates/",
+    "dfas_retired": "https://www.dfas.mil/retiredmilitary/",
+    "dfas_crdp": "https://www.dfas.mil/retiredmilitary/disability/crdp/",
+    "dfas_crsc": "https://www.dfas.mil/retiredmilitary/disability/crsc/"
+  }
+}

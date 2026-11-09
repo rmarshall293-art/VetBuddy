@@ -1,0 +1,12 @@
+# Slice 01 runtime (see docs/ADR/0002). Pinned to versions verified in the build env.
+starlette==1.7.0
+pydantic==2.13.5
+uvicorn==0.54.0
+PyYAML==6.0.3
+# Tests
+httpx2==2.13.1          # starlette TestClient transport in this env (httpx also works)
+jsonschema==4.26.0      # Benefit Vault schema tests
+pytest==9.2.0           # runs both the unittest suites and the vault pytest suite
+playwright==1.56.0      # tests/e2e only
+# System dependency: libpq (PostgreSQL client library) — apt-get install libpq5
+# Planned swap when registries are reachable: fastapi, psycopg[binary]>=3.1, alembic, pytest

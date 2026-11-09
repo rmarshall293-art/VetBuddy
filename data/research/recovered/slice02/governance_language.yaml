@@ -1,0 +1,70 @@
+# Required and prohibited language (Agent Governance Rules, 20 Oct 2026, §7).
+# Single versioned source: OutputGuard / ClaimsBoundaryGuard read these, legal
+# review edits them in one place, and no prompt or route restates them.
+# Engineering governance text, not legal advice: §2, §5 and §7 need review by a
+# veterans-benefits attorney or accredited claims agent before public launch.
+version: "2026-10-20"
+
+standard_disclaimer: >
+  VetBuddy provides information and recommendations only. It does not guarantee
+  any benefit, rating, or outcome, and it is not a substitute for an accredited
+  representative. VA alone decides eligibility and disability ratings.
+
+vso_referral_block: >
+  For help preparing or filing a VA claim, work with a VA-accredited Veterans
+  Service Organization representative, claims agent, or attorney. Accredited VSO
+  help is free. You can find one using VA's accredited representative search, or
+  through a VSO such as The American Legion, DAV, or VFW.
+
+vso_search_url: "https://www.va.gov/get-help-from-accredited-representative/find-rep/"
+
+cfr_reference_label: >
+  This is VA's published regulation, shown for reference. It explains how VA
+  describes criteria; it is not an assessment of your condition.
+
+resume_label: >
+  Draft built from the information you provided. Review every line before you use it.
+
+# Starter pattern set. Matching is phrase-level on normalized text (lower case,
+# punctuation folded, whitespace collapsed), never exact substrings — the
+# Education Navigator defect was exact matching that missed natural phrasing.
+# Each entry is a regular expression applied to normalized text.
+prohibited:
+  guarantee:
+    allowed_alternative: "you may be eligible to explore; worth asking your rep about"
+    patterns:
+      - "\\byou will (get|receive|be paid)\\b"
+      - "\\byou qualify for\\b"
+      - "\\byou are eligible for\\b"
+      - "\\bguaranteed?\\b"
+      - "\\byou(?: a|')?re owed\\b"
+  rating:
+    allowed_alternative: "VA's rating criteria for this are in 38 CFR 4.x"
+    patterns:
+      - "\\byou should be rated\\b"
+      - "\\bthis is worth \\d{1,3} ?(%|percent)"
+      - "\\blikely \\d{1,3} ?(%|percent)"
+      - "\\byour rating (will|would) be\\b"
+  diagnosis:
+    allowed_alternative: "talk to your health care provider about these symptoms"
+    patterns:
+      - "\\byou have (ptsd|tbi|sleep apnea|depression|anxiety)\\b"
+      - "\\bthis sounds like (ptsd|tbi|sleep apnea|depression|anxiety)\\b"
+  representation:
+    allowed_alternative: "an accredited representative can file for you"
+    patterns:
+      - "\\bwe(?: wi)?ll file (it )?for you\\b"
+      - "\\byour claim agent\\b"
+      - "\\bwe represent you\\b"
+      - "\\bfile for you\\b(?<!representative can file for you)"
+  claim_coaching:
+    allowed_alternative: "bring your questions to your accredited representative"
+    patterns:
+      - "\\btell the examiner\\b"
+      - "\\bdescribe it as\\b"
+      - "\\bdon'?t mention\\b"
+  fees:
+    allowed_alternative: "none; no claim-related fee exists"
+    patterns:
+      - "\\$\\s?\\d[\\d,]*(\\.\\d\\d)? (to|for) (file|appeal|increase)"
+      - "\\b(fee|price) (for|to) (file|appeal|increase your rating)\\b"

@@ -145,7 +145,7 @@ Decisions: ADR 0005. Vault components (V01–V25) and its own defects (VD01–VD
 | CRM bounded context (v8) | PLANNED | Contained subsystem only; never CRM-first |
 
 **New open items:**
-- **VD22:** vault handlers make blocking database calls inside `async` routes; move store calls to the threadpool.
+- **VD22 (closed 2026-11-09):** vault work now runs in the thread pool; only the request body is read on the event loop (`tests/vault/test_api.py::test_agent_work_runs_off_the_event_loop`, which fails on the old code).
 - **GA:** county field, consent purpose and a county domain list are needed before any area report.
 
 ## Owner decisions (2026-10-29), ADR 0006

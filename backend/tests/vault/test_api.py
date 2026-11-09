@@ -188,3 +188,38 @@ def test_saved_benefits_over_http(client):
     assert client.post(f"{PREFIX}/saved/{saved_id}/discard", headers=AUTH, json={}).status_code == 409
     removed = client.post(f"{PREFIX}/saved/{saved_id}/discard", headers=AUTH, json={"confirm": True}).json()
     assert removed == {"removed": True}
+
+
+def test_agent_work_runs_off_the_event_loop(registry):
+    """VD22: the agent makes blocking database calls, so no route may run it on the event loop."""
+    import asyncio
+
+    class Probe(BenefitVaultAgent):
+        seen = []
+
+        def _on_loop(self):
+            try:
+                asyncio.get_running_loop()
+                return True
+            except RuntimeError:
+                return False
+
+        def search(self, *a, **k):
+            Probe.seen.append(("search", self._on_loop()))
+            return super().search(*a, **k)
+
+        def match(self, *a, **k):
+            Probe.seen.append(("match", self._on_loop()))
+            return super().match(*a, **k)
+
+    app = Starlette(routes=routes(Probe(registry), clock=lambda: NOW))
+    c = TestClient(app)
+    assert c.get(f"{PREFIX}/benefits", params={"q": "hunting"}).status_code == 200
+    assert c.post(f"{PREFIX}/match", json={"facts": {"relationship": "self"}}).status_code == 200
+    assert Probe.seen == [("search", False), ("match", False)]
+
+
+def test_a_body_that_is_not_an_object_is_refused(client):
+    for raw in (b"[]", b"not json", b"123"):
+        r = client.post(f"{PREFIX}/match", content=raw, headers={"content-type": "application/json"})
+        assert r.status_code == 422, raw

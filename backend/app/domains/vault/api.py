@@ -16,6 +16,7 @@ from datetime import datetime, timezone
 from typing import Callable, List, Optional
 
 from starlette.requests import Request
+from starlette.concurrency import run_in_threadpool
 from starlette.responses import JSONResponse
 from starlette.routing import Route
 
@@ -89,9 +90,12 @@ def routes(agent: BenefitVaultAgent, *, resolver: TenantResolver = no_sign_in,
         return account(request) if tenant is not None and store_factory is not None else guest()
 
     def handle(fn):
+        # The agent, its store and its providers make blocking database calls (VD22), so the
+        # work runs in the thread pool: only reading the request body happens on the event loop.
         async def endpoint(request: Request):
             try:
-                return JSONResponse(await fn(request))
+                body = await _body(request) if request.method in ("POST", "PUT", "PATCH") else {}
+                return JSONResponse(await run_in_threadpool(fn, request, body))
             except ApprovalRequired as exc:
                 return _error(request, 409, "APPROVAL_REQUIRED", "confirmation needed",
                               approval_required=exc.action, consent_text=exc.consent_text)
@@ -107,7 +111,7 @@ def routes(agent: BenefitVaultAgent, *, resolver: TenantResolver = no_sign_in,
                 return _error(request, 500, "OUTPUT_BLOCKED", "the response was blocked by the governance language guard")
         return endpoint
 
-    async def catalog(request):
+    def catalog(request, body):
         registry = agent.registry
         return {
             **registry.describe(),
@@ -126,7 +130,7 @@ def routes(agent: BenefitVaultAgent, *, resolver: TenantResolver = no_sign_in,
             "publish_policy": registry.publish_policy(agent.environment),
         }
 
-    async def search(request):
+    def search(request, body):
         params = request.query_params
         query = {"q": params.get("q", ""), "jurisdictions": _list_param(request, "jurisdiction"),
                  "categories": _list_param(request, "category"), "groups": _list_param(request, "group"),
@@ -134,18 +138,16 @@ def routes(agent: BenefitVaultAgent, *, resolver: TenantResolver = no_sign_in,
                  "offset": params.get("offset", "0")}
         return agent.search(query, guest())
 
-    async def read(request):
+    def read(request, body):
         return agent.benefit(request.path_params["benefit_id"], guest())
 
-    async def match(request):
-        body = await _body(request)
+    def match(request, body):
         return agent.match(body, caller(request), clock())
 
-    async def household(request):
-        body = await _body(request)
+    def household(request, body):
         return agent.household(body, caller(request), clock())
 
-    async def governance(request):
+    def governance(request, body):
         registry = agent.registry
         policy = registry.governance
         return {
@@ -160,13 +162,13 @@ def routes(agent: BenefitVaultAgent, *, resolver: TenantResolver = no_sign_in,
             "components": registry.data["components"],
         }
 
-    async def leads(request):
+    def leads(request, body):
         registry = agent.registry
         return {"rule_leads": list(registry.rule_leads.values()), "recovered_leads": registry.recovered_leads,
                 "license_reciprocity": registry.data["license_reciprocity"],
                 "caveat": registry.caveats["recovered_lead"]}
 
-    async def discovery(request):
+    def discovery(request, body):
         try:
             limit = int(request.query_params.get("limit", "50"))
             tasks = planner.plan(limit=limit)
@@ -174,28 +176,25 @@ def routes(agent: BenefitVaultAgent, *, resolver: TenantResolver = no_sign_in,
             raise RequestError(str(exc)) from None
         return {"executable": planner.executable, "tasks": [t.view() for t in tasks]}
 
-    async def grants_list(request):
+    def grants_list(request, body):
         return agent.grants(account(request), clock())
 
-    async def grants_create(request):
-        body = await _body(request)
+    def grants_create(request, body):
         return agent.create_grant(body, account(request), clock())
 
-    async def grants_revoke(request):
+    def grants_revoke(request, body):
         return agent.revoke_grant(request.path_params["grant_id"], account(request), clock())
 
-    async def ledger(request):
+    def ledger(request, body):
         return agent.ledger(account(request))
 
-    async def saved_list(request):
+    def saved_list(request, body):
         return agent.saved(account(request))
 
-    async def saved_create(request):
-        body = await _body(request)
+    def saved_create(request, body):
         return agent.save_benefit(body, account(request))
 
-    async def saved_discard(request):
-        body = await _body(request)
+    def saved_discard(request, body):
         session = account(request)
         agent.approval.require("discard_saved", body.get("confirm"), "Remove this benefit from your list.")
         return {"removed": session.saved.discard(session.tenant_ref, "saved_benefit", request.path_params["saved_id"])}

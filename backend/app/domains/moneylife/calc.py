@@ -272,16 +272,13 @@ def savings_forecast(raw: Dict[str, Any], as_of: str) -> Dict[str, Any]:
 
 # ── 6. VA compensation illustration ──────────────────────────────────────────
 
-V26 = COMP["va_compensation_2026"]
-CONTESTED = {(c["table"], c["rating"]) for c in V26["contested"]}
+V26 = COMP["va_compensation_2026"]          # VA.gov's table effective 2025-12-01 (scripts/build_va_rates.py)
 
 
 def _va_cell(table: str, rating: int) -> Optional[int]:
     if table == "veteran_alone":
         return V26["veteran_alone"].get(str(rating))
-    if rating == 100:
-        return V26["dependents_100"].get(table)
-    return None
+    return V26["dependents"].get(table, {}).get(str(rating))
 
 
 def va_illustration(raw: Dict[str, Any], as_of: str) -> Dict[str, Any]:
@@ -317,13 +314,6 @@ def va_illustration(raw: Dict[str, Any], as_of: str) -> Dict[str, Any]:
         cells.append(["each_additional_child_18_23_in_school", rating, school])
     if aa:
         cells.append(["spouse_aid_and_attendance", rating, 1])
-    alone = _va_cell("veteran_alone", rating)
-    if any((c[0], rating) in CONTESTED for c in cells):
-        return envelope("va_illustration", inputs, {"floor_cents": alone, "cells": [["veteran_alone", rating]]},
-                        as_of=as_of, data_status="partial",
-                        warnings=common + [f"Two sources disagree on the 2026 {rating}% amounts with dependents "
-                                           f"({V26['contested_conflict_id']}). Shown: the veteran-alone rate, which "
-                                           "the dependent amount is at least."], **kw)
     total = _va_cell(base, rating)
     for c in cells[1:]:
         total += _va_cell(c[0], rating) * c[2]
@@ -342,9 +332,7 @@ def kernel_data() -> Dict[str, Any]:
     """What web/moneylife.js needs, generated into web/kernel_data.js by scripts/build_web.py."""
     return {"RULES": RULES, "PER_YEAR_BP": PER_YEAR_BP, "SOURCE_VERSION": COMP["version"],
             "ENGINE": f"{ENGINE_NAME}@{ENGINE_VERSION}",
-            "V26": {k: V26[k] for k in ("rate_set", "effective_from", "status", "veteran_alone", "dependents_100",
-                                       "contested_conflict_id")},
-            "CONTESTED": sorted([t, r] for t, r in CONTESTED),
+            "V26": {k: V26[k] for k in ("rate_set", "effective_from", "status", "veteran_alone", "dependents")},
             "EXAMPLES": json.loads((ROOT / "data" / "demo" / "moneylife_examples.json").read_text())["examples"]}
 
 
@@ -593,7 +581,7 @@ def capabilities() -> Dict[str, Any]:
             "calculations": sorted(CALCULATORS), "persists": False,
             "bank_connections": "not available: needs a server-side aggregator, consent and sign-in (spec §13)",
             "va_rates": {"rate_set": V26["rate_set"], "effective_from": V26["effective_from"], "status": V26["status"],
-                         "contested_cells": len(CONTESTED), "conflict_id": V26["contested_conflict_id"]},
+                         "sources": V26["sources"]},
             "verify_links": RULES["verify_links"]}
 
 

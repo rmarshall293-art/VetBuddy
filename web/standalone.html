@@ -872,8 +872,7 @@ function vMoney() {
     s => ["va_illustration", { rating: toInt(s.rating ?? "0", "Rating"), married: !!s.married, children_under_18: toInt(s.children_under_18, "Children under 18"),
       children_in_school: toInt(s.children_in_school, "Children in school"), spouse_aid_and_attendance: !!s.spouse_aid_and_attendance }],
     r => el("div", { class: "mlres", "aria-live": "polite" },
-      r.output.monthly_cents !== undefined ? el("div", { class: "result-num" }, usd(r.output.monthly_cents), el("span", { class: "small" }, " a month"))
-        : r.output.floor_cents !== undefined ? [el("div", { class: "result-num" }, "At least " + usd(r.output.floor_cents)), el("p", {}, "The exact amount with dependents is disputed between sources, so VetBuddy won't pick one.")] : null,
+      r.output.monthly_cents !== undefined ? el("div", { class: "result-num" }, usd(r.output.monthly_cents), el("span", { class: "small" }, " a month")) : null,
       el("p", {}, el("a", { href: ML_KD.RULES.verify_links.va_rates, target: "_blank", rel: "noopener" }, "VA's current rate table ↗")), mlMeta(r)));
   const yrs = s => { const y = toInt(s.service_years, "Years of service"), m = toInt(s.service_extra_months, "Extra months"); return y === null ? null : y * 12 + (m || 0); };
   const retire = mlForm("retire", [

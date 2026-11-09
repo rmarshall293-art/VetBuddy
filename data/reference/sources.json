@@ -229,6 +229,24 @@
       "as_of": "2026-10-27",
       "origin": "data/reference/benefit_vault_registry.json#license_reciprocity",
       "note": "Recovered without a primary source; see data/research/recovered/RECOVERY_MANIFEST.json."
+    },
+    {
+      "id": "src.va.comp_rates_2024_12_01",
+      "title": "VA.gov — Veterans disability compensation rates, effective 2024-12-01",
+      "kind": "primary",
+      "tier": 1,
+      "as_of": "2026-11-09",
+      "origin": "https://www.va.gov/disability/compensation-rates/veteran-rates/past-rates-2025/",
+      "note": "Saved as data/research/federal/va_comp_rates/va_rates_effective_2024-12-01.html on 2026-11-09; read by scripts/build_va_rates.py."
+    },
+    {
+      "id": "src.va.comp_rates_2025_12_01",
+      "title": "VA.gov — Veterans disability compensation rates, effective 2025-12-01",
+      "kind": "primary",
+      "tier": 1,
+      "as_of": "2026-11-09",
+      "origin": "https://www.va.gov/disability/compensation-rates/veteran-rates/",
+      "note": "Saved as data/research/federal/va_comp_rates/va_rates_effective_2025-12-01.html on 2026-11-09; read by scripts/build_va_rates.py."
     }
   ]
 }

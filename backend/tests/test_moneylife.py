@@ -254,13 +254,14 @@ class Controls(unittest.TestCase):
         net = run("cash_flow", GOLDEN_BY["cash_flow"][3])
         self.assertEqual(net["output"]["income_cents"]["confirmed"], 77710 + 132290)
 
-    def test_contested_va_cells_show_a_floor_never_a_pick(self):
+    def test_dependent_amounts_at_30_to_90_come_from_vas_table(self):
+        # VA.gov, effective 2025-12-01: 50% with spouse and child $1,322.90; each additional child under 18 $54.00
         r = run("va_illustration", {"rating": 50, "married": True, "children_under_18": 2})
-        self.assertNotIn("monthly_cents", r["output"])
-        self.assertEqual(r["output"]["floor_cents"], 113290)
-        self.assertEqual(r["data_status"], "partial")
-        self.assertTrue(any("conflict.va_comp.2026_dependent_cells" in w for w in r["warnings"]))
-        self.assertEqual(len(calc.CONTESTED), 42)
+        self.assertEqual(r["output"]["monthly_cents"], 132290 + 5400)
+        self.assertEqual(run("va_illustration", {"rating": 30, "married": True})["output"]["monthly_cents"], 61747)
+        self.assertEqual(run("va_illustration", {"rating": 70, "children_under_18": 1})["output"]["monthly_cents"], 191045)
+        self.assertEqual(calc.V26["status"], "SOURCE_CHECKED")
+        self.assertEqual(calc.V26["sources"], ["src.va.comp_rates_2025_12_01"])
 
     def test_va_illustration_is_labelled_and_dated(self):
         r = run("va_illustration", {"rating": 100})
@@ -432,7 +433,7 @@ class Api(unittest.TestCase):
         self.assertEqual(r.status_code, 200, r.text)
         self.assertEqual(r.json()["output"]["monthly_cents"], 442810)
         c = self.client.get("/api/v1/moneylife/capabilities").json()
-        self.assertEqual(c["va_rates"]["contested_cells"], 42)
+        self.assertEqual(c["va_rates"]["sources"], ["src.va.comp_rates_2025_12_01"])
 
     def test_errors_name_the_field_and_store_nothing(self):
         r = self.client.post("/api/v1/moneylife/loan_payment", json={"principal_cents": -5, "apr_bp": 1, "months": 1})

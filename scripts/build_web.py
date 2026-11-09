@@ -141,7 +141,7 @@ def record() -> str:
     corpus_rows.append(["<strong>Total</strong>", num(sum(d["record_count"] for d in c.datasets)),
                         f"{len(c.tables)} <code>ref</code> tables from {len(c.datasets)} JSON datasets", ""])
     conflict_rows = [[_e(r["subject"]), " · ".join(f'<span class="mono">{_e(x["value"])}</span>' for x in r["readings"]),
-                      _pill(("bad", "Contested") if r["status"] == "contested_unresolved" else ("ok", "Resolved by design"))]
+                      _pill({"contested_unresolved": ("bad", "Contested"), "resolved_by_primary_source": ("ok", "Resolved by the primary source")}.get(r["status"], ("ok", "Resolved by design")))]
                      for r in conf["records"]]
     vault = json.loads((REF / "benefit_vault_registry.json").read_text(encoding="utf-8"))
     vc = vault["counts"]

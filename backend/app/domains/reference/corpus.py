@@ -157,22 +157,25 @@ def build() -> Corpus:
     comp = docs["compensation"]
     src = comp["sources"]
     vc = comp["va_compensation"]
-    conflict_cells = {("veteran_alone", 70): "conflict.va_comp.2025_70pct_single"}
+    open_conflicts = {r["id"] for r in docs["conflicts"]["records"] if r["status"] == "contested_unresolved"}
+    conflict_cells = {k: v for k, v in {("veteran_alone", 70): "conflict.va_comp.2025_70pct_single"}.items()
+                      if v in open_conflicts}
 
     def rate(rate_set, dims, cents, eff_from, *, ds="compensation", rounded=False, status="UNVERIFIED",
-             eff_to=None, note=None, conflict=None):
+             eff_to=None, note=None, conflict=None, sources=None):
         track(ds, "rate", {"rate_set": rate_set, "dims": dims, "amount_cents": cents, "rounded": rounded,
                            "effective_from": eff_from, "effective_to": eff_to, "note": note, "conflict_id": conflict,
-                           "status": "CONTESTED" if conflict else status, "source_ids": src})
+                           "status": "CONTESTED" if conflict else status, "source_ids": sources or src})
 
     for table in ("veteran_alone", "with_spouse", "with_spouse_and_one_child"):
         for rating, cents in vc[table].items():
             rate(vc["rate_set"], {"dependents": table, "rating": int(rating)}, cents, vc["effective_from"],
-                 eff_to=vc["effective_to"], conflict=conflict_cells.get((table, int(rating))))
+                 eff_to=vc["effective_to"], conflict=conflict_cells.get((table, int(rating))),
+                 status=vc["status"], sources=vc["sources"])
     for a in vc["addons"]:
         rate(vc["rate_set"], {"addon": a["key"], "rating": a["rating"]}, a["amount_cents"], vc["effective_from"],
-             eff_to=vc["effective_to"], rounded=a.get("rounded", False))
-    v26 = comp["va_compensation_2026"]                     # contested cells live in the conflict record, not here
+             eff_to=vc["effective_to"], rounded=False, status=vc["status"], sources=vc["sources"])
+    v26 = comp["va_compensation_2026"]                     # generated from VA.gov's table by scripts/build_va_rates.py
 
     def rate26(dims, cents):
         track("compensation", "rate", {"rate_set": v26["rate_set"], "dims": dims, "amount_cents": cents, "rounded": False,
@@ -180,8 +183,9 @@ def build() -> Corpus:
                                        "conflict_id": None, "status": v26["status"], "source_ids": v26["sources"]})
     for rating, cents in v26["veteran_alone"].items():
         rate26({"dependents": "veteran_alone", "rating": int(rating)}, cents)
-    for table, cents in v26["dependents_100"].items():
-        rate26({"dependents": table, "rating": 100}, cents)
+    for table, cells in v26["dependents"].items():
+        for rating, cents in cells.items():
+            rate26({"dependents": table, "rating": int(rating)}, cents)
     for v in comp["va_special"]["smc_2025_approximate"]["values"]:
         rate("smc_2025_approx", {"level": v["level"], "kind": v["kind"]}, v["amount_cents"], vc["effective_from"],
              rounded=v.get("rounded", False), status="ILLUSTRATIVE")
@@ -497,8 +501,12 @@ def validate(c: Corpus) -> None:
     for r in t.get("conflict", []):
         if r["status"] == "contested_unresolved" and len(r["readings"]) < 2:
             errors.append(f"conflict {r['conflict_id']}: fewer than two readings")
-        if r["status"] == "resolved_by_design" and not r.get("resolution"):
+        if r["status"] in ("resolved_by_design", "resolved_by_primary_source") and not r.get("resolution"):
             errors.append(f"conflict {r['conflict_id']}: resolved without a resolution")
+        if r["status"] == "resolved_by_primary_source":
+            tier1 = {x["source_id"] for x in t.get("source", []) if x.get("tier") == 1}
+            if not ({x.get("source") for x in r["readings"]} & tier1):
+                errors.append(f"conflict {r['conflict_id']}: resolved by a primary source that is not a tier-1 reading")
     for r in t.get("rate", []):
         if not isinstance(r["amount_cents"], int) or isinstance(r["amount_cents"], bool) or r["amount_cents"] < 0:
             errors.append(f"rate {r['rate_set']} {r['dims']}: amount must be non-negative integer cents")

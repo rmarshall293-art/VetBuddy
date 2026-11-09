@@ -117,7 +117,13 @@ class CorpusShape(unittest.TestCase):
         va = {(r["dims"].get("dependents"), r["dims"].get("rating")): r for r in C.tables["rate"]
               if r["rate_set"] == "va_comp_2025"}
         self.assertEqual(va[("veteran_alone", 100)]["amount_cents"], 383130)
-        self.assertEqual(va[("veteran_alone", 70)]["status"], "CONTESTED")
+        # $1,759.19 vs $1,759.05 was settled by VA.gov's own table (conflict resolved_by_primary_source)
+        self.assertEqual(va[("veteran_alone", 70)]["amount_cents"], 175919)
+        self.assertEqual(va[("veteran_alone", 70)]["status"], "SOURCE_CHECKED")
+        v26 = {(r["dims"].get("dependents"), r["dims"].get("rating")): r for r in C.tables["rate"]
+               if r["rate_set"] == "va_comp_2026"}
+        self.assertEqual(len(v26), 122)                                  # VA's whole table, effective 2025-12-01
+        self.assertEqual(v26[("with_spouse", 30)]["amount_cents"], 61747)
         # Missing cells are absent, never interpolated.
         self.assertNotIn(("with_spouse_and_one_child", 40), va)
 
@@ -137,6 +143,15 @@ class CorpusShape(unittest.TestCase):
     def test_every_territory_has_a_dv_coalition(self):
         codes = {r["jurisdiction_code"] for r in C.tables["directory_entry"] if r["kind"] == "territory_dv_coalition"}
         self.assertEqual(codes, {"PR", "GU", "VI", "AS", "MP"})
+
+    def test_conflicts_resolved_by_a_primary_source_cite_it(self):
+        tier1 = {r["source_id"] for r in C.tables["source"] if r["tier"] == 1}
+        resolved = [r for r in C.tables["conflict"] if r["status"] == "resolved_by_primary_source"]
+        self.assertEqual({r["conflict_id"] for r in resolved}, {"conflict.va_comp.2025_70pct_single",
+                         "conflict.va_comp.2026_60pct_single", "conflict.va_comp.2026_dependent_cells"})
+        for r in resolved:
+            self.assertTrue(r["resolution"])
+            self.assertTrue({x.get("source") for x in r["readings"]} & tier1, r["conflict_id"])
 
     def test_contested_conflicts_keep_all_readings(self):
         for r in C.tables["conflict"]:

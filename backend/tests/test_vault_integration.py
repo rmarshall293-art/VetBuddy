@@ -159,6 +159,35 @@ class VaultPullsFromOnboarding(ApiCase):
         self.assertIn("component", env["subject"]["facts_used"])
 
 
+    def _grant(self, h):
+        g = self.client.post(f"{VAULT}/grants", headers=h, json={
+            "source_agent": "service_profile_agent", "confirm": True, "fact_keys": ["component", "service_status"]})
+        self.assertEqual(g.status_code, 200, g.text)
+        body = g.json()
+        return body.get("grant", body)["grant_id"]
+
+    def _pulled(self, h):
+        env = self.client.post(f"{VAULT}/match", headers=h, json={"facts": {"relationship": "self"}}).json()
+        return [f["fact_key"] for f in env["subject"]["facts_pulled"]]
+
+    def test_revoking_the_grant_stops_the_pull_at_once(self):
+        h = self._account()
+        gid = self._grant(h)
+        self.assertTrue(self._pulled(h))
+        r = self.client.post(f"{VAULT}/grants/{gid}/revoke", headers=h, json={"confirm": True})
+        self.assertEqual(r.status_code, 200, r.text)
+        self.assertEqual(self._pulled(h), [])
+
+    def test_another_person_cannot_see_use_or_revoke_a_grant(self):
+        a, b = self._account(), self._account()
+        gid = self._grant(a)
+        self.assertEqual(self._pulled(b), [])
+        self.assertNotIn(gid, self.client.get(f"{VAULT}/grants", headers=b).text)
+        self.assertEqual(self.client.post(f"{VAULT}/grants/{gid}/revoke", headers=b, json={"confirm": True}).status_code, 404)
+        self.assertTrue(self._pulled(a))                    # still in force for its owner
+        self.assertNotIn("service_status", self.client.get(f"{VAULT}/ledger", headers=b).text)
+
+
 class ProviderDerivation(__import__("unittest").TestCase):
     def test_only_what_the_record_supports(self):
         import datetime as dt

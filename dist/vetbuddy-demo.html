@@ -847,176 +847,6 @@ const KDATA = {
   }
  ],
  "MONEYLIFE": {
-  "CONTESTED": [
-   [
-    "each_additional_child_18_23_in_school",
-    30
-   ],
-   [
-    "each_additional_child_18_23_in_school",
-    40
-   ],
-   [
-    "each_additional_child_18_23_in_school",
-    50
-   ],
-   [
-    "each_additional_child_18_23_in_school",
-    60
-   ],
-   [
-    "each_additional_child_18_23_in_school",
-    70
-   ],
-   [
-    "each_additional_child_18_23_in_school",
-    80
-   ],
-   [
-    "each_additional_child_18_23_in_school",
-    90
-   ],
-   [
-    "each_additional_child_under_18",
-    30
-   ],
-   [
-    "each_additional_child_under_18",
-    40
-   ],
-   [
-    "each_additional_child_under_18",
-    50
-   ],
-   [
-    "each_additional_child_under_18",
-    60
-   ],
-   [
-    "each_additional_child_under_18",
-    70
-   ],
-   [
-    "each_additional_child_under_18",
-    80
-   ],
-   [
-    "each_additional_child_under_18",
-    90
-   ],
-   [
-    "spouse_aid_and_attendance",
-    30
-   ],
-   [
-    "spouse_aid_and_attendance",
-    40
-   ],
-   [
-    "spouse_aid_and_attendance",
-    50
-   ],
-   [
-    "spouse_aid_and_attendance",
-    60
-   ],
-   [
-    "spouse_aid_and_attendance",
-    70
-   ],
-   [
-    "spouse_aid_and_attendance",
-    80
-   ],
-   [
-    "spouse_aid_and_attendance",
-    90
-   ],
-   [
-    "with_child",
-    30
-   ],
-   [
-    "with_child",
-    40
-   ],
-   [
-    "with_child",
-    50
-   ],
-   [
-    "with_child",
-    60
-   ],
-   [
-    "with_child",
-    70
-   ],
-   [
-    "with_child",
-    80
-   ],
-   [
-    "with_child",
-    90
-   ],
-   [
-    "with_spouse",
-    30
-   ],
-   [
-    "with_spouse",
-    40
-   ],
-   [
-    "with_spouse",
-    50
-   ],
-   [
-    "with_spouse",
-    60
-   ],
-   [
-    "with_spouse",
-    70
-   ],
-   [
-    "with_spouse",
-    80
-   ],
-   [
-    "with_spouse",
-    90
-   ],
-   [
-    "with_spouse_and_child",
-    30
-   ],
-   [
-    "with_spouse_and_child",
-    40
-   ],
-   [
-    "with_spouse_and_child",
-    50
-   ],
-   [
-    "with_spouse_and_child",
-    60
-   ],
-   [
-    "with_spouse_and_child",
-    70
-   ],
-   [
-    "with_spouse_and_child",
-    80
-   ],
-   [
-    "with_spouse_and_child",
-    90
-   ]
-  ],
   "ENGINE": "vetbuddy.moneylife.core@1.0.0",
   "EXAMPLES": [
    {
@@ -1168,18 +998,151 @@ const KDATA = {
   },
   "SOURCE_VERSION": "2026.10.20",
   "V26": {
-   "contested_conflict_id": "conflict.va_comp.2026_dependent_cells",
-   "dependents_100": {
-    "each_additional_child_18_23_in_school": 35245,
-    "each_additional_child_under_18": 10911,
-    "spouse_aid_and_attendance": 20141,
-    "with_child": 408543,
-    "with_spouse": 415817,
-    "with_spouse_and_child": 431899
+   "dependents": {
+    "each_additional_child_18_23_in_school": {
+     "100": 35245,
+     "30": 10500,
+     "40": 14000,
+     "50": 17600,
+     "60": 21100,
+     "70": 24600,
+     "80": 28100,
+     "90": 31700
+    },
+    "each_additional_child_under_18": {
+     "100": 10911,
+     "30": 3200,
+     "40": 4300,
+     "50": 5400,
+     "60": 6500,
+     "70": 7600,
+     "80": 8700,
+     "90": 9800
+    },
+    "spouse_aid_and_attendance": {
+     "100": 20141,
+     "30": 6100,
+     "40": 8100,
+     "50": 10100,
+     "60": 12100,
+     "70": 14100,
+     "80": 16100,
+     "90": 18100
+    },
+    "with_1_parent": {
+     "100": 411482,
+     "30": 60447,
+     "40": 86584,
+     "50": 122090,
+     "60": 154002,
+     "70": 193145,
+     "80": 224215,
+     "90": 252030
+    },
+    "with_2_parents": {
+     "100": 429106,
+     "30": 65647,
+     "40": 93584,
+     "50": 130890,
+     "60": 164502,
+     "70": 205445,
+     "80": 238215,
+     "90": 267830
+    },
+    "with_child": {
+     "100": 408543,
+     "30": 59647,
+     "40": 85384,
+     "50": 120590,
+     "60": 152302,
+     "70": 191045,
+     "80": 221915,
+     "90": 249430
+    },
+    "with_child_and_1_parent": {
+     "100": 426167,
+     "30": 64847,
+     "40": 92384,
+     "50": 129390,
+     "60": 162802,
+     "70": 203345,
+     "80": 235915,
+     "90": 265230
+    },
+    "with_child_and_2_parents": {
+     "100": 443791,
+     "30": 70047,
+     "40": 99384,
+     "50": 138190,
+     "60": 173302,
+     "70": 215645,
+     "80": 249915,
+     "90": 281030
+    },
+    "with_spouse": {
+     "100": 415817,
+     "30": 61747,
+     "40": 88284,
+     "50": 124190,
+     "60": 156602,
+     "70": 196145,
+     "80": 227715,
+     "90": 255930
+    },
+    "with_spouse_and_1_parent": {
+     "100": 433441,
+     "30": 66947,
+     "40": 95284,
+     "50": 132990,
+     "60": 167102,
+     "70": 208445,
+     "80": 241715,
+     "90": 271730
+    },
+    "with_spouse_and_2_parents": {
+     "100": 451065,
+     "30": 72147,
+     "40": 102284,
+     "50": 141790,
+     "60": 177602,
+     "70": 220745,
+     "80": 255715,
+     "90": 287530
+    },
+    "with_spouse_and_child": {
+     "100": 431899,
+     "30": 66647,
+     "40": 94784,
+     "50": 132290,
+     "60": 166302,
+     "70": 207445,
+     "80": 240615,
+     "90": 270430
+    },
+    "with_spouse_and_child_and_1_parent": {
+     "100": 449523,
+     "30": 71847,
+     "40": 101784,
+     "50": 141090,
+     "60": 176802,
+     "70": 219745,
+     "80": 254615,
+     "90": 286230
+    },
+    "with_spouse_and_child_and_2_parents": {
+     "100": 467147,
+     "30": 77047,
+     "40": 108784,
+     "50": 149890,
+     "60": 187302,
+     "70": 232045,
+     "80": 268615,
+     "90": 302030
+    }
    },
    "effective_from": "2025-12-01",
    "rate_set": "va_comp_2026",
-   "status": "UNVERIFIED",
+   "status": "SOURCE_CHECKED",
    "veteran_alone": {
     "10": 18042,
     "100": 393858,
@@ -1290,6 +1253,18 @@ const KDATA = {
    "origin": "https://www.va.gov/resources/what-your-claim-status-means/",
    "tier": 2,
    "title": "VA.gov \u2014 What your claim status means"
+  },
+  "src.va.comp_rates_2024_12_01": {
+   "kind": "primary",
+   "origin": "https://www.va.gov/disability/compensation-rates/veteran-rates/past-rates-2025/",
+   "tier": 1,
+   "title": "VA.gov \u2014 Veterans disability compensation rates, effective 2024-12-01"
+  },
+  "src.va.comp_rates_2025_12_01": {
+   "kind": "primary",
+   "origin": "https://www.va.gov/disability/compensation-rates/veteran-rates/",
+   "tier": 1,
+   "title": "VA.gov \u2014 Veterans disability compensation rates, effective 2025-12-01"
   },
   "src.va.find_rep": {
    "kind": "primary",
@@ -1835,7 +1810,6 @@ const ML = KDATA.MONEYLIFE;
 const RULES = ML.RULES, LIM = RULES.limits, V26 = ML.V26;
 const SCALE = 10n ** 12n;
 const CASES = ["optimistic", "base", "downside"];
-const CONTESTED = new Set(ML.CONTESTED.map(([t, r]) => t + "|" + r));
 const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 
 class MoneyInputError extends Error {
@@ -2003,8 +1977,7 @@ function savingsForecast(raw, asOf) {
 // ── 6. VA compensation illustration ──
 function vaCell(table, rating) {
   if (table === "veteran_alone") return V26.veteran_alone[String(rating)] ?? null;
-  if (rating === 100) return V26.dependents_100[table] ?? null;
-  return null;
+  return (V26.dependents[table] || {})[String(rating)] ?? null;
 }
 function vaIllustration(raw, asOf) {
   const rating = int(raw, "rating", 0, 100, true);
@@ -2029,11 +2002,6 @@ function vaIllustration(raw, asOf) {
   if (under18 > 1) cells.push(["each_additional_child_under_18", rating, under18 - 1]);
   if (school) cells.push(["each_additional_child_18_23_in_school", rating, school]);
   if (aa) cells.push(["spouse_aid_and_attendance", rating, 1]);
-  const alone = vaCell("veteran_alone", rating);
-  if (cells.some(c => CONTESTED.has(c[0] + "|" + rating))) {
-    return envelope("va_illustration", inputs, { floor_cents: alone, cells: [["veteran_alone", rating]] }, { ...kw, asOf, dataStatus: "partial",
-      warnings: [...common, `Two sources disagree on the 2026 ${rating}% amounts with dependents (${V26.contested_conflict_id}). Shown: the veteran-alone rate, which the dependent amount is at least.`] });
-  }
   let total = vaCell(base, rating);
   for (const c of cells.slice(1)) total += vaCell(c[0], rating) * c[2];
   return envelope("va_illustration", inputs, { monthly_cents: total, cells }, { ...kw, asOf, warnings: common });
@@ -2896,8 +2864,7 @@ function vMoney() {
     s => ["va_illustration", { rating: toInt(s.rating ?? "0", "Rating"), married: !!s.married, children_under_18: toInt(s.children_under_18, "Children under 18"),
       children_in_school: toInt(s.children_in_school, "Children in school"), spouse_aid_and_attendance: !!s.spouse_aid_and_attendance }],
     r => el("div", { class: "mlres", "aria-live": "polite" },
-      r.output.monthly_cents !== undefined ? el("div", { class: "result-num" }, usd(r.output.monthly_cents), el("span", { class: "small" }, " a month"))
-        : r.output.floor_cents !== undefined ? [el("div", { class: "result-num" }, "At least " + usd(r.output.floor_cents)), el("p", {}, "The exact amount with dependents is disputed between sources, so VetBuddy won't pick one.")] : null,
+      r.output.monthly_cents !== undefined ? el("div", { class: "result-num" }, usd(r.output.monthly_cents), el("span", { class: "small" }, " a month")) : null,
       el("p", {}, el("a", { href: ML_KD.RULES.verify_links.va_rates, target: "_blank", rel: "noopener" }, "VA's current rate table ↗")), mlMeta(r)));
   const yrs = s => { const y = toInt(s.service_years, "Years of service"), m = toInt(s.service_extra_months, "Extra months"); return y === null ? null : y * 12 + (m || 0); };
   const retire = mlForm("retire", [

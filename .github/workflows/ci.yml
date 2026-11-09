@@ -28,3 +28,5 @@ jobs:
         run: python scripts/build_reference.py --check
       - name: Rating schedule is what the saved eCFR snapshot gives
         run: python scripts/build_rating_schedule.py --check
+      - name: VA compensation rates match the saved VA.gov tables
+        run: python scripts/build_va_rates.py --check

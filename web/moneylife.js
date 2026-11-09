@@ -13,7 +13,6 @@ const ML = KDATA.MONEYLIFE;
 const RULES = ML.RULES, LIM = RULES.limits, V26 = ML.V26;
 const SCALE = 10n ** 12n;
 const CASES = ["optimistic", "base", "downside"];
-const CONTESTED = new Set(ML.CONTESTED.map(([t, r]) => t + "|" + r));
 const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
 
 export class MoneyInputError extends Error {
@@ -181,8 +180,7 @@ function savingsForecast(raw, asOf) {
 // ── 6. VA compensation illustration ──
 function vaCell(table, rating) {
   if (table === "veteran_alone") return V26.veteran_alone[String(rating)] ?? null;
-  if (rating === 100) return V26.dependents_100[table] ?? null;
-  return null;
+  return (V26.dependents[table] || {})[String(rating)] ?? null;
 }
 function vaIllustration(raw, asOf) {
   const rating = int(raw, "rating", 0, 100, true);
@@ -207,11 +205,6 @@ function vaIllustration(raw, asOf) {
   if (under18 > 1) cells.push(["each_additional_child_under_18", rating, under18 - 1]);
   if (school) cells.push(["each_additional_child_18_23_in_school", rating, school]);
   if (aa) cells.push(["spouse_aid_and_attendance", rating, 1]);
-  const alone = vaCell("veteran_alone", rating);
-  if (cells.some(c => CONTESTED.has(c[0] + "|" + rating))) {
-    return envelope("va_illustration", inputs, { floor_cents: alone, cells: [["veteran_alone", rating]] }, { ...kw, asOf, dataStatus: "partial",
-      warnings: [...common, `Two sources disagree on the 2026 ${rating}% amounts with dependents (${V26.contested_conflict_id}). Shown: the veteran-alone rate, which the dependent amount is at least.`] });
-  }
   let total = vaCell(base, rating);
   for (const c of cells.slice(1)) total += vaCell(c[0], rating) * c[2];
   return envelope("va_illustration", inputs, { monthly_cents: total, cells }, { ...kw, asOf, warnings: common });

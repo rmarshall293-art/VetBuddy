@@ -66,7 +66,7 @@
     {
       "id": "conflict.va_comp.2025_70pct_single",
       "subject": "VA compensation, 70%, veteran alone, effective 2024-12-01",
-      "status": "contested_unresolved",
+      "status": "resolved_by_primary_source",
       "readings": [
         {
           "value": "$1,759.19",
@@ -80,10 +80,16 @@
         {
           "value": "$1,759.05",
           "source": "src.legacy.va_claims_data"
+        },
+        {
+          "value": "see resolution",
+          "basis": "VA.gov rate table",
+          "source": "src.va.comp_rates_2024_12_01"
         }
       ],
       "why_it_matters": "Quoted payment amounts must be reproducible to the cent.",
-      "next_action": "Read the VA rate table for that period; correct the losing value with a named reviewer."
+      "next_action": "Read the VA rate table for that period; correct the losing value with a named reviewer.",
+      "resolution": "VA.gov's table effective 2024-12-01 gives $1,759.19 for 70%, veteran alone (read 2026-11-09). The $1,759.05 readings are wrong; the corpus holds $1,759.19."
     },
     {
       "id": "conflict.base_pay.gate_labels",
@@ -280,7 +286,7 @@
     {
       "id": "conflict.va_comp.2026_dependent_cells",
       "subject": "2026 VA compensation, 30-90% ratings with dependents (42 cells)",
-      "status": "contested_unresolved",
+      "status": "resolved_by_primary_source",
       "readings": [
         {
           "value": "30% with spouse $617.47 (veteran-alone rate plus a whole-dollar addition)",
@@ -296,18 +302,24 @@
           "value": "30% with spouse $618.26 (2025 cell $601.42 x 1.028)",
           "basis": "Each 2025 cell multiplied by the 2.8% COLA, to the cent",
           "source": "src.web.va_rates_2026_vci"
+        },
+        {
+          "value": "see resolution",
+          "basis": "VA.gov rate table",
+          "source": "src.va.comp_rates_2025_12_01"
         }
       ],
       "why_it_matters": "A married or parent veteran rated 30-90% would see a monthly figure off by up to $1.40 from one source or the other.",
       "next_action": "Read VA.gov's 2026 rate table and keep the matching reading. Until then MoneyLife shows the veteran-alone rate as a floor for these cells and says why.",
       "blocking_for": [
         "moneylife.va_illustration"
-      ]
+      ],
+      "resolution": "VA.gov's table effective 2025-12-01 (read 2026-11-09) matches the whole-dollar-additions reading in all 42 cells (e.g. 30% with spouse $617.47); the 2025-cell x 1.028 reading is wrong. va_compensation_2026 now holds VA's full table."
     },
     {
       "id": "conflict.va_comp.2026_60pct_single",
       "subject": "VA compensation, 60%, veteran alone, effective 2025-12-01",
-      "status": "contested_unresolved",
+      "status": "resolved_by_primary_source",
       "readings": [
         {
           "value": "$1,435.01",
@@ -318,10 +330,16 @@
           "value": "$1,435.02",
           "basis": "dependents table, same file",
           "source": "src.legacy.va_rating_app"
+        },
+        {
+          "value": "see resolution",
+          "basis": "VA.gov rate table",
+          "source": "src.va.comp_rates_2025_12_01"
         }
       ],
       "why_it_matters": "One file disagrees with itself; quoted amounts must be reproducible to the cent.",
-      "next_action": "Read VA's 2026 rate table; correct the losing value with a named reviewer."
+      "next_action": "Read VA's 2026 rate table; correct the losing value with a named reviewer.",
+      "resolution": "VA.gov's table effective 2025-12-01 gives $1,435.02 for 60%, veteran alone (read 2026-11-09). The $1,435.01 reading is wrong."
     },
     {
       "id": "conflict.license_reciprocity.two_datasets",

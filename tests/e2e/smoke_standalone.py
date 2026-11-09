@@ -101,7 +101,7 @@ def main() -> int:
                 errors.append(f"money plan: horizontal overflow at {width}px")
             page.get_by_role("button", name="VA estimate").click()
             page.get_by_role("button", name="Work it out").click()
-            expect(page.get_by_text("At least $552.47")).to_be_visible()             # 30% with family: contested, floor only
+            expect(page.get_by_text("$666.47")).to_be_visible()                       # 30%, spouse and 1 child: VA.gov table, 2025-12-01
             page.get_by_label("Combined VA rating").select_option("100")
             page.get_by_label("Children under 18").fill("2")
             page.get_by_role("button", name="Work it out").click()

@@ -444,4 +444,10 @@ def vault_routes(settings, log=None, today=None) -> list:
     def store_factory(tenant: str):
         return VaultStore(connect=lambda: pg_compat.connect(settings.database_url))
 
-    return vault_api.routes(agent, resolver=vault_tenant, store_factory=store_factory)
+    # ADR 0011: the Guard & Reserve role runs over the same agent, so it shares its
+    # registry, reviews, grants and broker; it never pulls on its own.
+    from app.domains.vault.guard_reserve import api as guard_reserve_api
+    from app.domains.vault.guard_reserve.agent import GuardReserveAgent
+    role = GuardReserveAgent(agent)
+    return (vault_api.routes(agent, resolver=vault_tenant, store_factory=store_factory)
+            + guard_reserve_api.routes(role, resolver=vault_tenant, store_factory=store_factory))

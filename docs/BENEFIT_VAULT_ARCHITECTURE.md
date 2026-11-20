@@ -332,6 +332,7 @@ Benefit Vault agent ──► PullRequest ──► Pull broker (Privacy and Con
 | Agent | Plane | Holds up to | Exposes to the vault |
 |---|---|---|---|
 | `benefit_vault_agent` | 5 | V2 | nothing; the only agent that may pull |
+| `guard_reserve_agent` | 5 | V2 | nothing; may not pull; the Guard/Reserve role run over the vault agent (ADR 0011, `docs/GUARD_RESERVE_VAULT.md`) |
 | `service_profile_agent` | 2 | V2 | residence, duty station, status, component, Guard state, orders, active duty days, wartime (V1); discharge, Purple Heart, Medal of Honor, former POW (V2) |
 | `va_status_agent` | 2 | V4 | rating, permanent and total, unemployability (V2); conditions (V4) never leave it |
 | `household_agent` | 2 | V2 | relationship, age (V1); Gold Star family, sponsor status, sponsor died in the line of duty (V2) |

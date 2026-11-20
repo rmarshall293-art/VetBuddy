@@ -1,0 +1,162 @@
+# Guard & Reserve Benefit Vault policy (ADR 0011).
+#
+# The Guard & Reserve vault is not a second vault and not a second puller. It is
+# the v8 "Guard/Reserve" role of Benefits Intelligence (migration 0015): a lens
+# over the one Benefit Vault registry (data/reference/benefit_vault_registry.json)
+# and the Operation Sentinel duty-status dataset (data/reference/guard_reserve.json).
+#
+#   - It holds no records of its own. Every benefit it shows is a registry record,
+#     matched by the one deterministic matcher.
+#   - It never pulls. Pulls run through benefits_intelligence_agent, the broker and
+#     the person's grant, exactly as for any other vault request.
+#   - It never decides. Duty-status classification restates what the Sentinel
+#     dataset says about an authority; it is not a benefit determination.
+#   - Its own answers (component, duty status, order authorities, qualifying days)
+#     are V1, used for one request, never stored, pulled or logged.
+#
+# Engineering governance text, not legal advice. Master Prompt v6 governs:
+# agents orchestrate, gather and explain; they never decide.
+version: "1.0.0"
+as_of: "2026-11-20"
+role_id: guard_reserve_agent
+parent_agent: benefits_intelligence_agent
+dataset: data/reference/guard_reserve.json
+
+# Which registry records are Guard and Reserve records. A record is in the
+# Guard & Reserve section when any test below holds; every other record the
+# matcher returns is still shown, in the "also found" section, so the lens
+# never hides a benefit (owner decision VD21).
+selection:
+  groups: [ng, rsv]
+  categories: [GUARD_EDU, GUARD_PAY]
+  rule_tokens: [ng, ngany, ngret, rsv]
+  lead_prefix: "gr."
+
+# The Guard & Reserve answers. All V1: service facts, nothing about health,
+# income, discharge or immigration. They are never stored and never pulled.
+facts:
+  gr_component:
+    question: "Which Guard or Reserve component are you in (or were you in, for the Retired Reserve)?"
+  duty_status:
+    question: "What is your current duty status (traditional drilling, AGR, dual-status technician, mobilized, State Active Duty, IRR, Inactive National Guard or Retired Reserve)?"
+  order_authorities:
+    question: "Which legal authorities appear in the citation block of your orders since 11 September 2001? (Your orders show them; choose all that apply, or unknown.)"
+  qualifying_days:
+    question: "About how many days since 11 September 2001 were you on orders under authorities that count toward the Post-9/11 GI Bill (not drill, annual training or State Active Duty)?"
+    low: 0
+    high: 20000
+
+# How a duty status becomes the vault's own facts. Derived facts carry the
+# provenance "derived" and never overwrite an answer the person gave; a
+# disagreement is reported as a conflict instead.
+# service_status and on_active_duty_orders follow the Sentinel dataset's status
+# list. Title 32 AGR is full-time National Guard duty, not Title 10 active duty:
+# it derives on_active_duty_orders true for the vault's "on orders" token, and
+# every record that reads that token carries the agr_title32 caveat.
+derivation:
+  component_by_gr_component:
+    arng: guard
+    ang: guard
+    usar: reserve
+    usafr: reserve
+    usnr: reserve
+    usmcr: reserve
+    cgr: reserve
+  by_duty_status:
+    selres: {service_status: serving, on_active_duty_orders: false}
+    agr32:  {service_status: serving, on_active_duty_orders: true, caveats: [agr_title32]}
+    agr10:  {service_status: serving, on_active_duty_orders: true, caveats: [agr_full_time]}
+    tech:   {service_status: serving, on_active_duty_orders: false, caveats: [dual_status_technician]}
+    mob:    {service_status: serving, on_active_duty_orders: true, caveats: [mobilized]}
+    sad:    {service_status: serving, on_active_duty_orders: false, caveats: [state_active_duty]}
+    irr:    {service_status: serving, on_active_duty_orders: false, caveats: [not_selected_reserve]}
+    ing:    {service_status: serving, on_active_duty_orders: false, caveats: [not_selected_reserve]}
+    retres: {service_status: retired, on_active_duty_orders: false, caveats: [retired_reserve]}
+  # Which vault fact each status caveat is about. A caveat is attached to every
+  # record whose rule reads that fact, and to no other record.
+  caveat_targets:
+    agr_title32: on_active_duty_orders
+    agr_full_time: on_active_duty_orders
+    mobilized: on_active_duty_orders
+    dual_status_technician: service_status
+    state_active_duty: on_active_duty_orders
+    not_selected_reserve: component
+    retired_reserve: service_status
+
+# Sentinel rule leads the role checks against the person's answers. Each check
+# restates the lead's own condition; whatever the lead does not encode stays in
+# its text. Only these leads are checked; the others are listed, not evaluated
+# (gr.naturalization needs facts VetBuddy never collects).
+lead_checks:
+  gr.ch33: {threshold_days: 90, near_threshold_from: 85}
+  gr.ch1606: {needs_selected_reserve: true}
+  gr.fta: {needs_fta_status: true}
+  gr.state_definition_trap: {applies_without_federal_active_duty: true}
+  gr.rudisill: {contested: true}
+  gr.dod_civilian: {listed_only: true}
+
+caveats:
+  agr_title32: >-
+    Title 32 AGR duty is full-time National Guard duty under 32 USC 502(f), not Title 10 active duty.
+    Some programs count it as active duty and some do not. Read the official page and check with your
+    unit's education, personnel or benefits office.
+  agr_full_time: >-
+    Title 10 AGR members serve on full-time active duty orders. Programs written for drilling members
+    may work differently for you; the official page says which status it covers.
+  dual_status_technician: >-
+    As a dual-status technician you are a federal civilian employee and a drilling Guard member. Programs
+    for drilling members follow your military status; civilian employment alone does not create veteran
+    status or veterans' preference.
+  mobilized: >-
+    While mobilized on Title 10 orders, active duty programs may apply to you, and some Guard or Reserve
+    programs pause. The authority printed on your orders decides which time counts.
+  state_active_duty: >-
+    State Active Duty is state service under the governor's authority. It does not count as federal active
+    duty for the Post-9/11 GI Bill or most federal programs.
+  not_selected_reserve: >-
+    The Individual Ready Reserve and the Inactive National Guard are not the Selected Reserve. Programs
+    that need Selected Reserve membership, such as the Selected Reserve GI Bill and Tuition Assistance,
+    may not apply while you are in this status.
+  retired_reserve: >-
+    In the Retired Reserve, including the years before retired pay starts, some programs follow your
+    retired status and some need retired pay to have started. The official page says which.
+  near_threshold: >-
+    You are close to the 90-day mark. Orders can sometimes be extended before they expire, almost never
+    after. Ask your unit before your current orders end.
+  tier_caveat: >-
+    Time under 10 USC 12301(h), 12304a or 12304b counts toward the Post-9/11 GI Bill but cannot raise the
+    benefit tier for terms that began before 1 August 2018.
+  authority_from_orders: >-
+    Duty counts by the legal authority printed on your orders, not by the mission. If you are not sure,
+    your orders or your unit's personnel office can tell you.
+
+# Guard, Reserve and AGR topics the registry does not cover yet. Each is a
+# research target for the discovery planner, not a record: no record is
+# written until its page is read (no fabricated benefit). Status uses the v6
+# build labels.
+research_gaps:
+  - {id: GRG01, topic: "TRICARE Retired Reserve", groups: [ng, rsv, ret], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG02, topic: "Reserve component (non-regular) retired pay and reduced retirement age", groups: [ng, rsv, ret], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG03, topic: "AGR health care while on full-time orders", groups: [ng, rsv], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG04, topic: "AGR active-service retirement", groups: [ng, rsv], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG05, topic: "Reserve Component Survivor Benefit Plan", groups: [ng, rsv, sp, ch], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG06, topic: "Retired Reserve identification card and base privileges before retired pay", groups: [ng, rsv, ret], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG07, topic: "Federal civilian military leave for Guard and Reserve employees", groups: [ng, rsv], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG08, topic: "Incapacitation pay and line of duty care", groups: [ng, rsv], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG09, topic: "Blended Retirement System for Guard and Reserve members", groups: [ng, rsv], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG10, topic: "VA health care after Title 10 activation", groups: [ng, rsv, vet], status: SOURCE_NOT_AVAILABLE}
+
+# Role components and their v6 build status.
+components:
+  - {id: GR01, name: Guard & Reserve facts and validation (Sentinel vocabulary), status: IMPLEMENTED_TESTED}
+  - {id: GR02, name: Duty-status classification and derived vault facts, status: IMPLEMENTED_TESTED}
+  - {id: GR03, name: Sentinel rule-lead checks (Post-9/11, Selected Reserve GI Bill, Tuition Assistance, state definition), status: IMPLEMENTED_TESTED}
+  - {id: GR04, name: Guard & Reserve lens over the vault matcher, status: IMPLEMENTED_TESTED}
+  - {id: GR05, name: API routes under /api/v1/vault/guard-reserve (Mode A), status: IMPLEMENTED_TESTED}
+  - {id: GR06, name: Pulls through Benefits Intelligence in Mode B, status: PARTIAL,
+     note: "Uses the parent agent's grants and broker; production sign-in waits on G17, as for the vault."}
+  - {id: GR07, name: AGR-specific records, status: SOURCE_NOT_AVAILABLE,
+     note: "Research gaps GRG01-GRG10; no record without a page read."}
+  - {id: GR08, name: Family members of Guard and Reserve sponsors, status: PLANNED,
+     note: "Vault defect VD11: sponsor component and Guard state are not yet household facts."}
+  - {id: GR09, name: Model-written explanations, status: BLOCKED, note: "Gates G21 and G23, as for the vault."}

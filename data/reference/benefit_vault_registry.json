@@ -41684,6 +41684,16 @@
     "role": "Holds checklist progress, resume drafts and the family packet. Nothing a vault rule reads."
    },
    {
+    "agent_id": "guard_reserve_agent",
+    "exposes": [],
+    "highest_class_held": "V2",
+    "may_issue_determinations": false,
+    "may_pull_from_agents": false,
+    "name": "Guard & Reserve (Benefits Intelligence role)",
+    "plane": 5,
+    "role": "Shows National Guard, Reserve and AGR members the vault's records in their own terms, from their component, duty status and the authorities on their orders. Reads only what Benefits Intelligence holds for the request."
+   },
+   {
     "agent_id": "household_agent",
     "exposes": [
      {
@@ -42355,7 +42365,7 @@
  "integrity": {
   "algorithm": "sha256",
   "canonical": "JSON with sorted keys, separators (',', ':'), UTF-8, no NaN; the integrity member excluded",
-  "sha256": "fd3bf518e89c7b79721a9264ad578e202736537d1468d51a8c1b78da64af878e"
+  "sha256": "181d013f78db6933f290a75164ca15c77b827917736432da5498f1fc76054a46"
  },
  "jurisdictions": [
   {

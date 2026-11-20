@@ -157,6 +157,22 @@ Decisions: ADR 0005. Vault components (V01–V25) and its own defects (VD01–VD
 | Vault pulls from slice 03 onboarding data (component, service status only) | PARTIAL | `VaultPullsFromOnboarding`; VA status and household have no slice 03 store |
 | G1 reviewer roster kept by the project owner; database-enforced; logged (migration 0016) | PARTIAL | `tests/test_vault_review.py`; no reviewer on the roster yet |
 
+## Guard & Reserve vault role (2026-11-20, ADR 0011)
+
+Design and placement: `docs/GUARD_RESERVE_VAULT.md`. The role runs over Benefits Intelligence; it never pulls, decides or exposes.
+
+| Capability | Status | Evidence |
+|---|---|---|
+| Guard & Reserve answers validated against the Sentinel vocabulary (component, duty status, authorities, qualifying days; V1, never stored) | IMPLEMENTED_TESTED | `tests/vault/test_guard_reserve.py` (`test_answers_are_validated_against_sentinel`) |
+| Duty status derives vault facts; the person's own answer always wins; conflicts reported | IMPLEMENTED_TESTED | `test_agr_title32_derives…`, `test_an_answer_the_person_gave_wins…` |
+| Sentinel rule-lead checks (Post-9/11 90-day threshold, Selected Reserve GI Bill, TA, Rudisill contested, state definition notice) | IMPLEMENTED_TESTED | threshold and status parametrized tests; production never shows an unreviewed lead as a match |
+| Lens shows every vault result (same counts), Guard & Reserve first | IMPLEMENTED_TESTED | `test_lens_puts_guard_reserve_records_first_and_hides_nothing` |
+| Manifests: vault (no pull, no decide, exposes nothing) and platform (DRAFT, migration 0021, configuration hash pinned) | IMPLEMENTED_TESTED | `test_role_has_a_vault_manifest…`, `test_platform_manifest_and_migration_0021_agree` |
+| Routes `/api/v1/vault/guard-reserve/{catalog,leads,match}` mounted in the app | IMPLEMENTED_TESTED | `test_routes`, `test_routes_are_mounted_in_the_app` |
+| Pulls through the parent only, for what the answers did not supply | PARTIAL | `test_pulls_run_through_benefits_intelligence…`; production sign-in waits on G17 |
+| AGR-specific records (TRICARE Retired Reserve, non-regular retirement, AGR health care and retirement, RCSBP, …) | SOURCE_NOT_AVAILABLE | research gaps GRG01–GRG10; Gemini analysis not readable |
+| Family members of Guard and Reserve sponsors | PLANNED | VD11 |
+
 ## Career Navigator core (2026-10-29, ADR 0007)
 
 | Capability | Status | Evidence |

@@ -59,6 +59,18 @@ agents:
     may_pull_from_agents: true
     highest_class_held: V2
     exposes: []
+  # The v8 Guard/Reserve role of Benefits Intelligence (ADR 0011,
+  # config/guard_reserve_vault_policy.yaml). It runs over the vault agent in
+  # the same process: it reads the facts the vault already holds for the
+  # request, never pulls, never exposes and never decides.
+  - agent_id: guard_reserve_agent
+    name: Guard & Reserve (Benefits Intelligence role)
+    plane: 5
+    role: Shows National Guard, Reserve and AGR members the vault's records in their own terms, from their component, duty status and the authorities on their orders. Reads only what Benefits Intelligence holds for the request.
+    may_issue_determinations: false
+    may_pull_from_agents: false
+    highest_class_held: V2
+    exposes: []
   - agent_id: service_profile_agent
     name: Service Profile
     plane: 2

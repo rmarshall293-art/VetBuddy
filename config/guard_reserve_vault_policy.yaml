@@ -117,6 +117,9 @@ caveats:
     The Individual Ready Reserve and the Inactive National Guard are not the Selected Reserve. Programs
     that need Selected Reserve membership, such as the Selected Reserve GI Bill and Tuition Assistance,
     may not apply while you are in this status.
+  recovered_ai_lead: >-
+    This note comes from an AI-written report and has not been checked against its source. Dollar figures
+    and time limits in it may be out of date or wrong; read the named source before relying on it.
   retired_reserve: >-
     In the Retired Reserve, including the years before retired pay starts, some programs follow your
     retired status and some need retired pay to have started. The official page says which.
@@ -130,21 +133,40 @@ caveats:
     Duty counts by the legal authority printed on your orders, not by the mission. If you are not sure,
     your orders or your unit's personnel office can tell you.
 
+# Recovered research (ADR 0011 addendum): the owner-supplied Gemini report,
+# hash-pinned in data/research/recovered/RECOVERY_MANIFEST.json and extracted
+# by scripts/extract_gemini_guard_reserve.py. Tier 4, UNVERIFIED: the report
+# names its sources, VetBuddy has not opened them. Shown as leads to check,
+# never as records, outcomes, amounts or deadlines.
+recovered:
+  jurisdictions: gemini_guard_reserve/jurisdictions_56.json
+  federal: gemini_guard_reserve/federal_leads.json
+  notice: >-
+    These notes come from an AI-written research report the project owner supplied. They name official
+    sources that VetBuddy has not opened yet, so nothing here is checked. Use them as questions to bring to
+    the named source, your unit or your state's veterans office.
+
 # Guard, Reserve and AGR topics the registry does not cover yet. Each is a
 # research target for the discovery planner, not a record: no record is
-# written until its page is read (no fabricated benefit). Status uses the v6
-# build labels.
+# written until its page is read (no fabricated benefit). PARTIAL means a
+# recovered lead names a source to read; SOURCE_NOT_AVAILABLE means nothing
+# in hand points to one yet.
 research_gaps:
-  - {id: GRG01, topic: "TRICARE Retired Reserve", groups: [ng, rsv, ret], status: SOURCE_NOT_AVAILABLE}
-  - {id: GRG02, topic: "Reserve component (non-regular) retired pay and reduced retirement age", groups: [ng, rsv, ret], status: SOURCE_NOT_AVAILABLE}
-  - {id: GRG03, topic: "AGR health care while on full-time orders", groups: [ng, rsv], status: SOURCE_NOT_AVAILABLE}
-  - {id: GRG04, topic: "AGR active-service retirement", groups: [ng, rsv], status: SOURCE_NOT_AVAILABLE}
-  - {id: GRG05, topic: "Reserve Component Survivor Benefit Plan", groups: [ng, rsv, sp, ch], status: SOURCE_NOT_AVAILABLE}
-  - {id: GRG06, topic: "Retired Reserve identification card and base privileges before retired pay", groups: [ng, rsv, ret], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG01, topic: "TRICARE Retired Reserve", groups: [ng, rsv, ret], status: PARTIAL}
+  - {id: GRG02, topic: "Reserve component (non-regular) retired pay and reduced retirement age", groups: [ng, rsv, ret], status: PARTIAL}
+  - {id: GRG03, topic: "AGR health care while on full-time orders", groups: [ng, rsv], status: PARTIAL}
+  - {id: GRG04, topic: "AGR active-service retirement", groups: [ng, rsv], status: PARTIAL}
+  - {id: GRG05, topic: "Reserve Component Survivor Benefit Plan", groups: [ng, rsv, sp, ch], status: PARTIAL}
+  - {id: GRG06, topic: "Retired Reserve identification card and base privileges before retired pay", groups: [ng, rsv, ret], status: PARTIAL}
   - {id: GRG07, topic: "Federal civilian military leave for Guard and Reserve employees", groups: [ng, rsv], status: SOURCE_NOT_AVAILABLE}
-  - {id: GRG08, topic: "Incapacitation pay and line of duty care", groups: [ng, rsv], status: SOURCE_NOT_AVAILABLE}
-  - {id: GRG09, topic: "Blended Retirement System for Guard and Reserve members", groups: [ng, rsv], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG08, topic: "Incapacitation pay and line of duty care", groups: [ng, rsv], status: PARTIAL}
+  - {id: GRG09, topic: "Blended Retirement System for Guard and Reserve members", groups: [ng, rsv], status: PARTIAL}
   - {id: GRG10, topic: "VA health care after Title 10 activation", groups: [ng, rsv, vet], status: SOURCE_NOT_AVAILABLE}
+  - {id: GRG11, topic: "Chapter 61 and non-regular disability retirement, IDES", groups: [ng, rsv], status: PARTIAL}
+  - {id: GRG12, topic: "CRSC and CRDP for Guard and Reserve retirees", groups: [ng, rsv, ret], status: PARTIAL}
+  - {id: GRG13, topic: "State income tax on Title 10 and Title 32 AGR pay", groups: [ng, rsv], status: PARTIAL}
+  - {id: GRG14, topic: "State-Sponsored Life Insurance for the Guard", groups: [ng], status: PARTIAL}
+  - {id: GRG15, topic: "Retired Reserve or discharge after 20 years (pay table base)", groups: [ng, rsv, ret], status: PARTIAL}
 
 # Role components and their v6 build status.
 components:
@@ -155,8 +177,10 @@ components:
   - {id: GR05, name: API routes under /api/v1/vault/guard-reserve (Mode A), status: IMPLEMENTED_TESTED}
   - {id: GR06, name: Pulls through Benefits Intelligence in Mode B, status: PARTIAL,
      note: "Uses the parent agent's grants and broker; production sign-in waits on G17, as for the vault."}
-  - {id: GR07, name: AGR-specific records, status: SOURCE_NOT_AVAILABLE,
-     note: "Research gaps GRG01-GRG10; no record without a page read."}
+  - {id: GR07, name: AGR-specific records, status: PARTIAL,
+     note: "Recovered leads GF01-GF15 and 56 jurisdiction rows name sources for gaps GRG01-GRG15; no record until a page is read."}
+  - {id: GR10, name: Recovered Gemini leads (56 jurisdictions, federal retirement and TRICARE), status: IMPLEMENTED_TESTED,
+     note: "Hash-pinned, language-guarded, cross-checked against the vault; UNVERIFIED tier 4."}
   - {id: GR08, name: Family members of Guard and Reserve sponsors, status: PLANNED,
      note: "Vault defect VD11: sponsor component and Guard state are not yet household facts."}
   - {id: GR09, name: Model-written explanations, status: BLOCKED, note: "Gates G21 and G23, as for the vault."}

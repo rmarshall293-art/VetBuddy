@@ -251,6 +251,48 @@
    },
    "shipped": false,
    "vault_use": "none; slice 02 project record that lives in the repository under data/reference/"
+  },
+  {
+   "path": "gemini_guard_reserve/report.html",
+   "origin_artifact": "Gemini report: Guard, Reserve & AGR Benefits Across All 56 U.S. Jurisdictions, Medical Retirement & 20-Year Pension Tradeoffs",
+   "recovered_from": "https://gemini.google.com/share/ddce35300d8f (owner-supplied HTML export, 2026-11-20)",
+   "locator": "whole file as exported",
+   "shape": "HTML report: 56-row jurisdiction table, two retirement tables, 18 named sources",
+   "tier": 4,
+   "use": "Original of the owner-supplied AI research report; kept so every extracted lead can be traced. Never shown to anyone as is.",
+   "bytes": 331776,
+   "sha256": "e2c67767aef9e738079babbb0c62b001bf233226a3de7fad4f195441ee1a299c",
+   "records": 56,
+   "shipped": true,
+   "vault_use": "provenance only; extracted by scripts/extract_gemini_guard_reserve.py"
+  },
+  {
+   "path": "gemini_guard_reserve/jurisdictions_56.json",
+   "origin_artifact": "Extraction of the report's 56-jurisdiction table",
+   "recovered_from": "https://gemini.google.com/share/ddce35300d8f (owner-supplied HTML export, 2026-11-20)",
+   "locator": "scripts/extract_gemini_guard_reserve.py",
+   "shape": "{jurisdictions: [{code, education, income_tax, property_tax, other, named_source, tags, language_flags, cross_check}]}",
+   "tier": 4,
+   "use": "Guard & Reserve role: per-jurisdiction leads (UNVERIFIED, tier 4) and research targets from the vault cross-check.",
+   "bytes": 47070,
+   "sha256": "4e6c8fd7c0e2d3b777b48c42a5ae724ea411c77ccc68fb18874fafc90f328b9b",
+   "records": 56,
+   "shipped": true,
+   "vault_use": "Guard & Reserve role jurisdiction leads (ADR 0011 addendum); not imported as records"
+  },
+  {
+   "path": "gemini_guard_reserve/federal_leads.json",
+   "origin_artifact": "Restatement of the report's federal medical retirement, Gray Area, RCSBP and TRICARE findings",
+   "recovered_from": "https://gemini.google.com/share/ddce35300d8f (owner-supplied HTML export, 2026-11-20)",
+   "locator": "hand extraction, GF01-GF15",
+   "shape": "{leads: [{lead_id, topic, claim, citation, named_sources, statuses, gap_ids}]}",
+   "tier": 4,
+   "use": "Guard & Reserve role: federal leads by duty status (UNVERIFIED, tier 4); research targets for gaps GRG01-GRG15.",
+   "bytes": 13532,
+   "sha256": "2db3aee1802df9a4f3099c3c93b49eaba3c437d15aa12865237d1f4d881923d5",
+   "records": 15,
+   "shipped": true,
+   "vault_use": "Guard & Reserve role federal leads GF01-GF15 (ADR 0011 addendum); not imported as records"
   }
  ]
 }

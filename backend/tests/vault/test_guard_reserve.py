@@ -337,7 +337,7 @@ def test_routes(client):
     cat = client.get(f"{gr_api.PREFIX}/catalog").json()
     assert cat["role"]["role_id"] == ROLE_ID and cat["manifest"]["may_pull_from_agents"] is False
     assert {s["id"] for s in cat["duty_statuses"]} >= {"agr32", "agr10", "selres", "tech", "mob", "sad"}
-    assert all(g["status"] == "SOURCE_NOT_AVAILABLE" for g in cat["research_gaps"])
+    assert {g["status"] for g in cat["research_gaps"]} <= {"PARTIAL", "SOURCE_NOT_AVAILABLE"}
     leads = client.get(f"{gr_api.PREFIX}/leads").json()
     assert all(l["lead_id"].startswith("gr.") for l in leads["rule_leads"])
     ok = client.post(f"{gr_api.PREFIX}/match", json={"guard_reserve": AGR32, "facts": AL, "as_of": AS_OF})
@@ -349,3 +349,93 @@ def test_routes(client):
 def test_routes_are_mounted_in_the_app():
     text = (ROOT / "backend/app/api/v1.py").read_text()
     assert "guard_reserve_api.routes(role" in text
+
+
+# ── recovered Gemini leads (ADR 0011 addendum) ─────────────────────────────
+import subprocess  # noqa: E402
+
+from app.domains.vault.guard_reserve.recovered import RecoveredLeads  # noqa: E402
+
+GEMINI = ROOT / "data/research/recovered/gemini_guard_reserve"
+
+
+def test_extraction_is_current_and_every_file_matches_the_manifest():
+    res = subprocess.run(["python3", str(ROOT / "scripts/extract_gemini_guard_reserve.py"), "--check"],
+                         capture_output=True, text=True)
+    assert res.returncode == 0, res.stdout + res.stderr
+    manifest = json.loads((ROOT / "data/research/recovered/RECOVERY_MANIFEST.json").read_text())
+    entries = {e["path"]: e for e in manifest["entries"] if e["path"].startswith("gemini_guard_reserve/")}
+    assert set(entries) == {"gemini_guard_reserve/report.html", "gemini_guard_reserve/jurisdictions_56.json",
+                            "gemini_guard_reserve/federal_leads.json"}
+    for path, entry in entries.items():
+        data = (ROOT / "data/research/recovered" / path).read_bytes()
+        assert hashlib.sha256(data).hexdigest() == entry["sha256"] and entry["tier"] == 4
+
+
+def test_registry_lists_the_recovered_datasets(registry):
+    paths = {d["path"] for d in registry.data["recovered_datasets"]}
+    assert {"gemini_guard_reserve/jurisdictions_56.json", "gemini_guard_reserve/federal_leads.json"} <= paths
+
+
+def test_a_tampered_recovered_file_is_refused(tmp_path):
+    import shutil
+    src = ROOT / "data/research/recovered"
+    shutil.copy(src / "RECOVERY_MANIFEST.json", tmp_path / "RECOVERY_MANIFEST.json")
+    (tmp_path / "gemini_guard_reserve").mkdir()
+    for name in ("jurisdictions_56.json", "federal_leads.json"):
+        shutil.copy(src / "gemini_guard_reserve" / name, tmp_path / "gemini_guard_reserve" / name)
+    RecoveredLeads(default_policy(), tmp_path)                                    # untouched: loads
+    path = tmp_path / "gemini_guard_reserve/federal_leads.json"
+    path.write_text(path.read_text().replace("$645.90", "$64.59"))
+    with pytest.raises(PolicyError, match="hash"):
+        RecoveredLeads(default_policy(), tmp_path)
+
+
+def test_report_table_has_56_jurisdictions_and_its_own_count_is_checked():
+    data = json.loads((GEMINI / "jurisdictions_56.json").read_text())
+    codes = {r["code"] for r in data["jurisdictions"]}
+    assert len(codes) == 56 and {"PR", "VI", "GU", "AS", "MP", "DC"} <= codes
+    tuition = next(c for c in data["report_consistency"] if "tuition" in c["claim"])
+    assert tuition["table_count"] == 52 and tuition["agrees"] is False          # the report says 51
+    assert next(c for c in data["report_consistency"] if "income tax" in c["claim"])["agrees"] is True
+    rows = {r["code"]: r for r in data["jurisdictions"]}
+    assert "title_10_32_split" in rows["IA"]["tags"] and "agr_specific_rule" in rows["UT"]["tags"]
+    assert "no_national_guard" in rows["AS"]["tags"] and "no_national_guard" in rows["MP"]["tags"]
+    assert rows["CT"]["cross_check"]["relation"] == "not_in_vault"
+    assert rows["NM"]["cross_check"]["relation"] == "report_lists_none_vault_has_record"
+
+
+def test_recovered_leads_are_leads_never_outcomes(dev_role):
+    env = dev_role.match({"guard_reserve": AGR32, "facts": {"residence_state": "MO", "guard_state": "IA"},
+                          "as_of": AS_OF}, guest(), NOW)
+    rec = env["recovered_leads"]
+    assert [j["code"] for j in rec["jurisdictions"]] == ["IA", "MO"]            # Guard state first
+    for lead in rec["jurisdictions"] + rec["federal"]:
+        assert "outcome" not in lead and lead["record_status"] == "UNVERIFIED" and lead["tier"] == 4
+        assert lead["source_opened"] is False and lead["caveats"][0]["id"] == "recovered_ai_lead"
+    assert {f["lead_id"] for f in rec["federal"]} >= {"GF12"}                    # AGR retirement
+    assert "GF05" not in {f["lead_id"] for f in rec["federal"]}                  # Gray Area is not an AGR lead
+
+
+def test_a_cell_the_language_guard_flags_is_withheld_not_reworded(dev_role):
+    row = dev_role.recovered.jurisdiction("MO")
+    assert row["other"] is None and row["withheld_by_language_guard"] == ["other"]
+    assert row["named_source"].startswith("https://myarmybenefits.us.army.mil/")
+    whole = dev_role.recovered_leads(guest())
+    assert len(whole["jurisdictions"]) == 56 and whole["determination"] == "none"
+
+
+def test_federal_lead_texts_pass_the_language_guard_and_name_known_gaps(dev_role):
+    texts = [l["claim"] for l in dev_role.recovered.federal] + [l.get("review_note") or "" for l in
+                                                               dev_role.recovered.federal]
+    assert dev_role.parent.language.check_all(texts) == []
+    gaps = {g["id"] for g in dev_role.policy.research_gaps}
+    assert all(set(l["gap_ids"]) <= gaps for l in dev_role.recovered.federal)
+
+
+def test_recovered_routes(client):
+    one = client.get(f"{gr_api.PREFIX}/recovered/tx").json()
+    assert one["jurisdictions"][0]["code"] == "TX" and one["kind"] == "guard_reserve_recovered"
+    assert client.get(f"{gr_api.PREFIX}/recovered/zz").status_code == 422
+    cat = client.get(f"{gr_api.PREFIX}/catalog").json()
+    assert cat["recovered"]["jurisdiction_rows"] == 56 and cat["recovered"]["federal_leads"] == 15

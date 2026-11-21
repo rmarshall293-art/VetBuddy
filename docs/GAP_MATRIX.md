@@ -170,7 +170,8 @@ Design and placement: `docs/GUARD_RESERVE_VAULT.md`. The role runs over Benefits
 | Manifests: vault (no pull, no decide, exposes nothing) and platform (DRAFT, migration 0021, configuration hash pinned) | IMPLEMENTED_TESTED | `test_role_has_a_vault_manifest…`, `test_platform_manifest_and_migration_0021_agree` |
 | Routes `/api/v1/vault/guard-reserve/{catalog,leads,match}` mounted in the app | IMPLEMENTED_TESTED | `test_routes`, `test_routes_are_mounted_in_the_app` |
 | Pulls through the parent only, for what the answers did not supply | PARTIAL | `test_pulls_run_through_benefits_intelligence…`; production sign-in waits on G17 |
-| AGR-specific records (TRICARE Retired Reserve, non-regular retirement, AGR health care and retirement, RCSBP, …) | SOURCE_NOT_AVAILABLE | research gaps GRG01–GRG10; Gemini analysis not readable |
+| Recovered Gemini report: 56 jurisdiction rows and federal leads GF01–GF15 as tier 4 leads (hash-pinned, language-guarded, cross-checked) | IMPLEMENTED_TESTED | `test_extraction_is_current…`, `test_recovered_leads_are_leads_never_outcomes`, `test_a_tampered_recovered_file_is_refused` |
+| AGR-specific records (TRICARE Retired Reserve, non-regular retirement, AGR health care and retirement, RCSBP, …) | PARTIAL | gaps GRG01–GRG15; leads name sources, none opened yet |
 | Family members of Guard and Reserve sponsors | PLANNED | VD11 |
 
 ## Career Navigator core (2026-10-29, ADR 0007)

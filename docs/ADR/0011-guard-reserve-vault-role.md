@@ -50,3 +50,24 @@
   - **Family members:** family members of Guard and Reserve sponsors are PLANNED (VD11).
   - **AGR records:** these wait on research (GR07).
   - **Gemini analysis:** it should be folded in once its text is supplied.
+
+## Addendum (2026-11-20): the Gemini report
+
+**What arrived.** The owner supplied the Gemini analysis as an HTML export. Its disposition is recorded in `docs/INTEGRATION_LEDGER.md`, under "Guard & Reserve inputs".
+
+**Decision.** The report is an AI-written secondary source. VetBuddy has not opened the sources it names, so it enters the way every other recovered input has entered:
+- **Hash-pinned:** it is listed in `RECOVERY_MANIFEST.json`, with three files. A changed byte refuses to load.
+- **Tier 4 and UNVERIFIED:** every row carries the `recovered_ai_lead` caveat and `source_opened: false`.
+- **Leads only:** it never becomes a record, an outcome or a match input. The match counts are unchanged.
+- **Language-guarded:** a flagged cell is withheld, not reworded.
+- **Deadlines and elections stay questions:** the RCSBP 90-day window, the line-of-duty time limit, and the choice between the Retired Reserve and a discharge are shown as questions to bring to the named office. Two of these are irreversible elections (HITL level 4).
+
+**What changes.**
+- **Match payload:** the match now returns `recovered_leads`. These are the rows for the person's Guard state and state of residence, plus the federal leads for their duty status. For example, an AGR member sees AGR retirement but not Gray Area retirement.
+- **New routes:** `GET /api/v1/vault/guard-reserve/recovered` and `/recovered/{code}`.
+- **Research gaps:** the ten gaps become fifteen. Eleven are now PARTIAL, because a recovered lead names a source to read.
+- **New component GR10:** recovered leads are IMPLEMENTED_TESTED.
+
+**What stays open.**
+- **GR07, AGR-specific records:** still PARTIAL until someone reads the named pages and writes ledger rows.
+- **No calculators from this report:** the reduced-age retirement rule and the points formula are not built as calculators. The summary leaves out how qualifying days are grouped by fiscal year.

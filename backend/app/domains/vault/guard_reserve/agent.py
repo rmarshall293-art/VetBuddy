@@ -26,14 +26,17 @@ from ..rules import tokens
 from . import ROLE_ID, ROLE_VERSION
 from .policy import GuardReservePolicy, default_policy
 from .profile import ProfileError, classify, derive, lead_checks, parse
+from .recovered import RecoveredLeads
 
 
 class GuardReserveAgent:
     agent_id = ROLE_ID
 
-    def __init__(self, parent: BenefitVaultAgent, policy: Optional[GuardReservePolicy] = None):
+    def __init__(self, parent: BenefitVaultAgent, policy: Optional[GuardReservePolicy] = None,
+                 recovered: Optional[RecoveredLeads] = None):
         self.parent = parent
         self.policy = policy or default_policy()
+        self.recovered = recovered or RecoveredLeads(self.policy)
         self.policy.check_against(parent.registry)
         manifest = parent.manifests.get(ROLE_ID)
         if manifest is None or manifest.may_pull_from_agents or manifest.exposes:
@@ -143,6 +146,9 @@ class GuardReserveAgent:
             "questions": questions[:10],
             "general_caveats": general,
             "research_gaps": self.policy.research_gaps,
+            # Tier 4 leads from the owner-supplied Gemini report: never outcomes, never match inputs.
+            "recovered_leads": self.recovered.for_person(
+                profile.duty_status, [facts.get("guard_state"), facts.get("residence_state")]),
             "items": guard_items + (other_items if include_other else []),
         }
         inputs = {"role": ROLE_ID, "policy": self.policy.policy_sha256, "dataset": self.policy.dataset_sha256,
@@ -153,6 +159,7 @@ class GuardReserveAgent:
     # ── reads ──────────────────────────────────────────────────────────────
     def catalog(self, session: Session) -> dict:
         payload = {**self.policy.catalog(), "selection": self.selection_counts(),
+                   "recovered": self.recovered.summary(),
                    "manifest": {"agent_id": self.manifest.agent_id, "plane": self.manifest.plane,
                                 "may_issue_determinations": self.manifest.may_issue_determinations,
                                 "may_pull_from_agents": self.manifest.may_pull_from_agents,
@@ -166,3 +173,16 @@ class GuardReserveAgent:
         payload = {"rule_leads": leads, "checked": sorted(self.policy.lead_checks),
                    "license_reciprocity": registry.data.get("license_reciprocity")}
         return self.parent._envelope("guard_reserve_leads", session, None, {"role": ROLE_ID}, payload)
+
+    def recovered_leads(self, session: Session, code: Optional[str] = None) -> dict:
+        """The recovered Gemini leads: every jurisdiction row, or one, plus the federal leads."""
+        if code is not None:
+            row = self.recovered.jurisdiction(code.upper())
+            if row is None:
+                raise RequestError(f"unknown jurisdiction {code}")
+            rows = [row]
+        else:
+            rows = [self.recovered.jurisdiction(c) for c in sorted(self.recovered.jurisdictions)]
+        payload = {**self.recovered.summary(), "jurisdictions": rows, "federal": self.recovered.federal_for(None)}
+        return self.parent._envelope("guard_reserve_recovered", session, None,
+                                     {"role": ROLE_ID, "code": code, "recovered": self.recovered.provenance}, payload)

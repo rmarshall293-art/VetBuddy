@@ -265,3 +265,19 @@ Decisions are in ADR 0008.
 
 **Kept on purpose.** `data/research/recovered/slice02/guard_reserve.json` and `crisis_floor.yaml` duplicate live files byte for byte. They are hash-pinned provenance snapshots cited by `benefit_vault_registry.json` and checked by `tests/vault/test_importer_registry.py`. The remote branch `cursor/vetbuddy-production-ready-5b45` (2026-07-14) was not reviewed or merged; deleting a branch is left to the owner.
 
+
+## Guard & Reserve inputs (2026-11-20, ADR 0011)
+
+| Input | What it is | Disposition |
+|---|---|---|
+| Gemini share link `share.gemini.google/pU5U1muXSekj` | The owner's Gemini Guard & Reserve conversation | Not readable: the link returns a sign-in page (SOURCE_NOT_AVAILABLE). Superseded by the export below |
+| `Guard_Reserve__AGR_Benefits_Across_All_56_U.S._Jurisdictions_Medical_Retirement__20-Year_Pension_Tradeoffs.html` | The Gemini report as an HTML export (AI-written; 56-jurisdiction table, Chapter 61 vs. 12731b, Gray Area retirement, RCSBP, TRICARE CY 2026–2027 figures, 18 named sources) | **Recovered, tier 4, UNVERIFIED.** Kept as `data/research/recovered/gemini_guard_reserve/report.html` (hash-pinned). The table is extracted by `scripts/extract_gemini_guard_reserve.py` into `jurisdictions_56.json`, and the federal findings are restated as leads GF01–GF15 in `federal_leads.json`. The Guard & Reserve role shows both as leads. No benefit record, outcome, amount or deadline comes from it |
+
+**What the extraction found.**
+- **The report disagrees with itself once.** It says 51 of 56 jurisdictions have Guard tuition programs; its own table lists 52 (only Guam, American Samoa, the Northern Mariana Islands and New Mexico list none).
+- **Cross-check against the vault's Guard education records:**
+  - 14 jurisdictions: the program the report names is in the vault by name.
+  - 37: the vault has a Guard education record, but the name doesn't match, so whether it's the same program is not confirmed.
+  - Connecticut: the report names a program the vault does not have (a research target).
+  - New Mexico: the report lists none, but the vault has a record (a conflict to review).
+- **Language guard:** one cell (Missouri, "other perks") uses wording the guard blocks, so it is withheld rather than reworded.

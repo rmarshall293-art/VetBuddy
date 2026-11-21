@@ -42365,7 +42365,7 @@
  "integrity": {
   "algorithm": "sha256",
   "canonical": "JSON with sorted keys, separators (',', ':'), UTF-8, no NaN; the integrity member excluded",
-  "sha256": "181d013f78db6933f290a75164ca15c77b827917736432da5498f1fc76054a46"
+  "sha256": "4b320388e72505d026f1dd466dfade917e692acc4d704f9c2cf3fbb661c30268"
  },
  "jurisdictions": [
   {
@@ -43334,6 +43334,30 @@
    "sha256": "3879dfd2ab599fc2040df6a6709dc74b44ac3c23511d1bc45406e8e3b9b7e2ef",
    "tier": 4,
    "vault_use": "cross-check reference only; not imported as records"
+  },
+  {
+   "location": "data/research/recovered/gemini_guard_reserve/federal_leads.json",
+   "path": "gemini_guard_reserve/federal_leads.json",
+   "recovered_from": "https://gemini.google.com/share/ddce35300d8f (owner-supplied HTML export, 2026-11-20)",
+   "sha256": "2db3aee1802df9a4f3099c3c93b49eaba3c437d15aa12865237d1f4d881923d5",
+   "tier": 4,
+   "vault_use": "Guard & Reserve role federal leads GF01-GF15 (ADR 0011 addendum); not imported as records"
+  },
+  {
+   "location": "data/research/recovered/gemini_guard_reserve/jurisdictions_56.json",
+   "path": "gemini_guard_reserve/jurisdictions_56.json",
+   "recovered_from": "https://gemini.google.com/share/ddce35300d8f (owner-supplied HTML export, 2026-11-20)",
+   "sha256": "4e6c8fd7c0e2d3b777b48c42a5ae724ea411c77ccc68fb18874fafc90f328b9b",
+   "tier": 4,
+   "vault_use": "Guard & Reserve role jurisdiction leads (ADR 0011 addendum); not imported as records"
+  },
+  {
+   "location": "data/research/recovered/gemini_guard_reserve/report.html",
+   "path": "gemini_guard_reserve/report.html",
+   "recovered_from": "https://gemini.google.com/share/ddce35300d8f (owner-supplied HTML export, 2026-11-20)",
+   "sha256": "e2c67767aef9e738079babbb0c62b001bf233226a3de7fad4f195441ee1a299c",
+   "tier": 4,
+   "vault_use": "provenance only; extracted by scripts/extract_gemini_guard_reserve.py"
   },
   {
    "location": null,

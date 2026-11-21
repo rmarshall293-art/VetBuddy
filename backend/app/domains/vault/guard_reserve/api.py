@@ -40,12 +40,17 @@ def routes(role: GuardReserveAgent, *, resolver: vault_api.TenantResolver = vaul
     def leads(request, body):
         return role.leads(guest())
 
+    def recovered(request, body):
+        return role.recovered_leads(guest(), request.path_params.get("code"))
+
     def match(request, body):
         return role.match(body, caller(request), clock())
 
     return [
         Route(f"{PREFIX}/catalog", handle(catalog), methods=["GET"]),
         Route(f"{PREFIX}/leads", handle(leads), methods=["GET"]),
+        Route(f"{PREFIX}/recovered", handle(recovered), methods=["GET"]),
+        Route(f"{PREFIX}/recovered/{{code}}", handle(recovered), methods=["GET"]),
         Route(f"{PREFIX}/match", handle(match), methods=["POST"]),
     ]
 

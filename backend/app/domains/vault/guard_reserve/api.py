@@ -43,6 +43,9 @@ def routes(role: GuardReserveAgent, *, resolver: vault_api.TenantResolver = vaul
     def recovered(request, body):
         return role.recovered_leads(guest(), request.path_params.get("code"))
 
+    def source_queue(request, body):
+        return role.source_queue(guest())
+
     def match(request, body):
         return role.match(body, caller(request), clock())
 
@@ -51,6 +54,7 @@ def routes(role: GuardReserveAgent, *, resolver: vault_api.TenantResolver = vaul
         Route(f"{PREFIX}/leads", handle(leads), methods=["GET"]),
         Route(f"{PREFIX}/recovered", handle(recovered), methods=["GET"]),
         Route(f"{PREFIX}/recovered/{{code}}", handle(recovered), methods=["GET"]),
+        Route(f"{PREFIX}/source-queue", handle(source_queue), methods=["GET"]),
         Route(f"{PREFIX}/match", handle(match), methods=["POST"]),
     ]
 

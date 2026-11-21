@@ -71,3 +71,8 @@
 **What stays open.**
 - **GR07, AGR-specific records:** still PARTIAL until someone reads the named pages and writes ledger rows.
 - **No calculators from this report:** the reduced-age retirement rule and the points formula are not built as calculators. The summary leaves out how qualifying days are grouped by fiscal year.
+
+## Addendum (2026-11-20, later): screen and source queue
+
+- **Screen.** The role has a screen: the Guard & Reserve Center at `#/guard-reserve`, in the web shell's navigation. The mission brief links to it when the Guard/Reserve lane is open. Recovered leads sit under a "Not checked yet" banner, apart from the outcomes.
+- **Source queue.** `GET /source-queue` plans the reads of all 83 named sources, AGR and Gray Area first. The reads were attempted this session, but the page-fetch approvals timed out, so no source was opened and no record was added. The queue is where the next research session starts.

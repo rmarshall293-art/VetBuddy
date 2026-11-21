@@ -57,6 +57,9 @@ class RecoveredLeads:
                 raise PolicyError(f"{lead['lead_id']} names an unknown duty status")
             if not set(lead["gap_ids"]) <= gaps:
                 raise PolicyError(f"{lead['lead_id']} names an unknown research gap")
+        self.priority: List[str] = list(spec["source_check_priority"])
+        if sorted(self.priority) != sorted(l["lead_id"] for l in self.federal):
+            raise PolicyError("source_check_priority must name every federal lead exactly once")
         if len(self.jurisdictions) != 56:
             raise PolicyError("the recovered jurisdiction table must have 56 rows")
 
@@ -88,3 +91,32 @@ class RecoveredLeads:
         return {"notice": self.notice, "provenance": self.provenance, "report_consistency": self.report_consistency,
                 "vault_cross_check_counts": self.cross_check_counts, "relations": self.relations,
                 "federal_leads": len(self.federal), "jurisdiction_rows": len(self.jurisdictions)}
+
+    def source_queue(self, egress) -> List[dict]:
+        """Every source the report names, in the order to open them. Nothing here has been opened.
+
+        Each URL appears once, with every lead that cites it. ``host_known`` is the
+        egress guard's answer: true when the host is already on the vault's allowlist
+        (a page there has been read before). A new host joins the allowlist only when a
+        ledger row from a page read on it is imported.
+        """
+        order: List[str] = []
+        cites: Dict[str, List[str]] = {}
+        gaps: Dict[str, List[str]] = {}
+        by_id = {l["lead_id"]: l for l in self.federal}
+        for lead_id in self.priority:
+            for url in by_id[lead_id]["named_sources"]:
+                if url not in cites:
+                    order.append(url)
+                cites.setdefault(url, []).append(lead_id)
+                gaps.setdefault(url, [])
+                gaps[url] = sorted(set(gaps[url]) | set(by_id[lead_id]["gap_ids"]))
+        rows = sorted(self.jurisdictions.values(), key=lambda r: ("agr_specific_rule" not in r["tags"], r["code"]))
+        for row in rows:
+            url = row["named_source"]
+            if url not in cites:
+                order.append(url)
+            cites.setdefault(url, []).append(f"GJ.{row['code']}")
+            gaps.setdefault(url, [])
+        return [{"rank": i + 1, "url": url, "cited_by": cites[url], "gap_ids": gaps[url],
+                 "host_known": egress.allowed(url), "state": "NOT_OPENED"} for i, url in enumerate(order)]

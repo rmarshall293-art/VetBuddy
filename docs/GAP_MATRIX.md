@@ -172,6 +172,8 @@ Design and placement: `docs/GUARD_RESERVE_VAULT.md`. The role runs over Benefits
 | Pulls through the parent only, for what the answers did not supply | PARTIAL | `test_pulls_run_through_benefits_intelligence…`; production sign-in waits on G17 |
 | Recovered Gemini report: 56 jurisdiction rows and federal leads GF01–GF15 as tier 4 leads (hash-pinned, language-guarded, cross-checked) | IMPLEMENTED_TESTED | `test_extraction_is_current…`, `test_recovered_leads_are_leads_never_outcomes`, `test_a_tampered_recovered_file_is_refused` |
 | AGR-specific records (TRICARE Retired Reserve, non-regular retirement, AGR health care and retirement, RCSBP, …) | PARTIAL | gaps GRG01–GRG15; leads name sources, none opened yet |
+| Guard & Reserve Center screen (web shell `#/guard-reserve`, linked from the brief's Guard/Reserve lane) | IMPLEMENTED_TESTED (smoke) | `tests/e2e/smoke_guard_reserve.py`, light 1280 + dark 390 px, no horizontal overflow |
+| Source-check queue for recovered leads | IMPLEMENTED_TESTED | `test_source_queue_puts_agr_and_gray_area_first…`; no page opened yet (web access not approved this session) |
 | Family members of Guard and Reserve sponsors | PLANNED | VD11 |
 
 ## Career Navigator core (2026-10-29, ADR 0007)

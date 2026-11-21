@@ -186,3 +186,12 @@ class GuardReserveAgent:
         payload = {**self.recovered.summary(), "jurisdictions": rows, "federal": self.recovered.federal_for(None)}
         return self.parent._envelope("guard_reserve_recovered", session, None,
                                      {"role": ROLE_ID, "code": code, "recovered": self.recovered.provenance}, payload)
+
+    def source_queue(self, session: Session) -> dict:
+        """The research queue for the recovered leads: which pages to open, in order (no fetch here)."""
+        queue = self.recovered.source_queue(self.parent.egress)
+        payload = {"executable": False, "reason": "Pages are opened by a researcher with approved web access; "
+                   "VetBuddy has no fetcher wired (hosting decision).", "queue": queue,
+                   "counts": {"sources": len(queue), "host_known": sum(q["host_known"] for q in queue)}}
+        return self.parent._envelope("guard_reserve_source_queue", session, None,
+                                     {"role": ROLE_ID, "recovered": self.recovered.provenance}, payload)

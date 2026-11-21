@@ -439,3 +439,23 @@ def test_recovered_routes(client):
     assert client.get(f"{gr_api.PREFIX}/recovered/zz").status_code == 422
     cat = client.get(f"{gr_api.PREFIX}/catalog").json()
     assert cat["recovered"]["jurisdiction_rows"] == 56 and cat["recovered"]["federal_leads"] == 15
+
+
+def test_source_queue_puts_agr_and_gray_area_first_and_lists_every_source_once(dev_role):
+    env = dev_role.source_queue(guest())
+    queue = env["queue"]
+    urls = [q["url"] for q in queue]
+    assert len(urls) == len(set(urls)) and env["executable"] is False
+    assert queue[0]["cited_by"] == ["GF12"]                                       # AGR retirement first
+    assert all(q["state"] == "NOT_OPENED" for q in queue)
+    named = {u for l in dev_role.recovered.federal for u in l["named_sources"]}
+    named |= {r["named_source"] for r in dev_role.recovered.jurisdictions.values()}
+    assert set(urls) == named
+    first_state = next(i for i, q in enumerate(queue) if q["cited_by"][0].startswith("GJ."))
+    agr_states = {c for c, r in dev_role.recovered.jurisdictions.items() if "agr_specific_rule" in r["tags"]}
+    assert {q["cited_by"][0][3:] for q in queue[first_state:first_state + len(agr_states)]} == agr_states
+
+
+def test_source_queue_route(client):
+    r = client.get(f"{gr_api.PREFIX}/source-queue").json()
+    assert r["kind"] == "guard_reserve_source_queue" and r["counts"]["sources"] == len(r["queue"])

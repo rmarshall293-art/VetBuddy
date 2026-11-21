@@ -17,7 +17,8 @@ The Guard & Reserve vault is the v8 Guard/Reserve role of Benefits Intelligence.
 | `config/benefit_vault_policy.yaml` | Vault-side manifest `guard_reserve_agent` |
 | `backend/app/agents/registry.json`, `database/migrations/0021_guard_reserve_agent.sql` | Platform manifest (DRAFT), with a configuration hash pinned by a test |
 | `backend/app/domains/vault/guard_reserve/recovered.py` | Recovered Gemini leads (hash-checked, language-guarded) |
-| `backend/tests/vault/test_guard_reserve.py` | 56 tests |
+| `backend/tests/vault/test_guard_reserve.py` | 58 tests |
+| `web/app.js` (`viewGuardReserve`), `tests/e2e/smoke_guard_reserve.py` | The Guard & Reserve Center screen and its browser smoke test |
 
 ## Governance placement
 
@@ -93,6 +94,8 @@ DoD civilians are out of scope: civilian employment alone creates no Guard or Re
 | GR06 | Pulls through Benefits Intelligence (Mode B) | PARTIAL (G17) |
 | GR07 | AGR-specific records | PARTIAL (recovered leads name sources for gaps GRG01–GRG15) |
 | GR10 | Recovered Gemini leads | IMPLEMENTED_TESTED |
+| GR11 | Guard & Reserve Center screen | IMPLEMENTED_TESTED |
+| GR12 | Source-check queue | IMPLEMENTED_TESTED (page reads need approved web access) |
 | GR08 | Family members of Guard and Reserve sponsors | PLANNED (VD11) |
 | GR09 | Model-written explanations | BLOCKED (G21, G23) |
 
@@ -116,6 +119,27 @@ Every lead has no outcome, carries `source_opened: false` and the `recovered_ai_
 |---|---|---|
 | `GET /api/v1/vault/guard-reserve/recovered` | guest | all 56 rows, the federal leads, the report's consistency check, and the vault cross-check counts |
 | `GET /api/v1/vault/guard-reserve/recovered/{code}` | guest | one jurisdiction |
+| `GET /api/v1/vault/guard-reserve/source-queue` | guest | every source the report names, once, in the order to open them (AGR and Gray Area first, then the 11 jurisdictions with AGR-specific rules), with the leads and gaps each one settles; `host_known` says whether the host is already on the vault's allowlist |
+
+## Screen
+
+The web shell has a **Guard & Reserve** page at `#/guard-reserve`, the "Guard & Reserve Center" of `docs/PRODUCT_LAYOUT.md`. It's in the navigation, and the mission brief links to it when the Guard/Reserve lane is open.
+
+| What it asks | What it shows |
+|---|---|
+| Component, duty status, Guard state, home state, orders authorities, qualifying days | How the answers were read; the Sentinel checks in the v6 words; Guard & Reserve records first, then the others on request; the recovered AI leads under a "Not checked yet" banner, with withheld cells marked |
+
+Browser smoke test: `tests/e2e/smoke_guard_reserve.py`, run by `scripts/test.sh --ui`.
+
+## Turning recovered leads into records
+
+Nothing has been opened yet. Each lead becomes a record in five steps:
+
+1. Open the page at the top of the source queue.
+2. Write a ledger row in `data/research/federal/` or the state ledger, with `OPENED=<date>`, following `data/research/RESEARCH_LOG.md`.
+3. Rebuild the registry. The page's host joins the allowlist at this point.
+4. Record where the lead agreed or differed in the INTEGRATION_LEDGER.
+5. Move the gap from PARTIAL toward IMPLEMENTED once a named reviewer checks it (G1).
 
 ## Research gaps (no record until a page is read)
 

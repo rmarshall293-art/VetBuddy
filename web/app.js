@@ -74,8 +74,8 @@ function renderChrome() {
   const link = (href, label, key) => el("a", { href, "aria-current": route === key ? "page" : null }, label);
   const nav = document.getElementById("nav");
   nav.replaceChildren(...(state.token
-    ? [link("#/brief", "Mission brief", "brief"), link("#/tasks", "All tasks", "tasks"), link("#/benefits", "Benefits", "benefits"), link("#/settings", "Privacy", "settings")]
-    : [link("#/", "Start", ""), link("#/benefits", "Benefits", "benefits"), link("#/about", "How it works", "about")]));
+    ? [link("#/brief", "Mission brief", "brief"), link("#/tasks", "All tasks", "tasks"), link("#/benefits", "Benefits", "benefits"), link("#/guard-reserve", "Guard & Reserve", "guard-reserve"), link("#/settings", "Privacy", "settings")]
+    : [link("#/", "Start", ""), link("#/benefits", "Benefits", "benefits"), link("#/guard-reserve", "Guard & Reserve", "guard-reserve"), link("#/about", "How it works", "about")]));
   const dev = document.getElementById("devbar");
   dev.hidden = !state.token;
   dev.textContent = "Development sign-in — not a real identity provider. Use made-up details only.";
@@ -281,7 +281,9 @@ async function viewBrief(id) {
       el("h2", { id: "next-h", class: "disp" }, "Your first five actions"),
       brief.first_five_actions.length ? el("ol", { class: "actions" }, brief.first_five_actions.map(actionItem))
         : el("p", {}, "Every open action is done. Nice work."),
-      !guest ? el("div", { class: "btn-row" }, el("a", { class: "btn", href: "#/tasks" }, `See all ${brief.tasks.length} tasks`)) : null),
+      el("div", { class: "btn-row" },
+        !guest ? el("a", { class: "btn", href: "#/tasks" }, `See all ${brief.tasks.length} tasks`) : null,
+        brief.lanes.includes("guard_reserve") ? el("a", { class: "btn", href: "#/guard-reserve" }, "Open the Guard & Reserve center") : null)),
     el("section", { class: "card", style: "margin-top:16px", "aria-labelledby": "ready-h" },
       el("h2", { id: "ready-h", class: "disp" }, "Readiness by area"),
       el("p", { class: "hint" }, "Progress on your steps in each area — not a score, and not a prediction."),
@@ -578,6 +580,135 @@ async function viewBenefits() {
     savedList, search, results, check, matchOut);
 }
 
+// ── Guard & Reserve Center (ADR 0011, /api/v1/vault/guard-reserve) ─────────
+// The Guard/Reserve role of Benefits Intelligence. Answers are about service
+// only (V1) and are not stored. Every outcome comes from the vault matcher or a
+// Sentinel rule-lead check; recovered AI leads are shown apart, never as outcomes.
+const grState = { catalog: null };
+
+async function grCatalog() {
+  if (grState.catalog) return grState.catalog;
+  const r = await api("GET", "/vault/guard-reserve/catalog");
+  if (r.ok) grState.catalog = r.data;
+  return grState.catalog;
+}
+
+function outcomeChip(outcome) {
+  const o = OUTCOME[outcome] || [outcome, "muted"];
+  return el("span", { class: "chip " + o[1] }, o[0]);
+}
+
+function grLeadCard(lead) {
+  return el("article", { class: "card stack" },
+    el("div", { class: "chips" }, el("span", { class: "chip ochre" }, "AI research lead · not checked")),
+    lead.topic ? el("h3", { class: "disp" }, lead.topic) : el("h3", { class: "disp" }, lead.name),
+    lead.claim ? el("p", {}, lead.claim) : null,
+    lead.education !== undefined ? el("dl", { class: "kv" },
+      ["education", "Education", "income_tax", "Income tax (drill / AGR / retired)", "property_tax", "Property tax", "other", "Other"]
+        .reduce((acc, k, i, a) => i % 2 ? acc : acc.concat([el("dt", {}, a[i + 1]),
+          el("dd", {}, lead[k] === null ? "Wording held back by VetBuddy's safety check; read the source." : lead[k])]), [])) : null,
+    lead.review_note ? el("p", { class: "small" }, lead.review_note) : null,
+    lead.vault_cross_check ? el("p", { class: "small" }, "Compared with VetBuddy's records: " + lead.vault_cross_check.meaning + ".") : null,
+    (lead.caveats || []).map(c => el("p", { class: "small" }, c.text)),
+    el("div", { class: "btn-row" }, ...(lead.named_sources || [lead.named_source]).filter(Boolean).slice(0, 3).map((u, i) =>
+      el("a", { class: "btn", href: u, target: "_blank", rel: "noopener noreferrer" }, i ? `Named source ${i + 1}` : "Source the report names"))));
+}
+
+async function viewGuardReserve() {
+  const [cat, vcat] = [await grCatalog(), await vaultCatalog()];
+  if (!cat || !vcat) { render(el("h1", { class: "disp" }, "Guard & Reserve"), el("p", {}, "The Guard & Reserve center can't be reached right now.")); return; }
+  const juris = vcat.jurisdictions.filter(j => j.code !== "US");
+  const jSel = (id, name, label) => el("div", {}, el("label", { class: "f", for: id }, label),
+    el("select", { id, name }, el("option", { value: "" }, "Skip"), juris.map(j => el("option", { value: j.code }, j.name))));
+  const q = Object.fromEntries(cat.questions.map(x => [x.fact_key, x.question]));
+  const out = el("div", { class: "stack", "aria-live": "polite" });
+  const authBox = el("fieldset", { class: "stack" }, el("legend", { class: "f" }, q.order_authorities),
+    el("label", { class: "small" }, el("input", { type: "checkbox", name: "order_authorities", value: "unknown" }), " I don't know"),
+    cat.authorities.map(a => el("label", { class: "small" },
+      el("input", { type: "checkbox", name: "order_authorities", value: a.id }), ` ${a.citation} · ${a.label}`)));
+
+  const form = el("form", { class: "card stack", onsubmit: async e => {
+      e.preventDefault();
+      const f = new FormData(form);
+      const gr = {};
+      if (f.get("gr_component")) gr.gr_component = f.get("gr_component");
+      if (f.get("duty_status")) gr.duty_status = f.get("duty_status");
+      const auth = f.getAll("order_authorities");
+      if (auth.length) gr.order_authorities = auth;
+      if (f.get("qualifying_days") !== "") gr.qualifying_days = Number(f.get("qualifying_days"));
+      const facts = {};
+      if (f.get("guard_state")) facts.guard_state = f.get("guard_state");
+      if (f.get("residence_state")) facts.residence_state = f.get("residence_state");
+      const r = await api("POST", "/vault/guard-reserve/match", { guard_reserve: gr, facts });
+      if (!r.ok) { out.replaceChildren(el("div", { class: "banner" }, el("strong", {}, "Check your answers"), el("p", {}, r.error.message))); return; }
+      if (r.data.crisis_floor) { openHelp(); return; }
+      showResult(r.data);
+    } },
+    el("h2", { class: "disp" }, "Tell us about your service"),
+    el("p", { class: "small" }, "Only service questions. Nothing here is stored. " + cat.governing_rule),
+    el("div", { class: "grid2" },
+      el("div", {}, el("label", { class: "f", for: "gr-c" }, q.gr_component),
+        el("select", { id: "gr-c", name: "gr_component" }, el("option", { value: "" }, "Skip"), cat.components.map(c => el("option", { value: c.id }, c.label)))),
+      el("div", {}, el("label", { class: "f", for: "gr-s" }, q.duty_status),
+        el("select", { id: "gr-s", name: "duty_status" }, el("option", { value: "" }, "Skip"), cat.duty_statuses.map(s => el("option", { value: s.id }, s.label)))),
+      jSel("gr-gs", "guard_state", "Which state or territory is your Guard or Reserve unit in?"),
+      jSel("gr-rs", "residence_state", "Where do you live?"),
+      el("div", {}, el("label", { class: "f", for: "gr-d" }, q.qualifying_days),
+        el("input", { id: "gr-d", name: "qualifying_days", type: "number", min: "0", max: "20000", inputmode: "numeric" }))),
+    authBox,
+    el("div", { class: "btn-row" }, el("button", { class: "btn primary", type: "submit" }, "Show my Guard & Reserve view")));
+
+  function showResult(env) {
+    const c = env.classification;
+    const gr = env.items.filter(i => i.guard_reserve.section === "guard_reserve");
+    const other = env.items.filter(i => i.guard_reserve.section === "also_found");
+    const otherBox = el("div", { class: "stack" });
+    const card = i => recordCard({ ...i, caveats: [...(i.caveats || []), ...i.guard_reserve.role_caveats] }, outcomeChip(i.outcome));
+    out.replaceChildren(
+      el("div", { class: "card stack" },
+        el("p", { class: "small" }, env.notice),
+        el("h2", { class: "disp" }, "How VetBuddy read your answers"),
+        el("dl", { class: "kv" },
+          c.component ? [el("dt", {}, "Component"), el("dd", {}, c.component.label)] : null,
+          c.duty_status ? [el("dt", {}, "Duty status"), el("dd", {}, `${c.duty_status.label} (${c.duty_status.sub})`)] : null,
+          c.duty_status ? [el("dt", {}, "Selected Reserve"), el("dd", {}, c.duty_status.selected_reserve ? "Yes, per the Sentinel dataset" : "No, per the Sentinel dataset")] : null,
+          c.authorities.length ? [el("dt", {}, "Orders"), el("dd", {}, c.authorities.map(a =>
+            `${a.citation}: ${a.counts_toward_post_9_11_gi_bill ? "listed as counting" : "listed as not counting"} toward the Post-9/11 GI Bill`).join("; "))] : null),
+        env.subject.conflicts.map(x => el("p", { class: "small" }, `You answered ${x.fact_key.replace(/_/g, " ")} as "${x.answered}", which differs from your duty status ("${x.derived}"). Your answer was kept.`)),
+        env.general_caveats.map(g => el("p", { class: "small" }, g.text))),
+      el("section", { class: "card stack" },
+        el("h2", { class: "disp" }, "Guard & Reserve checks"),
+        el("p", { class: "small" }, "Fixed checks from VetBuddy's duty-status research. They restate a rule; they don't decide anything."),
+        env.rule_lead_checks.filter(x => x.kind === "rule_lead_check").map(x => el("div", { class: "stack" },
+          el("h3", {}, x.topic),
+          el("div", { class: "chips" }, outcomeChip(x.outcome)),
+          el("p", { class: "small" }, x.lead),
+          x.caveats.map(cv => el("p", { class: "small" }, cv.text)))),
+        env.rule_lead_checks.filter(x => x.kind === "notice" && x.applies).map(x => el("div", { class: "banner" },
+          el("strong", {}, x.topic), el("p", {}, x.lead)))),
+      env.questions.length ? el("section", { class: "card stack" }, el("h2", { class: "disp" }, "Questions that would change these results"),
+        el("ul", {}, env.questions.slice(0, 6).map(x => el("li", {}, x.question)))) : null,
+      el("h2", { class: "disp" }, `Guard & Reserve records (${gr.length})`),
+      ...gr.slice(0, 30).map(card),
+      other.length ? el("section", { class: "card stack" },
+        el("p", {}, `${other.length} other record${other.length === 1 ? "" : "s"} also came up for your answers.`),
+        el("div", { class: "btn-row" }, el("button", { class: "btn", type: "button", onclick: () => otherBox.replaceChildren(...other.slice(0, 40).map(card)) }, "Show them")),
+        otherBox) : null,
+      el("section", { class: "stack" },
+        el("h2", { class: "disp" }, "Research leads to check"),
+        el("div", { class: "banner" }, el("strong", {}, "Not checked yet"), el("p", {}, env.recovered_leads.notice)),
+        ...env.recovered_leads.jurisdictions.map(grLeadCard),
+        ...env.recovered_leads.federal.map(grLeadCard)));
+    out.scrollIntoView({ block: "start" });
+  }
+
+  render(
+    el("h1", { class: "disp" }, "Guard & Reserve"),
+    el("p", { class: "lede" }, "For National Guard, Reserve and AGR members: VetBuddy's benefit records read by your component, duty status and the authority on your orders."),
+    el("div", { class: "banner" }, el("strong", {}, "Read this first"), vcat.notice),
+    form, out);
+}
+
 // ── router ──────────────────────────────────────────────────────────────────
 async function route() {
   renderChrome();
@@ -589,6 +720,7 @@ async function route() {
   if (a === "delete") return viewDelete();
   if (a === "about") return viewAbout();
   if (a === "benefits") return viewBenefits();
+  if (a === "guard-reserve") return viewGuardReserve();
   return viewStart();
 }
 window.addEventListener("hashchange", route);

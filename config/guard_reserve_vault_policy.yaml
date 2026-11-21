@@ -141,6 +141,10 @@ caveats:
 recovered:
   jurisdictions: gemini_guard_reserve/jurisdictions_56.json
   federal: gemini_guard_reserve/federal_leads.json
+  # Order in which the named sources are opened once page reads are approved:
+  # AGR and Gray Area first (the owner's priority), then the jurisdictions whose
+  # rows carry an AGR-specific rule, then every other jurisdiction.
+  source_check_priority: [GF12, GF05, GF06, GF07, GF10, GF11, GF09, GF08, GF01, GF02, GF13, GF03, GF04, GF14, GF15]
   notice: >-
     These notes come from an AI-written research report the project owner supplied. They name official
     sources that VetBuddy has not opened yet, so nothing here is checked. Use them as questions to bring to
@@ -181,6 +185,10 @@ components:
      note: "Recovered leads GF01-GF15 and 56 jurisdiction rows name sources for gaps GRG01-GRG15; no record until a page is read."}
   - {id: GR10, name: Recovered Gemini leads (56 jurisdictions, federal retirement and TRICARE), status: IMPLEMENTED_TESTED,
      note: "Hash-pinned, language-guarded, cross-checked against the vault; UNVERIFIED tier 4."}
+  - {id: GR11, name: Guard & Reserve Center screen in the web shell (#/guard-reserve; linked from the brief's Guard/Reserve lane), status: IMPLEMENTED_TESTED,
+     note: "tests/e2e/smoke_guard_reserve.py, light 1280 px and dark 390 px."}
+  - {id: GR12, name: Source-check queue for the recovered leads (/source-queue), status: IMPLEMENTED_TESTED,
+     note: "Plans the page reads in priority order; opening pages needs approved web access (no fetcher is wired)."}
   - {id: GR08, name: Family members of Guard and Reserve sponsors, status: PLANNED,
      note: "Vault defect VD11: sponsor component and Guard state are not yet household facts."}
   - {id: GR09, name: Model-written explanations, status: BLOCKED, note: "Gates G21 and G23, as for the vault."}

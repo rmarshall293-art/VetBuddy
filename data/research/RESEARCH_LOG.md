@@ -135,3 +135,25 @@ The vault already held the Guard benefits these pages confirm. The one new recor
 - **RCSBP election details:** the DFAS page doesn't give them.
 - **TRICARE 2027 premiums:** the article doesn't load, and the cost pages don't show them yet.
 - **Air Force AGR and Air Guard pages:** not read.
+
+## 2026-11-21 (third pass): Air Force AGR, RCSBP, Iowa, Utah and the last gaps
+
+Pages found by search (the report named none for these) and opened.
+
+**Air Force AGR (3 records).**
+- **Retirement:** ARPC says Air Guard and Air Force Reserve members with 20 years of total active federal military service retire with immediate pay and benefits. Converting to a Reserve retirement moves medical benefits to age 60.
+- **BRS:** MyAirForceBenefits gives BRS retired pay for Air Guard AGR and full-time Guard duty at 2% x years x High-36.
+- **TRICARE Prime:** the Air Guard gets Prime on federal active duty.
+
+**RCSBP.** DFAS's enrollment page gives the 90-day election window from the notice of eligibility, automatic enrollment for members with a spouse or dependent child, and irrevocability after the 90 days. The record now states these, and the report's lead GF09 is confirmed.
+
+**Iowa.** The Department of Revenue says Title 32 full-time Guard members are not in an active duty status, so their pay is not excluded. This confirms the report.
+
+**Utah.** The Guard's waiver application excludes members on AGR or ADOS orders, with some exceptions. This confirms the report.
+
+**Gaps closed.**
+- **GRG07:** OPM gives federal civilian military leave as 20 days a fiscal year since 23 Dec 2024 (it was 15).
+- **GRG10:** VA health care covers Guard and Reserve members after full federal activation, but not training only.
+- **GRG06:** the vault's existing commissary record covers Gray Area retirees, per MyArmyBenefits.
+
+**Still open.** TRICARE 2027 premiums, BRS for drilling members (GRG09), and the Retired Reserve or discharge choice (GRG15).

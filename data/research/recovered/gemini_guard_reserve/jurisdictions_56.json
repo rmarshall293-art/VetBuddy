@@ -3,7 +3,7 @@
  "version": "1.0.0",
  "extracted_from": "data/research/recovered/gemini_guard_reserve/report.html",
  "report_sha256": "e2c67767aef9e738079babbb0c62b001bf233226a3de7fad4f195441ee1a299c",
- "registry_benefits_sha256": "8e2fef042319dabcd2fef0f3ba261da13c927488fb1480c7f3c4b1c129e42eb6",
+ "registry_benefits_sha256": "ac29ac82facd5f3758a794aec72404cbc5a72d0a96c409b78b00cdde4afe5b76",
  "record_status": "UNVERIFIED",
  "tier": 4,
  "notice": "Cells are the report's own words. The report is AI-written; it names a source for each row, which VetBuddy has not opened. Leads to check, never benefit records.",
@@ -1076,7 +1076,7 @@
     "program": "STW",
     "relation": "vault_has_guard_education_record",
     "matching_records": [],
-    "vault_guard_education_records": 2
+    "vault_guard_education_records": 3
    }
   },
   {

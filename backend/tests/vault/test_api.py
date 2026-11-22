@@ -91,7 +91,7 @@ AUTH = {"x-test-tenant": TENANT_A}
 
 def test_catalog(client):
     body = client.get(f"{PREFIX}/catalog").json()
-    assert body["counts"]["benefits"] == 1378 and body["publish_policy"] == "preview_unverified"
+    assert body["counts"]["benefits"] == 1385 and body["publish_policy"] == "preview_unverified"
     assert body["governing_sentence"].startswith("Agents orchestrate")
     assert next(j for j in body["jurisdictions"] if j["code"] == "AS")["coverage"] == "SOURCE_NOT_AVAILABLE"
     assert body["rule_tokens"]["spkia"] == "the sponsor died in the line of duty"

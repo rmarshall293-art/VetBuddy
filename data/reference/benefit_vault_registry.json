@@ -8022,6 +8022,36 @@
    "who_it_is_for": "Members, honorably discharged veterans and 100% P&T veterans for specified license classes"
   },
   {
+   "benefit_id": "ia.guard-and-reserve-active-duty-pay-exclusion-title-10-status-title-32-ful",
+   "category": "INCTAX",
+   "caveat_ids": [],
+   "content_hash": "eb225037dd738c55f190a291abf137e3ff276f1828dddf271a3926230257fc40",
+   "groups": [
+    "ad",
+    "ng",
+    "rsv"
+   ],
+   "jurisdiction": "IA",
+   "kind": "STATE_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "states/batch09_guard_reserve.psv:13",
+   "official_url": "https://tax.iowa.gov/node/4717/printable/print",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "res & ad",
+   "rule_tokens": [
+    "ad",
+    "res"
+   ],
+   "source_id": "src.3f5c0097f5baf259",
+   "source_tier": 1,
+   "title": "Guard and Reserve active duty pay exclusion (Title 10 status; Title 32 full-time Guard not included)",
+   "value": "Federal active duty pay excluded from Iowa tax",
+   "who_it_is_for": "Iowa residents in the armed forces, the reserve or the National Guard in an active duty status as defined in 10 USC 101(d)(1); full-time National Guard members under Title 32 (AGR) are not in an active duty status, so their pay is not excluded"
+  },
+  {
    "benefit_id": "ia.home-base-iowa",
    "category": "JOBS",
    "caveat_ids": [],
@@ -33395,6 +33425,35 @@
    "who_it_is_for": "Spouses of active duty or retired Soldiers and surviving spouses of Soldiers who died on active duty or in retirement; need-based"
   },
   {
+   "benefit_id": "us.air-guard-and-air-force-reserve-retirement-after-20-years-of-total-activ",
+   "category": "GUARD_PAY",
+   "caveat_ids": [],
+   "content_hash": "514087d616eb2f35d74300a3cae44eb55af16056ef9447696624d022dee53c5e",
+   "groups": [
+    "ng",
+    "rsv"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:52",
+   "official_url": "https://www.arpc.afrc.af.mil/News/Article-Display/Article/2221960/converting-active-duty-retirement-to-afr-ang-retirement",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "ngany | rsv",
+   "rule_tokens": [
+    "ngany",
+    "rsv"
+   ],
+   "source_id": "src.2f65b3f4c7a229cd",
+   "source_tier": 1,
+   "title": "Air Guard and Air Force Reserve retirement after 20 years of total active federal military service",
+   "value": "Immediate retired pay and benefits on retirement",
+   "who_it_is_for": "Air Guard and Air Force Reserve members with 20 years of total active federal military service; those who stay on in a traditional status may apply in writing to convert to a Reserve retirement after 2 more years, which moves medical benefits to age 60"
+  },
+  {
    "benefit_id": "us.america-the-beautiful-access-pass",
    "category": "PASS",
    "caveat_ids": [],
@@ -33684,6 +33743,34 @@
    "title": "Army Tuition Assistance (ArmyIgnitED)",
    "value": "Up to $4,500 a fiscal year and 18 semester hours",
    "who_it_is_for": "Active Army Soldiers, Guard and Reserve Soldiers on active duty, and Troop Program Unit Soldiers"
+  },
+  {
+   "benefit_id": "us.blended-retirement-system-retired-pay-for-air-guard-agr-and-full-time-na",
+   "category": "GUARD_PAY",
+   "caveat_ids": [],
+   "content_hash": "6b0bc10313b26cfa3293eec177c95d69e92c9e2ea7474f3ff9044669bc9bb8e3",
+   "groups": [
+    "ng"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:55",
+   "official_url": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=20",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 2,
+   "page_part": "main",
+   "record_status": "UNVERIFIED",
+   "rule": "ngany & ad",
+   "rule_tokens": [
+    "ad",
+    "ngany"
+   ],
+   "source_id": "src.ae9a00070dbacd8f",
+   "source_tier": 2,
+   "title": "Blended Retirement System retired pay for Air Guard AGR and full-time National Guard duty",
+   "value": "Monthly retired pay of 2% x years of service x the average of the highest 36 months of basic pay, plus the TSP balance",
+   "who_it_is_for": "Air National Guard members on AGR or full-time National Guard duty who complete 20 or more years of active federal service"
   },
   {
    "benefit_id": "us.blended-retirement-system-retired-pay-for-army-guard-agr-and-full-time-n",
@@ -34701,6 +34788,35 @@
    "who_it_is_for": "Children of active, reserve, honorably discharged or fallen Marines and attached Navy corpsmen; 2.0 GPA; family AGI $134,000 or less"
   },
   {
+   "benefit_id": "us.military-leave-for-federal-civilian-employees-in-the-guard-and-reserve",
+   "category": "JOBS",
+   "caveat_ids": [],
+   "content_hash": "239c8a77f5891706a5a843266c1f667163a3c076cf2b74e5a781cd8529128e93",
+   "groups": [
+    "ng",
+    "rsv"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:62",
+   "official_url": "https://www.opm.gov/policy-data-oversight/pay-leave/pay-administration/fact-sheets/military-leave/",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "ngany | rsv",
+   "rule_tokens": [
+    "ngany",
+    "rsv"
+   ],
+   "source_id": "src.afe02b208963d789",
+   "source_tier": 1,
+   "title": "Military leave for federal civilian employees in the Guard and Reserve",
+   "value": "20 days a fiscal year with civilian pay (up to 20 carried over), 22 workdays a year for emergency or contingency duty, 44 workdays overseas for technicians",
+   "who_it_is_for": "Full-time federal civilian employees (appointment not limited to 1 year) who serve in the Guard or Reserve; prorated for part-time career employees"
+  },
+  {
    "benefit_id": "us.military-onesource",
    "category": "FAMILY",
    "caveat_ids": [],
@@ -35138,7 +35254,7 @@
    "benefit_id": "us.reserve-component-survivor-benefit-plan-rcsbp",
    "category": "FAMILY",
    "caveat_ids": [],
-   "content_hash": "14cee9b812fc46c6398b6e35aeb6a23b49cc869725ccc91bec75131d726ac07d",
+   "content_hash": "da780ea78473db34ad470ecf9cc4ea4fbf946ce03ab542b2e7668254d58c851a",
    "groups": [
     "ng",
     "rsv",
@@ -35150,7 +35266,7 @@
    "kind": "FEDERAL_BENEFIT",
    "lead_ids": [],
    "ledger_ref": "federal/federal03_guard_reserve.psv:35",
-   "official_url": "https://www.dfas.mil/retiredmilitary/provide/rcsbp/",
+   "official_url": "https://www.dfas.mil/RetiredMilitary/provide/rcsbp/enrollment",
    "official_url_status": "SAME_AS_SOURCE",
    "official_url_tier": 1,
    "page_part": "main",
@@ -35166,11 +35282,11 @@
     "spret",
     "spsm"
    ],
-   "source_id": "src.682bd71f54a444f1",
+   "source_id": "src.81b3d39dbd74f9c3",
    "source_tier": 1,
    "title": "Reserve Component Survivor Benefit Plan (RCSBP)",
-   "value": "Monthly annuity for the life of the beneficiary, a percentage of retired pay",
-   "who_it_is_for": "Members of the Army and Air National Guard of the United States, Army, Navy, Marine Corps and Air Force Reserve; coverage depends on the election made when signing up (ask your personnel office about the election window)"
+   "value": "Monthly annuity for a beneficiary, starting at age 60 or the day after death depending on the option",
+   "who_it_is_for": "Guard and Reserve members who receive a notice of eligibility (20-year letter) elect within 90 days; members married or with a dependent child are enrolled automatically unless they opt out within 90 days, and elections become irrevocable after the 90 days"
   },
   {
    "benefit_id": "us.reserve-retired-pay-with-15-years-for-members-found-unfit-15-year-letter",
@@ -35716,6 +35832,38 @@
    "who_it_is_for": "Retired Guard and Reserve members and their families once the member turns 60; enrollment must be made within 90 days of turning 60. Before 60 (the Gray Area) Prime and Select are not available"
   },
   {
+   "benefit_id": "us.tricare-prime-for-air-national-guard-members-on-federal-active-duty",
+   "category": "HEALTH",
+   "caveat_ids": [],
+   "content_hash": "1f77d7015a40658b7e4e1ce19725a5fb85d7c2815703dc6140f565b7b3e59afb",
+   "groups": [
+    "ng",
+    "sp",
+    "ch"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:58",
+   "official_url": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/TRICARE-Prime?serv=20",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 2,
+   "page_part": "main",
+   "record_status": "UNVERIFIED",
+   "rule": "(ngany & ad) | (dep & spsm)",
+   "rule_tokens": [
+    "ad",
+    "dep",
+    "ngany",
+    "spsm"
+   ],
+   "source_id": "src.be3adaf3acbe9505",
+   "source_tier": 2,
+   "title": "TRICARE Prime for Air National Guard members on federal active duty",
+   "value": "TRICARE Prime with no enrollment fee for the member",
+   "who_it_is_for": "Air National Guard members while on federal active duty and traveling to and from it, with no enrollment fee; family members may elect Prime when the member is ordered to active duty for more than 30 consecutive days"
+  },
+  {
    "benefit_id": "us.tricare-prime-for-guard-members-on-federal-active-duty-including-full-ti",
    "category": "HEALTH",
    "caveat_ids": [],
@@ -35925,6 +36073,37 @@
    "title": "VA health care",
    "value": "Comprehensive VA medical care; costs depend on priority group",
    "who_it_is_for": "Veterans who enroll; priority groups set costs (group 1: 50%+ rating, unemployable or Medal of Honor); combat veterans get 10 years of enhanced eligibility"
+  },
+  {
+   "benefit_id": "us.va-health-care-for-guard-and-reserve-members-after-federal-activation",
+   "category": "HEALTH",
+   "caveat_ids": [],
+   "content_hash": "59cd57fe931226894618a94e0b31d21ac630b49c2bfec250ac0cd3e2e4908959",
+   "groups": [
+    "ng",
+    "rsv",
+    "vet"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:65",
+   "official_url": "https://www.va.gov/health-care/eligibility/",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "ngany | rsv | vet",
+   "rule_tokens": [
+    "ngany",
+    "rsv",
+    "vet"
+   ],
+   "source_id": "src.a9c196c4d47abe1f",
+   "source_tier": 1,
+   "title": "VA health care for Guard and Reserve members after federal activation",
+   "value": "VA health care enrollment",
+   "who_it_is_for": "Current or former Guard and Reserve members called to active duty by a federal order who completed the full period; active duty for training only does not count. Combat veterans get 10 years of enhanced eligibility"
   },
   {
    "benefit_id": "us.va-home-loan-guaranty",
@@ -36728,6 +36907,33 @@
    "title": "Utah National Guard death gratuity",
    "value": "$100,000 within 72 hours",
    "who_it_is_for": "Beneficiaries of a Utah Guard member who died on state active duty"
+  },
+  {
+   "benefit_id": "ut.utah-national-guard-state-tuition-waiver-full-time-students-not-for-memb",
+   "category": "GUARD_EDU",
+   "caveat_ids": [],
+   "content_hash": "eddc643a1f0e7c97750a5885549139aebf437a2c75165b3b1d69ada80f8bcf88",
+   "groups": [
+    "ng"
+   ],
+   "jurisdiction": "UT",
+   "kind": "STATE_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "states/batch09_guard_reserve.psv:16",
+   "official_url": "https://ut.ng.mil/Portals/40/STW_Application%2024-25%20school%20year_1.pdf",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "ng",
+   "rule_tokens": [
+    "ng"
+   ],
+   "source_id": "src.c9ae1580009a8429",
+   "source_tier": 1,
+   "title": "Utah National Guard State Tuition Waiver (full-time students; not for members on AGR or ADOS orders)",
+   "value": "Full-time tuition (12-18 credit hours) for the school year",
+   "who_it_is_for": "Utah Guard members accepted full time at a Utah public college or university, MOS or AFSC qualified, without a 4-year degree, considered Utah residents, with an ETS through the school year, and not on active duty (AGR or ADOS) except in some cases"
   },
   {
    "benefit_id": "ut.utah-national-guard-student-loan-repayment",
@@ -41854,22 +42060,22 @@
   }
  ],
  "counts": {
-  "benefits": 1378,
+  "benefits": 1385,
   "by_category": {
    "BONUS": 84,
    "BURIAL": 60,
    "DEALS": 4,
    "EDU": 143,
    "FAMILY": 6,
-   "GUARD_EDU": 62,
-   "GUARD_PAY": 69,
-   "HEALTH": 6,
+   "GUARD_EDU": 63,
+   "GUARD_PAY": 71,
+   "HEALTH": 8,
    "HOMES": 53,
    "HOUSING": 2,
    "HUNTFISH": 151,
-   "INCTAX": 144,
+   "INCTAX": 145,
    "INSURANCE": 6,
-   "JOBS": 165,
+   "JOBS": 166,
    "LICENSE": 1,
    "MWR": 6,
    "OTHER": 63,
@@ -41883,24 +42089,24 @@
   },
   "by_kind": {
    "COMMERCIAL_DEAL": 9,
-   "FEDERAL_BENEFIT": 74,
+   "FEDERAL_BENEFIT": 79,
    "NONPROFIT_PROGRAM": 12,
-   "STATE_BENEFIT": 1283
+   "STATE_BENEFIT": 1285
   },
   "by_record_status": {
-   "SOURCE_CHECKED": 58,
-   "UNVERIFIED": 1320
+   "SOURCE_CHECKED": 63,
+   "UNVERIFIED": 1322
   },
   "by_url_status": {
    "LINKED_FROM_SOURCE": 1264,
-   "SAME_AS_SOURCE": 108,
+   "SAME_AS_SOURCE": 115,
    "SEEN_IN_SEARCH": 6
   },
   "jurisdictions_covered": 56,
   "recovered_leads": 23,
   "rule_leads": 9,
-  "sources": 131,
-  "sources_opened": 130,
+  "sources": 138,
+  "sources_opened": 137,
   "verified": 0
  },
  "facts": {
@@ -42548,6 +42754,7 @@
    "tax.colorado.gov",
    "tax.idaho.gov",
    "tax.illinois.gov",
+   "tax.iowa.gov",
    "tax.nv.gov",
    "tax.ohio.gov",
    "tax.ri.gov",
@@ -42568,6 +42775,7 @@
    "ualr.edu",
    "uscode.house.gov",
    "usg.policystat.com",
+   "ut.ng.mil",
    "va.alabama.gov",
    "va.ng.mil",
    "vetaffairs.la.gov",
@@ -42619,6 +42827,7 @@
    "www.amtrak.com",
    "www.arkansasstateparks.com",
    "www.army.mil",
+   "www.arpc.afrc.af.mil",
    "www.arts.gov",
    "www.azgfd.com",
    "www.benefits.va.gov",
@@ -42859,11 +43068,11 @@
  "integrity": {
   "algorithm": "sha256",
   "canonical": "JSON with sorted keys, separators (',', ':'), UTF-8, no NaN; the integrity member excluded",
-  "sha256": "91fa9952509f78dfb1299c343f894ead33d4cd2d387a9996271b7001f9070e27"
+  "sha256": "047d93c239ab92e41a49887609dadc376923a3a087d01844c68c53f3eb75f4af"
  },
  "jurisdictions": [
   {
-   "benefit_count": 95,
+   "benefit_count": 100,
    "code": "US",
    "coverage": "COVERED",
    "name": "United States (federal)",
@@ -42881,6 +43090,7 @@
     "src.2346e94306068f68",
     "src.26acfd9a81c4959b",
     "src.28de099733cffd3e",
+    "src.2f65b3f4c7a229cd",
     "src.34a77bf8b3ecbf1c",
     "src.36991348755cc6f2",
     "src.36b91bdd7bfd0357",
@@ -42901,10 +43111,10 @@
     "src.59c6f56571ff2509",
     "src.5e9633755501abf5",
     "src.63bdbe129fbc8618",
-    "src.682bd71f54a444f1",
     "src.6a1b528dd0cd69e6",
     "src.6a9794ef5c4810b3",
     "src.6ab021217fcb271d",
+    "src.81b3d39dbd74f9c3",
     "src.82cc0d2da65f707f",
     "src.83caf066b153e7c3",
     "src.8569ec06a3b19930",
@@ -42919,11 +43129,15 @@
     "src.9bfe53266b2942dd",
     "src.9f93bdcdb4db6685",
     "src.a12093cc3cceef77",
+    "src.a9c196c4d47abe1f",
     "src.ab3f9a78677c9c28",
     "src.ac76cedf4de4b4f6",
+    "src.ae9a00070dbacd8f",
     "src.aecd3d23eaccd4ff",
+    "src.afe02b208963d789",
     "src.ba18fc8d03d6d8ce",
     "src.bdbcf757445e9a2f",
+    "src.be3adaf3acbe9505",
     "src.c3c5fb9a4aac65c6",
     "src.c41fe3aaacb72c39",
     "src.c447772def88a0e0",
@@ -43102,11 +43316,12 @@
    "tail_unread_chars": 0
   },
   {
-   "benefit_count": 28,
+   "benefit_count": 29,
    "code": "IA",
    "coverage": "COVERED",
    "name": "Iowa",
    "source_ids": [
+    "src.3f5c0097f5baf259",
     "src.d95c35938ba2c3fc"
    ],
    "tail_read": false,
@@ -43422,12 +43637,13 @@
    "tail_unread_chars": 0
   },
   {
-   "benefit_count": 20,
+   "benefit_count": 21,
    "code": "UT",
    "coverage": "COVERED",
    "name": "Utah",
    "source_ids": [
-    "src.bb8d2450ab118d1f"
+    "src.bb8d2450ab118d1f",
+    "src.c9ae1580009a8429"
    ],
    "tail_read": true,
    "tail_unread_chars": 0
@@ -43856,7 +44072,7 @@
    "location": "data/research/recovered/gemini_guard_reserve/jurisdictions_56.json",
    "path": "gemini_guard_reserve/jurisdictions_56.json",
    "recovered_from": "https://gemini.google.com/share/ddce35300d8f (owner-supplied HTML export, 2026-11-20)",
-   "sha256": "182b0cdfad99868fdf69f357148f8dc5a2c039a4ef001cbe2caf5d95e02e6e61",
+   "sha256": "1314533c22a4b8d6f9caf99170fa8fb418e59341575dd3da4aabe3aff3030174",
    "tier": 4,
    "vault_use": "Guard & Reserve role jurisdiction leads (ADR 0011 addendum); not imported as records"
   },
@@ -44817,6 +45033,22 @@
   },
   {
    "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.2f65b3f4c7a229cd",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://www.arpc.afrc.af.mil/News/Article-Display/Article/2221960/converting-active-duty-retirement-to-afr-ang-retirement"
+  },
+  {
+   "ledgers": [
     "federal/federal01_core.psv"
    ],
    "opened_on": "2026-10-27",
@@ -44928,6 +45160,22 @@
    "tail_unread_chars": 0,
    "tier": 2,
    "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Louisiana"
+  },
+  {
+   "ledgers": [
+    "states/batch09_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.3f5c0097f5baf259",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://tax.iowa.gov/node/4717/printable/print"
   },
   {
    "ledgers": [
@@ -45339,22 +45587,6 @@
   },
   {
    "ledgers": [
-    "federal/federal03_guard_reserve.psv"
-   ],
-   "opened_on": "2026-11-21",
-   "page_status": "OPENED",
-   "page_updated": "2023-02-15",
-   "parts_read": [
-    "main"
-   ],
-   "seen_on": null,
-   "source_id": "src.682bd71f54a444f1",
-   "tail_unread_chars": 0,
-   "tier": 1,
-   "url": "https://www.dfas.mil/retiredmilitary/provide/rcsbp/"
-  },
-  {
-   "ledgers": [
     "states/batch05_OK-SD.psv",
     "states/batch08_tails.psv"
    ],
@@ -45552,6 +45784,22 @@
    "tail_unread_chars": 0,
    "tier": 2,
    "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Delaware"
+  },
+  {
+   "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.81b3d39dbd74f9c3",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://www.dfas.mil/RetiredMilitary/provide/rcsbp/enrollment"
   },
   {
    "ledgers": [
@@ -45901,6 +46149,22 @@
   },
   {
    "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.a9c196c4d47abe1f",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://www.va.gov/health-care/eligibility/"
+  },
+  {
+   "ledgers": [
     "states/batch06_TN-WA.psv"
    ],
    "opened_on": "2026-10-27",
@@ -45981,6 +46245,22 @@
   },
   {
    "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": "2026-01-30",
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.ae9a00070dbacd8f",
+   "tail_unread_chars": 0,
+   "tier": 2,
+   "url": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=20"
+  },
+  {
+   "ledgers": [
     "federal/federal02_deals_family.psv"
    ],
    "opened_on": "2026-10-27",
@@ -45994,6 +46274,22 @@
    "tail_unread_chars": 0,
    "tier": 1,
    "url": "https://department.va.gov/veteran-sports/national-veterans-golden-age-games/"
+  },
+  {
+   "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.afe02b208963d789",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://www.opm.gov/policy-data-oversight/pay-leave/pay-administration/fact-sheets/military-leave/"
   },
   {
    "ledgers": [
@@ -46133,6 +46429,22 @@
   },
   {
    "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": "2026-01-27",
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.be3adaf3acbe9505",
+   "tail_unread_chars": 0,
+   "tier": 2,
+   "url": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/TRICARE-Prime?serv=20"
+  },
+  {
+   "ledgers": [
     "states/batch02_IL-MI.psv"
    ],
    "opened_on": "2026-10-27",
@@ -46226,6 +46538,22 @@
    "tail_unread_chars": 0,
    "tier": 1,
    "url": "https://newsroom.tricare.mil/News/TRICARE-News/Article/3120866/retiring-from-national-guard-or-reserve-know-your-tricare-options"
+  },
+  {
+   "ledgers": [
+    "states/batch09_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.c9ae1580009a8429",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://ut.ng.mil/Portals/40/STW_Application%2024-25%20school%20year_1.pdf"
   },
   {
    "ledgers": [

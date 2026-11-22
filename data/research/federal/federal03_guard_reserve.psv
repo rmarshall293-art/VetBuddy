@@ -31,8 +31,8 @@ OTHER|Combat-Related Special Compensation (CRSC)|ret,dv|ret & r>=10|Military ret
 # JUR=US SRC=https://www.dfas.mil/retiredmilitary/disability/crdp/ OPENED=2026-11-21 PAGE_UPDATED=none
 OTHER|Concurrent Retirement and Disability Pay (CRDP)|ret,dv|ret & r>=50|Retirees entitled to retired pay and VA compensation with a rating of 50% or more; Chapter 61 retirees need 20+ years. For Guard and Reserve Chapter 61 retirees it starts at the age retired pay would otherwise start|Retired pay and VA compensation both paid, mostly without a written claim|PAGE
 
-# JUR=US SRC=https://www.dfas.mil/retiredmilitary/provide/rcsbp/ OPENED=2026-11-21 PAGE_UPDATED=2023-02-15
-FAMILY|Reserve Component Survivor Benefit Plan (RCSBP)|ng,rsv,ret,sp,ch|ngany | rsv | ngret | ret | (dep & (spsm | spret | spdec))|Members of the Army and Air National Guard of the United States, Army, Navy, Marine Corps and Air Force Reserve; coverage depends on the election made when signing up (ask your personnel office about the election window)|Monthly annuity for the life of the beneficiary, a percentage of retired pay|PAGE
+# JUR=US SRC=https://www.dfas.mil/RetiredMilitary/provide/rcsbp/enrollment OPENED=2026-11-21 PAGE_UPDATED=none
+FAMILY|Reserve Component Survivor Benefit Plan (RCSBP)|ng,rsv,ret,sp,ch|ngany | rsv | ngret | ret | (dep & (spsm | spret | spdec))|Guard and Reserve members who receive a notice of eligibility (20-year letter) elect within 90 days; members married or with a dependent child are enrolled automatically unless they opt out within 90 days, and elections become irrevocable after the 90 days|Monthly annuity for a beneficiary, starting at age 60 or the day after death depending on the option|PAGE
 
 # Added 2026-11-21 for AGR gaps GRG03 and GRG04: the pages the report named did not cover AGR, so these were found by search and opened.
 # JUR=US SRC=https://www.army.mil/article/272555/human_resources_command_processes_the_armys_retirements OPENED=2026-11-21 PAGE_UPDATED=2023-12-18
@@ -46,3 +46,20 @@ HEALTH|TRICARE Prime for Guard members on federal active duty (including full-ti
 
 # JUR=US SRC=https://sharplearningportal.army.mil/portals/3/LinkedFiles/RegulatoryGuidance/AR600-8-4_Line_of_Duty_15MAR19.pdf OPENED=2026-11-21 PAGE_UPDATED=2019-03-15 TAIL_UNREAD=69783
 OTHER|Line of duty determination for Army Guard and Reserve injuries and illnesses|ng,rsv|ngany | rsv|Army National Guard and Army Reserve Soldiers injured or ill in a qualified duty status; a determination is generally requested within 180 calendar days of the end of that duty status (exceptions include later behavioral health diagnoses and IDES-directed determinations)|Determines eligibility for medical and dental treatment and incapacitation pay|PAGE
+
+# Air Force side (2026-11-21): the report named no Air Force AGR pages; found by search and opened.
+# JUR=US SRC=https://www.arpc.afrc.af.mil/News/Article-Display/Article/2221960/converting-active-duty-retirement-to-afr-ang-retirement OPENED=2026-11-21 PAGE_UPDATED=none
+GUARD_PAY|Air Guard and Air Force Reserve retirement after 20 years of total active federal military service|ng,rsv|ngany | rsv|Air Guard and Air Force Reserve members with 20 years of total active federal military service; those who stay on in a traditional status may apply in writing to convert to a Reserve retirement after 2 more years, which moves medical benefits to age 60|Immediate retired pay and benefits on retirement|PAGE
+
+# JUR=US SRC=https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=20 OPENED=2026-11-21 PAGE_UPDATED=2026-01-30
+GUARD_PAY|Blended Retirement System retired pay for Air Guard AGR and full-time National Guard duty|ng|ngany & ad|Air National Guard members on AGR or full-time National Guard duty who complete 20 or more years of active federal service|Monthly retired pay of 2% x years of service x the average of the highest 36 months of basic pay, plus the TSP balance|PAGE
+
+# JUR=US SRC=https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/TRICARE-Prime?serv=20 OPENED=2026-11-21 PAGE_UPDATED=2026-01-27
+HEALTH|TRICARE Prime for Air National Guard members on federal active duty|ng,sp,ch|(ngany & ad) | (dep & spsm)|Air National Guard members while on federal active duty and traveling to and from it, with no enrollment fee; family members may elect Prime when the member is ordered to active duty for more than 30 consecutive days|TRICARE Prime with no enrollment fee for the member|PAGE
+
+# Remaining gaps GRG07 and GRG10 (2026-11-21): no source named by the report; found by search and opened.
+# JUR=US SRC=https://www.opm.gov/policy-data-oversight/pay-leave/pay-administration/fact-sheets/military-leave/ OPENED=2026-11-21 PAGE_UPDATED=none
+JOBS|Military leave for federal civilian employees in the Guard and Reserve|ng,rsv|ngany | rsv|Full-time federal civilian employees (appointment not limited to 1 year) who serve in the Guard or Reserve; prorated for part-time career employees|20 days a fiscal year with civilian pay (up to 20 carried over), 22 workdays a year for emergency or contingency duty, 44 workdays overseas for technicians|PAGE
+
+# JUR=US SRC=https://www.va.gov/health-care/eligibility/ OPENED=2026-11-21 PAGE_UPDATED=none
+HEALTH|VA health care for Guard and Reserve members after federal activation|ng,rsv,vet|ngany | rsv | vet|Current or former Guard and Reserve members called to active duty by a federal order who completed the full period; active duty for training only does not count. Combat veterans get 10 years of enhanced eligibility|VA health care enrollment|PAGE

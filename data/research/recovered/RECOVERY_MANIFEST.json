@@ -275,7 +275,7 @@
    "tier": 4,
    "use": "Guard & Reserve role: per-jurisdiction leads (UNVERIFIED, tier 4) and research targets from the vault cross-check.",
    "bytes": 47070,
-   "sha256": "182b0cdfad99868fdf69f357148f8dc5a2c039a4ef001cbe2caf5d95e02e6e61",
+   "sha256": "1314533c22a4b8d6f9caf99170fa8fb418e59341575dd3da4aabe3aff3030174",
    "records": 56,
    "shipped": true,
    "vault_use": "Guard & Reserve role jurisdiction leads (ADR 0011 addendum); not imported as records"

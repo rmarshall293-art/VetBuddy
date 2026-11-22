@@ -101,3 +101,20 @@
   - Air Force AGR and Air Guard pages.
   - Iowa's and Utah's AGR tax rules (GRG13). The pages read don't address them.
   - A named reviewer for every record (G1).
+
+## Addendum (2026-11-21, third pass)
+
+**Records.** Seven more records were written, 23 in all:
+- Air Guard and Air Force Reserve AGR retirement.
+- Air Guard BRS.
+- Air Guard TRICARE Prime.
+- Iowa's Title 10 / Title 32 pay rule.
+- Utah's waiver with its AGR exclusion.
+- Federal civilian military leave.
+- VA health care after federal activation.
+
+**RCSBP.** The record now carries the sourced 90-day election window.
+
+**Gaps.** 13 of 15 gaps are IMPLEMENTED_UNVERIFIED. Two remain PARTIAL:
+- GRG09: BRS for drilling members.
+- GRG15: the choice between the Retired Reserve and a discharge (an irreversible decision; HITL level 4).

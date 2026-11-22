@@ -504,7 +504,7 @@ def test_reduced_age_check_records_what_the_report_left_out(dev_role):
 def test_gap_records_exist_and_retired_reserve_now_matches(dev_role):
     gaps = {g["id"]: g for g in dev_role.policy.research_gaps}
     assert gaps["GRG01"]["status"] == "IMPLEMENTED_UNVERIFIED"
-    assert gaps["GRG13"]["status"] == "PARTIAL"                                  # Iowa and Utah AGR tax still open
+    assert gaps["GRG13"]["status"] == "IMPLEMENTED_UNVERIFIED"                   # Iowa settled 2026-11-21
     env = dev_role.match({"guard_reserve": {"gr_component": "usar", "duty_status": "retres"},
                           "facts": {"age": 52}, "as_of": AS_OF}, guest(), NOW)
     found = {i["benefit_id"]: i for i in env["items"]}
@@ -540,7 +540,7 @@ def test_agr_member_now_sees_agr_retirement_and_health_care(dev_role):
 def test_pages_found_by_search_are_marked_as_not_named_by_the_report():
     doc = json.loads(CHECKS.read_text())
     extra = [c for c in doc["checks"] if c.get("named_by_report") is False]
-    assert len(extra) == 3 and all(c["records"] for c in extra)
+    assert len(extra) == 12 and all(c["records"] for c in extra)
 
 
 def test_every_named_jurisdiction_page_was_checked(dev_role):
@@ -555,3 +555,34 @@ def test_line_of_duty_record_closes_its_gap(dev_role):
     assert gaps["GRG08"]["status"] == "IMPLEMENTED_UNVERIFIED"
     lead = next(l for l in dev_role.recovered.federal_for(None) if l["lead_id"] == "GF03")
     assert "us.line-of-duty-determination-for-army-guard-and-reserve-injuries-and-illne" in lead["records"]
+
+
+def test_air_guard_agr_member_sees_air_force_records(dev_role):
+    env = dev_role.match({"guard_reserve": {"gr_component": "ang", "duty_status": "agr32"}, "as_of": AS_OF},
+                         guest(), NOW)
+    found = {i["benefit_id"]: i["outcome"] for i in env["items"]}
+    for rid in ("us.air-guard-and-air-force-reserve-retirement-after-20-years-of-total-activ",
+                "us.blended-retirement-system-retired-pay-for-air-guard-agr-and-full-time-na",
+                "us.tricare-prime-for-air-national-guard-members-on-federal-active-duty"):
+        assert found[rid] == "PRELIMINARY_MATCH"
+
+
+def test_iowa_title_32_agr_record_carries_the_title_32_caveat(dev_role):
+    env = dev_role.match({"guard_reserve": {"gr_component": "arng", "duty_status": "agr32"},
+                          "facts": {"residence_state": "IA", "guard_state": "IA"}, "as_of": AS_OF}, guest(), NOW)
+    item = next(i for i in env["items"]
+                if i["benefit_id"] == "ia.guard-and-reserve-active-duty-pay-exclusion-title-10-status-title-32-ful")
+    assert "agr_title32" in {c["id"] for c in item["guard_reserve"]["role_caveats"]}
+    assert "Title 32" in item["who_it_is_for"]
+    lead = dev_role.recovered.jurisdiction("IA")
+    assert any(f["verdict"] == "AGREES" and "Title 32" in f["note"] for f in lead["source_checks"])
+
+
+def test_rcsbp_record_now_states_the_sourced_election_window(registry):
+    who = registry.benefits["us.reserve-component-survivor-benefit-plan-rcsbp"].who_it_is_for
+    assert "90 days" in who and "irrevocable" in who
+
+
+def test_only_partial_gaps_left_are_named(dev_role):
+    open_gaps = {g["id"] for g in dev_role.policy.research_gaps if g["status"] != "IMPLEMENTED_UNVERIFIED"}
+    assert open_gaps == {"GRG09", "GRG15"}

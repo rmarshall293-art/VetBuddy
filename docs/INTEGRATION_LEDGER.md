@@ -291,3 +291,9 @@ Decisions are in ADR 0008.
 - **Coverage:** every page the report names has been tried. 81 opened and 2 did not load (tried twice). Including the 3 search finds, 84 pages were read.
 - **Findings:** 22 agree, 60 agree in part, 2 differ (CRDP, Connecticut tuition) and 8 say nothing.
 - **Records:** 16 records were written in total. The only new one in this pass is the Army line of duty window; the state pages confirmed benefits the vault already held.
+
+**Third pass (2026-11-21).**
+- **Air Force and RCSBP:** Air Force AGR pages and the RCSBP enrollment page were opened.
+- **Report claims settled:** Iowa's Title 32 tax rule and Utah's AGR waiver exclusion are confirmed from official pages.
+- **Gaps filled:** military leave, VA health care after activation, and Gray Area commissary use.
+- **Totals:** 23 Guard, Reserve and AGR records written in all; the registry holds 1,385.

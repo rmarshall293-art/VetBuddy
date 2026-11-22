@@ -18,7 +18,7 @@ The Guard & Reserve vault is the v8 Guard/Reserve role of Benefits Intelligence.
 | `backend/app/agents/registry.json`, `database/migrations/0021_guard_reserve_agent.sql` | Platform manifest (DRAFT), with a configuration hash pinned by a test |
 | `backend/app/domains/vault/guard_reserve/recovered.py` | Recovered Gemini leads (hash-checked, language-guarded) |
 | `data/research/guard_reserve/source_checks.json` | What each opened page said about the report's claims |
-| `backend/tests/vault/test_guard_reserve.py` | 69 tests |
+| `backend/tests/vault/test_guard_reserve.py` | 73 tests |
 | `web/app.js` (`viewGuardReserve`), `tests/e2e/smoke_guard_reserve.py` | The Guard & Reserve Center screen and its browser smoke test |
 
 ## Governance placement
@@ -93,7 +93,7 @@ DoD civilians are out of scope: civilian employment alone creates no Guard or Re
 | GR04 | Lens over the matcher | IMPLEMENTED_TESTED |
 | GR05 | Routes (Mode A) | IMPLEMENTED_TESTED |
 | GR06 | Pulls through Benefits Intelligence (Mode B) | PARTIAL (G17) |
-| GR07 | Guard, Reserve and AGR records from opened sources | PARTIAL (16 records; RCSBP election details, TRICARE 2027 premiums and Air Force AGR pages still open) |
+| GR07 | Guard, Reserve and AGR records from opened sources | PARTIAL (23 records; TRICARE 2027 premiums, GRG09 and GRG15 open) |
 | GR10 | Recovered Gemini leads | IMPLEMENTED_TESTED |
 | GR11 | Guard & Reserve Center screen | IMPLEMENTED_TESTED |
 | GR12 | Source-check queue | IMPLEMENTED_TESTED (page reads need approved web access) |
@@ -140,7 +140,8 @@ Every page the report names has been tried: 81 opened and 2 did not load (tried 
 |---|---|
 | Findings: agrees / agrees in part / differs / source silent | 22 / 60 / 2 / 8 |
 | Jurisdiction rows checked | 56 of 56 (14 agree, 41 agree in part, Connecticut corrected) |
-| Records written | 16 (14 federal in `federal03_guard_reserve.psv`, 2 state in `batch09_guard_reserve.psv`) |
+| Records written | 23 (19 federal in `federal03_guard_reserve.psv`, 4 state in `batch09_guard_reserve.psv`), Army and Air Force |
+| Pages found by search for gaps the report missed | 12 (Army and Air Force AGR, RCSBP enrollment, Iowa revenue, Utah waiver, OPM, VA, commissary) |
 | Named pages still to open | 0 |
 
 **Where the report goes wrong across the states:**
@@ -191,7 +192,7 @@ Each remaining lead becomes a record in five steps:
 | GRG14 | State-Sponsored Life Insurance |
 | GRG15 | Retired Reserve or discharge after 20 years |
 
-GRG01–GRG04, GRG08, GRG11, GRG12 and GRG14 are IMPLEMENTED_UNVERIFIED (records exist and wait for a named reviewer). GRG07 and GRG10 are SOURCE_NOT_AVAILABLE. The rest are PARTIAL (a lead names a source still to read).
+GRG09 and GRG15 are PARTIAL. All other gaps are IMPLEMENTED_UNVERIFIED: records exist and wait for a named reviewer (G1).
 
 ## Run
 

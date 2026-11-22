@@ -1192,6 +1192,145 @@
    "records": [
     "us.line-of-duty-determination-for-army-guard-and-reserve-injuries-and-illne"
    ]
+  },
+  {
+   "url": "https://www.dfas.mil/RetiredMilitary/provide/rcsbp/enrollment",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GF09",
+     "verdict": "AGREES",
+     "note": "DFAS: elect within 90 days of receiving the notice of eligibility; members married or with a dependent child are enrolled automatically unless they opt out; elections are irrevocable once the 90 days pass; spouse concurrence is needed for the deferred options."
+    }
+   ],
+   "records": [
+    "us.reserve-component-survivor-benefit-plan-rcsbp"
+   ]
+  },
+  {
+   "url": "https://www.arpc.afrc.af.mil/News/Article-Display/Article/2221960/converting-active-duty-retirement-to-afr-ang-retirement",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GF12",
+     "verdict": "AGREES_IN_PART",
+     "note": "Air Guard and Air Force Reserve members with 20 years of total active federal military service get immediate pay and benefits on retirement; those who convert to a Reserve retirement lose retiree medical benefits until 60."
+    }
+   ],
+   "records": [
+    "us.air-guard-and-air-force-reserve-retirement-after-20-years-of-total-activ"
+   ]
+  },
+  {
+   "url": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=20",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GF12",
+     "verdict": "AGREES",
+     "note": "Air Guard AGR and full-time Guard duty members under BRS get 2% x years x High-36 after 20 years of active federal service."
+    }
+   ],
+   "records": [
+    "us.blended-retirement-system-retired-pay-for-air-guard-agr-and-full-time-na"
+   ]
+  },
+  {
+   "url": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/TRICARE-Prime?serv=20",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GF12",
+     "verdict": "SOURCE_SILENT",
+     "note": "Covers health care during service: Air Guard members on federal active duty get Prime with no enrollment fee; families when orders exceed 30 consecutive days."
+    }
+   ],
+   "records": [
+    "us.tricare-prime-for-air-national-guard-members-on-federal-active-duty"
+   ]
+  },
+  {
+   "url": "https://tax.iowa.gov/node/4717/printable/print",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GJ.IA",
+     "verdict": "AGREES",
+     "note": "Iowa Department of Revenue: pay in a Title 10 active duty status is excluded, and full-time National Guard members under Title 32 are not in an active duty status, so their pay is not excluded. This settles the report's Title 10 / Title 32 split."
+    },
+    {
+     "lead_id": "GF15",
+     "verdict": "AGREES",
+     "note": "Iowa taxes Title 32 AGR pay and excludes Title 10 active duty pay, as the report says."
+    }
+   ],
+   "records": [
+    "ia.guard-and-reserve-active-duty-pay-exclusion-title-10-status-title-32-ful"
+   ]
+  },
+  {
+   "url": "https://ut.ng.mil/Portals/40/STW_Application%2024-25%20school%20year_1.pdf",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GJ.UT",
+     "verdict": "AGREES",
+     "note": "The Utah Guard waiver application (2024-25) requires that the member is not on active duty (AGR or ADOS), with some exceptions. This settles the report's AGR exclusion."
+    },
+    {
+     "lead_id": "GF15",
+     "verdict": "AGREES",
+     "note": "Utah's State Tuition Waiver excludes members on AGR or ADOS orders, with some exceptions."
+    }
+   ],
+   "records": [
+    "ut.utah-national-guard-state-tuition-waiver-full-time-students-not-for-memb"
+   ]
+  },
+  {
+   "url": "https://www.opm.gov/policy-data-oversight/pay-leave/pay-administration/fact-sheets/military-leave/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [],
+   "records": [
+    "us.military-leave-for-federal-civilian-employees-in-the-guard-and-reserve"
+   ],
+   "note": "Fills gap GRG07; the report made no claim on federal civilian leave. OPM: 20 days a fiscal year under 5 USC 6323(a) since 23 December 2024 (was 15)."
+  },
+  {
+   "url": "https://www.va.gov/health-care/eligibility/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [],
+   "records": [
+    "us.va-health-care-for-guard-and-reserve-members-after-federal-activation"
+   ],
+   "note": "Fills gap GRG10; the report made no claim on VA health care."
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Defense-Commissary-Agency-(DeCA)?serv=126",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [],
+   "records": [
+    "us.commissary-and-exchange-shopping-for-members-retirees-and-families"
+   ],
+   "note": "Fills gap GRG06 with the vault's existing commissary record: unlimited commissary use for Ready Reserve members, retired Guard and Reserve members, Gray Area retirees under 60 and their dependents with ID."
   }
  ]
 }

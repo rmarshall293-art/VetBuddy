@@ -7,3 +7,10 @@ INCTAX|National Guard pay exemption (drill, annual training, AGR, Title 10 and T
 
 # JUR=SC SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/South-Carolina OPENED=2026-11-21 PAGE_UPDATED=none PART=tail
 INCTAX|Guard and Reserve pay exemption for full-time AGR members|ng,rsv|res & (ngany | rsv)|Full-time Active Guard and Reserve members: 15 days of annual training pay and up to 24 days of drill pay at the daily rate|Up to 39 days of pay not taxed|PAGE
+
+# Found by search 2026-11-21 to settle two report claims the fact sheets did not address (Iowa Title 10/32 tax, Utah waiver and AGR).
+# JUR=IA SRC=https://tax.iowa.gov/node/4717/printable/print OPENED=2026-11-21 PAGE_UPDATED=none
+INCTAX|Guard and Reserve active duty pay exclusion (Title 10 status; Title 32 full-time Guard not included)|ad,ng,rsv|res & ad|Iowa residents in the armed forces, the reserve or the National Guard in an active duty status as defined in 10 USC 101(d)(1); full-time National Guard members under Title 32 (AGR) are not in an active duty status, so their pay is not excluded|Federal active duty pay excluded from Iowa tax|PAGE
+
+# JUR=UT SRC=https://ut.ng.mil/Portals/40/STW_Application%2024-25%20school%20year_1.pdf OPENED=2026-11-21 PAGE_UPDATED=none
+GUARD_EDU|Utah National Guard State Tuition Waiver (full-time students; not for members on AGR or ADOS orders)|ng|ng|Utah Guard members accepted full time at a Utah public college or university, MOS or AFSC qualified, without a 4-year degree, considered Utah residents, with an ETS through the school year, and not on active duty (AGR or ADOS) except in some cases|Full-time tuition (12-18 credit hours) for the school year|PAGE

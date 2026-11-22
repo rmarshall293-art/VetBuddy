@@ -67,6 +67,8 @@ class GuardReserveAgent:
         for tok in tokens(benefit.node):
             read |= TOKEN_FACTS[tok.name]
         role_caveats = [c for c in status_caveats if self.policy.caveat_targets[c] in read & derived_keys]
+        if benefit.benefit_id in self.policy.irreversible:
+            role_caveats.append("irreversible_choice")
         leads = [checks_by_lead[i] for i in item["lead_ids"] if i in checks_by_lead]
         return {**item, "guard_reserve": {
             "section": "guard_reserve" if self.is_guard_reserve(benefit) else "also_found",

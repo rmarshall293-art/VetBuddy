@@ -148,6 +148,9 @@ class GuardReservePolicy:
             raise PolicyError("selection names an unknown rule token")
 
         self.lead_checks: Dict[str, Dict[str, Any]] = dict(policy["lead_checks"])
+        self.irreversible: FrozenSet[str] = frozenset(policy.get("irreversible_choices", ()))
+        if self.irreversible and "irreversible_choice" not in self.caveats:
+            raise PolicyError("irreversible_choices needs the irreversible_choice caveat")
         self.questions: Dict[str, str] = {k: " ".join(v["question"].split()) for k, v in policy["facts"].items()}
         days = policy["facts"]["qualifying_days"]
         self.days_range: Tuple[int, int] = (int(days["low"]), int(days["high"]))
@@ -175,6 +178,9 @@ class GuardReservePolicy:
         for lead_id in self.lead_checks:
             if lead_id not in registry.rule_leads:
                 raise PolicyError(f"lead check {lead_id} names a lead the registry does not carry")
+        missing = [r for r in self.irreversible if r not in registry.benefits]
+        if missing:
+            raise PolicyError(f"irreversible_choices names records the registry does not carry: {missing}")
         for gap in self.research_gaps:
             missing = [r for r in gap.get("records", ()) if r not in registry.benefits]
             if missing:

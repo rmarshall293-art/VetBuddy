@@ -129,7 +129,7 @@ Decisions: ADR 0005. Vault components (V01–V25) and its own defects (VD01–VD
 
 | Capability | Status | Evidence |
 |---|---|---|
-| Vault registry: 1,385 records, 138 sources, 56 of 57 jurisdiction rows (American Samoa SOURCE_NOT_AVAILABLE) | IMPLEMENTED_TESTED | `build_vault_registry.py --check`; `tests/vault/test_importer_registry.py` |
+| Vault registry: 1,387 records, 140 sources, 56 of 57 jurisdiction rows (American Samoa SOURCE_NOT_AVAILABLE) | IMPLEMENTED_TESTED | `build_vault_registry.py --check`; `tests/vault/test_importer_registry.py` |
 | Migration 0014 on the real slice 03 chain (RLS, append-only ledger, purger grants, deletion postcondition) | IMPLEMENTED_TESTED | `tests/vault/test_database.py` (22) on a database built from 0001–0014; postcondition mutation tests |
 | Account deletion reaches the vault tables | IMPLEMENTED_TESTED | `test_purge_removes_every_vault_row_of_one_tenant`; `test_account_deletion_removes_vault_rows_and_closes_the_session` |
 | Vault API mounted at `/api/v1/vault` with the platform session, consent and error contract | IMPLEMENTED_TESTED | `tests/test_vault_integration.py` (7) |
@@ -174,7 +174,9 @@ Design and placement: `docs/GUARD_RESERVE_VAULT.md`. The role runs over Benefits
 | Guard, Reserve and AGR records from opened sources (23 incl. Air Force AGR; line of duty window, TRICARE Retired Reserve, Prime and Select at 60, Reserve retired pay and reduced age, 15-year letter, Chapter 61 retired and severance pay, CRSC, CRDP, RCSBP, Army AGR retirement and BRS, TRICARE Prime on full-time duty, MI and SC AGR tax) | IMPLEMENTED_UNVERIFIED | 15 records, `federal03_guard_reserve.psv` and `batch09_guard_reserve.psv`; `source_checks.json`; awaiting a named reviewer (G1) |
 | Named sources of the Gemini report | IMPLEMENTED_TESTED | 81 opened, 2 FETCH_FAILED (twice), 0 NOT_OPENED; all 56 jurisdiction rows checked (`test_every_named_jurisdiction_page_was_checked`) |
 | Air Force AGR, RCSBP election window, Iowa Title 32 tax, Utah AGR waiver, federal military leave, VA health care after activation | IMPLEMENTED_UNVERIFIED | records in federal03 and batch09; `test_air_guard_agr_member_sees_air_force_records`, `test_iowa_title_32_agr_record_carries_the_title_32_caveat` |
-| TRICARE 2027 premiums; BRS for drilling members (GRG09); Retired Reserve or discharge (GRG15) | PARTIAL | next research targets |
+| BRS for drilling members (GRG09); Retired Reserve or discharge (GRG15) with the irreversible-choice caveat | IMPLEMENTED_UNVERIFIED | `test_every_gap_now_has_records`, `test_irreversible_choices_carry_the_caveat` |
+| TRICARE 2027 premiums | PARTIAL | only an association article (MOAA) so far; records keep the 2026 TRICARE figures until TRICARE publishes |
+| Named reviewer sign-off of the 25 Guard, Reserve and AGR records | BLOCKED | G1 (owner names reviewers) |
 | Guard & Reserve Center screen (web shell `#/guard-reserve`, linked from the brief's Guard/Reserve lane) | IMPLEMENTED_TESTED (smoke) | `tests/e2e/smoke_guard_reserve.py`, light 1280 + dark 390 px, no horizontal overflow |
 | Source-check queue for recovered leads | IMPLEMENTED_TESTED | `test_source_queue_…`; queue finished |
 | Family members of Guard and Reserve sponsors | PLANNED | VD11 |

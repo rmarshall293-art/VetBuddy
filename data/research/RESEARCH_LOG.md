@@ -157,3 +157,11 @@ Pages found by search (the report named none for these) and opened.
 - **GRG06:** the vault's existing commissary record covers Gray Area retirees, per MyArmyBenefits.
 
 **Still open.** TRICARE 2027 premiums, BRS for drilling members (GRG09), and the Retired Reserve or discharge choice (GRG15).
+
+## 2026-11-21 (final pass): last gaps
+
+- **GRG09:** BRS for Army Guard drilling members (MyArmyBenefits): points / 360 x 2% x High-36 from the eligibility age, TSP 1% plus up to 4%, and continuation pay.
+- **GRG15:** the Retired Reserve or discharge choice (MyAirForceBenefits Retired Pay). Years in the Retired Reserve count for basic pay; a discharge stops that credit. The record and the RCSBP record now carry the `irreversible_choice` caveat (v6 HITL level 4).
+- **2027 TRICARE premiums:** MOAA, an association article, matches the report's 2027 figures. No TRICARE page shows them yet, so the records keep the 2026 TRICARE figures until TRICARE publishes.
+
+**Result.** All 15 gaps have records, and 25 Guard, Reserve and AGR records were written in all. The research left to do is outside this queue: periodic re-checks, and the named reviewer (G1).

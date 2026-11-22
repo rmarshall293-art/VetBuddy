@@ -540,7 +540,8 @@ def test_agr_member_now_sees_agr_retirement_and_health_care(dev_role):
 def test_pages_found_by_search_are_marked_as_not_named_by_the_report():
     doc = json.loads(CHECKS.read_text())
     extra = [c for c in doc["checks"] if c.get("named_by_report") is False]
-    assert len(extra) == 12 and all(c["records"] for c in extra)
+    assert len(extra) == 15
+    assert all(c["records"] for c in extra if "moaa.org" not in c["url"])        # association article: no record
 
 
 def test_every_named_jurisdiction_page_was_checked(dev_role):
@@ -583,6 +584,20 @@ def test_rcsbp_record_now_states_the_sourced_election_window(registry):
     assert "90 days" in who and "irrevocable" in who
 
 
-def test_only_partial_gaps_left_are_named(dev_role):
-    open_gaps = {g["id"] for g in dev_role.policy.research_gaps if g["status"] != "IMPLEMENTED_UNVERIFIED"}
-    assert open_gaps == {"GRG09", "GRG15"}
+def test_every_gap_now_has_records(dev_role):
+    for gap in dev_role.policy.research_gaps:
+        assert gap["status"] == "IMPLEMENTED_UNVERIFIED" and gap["records"], gap["id"]
+
+
+def test_irreversible_choices_carry_the_caveat(dev_role):
+    env = dev_role.match({"guard_reserve": {"gr_component": "usar", "duty_status": "selres"}, "as_of": AS_OF},
+                         guest(), NOW)
+    found = {i["benefit_id"]: i for i in env["items"]}
+    for rid in dev_role.policy.irreversible:
+        assert "irreversible_choice" in {c["id"] for c in found[rid]["guard_reserve"]["role_caveats"]}
+    assert all("irreversible_choice" not in {c["id"] for c in i["guard_reserve"]["role_caveats"]}
+               for rid, i in found.items() if rid not in dev_role.policy.irreversible)
+
+
+def test_2027_premiums_are_not_written_from_a_secondary_source(registry):
+    assert "$645.90" in registry.benefits["us.tricare-retired-reserve"].value

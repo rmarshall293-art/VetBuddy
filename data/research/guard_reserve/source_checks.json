@@ -1331,6 +1331,62 @@
     "us.commissary-and-exchange-shopping-for-members-retirees-and-families"
    ],
    "note": "Fills gap GRG06 with the vault's existing commissary record: unlimited commissary use for Ready Reserve members, retired Guard and Reserve members, Gray Area retirees under 60 and their dependents with ID."
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=124",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GF07",
+     "verdict": "AGREES",
+     "note": "For drilling Guard members under BRS, retired pay is points / 360 x 2% x High-36, the report's 2.0% multiplier."
+    }
+   ],
+   "records": [
+    "us.blended-retirement-system-for-army-guard-drilling-members"
+   ]
+  },
+  {
+   "url": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Retired-Pay?serv=20",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GF08",
+     "verdict": "AGREES",
+     "note": "Years in the Retired Reserve until 60 count for basic pay purposes; a discharge credits only service up to the discharge."
+    },
+    {
+     "lead_id": "GF07",
+     "verdict": "AGREES",
+     "note": "Points / 360 x 2.5%; 1,000 points at 60 gives 6.94%."
+    }
+   ],
+   "records": [
+    "us.retired-reserve-or-discharge-after-20-qualifying-years-basic-pay-credit"
+   ]
+  },
+  {
+   "url": "https://www.moaa.org/content/publications-and-media/news-articles/2026-news-articles/benefits/here-are-your-2027-costs-for-tricare-premium-based-plans/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GF10",
+     "verdict": "AGREES",
+     "note": "MOAA (27 Oct 2026) lists 2027 TRR premiums of $707.59 and $1,697.70, the report's figures. This is an association article, not the TRICARE page; the record keeps the 2026 TRICARE figures until TRICARE publishes 2027."
+    },
+    {
+     "lead_id": "GF11",
+     "verdict": "AGREES",
+     "note": "MOAA lists 2027 TRS premiums of $60.54 and $307.48, the report's figures (association article, not TRICARE)."
+    }
+   ],
+   "records": []
   }
  ]
 }

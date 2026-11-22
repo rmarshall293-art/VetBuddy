@@ -297,3 +297,8 @@ Decisions are in ADR 0008.
 - **Report claims settled:** Iowa's Title 32 tax rule and Utah's AGR waiver exclusion are confirmed from official pages.
 - **Gaps filled:** military leave, VA health care after activation, and Gray Area commissary use.
 - **Totals:** 23 Guard, Reserve and AGR records written in all; the registry holds 1,385.
+
+**Final pass (2026-11-21).**
+- **Gaps:** every gap now has a record (25 Guard, Reserve and AGR records in all); the registry holds 1,387.
+- **Irreversible choices:** RCSBP and the Retired Reserve or discharge choice carry the irreversible-choice caveat.
+- **TRICARE 2027 premiums:** they come only from an association article, so they are not written into records.

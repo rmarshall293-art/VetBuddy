@@ -33745,6 +33745,33 @@
    "who_it_is_for": "Active Army Soldiers, Guard and Reserve Soldiers on active duty, and Troop Program Unit Soldiers"
   },
   {
+   "benefit_id": "us.blended-retirement-system-for-army-guard-drilling-members",
+   "category": "GUARD_PAY",
+   "caveat_ids": [],
+   "content_hash": "fce4f9f96da943ed49ce568bed209041de37c98450a5cc6152bee3eabdfd514e",
+   "groups": [
+    "ng"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:69",
+   "official_url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=124",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 2,
+   "page_part": "main",
+   "record_status": "UNVERIFIED",
+   "rule": "ngany",
+   "rule_tokens": [
+    "ngany"
+   ],
+   "source_id": "src.edc2a730c81fc4f4",
+   "source_tier": 2,
+   "title": "Blended Retirement System for Army Guard drilling members",
+   "value": "Retired pay of points / 360 x 2% x High-36; TSP 1% automatic plus up to 4% match; continuation pay (0.5 x monthly basic pay in CY 26) between 7 and 12 years",
+   "who_it_is_for": "Army National Guard drilling Soldiers in the Blended Retirement System with 20 or more qualifying years; retired pay starts at the eligibility age (usually 60, earlier with a reduced age)"
+  },
+  {
    "benefit_id": "us.blended-retirement-system-retired-pay-for-air-guard-agr-and-full-time-na",
    "category": "GUARD_PAY",
    "caveat_ids": [],
@@ -35316,6 +35343,35 @@
    "title": "Reserve retired pay with 15 years for members found unfit (15-year letter)",
    "value": "Treated as meeting the 20-year service requirement for Reserve retired pay",
    "who_it_is_for": "Selected Reserve members with at least 15 but fewer than 20 years of service who no longer meet membership qualifications solely because of a physical disability (not for misconduct, willful neglect or unauthorized absence)"
+  },
+  {
+   "benefit_id": "us.retired-reserve-or-discharge-after-20-qualifying-years-basic-pay-credit",
+   "category": "GUARD_PAY",
+   "caveat_ids": [],
+   "content_hash": "7ba77e4b80abff6d442925f483a8d60f1d979a49e8a426dd355b7d8175fb16bc",
+   "groups": [
+    "ng",
+    "rsv"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:72",
+   "official_url": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Retired-Pay?serv=20",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 2,
+   "page_part": "main",
+   "record_status": "UNVERIFIED",
+   "rule": "ngany | rsv",
+   "rule_tokens": [
+    "ngany",
+    "rsv"
+   ],
+   "source_id": "src.7b0169e1808f0f66",
+   "source_tier": 2,
+   "title": "Retired Reserve or discharge after 20 qualifying years (basic pay credit until 60)",
+   "value": "Higher basic pay credit at retirement age for time in the Retired Reserve",
+   "who_it_is_for": "Guard and Reserve members with 20 qualifying years who stop serving before 60: years spent in the Retired Reserve count toward the basic pay used for retired pay; a discharge stops that credit at separation. The choice cannot be undone, so ask your personnel office first"
   },
   {
    "benefit_id": "us.scholarships-for-military-children-commissary-program",
@@ -42060,7 +42116,7 @@
   }
  ],
  "counts": {
-  "benefits": 1385,
+  "benefits": 1387,
   "by_category": {
    "BONUS": 84,
    "BURIAL": 60,
@@ -42068,7 +42124,7 @@
    "EDU": 143,
    "FAMILY": 6,
    "GUARD_EDU": 63,
-   "GUARD_PAY": 71,
+   "GUARD_PAY": 73,
    "HEALTH": 8,
    "HOMES": 53,
    "HOUSING": 2,
@@ -42089,24 +42145,24 @@
   },
   "by_kind": {
    "COMMERCIAL_DEAL": 9,
-   "FEDERAL_BENEFIT": 79,
+   "FEDERAL_BENEFIT": 81,
    "NONPROFIT_PROGRAM": 12,
    "STATE_BENEFIT": 1285
   },
   "by_record_status": {
    "SOURCE_CHECKED": 63,
-   "UNVERIFIED": 1322
+   "UNVERIFIED": 1324
   },
   "by_url_status": {
    "LINKED_FROM_SOURCE": 1264,
-   "SAME_AS_SOURCE": 115,
+   "SAME_AS_SOURCE": 117,
    "SEEN_IN_SEARCH": 6
   },
   "jurisdictions_covered": 56,
   "recovered_leads": 23,
   "rule_leads": 9,
-  "sources": 138,
-  "sources_opened": 137,
+  "sources": 140,
+  "sources_opened": 139,
   "verified": 0
  },
  "facts": {
@@ -43068,11 +43124,11 @@
  "integrity": {
   "algorithm": "sha256",
   "canonical": "JSON with sorted keys, separators (',', ':'), UTF-8, no NaN; the integrity member excluded",
-  "sha256": "047d93c239ab92e41a49887609dadc376923a3a087d01844c68c53f3eb75f4af"
+  "sha256": "2e7bc950dfeae97e1203f308357c29981c4c1719bd252ba78d8bd5c1839d7744"
  },
  "jurisdictions": [
   {
-   "benefit_count": 100,
+   "benefit_count": 102,
    "code": "US",
    "coverage": "COVERED",
    "name": "United States (federal)",
@@ -43114,6 +43170,7 @@
     "src.6a1b528dd0cd69e6",
     "src.6a9794ef5c4810b3",
     "src.6ab021217fcb271d",
+    "src.7b0169e1808f0f66",
     "src.81b3d39dbd74f9c3",
     "src.82cc0d2da65f707f",
     "src.83caf066b153e7c3",
@@ -43154,6 +43211,7 @@
     "src.e7b75f3c4429c839",
     "src.e8886e329919ba76",
     "src.e8aee15114b36e49",
+    "src.edc2a730c81fc4f4",
     "src.f2015da0afe242f1",
     "src.fbd6cec501edd7e5",
     "src.search.2026-10-27"
@@ -44072,7 +44130,7 @@
    "location": "data/research/recovered/gemini_guard_reserve/jurisdictions_56.json",
    "path": "gemini_guard_reserve/jurisdictions_56.json",
    "recovered_from": "https://gemini.google.com/share/ddce35300d8f (owner-supplied HTML export, 2026-11-20)",
-   "sha256": "1314533c22a4b8d6f9caf99170fa8fb418e59341575dd3da4aabe3aff3030174",
+   "sha256": "7e0c7e045c4f55f7e6c64288c0590f999bff23d3bbd871d4faecc1af7f04b1ba",
    "tier": 4,
    "vault_use": "Guard & Reserve role jurisdiction leads (ADR 0011 addendum); not imported as records"
   },
@@ -45719,6 +45777,22 @@
   },
   {
    "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": "2026-05-29",
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.7b0169e1808f0f66",
+   "tail_unread_chars": 0,
+   "tier": 2,
+   "url": "https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Retired-Pay?serv=20"
+  },
+  {
+   "ledgers": [
     "states/batch01_AL-ID.psv",
     "states/batch08_tails.psv"
    ],
@@ -46899,6 +46973,22 @@
    "tail_unread_chars": 0,
    "tier": 2,
    "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Pennsylvania"
+  },
+  {
+   "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": "2026-01-30",
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.edc2a730c81fc4f4",
+   "tail_unread_chars": 0,
+   "tier": 2,
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=124"
   },
   {
    "ledgers": [

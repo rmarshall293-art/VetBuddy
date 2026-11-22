@@ -63,3 +63,10 @@ JOBS|Military leave for federal civilian employees in the Guard and Reserve|ng,r
 
 # JUR=US SRC=https://www.va.gov/health-care/eligibility/ OPENED=2026-11-21 PAGE_UPDATED=none
 HEALTH|VA health care for Guard and Reserve members after federal activation|ng,rsv,vet|ngany | rsv | vet|Current or former Guard and Reserve members called to active duty by a federal order who completed the full period; active duty for training only does not count. Combat veterans get 10 years of enhanced eligibility|VA health care enrollment|PAGE
+
+# Last gaps GRG09 and GRG15 (2026-11-21).
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=124 OPENED=2026-11-21 PAGE_UPDATED=2026-01-30
+GUARD_PAY|Blended Retirement System for Army Guard drilling members|ng|ngany|Army National Guard drilling Soldiers in the Blended Retirement System with 20 or more qualifying years; retired pay starts at the eligibility age (usually 60, earlier with a reduced age)|Retired pay of points / 360 x 2% x High-36; TSP 1% automatic plus up to 4% match; continuation pay (0.5 x monthly basic pay in CY 26) between 7 and 12 years|PAGE
+
+# JUR=US SRC=https://myairforcebenefits.us.af.mil/Benefit-Library/Federal-Benefits/Retired-Pay?serv=20 OPENED=2026-11-21 PAGE_UPDATED=2026-05-29
+GUARD_PAY|Retired Reserve or discharge after 20 qualifying years (basic pay credit until 60)|ng,rsv|ngany | rsv|Guard and Reserve members with 20 qualifying years who stop serving before 60: years spent in the Retired Reserve count toward the basic pay used for retired pay; a discharge stops that credit at separation. The choice cannot be undone, so ask your personnel office first|Higher basic pay credit at retirement age for time in the Retired Reserve|PAGE

@@ -118,3 +118,10 @@
 **Gaps.** 13 of 15 gaps are IMPLEMENTED_UNVERIFIED. Two remain PARTIAL:
 - GRG09: BRS for drilling members.
 - GRG15: the choice between the Retired Reserve and a discharge (an irreversible decision; HITL level 4).
+
+## Addendum (2026-11-21, final pass)
+
+- **Gaps closed:** GRG09 (BRS for drilling members) and GRG15 (Retired Reserve or discharge) now have records, so all 15 gaps are IMPLEMENTED_UNVERIFIED.
+- **Irreversible choices:** the policy lists them (`irreversible_choices`). Those records carry the `irreversible_choice` caveat: VetBuddy explains and refers, and never recommends (v6 HITL level 4).
+- **TRICARE 2027 premiums:** confirmed only by MOAA, so they are recorded as a source check, not written into records.
+- **Remaining, outside research:** a named reviewer for each record (G1), and production sign-in (G17).

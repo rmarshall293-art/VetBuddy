@@ -17,7 +17,8 @@ The Guard & Reserve vault is the v8 Guard/Reserve role of Benefits Intelligence.
 | `config/benefit_vault_policy.yaml` | Vault-side manifest `guard_reserve_agent` |
 | `backend/app/agents/registry.json`, `database/migrations/0021_guard_reserve_agent.sql` | Platform manifest (DRAFT), with a configuration hash pinned by a test |
 | `backend/app/domains/vault/guard_reserve/recovered.py` | Recovered Gemini leads (hash-checked, language-guarded) |
-| `backend/tests/vault/test_guard_reserve.py` | 58 tests |
+| `data/research/guard_reserve/source_checks.json` | What each opened page said about the report's claims |
+| `backend/tests/vault/test_guard_reserve.py` | 67 tests |
 | `web/app.js` (`viewGuardReserve`), `tests/e2e/smoke_guard_reserve.py` | The Guard & Reserve Center screen and its browser smoke test |
 
 ## Governance placement
@@ -92,7 +93,7 @@ DoD civilians are out of scope: civilian employment alone creates no Guard or Re
 | GR04 | Lens over the matcher | IMPLEMENTED_TESTED |
 | GR05 | Routes (Mode A) | IMPLEMENTED_TESTED |
 | GR06 | Pulls through Benefits Intelligence (Mode B) | PARTIAL (G17) |
-| GR07 | AGR-specific records | PARTIAL (recovered leads name sources for gaps GRG01–GRG15) |
+| GR07 | Guard, Reserve and AGR records from opened sources | PARTIAL (15 records; Air Force AGR pages and 50 named pages not yet read) |
 | GR10 | Recovered Gemini leads | IMPLEMENTED_TESTED |
 | GR11 | Guard & Reserve Center screen | IMPLEMENTED_TESTED |
 | GR12 | Source-check queue | IMPLEMENTED_TESTED (page reads need approved web access) |
@@ -131,9 +132,31 @@ The web shell has a **Guard & Reserve** page at `#/guard-reserve`, the "Guard & 
 
 Browser smoke test: `tests/e2e/smoke_guard_reserve.py`, run by `scripts/test.sh --ui`.
 
-## Turning recovered leads into records
+## Source checks (2026-11-21)
 
-Nothing has been opened yet. Each lead becomes a record in five steps:
+34 pages were read: 31 named by the report, and 3 found by search for AGR health care and retirement. Two named pages did not load.
+
+| Result | Count |
+|---|---|
+| Findings: agrees / agrees in part / differs / source silent | 12 / 21 / 1 / 7 |
+| Records written | 15 (13 federal in `federal03_guard_reserve.psv`, 2 state in `batch09_guard_reserve.psv`) |
+| Named pages still to open | 50 |
+
+The per-page findings are in `data/research/guard_reserve/source_checks.json`. Every lead in the match, the `recovered` route and the screen carries:
+- `source_checks`: the verdict and note from each opened page;
+- `check_state`: NOT_OPENED, CHECKED or CORRECTED;
+- `records`: the records written from its source.
+
+The source queue reports each page as OPENED, FETCH_FAILED or NOT_OPENED.
+
+**What the checks changed.**
+- **CRDP (GF13), corrected:** the 50% VA rating requirement was missing from the report.
+- **Reduced retirement age (GF06), narrower in the report than in law:** the report left out the rule allowing two consecutive fiscal years after 30 Sep 2014, and that national-emergency 502(f) duty counts.
+- **Not confirmed:** Iowa's Title 10 / Title 32 tax split and Utah's AGR exclusion.
+
+## Turning the remaining leads into records
+
+Each remaining lead becomes a record in five steps:
 
 1. Open the page at the top of the source queue.
 2. Write a ledger row in `data/research/federal/` or the state ledger, with `OPENED=<date>`, following `data/research/RESEARCH_LOG.md`.
@@ -161,7 +184,7 @@ Nothing has been opened yet. Each lead becomes a record in five steps:
 | GRG14 | State-Sponsored Life Insurance |
 | GRG15 | Retired Reserve or discharge after 20 years |
 
-GRG07 and GRG10 are SOURCE_NOT_AVAILABLE; the rest are PARTIAL (a recovered lead names a source to read).
+GRG01–GRG04, GRG11 and GRG12 are IMPLEMENTED_UNVERIFIED (records exist and wait for a named reviewer). GRG07 and GRG10 are SOURCE_NOT_AVAILABLE. The rest are PARTIAL (a lead names a source still to read).
 
 ## Run
 

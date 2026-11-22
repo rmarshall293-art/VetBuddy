@@ -37,6 +37,7 @@ class GuardReserveAgent:
         self.parent = parent
         self.policy = policy or default_policy()
         self.recovered = recovered or RecoveredLeads(self.policy)
+        self.recovered.check_records(parent.registry)
         self.policy.check_against(parent.registry)
         manifest = parent.manifests.get(ROLE_ID)
         if manifest is None or manifest.may_pull_from_agents or manifest.exposes:
@@ -190,8 +191,11 @@ class GuardReserveAgent:
     def source_queue(self, session: Session) -> dict:
         """The research queue for the recovered leads: which pages to open, in order (no fetch here)."""
         queue = self.recovered.source_queue(self.parent.egress)
+        states = [q["state"] for q in queue]
         payload = {"executable": False, "reason": "Pages are opened by a researcher with approved web access; "
                    "VetBuddy has no fetcher wired (hosting decision).", "queue": queue,
-                   "counts": {"sources": len(queue), "host_known": sum(q["host_known"] for q in queue)}}
+                   "counts": {"sources": len(queue), "host_known": sum(q["host_known"] for q in queue),
+                              "opened": states.count("OPENED"), "fetch_failed": states.count("FETCH_FAILED"),
+                              "not_opened": states.count("NOT_OPENED")}}
         return self.parent._envelope("guard_reserve_source_queue", session, None,
                                      {"role": ROLE_ID, "recovered": self.recovered.provenance}, payload)

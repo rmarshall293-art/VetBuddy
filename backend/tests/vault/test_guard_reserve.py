@@ -337,7 +337,7 @@ def test_routes(client):
     cat = client.get(f"{gr_api.PREFIX}/catalog").json()
     assert cat["role"]["role_id"] == ROLE_ID and cat["manifest"]["may_pull_from_agents"] is False
     assert {s["id"] for s in cat["duty_statuses"]} >= {"agr32", "agr10", "selres", "tech", "mob", "sad"}
-    assert {g["status"] for g in cat["research_gaps"]} <= {"PARTIAL", "SOURCE_NOT_AVAILABLE"}
+    assert {g["status"] for g in cat["research_gaps"]} <= {"IMPLEMENTED_UNVERIFIED", "PARTIAL", "SOURCE_NOT_AVAILABLE"}
     leads = client.get(f"{gr_api.PREFIX}/leads").json()
     assert all(l["lead_id"].startswith("gr.") for l in leads["rule_leads"])
     ok = client.post(f"{gr_api.PREFIX}/match", json={"guard_reserve": AGR32, "facts": AL, "as_of": AS_OF})
@@ -412,7 +412,9 @@ def test_recovered_leads_are_leads_never_outcomes(dev_role):
     assert [j["code"] for j in rec["jurisdictions"]] == ["IA", "MO"]            # Guard state first
     for lead in rec["jurisdictions"] + rec["federal"]:
         assert "outcome" not in lead and lead["record_status"] == "UNVERIFIED" and lead["tier"] == 4
-        assert lead["source_opened"] is False and lead["caveats"][0]["id"] == "recovered_ai_lead"
+        assert lead["caveats"][0]["id"] == "recovered_ai_lead"
+        assert lead["check_state"] in ("NOT_OPENED", "CHECKED", "CORRECTED")
+        assert lead["source_opened"] == bool(lead["source_checks"]) or lead["check_state"] == "NOT_OPENED"
     assert {f["lead_id"] for f in rec["federal"]} >= {"GF12"}                    # AGR retirement
     assert "GF05" not in {f["lead_id"] for f in rec["federal"]}                  # Gray Area is not an AGR lead
 
@@ -447,7 +449,7 @@ def test_source_queue_puts_agr_and_gray_area_first_and_lists_every_source_once(d
     urls = [q["url"] for q in queue]
     assert len(urls) == len(set(urls)) and env["executable"] is False
     assert queue[0]["cited_by"] == ["GF12"]                                       # AGR retirement first
-    assert all(q["state"] == "NOT_OPENED" for q in queue)
+    assert {q["state"] for q in queue} <= {"OPENED", "FETCH_FAILED", "NOT_OPENED"}
     named = {u for l in dev_role.recovered.federal for u in l["named_sources"]}
     named |= {r["named_source"] for r in dev_role.recovered.jurisdictions.values()}
     assert set(urls) == named
@@ -459,3 +461,83 @@ def test_source_queue_puts_agr_and_gray_area_first_and_lists_every_source_once(d
 def test_source_queue_route(client):
     r = client.get(f"{gr_api.PREFIX}/source-queue").json()
     assert r["kind"] == "guard_reserve_source_queue" and r["counts"]["sources"] == len(r["queue"])
+
+
+# ── source checks of 2026-11-21 ────────────────────────────────────────────
+CHECKS = ROOT / "data/research/guard_reserve/source_checks.json"
+
+
+def test_every_opened_source_wrote_only_records_from_its_own_page(registry):
+    doc = json.loads(CHECKS.read_text())
+    for check in doc["checks"]:
+        for rid in check["records"]:
+            assert registry.benefits[rid].record_status in ("SOURCE_CHECKED", "UNVERIFIED")      # never VERIFIED (G1)
+    failed = [c for c in doc["checks"] if c["result"] == "fetch_failed"]
+    assert failed and all(not c["findings"] and not c["records"] for c in failed)
+
+
+def test_new_guard_reserve_records_are_in_the_registry_with_their_rules(registry):
+    expect = {
+        "us.tricare-retired-reserve": "(ret & age<60) | (dep & spret)",
+        "us.tricare-prime-and-select-at-age-60-for-retired-guard-and-reserve-members": "(ret & age>=60) | (dep & spret)",
+        "us.reduced-retirement-age-for-qualifying-active-duty": "ngany | rsv",
+        "us.concurrent-retirement-and-disability-pay-crdp": "ret & r>=50",
+        "us.combat-related-special-compensation-crsc": "ret & r>=10",
+    }
+    for rid, rule in expect.items():
+        assert registry.benefits[rid].rule == rule
+
+
+def test_crdp_correction_is_shown_on_the_gemini_lead(dev_role):
+    lead = next(l for l in dev_role.recovered.federal_for(None) if l["lead_id"] == "GF13")
+    assert lead["check_state"] == "CORRECTED"
+    assert any(f["verdict"] == "DIFFERS" and "50%" in f["note"] for f in lead["source_checks"])
+    assert "us.concurrent-retirement-and-disability-pay-crdp" in lead["records"]
+
+
+def test_reduced_age_check_records_what_the_report_left_out(dev_role):
+    lead = next(l for l in dev_role.recovered.federal_for(None) if l["lead_id"] == "GF06")
+    note = lead["source_checks"][0]["note"]
+    assert lead["source_checks"][0]["verdict"] == "AGREES_IN_PART" and "two consecutive fiscal years" in note
+
+
+def test_gap_records_exist_and_retired_reserve_now_matches(dev_role):
+    gaps = {g["id"]: g for g in dev_role.policy.research_gaps}
+    assert gaps["GRG01"]["status"] == "IMPLEMENTED_UNVERIFIED"
+    assert gaps["GRG13"]["status"] == "PARTIAL"                                  # Iowa and Utah AGR tax still open
+    env = dev_role.match({"guard_reserve": {"gr_component": "usar", "duty_status": "retres"},
+                          "facts": {"age": 52}, "as_of": AS_OF}, guest(), NOW)
+    found = {i["benefit_id"]: i for i in env["items"]}
+    assert found["us.tricare-retired-reserve"]["outcome"] == "PRELIMINARY_MATCH"
+    assert found["us.tricare-retired-reserve"]["guard_reserve"]["section"] == "guard_reserve"
+
+
+def test_source_queue_reports_opened_pages(dev_role):
+    counts = dev_role.source_queue(guest())["counts"]
+    assert counts["opened"] == 31 and counts["fetch_failed"] == 2       # pages the report names
+    assert counts["opened"] + counts["fetch_failed"] + counts["not_opened"] == counts["sources"]
+
+
+def test_check_notes_pass_the_language_guard(dev_role):
+    notes = [f["note"] for found in dev_role.recovered.checks_by_lead.values() for f in found]
+    assert dev_role.parent.language.check_all(notes) == []
+
+
+def test_agr_member_now_sees_agr_retirement_and_health_care(dev_role):
+    env = dev_role.match({"guard_reserve": {"gr_component": "arng", "duty_status": "agr32"}, "as_of": AS_OF},
+                         guest(), NOW)
+    found = {i["benefit_id"]: i for i in env["items"]}
+    for rid in ("us.army-agr-retirement-after-20-years-of-active-federal-service",
+                "us.blended-retirement-system-retired-pay-for-army-guard-agr-and-full-time-n",
+                "us.tricare-prime-for-guard-members-on-federal-active-duty-including-full-ti"):
+        assert found[rid]["outcome"] == "PRELIMINARY_MATCH"
+        assert found[rid]["guard_reserve"]["section"] == "guard_reserve"
+        assert "agr_title32" in {c["id"] for c in found[rid]["guard_reserve"]["role_caveats"]}
+    gaps = {g["id"]: g for g in dev_role.policy.research_gaps}
+    assert gaps["GRG03"]["status"] == gaps["GRG04"]["status"] == "IMPLEMENTED_UNVERIFIED"
+
+
+def test_pages_found_by_search_are_marked_as_not_named_by_the_report():
+    doc = json.loads(CHECKS.read_text())
+    extra = [c for c in doc["checks"] if c.get("named_by_report") is False]
+    assert len(extra) == 3 and all(c["records"] for c in extra)

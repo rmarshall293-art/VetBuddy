@@ -281,3 +281,8 @@ Decisions are in ADR 0008.
   - Connecticut: the report names a program the vault does not have (a research target).
   - New Mexico: the report lists none, but the vault has a record (a conflict to review).
 - **Language guard:** one cell (Missouri, "other perks") uses wording the guard blocks, so it is withheld rather than reworded.
+
+**Source checks (2026-11-21).**
+- **Scope:** 34 pages were read: 31 named by the report and 3 found by search for AGR. Two named pages did not load.
+- **Records:** 15 Guard, Reserve and AGR records were written, and the registry now holds 1,377. None is VERIFIED until a named reviewer checks it (G1).
+- **Per-claim results:** they are in `data/research/guard_reserve/source_checks.json`. The Guard & Reserve role shows each Gemini lead with what its source said, and marks GF13 (CRDP) as corrected.

@@ -598,9 +598,14 @@ function outcomeChip(outcome) {
   return el("span", { class: "chip " + o[1] }, o[0]);
 }
 
+const GR_CHECK = { NOT_OPENED: "AI research lead · not checked", CHECKED: "AI research lead · source opened",
+  CORRECTED: "AI research lead · source corrects it" };
+const GR_VERDICT = { AGREES: "Source agrees", AGREES_IN_PART: "Source agrees in part", DIFFERS: "Source differs",
+  SOURCE_SILENT: "Source doesn't say" };
+
 function grLeadCard(lead) {
   return el("article", { class: "card stack" },
-    el("div", { class: "chips" }, el("span", { class: "chip ochre" }, "AI research lead · not checked")),
+    el("div", { class: "chips" }, el("span", { class: "chip ochre" }, GR_CHECK[lead.check_state] || GR_CHECK.NOT_OPENED)),
     lead.topic ? el("h3", { class: "disp" }, lead.topic) : el("h3", { class: "disp" }, lead.name),
     lead.claim ? el("p", {}, lead.claim) : null,
     lead.education !== undefined ? el("dl", { class: "kv" },
@@ -608,6 +613,9 @@ function grLeadCard(lead) {
         .reduce((acc, k, i, a) => i % 2 ? acc : acc.concat([el("dt", {}, a[i + 1]),
           el("dd", {}, lead[k] === null ? "Wording held back by VetBuddy's safety check; read the source." : lead[k])]), [])) : null,
     lead.review_note ? el("p", { class: "small" }, lead.review_note) : null,
+    (lead.source_checks || []).map(f => el("div", { class: "banner" },
+      el("strong", {}, `${GR_VERDICT[f.verdict]} (opened ${f.opened_on})`), el("p", {}, f.note))),
+    lead.records && lead.records.length ? el("p", { class: "small" }, `Now in VetBuddy's records: ${lead.records.length} record${lead.records.length === 1 ? "" : "s"} written from the opened source.`) : null,
     lead.vault_cross_check ? el("p", { class: "small" }, "Compared with VetBuddy's records: " + lead.vault_cross_check.meaning + ".") : null,
     (lead.caveats || []).map(c => el("p", { class: "small" }, c.text)),
     el("div", { class: "btn-row" }, ...(lead.named_sources || [lead.named_source]).filter(Boolean).slice(0, 3).map((u, i) =>
@@ -696,7 +704,7 @@ async function viewGuardReserve() {
         otherBox) : null,
       el("section", { class: "stack" },
         el("h2", { class: "disp" }, "Research leads to check"),
-        el("div", { class: "banner" }, el("strong", {}, "Not checked yet"), el("p", {}, env.recovered_leads.notice)),
+        el("div", { class: "banner" }, el("strong", {}, "From an AI-written report"), el("p", {}, env.recovered_leads.notice)),
         ...env.recovered_leads.jurisdictions.map(grLeadCard),
         ...env.recovered_leads.federal.map(grLeadCard)));
     out.scrollIntoView({ block: "start" });

@@ -1,0 +1,545 @@
+{
+ "dataset": "vetbuddy.research.guard_reserve.source_checks",
+ "version": "1.0.0",
+ "opened_on": "2026-11-21",
+ "method": "Each page named by the recovered Gemini report was opened through an approved page fetch and compared with the report's claim. A finding records only what the page itself says. Rows written from these pages are in data/research/federal/federal03_guard_reserve.psv and data/research/states/batch09_guard_reserve.psv. Pages marked named_by_report false were found by search when the named pages did not cover a topic (AGR health care and AGR retirement).",
+ "verdicts": {
+  "AGREES": "the page says what the report says",
+  "AGREES_IN_PART": "the page confirms part of the claim; the rest is not on the page or is narrower",
+  "DIFFERS": "the page contradicts or materially corrects the claim",
+  "SOURCE_SILENT": "the page does not address the claim"
+ },
+ "checks": [
+  {
+   "url": "https://newsroom.tricare.mil/News/TRICARE-News/Article/4328806/learn-your-2026-tricare-health-plan-costs",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF10",
+     "verdict": "AGREES_IN_PART",
+     "note": "2026 TRR premiums $645.90 and $1,548.30 match; the 2027 figures come from a page that would not load."
+    },
+    {
+     "lead_id": "GF11",
+     "verdict": "AGREES_IN_PART",
+     "note": "2026 TRS premiums $57.88 and $286.66 match; 2027 figures not checked."
+    },
+    {
+     "lead_id": "GF12",
+     "verdict": "AGREES_IN_PART",
+     "note": "Group A retiree family fees of $375 (Select) and $765 (Prime) match; the AGR pension figures are not on this page."
+    }
+   ],
+   "records": [
+    "us.tricare-retired-reserve"
+   ]
+  },
+  {
+   "url": "https://newsroom.tricare.mil/News/TRICARE-News/Article/4642349/get-to-know-your-2027-tricare-health-plan-costs",
+   "opened_on": "2026-11-21",
+   "result": "fetch_failed",
+   "findings": [],
+   "records": [],
+   "note": "The site returned an error; the 2027 premiums stay unchecked."
+  },
+  {
+   "url": "https://newsroom.tricare.mil/News/TRICARE-News/Article/3120866/retiring-from-national-guard-or-reserve-know-your-tricare-options",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF05",
+     "verdict": "AGREES",
+     "note": "Prime and Select are not available in the Gray Area and begin at 60; the page adds that enrollment must be made within 90 days of turning 60."
+    },
+    {
+     "lead_id": "GF10",
+     "verdict": "AGREES",
+     "note": "TRR is premium-based coverage for qualified retired Guard and Reserve members under 60 and their families."
+    }
+   ],
+   "records": [
+    "us.tricare-prime-and-select-at-age-60-for-retired-guard-and-reserve-members"
+   ]
+  },
+  {
+   "url": "https://uscode.house.gov/us/usc/t10/s12731/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF05",
+     "verdict": "AGREES",
+     "note": "Age 60 and 20 years of service are the requirements."
+    },
+    {
+     "lead_id": "GF06",
+     "verdict": "AGREES_IN_PART",
+     "note": "Three months per aggregate 90 days after 28 January 2008, floor 50, and the 12310 AGR exclusion are right. The report leaves out that days may also be aggregated over two consecutive fiscal years after 30 September 2014, and that 32 USC 502(f) duty for a national emergency counts. The statute says nothing about health care."
+    }
+   ],
+   "records": [
+    "us.reduced-retirement-age-for-qualifying-active-duty"
+   ]
+  },
+  {
+   "url": "https://uscode.house.gov/us/usc/t10/s12733/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF07",
+     "verdict": "AGREES_IN_PART",
+     "note": "Points are divided by 360 (with yearly caps on inactive-duty points, 130 since the year including 30 Oct 2007); the 2.5% and 2.0% multipliers are not in this section."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://www.dfas.mil/retiredmilitary/plan/estimate/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF07",
+     "verdict": "AGREES_IN_PART",
+     "note": "DFAS gives 2.5% per year and points / 360; it does not mention the 2.0% BRS multiplier."
+    },
+    {
+     "lead_id": "GF12",
+     "verdict": "SOURCE_SILENT",
+     "note": "The 50% and 40% figures for 20 years are not stated on this page."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://www.dfas.mil/RetiredMilitary/plan/Gray-Area-Retirees/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF05",
+     "verdict": "AGREES",
+     "note": "Retired pay generally starts at 60, as early as 50 for some active duty, and the application goes through the Branch of Service."
+    }
+   ],
+   "records": [
+    "us.reserve-component-non-regular-retired-pay"
+   ]
+  },
+  {
+   "url": "https://www.dfas.mil/RetiredMilitary/newsevents/newsletter/September2026-Retiree-Newsletter-Gray-Area-Retiree-Spotlight/",
+   "opened_on": "2026-11-21",
+   "result": "fetch_failed",
+   "findings": [],
+   "records": [],
+   "note": "The site returned an error."
+  },
+  {
+   "url": "https://www.dfas.mil/retiredmilitary/provide/rcsbp/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF09",
+     "verdict": "SOURCE_SILENT",
+     "note": "The page confirms who RCSBP is for and that the annuity is a percentage of retired pay set by the election; it does not give the 90-day window, the form, the options or the costs."
+    }
+   ],
+   "records": [
+    "us.reserve-component-survivor-benefit-plan-rcsbp"
+   ]
+  },
+  {
+   "url": "https://uscode.house.gov/us/usc/t10/s1407/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF08",
+     "verdict": "AGREES_IN_PART",
+     "note": "The High-36 uses the 36 highest months before entitlement, and for a former member only months while a member count, which supports the report's point that a discharge stops the clock; the statute does not mention the Retired Reserve by name."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://uscode.house.gov/us/usc/t10/s1201/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF01",
+     "verdict": "AGREES_IN_PART",
+     "note": "Twenty years or a rating of at least 30% is right, and Guard and Reserve members are covered on orders over 30 days; pay computation and severance are not in this section."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://uscode.house.gov/us/usc/t10/s12731b/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF02",
+     "verdict": "AGREES_IN_PART",
+     "note": "Selected Reserve members with 15 to under 20 years found unfit are treated as meeting the 20-year requirement; the section's text does not state when pay starts."
+    }
+   ],
+   "records": [
+    "us.reserve-retired-pay-with-15-years-for-members-found-unfit-15-year-letter"
+   ]
+  },
+  {
+   "url": "https://uscode.house.gov/us/usc/119-136/t10/s1413a/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF02",
+     "verdict": "AGREES",
+     "note": "CRSC eligibility excludes retired pay paid only by reason of 12731b."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://www.dfas.mil/retiredmilitary/disability/crsc/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF13",
+     "verdict": "AGREES_IN_PART",
+     "note": "At least 10% VA rating and tax-free are right; the page does not address when Guard and Reserve retirees can start."
+    }
+   ],
+   "records": [
+    "us.combat-related-special-compensation-crsc"
+   ]
+  },
+  {
+   "url": "https://www.dfas.mil/retiredmilitary/disability/crdp/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF13",
+     "verdict": "DIFFERS",
+     "note": "The report leaves out that CRDP needs a VA rating of 50% or more. For Guard and Reserve Chapter 61 retirees it starts at the age retired pay would otherwise start."
+    }
+   ],
+   "records": [
+    "us.concurrent-retirement-and-disability-pay-crdp"
+   ]
+  },
+  {
+   "url": "https://uscode.house.gov/us/usc/119-136/t10/s1207a/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF03",
+     "verdict": "SOURCE_SILENT",
+     "note": "The section applies to members with at least eight years of active service; it does not mention Guard and Reserve members."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/DoD-Disability-Retired-Pay?serv=120",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF01",
+     "verdict": "AGREES_IN_PART",
+     "note": "Two computation methods and the 75% cap match; TDRL and PDRL are not on the page."
+    },
+    {
+     "lead_id": "GF03",
+     "verdict": "AGREES",
+     "note": "The page says 10 USC 1207a does not apply to Reserve Soldiers referred to the DES after release from active duty."
+    }
+   ],
+   "records": [
+    "us.dod-disability-retired-pay-chapter-61"
+   ]
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/DoD-Disability-Severance-Pay-?serv=125",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF01",
+     "verdict": "AGREES",
+     "note": "Severance is 2 months of basic pay x years of service, at most 19 years (at least 3, or 6 for combat-related)."
+    }
+   ],
+   "records": [
+    "us.dod-disability-severance-pay"
+   ]
+  },
+  {
+   "url": "https://www.va.gov/disability/how-to-file-claim/when-to-file/pre-discharge-claim/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF04",
+     "verdict": "AGREES_IN_PART",
+     "note": "IDES referral and a proposed VA rating before separation are confirmed; the MEB and PEB steps are not on this page."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://ngact.org/ngact-state-sponsored-life-insurance/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF14",
+     "verdict": "AGREES_IN_PART",
+     "note": "Connecticut only: $1,000 free for every member and $10,000 free the first year for recruits who enroll within 180 days; run by the Guard association, not a government agency."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://www.tricare.mil/Costs/HealthPlanCosts/TS",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF12",
+     "verdict": "SOURCE_SILENT",
+     "note": "The page now shows calendar year 2027 costs and does not list retiree fees in the part read."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://revenue.iowa.gov/taxes/tax-guidance/individual-income-tax/1040-expanded-instructions/note-additional-information",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF15",
+     "verdict": "SOURCE_SILENT",
+     "note": "The page has only a heading on service member taxes."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://www.michigan.gov/taxes/questions/iit/accordion/military/is-national-guard-pay-considered-military-compensation",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.MI",
+     "verdict": "AGREES",
+     "note": "Drill, annual training, AGR wages and other Title 10 or Title 32 orders are exempt; state active duty is taxable."
+    },
+    {
+     "lead_id": "GF15",
+     "verdict": "AGREES_IN_PART",
+     "note": "Michigan exempts Title 10 and Title 32 Guard pay alike."
+    }
+   ],
+   "records": [
+    "mi.national-guard-pay-exemption-drill-annual-training-agr-title-10-and-titl"
+   ]
+  },
+  {
+   "url": "https://guard.utah.gov/stw/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF15",
+     "verdict": "SOURCE_SILENT",
+     "note": "The waiver page neither includes nor excludes AGR members; the report's claim that Utah excludes AGR is not confirmed."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Iowa",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.IA",
+     "verdict": "AGREES_IN_PART",
+     "note": "Active duty pay and retired pay are exempt, the Guard scholarship covers up to 120 hours (130 for STEM), and the homeownership grant is $5,000. The page says nothing on Guard drill or Title 32 AGR pay, so the report's Title 10 / Title 32 split is not confirmed, and the hiring points it describes are for veterans."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Utah",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.UT",
+     "verdict": "AGREES_IN_PART",
+     "note": "STA and SSLR up to $7,000 a fiscal year, the 4.5% retired pay credit, the $100,000 state active duty death gratuity and the $2,500 homebuyer grant match; AGR exclusion from the waiver is not stated."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Texas",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.TX",
+     "verdict": "AGREES",
+     "note": "State tuition assistance covers drilling and AGR members (12 hours a semester), Hazlewood is 150 hours after 181 days of active duty, and VLB loans cover serving Guard and 20-year Reserve members."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Wisconsin",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.WI",
+     "verdict": "AGREES_IN_PART",
+     "note": "The tuition grant (up to UW-Madison tuition) lists enlisted and warrant officers only, and retired pay is not taxed. Active duty pay is subtracted and inactive duty pay is not; the page does not name AGR."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Michigan",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.MI",
+     "verdict": "AGREES_IN_PART",
+     "note": "MINGSTAP covers AGR members and dependents, but the $14,400 and $6,000 figures are program maximums, not yearly amounts. The state Guard retirement pay is $600 a year from age 55 with 19 years, 6 months and 1 day."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Nebraska",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.NE",
+     "verdict": "AGREES",
+     "note": "Reservist Tuition Credit is 75% (50% graduate) for Guard and Reserve; Guard pay including AGR is excluded; other military pay is taxed; retired pay is exempt."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/South-Carolina",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.SC",
+     "verdict": "AGREES",
+     "note": "Drill and annual training pay are exempt, full-time AGR members are capped at 39 days, and CAP pays up to $12,000 a year ($25,000 lifetime). In-state tuition for Reserve members is not specifically listed."
+    }
+   ],
+   "records": [
+    "sc.guard-and-reserve-pay-exemption-for-full-time-agr-members"
+   ]
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Ohio",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.OH",
+     "verdict": "AGREES_IN_PART",
+     "note": "The scholarship (48 or 96 hours), the 15% hiring preference and the $100,000 death benefit match; SGLI reimbursement excludes full-time Ohio Guard duty, and Guard and AGR income tax treatment is not addressed."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Hawaii",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.HI",
+     "verdict": "AGREES",
+     "note": "The $8,082 exclusion (2024), retired pay exemption, STAP (100% community college, 50% university, O-3 and below), the one-vehicle weight tax exemption and 15 days of state leave match; other military pay in federal income is taxable."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://www.army.mil/article/272555/human_resources_command_processes_the_armys_retirements",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GF12",
+     "verdict": "AGREES_IN_PART",
+     "note": "Army AGR Soldiers with 20 or more years of active federal service retire like active-duty Soldiers; those who reach 60 without it but with 20 qualifying years may get Gray Area retirement. The pay percentages are not in the article."
+    }
+   ],
+   "records": [
+    "us.army-agr-retirement-after-20-years-of-active-federal-service"
+   ]
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=120",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GF12",
+     "verdict": "AGREES",
+     "note": "Under BRS, Guard AGR and full-time National Guard duty Soldiers get 2% x years x High-36 after 20 years of active federal service, which is the report's 40% at 20 years."
+    },
+    {
+     "lead_id": "GF07",
+     "verdict": "AGREES_IN_PART",
+     "note": "Confirms the 2.0% BRS multiplier for AGR members; the drilling-member formula is on a different fact sheet."
+    }
+   ],
+   "records": [
+    "us.blended-retirement-system-retired-pay-for-army-guard-agr-and-full-time-n"
+   ]
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/TRICARE-Prime?serv=120",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "named_by_report": false,
+   "findings": [
+    {
+     "lead_id": "GF12",
+     "verdict": "SOURCE_SILENT",
+     "note": "Covers health care during AGR service, not after retirement: Prime with no enrollment fee while on federal active duty, families when orders exceed 30 consecutive days."
+    }
+   ],
+   "records": [
+    "us.tricare-prime-for-guard-members-on-federal-active-duty-including-full-ti"
+   ]
+  }
+ ]
+}

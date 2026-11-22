@@ -175,6 +175,10 @@ class GuardReservePolicy:
         for lead_id in self.lead_checks:
             if lead_id not in registry.rule_leads:
                 raise PolicyError(f"lead check {lead_id} names a lead the registry does not carry")
+        for gap in self.research_gaps:
+            missing = [r for r in gap.get("records", ()) if r not in registry.benefits]
+            if missing:
+                raise PolicyError(f"{gap['id']} names records the registry does not carry: {missing}")
 
     @classmethod
     def load(cls, policy_path: Path = POLICY_PATH, dataset_path: Optional[Path] = None) -> "GuardReservePolicy":

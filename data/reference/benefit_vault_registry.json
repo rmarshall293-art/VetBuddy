@@ -18607,6 +18607,34 @@
    "who_it_is_for": "Military retirees"
   },
   {
+   "benefit_id": "mi.national-guard-pay-exemption-drill-annual-training-agr-title-10-and-titl",
+   "category": "INCTAX",
+   "caveat_ids": [],
+   "content_hash": "dad2fcf497e762000ef07a3b3d7d24a5303f3b92048937bb152ccdec80d6139e",
+   "groups": [
+    "ng"
+   ],
+   "jurisdiction": "MI",
+   "kind": "STATE_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "states/batch09_guard_reserve.psv:6",
+   "official_url": "https://www.michigan.gov/taxes/questions/iit/accordion/military/is-national-guard-pay-considered-military-compensation",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "res & ng",
+   "rule_tokens": [
+    "ng",
+    "res"
+   ],
+   "source_id": "src.25b57a3b2a697694",
+   "source_tier": 1,
+   "title": "National Guard pay exemption (drill, annual training, AGR, Title 10 and Title 32 orders)",
+   "value": "Not taxed by Michigan",
+   "who_it_is_for": "Michigan National Guard members: drill and annual training (Title 32), AGR wages, and other Title 10 or Title 32 orders. Pay for state active duty ordered by the governor is taxable"
+  },
+  {
    "benefit_id": "mi.professional-licensing-benefits",
    "category": "JOBS",
    "caveat_ids": [],
@@ -31081,6 +31109,36 @@
    "who_it_is_for": "SC resident veterans with a compensable VA rating"
   },
   {
+   "benefit_id": "sc.guard-and-reserve-pay-exemption-for-full-time-agr-members",
+   "category": "INCTAX",
+   "caveat_ids": [],
+   "content_hash": "60a4f7fb950094474b45a15c17ba54a906d3e6f5da8799d1f7a25a4e28485138",
+   "groups": [
+    "ng",
+    "rsv"
+   ],
+   "jurisdiction": "SC",
+   "kind": "STATE_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "states/batch09_guard_reserve.psv:9",
+   "official_url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/South-Carolina",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 2,
+   "page_part": "tail",
+   "record_status": "UNVERIFIED",
+   "rule": "res & (ngany | rsv)",
+   "rule_tokens": [
+    "ngany",
+    "res",
+    "rsv"
+   ],
+   "source_id": "src.cadbc795908e9c63",
+   "source_tier": 2,
+   "title": "Guard and Reserve pay exemption for full-time AGR members",
+   "value": "Up to 39 days of pay not taxed",
+   "who_it_is_for": "Full-time Active Guard and Reserve members: 15 days of annual training pay and up to 24 days of drill pay at the daily rate"
+  },
+  {
    "benefit_id": "sc.guard-and-reserve-training-pay-exemption",
    "category": "INCTAX",
    "caveat_ids": [],
@@ -33528,6 +33586,36 @@
    "who_it_is_for": "Current, veteran and retired members (Guard and Reserve included), Gold Star families, DoD civilians and immediate family"
   },
   {
+   "benefit_id": "us.army-agr-retirement-after-20-years-of-active-federal-service",
+   "category": "GUARD_PAY",
+   "caveat_ids": [],
+   "content_hash": "d409d56e3dc4988465d9553701c911875bd176db5f56d90e7eb99fa0dd2132e4",
+   "groups": [
+    "ng",
+    "rsv"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:39",
+   "official_url": "https://www.army.mil/article/272555/human_resources_command_processes_the_armys_retirements",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "(ngany | rsv) & ad",
+   "rule_tokens": [
+    "ad",
+    "ngany",
+    "rsv"
+   ],
+   "source_id": "src.37ca1542ce1d89db",
+   "source_tier": 1,
+   "title": "Army AGR retirement after 20 years of active federal service",
+   "value": "Active-duty retirement and benefits; processed by Human Resources Command",
+   "who_it_is_for": "Army AGR Soldiers with 20 or more years of active federal service may retire with retirement benefits like active-duty Soldiers; AGR Soldiers who reach 60 without 20 years of active federal service but with 20 qualifying years may qualify for Gray Area retirement"
+  },
+  {
    "benefit_id": "us.army-emergency-relief",
    "category": "BONUS",
    "caveat_ids": [],
@@ -33596,6 +33684,34 @@
    "title": "Army Tuition Assistance (ArmyIgnitED)",
    "value": "Up to $4,500 a fiscal year and 18 semester hours",
    "who_it_is_for": "Active Army Soldiers, Guard and Reserve Soldiers on active duty, and Troop Program Unit Soldiers"
+  },
+  {
+   "benefit_id": "us.blended-retirement-system-retired-pay-for-army-guard-agr-and-full-time-n",
+   "category": "GUARD_PAY",
+   "caveat_ids": [],
+   "content_hash": "1eb7933f63376cafee95c496f3dedb62babea60f42304b4e22e6b8ec7d36b273",
+   "groups": [
+    "ng"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:42",
+   "official_url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=120",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 2,
+   "page_part": "main",
+   "record_status": "UNVERIFIED",
+   "rule": "ngany & ad",
+   "rule_tokens": [
+    "ad",
+    "ngany"
+   ],
+   "source_id": "src.d4fe4c896dafa0ef",
+   "source_tier": 2,
+   "title": "Blended Retirement System retired pay for Army Guard AGR and full-time National Guard duty",
+   "value": "Monthly retired pay of 2% x years of service x the average of the highest 36 months of basic pay, plus the TSP balance",
+   "who_it_is_for": "Army National Guard Soldiers on AGR or full-time National Guard duty (Title 10 or Title 32) who complete 20 or more years of active federal service"
   },
   {
    "benefit_id": "us.blue-star-museums",
@@ -33668,6 +33784,35 @@
    "who_it_is_for": "Coast Guard active, Reserve and retired members, civilians and surviving spouses (CGMA members), for themselves, spouses or children under 23"
   },
   {
+   "benefit_id": "us.combat-related-special-compensation-crsc",
+   "category": "OTHER",
+   "caveat_ids": [],
+   "content_hash": "797055c4a8a60656f61416853d6f15c531fd5a3c4854bcd9fa1a5ed3ef61b682",
+   "groups": [
+    "ret",
+    "dv"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:29",
+   "official_url": "https://www.dfas.mil/retiredmilitary/disability/crsc/",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "ret & r>=10",
+   "rule_tokens": [
+    "r>=10",
+    "ret"
+   ],
+   "source_id": "src.d598691c3b8b9070",
+   "source_tier": 1,
+   "title": "Combat-Related Special Compensation (CRSC)",
+   "value": "Tax-free monthly payment alongside retired pay",
+   "who_it_is_for": "Military retirees entitled to retired pay with combat-related disabilities rated at least 10% by VA; apply through your Branch of Service. Under 10 USC 1413a(c) retired pay paid only because of 10 USC 12731b (15-year letter) does not count"
+  },
+  {
    "benefit_id": "us.commissary-and-exchange-shopping-for-members-retirees-and-families",
    "category": "MWR",
    "caveat_ids": [],
@@ -33731,6 +33876,35 @@
    "title": "Commissary, exchange and MWR access for disabled veterans, Purple Heart recipients, former POWs and caregivers",
    "value": "In-store commissary, exchange and most MWR (lodging, golf, bowling, travel); 5% commissary surcharge",
    "who_it_is_for": "Veterans with a service-connected rating, Purple Heart recipients and former POWs with a VHIC; VA primary family caregivers with a VA letter"
+  },
+  {
+   "benefit_id": "us.concurrent-retirement-and-disability-pay-crdp",
+   "category": "OTHER",
+   "caveat_ids": [],
+   "content_hash": "7e6629da84348be3159abf24ca97a744759415c30bfb460a7b4e7ab8e9787c9b",
+   "groups": [
+    "ret",
+    "dv"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:32",
+   "official_url": "https://www.dfas.mil/retiredmilitary/disability/crdp/",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "ret & r>=50",
+   "rule_tokens": [
+    "r>=50",
+    "ret"
+   ],
+   "source_id": "src.26acfd9a81c4959b",
+   "source_tier": 1,
+   "title": "Concurrent Retirement and Disability Pay (CRDP)",
+   "value": "Retired pay and VA compensation both paid, mostly without a written claim",
+   "who_it_is_for": "Retirees entitled to retired pay and VA compensation with a rating of 50% or more; Chapter 61 retirees need 20+ years. For Guard and Reserve Chapter 61 retirees it starts at the age retired pay would otherwise start"
   },
   {
    "benefit_id": "us.death-gratuity",
@@ -33862,6 +34036,64 @@
    "title": "Disney military promotional tickets (2026)",
    "value": "4- to 6-day Park Hopper tickets from $405, valid January 1-December 18, 2026, with blackout dates",
    "who_it_is_for": "Active or retired members (Guard, Reserve, Coast Guard, Space Force, USPHS and NOAA included) or their spouse with a Uniformed Services ID; up to six tickets"
+  },
+  {
+   "benefit_id": "us.dod-disability-retired-pay-chapter-61",
+   "category": "OTHER",
+   "caveat_ids": [],
+   "content_hash": "7e729a0e523a6c0ac1cd0997f11b17fb991b2bd3dded4bae2a233b72a6ec00d4",
+   "groups": [
+    "ad",
+    "ng",
+    "rsv"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:23",
+   "official_url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/DoD-Disability-Retired-Pay?serv=120",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 2,
+   "page_part": "main",
+   "record_status": "UNVERIFIED",
+   "rule": "sm",
+   "rule_tokens": [
+    "sm"
+   ],
+   "source_id": "src.36b91bdd7bfd0357",
+   "source_tier": 2,
+   "title": "DoD disability retired pay (Chapter 61)",
+   "value": "Monthly retired pay figured by years x 2.5% or by the disability percentage (up to 75%) x retired pay base",
+   "who_it_is_for": "Members found unfit with 20+ years of creditable service or a combined rating of 30% or more; Guard and Reserve members if the disability was incurred or aggravated on orders over 30 days, or during inactive duty training, travel to or from it, or orders of 30 days or fewer"
+  },
+  {
+   "benefit_id": "us.dod-disability-severance-pay",
+   "category": "OTHER",
+   "caveat_ids": [],
+   "content_hash": "2f61b935f84373f581f65f08fe089260dab058fbe6e685fb9c329329540b18bd",
+   "groups": [
+    "ad",
+    "ng",
+    "rsv"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:26",
+   "official_url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/DoD-Disability-Severance-Pay-?serv=125",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 2,
+   "page_part": "main",
+   "record_status": "UNVERIFIED",
+   "rule": "sm",
+   "rule_tokens": [
+    "sm"
+   ],
+   "source_id": "src.4e1068277a6ecb35",
+   "source_tier": 2,
+   "title": "DoD disability severance pay",
+   "value": "One-time payment of 2 months of basic pay x years of service (at least 3, or 6 for combat-related; at most 19)",
+   "who_it_is_for": "Members separated as unfit with fewer than 20 years and a combined rating below 30%; Guard and Reserve members with 20 (or, for disability, 15) qualifying years may transfer to the Retired Reserve instead, since severance ends eligibility for Reserve retired pay"
   },
   {
    "benefit_id": "us.dod-skillbridge",
@@ -34813,6 +35045,134 @@
    "who_it_is_for": "Spouses and children of members who transfer unused entitlement while serving (a DoD service commitment applies)"
   },
   {
+   "benefit_id": "us.reduced-retirement-age-for-qualifying-active-duty",
+   "category": "GUARD_PAY",
+   "caveat_ids": [],
+   "content_hash": "afff65f8e6b835e33b702a64bd90594db3679a920d5d7c4a42d7a2a75cb09b90",
+   "groups": [
+    "ng",
+    "rsv"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:17",
+   "official_url": "https://uscode.house.gov/us/usc/t10/s12731/",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "ngany | rsv",
+   "rule_tokens": [
+    "ngany",
+    "rsv"
+   ],
+   "source_id": "src.14beb928a9f33a98",
+   "source_tier": 1,
+   "title": "Reduced retirement age for qualifying active duty",
+   "value": "Retired pay can start before 60, but not before age 50",
+   "who_it_is_for": "Ready Reserve: 3 months earlier per aggregate 90 days under 10 USC 12301(d), 12304b, a contingency provision, or 32 USC 502(f) for a national emergency, in any fiscal year after 28 Jan 2008 or 2 consecutive ones after 30 Sep 2014; AGR duty under 10 USC 12310 does not count"
+  },
+  {
+   "benefit_id": "us.reserve-component-non-regular-retired-pay",
+   "category": "GUARD_PAY",
+   "caveat_ids": [],
+   "content_hash": "e804c7a7a4000216666dfd79085d9839790283100aeda959300889479e5fd5d9",
+   "groups": [
+    "ng",
+    "rsv",
+    "ret"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:14",
+   "official_url": "https://www.dfas.mil/RetiredMilitary/plan/Gray-Area-Retirees/",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "ngany | rsv | ngret | ret",
+   "rule_tokens": [
+    "ngany",
+    "ngret",
+    "ret",
+    "rsv"
+   ],
+   "source_id": "src.e7b75f3c4429c839",
+   "source_tier": 1,
+   "title": "Reserve component (non-regular) retired pay",
+   "value": "Monthly retired pay from age 60 (or the reduced age)",
+   "who_it_is_for": "Guard and Reserve members qualified for retired pay (20 years of qualifying service); generally starts at age 60, earlier for some periods of active duty, never before 50. Apply through your Branch of Service"
+  },
+  {
+   "benefit_id": "us.reserve-component-survivor-benefit-plan-rcsbp",
+   "category": "FAMILY",
+   "caveat_ids": [],
+   "content_hash": "14cee9b812fc46c6398b6e35aeb6a23b49cc869725ccc91bec75131d726ac07d",
+   "groups": [
+    "ng",
+    "rsv",
+    "ret",
+    "sp",
+    "ch"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:35",
+   "official_url": "https://www.dfas.mil/retiredmilitary/provide/rcsbp/",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "ngany | rsv | ngret | ret | (dep & (spsm | spret | spdec))",
+   "rule_tokens": [
+    "dep",
+    "ngany",
+    "ngret",
+    "ret",
+    "rsv",
+    "spdec",
+    "spret",
+    "spsm"
+   ],
+   "source_id": "src.682bd71f54a444f1",
+   "source_tier": 1,
+   "title": "Reserve Component Survivor Benefit Plan (RCSBP)",
+   "value": "Monthly annuity for the life of the beneficiary, a percentage of retired pay",
+   "who_it_is_for": "Members of the Army and Air National Guard of the United States, Army, Navy, Marine Corps and Air Force Reserve; coverage depends on the election made when signing up (ask your personnel office about the election window)"
+  },
+  {
+   "benefit_id": "us.reserve-retired-pay-with-15-years-for-members-found-unfit-15-year-letter",
+   "category": "GUARD_PAY",
+   "caveat_ids": [],
+   "content_hash": "4ba1839f5538ac25ab27a3e0fec179ad3681a28cf387afdb9016e94a7b060b1b",
+   "groups": [
+    "ng",
+    "rsv"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:20",
+   "official_url": "https://uscode.house.gov/us/usc/t10/s12731b/",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "ngany | rsv",
+   "rule_tokens": [
+    "ngany",
+    "rsv"
+   ],
+   "source_id": "src.e11d3a394d9ce12d",
+   "source_tier": 1,
+   "title": "Reserve retired pay with 15 years for members found unfit (15-year letter)",
+   "value": "Treated as meeting the 20-year service requirement for Reserve retired pay",
+   "who_it_is_for": "Selected Reserve members with at least 15 but fewer than 20 years of service who no longer meet membership qualifications solely because of a physical disability (not for misconduct, willful neglect or unauthorized absence)"
+  },
+  {
    "benefit_id": "us.scholarships-for-military-children-commissary-program",
    "category": "SCHOLARSHIP",
    "caveat_ids": [],
@@ -35293,6 +35653,72 @@
    "who_it_is_for": "SGLI-covered members with qualifying traumatic injuries such as amputation, blindness or paralysis"
   },
   {
+   "benefit_id": "us.tricare-prime-and-select-at-age-60-for-retired-guard-and-reserve-members",
+   "category": "HEALTH",
+   "caveat_ids": [],
+   "content_hash": "c06bbd2f7dd14ecd7a402c18b0a1e17285eda89eb23e14e08b62b153f6198dc6",
+   "groups": [
+    "ng",
+    "rsv",
+    "ret",
+    "sp",
+    "ch"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:8",
+   "official_url": "https://newsroom.tricare.mil/News/TRICARE-News/Article/3120866/retiring-from-national-guard-or-reserve-know-your-tricare-options",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "(ret & age>=60) | (dep & spret)",
+   "rule_tokens": [
+    "age>=60",
+    "dep",
+    "ret",
+    "spret"
+   ],
+   "source_id": "src.c653da3ef5da28d9",
+   "source_tier": 1,
+   "title": "TRICARE Prime and Select at age 60 for retired Guard and Reserve members",
+   "value": "Same TRICARE coverage as other retirees, with retiree enrollment fees",
+   "who_it_is_for": "Retired Guard and Reserve members and their families once the member turns 60; enrollment must be made within 90 days of turning 60. Before 60 (the Gray Area) Prime and Select are not available"
+  },
+  {
+   "benefit_id": "us.tricare-prime-for-guard-members-on-federal-active-duty-including-full-ti",
+   "category": "HEALTH",
+   "caveat_ids": [],
+   "content_hash": "1857b33622dd20a189d73a2d50d6797d0749da7e1e4fce7912491461aaa0e416",
+   "groups": [
+    "ng",
+    "sp",
+    "ch"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:45",
+   "official_url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/TRICARE-Prime?serv=120",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 2,
+   "page_part": "main",
+   "record_status": "UNVERIFIED",
+   "rule": "(ngany & ad) | (dep & spsm)",
+   "rule_tokens": [
+    "ad",
+    "dep",
+    "ngany",
+    "spsm"
+   ],
+   "source_id": "src.83caf066b153e7c3",
+   "source_tier": 2,
+   "title": "TRICARE Prime for Guard members on federal active duty (including full-time Title 10 or Title 32 duty)",
+   "value": "TRICARE Prime with no enrollment fee for the member",
+   "who_it_is_for": "Army National Guard Soldiers while on federal active duty and traveling to and from it, with no enrollment fee; family members may elect Prime when the Soldier is ordered to active duty for more than 30 consecutive days"
+  },
+  {
    "benefit_id": "us.tricare-reserve-select",
    "category": "HEALTH",
    "caveat_ids": [],
@@ -35324,6 +35750,40 @@
    "title": "TRICARE Reserve Select",
    "value": "2026 premiums $57.88 a month (member) or $286.66 (member and family)",
    "who_it_is_for": "Selected Reserve and Guard members not on active duty orders, and their families"
+  },
+  {
+   "benefit_id": "us.tricare-retired-reserve",
+   "category": "HEALTH",
+   "caveat_ids": [],
+   "content_hash": "116582c13621e7636461dba15ce0190140f06851081ea93f8c30003c306cc0ca",
+   "groups": [
+    "ng",
+    "rsv",
+    "ret",
+    "sp",
+    "ch"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:11",
+   "official_url": "https://newsroom.tricare.mil/News/TRICARE-News/Article/3120866/retiring-from-national-guard-or-reserve-know-your-tricare-options",
+   "official_url_status": "LINKED_FROM_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "(ret & age<60) | (dep & spret)",
+   "rule_tokens": [
+    "age<60",
+    "dep",
+    "ret",
+    "spret"
+   ],
+   "source_id": "src.ba18fc8d03d6d8ce",
+   "source_tier": 1,
+   "title": "TRICARE Retired Reserve",
+   "value": "2026 premiums $645.90 a month (member) or $1,548.30 (member and family)",
+   "who_it_is_for": "Qualified retired Guard and Reserve members under age 60 and their eligible family members (premium-based coverage before retiree TRICARE starts at 60)"
   },
   {
    "benefit_id": "us.userra-reemployment-rights",
@@ -41365,25 +41825,25 @@
   }
  ],
  "counts": {
-  "benefits": 1362,
+  "benefits": 1377,
   "by_category": {
    "BONUS": 84,
    "BURIAL": 60,
    "DEALS": 4,
    "EDU": 143,
-   "FAMILY": 5,
+   "FAMILY": 6,
    "GUARD_EDU": 62,
-   "GUARD_PAY": 64,
-   "HEALTH": 3,
+   "GUARD_PAY": 69,
+   "HEALTH": 6,
    "HOMES": 53,
    "HOUSING": 2,
    "HUNTFISH": 151,
-   "INCTAX": 142,
+   "INCTAX": 144,
    "INSURANCE": 6,
    "JOBS": 165,
    "LICENSE": 1,
    "MWR": 6,
-   "OTHER": 58,
+   "OTHER": 62,
    "PARKS": 72,
    "PASS": 5,
    "PLATES": 147,
@@ -41394,24 +41854,24 @@
   },
   "by_kind": {
    "COMMERCIAL_DEAL": 9,
-   "FEDERAL_BENEFIT": 60,
+   "FEDERAL_BENEFIT": 73,
    "NONPROFIT_PROGRAM": 12,
-   "STATE_BENEFIT": 1281
+   "STATE_BENEFIT": 1283
   },
   "by_record_status": {
-   "SOURCE_CHECKED": 47,
-   "UNVERIFIED": 1315
+   "SOURCE_CHECKED": 57,
+   "UNVERIFIED": 1320
   },
   "by_url_status": {
-   "LINKED_FROM_SOURCE": 1263,
-   "SAME_AS_SOURCE": 93,
+   "LINKED_FROM_SOURCE": 1264,
+   "SAME_AS_SOURCE": 107,
    "SEEN_IN_SEARCH": 6
   },
   "jurisdictions_covered": 56,
   "recovered_leads": 23,
   "rule_leads": 9,
-  "sources": 116,
-  "sources_opened": 115,
+  "sources": 130,
+  "sources_opened": 129,
   "verified": 0
  },
  "facts": {
@@ -41988,6 +42448,7 @@
    "myviboe.com",
    "nationalguard.com",
    "news.va.gov",
+   "newsroom.tricare.mil",
    "ng.nc.gov",
    "ngaal.org",
    "ngaco.org",
@@ -42075,6 +42536,7 @@
    "tsvh.org",
    "tvc.texas.gov",
    "ualr.edu",
+   "uscode.house.gov",
    "usg.policystat.com",
    "va.alabama.gov",
    "va.ng.mil",
@@ -42126,6 +42588,7 @@
    "www.alea.gov",
    "www.amtrak.com",
    "www.arkansasstateparks.com",
+   "www.army.mil",
    "www.arts.gov",
    "www.azgfd.com",
    "www.benefits.va.gov",
@@ -42145,6 +42608,7 @@
    "www.de.ng.mil",
    "www.destateparks.com",
    "www.dfa.arkansas.gov",
+   "www.dfas.mil",
    "www.dhrm.virginia.gov",
    "www.dllr.state.md.us",
    "www.dmv.ca.gov",
@@ -42365,11 +42829,11 @@
  "integrity": {
   "algorithm": "sha256",
   "canonical": "JSON with sorted keys, separators (',', ':'), UTF-8, no NaN; the integrity member excluded",
-  "sha256": "4b320388e72505d026f1dd466dfade917e692acc4d704f9c2cf3fbb661c30268"
+  "sha256": "11f9e1bb6bfa10faf16f32cde377d332a9b3ce66e365833c38f74bb7e8d35180"
  },
  "jurisdictions": [
   {
-   "benefit_count": 81,
+   "benefit_count": 94,
    "code": "US",
    "coverage": "COVERED",
    "name": "United States (federal)",
@@ -42377,20 +42841,25 @@
     "src.025542933f51b7ee",
     "src.0bfda2b550b4938d",
     "src.108fda18c759f4c4",
+    "src.14beb928a9f33a98",
     "src.15ea9d02cbc28502",
     "src.1aa3004c654f64b9",
     "src.1c4dc37fe10e77e2",
     "src.1c511b79da679002",
     "src.213288c2497d4327",
     "src.2346e94306068f68",
+    "src.26acfd9a81c4959b",
     "src.28de099733cffd3e",
     "src.34a77bf8b3ecbf1c",
     "src.36991348755cc6f2",
+    "src.36b91bdd7bfd0357",
+    "src.37ca1542ce1d89db",
     "src.38fabaf5ed7a51b6",
     "src.40c5cd9394489e35",
     "src.4698ff7d3d967370",
     "src.49cce6e808631dad",
     "src.4a803c278eeeda7b",
+    "src.4e1068277a6ecb35",
     "src.517d1a6c3cdf1785",
     "src.52029b381fc0fde6",
     "src.52c76a6262dc7b1c",
@@ -42401,10 +42870,12 @@
     "src.59c6f56571ff2509",
     "src.5e9633755501abf5",
     "src.63bdbe129fbc8618",
+    "src.682bd71f54a444f1",
     "src.6a1b528dd0cd69e6",
     "src.6a9794ef5c4810b3",
     "src.6ab021217fcb271d",
     "src.82cc0d2da65f707f",
+    "src.83caf066b153e7c3",
     "src.8569ec06a3b19930",
     "src.857fd51e268848bb",
     "src.8901b319da32648f",
@@ -42420,16 +42891,22 @@
     "src.ab3f9a78677c9c28",
     "src.ac76cedf4de4b4f6",
     "src.aecd3d23eaccd4ff",
+    "src.ba18fc8d03d6d8ce",
     "src.bdbcf757445e9a2f",
     "src.c3c5fb9a4aac65c6",
     "src.c41fe3aaacb72c39",
     "src.c447772def88a0e0",
+    "src.c653da3ef5da28d9",
     "src.d020ed967c1aa8a9",
     "src.d3f9c434e8d3a34a",
+    "src.d4fe4c896dafa0ef",
+    "src.d598691c3b8b9070",
     "src.d7609d91ddaf8989",
     "src.d91a14f6a1122096",
     "src.db6fdb97f6e25d5d",
+    "src.e11d3a394d9ce12d",
     "src.e2eea84be176c0ba",
+    "src.e7b75f3c4429c839",
     "src.e8886e329919ba76",
     "src.e8aee15114b36e49",
     "src.f2015da0afe242f1",
@@ -42671,11 +43148,12 @@
    "tail_unread_chars": 0
   },
   {
-   "benefit_count": 25,
+   "benefit_count": 26,
    "code": "MI",
    "coverage": "COVERED",
    "name": "Michigan",
    "source_ids": [
+    "src.25b57a3b2a697694",
     "src.7a335690236e336f"
    ],
    "tail_read": false,
@@ -42869,7 +43347,7 @@
    "tail_unread_chars": 0
   },
   {
-   "benefit_count": 18,
+   "benefit_count": 19,
    "code": "SC",
    "coverage": "COVERED",
    "name": "South Carolina",
@@ -43347,7 +43825,7 @@
    "location": "data/research/recovered/gemini_guard_reserve/jurisdictions_56.json",
    "path": "gemini_guard_reserve/jurisdictions_56.json",
    "recovered_from": "https://gemini.google.com/share/ddce35300d8f (owner-supplied HTML export, 2026-11-20)",
-   "sha256": "4e6c8fd7c0e2d3b777b48c42a5ae724ea411c77ccc68fb18874fafc90f328b9b",
+   "sha256": "e03d1975bda61d125595b54bed47c981f9bf30459c08477cc8f167aebb2ca52c",
    "tier": 4,
    "vault_use": "Guard & Reserve role jurisdiction leads (ADR 0011 addendum); not imported as records"
   },
@@ -44080,6 +44558,22 @@
   },
   {
    "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.14beb928a9f33a98",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://uscode.house.gov/us/usc/t10/s12731/"
+  },
+  {
+   "ledgers": [
     "federal/federal02_deals_family.psv"
    ],
    "opened_on": "2026-10-27",
@@ -44192,6 +44686,22 @@
   },
   {
    "ledgers": [
+    "states/batch09_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.25b57a3b2a697694",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://www.michigan.gov/taxes/questions/iit/accordion/military/is-national-guard-pay-considered-military-compensation"
+  },
+  {
+   "ledgers": [
     "states/batch06_TN-WA.psv",
     "states/batch08_tails.psv"
    ],
@@ -44207,6 +44717,22 @@
    "tail_unread_chars": 0,
    "tier": 2,
    "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Washington"
+  },
+  {
+   "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.26acfd9a81c4959b",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://www.dfas.mil/retiredmilitary/disability/crdp/"
   },
   {
    "ledgers": [
@@ -44273,6 +44799,38 @@
    "tail_unread_chars": 0,
    "tier": 2,
    "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Scholarships-for-Military-Children"
+  },
+  {
+   "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.36b91bdd7bfd0357",
+   "tail_unread_chars": 0,
+   "tier": 2,
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/DoD-Disability-Retired-Pay?serv=120"
+  },
+  {
+   "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": "2023-12-18",
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.37ca1542ce1d89db",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://www.army.mil/article/272555/human_resources_command_processes_the_armys_retirements"
   },
   {
    "ledgers": [
@@ -44455,6 +45013,22 @@
    "tail_unread_chars": 0,
    "tier": 2,
    "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Alabama"
+  },
+  {
+   "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.4e1068277a6ecb35",
+   "tail_unread_chars": 0,
+   "tier": 2,
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/DoD-Disability-Severance-Pay-?serv=125"
   },
   {
    "ledgers": [
@@ -44718,6 +45292,22 @@
   },
   {
    "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": "2023-02-15",
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.682bd71f54a444f1",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://www.dfas.mil/retiredmilitary/provide/rcsbp/"
+  },
+  {
+   "ledgers": [
     "states/batch05_OK-SD.psv",
     "states/batch08_tails.psv"
    ],
@@ -44931,6 +45521,22 @@
    "tail_unread_chars": 0,
    "tier": 1,
    "url": "https://www.militaryonesource.mil/benefits/spouseworks-scholarship/"
+  },
+  {
+   "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": "2026-01-26",
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.83caf066b153e7c3",
+   "tail_unread_chars": 0,
+   "tier": 2,
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/TRICARE-Prime?serv=120"
   },
   {
    "ledgers": [
@@ -45412,6 +46018,22 @@
   },
   {
    "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": "2025-11-07",
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.ba18fc8d03d6d8ce",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://newsroom.tricare.mil/News/TRICARE-News/Article/4328806/learn-your-2026-tricare-health-plan-costs"
+  },
+  {
+   "ledgers": [
     "states/batch03_MN-NV.psv",
     "states/batch08_tails.psv"
    ],
@@ -45544,8 +46166,25 @@
   },
   {
    "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": "2022-08-09",
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.c653da3ef5da28d9",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://newsroom.tricare.mil/News/TRICARE-News/Article/3120866/retiring-from-national-guard-or-reserve-know-your-tricare-options"
+  },
+  {
+   "ledgers": [
     "states/batch05_OK-SD.psv",
-    "states/batch08_tails.psv"
+    "states/batch08_tails.psv",
+    "states/batch09_guard_reserve.psv"
    ],
    "opened_on": "2026-10-27",
    "page_status": "OPENED",
@@ -45644,6 +46283,38 @@
   },
   {
    "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": "2026-01-30",
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.d4fe4c896dafa0ef",
+   "tail_unread_chars": 0,
+   "tier": 2,
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=120"
+  },
+  {
+   "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.d598691c3b8b9070",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://www.dfas.mil/retiredmilitary/disability/crsc/"
+  },
+  {
+   "ledgers": [
     "federal/federal02_deals_family.psv"
    ],
    "opened_on": "2026-10-27",
@@ -45724,6 +46395,22 @@
   },
   {
    "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.e11d3a394d9ce12d",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://uscode.house.gov/us/usc/t10/s12731b/"
+  },
+  {
+   "ledgers": [
     "states/batch02_IL-MI.psv",
     "states/batch08_tails.psv"
    ],
@@ -45771,6 +46458,22 @@
    "tail_unread_chars": 0,
    "tier": 2,
    "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Wisconsin"
+  },
+  {
+   "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": null,
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.e7b75f3c4429c839",
+   "tail_unread_chars": 0,
+   "tier": 1,
+   "url": "https://www.dfas.mil/RetiredMilitary/plan/Gray-Area-Retirees/"
   },
   {
    "ledgers": [
@@ -46027,6 +46730,12 @@
    "jurisdiction": "SC",
    "ledger": "states/batch08_tails.psv",
    "line": 121,
+   "source_id": "src.cadbc795908e9c63"
+  },
+  {
+   "jurisdiction": "SC",
+   "ledger": "states/batch09_guard_reserve.psv",
+   "line": 8,
    "source_id": "src.cadbc795908e9c63"
   },
   {

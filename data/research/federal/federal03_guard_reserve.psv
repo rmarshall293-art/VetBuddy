@@ -1,0 +1,45 @@
+# VetBuddy Benefit Vault research ledger, federal 03 (Guard, Reserve and AGR: retirement, disability retirement, TRICARE)
+# Format: CAT|TITLE|GROUPS|RULE|ELIGIBLE|VALUE|URL  (see data/research/RESEARCH_LOG.md)
+# Opened 2026-11-21 from the source queue of the recovered Gemini report (ADR 0011); what each page
+# confirmed or contradicted is in data/research/guard_reserve/source_checks.json. Tier 1 rows import as
+# SOURCE_CHECKED, tier 2 (MyArmyBenefits) as UNVERIFIED; none is VERIFIED until a named reviewer checks it (G1).
+
+# JUR=US SRC=https://newsroom.tricare.mil/News/TRICARE-News/Article/3120866/retiring-from-national-guard-or-reserve-know-your-tricare-options OPENED=2026-11-21 PAGE_UPDATED=2022-08-09
+HEALTH|TRICARE Prime and Select at age 60 for retired Guard and Reserve members|ng,rsv,ret,sp,ch|(ret & age>=60) | (dep & spret)|Retired Guard and Reserve members and their families once the member turns 60; enrollment must be made within 90 days of turning 60. Before 60 (the Gray Area) Prime and Select are not available|Same TRICARE coverage as other retirees, with retiree enrollment fees|PAGE
+
+# JUR=US SRC=https://newsroom.tricare.mil/News/TRICARE-News/Article/4328806/learn-your-2026-tricare-health-plan-costs OPENED=2026-11-21 PAGE_UPDATED=2025-11-07
+HEALTH|TRICARE Retired Reserve|ng,rsv,ret,sp,ch|(ret & age<60) | (dep & spret)|Qualified retired Guard and Reserve members under age 60 and their eligible family members (premium-based coverage before retiree TRICARE starts at 60)|2026 premiums $645.90 a month (member) or $1,548.30 (member and family)|https://newsroom.tricare.mil/News/TRICARE-News/Article/3120866/retiring-from-national-guard-or-reserve-know-your-tricare-options
+
+# JUR=US SRC=https://www.dfas.mil/RetiredMilitary/plan/Gray-Area-Retirees/ OPENED=2026-11-21 PAGE_UPDATED=none
+GUARD_PAY|Reserve component (non-regular) retired pay|ng,rsv,ret|ngany | rsv | ngret | ret|Guard and Reserve members qualified for retired pay (20 years of qualifying service); generally starts at age 60, earlier for some periods of active duty, never before 50. Apply through your Branch of Service|Monthly retired pay from age 60 (or the reduced age)|PAGE
+
+# JUR=US SRC=https://uscode.house.gov/us/usc/t10/s12731/ OPENED=2026-11-21 PAGE_UPDATED=none
+GUARD_PAY|Reduced retirement age for qualifying active duty|ng,rsv|ngany | rsv|Ready Reserve: 3 months earlier per aggregate 90 days under 10 USC 12301(d), 12304b, a contingency provision, or 32 USC 502(f) for a national emergency, in any fiscal year after 28 Jan 2008 or 2 consecutive ones after 30 Sep 2014; AGR duty under 10 USC 12310 does not count|Retired pay can start before 60, but not before age 50|PAGE
+
+# JUR=US SRC=https://uscode.house.gov/us/usc/t10/s12731b/ OPENED=2026-11-21 PAGE_UPDATED=none
+GUARD_PAY|Reserve retired pay with 15 years for members found unfit (15-year letter)|ng,rsv|ngany | rsv|Selected Reserve members with at least 15 but fewer than 20 years of service who no longer meet membership qualifications solely because of a physical disability (not for misconduct, willful neglect or unauthorized absence)|Treated as meeting the 20-year service requirement for Reserve retired pay|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/DoD-Disability-Retired-Pay?serv=120 OPENED=2026-11-21 PAGE_UPDATED=none
+OTHER|DoD disability retired pay (Chapter 61)|ad,ng,rsv|sm|Members found unfit with 20+ years of creditable service or a combined rating of 30% or more; Guard and Reserve members if the disability was incurred or aggravated on orders over 30 days, or during inactive duty training, travel to or from it, or orders of 30 days or fewer|Monthly retired pay figured by years x 2.5% or by the disability percentage (up to 75%) x retired pay base|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/DoD-Disability-Severance-Pay-?serv=125 OPENED=2026-11-21 PAGE_UPDATED=none
+OTHER|DoD disability severance pay|ad,ng,rsv|sm|Members separated as unfit with fewer than 20 years and a combined rating below 30%; Guard and Reserve members with 20 (or, for disability, 15) qualifying years may transfer to the Retired Reserve instead, since severance ends eligibility for Reserve retired pay|One-time payment of 2 months of basic pay x years of service (at least 3, or 6 for combat-related; at most 19)|PAGE
+
+# JUR=US SRC=https://www.dfas.mil/retiredmilitary/disability/crsc/ OPENED=2026-11-21 PAGE_UPDATED=none
+OTHER|Combat-Related Special Compensation (CRSC)|ret,dv|ret & r>=10|Military retirees entitled to retired pay with combat-related disabilities rated at least 10% by VA; apply through your Branch of Service. Under 10 USC 1413a(c) retired pay paid only because of 10 USC 12731b (15-year letter) does not count|Tax-free monthly payment alongside retired pay|PAGE
+
+# JUR=US SRC=https://www.dfas.mil/retiredmilitary/disability/crdp/ OPENED=2026-11-21 PAGE_UPDATED=none
+OTHER|Concurrent Retirement and Disability Pay (CRDP)|ret,dv|ret & r>=50|Retirees entitled to retired pay and VA compensation with a rating of 50% or more; Chapter 61 retirees need 20+ years. For Guard and Reserve Chapter 61 retirees it starts at the age retired pay would otherwise start|Retired pay and VA compensation both paid, mostly without a written claim|PAGE
+
+# JUR=US SRC=https://www.dfas.mil/retiredmilitary/provide/rcsbp/ OPENED=2026-11-21 PAGE_UPDATED=2023-02-15
+FAMILY|Reserve Component Survivor Benefit Plan (RCSBP)|ng,rsv,ret,sp,ch|ngany | rsv | ngret | ret | (dep & (spsm | spret | spdec))|Members of the Army and Air National Guard of the United States, Army, Navy, Marine Corps and Air Force Reserve; coverage depends on the election made when signing up (ask your personnel office about the election window)|Monthly annuity for the life of the beneficiary, a percentage of retired pay|PAGE
+
+# Added 2026-11-21 for AGR gaps GRG03 and GRG04: the pages the report named did not cover AGR, so these were found by search and opened.
+# JUR=US SRC=https://www.army.mil/article/272555/human_resources_command_processes_the_armys_retirements OPENED=2026-11-21 PAGE_UPDATED=2023-12-18
+GUARD_PAY|Army AGR retirement after 20 years of active federal service|ng,rsv|(ngany | rsv) & ad|Army AGR Soldiers with 20 or more years of active federal service may retire with retirement benefits like active-duty Soldiers; AGR Soldiers who reach 60 without 20 years of active federal service but with 20 qualifying years may qualify for Gray Area retirement|Active-duty retirement and benefits; processed by Human Resources Command|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Blended-Retirement-System?serv=120 OPENED=2026-11-21 PAGE_UPDATED=2026-01-30
+GUARD_PAY|Blended Retirement System retired pay for Army Guard AGR and full-time National Guard duty|ng|ngany & ad|Army National Guard Soldiers on AGR or full-time National Guard duty (Title 10 or Title 32) who complete 20 or more years of active federal service|Monthly retired pay of 2% x years of service x the average of the highest 36 months of basic pay, plus the TSP balance|PAGE
+
+# JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/TRICARE-Prime?serv=120 OPENED=2026-11-21 PAGE_UPDATED=2026-01-26
+HEALTH|TRICARE Prime for Guard members on federal active duty (including full-time Title 10 or Title 32 duty)|ng,sp,ch|(ngany & ad) | (dep & spsm)|Army National Guard Soldiers while on federal active duty and traveling to and from it, with no enrollment fee; family members may elect Prime when the Soldier is ordered to active duty for more than 30 consecutive days|TRICARE Prime with no enrollment fee for the member|PAGE

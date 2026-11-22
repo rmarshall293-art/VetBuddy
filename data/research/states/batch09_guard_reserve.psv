@@ -1,0 +1,9 @@
+# VetBuddy Benefit Vault research ledger, states 09 (Guard, Reserve and AGR rows from the Gemini source queue)
+# Format: CAT|TITLE|GROUPS|RULE|ELIGIBLE|VALUE|URL  (see data/research/RESEARCH_LOG.md)
+# Opened 2026-11-21 (ADR 0011); checks in data/research/guard_reserve/source_checks.json.
+
+# JUR=MI SRC=https://www.michigan.gov/taxes/questions/iit/accordion/military/is-national-guard-pay-considered-military-compensation OPENED=2026-11-21 PAGE_UPDATED=none
+INCTAX|National Guard pay exemption (drill, annual training, AGR, Title 10 and Title 32 orders)|ng|res & ng|Michigan National Guard members: drill and annual training (Title 32), AGR wages, and other Title 10 or Title 32 orders. Pay for state active duty ordered by the governor is taxable|Not taxed by Michigan|PAGE
+
+# JUR=SC SRC=https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/South-Carolina OPENED=2026-11-21 PAGE_UPDATED=none PART=tail
+INCTAX|Guard and Reserve pay exemption for full-time AGR members|ng,rsv|res & (ngany | rsv)|Full-time Active Guard and Reserve members: 15 days of annual training pay and up to 24 days of drill pay at the daily rate|Up to 39 days of pay not taxed|PAGE

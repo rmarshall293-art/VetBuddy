@@ -97,3 +97,21 @@ ledgers and kept once in the federal ledger.
 - Dropped on purpose: federal programs repeated on state pages (USERRA, SGLI, TRICARE, MSRRA, VA disability and DIC
   tax exclusions, federal funeral honors, Veterans Upward Bound, NADL), medals, certificates, recognition-only
   plates, voting, justice programs and bare links. Federal programs are kept once in the federal ledger.
+
+## 2026-11-21: Guard, Reserve and AGR source checks (ADR 0011)
+
+**What was opened.** Pages came from the source queue of the recovered Gemini report (`GET /api/v1/vault/guard-reserve/source-queue`), AGR and Gray Area first:
+- **33 pages the report names:** 31 were read; 2 did not load. The two failures are the TRICARE 2027 costs article and the DFAS September 2026 newsletter.
+- **3 pages found by search:** the named pages did not cover AGR health care or AGR retirement, so these were opened instead.
+
+**What was written.**
+- **Ledgers:** 15 rows, in `federal/federal03_guard_reserve.psv` (13) and `states/batch09_guard_reserve.psv` (2).
+- **Comparison:** `guard_reserve/source_checks.json` records each page against the report: 12 agree, 21 agree in part, 1 differs, 7 say nothing on the point.
+- **Correction:** CRDP needs a VA rating of 50% or more, which the report left out.
+- **Omissions:** the reduced-age rule also counts two consecutive fiscal years after 30 Sep 2014, and 32 USC 502(f) duty for a national emergency counts too. The report left both out.
+
+**Not confirmed.**
+- **Iowa:** the report says Iowa taxes Title 32 AGR pay and exempts Title 10 pay. The pages read do not address it.
+- **Utah:** the report says Utah's tuition waiver excludes AGR. The pages read do not say so.
+
+**Still to open.** 50 named pages remain (other states' MyArmyBenefits pages, the RCSBP election details, and Air Force AGR pages).

@@ -118,8 +118,9 @@ caveats:
     that need Selected Reserve membership, such as the Selected Reserve GI Bill and Tuition Assistance,
     may not apply while you are in this status.
   recovered_ai_lead: >-
-    This note comes from an AI-written report and has not been checked against its source. Dollar figures
-    and time limits in it may be out of date or wrong; read the named source before relying on it.
+    This note comes from an AI-written report. Where VetBuddy has opened the named source, what the source
+    said is shown with the note; anything not confirmed there may be out of date or wrong, so read the
+    source before relying on it.
   retired_reserve: >-
     In the Retired Reserve, including the years before retired pay starts, some programs follow your
     retired status and some need retired pay to have started. The official page says which.
@@ -139,6 +140,8 @@ caveats:
 # names its sources, VetBuddy has not opened them. Shown as leads to check,
 # never as records, outcomes, amounts or deadlines.
 recovered:
+  # What each opened page confirmed or contradicted (our own research, 2026-11-21).
+  source_checks: data/research/guard_reserve/source_checks.json
   jurisdictions: gemini_guard_reserve/jurisdictions_56.json
   federal: gemini_guard_reserve/federal_leads.json
   # Order in which the named sources are opened once page reads are approved:
@@ -146,29 +149,30 @@ recovered:
   # rows carry an AGR-specific rule, then every other jurisdiction.
   source_check_priority: [GF12, GF05, GF06, GF07, GF10, GF11, GF09, GF08, GF01, GF02, GF13, GF03, GF04, GF14, GF15]
   notice: >-
-    These notes come from an AI-written research report the project owner supplied. They name official
-    sources that VetBuddy has not opened yet, so nothing here is checked. Use them as questions to bring to
-    the named source, your unit or your state's veterans office.
+    These notes come from an AI-written research report the project owner supplied. VetBuddy is opening the
+    official sources it names one by one; each note shows whether its source was opened and what it said.
+    Use them as questions to bring to the named source, your unit or your state's veterans office.
 
 # Guard, Reserve and AGR topics the registry does not cover yet. Each is a
 # research target for the discovery planner, not a record: no record is
-# written until its page is read (no fabricated benefit). PARTIAL means a
-# recovered lead names a source to read; SOURCE_NOT_AVAILABLE means nothing
-# in hand points to one yet.
+# written until its page is read (no fabricated benefit). IMPLEMENTED_UNVERIFIED
+# means records were written from pages read on 2026-11-21 and wait for a named
+# reviewer (G1); PARTIAL means a lead names a source but the topic is not
+# covered yet; SOURCE_NOT_AVAILABLE means nothing in hand points to one yet.
 research_gaps:
-  - {id: GRG01, topic: "TRICARE Retired Reserve", groups: [ng, rsv, ret], status: PARTIAL}
-  - {id: GRG02, topic: "Reserve component (non-regular) retired pay and reduced retirement age", groups: [ng, rsv, ret], status: PARTIAL}
-  - {id: GRG03, topic: "AGR health care while on full-time orders", groups: [ng, rsv], status: PARTIAL}
-  - {id: GRG04, topic: "AGR active-service retirement", groups: [ng, rsv], status: PARTIAL}
-  - {id: GRG05, topic: "Reserve Component Survivor Benefit Plan", groups: [ng, rsv, sp, ch], status: PARTIAL}
+  - {id: GRG01, topic: "TRICARE Retired Reserve", groups: [ng, rsv, ret], status: IMPLEMENTED_UNVERIFIED, records: [us.tricare-retired-reserve]}
+  - {id: GRG02, topic: "Reserve component (non-regular) retired pay and reduced retirement age", groups: [ng, rsv, ret], status: IMPLEMENTED_UNVERIFIED, records: [us.reserve-component-non-regular-retired-pay, us.reduced-retirement-age-for-qualifying-active-duty, us.tricare-prime-and-select-at-age-60-for-retired-guard-and-reserve-members]}
+  - {id: GRG03, topic: "AGR health care while on full-time orders", groups: [ng, rsv], status: IMPLEMENTED_UNVERIFIED, records: [us.tricare-prime-for-guard-members-on-federal-active-duty-including-full-ti]}
+  - {id: GRG04, topic: "AGR active-service retirement", groups: [ng, rsv], status: IMPLEMENTED_UNVERIFIED, records: [us.army-agr-retirement-after-20-years-of-active-federal-service, us.blended-retirement-system-retired-pay-for-army-guard-agr-and-full-time-n]}
+  - {id: GRG05, topic: "Reserve Component Survivor Benefit Plan", groups: [ng, rsv, sp, ch], status: PARTIAL, records: [us.reserve-component-survivor-benefit-plan-rcsbp]}
   - {id: GRG06, topic: "Retired Reserve identification card and base privileges before retired pay", groups: [ng, rsv, ret], status: PARTIAL}
   - {id: GRG07, topic: "Federal civilian military leave for Guard and Reserve employees", groups: [ng, rsv], status: SOURCE_NOT_AVAILABLE}
   - {id: GRG08, topic: "Incapacitation pay and line of duty care", groups: [ng, rsv], status: PARTIAL}
   - {id: GRG09, topic: "Blended Retirement System for Guard and Reserve members", groups: [ng, rsv], status: PARTIAL}
   - {id: GRG10, topic: "VA health care after Title 10 activation", groups: [ng, rsv, vet], status: SOURCE_NOT_AVAILABLE}
-  - {id: GRG11, topic: "Chapter 61 and non-regular disability retirement, IDES", groups: [ng, rsv], status: PARTIAL}
-  - {id: GRG12, topic: "CRSC and CRDP for Guard and Reserve retirees", groups: [ng, rsv, ret], status: PARTIAL}
-  - {id: GRG13, topic: "State income tax on Title 10 and Title 32 AGR pay", groups: [ng, rsv], status: PARTIAL}
+  - {id: GRG11, topic: "Chapter 61 and non-regular disability retirement, IDES", groups: [ng, rsv], status: IMPLEMENTED_UNVERIFIED, records: [us.dod-disability-retired-pay-chapter-61, us.dod-disability-severance-pay, us.reserve-retired-pay-with-15-years-for-members-found-unfit-15-year-letter]}
+  - {id: GRG12, topic: "CRSC and CRDP for Guard and Reserve retirees", groups: [ng, rsv, ret], status: IMPLEMENTED_UNVERIFIED, records: [us.combat-related-special-compensation-crsc, us.concurrent-retirement-and-disability-pay-crdp]}
+  - {id: GRG13, topic: "State income tax on Title 10 and Title 32 AGR pay", groups: [ng, rsv], status: PARTIAL, records: [mi.national-guard-pay-exemption-drill-annual-training-agr-title-10-and-titl, sc.guard-and-reserve-pay-exemption-for-full-time-agr-members]}
   - {id: GRG14, topic: "State-Sponsored Life Insurance for the Guard", groups: [ng], status: PARTIAL}
   - {id: GRG15, topic: "Retired Reserve or discharge after 20 years (pay table base)", groups: [ng, rsv, ret], status: PARTIAL}
 
@@ -181,8 +185,8 @@ components:
   - {id: GR05, name: API routes under /api/v1/vault/guard-reserve (Mode A), status: IMPLEMENTED_TESTED}
   - {id: GR06, name: Pulls through Benefits Intelligence in Mode B, status: PARTIAL,
      note: "Uses the parent agent's grants and broker; production sign-in waits on G17, as for the vault."}
-  - {id: GR07, name: AGR-specific records, status: PARTIAL,
-     note: "Recovered leads GF01-GF15 and 56 jurisdiction rows name sources for gaps GRG01-GRG15; no record until a page is read."}
+  - {id: GR07, name: Guard, Reserve and AGR records from the opened sources, status: PARTIAL,
+     note: "15 records written 2026-11-21 from 34 pages read (federal03, states batch09); every record waits for a named reviewer (G1). The AGR retirement and BRS records are Army pages; Air Guard and Air Force Reserve AGR pages are not read yet."}
   - {id: GR10, name: Recovered Gemini leads (56 jurisdictions, federal retirement and TRICARE), status: IMPLEMENTED_TESTED,
      note: "Hash-pinned, language-guarded, cross-checked against the vault; UNVERIFIED tier 4."}
   - {id: GR11, name: Guard & Reserve Center screen in the web shell (#/guard-reserve; linked from the brief's Guard/Reserve lane), status: IMPLEMENTED_TESTED,

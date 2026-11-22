@@ -46,7 +46,8 @@ def main() -> int:
             expect(page.get_by_role("heading", name="How VetBuddy read your answers")).to_be_visible()
             expect(page.get_by_role("heading", name="Guard & Reserve checks")).to_be_visible()
             expect(page.get_by_role("heading", name="Research leads to check")).to_be_visible()
-            expect(page.get_by_text("AI research lead · not checked").first).to_be_visible()
+            expect(page.get_by_text("AI research lead · source opened").first).to_be_visible()
+            expect(page.get_by_text("Source agrees").first).to_be_visible()
             expect(page.get_by_role("heading", name="Iowa")).to_be_visible()
             expect(page.get_by_role("heading", name="AGR retirement after 20 years of active federal service")).to_be_visible()
             # Missouri's flagged cell is withheld, not shown.

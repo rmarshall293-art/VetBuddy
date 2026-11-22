@@ -76,3 +76,17 @@
 
 - **Screen.** The role has a screen: the Guard & Reserve Center at `#/guard-reserve`, in the web shell's navigation. The mission brief links to it when the Guard/Reserve lane is open. Recovered leads sit under a "Not checked yet" banner, apart from the outcomes.
 - **Source queue.** `GET /source-queue` plans the reads of all 83 named sources, AGR and Gray Area first. The reads were attempted this session, but the page-fetch approvals timed out, so no source was opened and no record was added. The queue is where the next research session starts.
+
+## Addendum (2026-11-21): sources opened
+
+- **Pages read.** With page reads approved, 34 pages were read: 31 from the queue, plus 3 found by search for the AGR gaps. Two named pages did not load.
+- **Records written.** 15 records were written:
+  - TRICARE Retired Reserve, and TRICARE Prime and Select at 60.
+  - Reserve retired pay, the reduced retirement age, and the 15-year letter.
+  - Chapter 61 disability retired pay and severance pay.
+  - CRSC and CRDP.
+  - RCSBP.
+  - Army AGR retirement, BRS retired pay for AGR, and TRICARE Prime on full-time duty.
+  - Michigan Guard pay exemption, and the South Carolina AGR 39-day exemption.
+- **Gaps.** GRG01–GRG04, GRG11 and GRG12 are now IMPLEMENTED_UNVERIFIED: records exist, but no named reviewer has checked them yet.
+- **Lead annotations.** Each recovered lead now carries `source_checks` (verdict and note per opened page), `check_state` (NOT_OPENED, CHECKED or CORRECTED) and the records written from its source. The Guard & Reserve Center shows these on every lead card.

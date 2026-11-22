@@ -124,8 +124,8 @@ def test_duplicate_titles_get_a_suffix(tmp_path):
 
 def test_full_ledgers(registry):
     counts = registry.data["counts"]
-    assert counts["benefits"] == len(registry.benefits) == 1362
-    assert counts["by_kind"] == {"COMMERCIAL_DEAL": 9, "FEDERAL_BENEFIT": 60, "NONPROFIT_PROGRAM": 12, "STATE_BENEFIT": 1281}
+    assert counts["benefits"] == len(registry.benefits) == 1377
+    assert counts["by_kind"] == {"COMMERCIAL_DEAL": 9, "FEDERAL_BENEFIT": 73, "NONPROFIT_PROGRAM": 12, "STATE_BENEFIT": 1283}
     assert counts["verified"] == 0
     covered = {c for c, j in registry.jurisdictions.items() if j["coverage"] == "COVERED"}
     assert covered == set(JURISDICTIONS) - {"AS"}

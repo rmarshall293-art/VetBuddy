@@ -34607,6 +34607,35 @@
    "who_it_is_for": "Active duty, reserve and retired members, DoD civilians and families; offerings vary by installation"
   },
   {
+   "benefit_id": "us.line-of-duty-determination-for-army-guard-and-reserve-injuries-and-illne",
+   "category": "OTHER",
+   "caveat_ids": [],
+   "content_hash": "36e0df9dbab8ecd2cae7b5eaa5fc81bcd0a6952fe0169eaca43094689d6ad37f",
+   "groups": [
+    "ng",
+    "rsv"
+   ],
+   "jurisdiction": "US",
+   "kind": "FEDERAL_BENEFIT",
+   "lead_ids": [],
+   "ledger_ref": "federal/federal03_guard_reserve.psv:48",
+   "official_url": "https://sharplearningportal.army.mil/portals/3/LinkedFiles/RegulatoryGuidance/AR600-8-4_Line_of_Duty_15MAR19.pdf",
+   "official_url_status": "SAME_AS_SOURCE",
+   "official_url_tier": 1,
+   "page_part": "main",
+   "record_status": "SOURCE_CHECKED",
+   "rule": "ngany | rsv",
+   "rule_tokens": [
+    "ngany",
+    "rsv"
+   ],
+   "source_id": "src.1d1c254e65b9c897",
+   "source_tier": 1,
+   "title": "Line of duty determination for Army Guard and Reserve injuries and illnesses",
+   "value": "Determines eligibility for medical and dental treatment and incapacitation pay",
+   "who_it_is_for": "Army National Guard and Army Reserve Soldiers injured or ill in a qualified duty status; a determination is generally requested within 180 calendar days of the end of that duty status (exceptions include later behavioral health diagnoses and IDES-directed determinations)"
+  },
+  {
    "benefit_id": "us.lowe-s-military-discount",
    "category": "DEALS",
    "caveat_ids": [],
@@ -41825,7 +41854,7 @@
   }
  ],
  "counts": {
-  "benefits": 1377,
+  "benefits": 1378,
   "by_category": {
    "BONUS": 84,
    "BURIAL": 60,
@@ -41843,7 +41872,7 @@
    "JOBS": 165,
    "LICENSE": 1,
    "MWR": 6,
-   "OTHER": 62,
+   "OTHER": 63,
    "PARKS": 72,
    "PASS": 5,
    "PLATES": 147,
@@ -41854,24 +41883,24 @@
   },
   "by_kind": {
    "COMMERCIAL_DEAL": 9,
-   "FEDERAL_BENEFIT": 73,
+   "FEDERAL_BENEFIT": 74,
    "NONPROFIT_PROGRAM": 12,
    "STATE_BENEFIT": 1283
   },
   "by_record_status": {
-   "SOURCE_CHECKED": 57,
+   "SOURCE_CHECKED": 58,
    "UNVERIFIED": 1320
   },
   "by_url_status": {
    "LINKED_FROM_SOURCE": 1264,
-   "SAME_AS_SOURCE": 107,
+   "SAME_AS_SOURCE": 108,
    "SEEN_IN_SEARCH": 6
   },
   "jurisdictions_covered": 56,
   "recovered_leads": 23,
   "rule_leads": 9,
-  "sources": 130,
-  "sources_opened": 129,
+  "sources": 131,
+  "sources_opened": 130,
   "verified": 0
  },
  "facts": {
@@ -42509,6 +42538,7 @@
    "secure.okcollegestart.org",
    "secure2.kentucky.gov",
    "services.marylandcomptroller.gov",
+   "sharplearningportal.army.mil",
    "skillbridge.osd.mil",
    "southcarolinaparks.com",
    "statejobs.delaware.gov",
@@ -42829,11 +42859,11 @@
  "integrity": {
   "algorithm": "sha256",
   "canonical": "JSON with sorted keys, separators (',', ':'), UTF-8, no NaN; the integrity member excluded",
-  "sha256": "11f9e1bb6bfa10faf16f32cde377d332a9b3ce66e365833c38f74bb7e8d35180"
+  "sha256": "91fa9952509f78dfb1299c343f894ead33d4cd2d387a9996271b7001f9070e27"
  },
  "jurisdictions": [
   {
-   "benefit_count": 94,
+   "benefit_count": 95,
    "code": "US",
    "coverage": "COVERED",
    "name": "United States (federal)",
@@ -42846,6 +42876,7 @@
     "src.1aa3004c654f64b9",
     "src.1c4dc37fe10e77e2",
     "src.1c511b79da679002",
+    "src.1d1c254e65b9c897",
     "src.213288c2497d4327",
     "src.2346e94306068f68",
     "src.26acfd9a81c4959b",
@@ -42914,7 +42945,7 @@
     "src.search.2026-10-27"
    ],
    "tail_read": false,
-   "tail_unread_chars": 7042
+   "tail_unread_chars": 76825
   },
   {
    "benefit_count": 30,
@@ -43825,7 +43856,7 @@
    "location": "data/research/recovered/gemini_guard_reserve/jurisdictions_56.json",
    "path": "gemini_guard_reserve/jurisdictions_56.json",
    "recovered_from": "https://gemini.google.com/share/ddce35300d8f (owner-supplied HTML export, 2026-11-20)",
-   "sha256": "e03d1975bda61d125595b54bed47c981f9bf30459c08477cc8f167aebb2ca52c",
+   "sha256": "182b0cdfad99868fdf69f357148f8dc5a2c039a4ef001cbe2caf5d95e02e6e61",
    "tier": 4,
    "vault_use": "Guard & Reserve role jurisdiction leads (ADR 0011 addendum); not imported as records"
   },
@@ -44635,6 +44666,22 @@
    "tail_unread_chars": 0,
    "tier": 2,
    "url": "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/Veteran-Readiness-and-Employment-(VRandE)"
+  },
+  {
+   "ledgers": [
+    "federal/federal03_guard_reserve.psv"
+   ],
+   "opened_on": "2026-11-21",
+   "page_status": "OPENED",
+   "page_updated": "2019-03-15",
+   "parts_read": [
+    "main"
+   ],
+   "seen_on": null,
+   "source_id": "src.1d1c254e65b9c897",
+   "tail_unread_chars": 69783,
+   "tier": 1,
+   "url": "https://sharplearningportal.army.mil/portals/3/LinkedFiles/RegulatoryGuidance/AR600-8-4_Line_of_Duty_15MAR19.pdf"
   },
   {
    "ledgers": [

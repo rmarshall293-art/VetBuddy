@@ -41,7 +41,7 @@
    "result": "fetch_failed",
    "findings": [],
    "records": [],
-   "note": "The site returned an error; the 2027 premiums stay unchecked."
+   "note": "The site returned an error on 2026-11-21 (tried twice). The address may not exist; TRICARE's cost pages did not yet show the figures either."
   },
   {
    "url": "https://newsroom.tricare.mil/News/TRICARE-News/Article/3120866/retiring-from-national-guard-or-reserve-know-your-tricare-options",
@@ -135,7 +135,7 @@
    "result": "fetch_failed",
    "findings": [],
    "records": [],
-   "note": "The site returned an error."
+   "note": "The site returned an error on 2026-11-21 (tried twice). The address may not exist; TRICARE's cost pages did not yet show the figures either."
   },
   {
    "url": "https://www.dfas.mil/retiredmilitary/provide/rcsbp/",
@@ -539,6 +539,658 @@
    ],
    "records": [
     "us.tricare-prime-for-guard-members-on-federal-active-duty-including-full-ti"
+   ]
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/New-York",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.NY",
+     "verdict": "AGREES_IN_PART",
+     "note": "RIRP $3,400 a year and SGLI reimbursement for AGR members unless mobilized match, and retired pay is exempt (State, NYC, Yonkers). The Guard pay rule is a subtraction for active duty that excludes active duty for training, and the Veterans Tuition Award needs four years deployed or combat service with an expeditionary medal for reserve members, not any deployment."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Tennessee",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.TN",
+     "verdict": "AGREES_IN_PART",
+     "note": "STRONG Act (UT Knoxville rate), no general income tax, the vehicle sales tax exemption for AGR members stationed in Tennessee and members in a combat zone, 20 days of leave for state employees and $1,000 free SSLI match. Helping Heroes is not limited to Guard and Reserve or combat: it is $1,000 a semester (12+ hours) for active or reserve members awarded the Iraq, Afghanistan or GWOT Expeditionary Medal."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Alaska",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.AK",
+     "verdict": "AGREES_IN_PART",
+     "note": "Up to 100% of University of Alaska tuition, no income tax, and free hunting and fishing for Guard and Reserve match. The $2,500 cap is for Alaska schools outside the UA system, the 5% hiring preference is written for Guard members and veterans, and the state Guard retirement is $100 a month for each month of credited service (20 years, 5 in the Alaska Guard), not per year."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Alabama",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.AL",
+     "verdict": "AGREES_IN_PART",
+     "note": "ANGEAP $6,585 a semester, the retired pay exemption, vehicle tag exemptions for Guard and Reserve, the $100,000 state active duty death benefit and SSLI match. The page does not mention drill or AGR pay (resident military pay is taxed except allowances), and the 168 hours of leave are for state employees only."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Arkansas",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.AR",
+     "verdict": "AGREES_IN_PART",
+     "note": "Military pay of active and reserve members and retired pay are exempt, the 5 hiring points need six years of Guard or Reserve service, state employees get 15 days of leave, and SSLI gives $1,000 free to Arkansas Guard members. The tuition waiver covers up to 120 hours or a bachelor's degree; the page does not say 100%."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/American-Samoa",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.AS",
+     "verdict": "AGREES_IN_PART",
+     "note": "No territorial National Guard (Army Reserve under 9th MSC only), no territorial education programs, and 15 days of leave for government employees match. Military pay and retired pay are taxable, but disability retirement pay is not included in taxable income; the 10 hiring points are for disabled veterans only."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Arizona",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.AZ",
+     "verdict": "AGREES",
+     "note": "STR at $250 a semester hour up to $5,250 a state fiscal year and transferable to spouse and dependents, military pay of active and reserve members and all retired pay exempt, 50% off day-use park fees, the one-year vehicle license tax exemption per deployment (up to two vehicles) and $1,000 free SSLI for the Arizona Guard match."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/California",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.CA",
+     "verdict": "AGREES_IN_PART",
+     "note": "The two-year Guard obligation, the $20,000 retired pay exclusion (income caps $125,000 and $250,000), 30 days of state pay plus up to 760 days of differential pay, and $1,000 free SSLI match. The CMD GI Bill also covers participating private schools; the Military Family Relief Fund is not on the page, which describes a $10,000 Guard death benefit instead."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Colorado",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.CO",
+     "verdict": "AGREES_IN_PART",
+     "note": "The retired pay subtractions ($15,000, $20,000, $24,000 by age), 15 days of leave for state employees and $1,000 free SSLI match. The tuition waiver limits depend on school type (130 or 145 undergraduate hours, 60 to 150 graduate) with 50/50 cost sharing, the property tax deferral needs federal active duty in war or national emergency, and the relief fund is not in the part read."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Connecticut",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.CT",
+     "verdict": "DIFFERS",
+     "note": "The 100% waiver (50% in summer) is for veterans at Connecticut State University campuses; the Guard tuition waiver (Connecticut Veterans, National Guard Service Members, and Dependent Tuition Waiver) covers tuition left after other assistance. No SSLI appears on the page, and the wartime bonus is up to $500 (non-combat) or $1,200 (combat zone). The Charter Oak waiver, the retired pay exemption and 30 days of state leave match."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/District-of-Columbia",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.DC",
+     "verdict": "AGREES_IN_PART",
+     "note": "DCTA up to $20,000 a fiscal year for tuition and $500 for fees (D.C. Guard), military pay taxed with no reduction for retired pay, and 15 days of leave (22 for certain federal active duty) for Guard and Reserve match. No SSLI appears on the page."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Delaware",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.DE",
+     "verdict": "AGREES_IN_PART",
+     "note": "Up to 100% tuition at state schools for one bachelor's degree with six years of service, the $12,500 retired pay exclusion rising to $25,000 from 2029, 5 hiring points for 20-year Guard and Reserve members, and double per diem and a $200,000 death benefit for state active duty match. The page does not name drill or AGR pay (resident military pay is taxed) and lists no SSLI."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Florida",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.FL",
+     "verdict": "AGREES_IN_PART",
+     "note": "EDD at 100% of the resident rate, no income tax, 10 state hiring points for current reserve members and SSLI match. The deployed property tax exemption covers any deployed member, not only Guard and Reserve; the Guard benefit is a tax-free plate registration, not a free plate; a Guard pension at 62 is not on the page; books may be reimbursed, not always."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Georgia",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.GA",
+     "verdict": "AGREES_IN_PART",
+     "note": "HERO up to $2,000 a year, the age-tiered retired pay exclusion ($17,500, $35,000, $65,000), the SGLI premium credit for Guard on active duty over 90 days, the free license after one year of service, 18 days of leave for state employees and SSLI match. The Service Cancelable Loan is not in the part read, and drill and AGR pay are not named."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Guam",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.GU",
+     "verdict": "AGREES_IN_PART",
+     "note": "No territorial education programs, military and retired pay taxable, 15 days of leave for government employees, and workers' compensation on territorial active duty match. The license benefit is a fee waiver for honorably discharged veterans, serving and retired members and certain family members."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Idaho",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.ID",
+     "verdict": "AGREES_IN_PART",
+     "note": "SEAP ($8,000 for E-9 and below, $4,000 for WO1-WO3 and O1-O3, $20,000 for technical programs), the exemption for active duty pay outside Idaho for 120 days or more, 120 hours of leave for state employees and the $1,000 GRASP referral bonus match. The retired pay deduction for 2024 is $45,864 (single) or $68,796 (joint) at 65 or older."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Illinois",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.IL",
+     "verdict": "AGREES_IN_PART",
+     "note": "The Guard Grant (four or six academic years by length of service), the retired pay exemption, 3 hiring points for four years of Guard or Reserve service and SSLI match. The grant pays tuition and certain fees, not 100%; the military pay subtraction covers pay in federal income and does not name AGR; 30 days is salary continuation during annual training; the relief fund is not in the part read."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Indiana",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.IN",
+     "verdict": "AGREES_IN_PART",
+     "note": "The Guard Supplemental Grant (100% at public schools, up to $5,000 a year at private schools), the military pay exemption for active and reserve members, the retired pay exemption, $10,000 free SSLI for recruits the first year and 15 days of leave match. The relief fund limit of $2,500 is a lifetime limit; AGR and technicians are not named."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Kansas",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.KS",
+     "verdict": "AGREES_IN_PART",
+     "note": "Up to 100% tuition and fees for 180 hours, EMERGE, the retired pay exemption, free hunting, fishing and park permits for the Kansas Guard, 30 days of leave with differential pay and SSLI match. The Military Service Scholarship needs 90 days where hostile fire pay was paid (or an injury there); drill and AGR pay are not named (federally taxed military pay is taxed)."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Kentucky",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.KY",
+     "verdict": "AGREES_IN_PART",
+     "note": "Tuition Award caps ($30,000, $60,000, $75,000 by school type), all military pay exempt, the $31,110 exclusion for those who retired after 1997, the $80,000 death benefit on federal active duty, toll exemption and SSLI match. Interview preference does not need federal active duty."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Louisiana",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.LA",
+     "verdict": "AGREES_IN_PART",
+     "note": "STEP (tuition exemption) with the Patriot Scholarship for mandatory fees, the $50,000 to $100,000 Guard disability benefit, Military Family Assistance up to $10,000 a claim for Guard and Reserve, and the toll and parking exemption match. The $50,000 out-of-state active duty exclusion and a retired pay exemption are not in the part read (it names SBP, RCSBP and RSFPP annuities as excluded)."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Massachusetts",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.MA",
+     "verdict": "AGREES_IN_PART",
+     "note": "The 100% tuition and fee waiver for up to 130 hours (transferable to children), the travel deduction over 100 miles, the retired pay exemption, the $2,500 annuity (disabled veterans, Gold Star parents, surviving spouses) and $1,000 free SSLI match. Absolute preference is for veterans; Guard and Reserve members called up keep their place on civil service lists. Bonus amounts are not in the part read."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Maryland",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.MD",
+     "verdict": "AGREES_IN_PART",
+     "note": "The 50% waiver plus STAR (50% up to $8,500 a fiscal year), the $15,000 subtraction for active duty outside the U.S. (military pay under $30,000), the $12,500 / $20,000 retired pay subtraction and 30 days of leave for state employees match. The $150 a month reimbursement covers TRICARE Reserve Select and TRICARE Dental premiums; no SSLI is on the page."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Maine",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.ME",
+     "verdict": "AGREES_IN_PART",
+     "note": "Tuition up to 130 credits, the out-of-state active duty exemption, the retired pay exemption and 17 workdays of leave for state employees match. The service commitment is one year after receiving aid; SSLI is not in the part read."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Minnesota",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.MN",
+     "verdict": "AGREES",
+     "note": "The Guard tuition maximums ($18,000 undergraduate, $28,000 graduate a fiscal year), the Minnesota GI Bill up to $15,000, military pay of active and reserve members and retired pay exempt, the free park permit for any component, $130 a day minimum for state active duty and $1,000 free SSLI match."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Missouri",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.MO",
+     "verdict": "AGREES_IN_PART",
+     "note": "State Tuition Assistance up to the University of Missouri, Columbia rate (39 hours a year, 150 lifetime), in-state tuition for current Guard and Reserve members, the retired pay exemption, the relief fund grant up to $3,000 once in 12 months (E-3 to O-3), 120 hours of leave for state employees and $1,000 free SSLI match. Active duty pay is a deduction when it is in federal income, not an exemption for all military pay; the interview rule covers Missouri Guard members already on the register of eligibles."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Commonwealth-of-Northern-Marianas",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.MP",
+     "verdict": "AGREES_IN_PART",
+     "note": "No territorial National Guard (Army Reserve under 9th MSC), no territorial education assistance, resident tuition at Northern Marianas College for veterans with 90 days or more of active duty, taxable military and retired pay, the 25% veteran plate discount and NADL housing help match. The 100% P&T waiver covers only the initial fee for the Disabled Veteran plate."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Mississippi",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.MS",
+     "verdict": "AGREES",
+     "note": "SEAP ($10,000 a year at colleges and universities, $5,000 at junior and community colleges), the first $15,000 of reserve training and state active duty pay exempt, the retired pay exemption, 15 days of leave for state employees and SSLI match. The 100% loan-to-value home loan needs six years of service or Title 10 federal active duty."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Montana",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.MT",
+     "verdict": "AGREES_IN_PART",
+     "note": "Guard and Reserve pay on state or federal active duty orders is excluded, and the free five-year wildlife conservation license after two months of contingency duty outside Montana matches. The tuition waiver is a last-dollar award toward tuition only (not fees); the retired pay exemption is the lesser of half of retirement income or Montana wage income; hiring preference needs six years (three in the Montana Guard), or wartime or campaign-medal active duty for Reserve members."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/North-Carolina",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.NC",
+     "verdict": "AGREES_IN_PART",
+     "note": "NCTAP for drilling Guard members and in-state tuition for all NC Guard members, the state pension of $105 a month at 60 with 20 years (up to $210), 10 points for state jobs and 120 hours of leave for state employees match. Military pay is taxed except combat and hazardous duty pay (drill and AGR not named), and retired pay is deductible for 20 years of service or medical retirement."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/North-Dakota",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.ND",
+     "verdict": "AGREES_IN_PART",
+     "note": "In-state tuition (Reserve members only if stationed in North Dakota), the retired pay exemption, the $5,000 Veterans Aid Loan for current or former Guard and Reserve members and SSLI for the North Dakota Guard match. The Guard tuition benefit is a 25% waiver plus a 75% grant (144 hours); only federally taxable military pay is exempt; the 5 and 10 points are written for veterans; the toll exemption is for the Guard only."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/New-Hampshire",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.NH",
+     "verdict": "AGREES",
+     "note": "The space-available tuition waiver (after AIT or commissioning and federal assistance other than VA) and its scheduled repeal on 1 July 2027, no tax on W-2 earned income, $10,000 free SSLI the first year for recruits who enroll within 180 days, and free state parks for E-1 to E-6 in active or reserve components match."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/New-Jersey",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.NJ",
+     "verdict": "AGREES_IN_PART",
+     "note": "Up to 16 credits a semester tuition free after other aid (also for survivors of Guard members killed in the line of duty), the military pension exemption and $6,000 veteran exemption, absolute veterans' preference, free Guard hunting, fishing and park entry, and up to 30 workdays of leave for state employees match. Drill and AGR pay are not named (military pay is taxed)."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/New-Mexico",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.NM",
+     "verdict": "AGREES",
+     "note": "There is no grant or waiver for serving Guard members who are not veterans; all Guard members, spouses and children get in-state tuition. Active duty pay is exempt (AGR not named), retired pay is exempt up to $30,000, current Guard members get 5 points for state jobs, and Reserve members need six continuous years for the 50% license discount and the lifetime park pass."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Nevada",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.NV",
+     "verdict": "AGREES_IN_PART",
+     "note": "No income tax, the state hiring preference for Guard members, 15 working days of leave for state employees, free legal help from the Attorney General for active, Reserve and Guard members and the free veteran park permit match. The Guard waiver covers resident tuition and certain lab fees (not law, medical or dental school), not 100%."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Oklahoma",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.OK",
+     "verdict": "AGREES_IN_PART",
+     "note": "The Guard program pays tuition, mandatory and academic service fees for up to 120 undergraduate and 40 graduate hours, dependents can use up to 120 hours through the separate SEAT program, military pay of active and reserve residents and retired pay are exempt, SSLI goes up to $1,100,000, state employees get 30 days of leave with pay differential, and the $25,000 sales tax permit is for disabled veterans. AGR is not named."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Oregon",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.OR",
+     "verdict": "AGREES_IN_PART",
+     "note": "In-state tuition for members assigned in Oregon, the military pay subtractions (out of state, 21 days or more away, state active duty, up to $6,000 more), the retired pay rule (pay earned on or after 1 October 1991 not subtracted, prorated), 21 days of state leave, the Guard hiring preference from 1 January 2026 and SSLI match. ONGSTA pays in-state tuition for up to 90 community college or 180 university quarter credits, and fees and books are not covered in 2025-26."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Pennsylvania",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.PA",
+     "verdict": "AGREES_IN_PART",
+     "note": "EAP up to $4,245 a semester for a six-year commitment, MFEP for dependents with another six years, exempt state active duty and out-of-state federal active duty pay, untaxed retired pay and SSLI match. The 10 points are veterans' preference that includes reserve members who continue to serve; MFRAP is not on the page."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Puerto-Rico",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.PR",
+     "verdict": "AGREES_IN_PART",
+     "note": "FIGNA education help of up to $50 a credit (bachelor's or lower) for up to 18 credits a year, taxed in-island military pay, the $1,500 veteran exemption and the $100 a month FIGNA annuity at 55 to 59 match. The 25% private discount and Act 203 are not on the page; the retired pay exemption for 2025 was signed but still being put in place; differential pay is for Guard civil service employees on territorial active duty, not a private employer rule."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Rhode-Island",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.RI",
+     "verdict": "AGREES_IN_PART",
+     "note": "STAP waives up to five classes a semester, retired pay is exempt, 20-year Guard and Reserve retirees get the 5-point credit, the relief fund grant goes up to $5,000, and $1,000 SSLI is free. The summer course is a separate program (STEP); drill and AGR pay are not named (military pay follows federal rules)."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/South-Dakota",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.SD",
+     "verdict": "AGREES_IN_PART",
+     "note": "The 100% undergraduate tuition reduction (128 undergraduate, 32 graduate credits; also nonprofit and vocational schools), no income tax, state and local hiring preference for a full contract in an active or reserve component, and resident hunting and fishing licenses for members of South Dakota units match. In-state tuition is for nonresident members, veterans and dependents; no SSLI is on the page."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Virginia",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.VA",
+     "verdict": "AGREES_IN_PART",
+     "note": "VNGSTAP up to $9,000 a fiscal year with two years of Guard service, the $40,000 retired pay subtraction, the 5% state hiring preference after initial training, the Guard park passport and 21 workdays of leave for state employees match. The Guard pay subtraction is the lesser of 39 days or $5,500, and the $20,000 death benefit is for state employees killed in action on federal active duty."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/US-Virgin-Islands",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.VI",
+     "verdict": "AGREES",
+     "note": "The 100% tuition exemption up to 32 semester hours for Guard members without federal tuition assistance, 128 hours at UVI for veterans, taxed military and retired pay, the $650 credit (20 years in the Guard or 30 days in a combat zone), 30 days of paid leave with differential pay for territorial employees and free emergency ambulance service match."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Vermont",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.VT",
+     "verdict": "AGREES",
+     "note": "The forgivable tuition loan (two years of service per full-time year), the $2,000 Guard and Reserve pay exclusion under $50,000 AGI, 15 days of leave, the $2 Green Mountain Passport and the free one-year license after 120 days of state-side activation match. The retired pay exemption is full up to $125,000 AGI and partial up to $175,000."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Washington",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.WA",
+     "verdict": "AGREES_IN_PART",
+     "note": "The Guard Grant tiers, no income tax, the free hunting package for the Washington Guard, 21 working days of leave and the 5% first-promotion preference, and $1,000 free SSLI match. The $500 book allowance is one time, and the RCW 28B.15.621 waiver needs Title 10 or Title 32 service in a conflict on foreign soil or in international waters."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/West-Virginia",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.WV",
+     "verdict": "AGREES",
+     "note": "WVEEP (100% of tuition and fees up to $10,000 a fiscal year), the exemption for Guard and Reserve pay on federal active duty for Operation Enduring Freedom or domestic security, the retired pay exemption, 5 points after more than 90 consecutive days of full-time training, and 240 hours of leave plus 240 more for each mobilization match."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Wyoming",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GJ.WY",
+     "verdict": "AGREES",
+     "note": "WYNG Educational Assistance (100% of resident tuition and mandatory fees, two degrees, one transferable after a six-year enlistment and four-year reenlistment), no income tax, SSLI over $1,000,000 across plans, 15 days of leave for state employees and Military Assistance Trust Fund grants match."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF15",
+     "verdict": "SOURCE_SILENT",
+     "note": "The index page links to each state's fact sheet and says nothing on Guard, Reserve or AGR scope."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://sdngea.com/programs/insurance-program/",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF14",
+     "verdict": "AGREES_IN_PART",
+     "note": "South Dakota: the program is for South Dakota Guard members, new members get $10,000 free for the first year, and it is run by the Guard enlisted association, not the state."
+    }
+   ],
+   "records": []
+  },
+  {
+   "url": "https://sharplearningportal.army.mil/portals/3/LinkedFiles/RegulatoryGuidance/AR600-8-4_Line_of_Duty_15MAR19.pdf",
+   "opened_on": "2026-11-21",
+   "result": "read",
+   "findings": [
+    {
+     "lead_id": "GF03",
+     "verdict": "AGREES_IN_PART",
+     "note": "Para 4-4c gives Army Guard and Reserve Soldiers 180 calendar days from the end of the qualified duty status to request a determination, with exceptions. The regulation presumes every injury in the line of duty unless rebutted (para 2-4a); it does not state a separate AGR presumption in the part read."
+    }
+   ],
+   "records": [
+    "us.line-of-duty-determination-for-army-guard-and-reserve-injuries-and-illne"
    ]
   }
  ]

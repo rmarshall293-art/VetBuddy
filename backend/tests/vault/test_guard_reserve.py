@@ -514,7 +514,7 @@ def test_gap_records_exist_and_retired_reserve_now_matches(dev_role):
 
 def test_source_queue_reports_opened_pages(dev_role):
     counts = dev_role.source_queue(guest())["counts"]
-    assert counts["opened"] == 31 and counts["fetch_failed"] == 2       # pages the report names
+    assert counts["opened"] == 81 and counts["fetch_failed"] == 2 and counts["not_opened"] == 0
     assert counts["opened"] + counts["fetch_failed"] + counts["not_opened"] == counts["sources"]
 
 
@@ -541,3 +541,17 @@ def test_pages_found_by_search_are_marked_as_not_named_by_the_report():
     doc = json.loads(CHECKS.read_text())
     extra = [c for c in doc["checks"] if c.get("named_by_report") is False]
     assert len(extra) == 3 and all(c["records"] for c in extra)
+
+
+def test_every_named_jurisdiction_page_was_checked(dev_role):
+    for code, row in dev_role.recovered.jurisdictions.items():
+        lead = dev_role.recovered.jurisdiction(code)
+        assert lead["check_state"] in ("CHECKED", "CORRECTED"), code
+        assert lead["source_opened"] is True
+
+
+def test_line_of_duty_record_closes_its_gap(dev_role):
+    gaps = {g["id"]: g for g in dev_role.policy.research_gaps}
+    assert gaps["GRG08"]["status"] == "IMPLEMENTED_UNVERIFIED"
+    lead = next(l for l in dev_role.recovered.federal_for(None) if l["lead_id"] == "GF03")
+    assert "us.line-of-duty-determination-for-army-guard-and-reserve-injuries-and-illne" in lead["records"]

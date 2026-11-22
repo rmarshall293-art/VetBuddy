@@ -114,4 +114,24 @@ ledgers and kept once in the federal ledger.
 - **Iowa:** the report says Iowa taxes Title 32 AGR pay and exempts Title 10 pay. The pages read do not address it.
 - **Utah:** the report says Utah's tuition waiver excludes AGR. The pages read do not say so.
 
-**Still to open.** 50 named pages remain (other states' MyArmyBenefits pages, the RCSBP election details, and Air Force AGR pages).
+**Second pass, same day.** The other 50 named pages were opened:
+- 45 state and territory fact sheets, the MyArmyBenefits state index, the South Dakota Guard association's insurance page, and AR 600-8-4.
+- The two pages that failed were tried again and failed again; they may not exist.
+
+Every jurisdiction row now has a check:
+- 14 agree.
+- 41 agree in part.
+- 1 differs. Connecticut's 100% waiver is for veterans; the Guard waiver covers tuition left after other help.
+
+The vault already held the Guard benefits these pages confirm. The one new record is the Army line of duty request window (180 days, AR 600-8-4 para 4-4c).
+
+**How the report goes wrong across the states.** These patterns repeat:
+- **"100%" where the page says "up to" or "last dollar."**
+- **"Drill/AGR taxed" where the page only says resident military pay is taxed.**
+- **Leave days written as if for all Guard and Reserve members,** when they are for state employees.
+- **Benefits credited to the Guard and Reserve that are broader or narrower,** for example Florida's deployed property tax exemption and Tennessee's Helping Heroes grant.
+
+**Still open.**
+- **RCSBP election details:** the DFAS page doesn't give them.
+- **TRICARE 2027 premiums:** the article doesn't load, and the cost pages don't show them yet.
+- **Air Force AGR and Air Guard pages:** not read.

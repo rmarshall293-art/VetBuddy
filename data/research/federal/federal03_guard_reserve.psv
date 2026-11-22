@@ -43,3 +43,6 @@ GUARD_PAY|Blended Retirement System retired pay for Army Guard AGR and full-time
 
 # JUR=US SRC=https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/TRICARE-Prime?serv=120 OPENED=2026-11-21 PAGE_UPDATED=2026-01-26
 HEALTH|TRICARE Prime for Guard members on federal active duty (including full-time Title 10 or Title 32 duty)|ng,sp,ch|(ngany & ad) | (dep & spsm)|Army National Guard Soldiers while on federal active duty and traveling to and from it, with no enrollment fee; family members may elect Prime when the Soldier is ordered to active duty for more than 30 consecutive days|TRICARE Prime with no enrollment fee for the member|PAGE
+
+# JUR=US SRC=https://sharplearningportal.army.mil/portals/3/LinkedFiles/RegulatoryGuidance/AR600-8-4_Line_of_Duty_15MAR19.pdf OPENED=2026-11-21 PAGE_UPDATED=2019-03-15 TAIL_UNREAD=69783
+OTHER|Line of duty determination for Army Guard and Reserve injuries and illnesses|ng,rsv|ngany | rsv|Army National Guard and Army Reserve Soldiers injured or ill in a qualified duty status; a determination is generally requested within 180 calendar days of the end of that duty status (exceptions include later behavioral health diagnoses and IDES-directed determinations)|Determines eligibility for medical and dental treatment and incapacitation pay|PAGE

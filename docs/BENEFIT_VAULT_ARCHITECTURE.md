@@ -104,7 +104,7 @@ own page (nonprofit, association or vendor); 4, a secondary source or a recovere
 
 | | |
 |---|---|
-| Records | 1,377: 1,283 state (55 jurisdictions), 73 federal, 12 nonprofit programs, 9 commercial deals (15 Guard, Reserve and AGR records added 2026-11-21, ADR 0011) |
+| Records | 1,378: 1,283 state (55 jurisdictions), 74 federal, 12 nonprofit programs, 9 commercial deals (16 Guard, Reserve and AGR records added 2026-11-21, ADR 0011) |
 | Record status | 47 SOURCE_CHECKED, 1,315 UNVERIFIED, 0 VERIFIED |
 | Official link | 93 same as the page read, 1,263 linked from it, 6 seen in search only |
 | Sources | 116 (115 opened; tier 1: 14, tier 2: 78, tier 3: 23, tier 4: 1) |

@@ -90,3 +90,14 @@
   - Michigan Guard pay exemption, and the South Carolina AGR 39-day exemption.
 - **Gaps.** GRG01–GRG04, GRG11 and GRG12 are now IMPLEMENTED_UNVERIFIED: records exist, but no named reviewer has checked them yet.
 - **Lead annotations.** Each recovered lead now carries `source_checks` (verdict and note per opened page), `check_state` (NOT_OPENED, CHECKED or CORRECTED) and the records written from its source. The Guard & Reserve Center shows these on every lead card.
+
+## Addendum (2026-11-21, later): queue finished
+
+- **Queue status.** All 83 named sources have been tried: 81 opened and 2 failed (twice). The queue shows 0 NOT_OPENED.
+- **Jurisdiction rows.** All 56 rows now carry a check. Connecticut is marked CORRECTED.
+- **New record and gaps.** The line of duty record (AR 600-8-4) moves GRG08 to IMPLEMENTED_UNVERIFIED. GRG14 points to the 26 state SSLI records the vault already held.
+- **Still open:**
+  - The RCSBP election details (GRG05) and TRICARE 2027 premiums.
+  - Air Force AGR and Air Guard pages.
+  - Iowa's and Utah's AGR tax rules (GRG13). The pages read don't address them.
+  - A named reviewer for every record (G1).

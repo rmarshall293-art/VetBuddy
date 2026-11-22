@@ -286,3 +286,8 @@ Decisions are in ADR 0008.
 - **Scope:** 34 pages were read: 31 named by the report and 3 found by search for AGR. Two named pages did not load.
 - **Records:** 15 Guard, Reserve and AGR records were written, and the registry now holds 1,377. None is VERIFIED until a named reviewer checks it (G1).
 - **Per-claim results:** they are in `data/research/guard_reserve/source_checks.json`. The Guard & Reserve role shows each Gemini lead with what its source said, and marks GF13 (CRDP) as corrected.
+
+**Source checks, second pass (2026-11-21).**
+- **Coverage:** every page the report names has been tried. 81 opened and 2 did not load (tried twice). Including the 3 search finds, 84 pages were read.
+- **Findings:** 22 agree, 60 agree in part, 2 differ (CRDP, Connecticut tuition) and 8 say nothing.
+- **Records:** 16 records were written in total. The only new one in this pass is the Army line of duty window; the state pages confirmed benefits the vault already held.

@@ -45,8 +45,17 @@ class RosterFile(unittest.TestCase):
         with self.assertRaises(review.ReviewError):
             review.load_roster(roster_file(good.replace("scope: [AL, US]", "scope: [Alabama]")))
 
-    def test_the_shipped_roster_is_empty_and_owned_by_the_project_owner(self):
-        self.assertEqual(review.load_roster(), [])
+    def test_the_shipped_roster_holds_handles_only_with_allowed_roles(self):
+        import re
+        allowed = {"accredited_vso_representative", "accredited_claims_agent",
+                   "accredited_attorney", "state_veterans_agency"}
+        roster = review.load_roster()
+        self.assertEqual([r["handle"] for r in roster], ["owner-legion-vso-01"])
+        for r in roster:
+            self.assertIn(r["role"], allowed)
+            self.assertRegex(r["handle"], r"^[a-z0-9-]+$")
+            text = " ".join(str(v) for v in r.values())
+            self.assertIsNone(re.search(r"@|\d{3}[-.\s]\d{3}[-.\s]\d{4}", text))
 
 
 class Workflow(unittest.TestCase):

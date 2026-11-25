@@ -133,6 +133,10 @@ The web shell has a **Guard & Reserve** page at `#/guard-reserve`, the "Guard & 
 
 Browser smoke test: `tests/e2e/smoke_guard_reserve.py`, run by `scripts/test.sh --ui`.
 
+## Standalone test page (synthetic profiles)
+
+`dist/vetbuddy-guard-reserve.html` is one self-contained page for the synthetic test environment. `scripts/build_guard_reserve_html.py` runs `GuardReserveAgent.match` on the server for each profile in `data/synthetic/guard_reserve_personas.json` (10 profiles, `SYN-GR-01`…`10`), under production rules and under the development environment, and saves the compact envelopes with the agent's own input and output hashes beside the role's 401 selected records. The page itself matches nothing (the kernel stays server-side, ADR 0006), stores nothing and sends nothing. Fixed clock, so the build is repeatable; `backend/tests/vault/test_guard_reserve_standalone.py` fails if the page drifts from the registry or the profiles. Add profiles to the JSON file and rebuild. The input check refuses impossible profiles (a 32 USC 502(f) authority on a Navy Reserve member, for example).
+
 ## Source checks (2026-11-21)
 
 Every page the report names has been tried: 81 opened and 2 did not load (tried twice). Three more pages were found by search for AGR health care and retirement, so 84 pages were read in all.

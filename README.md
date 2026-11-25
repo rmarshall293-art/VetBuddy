@@ -68,6 +68,9 @@ web/                          framework-free web shell; kernel.js = browser twin
 web/standalone.html           guest app template -> dist/vetbuddy.html (no server, stores nothing)
                               and dist/vetbuddy-demo.html (same app + four sample people from data/demo/personas.json;
                               their benefit and career results computed at build time by the real engines)
+web/guard_reserve_standalone.html  Guard & Reserve agent template -> dist/vetbuddy-guard-reserve.html
+                              (scripts/build_guard_reserve_html.py: the agent's own results for the synthetic
+                              profiles in data/synthetic/guard_reserve_personas.json, production and test rules)
 tests/e2e/                    browser smoke tests: web shell (smoke_ui), guest app + record (smoke_standalone), demo (smoke_demo)
 ```
 

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VetBuddy Guard &amp; Reserve agent · synthetic test build</title>
+<meta name="description" content="VetBuddy's Guard & Reserve benefits agent, run on synthetic service profiles. A snapshot of the agent's own results; nothing here is a benefit decision.">
+<style>
+:root{--bg:#F4F4F0;--paper:#FFF;--fg:#1A211D;--muted:#58625C;--line:#D8DBD4;--accent:#2A5A4B;--accent-soft:#E3ECE7;
+  --ok:#1F6A45;--ok-bg:#DEEFE4;--warn:#875A12;--warn-bg:#F6EBD4;--bad:#9A2B23;--bad-bg:#F6DEDA;--crisis:#B3261E;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:ui-monospace,Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#111614;--paper:#18201B;--fg:#E4E9E5;--muted:#9BA69F;--line:#2D3732;--accent:#80C3AB;
+  --accent-soft:#1F2E28;--ok:#7DCB9C;--ok-bg:#183323;--warn:#E3B565;--warn-bg:#352812;--bad:#F0948A;--bad-bg:#3A1C19;--crisis:#FF8A80;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 var(--body)}
+a{color:var(--accent)} :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.crisis{background:var(--paper);border-bottom:1px solid var(--line);border-left:4px solid var(--crisis);font-size:14px}
+.crisis .wrap{display:flex;flex-wrap:wrap;gap:4px 18px;padding-block:8px;align-items:center}
+.crisis b{color:var(--crisis);text-transform:uppercase;letter-spacing:.06em;font-size:12.5px}
+.crisis span{white-space:nowrap}
+@media (max-width:600px){.crisis span{white-space:normal}}
+.synth{background:var(--warn-bg);color:var(--warn);font-size:14px;border-bottom:1px solid var(--line)}
+.synth .wrap{padding-block:8px}
+header{padding-block:28px 12px}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12.5px;color:var(--muted)}
+h1{font-size:clamp(1.7rem,4.5vw,2.5rem);line-height:1.1;margin:.25em 0 .3em;letter-spacing:-.01em}
+h2{font-size:1.3rem;margin:0 0 .4em} h3{font-size:1.02rem;margin:.2em 0}
+p{margin:.45em 0;max-width:72ch} .muted{color:var(--muted)} .small{font-size:14px}
+nav.tabs{display:flex;gap:4px;border-bottom:2px solid var(--fg);margin-top:8px;overflow-x:auto}
+nav.tabs button{font:inherit;font-weight:600;background:none;border:0;padding:10px 14px;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent)}
+main{padding-block:20px 60px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin:12px 0}
+.grid{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:820px){.grid{grid-template-columns:minmax(0,1fr)}}
+.plist{display:grid;gap:6px;position:sticky;top:10px}
+@media (max-width:820px){.plist{position:static}}
+.plist button{text-align:left;font:inherit;font-size:14.5px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:9px 11px;cursor:pointer;color:var(--fg)}
+.plist button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.plist code{display:block;font-size:12px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:4px 0 8px}
+.seg button{font:inherit;font-size:14px;border:0;background:var(--paper);color:var(--fg);padding:7px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--paper)}
+.chip{display:inline-block;font-size:12.5px;font-weight:600;padding:2px 8px;border-radius:3px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.chip.ok{background:var(--ok-bg);color:var(--ok);border-color:transparent}.chip.warn{background:var(--warn-bg);color:var(--warn);border-color:transparent}
+.chip.bad{background:var(--bad-bg);color:var(--bad);border-color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.chips button.chip{cursor:pointer;font-family:inherit}
+.chips button.chip[aria-pressed="true"]{outline:2px solid var(--accent)}
+dl.kv{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 14px;margin:8px 0;font-size:14.5px}
+dl.kv dt{color:var(--muted)} dl.kv dd{margin:0}
+.rec{border-top:1px solid var(--line);padding:12px 0}
+.rec:first-child{border-top:0}
+.rec .top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;justify-content:space-between}
+.rec .meta{font-size:13px;color:var(--muted)}
+details{margin-top:6px;font-size:14px} summary{cursor:pointer;color:var(--accent)}
+.banner{border-left:4px solid var(--warn);background:var(--warn-bg);padding:10px 14px;border-radius:0 6px 6px 0;margin:10px 0}
+.banner p{margin:.2em 0}
+.controls{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
+@media (max-width:700px){.controls{grid-template-columns:1fr}}
+label.f{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:3px}
+input[type=search],select{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--fg)}
+.btn{font:inherit;font-size:14px;border:1px solid var(--accent);color:var(--accent);background:var(--paper);border-radius:6px;padding:7px 14px;cursor:pointer}
+table{border-collapse:collapse;width:100%;font-size:14px} th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.tbl{overflow-x:auto}
+code,.mono{font-family:var(--mono);font-size:.86em;word-break:break-all}
+footer{border-top:1px solid var(--line);padding-block:16px 40px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="crisis" role="region" aria-label="Crisis help"><div class="wrap" id="crisis"></div></div>
+<div class="synth"><div class="wrap"><strong>Synthetic test build.</strong> <span id="synth-notice"></span></div></div>
+<div class="wrap">
+<header>
+  <div class="eyebrow">VetBuddy · Guard &amp; Reserve benefits agent</div>
+  <h1>Guard &amp; Reserve agent: test run</h1>
+  <p class="muted" id="lede"></p>
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="people">Sample people</button>
+    <button role="tab" aria-selected="false" data-tab="browse">Browse records</button>
+    <button role="tab" aria-selected="false" data-tab="about">About this build</button>
+  </nav>
+</header>
+<main id="main"></main>
+<footer id="foot"></footer>
+</div>
+<script>
+/*@@DATA@@*/
+const DATA_SHA256 = "@@DATA_SHA256@@";
+(() => {
+"use strict";
+const $ = s => document.querySelector(s);
+function el(tag, attrs, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k.startsWith("on")) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v === true ? "" : v);
+  }
+  const add = k => { if (k == null || k === false) return; if (Array.isArray(k)) k.forEach(add); else n.append(k instanceof Node ? k : String(k)); };
+  kids.forEach(add);
+  return n;
+}
+const OUTCOME = {
+  PRELIMINARY_MATCH: ["Fits the rules as written (preliminary)", "ok"],
+  NEEDS_EVIDENCE: ["Fits only with answers you weren't sure about", "warn"],
+  NEEDS_INFORMATION: ["Needs an answer before it can be compared", ""],
+  HUMAN_REVIEW_REQUIRED: ["May apply: not yet checked by a reviewer", "warn"],
+  CONFLICTING_AUTHORITY: ["Sources disagree", "warn"],
+  SOURCE_STALE: ["Source may be out of date", "warn"],
+  DOES_NOT_MEET_ENCODED_RULES: ["Doesn't fit the rules as written", ""],
+};
+const ORDER = ["PRELIMINARY_MATCH", "NEEDS_EVIDENCE", "HUMAN_REVIEW_REQUIRED", "CONFLICTING_AUTHORITY", "SOURCE_STALE", "NEEDS_INFORMATION", "DOES_NOT_MEET_ENCODED_RULES"];
+const REASON = {
+  ANSWERS_MISSING: "An answer the rule needs wasn't given.",
+  ENCODED_CONDITIONS_MET: "The answers fit the rule as written.",
+  ENCODED_CONDITION_NOT_MET: "An answer doesn't fit the rule as written.",
+  RECORD_NOT_VERIFIED: "No named reviewer has checked this record yet.",
+  RULE_NOT_VERIFIED: "No named reviewer has checked this rule yet.",
+  SOURCE_NOT_READ: "The part of the source page with this rule hasn't been read yet.",
+};
+const RSTAT = { VERIFIED: "Checked by a named reviewer", SOURCE_CHECKED: "Source checked, not reviewed", UNVERIFIED: "Not yet reviewed",
+  CONTESTED: "Contested", SUPERSEDED: "Superseded", ILLUSTRATIVE: "Illustrative only", HEURISTIC: "Rule of thumb" };
+const ENV_LABEL = { production: "Production rules", development: "Test environment" };
+const chip = o => el("span", { class: "chip " + (OUTCOME[o] || ["", ""])[1] }, (OUTCOME[o] || [o])[0]);
+const S = GR.strings;
+const COL = Object.fromEntries(GR.cols.map((c, i) => [c, i]));
+const REC = new Map(GR.records.map(r => [r[COL.benefit_id], r]));
+const jname = c => GR.jurisdictions[c] || c;
+const cat = c => GR.categories[c] || c;
+
+// crisis floor, from config/crisis_floor.yaml
+$("#crisis").append(el("b", {}, "Crisis help"),
+  ...GR.crisis.contacts.map(c => el("span", {}, `${c.label}: `, el("a", { href: "tel:" + c.phone.replace(/[^0-9]/g, "") }, c.phone),
+    c.extra ? ` · ${c.extra}` : "", c.text ? ` · text ${c.text}` : "")),
+  el("span", {}, `${GR.crisis.emergency.label}: `, el("a", { href: "tel:" + GR.crisis.emergency.phone }, GR.crisis.emergency.phone)));
+$("#synth-notice").textContent = GR.synthetic_notice;
+$("#lede").textContent = `The agent's own results for ${GR.personas.length} invented service profiles, captured ${GR.built_at.slice(0, 10)}. ` +
+  "This page doesn't match anything itself: every outcome below came from VetBuddy's server-side rules engine. Nothing here is a benefit decision.";
+$("#foot").append(el("p", {}, GR.notice),
+  el("p", {}, `Registry ${GR.registry.version} (as of ${GR.registry.as_of}) · engine ${GR.engine.name} ${GR.engine.version} · data `, el("code", {}, DATA_SHA256.slice(0, 16) + "…")));
+
+function recordCard(bid, outcome, reasons, questions, caveats) {
+  const r = REC.get(bid);
+  if (!r) return null;
+  return el("div", { class: "rec" },
+    el("div", { class: "top" }, el("h3", {}, r[COL.title]), outcome ? chip(outcome) : null),
+    el("div", { class: "meta" }, `${jname(r[COL.jurisdiction])} · ${cat(r[COL.category])} · ${RSTAT[r[COL.record_status]] || r[COL.record_status]} · source tier ${r[COL.source_tier]}`),
+    r[COL.who_it_is_for] ? el("p", { class: "small" }, el("strong", {}, "Who: "), r[COL.who_it_is_for]) : null,
+    r[COL.value] ? el("p", { class: "small" }, el("strong", {}, "What: "), r[COL.value]) : null,
+    el("p", { class: "small" }, el("a", { href: r[COL.official_url], target: "_blank", rel: "noopener" }, "Official page")),
+    (reasons && reasons.length) || (questions && questions.length) || (caveats && caveats.length) ? el("details", {},
+      el("summary", {}, "Why this result"),
+      el("ul", {}, (reasons || []).map(i => el("li", {}, REASON[S[i]] || S[i])),
+        (questions || []).map(i => el("li", {}, "Question that would change it: " + S[i]))),
+      (caveats || []).map(i => el("p", { class: "small muted" }, S[i]))) : null);
+}
+
+// ── Sample people ──────────────────────────────────────────────────────────
+const state = { persona: 0, env: "development", filter: null, showAll: false };
+function people() {
+  const list = el("div", { class: "plist", role: "group", "aria-label": "Synthetic profiles" },
+    GR.personas.map((p, i) => el("button", { type: "button", "aria-pressed": String(i === state.persona),
+      onclick: () => { state.persona = i; state.filter = null; state.showAll = false; show(); } },
+      el("code", {}, p.id), p.label)));
+  const p = GR.personas[state.persona], e = p.env[state.env], c = p.classification;
+  const seg = el("div", { class: "seg", role: "group", "aria-label": "Rules" },
+    Object.keys(ENV_LABEL).map(k => el("button", { type: "button", "aria-pressed": String(k === state.env),
+      onclick: () => { state.env = k; state.filter = null; show(); } }, ENV_LABEL[k])));
+  const envNote = state.env === "production"
+    ? "Production rules: a record nobody has verified can't come back as a match, so most show as \"not yet checked by a reviewer\". This is what users see today."
+    : "Test environment: unverified records are compared as if checked, so you can see what the rules say. Only in testing; production never shows these as matches until a named reviewer verifies them.";
+  const items = e.items.filter(it => it[1] !== "DOES_NOT_MEET_ENCODED_RULES" || state.filter === "DOES_NOT_MEET_ENCODED_RULES")
+    .filter(it => !state.filter || it[1] === state.filter)
+    .sort((a, b) => (b[2] - a[2]) || (ORDER.indexOf(a[1]) - ORDER.indexOf(b[1])));
+  const shown = state.showAll ? items : items.slice(0, 25);
+  const counts = ORDER.filter(o => e.counts[o]);
+  const authLine = c.authorities.map(a => `${a.citation} (${a.label}): ${a.counts_toward_post_9_11_gi_bill ? "listed as counting" : "listed as not counting"} toward the Post-9/11 GI Bill`);
+  const ans = p.request.guard_reserve, facts = p.request.facts;
+  const right = el("div", {},
+    el("div", { class: "card" },
+      el("div", { class: "eyebrow" }, p.id + " · synthetic"),
+      el("h2", {}, p.label), el("p", { class: "muted" }, p.summary),
+      el("dl", { class: "kv" },
+        el("dt", {}, "Component"), el("dd", {}, c.component ? c.component.label : "Not given"),
+        el("dt", {}, "Duty status"), el("dd", {}, c.duty_status ? `${c.duty_status.label} (${c.duty_status.sub})` : "Not given"),
+        el("dt", {}, "Orders"), el("dd", {}, authLine.length ? authLine.join("; ") : (ans.order_authorities ? "Not sure" : "Not given")),
+        el("dt", {}, "Qualifying days"), el("dd", {}, ans.qualifying_days != null ? String(ans.qualifying_days) : "Not given"),
+        el("dt", {}, "Unit state"), el("dd", {}, facts.guard_state ? jname(facts.guard_state) : "Not given"),
+        el("dt", {}, "Lives in"), el("dd", {}, facts.residence_state ? jname(facts.residence_state) : "Not given")),
+      seg, el("p", { class: "small muted" }, envNote),
+      el("p", { class: "small" }, `Compared against ${e.evaluated} records in ${p.scope.map(jname).join(" and ")}.`),
+      el("div", { class: "chips" }, counts.map(o => el("button", { type: "button", class: "chip " + OUTCOME[o][1],
+        "aria-pressed": String(state.filter === o), onclick: () => { state.filter = state.filter === o ? null : o; state.showAll = false; show(); } },
+        `${OUTCOME[o][0]}: ${e.counts[o]}`))),
+      el("p", { class: "small muted" }, "Tap a count to filter the records. Records that don't fit are hidden unless you pick that count.")),
+    el("div", { class: "card" },
+      el("h2", {}, "Guard & Reserve checks"),
+      el("p", { class: "small muted" }, "Fixed checks from VetBuddy's duty-status research. They restate a rule; they don't decide anything."),
+      e.checks.filter(x => x.kind === "rule_lead_check").map(x => el("div", { class: "rec" },
+        el("div", { class: "top" }, el("h3", {}, x.topic), chip(x.outcome)),
+        el("div", { class: "meta" }, x.citation), el("p", { class: "small" }, x.lead),
+        x.lead_caveat ? el("p", { class: "small muted" }, x.lead_caveat) : null,
+        x.caveats.map(t => el("p", { class: "small muted" }, t)))),
+      e.checks.filter(x => x.kind === "notice" && x.applies).map(x => el("div", { class: "banner" }, el("strong", {}, x.topic), el("p", {}, x.lead)))),
+    e.questions.length ? el("div", { class: "card" }, el("h2", {}, "Questions that would change these results"),
+      el("ul", {}, e.questions.map(q => el("li", {}, q)))) : null,
+    el("div", { class: "card" },
+      el("h2", {}, `Records (${items.length})`),
+      el("p", { class: "small muted" }, "Guard & Reserve records first, then others that came up for these answers."),
+      shown.map(it => recordCard(it[0], it[1], it[3], it[4], it[5])),
+      items.length > shown.length ? el("button", { class: "btn", type: "button", onclick: () => { state.showAll = true; show(); } }, `Show all ${items.length}`) : null),
+    p.leads.length || GR.federal_leads.length ? el("div", { class: "card" },
+      el("h2", {}, "Research leads to check"),
+      el("div", { class: "banner" }, el("strong", {}, "From an AI-written report"), el("p", {}, GR.leads_notice)),
+      [...p.leads, ...GR.federal_leads].map(id => leadCard(GR.leads[id]))) : null);
+  return el("div", { class: "grid" }, list, right);
+}
+function leadCard(l) {
+  if (!l) return null;
+  const rows = l.kind === "recovered_lead" && l.code
+    ? [["Education", l.education], ["Income tax", l.income_tax], ["Property tax", l.property_tax], ["Other", l.other]]
+    : [["Claim", l.claim]];
+  return el("div", { class: "rec" },
+    el("h3", {}, l.name || l.topic),
+    el("dl", { class: "kv" }, rows.filter(r => r[1]).map(r => [el("dt", {}, r[0]), el("dd", {}, r[1])])),
+    (l.withheld_by_language_guard || []).length ? el("p", { class: "small muted" }, "Withheld by the language guard: " + l.withheld_by_language_guard.join(", ")) : null,
+    l.named_source ? el("p", { class: "small" }, el("a", { href: l.named_source, target: "_blank", rel: "noopener" }, "Source the report named"),
+      l.source_opened ? " (opened by VetBuddy)" : " (not opened)") : null);
+}
+
+// ── Browse ─────────────────────────────────────────────────────────────────
+const bstate = { q: "", j: "", c: "", only: true, limit: 50 };
+function browse() {
+  const juris = [...new Set(GR.records.map(r => r[COL.jurisdiction]))].sort((a, b) => a === "US" ? -1 : b === "US" ? 1 : jname(a).localeCompare(jname(b)));
+  const cats = [...new Set(GR.records.map(r => r[COL.category]))].sort((a, b) => cat(a).localeCompare(cat(b)));
+  const results = el("div", {});
+  const count = el("p", { class: "small muted", "aria-live": "polite" });
+  function run() {
+    const q = bstate.q.trim().toLowerCase();
+    const hits = GR.records.filter(r => (!bstate.only || r[COL.selected]) && (!bstate.j || r[COL.jurisdiction] === bstate.j)
+      && (!bstate.c || r[COL.category] === bstate.c)
+      && (!q || [r[COL.title], r[COL.who_it_is_for], r[COL.value]].join(" ").toLowerCase().includes(q)));
+    count.textContent = `${hits.length} record${hits.length === 1 ? "" : "s"}. Reference only: browsing doesn't compare anything to anyone.`;
+    results.replaceChildren(...hits.slice(0, bstate.limit).map(r => recordCard(r[COL.benefit_id])),
+      hits.length > bstate.limit ? el("button", { class: "btn", type: "button", onclick: () => { bstate.limit += 100; run(); } }, "Show more") : "");
+  }
+  const card = el("div", { class: "card" },
+    el("div", { class: "controls" },
+      el("div", {}, el("label", { class: "f", for: "bq" }, "Search"),
+        el("input", { id: "bq", type: "search", value: bstate.q, placeholder: "TRICARE, tuition, retired pay…", oninput: e => { bstate.q = e.target.value; bstate.limit = 50; run(); } })),
+      el("div", {}, el("label", { class: "f", for: "bj" }, "Place"),
+        el("select", { id: "bj", onchange: e => { bstate.j = e.target.value; bstate.limit = 50; run(); } }, el("option", { value: "" }, "All"),
+          juris.map(j => el("option", { value: j, selected: j === bstate.j }, jname(j))))),
+      el("div", {}, el("label", { class: "f", for: "bc" }, "Kind"),
+        el("select", { id: "bc", onchange: e => { bstate.c = e.target.value; bstate.limit = 50; run(); } }, el("option", { value: "" }, "All"),
+          cats.map(c => el("option", { value: c, selected: c === bstate.c }, cat(c)))))),
+    el("p", { class: "small" }, el("label", {}, el("input", { type: "checkbox", checked: bstate.only, onchange: e => { bstate.only = e.target.checked; bstate.limit = 50; run(); } }),
+      " Only records the Guard & Reserve agent selects")), count);
+  run();
+  return el("div", {}, card, el("div", { class: "card" }, results));
+}
+
+// ── About ──────────────────────────────────────────────────────────────────
+function about() {
+  const m = GR.manifest;
+  return el("div", {},
+    el("div", { class: "card" }, el("h2", {}, "What this page is"),
+      el("p", {}, "A snapshot of VetBuddy's Guard & Reserve agent, run on synthetic service profiles to test it. The build script runs the real agent on the server for each profile, under both production rules and the test environment, and saves its answers here with the agent's own fingerprints."),
+      el("p", {}, "It is not the live app. It stores nothing and sends nothing. To test new profiles, add them to data/synthetic/guard_reserve_personas.json and run scripts/build_guard_reserve_html.py."),
+      el("p", { class: "small muted" }, GR.governing_rule)),
+    el("div", { class: "card" }, el("h2", {}, "Agent"),
+      el("dl", { class: "kv" },
+        el("dt", {}, "Agent"), el("dd", {}, el("code", {}, m.agent_id), ` (a role of `, el("code", {}, GR.role.parent_agent), ")"),
+        el("dt", {}, "Plane"), el("dd", {}, String(m.plane)),
+        el("dt", {}, "Issues determinations"), el("dd", {}, m.may_issue_determinations ? "Yes" : "No"),
+        el("dt", {}, "Pulls from other agents"), el("dd", {}, m.may_pull_from_agents ? "Yes" : "No"),
+        el("dt", {}, "Policy"), el("dd", {}, `${GR.role.policy_version} · `, el("code", {}, GR.role.policy_sha256.slice(0, 16) + "…")),
+        el("dt", {}, "Registry"), el("dd", {}, `${GR.registry.version}, ${GR.registry.records.toLocaleString()} records, as of ${GR.registry.as_of} · `, el("code", {}, GR.registry.sha256.slice(0, 16) + "…")),
+        el("dt", {}, "Records shown here"), el("dd", {}, `${GR.records.length} (${GR.records.filter(r => r[COL.selected]).length} selected by the agent)`))),
+    el("div", { class: "card" }, el("h2", {}, "Run fingerprints"),
+      el("p", { class: "small muted" }, "Input and output hashes from each run. The same profile and registry always give the same hashes."),
+      el("div", { class: "tbl" }, el("table", {}, el("thead", {}, el("tr", {}, el("th", {}, "Profile"), el("th", {}, "Rules"), el("th", {}, "Input"), el("th", {}, "Output"))),
+        el("tbody", {}, GR.personas.flatMap(p => Object.keys(p.env).map(k => el("tr", {},
+          el("td", {}, p.id), el("td", {}, ENV_LABEL[k]), el("td", {}, el("code", {}, p.env[k].hashes.inputs.slice(0, 12))),
+          el("td", {}, el("code", {}, p.env[k].hashes.output.slice(0, 12)))))))))),
+    el("div", { class: "card" }, el("h2", {}, "What the results mean"),
+      el("dl", { class: "kv" }, ORDER.map(o => [el("dt", {}, chip(o)), el("dd", { class: "small" }, el("code", {}, o))]))),
+    el("div", { class: "card" }, el("h2", {}, "Research gaps the agent tracks"),
+      el("div", { class: "tbl" }, el("table", {}, el("thead", {}, el("tr", {}, el("th", {}, "Gap"), el("th", {}, "Topic"), el("th", {}, "Status"), el("th", {}, "Records"))),
+        el("tbody", {}, GR.research_gaps.map(g => el("tr", {}, el("td", {}, g.id), el("td", {}, g.topic), el("td", {}, el("code", {}, g.status)), el("td", {}, String((g.records || []).length)))))))));
+}
+
+const TABS = { people, browse, about };
+let tab = "people";
+function show() { $("#main").replaceChildren(TABS[tab]()); }
+document.querySelectorAll("nav.tabs button").forEach(b => b.addEventListener("click", () => {
+  tab = b.dataset.tab;
+  document.querySelectorAll("nav.tabs button").forEach(x => x.setAttribute("aria-selected", String(x === b)));
+  show();
+}));
+show();
+})();
+</script>
+</body>
+</html>

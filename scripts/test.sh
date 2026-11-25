@@ -11,6 +11,7 @@ if [[ "${1:-}" == "--ui" ]]; then
   (cd backend && VB_AUTH_MODE=dev DATABASE_URL="$TEST_DATABASE_URL" python3 -m uvicorn app.api.main:app --port 8765 >/dev/null 2>&1 & echo $! > /tmp/vb-ui.pid)
   sleep 2; trap 'kill $(cat /tmp/vb-ui.pid)' EXIT
   BASE_URL=http://localhost:8765 python3 tests/e2e/smoke_ui.py
+  BASE_URL=http://localhost:8765 python3 tests/e2e/smoke_guard_reserve.py
   python3 tests/e2e/smoke_standalone.py
   python3 tests/e2e/smoke_demo.py
 fi

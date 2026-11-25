@@ -33,12 +33,22 @@
     },
     {
       "agent_id": "guard_reserve_agent",
-      "status": "NOT_IMPLEMENTED",
-      "mission": "Route Guard/Reserve users using legal_authority (Title 10/32/SAD), never component alone.",
-      "readable_data_classes": ["service_record.component", "service_record.legal_authority"],
+      "version": "1.0.0",
+      "status": "DRAFT",
+      "build_status": "IMPLEMENTED_TESTED",
+      "parent_agent": "benefits_intelligence_agent",
+      "v8_role": "Benefits Intelligence: Guard/Reserve",
+      "plane": 5,
+      "mission": "Show National Guard, Reserve and AGR members the Benefit Vault's records from their component, duty status and the legal authority on their orders (Title 10/32/SAD), never from component alone. Classify duty as the Sentinel dataset does; never decide.",
+      "readable_data_classes": ["vault.facts:V1", "vault.facts:V2", "guard_reserve.answers:V1"],
       "writable_data_classes": [],
-      "prohibited_data_classes": ["health"],
-      "allowed_purposes": ["benefit_discovery"]
+      "prohibited_data_classes": ["V3", "V4", "V5", "health", "claims_evidence", "financial", "immigration_status"],
+      "allowed_purposes": ["benefit_matching"],
+      "approved_tools": ["vault_matcher", "sentinel_duty_classifier", "sentinel_rule_lead_checks"],
+      "may_issue_determinations": false,
+      "may_pull_from_agents": false,
+      "policy": "config/guard_reserve_vault_policy.yaml",
+      "note": "Not a second puller: pulls run through benefits_intelligence_agent and the broker under the person's grant (ADR 0011). DRAFT until G1 (named reviewers) and G17 (production sign-in) close."
     },
     {
       "agent_id": "women_veterans_agent",

@@ -129,7 +129,7 @@ Decisions: ADR 0005. Vault components (V01–V25) and its own defects (VD01–VD
 
 | Capability | Status | Evidence |
 |---|---|---|
-| Vault registry: 1,362 records, 116 sources, 56 of 57 jurisdiction rows (American Samoa SOURCE_NOT_AVAILABLE) | IMPLEMENTED_TESTED | `build_vault_registry.py --check`; `tests/vault/test_importer_registry.py` |
+| Vault registry: 1,387 records, 140 sources, 56 of 57 jurisdiction rows (American Samoa SOURCE_NOT_AVAILABLE) | IMPLEMENTED_TESTED | `build_vault_registry.py --check`; `tests/vault/test_importer_registry.py` |
 | Migration 0014 on the real slice 03 chain (RLS, append-only ledger, purger grants, deletion postcondition) | IMPLEMENTED_TESTED | `tests/vault/test_database.py` (22) on a database built from 0001–0014; postcondition mutation tests |
 | Account deletion reaches the vault tables | IMPLEMENTED_TESTED | `test_purge_removes_every_vault_row_of_one_tenant`; `test_account_deletion_removes_vault_rows_and_closes_the_session` |
 | Vault API mounted at `/api/v1/vault` with the platform session, consent and error contract | IMPLEMENTED_TESTED | `tests/test_vault_integration.py` (7) |
@@ -156,6 +156,30 @@ Decisions: ADR 0005. Vault components (V01–V25) and its own defects (VD01–VD
 | VD06: helper ids follow the v8 roster (migration 0015); crisis help is a Tier 0 rule | IMPLEMENTED_TESTED | `test_helper_ids_follow_the_v8_roster`; upgrade tested on a database holding old grants |
 | Vault pulls from slice 03 onboarding data (component, service status only) | PARTIAL | `VaultPullsFromOnboarding`; VA status and household have no slice 03 store |
 | G1 reviewer roster kept by the project owner; database-enforced; logged (migration 0016) | PARTIAL | `tests/test_vault_review.py`; no reviewer on the roster yet |
+
+## Guard & Reserve vault role (2026-11-20, ADR 0011)
+
+Design and placement: `docs/GUARD_RESERVE_VAULT.md`. The role runs over Benefits Intelligence; it never pulls, decides or exposes.
+
+| Capability | Status | Evidence |
+|---|---|---|
+| Guard & Reserve answers validated against the Sentinel vocabulary (component, duty status, authorities, qualifying days; V1, never stored) | IMPLEMENTED_TESTED | `tests/vault/test_guard_reserve.py` (`test_answers_are_validated_against_sentinel`) |
+| Duty status derives vault facts; the person's own answer always wins; conflicts reported | IMPLEMENTED_TESTED | `test_agr_title32_derives…`, `test_an_answer_the_person_gave_wins…` |
+| Sentinel rule-lead checks (Post-9/11 90-day threshold, Selected Reserve GI Bill, TA, Rudisill contested, state definition notice) | IMPLEMENTED_TESTED | threshold and status parametrized tests; production never shows an unreviewed lead as a match |
+| Lens shows every vault result (same counts), Guard & Reserve first | IMPLEMENTED_TESTED | `test_lens_puts_guard_reserve_records_first_and_hides_nothing` |
+| Manifests: vault (no pull, no decide, exposes nothing) and platform (DRAFT, migration 0021, configuration hash pinned) | IMPLEMENTED_TESTED | `test_role_has_a_vault_manifest…`, `test_platform_manifest_and_migration_0021_agree` |
+| Routes `/api/v1/vault/guard-reserve/{catalog,leads,match}` mounted in the app | IMPLEMENTED_TESTED | `test_routes`, `test_routes_are_mounted_in_the_app` |
+| Pulls through the parent only, for what the answers did not supply | PARTIAL | `test_pulls_run_through_benefits_intelligence…`; production sign-in waits on G17 |
+| Recovered Gemini report: 56 jurisdiction rows and federal leads GF01–GF15 as tier 4 leads (hash-pinned, language-guarded, cross-checked) | IMPLEMENTED_TESTED | `test_extraction_is_current…`, `test_recovered_leads_are_leads_never_outcomes`, `test_a_tampered_recovered_file_is_refused` |
+| Guard, Reserve and AGR records from opened sources (23 incl. Air Force AGR; line of duty window, TRICARE Retired Reserve, Prime and Select at 60, Reserve retired pay and reduced age, 15-year letter, Chapter 61 retired and severance pay, CRSC, CRDP, RCSBP, Army AGR retirement and BRS, TRICARE Prime on full-time duty, MI and SC AGR tax) | IMPLEMENTED_UNVERIFIED | 15 records, `federal03_guard_reserve.psv` and `batch09_guard_reserve.psv`; `source_checks.json`; awaiting a named reviewer (G1) |
+| Named sources of the Gemini report | IMPLEMENTED_TESTED | 81 opened, 2 FETCH_FAILED (twice), 0 NOT_OPENED; all 56 jurisdiction rows checked (`test_every_named_jurisdiction_page_was_checked`) |
+| Air Force AGR, RCSBP election window, Iowa Title 32 tax, Utah AGR waiver, federal military leave, VA health care after activation | IMPLEMENTED_UNVERIFIED | records in federal03 and batch09; `test_air_guard_agr_member_sees_air_force_records`, `test_iowa_title_32_agr_record_carries_the_title_32_caveat` |
+| BRS for drilling members (GRG09); Retired Reserve or discharge (GRG15) with the irreversible-choice caveat | IMPLEMENTED_UNVERIFIED | `test_every_gap_now_has_records`, `test_irreversible_choices_carry_the_caveat` |
+| TRICARE 2027 premiums | PARTIAL | only an association article (MOAA) so far; records keep the 2026 TRICARE figures until TRICARE publishes |
+| Named reviewer sign-off of the 25 Guard, Reserve and AGR records | BLOCKED | G1 (owner names reviewers) |
+| Guard & Reserve Center screen (web shell `#/guard-reserve`, linked from the brief's Guard/Reserve lane) | IMPLEMENTED_TESTED (smoke) | `tests/e2e/smoke_guard_reserve.py`, light 1280 + dark 390 px, no horizontal overflow |
+| Source-check queue for recovered leads | IMPLEMENTED_TESTED | `test_source_queue_…`; queue finished |
+| Family members of Guard and Reserve sponsors | PLANNED | VD11 |
 
 ## Career Navigator core (2026-10-29, ADR 0007)
 

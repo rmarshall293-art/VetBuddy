@@ -1,0 +1,1228 @@
+{
+ "dataset": "vetbuddy.recovered.gemini_guard_reserve.jurisdictions_56",
+ "version": "1.0.0",
+ "extracted_from": "data/research/recovered/gemini_guard_reserve/report.html",
+ "report_sha256": "e2c67767aef9e738079babbb0c62b001bf233226a3de7fad4f195441ee1a299c",
+ "registry_benefits_sha256": "a89ac6c9065eafbc779a8c2932af9b6c01f0e49b0677b79aa77e46ba7989a272",
+ "record_status": "UNVERIFIED",
+ "tier": 4,
+ "notice": "Cells are the report's own words. The report is AI-written; it names a source for each row, which VetBuddy has not opened. Leads to check, never benefit records.",
+ "tag_rules": {
+  "agr_specific_rule": "\\bAGR\\b",
+  "mentions_reserve": "\\bRes\\b|\\bReserv",
+  "title_10_32_split": "Title 10.*Title 32|Title 32.*Title 10",
+  "no_state_income_tax": "No (state|earned-income) (income )?tax",
+  "no_national_guard": "no National Guard|Army Reserve only",
+  "report_lists_no_guard_tuition": "^No territorial|no non-vet NG TA"
+ },
+ "generic_agr_phrases": "(?i)drill(/| ?, ?)AGR( & retired pay)?|AD/AGR|NG/Res/AGR(/Tech)?|\\(drill, AGR & retired pay untaxed\\)",
+ "relations": {
+  "program_in_vault": "a vault record in this jurisdiction names the program the report names",
+  "vault_has_guard_education_record": "the vault has a Guard education record here; whether it is the same program is not confirmed",
+  "not_in_vault": "the report names a Guard education program and the vault has none here: research target",
+  "report_lists_none": "the report says there is no territorial Guard tuition program, and the vault has none",
+  "report_lists_none_vault_has_record": "the report says there is none, but the vault has a record: a conflict to review"
+ },
+ "report_consistency": [
+  {
+   "claim": "51 / 56 jurisdictions offer dedicated National Guard tuition waivers or assistance",
+   "table_count": 52,
+   "agrees": false,
+   "note": "Rows whose education cell does not start with 'No territorial' or say 'no non-vet NG TA'."
+  },
+  {
+   "claim": "9 jurisdictions have no earned-income tax",
+   "table_count": 9,
+   "agrees": true,
+   "note": "Rows whose tax cell says 'No state income tax' or 'No earned-income tax'."
+  }
+ ],
+ "cross_check_counts": {
+  "not_in_vault": 1,
+  "program_in_vault": 14,
+  "report_lists_none": 3,
+  "report_lists_none_vault_has_record": 1,
+  "vault_has_guard_education_record": 37
+ },
+ "jurisdictions": [
+  {
+   "code": "AK",
+   "name": "Alaska",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "100% UA tuition/fees or $2.5k/yr private (AK NG)",
+   "income_tax": "No state income tax (all pay & pensions untaxed)",
+   "property_tax": "First $150,000 assessed value exempt (50%+ VA disability)",
+   "other": "Free hunt/fish & +5% hiring pref (NG & Res), AK NG $100/mo-yr state pension",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Alaska",
+   "tags": [
+    "mentions_reserve",
+    "no_state_income_tax"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "AL",
+   "name": "Alabama",
+   "region": "Southeast & Caribbean Territories",
+   "education": "ANGEAP up to $6,585/sem (cert through grad, AL NG)",
+   "income_tax": "Drill/AGR taxed; 100% retired pay exempt",
+   "property_tax": "100% exempt up to 160 acres (100% T&P, any income)",
+   "other": "SSLI, vehicle tag/tax exempt & 168h state leave (NG & Res), $100k SAD death",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Alabama",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "ANGEAP",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "al.alabama-national-guard-educational-assistance-program-angeap"
+    ],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "AR",
+   "name": "Arkansas",
+   "region": "Southeast & Caribbean Territories",
+   "education": "NGTW 100% public tuition/fees up to 120 hrs (AR NG)",
+   "income_tax": "100% all military pay (drill, AGR) & retired pay exempt",
+   "property_tax": "100% homestead & personal property exempt (100% P&T)",
+   "other": "SSLI, +5 hiring pts (6+ yrs NG/Res), 15d leave, free DV plates (30%+)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Arkansas",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "NGTW",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "AS",
+   "name": "American Samoa",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "No territorial TA (federal VA/DoD TA only; no National Guard)",
+   "income_tax": "Drill, AGR & retired pay taxed",
+   "property_tax": "No territorial veteran property tax exemptions",
+   "other": "Army Reserve only (9th MSC): 15d gov't leave, +5/+10 hiring pts (180+ days AD)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/American-Samoa",
+   "tags": [
+    "mentions_reserve",
+    "no_national_guard",
+    "report_lists_no_guard_tuition"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "report_lists_none",
+    "matching_records": [],
+    "vault_guard_education_records": 0
+   }
+  },
+  {
+   "code": "AZ",
+   "name": "Arizona",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "STR up to $250/cr ($5,250/FY, AZ NG; transferable to dependents)",
+   "income_tax": "100% all military pay (NG/Res/AGR) & retired pay exempt",
+   "property_tax": "100% exempt (100% P&T, income-limited); partial up to $4,748",
+   "other": "SSLI, 50% off state parks (NG & Res), 1-yr deployed vehicle tax waiver",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Arizona",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "STR",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "CA",
+   "name": "California",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "CMD GI Bill up to 100% public tuition/fees (CA NG, 2-yr obligation)",
+   "income_tax": "In-state AD/AGR taxed; retired $20k excl. (2025–2029, AGI caps)",
+   "property_tax": "$180,671 basic or $271,009 low-income exemption (100% VA)",
+   "other": "SSLI, 30d leave + 760d diff pay (NG & Res), Military Family Relief Fund (CA NG)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/California",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "CO",
+   "name": "Colorado",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "100% tuition waiver (up to 130 UG / 60–150 grad cr, CO NG)",
+   "income_tax": "Drill/AGR taxed; retired $15k (<55) / $20k (55–64) / $24k (65+) excl.",
+   "property_tax": "50% of first $200k exempt (100% P&T); 30+ day AD deferral (NG & Res)",
+   "other": "SSLI, CO Military Family Relief Fund (30+ day AD, NG & Res), 15d state leave",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Colorado",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "CT",
+   "name": "Connecticut",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "100% public tuition waiver (50% summer); Charter Oak 50% fee waiver (CT NG; 90+ day wartime AD vets)",
+   "income_tax": "Drill/AGR taxed in-state; 100% retired pay exempt",
+   "property_tax": "100% primary home or 1-vehicle exemption (100% T&P)",
+   "other": "SSLI ($1k free), $500–$1,200 wartime bonus, 30d state leave (NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Connecticut",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "not_in_vault",
+    "matching_records": [],
+    "vault_guard_education_records": 0
+   }
+  },
+  {
+   "code": "DC",
+   "name": "Washington, D.C.",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "DCTA up to $20,000/FY tuition + $500 fees (D.C. NG only)",
+   "income_tax": "Drill, AGR & retired pay fully taxed",
+   "property_tax": "Up to $445,000 homestead deduction (100% T&P/IU, AGI <$159,750)",
+   "other": "SSLI, 15–22d D.C. gov't military leave (NG & Res), 50% WMATA disabled discount",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/District-of-Columbia",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "DCTA",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "DE",
+   "name": "Delaware",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "100% public tuition (up to bachelor's; 6-yr DE NG commitment)",
+   "income_tax": "Drill/AGR taxed; retired pay $12.5k excl. (rising to $25k by 2029)",
+   "property_tax": "100% school property tax credit (100% T&P/IU, 3-yr resident)",
+   "other": "SSLI, +5 hiring pts for 20-yr NG/Res, 2x per diem & $200k LOD death (NG)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Delaware",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "FL",
+   "name": "Florida",
+   "region": "Southeast & Caribbean Territories",
+   "education": "EDD 100% public tuition + books (FL NG); in-state tuition for active/Res vets",
+   "income_tax": "No state income tax (all pay & pensions untaxed)",
+   "property_tax": "100% exempt (100% P&T) + Deployed Military % Exemption (NG & Res)",
+   "other": "SSLI, +10 hiring pts (current NG/Res), free annual FL NG tag, age-62 NG pension",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Florida",
+   "tags": [
+    "mentions_reserve",
+    "no_state_income_tax"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "EDD",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "fl.florida-educational-dollars-for-duty-edd"
+    ],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "GA",
+   "name": "Georgia",
+   "region": "Southeast & Caribbean Territories",
+   "education": "GNG SCL up to 120 sem hrs (GA NG); HERO Scholarship $2k/yr (combat NG & Res)",
+   "income_tax": "Drill/AGR taxed; retired pay $17.5k–$65k exempt (age-tiered)",
+   "property_tax": "$126,526 homestead exemption (2026; 100% P&T/IU)",
+   "other": "SSLI, SGLI tax credit (>90d AD) & free DL (GA NG), 18d leave (NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Georgia",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "GNG",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 2
+   }
+  },
+  {
+   "code": "GU",
+   "name": "Guam",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "No territorial TA or tuition waiver (federal VA/DoD TA only)",
+   "income_tax": "Mirror-code: drill, AGR & retired pay taxed",
+   "property_tax": "100% primary residence exemption (100% SC/TDIU/Gold Star)",
+   "other": "Free DL (all components/vets), 15d gov't leave (NG & Res), Guam NG SAD workers' comp",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Guam",
+   "tags": [
+    "mentions_reserve",
+    "report_lists_no_guard_tuition"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "report_lists_none",
+    "matching_records": [],
+    "vault_guard_education_records": 0
+   }
+  },
+  {
+   "code": "HI",
+   "name": "Hawaii",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "STAP 100% CC / 50% univ tuition (O-3 & below HI NG); in-state (NG & Res)",
+   "income_tax": "$8,082 drill excl. (NG & Res); AGR taxed; 100% retired exempt",
+   "property_tax": "County-administered disabled veteran exemptions",
+   "other": "1-vehicle weight tax exempt (HI NG & HI-based Res), 15d state leave",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Hawaii",
+   "tags": [
+    "agr_specific_rule",
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "STAP",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "IA",
+   "name": "Iowa",
+   "region": "Midwest & Plains",
+   "education": "INGSS 100% Regents tuition up to 120–130 cr (IA NG)",
+   "income_tax": "Title 10 exempt; Title 32 AGR & drill taxed; 100% retired exempt",
+   "property_tax": "100% tax credit (100% P&T/IU); 20-yr NG/Res partial exemption",
+   "other": "SSLI, +5 hiring pts (20-yr NG/Res or 90d AD), $5k Homeownership grant, 30d leave",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Iowa",
+   "tags": [
+    "agr_specific_rule",
+    "mentions_reserve",
+    "title_10_32_split"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "INGSS",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "ID",
+   "name": "Idaho",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "SEAP up to $8k/FY (E-9 & below) / $4k (WO/O1–O3) / $20k tech (ID NG)",
+   "income_tax": "Out-of-state AD (≥120d) exempt; retired $45.8k/$68.8k age 65+ deduction",
+   "property_tax": "Up to $1,500 property tax reduction (100% SC, no income cap)",
+   "other": "120h state leave (NG & Res), $1k GRASP recruiting bonus (ID NG), $5 hunt/fish (40%+)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Idaho",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "SEAP",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "IL",
+   "name": "Illinois",
+   "region": "Midwest & Plains",
+   "education": "ING Grant 100% public tuition/fees (4–6 yrs, IL NG); IVG for 1+ yr AD vets",
+   "income_tax": "100% all military pay (NG/Res/AGR) & retired pay exempt",
+   "property_tax": "$2.5k (30–49%), $5k (50–69%), 100% exempt (70%+ VA)",
+   "other": "SSLI, +3 hiring pts (4+ yrs NG or Res), 30d leave, up to $5k IMFRF grants",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Illinois",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "ING",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "IN",
+   "name": "Indiana",
+   "region": "Midwest & Plains",
+   "education": "NGSG 100% public tuition/fees or $5k/yr private (IN NG)",
+   "income_tax": "100% all military pay (NG/Res/AGR/Tech) & retired pay exempt",
+   "property_tax": "$14k–$24.96k assessed deduction; % charity home deduction",
+   "other": "SSLI ($10k yr 1), 15d military leave, MFRF emergency grants up to $2.5k",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Indiana",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "NGSG",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "in.national-guard-supplemental-grant-ngsg"
+    ],
+    "vault_guard_education_records": 2
+   }
+  },
+  {
+   "code": "KS",
+   "name": "Kansas",
+   "region": "Midwest & Plains",
+   "education": "KS NG EA 100% tuition/fees (180 cr) + EMERGE grad (KS NG); Mil Svc Schol (combat)",
+   "income_tax": "Drill/AGR taxed; 100% retired pay exempt",
+   "property_tax": "Up to $700 refund (50%+ VA, income ≤$58k); 2 vehicles exempt",
+   "other": "SSLI, free hunt/fish & State Park permit (active KS NG), 30d leave + diff pay",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Kansas",
+   "tags": [],
+   "language_flags": {},
+   "cross_check": {
+    "program": "EA",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 2
+   }
+  },
+  {
+   "code": "KY",
+   "name": "Kentucky",
+   "region": "Southeast & Caribbean Territories",
+   "education": "KYNG TA $30k–$75k lifetime caps (KY NG)",
+   "income_tax": "100% all military pay exempt; retired pay $31,110 excl. (post-97)",
+   "property_tax": "$49,100 homestead exemption (2025–2026; 100% SC or age 65+)",
+   "other": "SSLI, interview pref & $80k federal AD death benefit (NG & Res), toll exempt (NG)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Kentucky",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "KYNG",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "LA",
+   "name": "Louisiana",
+   "region": "Southeast & Caribbean Territories",
+   "education": "STEP 100% public tuition + Patriot Scholarship fees (LA NG)",
+   "income_tax": "Up to $50k excl. (≥120d AD outside LA); 100% retired pay exempt",
+   "property_tax": "$7.5k base + $2.5k–$4.5k (50–99%) or 100% exempt (100%/IU)",
+   "other": "$50k–$100k LA NG disability benefit, MFA grants up to $10k (NG & Res), toll exempt",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Louisiana",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "STEP",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "la.state-tuition-exemption-program-step"
+    ],
+    "vault_guard_education_records": 2
+   }
+  },
+  {
+   "code": "MA",
+   "name": "Massachusetts",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "100% tuition & fee waiver up to 130 hrs (MA NG; transferable); AD stationed in MA",
+   "income_tax": ">100-mi duty travel deductible; 100% retired pay exempt",
+   "property_tax": "$400–$1,500 tiered; 100% exempt for paraplegic/blind/KIA spouse",
+   "other": "SSLI, $500–$1,000 Veterans' Bonus, $2,500/yr annuity, absolute civil pref (NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Massachusetts",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 2
+   }
+  },
+  {
+   "code": "MD",
+   "name": "Maryland",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "50% tuition waiver + 50% STAR reimbursement up to $8,500/FY (MD NG)",
+   "income_tax": "$15k excl. outside U.S.; retired pay $12.5k (<55) / $20k (55+) excl.",
+   "property_tax": "100% primary residence exemption (100% T&P or IU)",
+   "other": "Up to $150/mo TRICARE Reserve Select reimbursement (MD NG), SSLI, 30d leave",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Maryland",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "STAR",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "md.state-tuition-waiver-and-star-reimbursement"
+    ],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "ME",
+   "name": "Maine",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "100% ME public tuition up to 130 credits (1-yr ME NG commitment/term)",
+   "income_tax": "Exempt if stationed out-of-state; 100% retired pay exempt",
+   "property_tax": "$6,000 exemption (wartime 62+ or 100% VA); $50k SAH",
+   "other": "SSLI, vehicle excise exempt (3 vehicles, 100% T&P), 17d leave (NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Maine",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "MI",
+   "name": "Michigan",
+   "region": "Midwest & Plains",
+   "education": "MINGSTAP up to $14,400/yr UG / $6k grad (M-Day & AGR, transferable)",
+   "income_tax": "100% Title 10 & Title 32 exempt (SAD taxed); 100% retired exempt",
+   "property_tax": "100% primary residence exempt (100% P&T or TDIU)",
+   "other": "SSLI, $600/yr MI NG state pension at age 55 (19.5+ yrs), MFRF emergency grants",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Michigan",
+   "tags": [
+    "agr_specific_rule",
+    "title_10_32_split"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "MINGSTAP",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "mi.michigan-national-guard-state-tuition-assistance-program-mingstap"
+    ],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "MN",
+   "name": "Minnesota",
+   "region": "Midwest & Plains",
+   "education": "MN NG STR up to $18k/yr UG / $28k grad; MN GI Bill $15k (all components)",
+   "income_tax": "100% all military pay (NG/Res/AGR) & retired pay exempt",
+   "property_tax": "$150k exclusion (70–99%) or $300k exclusion (100% P&T)",
+   "other": "SSLI, free State Park pass (all components), $130/d SAD min + 5% pension stipend",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Minnesota",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "STR",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "mn.state-tuition-reimbursement-str",
+     "mn.str-survivor-entitlement"
+    ],
+    "vault_guard_education_records": 2
+   }
+  },
+  {
+   "code": "MO",
+   "name": "Missouri",
+   "region": "Midwest & Plains",
+   "education": "MO NG STA up to MU rate (150 cr, MO NG); in-state tuition (NG & Res)",
+   "income_tax": "100% all military pay & 100% retired pay exempt",
+   "property_tax": "100% exempt (100% POW); $1.1k credit (100% VA, income ≤$30k/$34k)",
+   "other": "SSLI, guaranteed interview (MO NG), MMFRF up to $3k (NG & Res), 120h leave",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Missouri",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {
+    "other": [
+     "guarantee"
+    ]
+   },
+   "cross_check": {
+    "program": "STA",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "MP",
+   "name": "Northern Mariana Islands",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "No territorial TA; NMC resident tuition for 90+ day AD vets (no National Guard)",
+   "income_tax": "Mirror-code: drill, AGR & retired pay taxed",
+   "property_tax": "No territorial veteran property tax exemptions",
+   "other": "Army Reserve only (9th MSC): 25% vet plate discount (free 100% P&T), NADL housing help",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Commonwealth-of-Northern-Marianas",
+   "tags": [
+    "mentions_reserve",
+    "no_national_guard",
+    "report_lists_no_guard_tuition"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "report_lists_none",
+    "matching_records": [],
+    "vault_guard_education_records": 0
+   }
+  },
+  {
+   "code": "MS",
+   "name": "Mississippi",
+   "region": "Southeast & Caribbean Territories",
+   "education": "SEAP up to $10,000/FY (4-yr) or $5,000/FY (CC) (MS NG)",
+   "income_tax": "First $15,000 drill/AT/SAD exempt (NG & Res); 100% retired exempt",
+   "property_tax": "100% homestead ad valorem exempt (100% SC total)",
+   "other": "SSLI, 100% LTV VHPB home loans (6+ yrs NG/Res), 15d state leave",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Mississippi",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "SEAP",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "MT",
+   "name": "Montana",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "100% last-dollar UG/grad public tuition waiver (MT NG)",
+   "income_tax": "Federal/state AD pay exempt; 50% retired pay excl. (5 yrs through 2033)",
+   "property_tax": "50%–100% property tax reduction (100% VA, income-tiered)",
+   "other": "+5% hiring pref (6+ yrs MT NG / wartime Res), free 5-yr wildlife license (deployed 2+ mos)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Montana",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "NC",
+   "name": "North Carolina",
+   "region": "Southeast & Caribbean Territories",
+   "education": "NCTAP tuition reimbursement + in-state tuition (NC NG)",
+   "income_tax": "Drill/AGR taxed; 100% retired pay deductible",
+   "property_tax": "$45,000 appraised value exempt (100% P&T/SAH)",
+   "other": "NC NG State Pension ($105–$210/mo at 60), +10 pts (NC NG), 120h leave (NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/North-Carolina",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "NCTAP",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "nc.nc-guard-tuition-assistance-program-nctap"
+    ],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "ND",
+   "name": "North Dakota",
+   "region": "Midwest & Plains",
+   "education": "NDNG TA 100% public tuition (NDNG); in-state tuition (NG & Res)",
+   "income_tax": "100% all military pay (NG/Res/AGR) & retired pay exempt",
+   "property_tax": "$4.5k (50%) to $9k (100%/IU) taxable value credit; $120k SAH",
+   "other": "SSLI, +5%/10% hiring pref & $5k Vet Aid Loan (current NG & Res), toll exempt",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/North-Dakota",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "NDNG",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "NE",
+   "name": "Nebraska",
+   "region": "Midwest & Plains",
+   "education": "Reservist Tuition Credit: 75% UG / 50% grad (both NE NG & Reserves)",
+   "income_tax": "100% NE NG pay (incl. AGR) exempt; non-NG Reserves taxed; 100% retired exempt",
+   "property_tax": "100% Homestead Exemption (100% P&T/IU) + vehicle tax exempt",
+   "other": "SSLI, +5%/10% hiring pref, 120–168h state leave, free lifetime hunt/fish (50%+)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Nebraska",
+   "tags": [
+    "agr_specific_rule",
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "NH",
+   "name": "New Hampshire",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "100% space-available public tuition waiver (NH NG; scheduled repeal Jul 2027)",
+   "income_tax": "No earned-income tax (drill, AGR & retired pay untaxed)",
+   "property_tax": "$50–$750 war / $700–$5k 100% T&P credit; 100% SAH exempt",
+   "other": "SSLI ($10k free yr 1), free State Parks for E1–E6 (all components)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/New-Hampshire",
+   "tags": [
+    "no_state_income_tax"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "NJ",
+   "name": "New Jersey",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "100% public tuition waiver up to 16 credits/sem (NJ NG only)",
+   "income_tax": "Drill/AGR taxed; 100% retired pay exempt + $6k vet exemption",
+   "property_tax": "100% exempt (100% T&P active-duty); $250 wartime deduction",
+   "other": "Absolute civil service pref, free NJ NG hunt/fish & parks, 30d leave (NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/New-Jersey",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "NM",
+   "name": "New Mexico",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "In-state tuition (NG & family); Wartime Vet Scholarship (no non-vet NG TA)",
+   "income_tax": "Resident AD/AGR exempt; retired pay up to $30,000 exempt",
+   "property_tax": "$10k vet + % exemption equal to VA rating (100% at 100% P&T)",
+   "other": "+5 hiring pts (current NG), 50% hunt/fish & lifetime park pass (6+ yrs NG/Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/New-Mexico",
+   "tags": [
+    "mentions_reserve",
+    "report_lists_no_guard_tuition"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "report_lists_none_vault_has_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "NV",
+   "name": "Nevada",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "100% NSHE tuition/lab waiver (excl. law/med/dental, NV NG)",
+   "income_tax": "No state income tax (all pay & pensions untaxed)",
+   "property_tax": "$3,440 war / $17.7k–$35.4k (60–100% VA) assessed exemption",
+   "other": "State hiring pref, 15d leave & free AG legal aid (NG & Res), free vet park pass",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Nevada",
+   "tags": [
+    "mentions_reserve",
+    "no_state_income_tax"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "NY",
+   "name": "New York",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "RIRP up to $3,400/yr (NY NG); VTA up to SUNY tuition (4+ yrs AD or deployed Res/NG)",
+   "income_tax": "NY NG non-training AD exempt; 100% retired pay exempt (State/NYC)",
+   "property_tax": "Local-option Alternative (15%+10%+½ disability) & Cold War",
+   "other": "SGLI reimbursement (incl. non-mob NY NG AGR), SSLI, free hunt/fish (NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/New-York",
+   "tags": [
+    "agr_specific_rule",
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "RIRP",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "ny.recruitment-incentive-and-retention-program-rirp"
+    ],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "OH",
+   "name": "Ohio",
+   "region": "Midwest & Plains",
+   "education": "ONGSP 100% public tuition (48–96 hrs, OH NG only)",
+   "income_tax": "In-state drill/AGR taxed (out-of-state exempt); 100% retired exempt",
+   "property_tax": "$50,000 market value Homestead Exemption (100% SC or TDIU)",
+   "other": "SSLI, +15% hiring pref (current NG & Res), SGLI reimb. (excl. AGR), $100k death",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Ohio",
+   "tags": [
+    "agr_specific_rule",
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "ONGSP",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "OK",
+   "name": "Oklahoma",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "EAP 100% public tuition/fees (120 UG / 40 grad hrs, transferable to dependents)",
+   "income_tax": "100% all military pay (NG/Res/AGR) & retired pay exempt",
+   "property_tax": "100% homestead exemption (100% P&T)",
+   "other": "SSLI ($1.1M max), 30d leave + diff pay (NG & Res), $25k sales tax exempt (100% VA)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Oklahoma",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "EAP",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "OR",
+   "name": "Oregon",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "ONGSTA 100% public tuition (no bachelor's, OR NG); in-state (stationed NG/Res)",
+   "income_tax": "Out-of-state / ≥21d away + SAD + $6k excl.; retired pre-1991 only",
+   "property_tax": "$26.3k–$31.5k (40%+ VA); $60k+ base excl. (179+ day AD, NG & Res)",
+   "other": "SSLI, 21d state leave, +5%/10% hiring pref (expands to OR NG Jan 2026)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Oregon",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "ONGSTA",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "PA",
+   "name": "Pennsylvania",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "EAP up to $4,245/sem (6-yr PA NG); MFEP dependent tuition (6-yr reenlistment)",
+   "income_tax": "Out-of-state AD & SAD exempt; 100% retired pay exempt",
+   "property_tax": "100% exempt (100% T&P wartime, income ≤$114,637)",
+   "other": "SSLI, +10 civil service pts explicitly for current NG & Res, MFRAP grants",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Pennsylvania",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "EAP",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "pa.educational-assistance-program-eap"
+    ],
+    "vault_guard_education_records": 3
+   }
+  },
+  {
+   "code": "PR",
+   "name": "Puerto Rico",
+   "region": "Southeast & Caribbean Territories",
+   "education": "FIGNA $50–$75/cr (18 cr/yr, PR NG) + 25% private univ. discount; Act 203 UPR vets",
+   "income_tax": "In-island pay taxed ($1.5k vet excl.); 100% retired pay exempt (2025+)",
+   "property_tax": "$5k (vet), $50k (50%+), or 100% exempt (100% disabled)",
+   "other": "FIGNA $100/mo annuity (55–59), mandatory public & private employer differential pay (NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Puerto-Rico",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "FIGNA",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "pr.figna-life-and-funeral-insurance",
+     "pr.figna-military-education-incentive",
+     "pr.figna-retired-guard-annuity"
+    ],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "RI",
+   "name": "Rhode Island",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "STAP waives up to 5 classes/sem + 1 summer course (RI NG)",
+   "income_tax": "Drill/AGR taxed; 100% retired pay exempt",
+   "property_tax": "Municipal-administered veteran & disabled exemptions",
+   "other": "SSLI, +5 hiring pts for 20-yr NG/Res retirees, up to $5k MFRF (NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Rhode-Island",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "STAP",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "ri.ri-national-guard-stap-and-step-tuition-programs"
+    ],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "SC",
+   "name": "South Carolina",
+   "region": "Southeast & Caribbean Territories",
+   "education": "SCNG CAP up to $12k/yr ($25k lifetime, SC NG); in-state tuition (Res)",
+   "income_tax": "Drill/AT exempt; AGR capped at 39 days/yr; 100% retired exempt",
+   "property_tax": "100% exempt on home (5 acres) & up to 2 vehicles (100% P&T)",
+   "other": "50% off Parks Passport (SC NG), SCMFRF grants (NG & Res), 15d state leave",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/South-Carolina",
+   "tags": [
+    "agr_specific_rule",
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "SCNG",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "SD",
+   "name": "South Dakota",
+   "region": "Midwest & Plains",
+   "education": "100% public UG tuition reduction (128 UG / 32 grad, SD NG); in-state (all)",
+   "income_tax": "No state income tax (all pay & pensions untaxed)",
+   "property_tax": "Up to $200,000 exemption (100% P&T); 100% paraplegic",
+   "other": "SSLI, hiring pref (full contract Res/NG), resident hunt/fish (SD-unit NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/South-Dakota",
+   "tags": [
+    "mentions_reserve",
+    "no_state_income_tax"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "TN",
+   "name": "Tennessee",
+   "region": "Southeast & Caribbean Territories",
+   "education": "STRONG Act 100% UT-K rate (TN NG); Helping Heroes $1k/sem (combat NG/Res)",
+   "income_tax": "No state income tax (all pay & pensions untaxed)",
+   "property_tax": "Relief on up to $175,000 market value (100% P&T)",
+   "other": "SSLI, vehicle sales tax exempt (AGR stationed in TN & combat-mob), 20d state leave",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Tennessee",
+   "tags": [
+    "agr_specific_rule",
+    "mentions_reserve",
+    "no_state_income_tax"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "STRONG",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "tn.strong-act-tuition-reimbursement"
+    ],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "TX",
+   "name": "Texas",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "STA tuition/fees up to 12 hrs/sem (TX NG M-Day & AGR); Hazlewood 150 hrs (181+ day AD)",
+   "income_tax": "No state income tax (all pay & pensions untaxed)",
+   "property_tax": "100% exempt (100% P&T); $5k–$12k tiered (10%–99%)",
+   "other": "SSLI, VLB low-interest loans (all TX NG; 20-yr Res), free Parklands & hunt/fish",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Texas",
+   "tags": [
+    "agr_specific_rule",
+    "mentions_reserve",
+    "no_state_income_tax"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "STA",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "UT",
+   "name": "Utah",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "STW 100% public UG tuition (excl. AGR); STA/SSLR $7k/FY (UT NG); in-state (Res)",
+   "income_tax": "Drill/AGR taxed; 4.5% nonrefundable credit on retired pay",
+   "property_tax": "Up to $535,459 taxable excl. (10%+ VA); 100% exempt if 200+ days out-of-state",
+   "other": "SSLI, $100k 72-hr SAD death gratuity (UT NG), $2.5k First-Time Homebuyer Grant",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Utah",
+   "tags": [
+    "agr_specific_rule",
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "STW",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 3
+   }
+  },
+  {
+   "code": "VA",
+   "name": "Virginia",
+   "region": "Southeast & Caribbean Territories",
+   "education": "VNGSTAP up to $9,000/FY (VA NG, 2-yr obligation)",
+   "income_tax": "Up to $5,500 / 39d NG pay excl.; $40,000 retired pay subtraction",
+   "property_tax": "100% real property & 1-vehicle sales tax exempt (100% P&T)",
+   "other": "+5% hiring pref & Park Passport (VA NG), 21d state leave & $20k AD death (NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Virginia",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "VNGSTAP",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "VI",
+   "name": "U.S. Virgin Islands",
+   "region": "Southeast & Caribbean Territories",
+   "education": "100% public tuition up to 32 hrs (USVI NG, no FTA); 128 hrs UVI vets",
+   "income_tax": "Mirror-code: drill, AGR & retired pay taxed",
+   "property_tax": "$650 credit (20+ yrs USVI NG or 30d combat); 100% exempt (100% P&T)",
+   "other": "30d paid territorial leave + differential pay (NG & Res), free emergency ambulance",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/US-Virgin-Islands",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": null,
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "VT",
+   "name": "Vermont",
+   "region": "Northeast & Mid-Atlantic",
+   "education": "VNGTBP forgivable tuition loan (2 yrs VT NG service per academic yr)",
+   "income_tax": "$2k NG/Res excl. (AGI <$50k); retired 100% exempt (≤$125k AGI)",
+   "property_tax": "$10k–$40k appraised exemption (≥50% VA disability)",
+   "other": "15d leave, $2 lifetime park pass, free 1-yr hunt/fish if activated ≥120d",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Vermont",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "VNGTBP",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "WA",
+   "name": "Washington",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "NGG $2.5k–$6.5k/yr + $500 books (WA NG); RCW 28B.15.621 waiver (combat Res/NG)",
+   "income_tax": "No state income tax (all pay & pensions untaxed)",
+   "property_tax": "Income-tiered reduction (80%+ or 100% VA disability)",
+   "other": "SSLI, free hunt package (WA NG), 21d state leave + 5% promo pref (activated Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Washington",
+   "tags": [
+    "mentions_reserve",
+    "no_state_income_tax"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "NGG",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "WI",
+   "name": "Wisconsin",
+   "region": "Midwest & Plains",
+   "education": "WING 100% UW-Madison tuition (enlisted/WO WI NG only; no officers/Res)",
+   "income_tax": "AGR & AT exempt; weekend drill (IDT) taxed; 100% retired exempt",
+   "property_tax": "100% refundable property tax credit (100% P&T/IU)",
+   "other": "SSLI, resident hunt/fish (WI-unit NG & Res), 30d leave + 179d diff pay",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Wisconsin",
+   "tags": [
+    "agr_specific_rule",
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "WING",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "WV",
+   "name": "West Virginia",
+   "region": "Southeast & Caribbean Territories",
+   "education": "WVEEP 100% tuition/fees up to $10,000/FY (WV NG)",
+   "income_tax": "OEF/domestic security AD exempt (NG & Res); 100% retired exempt",
+   "property_tax": "Income tax credit for homestead property taxes (≥90% VA)",
+   "other": "+5 hiring pts (>90d FT ADT, NG & Res), 240h leave + 240h mob leave",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/West-Virginia",
+   "tags": [
+    "mentions_reserve"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "WVEEP",
+    "relation": "program_in_vault",
+    "matching_records": [
+     "wv.west-virginia-educational-encouragement-program-wveep"
+    ],
+    "vault_guard_education_records": 1
+   }
+  },
+  {
+   "code": "WY",
+   "name": "Wyoming",
+   "region": "West, Southwest & Pacific Territories",
+   "education": "WYNG EA 100% UW/CC tuition & fees (up to 2 degrees; 1 transferable)",
+   "income_tax": "No state income tax (all pay & pensions untaxed)",
+   "property_tax": "$6,000 assessed value exemption (3-yr res wartime/disabled)",
+   "other": "SSLI ($1M+), 15d state leave, WY Mil Assist Trust grants (NG & Res)",
+   "named_source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/Wyoming",
+   "tags": [
+    "mentions_reserve",
+    "no_state_income_tax"
+   ],
+   "language_flags": {},
+   "cross_check": {
+    "program": "WYNG",
+    "relation": "vault_has_guard_education_record",
+    "matching_records": [],
+    "vault_guard_education_records": 2
+   }
+  }
+ ]
+}

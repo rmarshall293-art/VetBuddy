@@ -97,3 +97,71 @@ ledgers and kept once in the federal ledger.
 - Dropped on purpose: federal programs repeated on state pages (USERRA, SGLI, TRICARE, MSRRA, VA disability and DIC
   tax exclusions, federal funeral honors, Veterans Upward Bound, NADL), medals, certificates, recognition-only
   plates, voting, justice programs and bare links. Federal programs are kept once in the federal ledger.
+
+## 2026-11-21: Guard, Reserve and AGR source checks (ADR 0011)
+
+**What was opened.** Pages came from the source queue of the recovered Gemini report (`GET /api/v1/vault/guard-reserve/source-queue`), AGR and Gray Area first:
+- **33 pages the report names:** 31 were read; 2 did not load. The two failures are the TRICARE 2027 costs article and the DFAS September 2026 newsletter.
+- **3 pages found by search:** the named pages did not cover AGR health care or AGR retirement, so these were opened instead.
+
+**What was written.**
+- **Ledgers:** 15 rows, in `federal/federal03_guard_reserve.psv` (13) and `states/batch09_guard_reserve.psv` (2).
+- **Comparison:** `guard_reserve/source_checks.json` records each page against the report: 12 agree, 21 agree in part, 1 differs, 7 say nothing on the point.
+- **Correction:** CRDP needs a VA rating of 50% or more, which the report left out.
+- **Omissions:** the reduced-age rule also counts two consecutive fiscal years after 30 Sep 2014, and 32 USC 502(f) duty for a national emergency counts too. The report left both out.
+
+**Not confirmed.**
+- **Iowa:** the report says Iowa taxes Title 32 AGR pay and exempts Title 10 pay. The pages read do not address it.
+- **Utah:** the report says Utah's tuition waiver excludes AGR. The pages read do not say so.
+
+**Second pass, same day.** The other 50 named pages were opened:
+- 45 state and territory fact sheets, the MyArmyBenefits state index, the South Dakota Guard association's insurance page, and AR 600-8-4.
+- The two pages that failed were tried again and failed again; they may not exist.
+
+Every jurisdiction row now has a check:
+- 14 agree.
+- 41 agree in part.
+- 1 differs. Connecticut's 100% waiver is for veterans; the Guard waiver covers tuition left after other help.
+
+The vault already held the Guard benefits these pages confirm. The one new record is the Army line of duty request window (180 days, AR 600-8-4 para 4-4c).
+
+**How the report goes wrong across the states.** These patterns repeat:
+- **"100%" where the page says "up to" or "last dollar."**
+- **"Drill/AGR taxed" where the page only says resident military pay is taxed.**
+- **Leave days written as if for all Guard and Reserve members,** when they are for state employees.
+- **Benefits credited to the Guard and Reserve that are broader or narrower,** for example Florida's deployed property tax exemption and Tennessee's Helping Heroes grant.
+
+**Still open.**
+- **RCSBP election details:** the DFAS page doesn't give them.
+- **TRICARE 2027 premiums:** the article doesn't load, and the cost pages don't show them yet.
+- **Air Force AGR and Air Guard pages:** not read.
+
+## 2026-11-21 (third pass): Air Force AGR, RCSBP, Iowa, Utah and the last gaps
+
+Pages found by search (the report named none for these) and opened.
+
+**Air Force AGR (3 records).**
+- **Retirement:** ARPC says Air Guard and Air Force Reserve members with 20 years of total active federal military service retire with immediate pay and benefits. Converting to a Reserve retirement moves medical benefits to age 60.
+- **BRS:** MyAirForceBenefits gives BRS retired pay for Air Guard AGR and full-time Guard duty at 2% x years x High-36.
+- **TRICARE Prime:** the Air Guard gets Prime on federal active duty.
+
+**RCSBP.** DFAS's enrollment page gives the 90-day election window from the notice of eligibility, automatic enrollment for members with a spouse or dependent child, and irrevocability after the 90 days. The record now states these, and the report's lead GF09 is confirmed.
+
+**Iowa.** The Department of Revenue says Title 32 full-time Guard members are not in an active duty status, so their pay is not excluded. This confirms the report.
+
+**Utah.** The Guard's waiver application excludes members on AGR or ADOS orders, with some exceptions. This confirms the report.
+
+**Gaps closed.**
+- **GRG07:** OPM gives federal civilian military leave as 20 days a fiscal year since 23 Dec 2024 (it was 15).
+- **GRG10:** VA health care covers Guard and Reserve members after full federal activation, but not training only.
+- **GRG06:** the vault's existing commissary record covers Gray Area retirees, per MyArmyBenefits.
+
+**Still open.** TRICARE 2027 premiums, BRS for drilling members (GRG09), and the Retired Reserve or discharge choice (GRG15).
+
+## 2026-11-21 (final pass): last gaps
+
+- **GRG09:** BRS for Army Guard drilling members (MyArmyBenefits): points / 360 x 2% x High-36 from the eligibility age, TSP 1% plus up to 4%, and continuation pay.
+- **GRG15:** the Retired Reserve or discharge choice (MyAirForceBenefits Retired Pay). Years in the Retired Reserve count for basic pay; a discharge stops that credit. The record and the RCSBP record now carry the `irreversible_choice` caveat (v6 HITL level 4).
+- **2027 TRICARE premiums:** MOAA, an association article, matches the report's 2027 figures. No TRICARE page shows them yet, so the records keep the 2026 TRICARE figures until TRICARE publishes.
+
+**Result.** All 15 gaps have records, and 25 Guard, Reserve and AGR records were written in all. The research left to do is outside this queue: periodic re-checks, and the named reviewer (G1).

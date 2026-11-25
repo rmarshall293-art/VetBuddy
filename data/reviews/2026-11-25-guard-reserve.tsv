@@ -1,0 +1,31 @@
+# Gate G1 decisions: Guard & Reserve records added in PR #3 (25 records).
+# Reviewed against each record's source page; decisions from the owner's review checklist.
+# Handles and content hashes only: no names, contact details or accreditation numbers.
+# handle: owner-legion-vso-01
+# reviewed_on: 2026-11-25
+benefit_id	content_hash	decision
+us.reserve-component-survivor-benefit-plan-rcsbp	da780ea78473db34ad470ecf9cc4ea4fbf946ce03ab542b2e7668254d58c851a	APPROVE
+us.air-guard-and-air-force-reserve-retirement-after-20-years-of-total-activ	514087d616eb2f35d74300a3cae44eb55af16056ef9447696624d022dee53c5e	APPROVE
+us.army-agr-retirement-after-20-years-of-active-federal-service	d409d56e3dc4988465d9553701c911875bd176db5f56d90e7eb99fa0dd2132e4	APPROVE
+us.blended-retirement-system-for-army-guard-drilling-members	fce4f9f96da943ed49ce568bed209041de37c98450a5cc6152bee3eabdfd514e	APPROVE
+us.blended-retirement-system-retired-pay-for-air-guard-agr-and-full-time-na	6b0bc10313b26cfa3293eec177c95d69e92c9e2ea7474f3ff9044669bc9bb8e3	APPROVE
+us.blended-retirement-system-retired-pay-for-army-guard-agr-and-full-time-n	1eb7933f63376cafee95c496f3dedb62babea60f42304b4e22e6b8ec7d36b273	APPROVE
+us.reduced-retirement-age-for-qualifying-active-duty	afff65f8e6b835e33b702a64bd90594db3679a920d5d7c4a42d7a2a75cb09b90	APPROVE
+us.reserve-component-non-regular-retired-pay	e804c7a7a4000216666dfd79085d9839790283100aeda959300889479e5fd5d9	APPROVE
+us.reserve-retired-pay-with-15-years-for-members-found-unfit-15-year-letter	4ba1839f5538ac25ab27a3e0fec179ad3681a28cf387afdb9016e94a7b060b1b	APPROVE
+us.retired-reserve-or-discharge-after-20-qualifying-years-basic-pay-credit	7ba77e4b80abff6d442925f483a8d60f1d979a49e8a426dd355b7d8175fb16bc	APPROVE
+us.tricare-prime-and-select-at-age-60-for-retired-guard-and-reserve-members	c06bbd2f7dd14ecd7a402c18b0a1e17285eda89eb23e14e08b62b153f6198dc6	APPROVE
+us.tricare-prime-for-air-national-guard-members-on-federal-active-duty	1f77d7015a40658b7e4e1ce19725a5fb85d7c2815703dc6140f565b7b3e59afb	APPROVE
+us.tricare-prime-for-guard-members-on-federal-active-duty-including-full-ti	1857b33622dd20a189d73a2d50d6797d0749da7e1e4fce7912491461aaa0e416	APPROVE
+us.tricare-retired-reserve	116582c13621e7636461dba15ce0190140f06851081ea93f8c30003c306cc0ca	APPROVE
+us.va-health-care-for-guard-and-reserve-members-after-federal-activation	59cd57fe931226894618a94e0b31d21ac630b49c2bfec250ac0cd3e2e4908959	APPROVE
+us.military-leave-for-federal-civilian-employees-in-the-guard-and-reserve	239c8a77f5891706a5a843266c1f667163a3c076cf2b74e5a781cd8529128e93	APPROVE
+us.combat-related-special-compensation-crsc	797055c4a8a60656f61416853d6f15c531fd5a3c4854bcd9fa1a5ed3ef61b682	APPROVE
+us.concurrent-retirement-and-disability-pay-crdp	7e6629da84348be3159abf24ca97a744759415c30bfb460a7b4e7ab8e9787c9b	APPROVE
+us.dod-disability-retired-pay-chapter-61	7e729a0e523a6c0ac1cd0997f11b17fb991b2bd3dded4bae2a233b72a6ec00d4	APPROVE
+us.dod-disability-severance-pay	2f61b935f84373f581f65f08fe089260dab058fbe6e685fb9c329329540b18bd	APPROVE
+us.line-of-duty-determination-for-army-guard-and-reserve-injuries-and-illne	36e0df9dbab8ecd2cae7b5eaa5fc81bcd0a6952fe0169eaca43094689d6ad37f	APPROVE
+ia.guard-and-reserve-active-duty-pay-exclusion-title-10-status-title-32-ful	eb225037dd738c55f190a291abf137e3ff276f1828dddf271a3926230257fc40	APPROVE
+mi.national-guard-pay-exemption-drill-annual-training-agr-title-10-and-titl	dad2fcf497e762000ef07a3b3d7d24a5303f3b92048937bb152ccdec80d6139e	APPROVE
+sc.guard-and-reserve-pay-exemption-for-full-time-agr-members	60a4f7fb950094474b45a15c17ba54a906d3e6f5da8799d1f7a25a4e28485138	APPROVE
+ut.utah-national-guard-state-tuition-waiver-full-time-students-not-for-memb	eddc643a1f0e7c97750a5885549139aebf437a2c75165b3b1d69ada80f8bcf88	APPROVE

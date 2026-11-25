@@ -22,4 +22,11 @@
 #     active: true
 
 owner: project_owner
-reviewers: []
+reviewers:
+  # The project owner, VA-accredited through The American Legion (owner statement,
+  # 2026-11-22). Accreditation proof is kept outside the repository.
+  - handle: owner-legion-vso-01
+    role: accredited_vso_representative
+    scope: ["*"]
+    added_on: 2026-11-22
+    active: true

@@ -1,0 +1,173 @@
+{
+  "dataset": "vetbuddy.recovered.gemini_guard_reserve.federal_leads",
+  "version": "1.0.0",
+  "extracted_on": "2026-11-20",
+  "extracted_from": "data/research/recovered/gemini_guard_reserve/report.html",
+  "notice": "Leads restated from an AI-written research report (Gemini) that the project owner supplied. Tier 4: the report names its sources, but VetBuddy has not opened them. Every lead is UNVERIFIED and is shown as a lead to check, never as a benefit, an amount or a deadline that applies to anyone.",
+  "leads": [
+    {
+      "lead_id": "GF01",
+      "topic": "Chapter 61 disability retirement",
+      "claim": "A duty-related, line-of-duty-approved condition (or one incurred on AGR active duty) rated 30% or more by DoD, or any rating with 20 or more years of service, places the member on the Permanent or Temporary Disability Retired List under Chapter 61, paying the higher of years of service x 2.5% or the DoD rating percentage, capped at 75%, with immediate retiree TRICARE. Below 30% with under 20 years, the report describes separation with one-time severance pay (2 x monthly basic pay x years of service, capped at 19 years).",
+      "citation": "10 U.S.C. 1201",
+      "named_sources": ["https://uscode.house.gov/us/usc/t10/s1201/",
+                        "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/DoD-Disability-Retired-Pay?serv=120",
+                        "https://myarmybenefits.us.army.mil/Benefit-Library/Federal-Benefits/DoD-Disability-Severance-Pay-?serv=125"],
+      "statuses": ["selres", "agr32", "agr10", "tech", "mob", "sad", "irr", "ing"],
+      "gap_ids": ["GRG11"],
+      "has_dollar_or_rate_figures": true
+    },
+    {
+      "lead_id": "GF02",
+      "topic": "Non-regular disability retirement (15-year letter)",
+      "claim": "A member found unfit for a condition not incurred in the line of duty, with 15 to under 20 qualifying Selected Reserve years, may receive non-regular retired pay deferred to age 60 (or a reduced age), without immediate retiree TRICARE; the report says such retirees are excluded from Combat-Related Special Compensation by 10 U.S.C. 1413a(c)(1) and cannot receive Concurrent Retirement and Disability Pay with fewer than 20 years.",
+      "citation": "10 U.S.C. 12731b; 10 U.S.C. 1413a(c)(1)",
+      "named_sources": ["https://uscode.house.gov/us/usc/t10/s12731b/", "https://uscode.house.gov/us/usc/119-136/t10/s1413a/"],
+      "statuses": ["selres", "tech", "sad", "irr", "ing"],
+      "gap_ids": ["GRG11", "GRG12"],
+      "has_dollar_or_rate_figures": false
+    },
+    {
+      "lead_id": "GF03",
+      "topic": "Line of duty determinations for Guard and Reserve members",
+      "claim": "The report says that under AR 600-8-4 traditional drilling members generally must request a line of duty determination within 180 calendar days of qualified duty (drill, annual training, Title 10 or Title 32), that AGR members on continuous active orders carry a presumption of line of duty, and that the 8-year rule for pre-existing conditions in 10 U.S.C. 1207a does not protect Reserve Component members referred to the Disability Evaluation System after release from active duty.",
+      "citation": "AR 600-8-4; 10 U.S.C. 1207a",
+      "named_sources": ["https://sharplearningportal.army.mil/portals/3/LinkedFiles/RegulatoryGuidance/AR600-8-4_Line_of_Duty_15MAR19.pdf",
+                        "https://uscode.house.gov/us/usc/119-136/t10/s1207a/"],
+      "statuses": ["selres", "agr32", "agr10", "tech", "mob", "sad"],
+      "gap_ids": ["GRG08"],
+      "has_dollar_or_rate_figures": false,
+      "review_note": "Time limit stated by an AI summary; the regulation has not been read. Treat the 180-day figure as a question for the unit, never as a deadline."
+    },
+    {
+      "lead_id": "GF04",
+      "topic": "Integrated Disability Evaluation System (IDES)",
+      "claim": "The report describes five steps for duty-related conditions: referral to IDES with a joint pre-discharge VA claim, single VA compensation and pension exams used by DoD and VA, a Medical Evaluation Board (with impartial review and rebuttal), a Physical Evaluation Board that rates only unfitting conditions, and disposition at the 30% threshold.",
+      "citation": "VA pre-discharge claims (IDES)",
+      "named_sources": ["https://www.va.gov/disability/how-to-file-claim/when-to-file/pre-discharge-claim/"],
+      "statuses": ["selres", "agr32", "agr10", "tech", "mob"],
+      "gap_ids": ["GRG11"],
+      "has_dollar_or_rate_figures": false
+    },
+    {
+      "lead_id": "GF05",
+      "topic": "Non-regular (Gray Area) retirement at age 60",
+      "claim": "Twenty good years (50 or more retirement points a year) earn a Notice of Eligibility, not an immediate payment; under 10 U.S.C. 12731 non-regular retired pay begins at age 60, and retiree TRICARE Prime and Select also begin at age 60.",
+      "citation": "10 U.S.C. 12731",
+      "named_sources": ["https://uscode.house.gov/us/usc/t10/s12731/", "https://www.dfas.mil/RetiredMilitary/plan/Gray-Area-Retirees/"],
+      "statuses": ["selres", "tech", "irr", "ing", "retres", "mob"],
+      "gap_ids": ["GRG02", "GRG06"],
+      "has_dollar_or_rate_figures": false
+    },
+    {
+      "lead_id": "GF06",
+      "topic": "Reduced age retirement",
+      "claim": "The report says each aggregate 90 days of qualifying active duty after 28 January 2008, excluding AGR orders under 10 U.S.C. 12310, lowers the retired pay age by 3 months, to no earlier than age 50, and that the reduction moves only the pension start: retiree TRICARE Prime and Select still begin at age 60.",
+      "citation": "10 U.S.C. 12731(f)",
+      "named_sources": ["https://uscode.house.gov/us/usc/t10/s12731/",
+                        "https://www.dfas.mil/RetiredMilitary/newsevents/newsletter/September2026-Retiree-Newsletter-Gray-Area-Retiree-Spotlight/"],
+      "statuses": ["selres", "mob", "tech", "irr", "ing", "retres"],
+      "gap_ids": ["GRG02"],
+      "has_dollar_or_rate_figures": false,
+      "review_note": "The summary does not say how qualifying days are grouped by fiscal year or which mobilization authorities count; read the statute before any calculator uses this."
+    },
+    {
+      "lead_id": "GF07",
+      "topic": "Non-regular retired pay formula",
+      "claim": "Under 10 U.S.C. 12733 the report gives retired pay as (total points / 360) x 2.5% of the retired pay base (High-3) or 2.0% (Blended Retirement System); 20 minimal good years (about 1,560 points) give about 10.83% (High-3) or 8.67% (BRS), against 50% or 40% for 20 years of active federal service.",
+      "citation": "10 U.S.C. 12733",
+      "named_sources": ["https://uscode.house.gov/us/usc/t10/s12733/", "https://www.dfas.mil/retiredmilitary/plan/estimate/"],
+      "statuses": ["selres", "tech", "mob", "irr", "ing", "retres", "agr32", "agr10"],
+      "gap_ids": ["GRG02", "GRG09"],
+      "has_dollar_or_rate_figures": true
+    },
+    {
+      "lead_id": "GF08",
+      "topic": "Retired Reserve or discharge after 20 years",
+      "claim": "The report says transferring to the Retired Reserve lets the Gray Area years count for longevity and computes the High-36 base on the active duty pay table in effect at age 60 (10 U.S.C. 1407), while taking a discharge fixes the pay table at the date of separation.",
+      "citation": "10 U.S.C. 1407",
+      "named_sources": ["https://uscode.house.gov/us/usc/t10/s1407/"],
+      "statuses": ["selres", "tech", "retres"],
+      "gap_ids": ["GRG15"],
+      "has_dollar_or_rate_figures": false,
+      "review_note": "An irreversible election is involved; v6 human-in-the-loop level 4. VetBuddy may explain and refer, never recommend the choice."
+    },
+    {
+      "lead_id": "GF09",
+      "topic": "Reserve Component Survivor Benefit Plan election",
+      "claim": "The report says members have 90 days from the 20-year letter to file DD Form 2656-5, that default coverage may apply otherwise, and that Option B (deferred annuity) or Option C (immediate annuity) carries the standard SBP premium plus an actuarial RCSBP add-on once retired pay starts.",
+      "citation": "DFAS RCSBP; DD Form 2656-5",
+      "named_sources": ["https://www.dfas.mil/retiredmilitary/provide/rcsbp/"],
+      "statuses": ["selres", "tech", "retres"],
+      "gap_ids": ["GRG05"],
+      "has_dollar_or_rate_figures": true,
+      "review_note": "Election window stated by an AI summary; v6 forbids an unsourced deadline. Show it only as a question to ask the personnel office until the DFAS page is read; irreversible election (HITL level 4)."
+    },
+    {
+      "lead_id": "GF10",
+      "topic": "TRICARE Retired Reserve premiums",
+      "claim": "The report gives TRICARE Retired Reserve monthly premiums of $645.90 (member only) and $1,548.30 (family) for calendar year 2026, and $707.59 and $1,697.70 for calendar year 2027.",
+      "citation": "TRICARE 2026 and 2027 health plan costs",
+      "named_sources": ["https://newsroom.tricare.mil/News/TRICARE-News/Article/4328806/learn-your-2026-tricare-health-plan-costs",
+                        "https://newsroom.tricare.mil/News/TRICARE-News/Article/4642349/get-to-know-your-2027-tricare-health-plan-costs",
+                        "https://newsroom.tricare.mil/News/TRICARE-News/Article/3120866/retiring-from-national-guard-or-reserve-know-your-tricare-options"],
+      "statuses": ["retres", "selres", "tech"],
+      "gap_ids": ["GRG01"],
+      "has_dollar_or_rate_figures": true
+    },
+    {
+      "lead_id": "GF11",
+      "topic": "TRICARE Reserve Select premiums",
+      "claim": "The report gives TRICARE Reserve Select monthly premiums of $57.88 (member only) and $286.66 (family) for calendar year 2026, and $60.54 and $307.48 for calendar year 2027, ending when the member retires into the Gray Area.",
+      "citation": "TRICARE 2026 and 2027 health plan costs",
+      "named_sources": ["https://newsroom.tricare.mil/News/TRICARE-News/Article/4328806/learn-your-2026-tricare-health-plan-costs",
+                        "https://newsroom.tricare.mil/News/TRICARE-News/Article/4642349/get-to-know-your-2027-tricare-health-plan-costs"],
+      "statuses": ["selres", "tech"],
+      "gap_ids": [],
+      "has_dollar_or_rate_figures": true
+    },
+    {
+      "lead_id": "GF12",
+      "topic": "AGR retirement after 20 years of active federal service",
+      "claim": "The report says an AGR member reaching 20 years of active federal service draws retired pay immediately (50% of High-3, 40% under BRS, of the final 36 months of active duty pay) with retiree TRICARE (CY 2026 family enrollment $375 a year for Select or $765 for Prime), avoiding the Gray Area.",
+      "citation": "DFAS; TRICARE health plan costs",
+      "named_sources": ["https://www.tricare.mil/Costs/HealthPlanCosts/TS", "https://www.dfas.mil/retiredmilitary/plan/estimate/"],
+      "statuses": ["agr32", "agr10"],
+      "gap_ids": ["GRG03", "GRG04"],
+      "has_dollar_or_rate_figures": true
+    },
+    {
+      "lead_id": "GF13",
+      "topic": "CRSC and CRDP for Guard and Reserve retirees",
+      "claim": "The report says Combat-Related Special Compensation is available at once for a combat-related Chapter 61 retirement (10% or more VA rating, tax-free), while Concurrent Retirement and Disability Pay needs 20 or more qualifying years and starts at age 60 or the reduced age.",
+      "citation": "DFAS CRSC; DFAS CRDP",
+      "named_sources": ["https://www.dfas.mil/retiredmilitary/disability/crsc/", "https://www.dfas.mil/retiredmilitary/disability/crdp/"],
+      "statuses": ["selres", "agr32", "agr10", "tech", "mob", "retres"],
+      "gap_ids": ["GRG12"],
+      "has_dollar_or_rate_figures": true
+    },
+    {
+      "lead_id": "GF14",
+      "topic": "State-Sponsored Life Insurance (SSLI)",
+      "claim": "The report says state-sponsored life insurance for National Guard members (free basic coverage the report puts at $1,000 to $10,000) is available in most states, generally to the Guard only.",
+      "citation": "NGACT State-Sponsored Life Insurance",
+      "named_sources": ["https://ngact.org/ngact-state-sponsored-life-insurance/", "https://sdngea.com/programs/insurance-program/"],
+      "statuses": ["selres", "agr32", "tech", "sad", "mob"],
+      "gap_ids": ["GRG14"],
+      "has_dollar_or_rate_figures": true
+    },
+    {
+      "lead_id": "GF15",
+      "topic": "Component rules for state benefits",
+      "claim": "The report says state tuition programs are mostly National Guard only (exceptions it names: Nebraska's Reservist Tuition Credit, the Minnesota GI Bill, and combat-deployed waivers in Georgia and Washington); that Title 32 Guard AGR members keep Guard tuition programs in states such as Michigan and Texas while Utah's State Tuition Waiver excludes AGR; and that some states tax Title 10 and Title 32 AGR pay differently (Iowa, for example).",
+      "citation": "MyArmyBenefits State and Territory library; state revenue guidance",
+      "named_sources": ["https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits",
+                        "https://revenue.iowa.gov/taxes/tax-guidance/individual-income-tax/1040-expanded-instructions/note-additional-information",
+                        "https://www.michigan.gov/taxes/questions/iit/accordion/military/is-national-guard-pay-considered-military-compensation",
+                        "https://guard.utah.gov/stw/"],
+      "statuses": ["selres", "agr32", "agr10", "tech", "mob", "sad", "irr", "ing", "retres"],
+      "gap_ids": ["GRG13"],
+      "has_dollar_or_rate_figures": false
+    }
+  ]
+}

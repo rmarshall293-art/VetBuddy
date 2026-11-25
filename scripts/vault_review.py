@@ -7,6 +7,7 @@ owner database URL (DATABASE_ADMIN_URL); the API never uses this.
                                                        records awaiting review (Alabama, then source-checked)
   scripts/vault_review.py verify BENEFIT_ID --handle H --content-hash HASH [--on YYYY-MM-DD]
   scripts/vault_review.py withdraw BENEFIT_ID [--on YYYY-MM-DD]
+  scripts/vault_review.py verify-batch FILE            apply a reviewer's decision file (data/reviews/*.tsv)
 
 A review takes effect in the API on its next start (registry.with_reviews).
 """
@@ -36,6 +37,8 @@ def main(argv=None) -> int:
     v.add_argument("--handle", required=True)
     v.add_argument("--content-hash", required=True)
     v.add_argument("--on", type=dt.date.fromisoformat, default=dt.date.today())
+    b = sub.add_parser("verify-batch")
+    b.add_argument("file", type=Path)
     w = sub.add_parser("withdraw")
     w.add_argument("benefit_id")
     w.add_argument("--on", type=dt.date.fromisoformat, default=dt.date.today())
@@ -51,6 +54,8 @@ def main(argv=None) -> int:
                 out = review.sync_roster(conn, review.load_roster(), dt.date.today())
             elif args.cmd == "queue":
                 out = review.queue(conn, args.limit, args.jurisdiction)
+            elif args.cmd == "verify-batch":
+                out = review.verify_batch(conn, review.load_decisions(args.file))
             elif args.cmd == "verify":
                 out = review.verify(conn, args.benefit_id, args.handle, args.content_hash, args.on)
             else:
@@ -63,7 +68,7 @@ def main(argv=None) -> int:
         print(f"refused: {exc}", file=sys.stderr)
         return 1
     print(json.dumps(out, indent=1, default=str))
-    return 0
+    return 1 if isinstance(out, dict) and out.get("refused") else 0
 
 
 if __name__ == "__main__":

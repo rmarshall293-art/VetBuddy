@@ -104,7 +104,7 @@ own page (nonprofit, association or vendor); 4, a secondary source or a recovere
 
 | | |
 |---|---|
-| Records | 1,362: 1,281 state (55 jurisdictions), 60 federal, 12 nonprofit programs, 9 commercial deals |
+| Records | 1,387: 1,285 state (55 jurisdictions), 81 federal, 12 nonprofit programs, 9 commercial deals (25 Guard, Reserve and AGR records added 2026-11-21, ADR 0011) |
 | Record status | 47 SOURCE_CHECKED, 1,315 UNVERIFIED, 0 VERIFIED |
 | Official link | 93 same as the page read, 1,263 linked from it, 6 seen in search only |
 | Sources | 116 (115 opened; tier 1: 14, tier 2: 78, tier 3: 23, tier 4: 1) |
@@ -332,6 +332,7 @@ Benefit Vault agent ──► PullRequest ──► Pull broker (Privacy and Con
 | Agent | Plane | Holds up to | Exposes to the vault |
 |---|---|---|---|
 | `benefit_vault_agent` | 5 | V2 | nothing; the only agent that may pull |
+| `guard_reserve_agent` | 5 | V2 | nothing; may not pull; the Guard/Reserve role run over the vault agent (ADR 0011, `docs/GUARD_RESERVE_VAULT.md`) |
 | `service_profile_agent` | 2 | V2 | residence, duty station, status, component, Guard state, orders, active duty days, wartime (V1); discharge, Purple Heart, Medal of Honor, former POW (V2) |
 | `va_status_agent` | 2 | V4 | rating, permanent and total, unemployability (V2); conditions (V4) never leave it |
 | `household_agent` | 2 | V2 | relationship, age (V1); Gold Star family, sponsor status, sponsor died in the line of duty (V2) |

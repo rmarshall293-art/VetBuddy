@@ -194,7 +194,7 @@ components:
   - {id: GR06, name: Pulls through Benefits Intelligence in Mode B, status: PARTIAL,
      note: "Uses the parent agent's grants and broker; production sign-in waits on G17, as for the vault."}
   - {id: GR07, name: Guard, Reserve and AGR records from the opened sources, status: IMPLEMENTED_UNVERIFIED,
-     note: "25 records written 2026-11-21 from 96 pages read (federal03, states batch09), Army and Air Force; every gap has a record. Every record waits for a named reviewer (G1). TRICARE 2027 premiums are confirmed only by an association article; the records keep 2026 TRICARE figures until TRICARE publishes."}
+     note: "25 records written 2026-11-21 from 96 pages read (federal03, states batch09), Army and Air Force; every gap has a record. All 25 approved by owner-legion-vso-01 on 2026-11-25 (data/reviews/2026-11-25-guard-reserve.tsv); they become VERIFIED once the decision file is applied to the production database (G17). TRICARE 2027 premiums are confirmed only by an association article; the records keep 2026 TRICARE figures until TRICARE publishes."}
   - {id: GR13, name: Irreversible-choice caveat on RCSBP and the Retired Reserve or discharge record (v6 HITL level 4), status: IMPLEMENTED_TESTED}
   - {id: GR10, name: Recovered Gemini leads (56 jurisdictions, federal retirement and TRICARE), status: IMPLEMENTED_TESTED,
      note: "Hash-pinned, language-guarded, cross-checked against the vault; UNVERIFIED tier 4."}

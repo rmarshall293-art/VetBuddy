@@ -265,7 +265,7 @@ components:
   - {id: V20, name: Migration 0014 and generated seed, status: IMPLEMENTED_TESTED,
      note: "Tested on the real slice 03 chain (0001-0014); account deletion reaches the three tenant tables."}
   - {id: V21, name: Named-reviewer verification workflow, status: PARTIAL,
-     note: "Roster kept by the project owner, database-enforced, logged (migration 0016, scripts/vault_review.py); no reviewer is on the roster yet (G1)."}
+     note: "Roster kept by the project owner, database-enforced, logged (migration 0016, scripts/vault_review.py, decision files in data/reviews applied with verify-batch); one reviewer on the roster (owner-legion-vso-01), 25 Guard & Reserve records approved 2026-11-25 and rehearsed on the test database; not yet applied to a production database, which waits on G17."}
   - {id: V22, name: Model-written explanations, status: BLOCKED, note: "Gates G21 and G23; no model call exists."}
   - {id: V23, name: American Samoa coverage, status: SOURCE_NOT_AVAILABLE}
   - {id: V24, name: Recovered lead import, status: IMPLEMENTED_TESTED}

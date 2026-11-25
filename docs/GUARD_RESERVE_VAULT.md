@@ -93,7 +93,7 @@ DoD civilians are out of scope: civilian employment alone creates no Guard or Re
 | GR04 | Lens over the matcher | IMPLEMENTED_TESTED |
 | GR05 | Routes (Mode A) | IMPLEMENTED_TESTED |
 | GR06 | Pulls through Benefits Intelligence (Mode B) | PARTIAL (G17) |
-| GR07 | Guard, Reserve and AGR records from opened sources | IMPLEMENTED_UNVERIFIED (25 records; awaiting a named reviewer, G1) |
+| GR07 | Guard, Reserve and AGR records from opened sources | IMPLEMENTED_UNVERIFIED (25 records; approved by the named reviewer 2026-11-25, applied to production after G17) |
 | GR13 | Irreversible-choice caveat | IMPLEMENTED_TESTED |
 | GR10 | Recovered Gemini leads | IMPLEMENTED_TESTED |
 | GR11 | Guard & Reserve Center screen | IMPLEMENTED_TESTED |
@@ -196,7 +196,18 @@ Each remaining lead becomes a record in five steps:
 | GRG14 | State-Sponsored Life Insurance |
 | GRG15 | Retired Reserve or discharge after 20 years |
 
-All 15 gaps are IMPLEMENTED_UNVERIFIED: records exist and wait for a named reviewer (G1).
+All 15 gaps are IMPLEMENTED_UNVERIFIED: records exist and were approved by the named reviewer (`owner-legion-vso-01`) on 2026-11-25. They show as VERIFIED once the decision file is applied to the production database.
+
+## Applying the review (gate G1)
+
+The decisions are in `data/reviews/2026-11-25-guard-reserve.tsv` (handles and content hashes only). On a trusted machine, with `DATABASE_ADMIN_URL` set to the owner connection:
+
+```
+python3 scripts/vault_review.py sync-roster
+python3 scripts/vault_review.py verify-batch data/reviews/2026-11-25-guard-reserve.tsv
+```
+
+then restart the API. Each approval is its own transaction; a record whose content changed since review is refused and must be reviewed again. Re-running is safe. The batch was rehearsed on the test database on 2026-11-25: 25 verified, 0 refused, and the app applied all 25 at startup.
 
 ## Run
 

@@ -42089,7 +42089,7 @@
   {
    "id": "V21",
    "name": "Named-reviewer verification workflow",
-   "note": "Roster kept by the project owner, database-enforced, logged (migration 0016, scripts/vault_review.py); no reviewer is on the roster yet (G1).",
+   "note": "Roster kept by the project owner, database-enforced, logged (migration 0016, scripts/vault_review.py, decision files in data/reviews applied with verify-batch); one reviewer on the roster (owner-legion-vso-01), 25 Guard & Reserve records approved 2026-11-25 and rehearsed on the test database; not yet applied to a production database, which waits on G17.",
    "status": "PARTIAL"
   },
   {
@@ -43124,7 +43124,7 @@
  "integrity": {
   "algorithm": "sha256",
   "canonical": "JSON with sorted keys, separators (',', ':'), UTF-8, no NaN; the integrity member excluded",
-  "sha256": "2e7bc950dfeae97e1203f308357c29981c4c1719bd252ba78d8bd5c1839d7744"
+  "sha256": "c02a2d27e5f1e8ffb87beabcdcb9e63c44045dc4d847607099bdf79c474fb5f4"
  },
  "jurisdictions": [
   {

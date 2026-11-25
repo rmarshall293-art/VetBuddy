@@ -129,3 +129,59 @@ def withdraw(conn, benefit_id: str, registry_status: str, on: dt.date) -> dict:
         conn.query("INSERT INTO ref.vault_review_event (benefit_id, action, handle, content_hash, on_date)"
                    " VALUES ($1, 'WITHDRAWN', $2, $3, $4)", [benefit_id, row["verified_by"], row["content_hash"], on])
     return {"benefit_id": benefit_id, "record_status": registry_status}
+
+
+DECISIONS = ("APPROVE", "REJECT", "NEEDS_FIX")
+DECISION_COLUMNS = ("benefit_id", "content_hash", "decision")
+
+
+def load_decisions(path: Path) -> dict:
+    """A reviewer's decision file (TSV, data/reviews/): '# handle: H' and '# reviewed_on: YYYY-MM-DD'
+    header lines, then benefit_id, content_hash and decision columns. Handles and hashes only."""
+    meta, rows, header = {}, [], None
+    for n, line in enumerate(Path(path).read_text().splitlines(), 1):
+        if not line.strip():
+            continue
+        if line.startswith("#"):
+            key, _, value = line[1:].partition(":")
+            meta[key.strip()] = value.strip()
+            continue
+        cells = line.split("\t")
+        if header is None:
+            if tuple(cells) != DECISION_COLUMNS:
+                raise ReviewError(f"line {n}: the columns must be {', '.join(DECISION_COLUMNS)}")
+            header = cells
+            continue
+        if len(cells) != 3 or cells[2] not in DECISIONS or not re.fullmatch(r"[0-9a-f]{64}", cells[1]):
+            raise ReviewError(f"line {n}: expected benefit_id, a 64-character content hash and one of {DECISIONS}")
+        rows.append(dict(zip(DECISION_COLUMNS, cells)))
+    handle = meta.get("handle", "")
+    if not re.fullmatch(REVIEWER_HANDLE, handle):
+        raise ReviewError("the file needs a '# handle:' line with a roster handle")
+    try:
+        on = dt.date.fromisoformat(meta.get("reviewed_on", ""))
+    except ValueError:
+        raise ReviewError("the file needs a '# reviewed_on: YYYY-MM-DD' line") from None
+    if len({r["benefit_id"] for r in rows}) != len(rows):
+        raise ReviewError("a record appears twice")
+    return {"handle": handle, "reviewed_on": on, "rows": rows}
+
+
+def verify_batch(conn, decisions: dict) -> dict:
+    """Apply a decision file: each APPROVE row is its own verify() transaction, so one refusal
+    stops nothing else. Re-running is safe: rows already verified are reported, not repeated."""
+    out = {"verified": [], "already_verified": [], "refused": {}, "not_approved": []}
+    for row in decisions["rows"]:
+        bid = row["benefit_id"]
+        if row["decision"] != "APPROVE":
+            out["not_approved"].append(bid)
+            continue
+        try:
+            verify(conn, bid, decisions["handle"], row["content_hash"], decisions["reviewed_on"])
+            out["verified"].append(bid)
+        except ReviewError as exc:
+            (out["already_verified"].append(bid) if "already verified" in str(exc)
+             else out["refused"].__setitem__(bid, str(exc)))
+        except Exception as exc:  # the database refuses an off-roster or out-of-scope handle
+            out["refused"][bid] = str(exc).splitlines()[0]
+    return out

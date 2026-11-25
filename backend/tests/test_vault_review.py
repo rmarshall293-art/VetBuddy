@@ -135,3 +135,35 @@ class Workflow(unittest.TestCase):
             for table in ("ref.vault_reviewer", "ref.vault_review_event"):
                 with self.assertRaises(DatabaseError, msg=table):
                     c.query(f"SELECT 1 FROM {table} LIMIT 1")
+
+
+class DecisionFiles(unittest.TestCase):
+    """data/reviews/*.tsv: a reviewer's decisions, applied with `vault_review.py verify-batch`."""
+
+    def test_every_shipped_file_parses_names_a_roster_handle_and_matches_the_registry(self):
+        reg = default_registry()
+        handles = {r["handle"] for r in review.load_roster()}
+        files = sorted((review.ROOT / "data" / "reviews").glob("*.tsv"))
+        self.assertTrue(files)
+        for f in files:
+            d = review.load_decisions(f)
+            self.assertIn(d["handle"], handles)
+            for row in d["rows"]:
+                self.assertIn(row["benefit_id"], reg.benefits, f.name)
+                # a stale hash would be refused at verify time; catch it here first
+                self.assertEqual(row["content_hash"], reg.benefits[row["benefit_id"]].content_hash, row["benefit_id"])
+                self.assertNotEqual(reg.benefits[row["benefit_id"]].record_status, "VERIFIED")
+
+    def test_malformed_files_are_refused(self):
+        good = "# handle: al-vso-01\n# reviewed_on: 2026-11-25\nbenefit_id\tcontent_hash\tdecision\n"
+        row = "us.x\t" + "a" * 64 + "\tAPPROVE\n"
+        for bad in (good.replace("# handle: al-vso-01\n", ""), good.replace("2026-11-25", "soon"),
+                    good + row.replace("APPROVE", "OK"), good + row.replace("a" * 64, "abc"), good + row + row,
+                    good.replace("decision", "verdict")):
+            f = tempfile.NamedTemporaryFile("w", suffix=".tsv", delete=False)
+            f.write(bad), f.close()
+            with self.assertRaises(review.ReviewError):
+                review.load_decisions(Path(f.name))
+        f = tempfile.NamedTemporaryFile("w", suffix=".tsv", delete=False)
+        f.write(good + row), f.close()
+        self.assertEqual(len(review.load_decisions(Path(f.name))["rows"]), 1)
